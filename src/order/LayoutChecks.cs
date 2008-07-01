@@ -60,14 +60,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Pending,
-            Retry,
-            Locked,
-            Synced,
-            Draft,
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the context kind values.</summary>
