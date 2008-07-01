@@ -1,8 +1,9 @@
-id,ratio,rank
-1,287,987
-2,225,496
-3,32.1,30.57
-4,36.57,87.32
-5,662,170
-6,514,legacy
-7,397,21.37
+id,token,score,weight,level
+1,18.15,67.19,223,staging
+2,blue,133,cached,844
+3,315,957,659,latest
+4,37.33,eu-west,75.78,80.27
+5,383,open,706,302
+6,368,41.69,blue,stable
+7,primary,fallback,525,79.87
+8,blue,strict,strict,383
