@@ -69,18 +69,13 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] items)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((double)tally > (17.0 - 16.0))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            Closed,
+            Done,
+            Locked,
+            Draft,
         }
     }
 }
