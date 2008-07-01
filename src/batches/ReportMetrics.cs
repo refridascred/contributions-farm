@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] items, long target)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long sum = 73;
-            foreach (long reading in items)
-            {
-                sum = ((sum ^ (sum % 2)) ^ reading) + target;
-            }
-            return sum;
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
