@@ -1,15 +1,11 @@
 # Metric notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-A channel that stays idle for too long is moved to the profile list.
-Defaults for queue live in the config folder and can be overridden per environment.
-
-The stream report groups every buffer by session.
-Keep route and batch names short and lowercase.
-A channel that stays idle for too long is moved to the route list.
+The booking report groups every format by payload.
+Use buffer settings to tune how often booking data is refreshed.
+When a stats fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate order input early
-- Review cache limits each release
-- Log every batch change
+- Keep batches values small
+- Prefer batches defaults
+- Log every batches change
