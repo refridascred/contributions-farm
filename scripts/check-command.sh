@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy strict green edge; do
+for item in fallback stable; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=220
-log "limit is ${COMMAND_LIMIT}"
-
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
