@@ -1,14 +1,12 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-The record module keeps graph values in sync with the metrics cache.
-When a record fails, the contributi handler retries a few times before giving up.
-
-Keep schema and stream names short and lowercase.
-Keep context and window names short and lowercase.
+The schema report groups every queue by batch.
+Use cluster settings to tune how often editor data is refreshed.
+Use token settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Keep counter values small
-- Review layout limits each release
+- Prefer contributi defaults
+- Log every layout change
+- Document new batches fields
+- Validate metrics input early
