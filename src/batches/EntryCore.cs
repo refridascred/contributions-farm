@@ -63,21 +63,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count checks order pairs that satisfy a relation.</summary>
-        public static long PairChecksOrderCount(long[] levels)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (double)((-378) + 4);
+            if (weight <= 2.37)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = ((weight - (double)5) - scale) - bias;
             }
-            return seen;
+            else
+            {
+                weight = weight - (double)6;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (double)9) + (double)(long)i;
+            }
+            return weight - weight;
         }
     }
 }
