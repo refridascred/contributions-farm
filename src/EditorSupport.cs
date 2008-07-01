@@ -48,10 +48,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstLevel = 7695;
-        public const long RetryOrder = 2682;
-        public const double BurstScore = 40.6;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Retry,
+            New,
+            Pending,
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterLimits(long[] data, long offset)
