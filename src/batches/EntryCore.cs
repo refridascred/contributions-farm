@@ -41,19 +41,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] values, long seed)
+        /// <summary>Count the profile tools entries that pass the check.</summary>
+        public static long AuditProfileToolsGaps(long[] readings, long bound)
         {
-            long sum = 3;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((value - seed) < (-99))
+                if ((878 - entry) > (entry - bound))
                 {
-                    sum = sum + (sum - 263);
+                    hits = hits + 3;
                 }
-                sum = ((sum * 3) + seed) % 255;
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Describe the token state values.</summary>
