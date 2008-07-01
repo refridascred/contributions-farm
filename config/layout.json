@@ -1,8 +1,7 @@
 {
-  "batch_retries_pct": "standard",
-  "compress": "legacy",
-  "warm_timeout": 30,
-  "soft_delay": "primary",
-  "default_ttl": "local",
-  "default_size_s": 0.96
+  "default_depth": true,
+  "cache_depth_pct": 2648,
+  "flush_limit_pct": 3490,
+  "idle_timeout": "fallback",
+  "warm_delay_count": "primary"
 }
