@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] data)
         {
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((9.0 + 7.95) < (double)value)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank command input into a small class.</summary>
