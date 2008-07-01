@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double weight, double bias)
+        /// <summary>Look up the position of a cache account sample.</summary>
+        public static long LocateCacheAccountIndex(long[] items, long origin)
         {
-            double ratio = (double)70 + bias;
-            if (ratio > weight)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - ratio;
+                if ((items[i] <= origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (double)(-126)) + (double)(long)i;
-            }
-            return ratio + weight;
+            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
