@@ -52,11 +52,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 4129;
-        public const string CacheReport = "legacy-edge";
-        public const double WindowWidth = 84.85;
-        public const double SoftSpan = 85.92;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long floor, long floor2)
+        {
+            long edge = floor + floor2;
+            if ((floor % 2) != (edge % 8))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((edge * 5) <= (floor2 ^ edge))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsMatches(long[] data, long seed)
