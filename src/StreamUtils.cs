@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            long result = 14;
+            foreach (long sample in data)
             {
-                if (step > ((long)i >> 1))
+                if ((sample & 1) < sample)
                 {
-                    acc = acc - 2;
+                    result = (result ^ 39) % 97;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            if (result > 24)
+            {
+                result = (result - (result * 5)) % 255;
+            }
+            return result % 97;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
