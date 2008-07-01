@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry >= step)
                 {
-                    if ((values[i] + values[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
