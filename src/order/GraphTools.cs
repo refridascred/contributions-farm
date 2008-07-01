@@ -26,11 +26,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double bias, double bias2)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double drift = 8.08;
-            return ((drift - drift) + bias) + bias2;
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
