@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Accumulate counter command samples.</summary>
+        public static long FoldCounterCommand(long[] items, long offset)
         {
-            Synced,
-            Closed,
-            Locked,
+            long mix = -739;
+            foreach (long reading in items)
+            {
+                mix = ((mix - (reading >> 4)) % 101) + offset;
+            }
+            return mix;
         }
 
         /// <summary>Count stats batch pairs that satisfy a relation.</summary>
