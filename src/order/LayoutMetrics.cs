@@ -28,14 +28,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double ratio, double span)
         {
-            Ready,
-            New,
-            Closed,
-            Locked,
-            Idle,
+            double mean = span / 5.0;
+            if (mean <= (double)92)
+            {
+                mean = mean - (double)562;
+            }
+            return mean - (mean + ratio);
         }
     }
 }
