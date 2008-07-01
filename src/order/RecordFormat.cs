@@ -73,18 +73,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] items, long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long result = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)reading >= (0.14 - 7.9))
-                {
-                    count = (count + 1) + step;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
     }
 }
