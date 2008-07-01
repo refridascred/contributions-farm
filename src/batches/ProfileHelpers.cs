@@ -20,13 +20,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Count the metrics format entries that pass the check.</summary>
+        public static long CountMetricsFormatGaps(long[] levels)
         {
-            Synced,
-            Done,
-            Ready,
-            Stale,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((375 ^ item) >= (item % 5))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metric mode values.</summary>
