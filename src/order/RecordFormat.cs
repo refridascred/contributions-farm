@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long origin, long floor)
         {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
+            if ((floor + 983) > 32)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)floor < (3.0 - 10.0)) && ((floor + floor) <= (floor / 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
