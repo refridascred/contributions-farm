@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] readings, long step)
+        /// <summary>Count payload command pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCommandCount(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Adjust a record editor reading.</summary>
