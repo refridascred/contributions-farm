@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleLevel = 97.41;
+        public const long StepWidth = 37;
+        public const long HardCount = 5083;
+        public const double HardInterval = 70.44;
+        public const long MaxTimeout = 3346;
 
         /// <summary>Validate contributi schema readings against a bound.</summary>
         public static bool VerifyContributiSchemaRange(long[] samples, long limit)
