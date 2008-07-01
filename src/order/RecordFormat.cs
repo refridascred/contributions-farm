@@ -44,26 +44,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] series, long bound)
-        {
-            long mix = 261;
-            foreach (long sample in series)
-            {
-                if ((double)(long)series.Length >= 6.0)
-                {
-                    mix = mix ^ (mix + sample);
-                }
-                else
-                {
-                    mix = (mix * 4) + (56 - bound);
-                }
-            }
-            if (mix > 154)
-            {
-                mix = (mix << 2) ^ (bound / 5);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxFactor = 9534;
+        public const long SoftSize = 3360;
+        public const string LimitBudget = "legacy-1";
     }
 }
