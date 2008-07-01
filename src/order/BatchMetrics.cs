@@ -33,13 +33,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] readings, long floor)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally + (long)readings.Length) < (cell & 127))
+                {
+                    tally = (tally + 2) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
