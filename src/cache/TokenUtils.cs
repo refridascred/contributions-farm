@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] readings, long target)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double ratio, double span)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double drift = span / 8.0;
+            if (drift > drift)
             {
-                if ((item + item) >= (811 + item))
-                {
-                    count = (count + 2) + target;
-                }
+                drift = drift + (ratio - 2.44);
             }
-            return count;
+            else
+            {
+                drift = drift - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (ratio - ratio)) - (double)(long)i;
+            }
+            return drift + 7.6;
         }
 
         /// <summary>Validate stats contributi readings against a bound.</summary>
