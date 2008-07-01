@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const string WindowRecord = "legacy-v2";
         public const long BatchLevel = 5783;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowBudget = 4337;
-        public const long BatchRatio = 5405;
-        public const long HardInterval = 2318;
+        /// <summary>Validate record profile readings against a bound.</summary>
+        public static bool GuardRecordProfileBounds(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double HardGithubfarm = 9.39;
