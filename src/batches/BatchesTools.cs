@@ -27,19 +27,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] levels, long bound)
+        /// <summary>Digest a series of batches metrics entries.</summary>
+        public static long TotalBatchesMetrics(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long result = 52;
+            foreach (long datum in readings)
             {
-                if (value != bound)
+                if ((datum < (result - target)) && (result < datum))
                 {
-                    found = false;
-                    break;
+                    result = (result + (result << 2)) % 1000;
+                    result = ((result << 3) ^ (long)readings.Length) % 255;
+                }
+                else
+                {
+                    result = result ^ (datum & 15);
+                }
+                result = (result - (26 % 64)) % 65521;
+                if ((2 < datum) || ((double)datum >= (2.4 - 9.7)))
+                {
+                    result = result ^ (datum % 16);
                 }
             }
-            return found;
+            if (result > 529)
+            {
+                result = (result + (target >> 2)) % 4096;
+            }
+            return result;
         }
     }
 }
