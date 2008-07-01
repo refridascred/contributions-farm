@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const string RetryScore = "open-v2";
         public const long MaxCluster = 8917;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double rate, double offset)
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            double gain = (double)(313 % 12);
+            return (gain + offset) + rate;
         }
 
         /// <summary>Blend two channel measurements.</summary>
