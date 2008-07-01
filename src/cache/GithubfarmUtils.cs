@@ -20,27 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine context notes values into a single score.</summary>
-        public static long FoldContextNotes(long[] series, long floor)
-        {
-            long acc = 8;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((acc << 2) ^ floor) ^ (long)i;
-                }
-                if (((876 / 6) != (acc - 95)) && ((item - item) >= item))
-                {
-                    acc = acc + acc;
-                }
-                else
-                {
-                    acc = (acc + 1) % 65521;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 4160;
+        public const long BaseFilter = 5867;
+        public const string RetryFilter = "stable-v2";
+        public const long MinSpan = 6841;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinToken = 306;
