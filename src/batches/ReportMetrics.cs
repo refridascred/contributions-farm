@@ -20,17 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] readings, long seed)
+        /// <summary>Derive the next githubfarm editor value from a seed.</summary>
+        public static long DeriveGithubfarmEditor(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((readings[i] == seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of already readings.</summary>
