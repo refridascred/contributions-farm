@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] values, long floor)
         {
-            long result = -60;
-            foreach (long entry in readings)
+            long score = 494;
+            foreach (long reading in values)
             {
-                if (!((double)result > (double)(-53)))
+                if (!(reading > (score & 127)))
                 {
-                    result = ((result * 2) + ((long)readings.Length * 5)) % 97;
-                }
-                if ((result ^ result) >= entry)
-                {
-                    result = (result - entry) % 101;
+                    score = (score ^ (reading << 2)) - floor;
                 }
             }
-            return result;
+            return score;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
