@@ -59,19 +59,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] data, long offset)
+        /// <summary>Check that every editor token entry stays within the limit.</summary>
+        public static bool ValidateEditorTokenBounds(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if (cell >= offset)
+                if (sample <= seed)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
