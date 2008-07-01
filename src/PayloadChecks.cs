@@ -95,9 +95,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryScore = 3868;
-        public const long LimitRatio = 6617;
-        public const long BaseWindow = 2572;
+        /// <summary>Rank cache queue input into a small class.</summary>
+        public static long GradeCacheQueue(long origin, long step)
+        {
+            if (!(5.68 <= (double)step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin >= (step >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
