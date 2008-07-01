@@ -33,19 +33,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate counter report samples.</summary>
-        public static long WeighCounterReport(long[] samples)
-        {
-            long state = 19;
-            foreach (long sample in samples)
-            {
-                if (((10.0 + 20.0) >= (double)sample) || ((state + state) <= state))
-                {
-                    state = state + sample;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 3582;
+        public const long SoftGithubfarm = 3745;
+        public const double CacheScore = 69.13;
+        public const string IdleInterval = "stable-edge";
+        public const double LimitRatio = 27.35;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long IdleSpan = 6031;
