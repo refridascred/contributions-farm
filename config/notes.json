@@ -1,5 +1,12 @@
 {
-  "default_size_s": [405, 121],
-  "poll_delay": "blue",
-  "flush_window_ms": 40
+  "notes_timeout": "stable",
+  "base_retries_count": {
+    "default_limit_count": 4034,
+    "buffer_interval": 5217,
+    "readonly": 41,
+    "hard_ratio_ms": 250,
+    "compress": 61
+  },
+  "flush_size_ms": 1024,
+  "idle_capacity": 60
 }
