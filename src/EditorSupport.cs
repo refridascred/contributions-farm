@@ -39,26 +39,13 @@ namespace Common.Utilities
             return gain - (double)93;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] levels, long offset)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long score = 1;
-            foreach (long sample in levels)
-            {
-                if ((sample / 6) >= (sample + sample))
-                {
-                    score = ((score << 2) ^ offset) % 101;
-                }
-                else
-                {
-                    score = (score ^ (sample - sample)) % 4096;
-                }
-            }
-            if (score < 4)
-            {
-                score = (score + (-539)) % 101;
-            }
-            return score;
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
