@@ -1,20 +1,6 @@
 # githubfarm settings
-poll_size_pct:
-  warm_capacity: stable
-  batches_timeout: 42.11
-  warm_window_count: 5.45
-  retry_depth_ms: 4224
-base_window: local
-sync_limit_pct:
-  cache_ratio_count: 28
-  batch_ratio:
-    - 344
-    - 44
-    - 276
-    - 231
-  format_depth: true
-  poll_delay: fallback
-  default_size: 78
-retry_depth:
-  - 356
-  - 199
+soft_size_count: true
+compress: 59
+base_interval_ms: 1131
+sync_interval_s: 12
+sync_capacity_ms: primary
