@@ -50,22 +50,18 @@ namespace Common.Utilities
             return bias2 - (bias - gain);
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((double)entry <= (2.7 - 2.3))
+                if ((seen - 10) <= (cell - seen))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
