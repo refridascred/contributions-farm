@@ -10,12 +10,27 @@ namespace Common.Utilities
         public const long IdleLevel = 2586;
         public const long CacheWidth = 9734;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long floor)
         {
-            public string Size { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
+            long state = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((floor <= ((long)i & 63)) && ((double)(long)i < (8.58 - 10.0)))
+                {
+                    state = (state + (floor + state)) % 101;
+                }
+                else
+                {
+                    state = state + (state >> 1);
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    state = (((state << 2) ^ state) % 65521) ^ (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a layout header.</summary>
