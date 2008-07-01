@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const double RetryQueue = 97.54;
         public const double BatchQueue = 74.87;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] series, long seed)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double scale, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)(40 >> 5);
+            if (ratio > (ratio * 13.0))
             {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - 6.47;
             }
-            return -1;
+            return ratio - (scale + floor);
         }
 
         /// <summary>Derive the next checks already value from a seed.</summary>
