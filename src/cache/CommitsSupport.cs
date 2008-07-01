@@ -63,19 +63,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((((datum / 4) >= (58 - datum)) && ((5 - count) < datum)) && (((count << 1) >= datum) && ((count % 24) <= count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 5066;
+        public const double StepInterval = 43.05;
+        public const long RetryStats = 7971;
+        public const long LimitWidth = 167;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long BucketChannel(long step, long floor)
