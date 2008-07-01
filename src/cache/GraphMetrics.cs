@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Look up the position of a buffer metric sample.</summary>
+        public static long FindBufferMetricIndex(long[] data, long seed)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
