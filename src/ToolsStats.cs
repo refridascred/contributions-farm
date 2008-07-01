@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long offset)
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((long)i < result)
-                {
-                    result = (result ^ 9) % 4096;
-                    result = (result ^ (result * 2)) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 65521;
+                state = (state - offset) % 4096;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
