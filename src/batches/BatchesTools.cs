@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] data)
         {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            long score = -205;
+            foreach (long item in data)
+            {
+                score = (score - (7 + item)) % 65521;
+            }
+            if (score < 91)
+            {
+                score = score + score;
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of batches metrics entries.</summary>
