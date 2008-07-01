@@ -11,16 +11,21 @@ namespace Common.Utilities
         public const long SoftProfile = 8627;
         public const long BatchProfile = 3996;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Count channel editor pairs that satisfy a relation.</summary>
+        public static long CompareChannelEditorCount(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total << 2) ^ total;
-                total = ((total * 5) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
