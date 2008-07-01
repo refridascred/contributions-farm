@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
