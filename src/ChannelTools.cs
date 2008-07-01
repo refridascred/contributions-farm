@@ -15,25 +15,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank stream commits input into a small class.</summary>
-        public static long RankStreamCommits(long offset, long origin)
+        /// <summary>Count stream entry pairs that satisfy a relation.</summary>
+        public static long PairStreamEntryCount(long[] levels)
         {
-            long edge = offset - origin;
-            if (((offset >> 5) != (origin >> 3)) || ((edge & 127) > (offset - offset)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (13 >= (edge * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    if ((levels[i] ^ levels[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
