@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] values, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (sample < seed)
+                if ((count >> 3) >= (0 + entry))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
