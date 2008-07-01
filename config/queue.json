@@ -1,5 +1,6 @@
 {
-  "hard_delay": 13.21,
-  "editor_window": "green",
-  "batch_ttl_ms": "eu-west"
+  "retry_delay": 71,
+  "persist": "local",
+  "cache_window": "stable",
+  "warm_retries_pct": "cached"
 }
