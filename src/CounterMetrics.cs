@@ -35,11 +35,11 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine metrics schema values into a single score.</summary>
