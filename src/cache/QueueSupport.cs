@@ -29,17 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] items, long limit)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
