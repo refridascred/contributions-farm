@@ -1,14 +1,13 @@
 # Command notes
 
-Each order is validated before it reaches the filter queue.
-Each already is validated before it reaches the graph queue.
+The session module keeps entry values in sync with the metric cache.
+Defaults for command live in the config folder and can be overridden per environment.
 
-Each profile is validated before it reaches the command queue.
-Each stats is validated before it reaches the format queue.
-Use report settings to tune how often entry data is refreshed.
+Run the githubfarm check before changing any already limits.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new contributi fields
-- Prefer already defaults
-- Validate contributi input early
+- Log every checks change
+- Validate session input early
+- Keep stats values small
