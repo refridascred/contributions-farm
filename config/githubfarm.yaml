@@ -1,6 +1,10 @@
 # githubfarm settings
-warm_threshold_ms: 30
-order_threshold: 60
-strict: green
-default_depth_s: 49.18
-retry_limit: green
+min_window_pct:
+  retry_capacity_count: 17.54
+  min_interval: 31
+  farm_limit: 35.4
+retry_limit_count: latest
+cache_capacity: 30
+editor_depth: 28
+cache_size_ms: edge
+verbose: false
