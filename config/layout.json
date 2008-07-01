@@ -1,5 +1,21 @@
 {
-  "poll_timeout_ms": "fallback",
-  "soft_ttl_s": "legacy",
-  "hard_threshold_ms": 9930
+  "strict": false,
+  "idle_window": true,
+  "cluster_ratio": 60,
+  "default_delay": {
+    "max_delay_s": 49.97,
+    "cluster_timeout": [88, 49, 220],
+    "default_capacity": ["stable", "standard", "stable", "green"],
+    "verbose": true,
+    "cache_timeout": 100,
+    "context_depth": [466, 392, 492, 99]
+  },
+  "flush_window_count": {
+    "batch_depth_ms": "edge",
+    "sync_threshold": false,
+    "hard_timeout_count": "stable",
+    "batch_delay_count": true,
+    "strict": "eu-west",
+    "batch_threshold_s": "cached"
+  }
 }
