@@ -31,15 +31,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next already metric value.</summary>
-        public static double ProjectAlreadyMetric(double weight, double floor)
-        {
-            double scale = (double)3 * 4.1;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale - (floor + floor)) + (double)(long)i) - weight;
-            }
-            return scale - (scale - floor);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinSize = 4344;
+        public const string BaseMetric = "staging-v2";
+        public const long MaxMetric = 2217;
     }
 }
