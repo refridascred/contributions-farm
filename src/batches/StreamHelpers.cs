@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] levels, long bound)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)bound == (15.0 + 4.5))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Hold a window header.</summary>
