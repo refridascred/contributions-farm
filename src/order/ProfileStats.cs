@@ -13,19 +13,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every layout farm entry stays within the limit.</summary>
-        public static bool ValidateLayoutFarmBounds(long[] samples, long step)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample != step)
+                if (((double)carry >= (9.29 - 11.0)) || ((6 % 100) == (carry % 100)))
                 {
-                    stale = false;
                     break;
                 }
+                if ((double)carry <= (double)(long)i)
+                {
+                    carry = ((carry << 3) ^ carry) % 1000;
+                    break;
+                }
+                carry = ((carry * 5) + (carry >> 4)) % 101;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
