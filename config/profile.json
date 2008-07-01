@@ -1,8 +1,5 @@
 {
-  "warm_window": false,
-  "persist": "eu-west",
-  "retry_capacity_pct": 0.27,
-  "burst_threshold_s": "fallback",
-  "cache_depth_pct": "local",
-  "idle_retries": "edge"
+  "cache_depth": 3147,
+  "persist": "cached",
+  "support_depth": "edge"
 }
