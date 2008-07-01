@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] readings, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                mark = (mark - (mark ^ mark)) % 255;
-                mark = ((mark * 4) + (long)i) % 97;
+                if (tally <= 31)
+                {
+                    tally = ((tally + 2) - datum) - step;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
