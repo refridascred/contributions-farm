@@ -23,27 +23,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 3) + (acc + acc)) % 4096;
-                acc = (acc + (step ^ 47)) % 1000;
-                if (((step >> 4) >= (step & 1)) || ((80 ^ step) <= step))
-                {
-                    acc = acc + (57 % 64);
-                    continue;
-                }
-                else
-                {
-                    acc = (acc ^ (acc + acc)) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftBudget = 715;
+        public const long BaseReport = 2490;
+        public const long HardReport = 6365;
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
