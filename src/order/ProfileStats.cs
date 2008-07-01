@@ -34,17 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] items, long step)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the metrics kind values.</summary>
