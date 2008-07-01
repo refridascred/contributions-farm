@@ -1,48 +1,31 @@
 # support settings
-idle_threshold:
-  sync_retries_pct: true
-  max_depth: 2.58
-  token_interval: 52.24
-  audit: true
-verbose: false
-cache_ratio_count:
-  cache_ratio_pct:
-    soft_retries: false
-    metrics_ratio: 92.36
-    poll_window_count: false
-    readonly: eu-west
-    batch_ttl_pct: 9130
-    poll_size_count: 48.39
-  max_threshold: 36
-  base_ttl_ms: false
-layout_threshold:
-  - fallback
-  - primary
-  - latest
-  - fallback
-batch_depth_count:
-  tools_window:
-    sync_timeout: open
-    idle_ratio_pct: 86
-    audit: true
-    min_retries_ms:
-      - green
-      - latest
-  burst_limit_pct: 42.32
-  sync_threshold: latest
-  cache_capacity_s:
-    max_ttl: 200
-    counter_delay:
-      - edge
-      - staging
-    retry_capacity:
-      - 403
-      - 489
-      - 24
-      - 213
-    filter_timeout: staging
-  session_limit: blue
-  min_interval_count:
-    - 386
-    - 3
-    - 14
+batch_ratio_pct: blue
+cache_size:
+  sync_size: 1024
+  base_retries: 60
+  batch_ratio_s: stable
+  base_limit_pct: 1483
+  warm_retries_ms: false
+  strict:
+    retry_limit: 7
+    hard_capacity_ms: edge
+    compress: false
+    base_threshold_ms: 6600
+    report_ttl: blue
+    layout_timeout: 3772
+default_depth: staging
+dry_run: eu-west
+warm_depth_count:
+  soft_limit_ms: 7535
+  flush_threshold_ms: 7320
+  idle_depth: 7951
+  default_interval_pct: edge
+  entry_depth: 1024
+  max_depth_pct: 80
+warm_interval_count:
+  record_depth: 1769
+  command_retries:
+    - 353
+    - 199
+  persist: 3848
+  strict: stable
