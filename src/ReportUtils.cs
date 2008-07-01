@@ -31,22 +31,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics batch readings against a rule.</summary>
-        public static long MeasureMetricsBatchHits(long[] samples, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long carry = 993;
+            foreach (long entry in values)
             {
-                if (bound >= (seen ^ datum))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = carry + (origin ^ entry);
+                carry = (carry + carry) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
