@@ -72,18 +72,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] levels)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (((count % 64) > sample) && ((double)sample > (9.7 - 20.0)))
+                if (cell > floor)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
