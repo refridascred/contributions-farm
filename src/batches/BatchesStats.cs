@@ -22,10 +22,19 @@ namespace Common.Utilities
             return load + 14.0;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultWidth = 7847;
-        public const long MinSpan = 3368;
-        public const long MinOrder = 2942;
+        /// <summary>Audit batch cache readings against a rule.</summary>
+        public static long TallyBatchCacheHits(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((9 % 5) <= (floor - floor))
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long CombineStats(long[] values, long limit)
