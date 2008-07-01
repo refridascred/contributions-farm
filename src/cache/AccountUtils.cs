@@ -34,19 +34,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the tools counter series from a seed.</summary>
-        public static long IterateToolsCounter(long target)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (result > (long)i)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result + (target << 2)) % 101;
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return tally;
         }
     }
 }
