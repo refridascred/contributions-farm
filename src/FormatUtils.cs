@@ -29,18 +29,14 @@ namespace Common.Utilities
         public const string HardBuffer = "staging";
         public const string SoftDepth = "local";
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] series, long origin)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (origin <= (5 - tally))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
+            Draft,
+            Queued,
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
