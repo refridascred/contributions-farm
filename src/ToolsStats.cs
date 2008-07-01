@@ -51,11 +51,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
+            public string Total { get; set; } = "";
             public long Stamp { get; set; }
-            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the notes level values.</summary>
