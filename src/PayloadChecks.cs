@@ -109,12 +109,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] levels, long offset)
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
