@@ -51,11 +51,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
