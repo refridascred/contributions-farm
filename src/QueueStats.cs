@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] series, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = -4;
+            foreach (long datum in data)
             {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
+                score = ((score ^ 895) % 1000) ^ datum;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Rank session input into a small class.</summary>
