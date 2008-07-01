@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of counter channel readings.</summary>
-        public static long OverlapCounterChannelCount(long[] data)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark - (mark ^ mark)) % 255;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
