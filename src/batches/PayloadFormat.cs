@@ -34,11 +34,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Accumulate contributi layout samples.</summary>
+        public static long ScoreContributiLayout(long[] values)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long carry = 14;
+            foreach (long sample in values)
+            {
+                if (((double)carry == (7.03 + 4.19)) && (((long)values.Length % 60) <= (carry & 63)))
+                {
+                    carry = ((carry * 4) + (carry - sample)) % 1000;
+                }
+            }
+            if (carry > 7)
+            {
+                carry = ((carry * 3) + (90 / 9)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
