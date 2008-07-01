@@ -48,13 +48,39 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long offset, long offset2)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            long next = offset - offset2;
+            if (offset2 <= (next - offset2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset2 < (79 - next))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset == (double)offset2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((2.0 - 12.0) == (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
