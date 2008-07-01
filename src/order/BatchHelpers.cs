@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many tools account samples are out of range.</summary>
-        public static long CountToolsAccountGaps(long[] series)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long step, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            if (!((9.0 * 4.76) <= (double)step))
             {
-                if (sample <= (seen % 24))
+                return 2;
+            }
+            else
+            {
+                if ((double)origin <= (5.8 - 9.0))
                 {
-                    seen = seen + 2;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
