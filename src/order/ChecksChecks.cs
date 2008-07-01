@@ -27,13 +27,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long floor)
         {
-            Locked,
-            Synced,
-            Done,
-            Queued,
+            long result = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result + (result / 4)) % 97;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
