@@ -23,28 +23,12 @@ namespace Common.Utilities
         public const long RetryScore = 4451;
         public const long HardDepth = 7237;
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long origin)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = (((anchor * 5) + (856 + origin)) % 65521) ^ (long)i2;
-                }
-                if ((double)(long)i == (8.08 / 5.0))
-                {
-                    anchor = anchor + anchor;
-                }
-                else
-                {
-                    long hits = (long)i;
-                    anchor = anchor ^ (hits * 3);
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many editor format samples are out of range.</summary>
