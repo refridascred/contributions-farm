@@ -1,13 +1,5 @@
 {
-  "retry_interval_ms": 57,
-  "cache_capacity_ms": [273, 319, 268, 489],
-  "strict": {
-    "base_limit_count": true,
-    "audit": "legacy",
-    "command_delay": "standard",
-    "persist": 81.89,
-    "soft_ttl_ms": 18,
-    "farm_ratio": 53.66
-  },
-  "dry_run": true
+  "strict": false,
+  "default_size_pct": "stable",
+  "poll_timeout_s": 100
 }
