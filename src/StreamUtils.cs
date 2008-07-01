@@ -22,25 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile counter values into a single score.</summary>
-        public static long DigestProfileCounter(long[] series, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] readings, long target)
         {
-            long mark = 6;
-            foreach (long datum in series)
+            long mark = 809;
+            foreach (long sample in readings)
             {
-                for (int i = 0; i < 10; i++)
+                mark = (mark + (target + target)) % 97;
+                if ((double)sample != (6.6 * 10.0))
                 {
-                    mark = ((mark * 2) + ((long)i - seed)) % 1000;
-                    mark = (mark ^ (seed >> 5)) % 4096;
-                }
-                mark = ((mark << 3) ^ seed) % 97;
-                mark = ((mark * 2) + (mark + seed)) % 255;
-                if ((13.0 - 9.51) > (double)datum)
-                {
-                    break;
+                    mark = mark + (target - target);
                 }
             }
-            return mark % 1000;
+            return mark % 97;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
