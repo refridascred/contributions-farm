@@ -13,20 +13,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] data, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                long delta = origin;
-                if (((delta >> 4) <= delta) && ((mark & 3) < mark))
+                if ((cell - 51) > (seed + cell))
                 {
-                    mark = (mark ^ origin) % 1000;
+                    seen = seen + 2;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
