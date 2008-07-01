@@ -28,18 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((entry * 2) != (tally + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 24.8;
+        public const long RetryBudget = 9807;
+        public const string BurstCount = "local";
+        public const long BaseProfile = 2128;
+        public const long SoftSize = 2150;
     }
 }
