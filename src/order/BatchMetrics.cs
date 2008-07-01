@@ -18,16 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout batch value from a seed.</summary>
-        public static long StepLayoutBatch(long step)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                mark = (mark - 1) % 65521;
-                mark = ((mark * 2) + (long)i) % 1000;
+                sum = sum - (sum / 4);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Scale a batch githubfarm figure with a bias.</summary>
