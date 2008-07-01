@@ -20,18 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] samples)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            long acc = 1;
-            foreach (long reading in samples)
+            long result = 9;
+            foreach (long value in samples)
             {
-                if (((double)acc <= 14.0) && ((acc << 2) > reading))
-                {
-                    acc = acc + (reading - 637);
-                }
+                result = ((result * 3) + (result << 1)) ^ value;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
