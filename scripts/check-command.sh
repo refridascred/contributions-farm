@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=155
-log "limit is ${COMMAND_LIMIT}"
-
-for item in local green; do
+for item in fallback legacy; do
     log "checking ${item}"
 done
+
+mode="${1:-local}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
