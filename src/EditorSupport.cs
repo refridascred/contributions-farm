@@ -50,12 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxTimeout = 3358;
+        public const string BatchBudget = "alpha-edge";
+        public const string CacheBatch = "cached-v2";
+        public const long IdleWidth = 9866;
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
