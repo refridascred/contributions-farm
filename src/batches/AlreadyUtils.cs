@@ -47,14 +47,14 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
+            Ready,
+            Locked,
+            Paused,
+            Done,
             Synced,
-            Draft,
-            Stale,
-            Queued,
-            New,
         }
 
         /// <summary>Hold a format header.</summary>
