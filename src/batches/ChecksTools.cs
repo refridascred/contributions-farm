@@ -12,14 +12,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Failed,
-            Stale,
-            Queued,
-            New,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 6032;
+        public const string BurstCounter = "latest-v2";
+        public const string CacheInterval = "staging-edge";
 
         /// <summary>Blend two format measurements.</summary>
         public static double ProjectFormat(double ratio, double bias)
