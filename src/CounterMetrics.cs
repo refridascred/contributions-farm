@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleLevel = 7686;
-        public const long DefaultOrder = 4158;
-        public const long RetryOrder = 364;
-        public const long IdleSpan = 7208;
-        public const long SoftOrder = 1262;
+        /// <summary>Audit batches tools readings against a rule.</summary>
+        public static long CountBatchesToolsHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value - seen) == (value << 1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteGaps(long[] levels, long target)
