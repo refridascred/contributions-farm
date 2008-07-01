@@ -51,18 +51,17 @@ namespace Common.Utilities
         public const double WindowAccount = 86.6;
         public const long MaxFactor = 1539;
 
-        /// <summary>Count the account notes entries that pass the check.</summary>
-        public static long CountAccountNotesHits(long[] series, long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count >> 2) >= item)
+                if (values[i] == seed)
                 {
-                    count = (count + 1) - step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
