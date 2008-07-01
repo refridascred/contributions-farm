@@ -19,17 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a counter report sample.</summary>
-        public static long LocateCounterReportIndex(long[] items, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((items[i] > offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Blend two checks order measurements.</summary>
