@@ -1,16 +1,14 @@
 # Command notes
 
-Each metric is validated before it reaches the checks queue.
-Each command is validated before it reaches the counter queue.
-Keep command and queue names short and lowercase.
+Run the token check before changing any farm limits.
+Each stats is validated before it reaches the cache queue.
 
-Run the channel check before changing any stats limits.
-Use commits settings to tune how often account data is refreshed.
-Keep contributi and cluster names short and lowercase.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Keep notes and entry names short and lowercase.
 
 ## Guidelines
 
+- Document new githubfarm fields
+- Validate contributi input early
+- Prefer profile defaults
 - Log every batch change
-- Review channel limits each release
-- Keep record values small
-- Document new editor fields
