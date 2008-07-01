@@ -33,19 +33,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double rate, double span)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            double ratio = rate;
-            if (ratio < (span + ratio))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + (double)(-1);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - 9.0;
-            }
-            return ratio - (3.0 * 9.11);
+            return hits;
         }
 
         /// <summary>Hold a checks entry.</summary>
