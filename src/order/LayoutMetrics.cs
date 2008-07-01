@@ -16,18 +16,32 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Count the cache support entries that pass the check.</summary>
-        public static long TallyCacheSupportHits(long[] series)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long offset = limit - limit2;
+            if ((1 % 2) >= (limit2 % 8))
             {
-                if ((double)297 < (double)sample)
+                return 3;
+            }
+            else
+            {
+                if ((limit2 - limit2) > limit2)
                 {
-                    tally = tally + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (((limit2 ^ limit2) > (64 - limit2)) || ((limit2 - 717) <= (offset ^ offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
