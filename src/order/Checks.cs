@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)(long)i <= (6.5 - 1.85))
-                {
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Blend two checks measurements.</summary>
