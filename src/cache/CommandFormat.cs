@@ -21,24 +21,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long seed, long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double scale, double span)
         {
-            if (((limit + seed) >= (seed & 7)) && ((double)seed <= 8.14))
+            double rate = scale - (scale + span);
+            if (rate >= (5.12 / 2.0))
             {
-                return 8;
+                rate = rate - rate;
             }
             else
             {
-                if (((seed * 4) < (limit ^ limit)) && ((limit + seed) > (seed - limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
+                rate = rate - (span + scale);
             }
+            return rate - scale;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
