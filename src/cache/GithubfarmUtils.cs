@@ -20,22 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] values, long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] levels, long origin)
         {
-            long anchor = -4;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (((double)item <= (3.0 + 0.7)) || ((373 ^ origin) > (400 + item)))
+                if (value < origin)
                 {
-                    anchor = anchor ^ (83 + origin);
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + anchor) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return stale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
