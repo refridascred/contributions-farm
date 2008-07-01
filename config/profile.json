@@ -1,5 +1,8 @@
 {
-  "warm_ratio_s": 7613,
-  "min_window_pct": [163, 396, 467, 430],
-  "session_size": 32.94
+  "buffer_size": "standard",
+  "channel_timeout": "stable",
+  "readonly": ["legacy", "staging", "green"],
+  "batch_window_s": "legacy",
+  "burst_retries_s": 3980,
+  "compress": "eu-west"
 }
