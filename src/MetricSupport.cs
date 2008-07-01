@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up support counter samples.</summary>
-        public static long CompareSupportCounterCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 5574;
+        public const double MinCache = 90.81;
+        public const long HardCache = 6584;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
