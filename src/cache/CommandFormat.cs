@@ -18,30 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long origin, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long seed, long limit)
         {
-            long gap = origin ^ bound;
-            if ((double)gap <= (double)bound)
+            if (((limit + seed) >= (seed & 7)) && ((double)seed <= 8.14))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((origin < gap) && ((1.9 / 3.0) > (double)gap))
+                if (((seed * 4) < (limit ^ limit)) && ((limit + seed) > (seed - limit)))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if (!(62 < (origin * 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 7;
                 }
             }
         }
