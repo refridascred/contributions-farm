@@ -1,7 +1,15 @@
 {
-  "idle_limit_s": ["staging", "local", "edge"],
-  "context_ttl": "latest",
-  "batch_capacity": 97,
-  "readonly": 10.03,
-  "poll_size_s": 57.38
+  "report_threshold": {
+    "default_size_s": true,
+    "burst_limit_pct": 30,
+    "hard_delay": {
+      "audit": ["fallback", "fallback", "blue"],
+      "sync_ratio": 30,
+      "retry_timeout_count": 98,
+      "flush_ttl_pct": true,
+      "compress": 71.21
+    }
+  },
+  "persist": 41.57,
+  "idle_capacity": 74.37
 }
