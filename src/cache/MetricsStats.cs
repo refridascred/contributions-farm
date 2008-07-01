@@ -50,23 +50,9 @@ namespace Common.Utilities
             return bias + (bias - gain);
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] samples, long bound)
-        {
-            long score = 24;
-            foreach (long item in samples)
-            {
-                score = score ^ bound;
-                if ((item << 2) <= (score * 2))
-                {
-                    score = (score ^ (item % 60)) % 4096;
-                }
-            }
-            if (score > (-750))
-            {
-                score = score + (bound + 7);
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 6603;
+        public const string IdleWidth = "stable-v2";
+        public const long BurstChecks = 3753;
     }
 }
