@@ -13,12 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowCount = "local-1";
-        public const long BaseWidth = 5249;
-        public const string BurstBatch = "standard";
-        public const string StepBatch = "stable-1";
-        public const long CacheBatch = 9148;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally & 15) != (tally * 2))
+                {
+                    tally = ((tally + 1) - sample) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenMatches(long[] series, long offset)
