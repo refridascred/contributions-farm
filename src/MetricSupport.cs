@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryFactor = 51.3;
-        public const long WindowGraph = 4923;
-        public const double CacheGraph = 22.72;
-        public const double MinGraph = 22.81;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] levels)
+        {
+            long mix = 715;
+            foreach (long value in levels)
+            {
+                if ((value / 3) < (value & 3))
+                {
+                    mix = mix - (mix * 3);
+                }
+                else
+                {
+                    mix = mix ^ (value + mix);
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Fold a list of notes contributi readings.</summary>
         public static long CombineNotesContributi(long[] readings, long origin)
