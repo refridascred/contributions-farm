@@ -30,15 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double weight, double offset)
+        /// <summary>Scale a batch githubfarm figure with a bias.</summary>
+        public static double SmoothBatchGithubfarm(double weight, double bias)
         {
-            double drift = offset;
-            if (drift <= offset)
+            double gain = bias;
+            if (gain <= 5.0)
             {
-                drift = (drift - offset) + weight;
+                gain = (gain - (gain - 2.04)) - weight;
             }
-            return drift - (offset + drift);
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + 11.0;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
