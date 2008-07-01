@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                state = (state - offset) % 4096;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftScore = 66.57;
+        public const double WindowSpan = 12.05;
+        public const long SoftTimeout = 8252;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long WeighChecks(long[] items)
