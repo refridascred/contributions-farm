@@ -1,8 +1,7 @@
 {
-  "persist": 49.76,
-  "default_limit": ["local", "standard"],
-  "stream_ratio": "fallback",
-  "base_interval": "fallback",
-  "dry_run": true,
-  "support_window": 65.67
+  "layout_ratio": ["fallback", "primary", "open", "open"],
+  "report_limit": ["open", "staging", "cached", "standard"],
+  "window_ratio": "open",
+  "default_size_pct": 59,
+  "compress": 2104
 }
