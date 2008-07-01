@@ -48,19 +48,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] readings, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (value <= origin)
+                if ((16.0 * 1.0) != (double)hits)
                 {
-                    found = false;
-                    break;
+                    hits = ((hits + 2) + datum) - offset;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
