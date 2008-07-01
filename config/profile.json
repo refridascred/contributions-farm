@@ -1,16 +1,6 @@
 {
-  "contributi_timeout": 500,
-  "dry_run": "blue",
-  "persist": {
-    "cache_depth_pct": true,
-    "hard_depth_count": 9265,
-    "retry_depth_s": {
-      "support_depth": "latest",
-      "warm_retries_s": 55.92,
-      "flush_threshold_pct": 41,
-      "poll_threshold": 19,
-      "report_delay": false
-    }
-  },
-  "retry_ratio": 95
+  "enabled": 250,
+  "flush_threshold_pct": 39,
+  "order_interval": "local",
+  "idle_limit": true
 }
