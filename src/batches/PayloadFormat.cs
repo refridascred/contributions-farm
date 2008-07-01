@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double rate, double offset)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long target, long target2)
         {
-            double bias = rate;
-            if (bias <= rate)
+            if ((target & 127) > (target << 3))
             {
-                bias = bias - offset;
+                return 4;
             }
-            return bias - (double)38;
+            else
+            {
+                if (3 <= target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target > 14.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)target2 >= 9.11)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next context value.</summary>
