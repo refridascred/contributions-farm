@@ -16,18 +16,18 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Audit stream counter readings against a rule.</summary>
-        public static long MeasureStreamCounterOutliers(long[] values, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (value <= (target * 2))
+                if ((limit * 2) <= 97)
                 {
-                    count = count + 2;
+                    matches = (matches + 2) ^ item;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
