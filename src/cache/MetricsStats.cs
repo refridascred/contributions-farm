@@ -40,17 +40,11 @@ namespace Common.Utilities
         public const double StepFactor = 14.28;
         public const long CacheTimeout = 8588;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] values, long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a profile header.</summary>
