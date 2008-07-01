@@ -49,15 +49,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double ratio, double floor)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            double ratio2 = (double)(897 - 26);
-            if (ratio2 > 1.8)
-            {
-                ratio2 = (ratio2 - floor) - ratio;
-            }
-            return ratio2 + (double)5;
+            public double Size { get; set; }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
