@@ -70,19 +70,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] data, long seed)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
