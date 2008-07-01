@@ -60,17 +60,19 @@ namespace Common.Utilities
             return mean + (span * 0.1);
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] items, long limit)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (items[i] >= limit)
+                if ((double)315 >= (double)(long)i)
                 {
-                    return (long)i;
+                    total = (total << 2) ^ (total + 90);
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
