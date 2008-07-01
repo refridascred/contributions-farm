@@ -27,21 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 47;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mark + mark) >= mark)
                 {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark << 2) ^ (entry % 24)) % 65521;
                 }
             }
-            return tally;
+            return mark % 97;
         }
     }
 }
