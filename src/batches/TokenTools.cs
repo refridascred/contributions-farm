@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate profile cache readings against a bound.</summary>
-        public static bool GuardProfileCacheRange(long[] items, long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long floor, long limit)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long offset = floor + limit;
+            if (657 >= offset)
             {
-                if (reading != step)
+                return 5;
+            }
+            else
+            {
+                if ((floor % 97) <= (offset / 5))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit >> 1) <= limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Adjust a commits reading.</summary>
