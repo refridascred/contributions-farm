@@ -1,6 +1,20 @@
 {
-  "stream_ratio": 60,
-  "verbose": ["edge", "fallback"],
-  "batch_size_s": "cached",
-  "report_size": 35.14
+  "dry_run": [24, 230, 40],
+  "strict": 369,
+  "soft_timeout": false,
+  "soft_depth": {
+    "readonly": 53.96,
+    "metric_interval": "open",
+    "base_ttl_count": 645,
+    "audit": ["latest", "stable", "blue", "legacy"],
+    "batch_ratio_ms": 9,
+    "checks_capacity": 10.47
+  },
+  "warm_limit_count": {
+    "batches_limit": 43.82,
+    "route_capacity": ["legacy", "green", "standard"],
+    "idle_ratio_s": "legacy",
+    "cache_ttl_pct": "legacy"
+  },
+  "warm_size_pct": true
 }
