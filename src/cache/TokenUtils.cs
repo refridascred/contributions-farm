@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double scale, double offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long step)
         {
-            double drift = (scale - offset) * 0.2;
-            for (int i = 0; i < 3; i++)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                drift = (drift + (offset - scale)) - (double)(long)i;
+                if (((step + 96) != ((long)i / 6)) || ((double)mark < (double)(long)i))
+                {
+                    mark = (mark * 4) + step;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return drift - (offset - scale);
+            return mark;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
