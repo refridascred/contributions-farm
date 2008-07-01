@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const double CacheGraph = 22.72;
         public const double MinGraph = 22.81;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepTimeout = "primary-edge";
-        public const long IdleLayout = 4469;
-        public const long WindowLayout = 7939;
-        public const long BaseCount = 6230;
+        /// <summary>Fold a list of notes contributi readings.</summary>
+        public static long CombineNotesContributi(long[] readings, long origin)
+        {
+            long mix = 0;
+            foreach (long reading in readings)
+            {
+                mix = ((mix * 3) + ((-429) ^ reading)) - origin;
+                mix = mix - mix;
+            }
+            return mix;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BurstFormat = 5603;
