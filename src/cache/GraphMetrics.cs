@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const double BaseBatches = 97.44;
         public const long BurstSpan = 4819;
 
-        /// <summary>Digest a series of channel report entries.</summary>
-        public static long WeighChannelReport(long[] readings, long origin)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long step)
         {
-            long acc = 39;
-            foreach (long entry in readings)
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (acc < (origin - acc))
+                if ((score + step) <= (-148))
                 {
-                    acc = ((acc + (acc << 2)) % 255) + entry;
+                    score = score + (step ^ (long)i);
+                    score = (score - ((long)i & 1)) % 101;
                 }
+                score = ((score << 3) ^ ((long)i + 4)) % 101;
+                score = score - step;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Classify a payload farm pair into a bucket.</summary>
