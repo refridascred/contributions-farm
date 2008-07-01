@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheCount = 1182;
-        public const long SoftPayload = 5823;
-        public const long WindowInterval = 2134;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long bound, long step)
+        {
+            if ((step - step) == (step >> 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step ^ step) < (step / 9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
