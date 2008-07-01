@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Rank filter notes input into a small class.</summary>
+        public static long ClassifyFilterNotes(long step, long origin)
         {
-            public double Label { get; set; }
-            public double Offset { get; set; }
+            if ((double)origin == (1.63 + 7.82))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step > 1.52)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin >= (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a context entry.</summary>
