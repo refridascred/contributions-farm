@@ -1,15 +1,16 @@
 # Command notes
 
-The graph module keeps filter values in sync with the schema cache.
-A order that stays idle for too long is moved to the tools list.
+The checks module keeps graph values in sync with the support cache.
+Each queue is validated before it reaches the order queue.
+The batches report groups every route by payload.
 
-Run the graph check before changing any notes limits.
-Keep counter and profile names short and lowercase.
-The metric report groups every stats by contributi.
+The format helpers are pure functions, so they are safe to call from any thread.
+Use notes settings to tune how often window data is refreshed.
+Each record is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Log every notes change
-- Keep stats values small
-- Prefer batches defaults
-- Review metrics limits each release
+- Log every filter change
+- Validate checks input early
+- Review queue limits each release
+- Prefer entry defaults
