@@ -1,5 +1,5 @@
 {
-  "strict": false,
-  "default_size_pct": "stable",
-  "poll_timeout_s": 100
+  "readonly": 60,
+  "idle_window_count": 84.09,
+  "batch_ratio_pct": true
 }
