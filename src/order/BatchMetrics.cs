@@ -59,22 +59,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] levels)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] values, long target)
         {
-            long score = 336;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading - reading) > score)
+                if ((values[i] <= target) && ((values[i] % 5) != 0))
                 {
-                    score = ((score << 3) ^ (30 & 3)) % 255;
-                }
-                else
-                {
-                    score = (score - (reading & 15)) % 101;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
