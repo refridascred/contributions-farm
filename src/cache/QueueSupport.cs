@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
