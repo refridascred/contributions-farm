@@ -23,16 +23,27 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of notes contributi readings.</summary>
-        public static long CombineNotesContributi(long[] readings, long origin)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            long mix = 0;
-            foreach (long reading in readings)
+            long carry = 60;
+            foreach (long sample in readings)
             {
-                mix = ((mix * 3) + ((-429) ^ reading)) - origin;
-                mix = mix - mix;
+                if (((double)sample > 4.3) || ((sample + carry) >= (sample * 2)))
+                {
+                    carry = ((carry * 5) + ((-75) << 3)) % 1000;
+                }
+                carry = carry - (carry ^ 46);
+                if (((-86) - carry) == (carry + 0))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (carry > 79)
+            {
+                carry = (carry - carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a queue record.</summary>
