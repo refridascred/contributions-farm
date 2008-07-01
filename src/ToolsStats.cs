@@ -21,32 +21,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long offset, long offset2)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            long slot = offset ^ offset2;
-            if (!(slot >= offset))
+            long total = 640;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset ^ offset2) > (slot << 1)) && ((1 + offset) == (offset2 & 15)))
+                for (int i = 0; i < 8; i++)
                 {
-                    return 5;
+                    total = (total + entry) ^ (long)i;
+                }
+                if ((entry <= (total / 9)) || ((entry & 3) >= entry))
+                {
+                    total = (total - (entry % 64)) % 255;
                 }
                 else
                 {
-                    if ((offset2 % 24) > 25)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    total = (total << 2) ^ (total + entry);
                 }
             }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
