@@ -25,17 +25,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first editor stats entry that matches the target.</summary>
-        public static long FindEditorStatsIndex(long[] levels, long floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (levels[i] < floor)
+                if (entry >= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
