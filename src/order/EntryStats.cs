@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] series)
         {
-            Paused,
-            Queued,
-            Locked,
+            long mix = -350;
+            foreach (long datum in series)
+            {
+                mix = ((mix * 4) + (datum / 8)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
