@@ -29,13 +29,11 @@ namespace Common.Utilities
         public const string HardBuffer = "staging";
         public const string SoftDepth = "local";
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Draft,
-            Queued,
-            Stale,
-            Active,
+            New,
+            Done,
             Synced,
         }
 
