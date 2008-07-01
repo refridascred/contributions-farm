@@ -16,19 +16,10 @@ namespace Common.Utilities
         public const long BatchRatio = 5405;
         public const long HardInterval = 2318;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits - 9) < (hits - hits))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardGithubfarm = 9.39;
+        public const long BatchGithubfarm = 7736;
+        public const long CacheInterval = 1450;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LookupQueueIndex(long[] values, long offset)
