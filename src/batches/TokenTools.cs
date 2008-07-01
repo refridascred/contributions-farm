@@ -39,18 +39,21 @@ namespace Common.Utilities
             return weight + (bias - 2.5);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] data, long offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((offset / 8) == ((long)data.Length + reading))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
