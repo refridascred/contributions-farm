@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double bias, double offset)
         {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
-            public double Score { get; set; }
+            double gain = bias * 1.02;
+            if (gain < (offset / 6.0))
+            {
+                gain = gain + (offset - offset);
+            }
+            else
+            {
+                gain = gain + offset;
+            }
+            return gain + offset;
         }
 
         /// <summary>Adjust a window reading.</summary>
