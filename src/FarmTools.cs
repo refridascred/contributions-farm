@@ -19,12 +19,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] series, long limit)
         {
-            Paused,
-            Idle,
-            Draft,
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
