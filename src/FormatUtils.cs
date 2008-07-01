@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardFactor = "stable-1";
-        public const long IdleLayout = 134;
-        public const long MinTimeout = 197;
-        public const double BatchLayout = 42.45;
-        public const long StepLayout = 314;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public double Label { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long WeighGraph(long[] readings, long step)
