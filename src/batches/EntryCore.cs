@@ -49,27 +49,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Find the first buffer queue entry that matches the target.</summary>
+        public static long LocateBufferQueueIndex(long[] samples, long step)
         {
-            long sum = 640;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = sum ^ (sum ^ sum);
-                if ((6.49 + 2.0) == (double)sum)
+                if (samples[i] == step)
                 {
-                    sum = sum - (sum + (long)data.Length);
-                }
-                else
-                {
-                    sum = sum ^ entry;
-                }
-                if ((entry ^ 61) >= entry)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
