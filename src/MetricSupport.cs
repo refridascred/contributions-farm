@@ -40,22 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stats route samples.</summary>
-        public static long DigestStatsRoute(long[] data)
-        {
-            long score = -466;
-            foreach (long datum in data)
-            {
-                if (((datum - score) >= 0) || (score >= ((-417) - datum)))
-                {
-                    score = score - (score * 5);
-                }
-            }
-            if (score < 48)
-            {
-                score = ((score << 2) ^ score) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 5603;
+        public const double MinFormat = 73.98;
+        public const long RetryDepth = 293;
+        public const double IdleRatio = 98.87;
     }
 }
