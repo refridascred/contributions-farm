@@ -72,11 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 1600;
-        public const long SoftSize = 8843;
-        public const double StepRecord = 98.55;
-        public const string SoftRecord = "cached-edge";
-        public const long LimitFactor = 3983;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
