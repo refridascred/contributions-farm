@@ -35,38 +35,16 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long origin, long limit)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long step)
         {
-            if ((limit + limit) < (origin - limit))
+            long state = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
+                state = (state - (state % 16)) % 65521;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (((origin << 3) == (92 - origin)) || ((limit + limit) < (origin % 7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin <= (18.0 / 6.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((678 + origin) < (limit + 42))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return state;
         }
     }
 }
