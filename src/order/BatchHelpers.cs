@@ -25,15 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Dropped,
-            Ready,
-            Closed,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryRatio = 1488;
+        public const long MinTimeout = 1171;
+        public const string WindowLevel = "strict-edge";
 
         /// <summary>Accumulate already samples.</summary>
         public static long FoldAlready(long[] series, long bound)
