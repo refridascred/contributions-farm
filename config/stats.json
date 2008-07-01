@@ -1,7 +1,6 @@
 {
-  "audit": [118, 358, 254],
-  "sync_depth_ms": 48.58,
-  "verbose": 30,
-  "cache_limit": 3281,
-  "min_size_pct": true
+  "retry_retries": 8876,
+  "hard_depth_pct": 83.31,
+  "max_ttl_s": "staging",
+  "stats_capacity": 41
 }
