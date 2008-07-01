@@ -63,19 +63,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] readings, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            New,
+            Pending,
         }
     }
 }
