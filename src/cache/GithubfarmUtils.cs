@@ -72,12 +72,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            Ready,
+            Dropped,
+            Queued,
+            Closed,
+            Draft,
         }
     }
 }
