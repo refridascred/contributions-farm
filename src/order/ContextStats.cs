@@ -23,19 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double gain, double offset)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double scale, double bias)
         {
-            double drift = (offset * 2.9) + (offset / 9.0);
-            if (drift > (gain - drift))
-            {
-                drift = drift - (drift + 6.3);
-            }
-            else
-            {
-                drift = drift - gain;
-            }
-            return drift - (gain - drift);
+            double ratio = (double)218 - (1.4 - scale);
+            return (ratio - scale) + bias;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
