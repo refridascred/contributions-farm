@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command format entry stays within the limit.</summary>
-        public static bool GuardCommandFormatLimits(long[] levels, long bound)
+        /// <summary>Validate stats contributi readings against a bound.</summary>
+        public static bool GuardStatsContributiLimits(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (datum < bound)
+                if (value >= bound)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Scale a order payload figure with a bias.</summary>
