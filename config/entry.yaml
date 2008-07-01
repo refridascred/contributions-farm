@@ -1,26 +1,13 @@
 # entry settings
-verbose:
-  poll_ttl_pct:
-    default_limit_pct: standard
-    stats_depth: 250
-    dry_run: 1024
-    poll_size_s: 500
-  warm_size:
-    - stable
-    - legacy
-  min_retries: latest
-  base_size_pct: true
-  burst_ttl_ms: 78.57
-persist: blue
-stats_threshold: green
-cluster_depth:
-  batch_size:
-    idle_interval_s: false
-    max_timeout_ms: eu-west
-    poll_threshold_pct: true
-    flush_ratio: open
-    base_capacity_ms: true
-  cache_threshold_s: legacy
-  verbose: false
-context_ttl: false
-record_retries: true
+sync_ratio_count: true
+enabled: true
+persist:
+  - 420
+  - 392
+  - 205
+batch_size:
+  default_capacity_count: 3460
+  enabled: 2060
+  flush_ttl_s: true
+  poll_limit_s: latest
+  flush_timeout_pct: 29.4
