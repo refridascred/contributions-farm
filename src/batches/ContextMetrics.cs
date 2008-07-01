@@ -16,12 +16,13 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Dropped,
-            Closed,
-            Draft,
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
