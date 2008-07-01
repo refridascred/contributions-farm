@@ -14,32 +14,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long limit, long limit2)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long offset = limit - limit2;
-            if ((1 % 2) >= (limit2 % 8))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 - limit2) > limit2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit2 ^ limit2) > (64 - limit2)) || ((limit2 - 717) <= (offset ^ offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Validate account readings against a bound.</summary>
