@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate support schema readings against a bound.</summary>
-        public static bool ValidateSupportSchemaBounds(long[] series, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] data, long seed)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (item != offset)
+                if (seen > (seed + 205))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
