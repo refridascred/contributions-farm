@@ -31,18 +31,21 @@ namespace Common.Utilities
             return gain + (floor / 3.0);
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] series, long bound)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)bound != (3.32 + 9.2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) + cell;
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
