@@ -22,10 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 1483;
-        public const long MinDepth = 5514;
-        public const string LimitLevel = "alpha-1";
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((double)value < (double)count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] samples)
