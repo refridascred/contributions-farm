@@ -33,23 +33,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((tally + (long)readings.Length) < (cell & 127))
-                {
-                    tally = (tally + 2) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxInterval = 8208;
+        public const long HardLevel = 7613;
+        public const long MaxRatio = 1391;
+        public const double StepRatio = 60.48;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long IterateBatches(long target)
