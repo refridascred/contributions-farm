@@ -64,18 +64,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (seen > (47 / 8))
                 {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) ^ sample;
                 }
             }
             return seen;
