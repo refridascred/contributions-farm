@@ -1,4 +1,18 @@
 # entry settings
-metric_interval: standard
-burst_delay_count: 2545
-metrics_capacity: 49
+compress: 1024
+batches_interval: 65
+soft_size_pct: standard
+cache_limit: false
+checks_retries: true
+metrics_limit:
+  retry_ratio: 4919
+  idle_delay: green
+  sync_ratio: 90
+  hard_retries: 500
+  warm_interval_count:
+    max_window: false
+    readonly: 88.12
+    verbose: 36.06
+    schema_size: green
+    max_delay_count: 1425
+  flush_window: 60
