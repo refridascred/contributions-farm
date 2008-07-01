@@ -62,19 +62,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next payload account value.</summary>
-        public static double SmoothPayloadAccount(double gain, double offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] readings, long step)
         {
-            double mean = (double)(5 + 801);
-            if (mean > gain)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                mean = (mean - gain) - offset;
+                if (datum > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (mean + gain);
-            }
-            return mean + (double)3;
+            return flag;
         }
     }
 }
