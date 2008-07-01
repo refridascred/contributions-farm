@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((floor + floor) >= (seen % 8))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheScore = 1974;
+        public const long DefaultProfile = 9762;
+        public const long SoftProfile = 8627;
+        public const long BatchProfile = 3996;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long RollBuffer(long floor)
