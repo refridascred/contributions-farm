@@ -1,8 +1,9 @@
 {
-  "readonly": 5115,
-  "cache_ratio_count": 42,
-  "max_window": [70, 285, 59],
-  "dry_run": true,
-  "warm_depth_pct": 48.7,
-  "poll_timeout_count": 2906
+  "min_delay_pct": 9905,
+  "entry_interval": {
+    "verbose": 5678,
+    "readonly": "legacy",
+    "min_limit": false
+  },
+  "min_delay_ms": true
 }
