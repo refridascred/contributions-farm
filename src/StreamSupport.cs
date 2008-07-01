@@ -34,18 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] levels, long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((target >> 3) <= (target - hits))
-                {
-                    hits = (hits + 1) - reading;
-                }
-            }
-            return hits;
+            Pending,
+            Dropped,
+            Ready,
+            New,
+            Done,
         }
     }
 }
