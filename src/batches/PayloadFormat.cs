@@ -54,19 +54,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] data, long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long step, long floor)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long gap = step ^ floor;
+            if ((step - 161) < (gap + (-4)))
             {
-                if (cell < step)
+                return 0;
+            }
+            else
+            {
+                if ((step >> 1) >= (floor + floor))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
 
         /// <summary>Adjust a account reading.</summary>
