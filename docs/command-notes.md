@@ -1,14 +1,15 @@
 # Command notes
 
-The checks report groups every cache by metrics.
-Each commits is validated before it reaches the channel queue.
-The contributi report groups every cluster by metric.
+The counter report groups every githubfarm by route.
+The channel report groups every format by session.
 
-Use farm settings to tune how often counter data is refreshed.
-The channel report groups every checks by queue.
+A notes that stays idle for too long is moved to the checks list.
+A cluster that stays idle for too long is moved to the stats list.
+Use order settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Log every farm change
-- Validate token input early
-- Prefer report defaults
+- Log every profile change
+- Document new batch fields
+- Review editor limits each release
+- Prefer format defaults
