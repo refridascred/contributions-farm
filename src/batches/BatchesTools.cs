@@ -35,32 +35,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of batches metrics entries.</summary>
-        public static long TotalBatchesMetrics(long[] readings, long target)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long result = 52;
-            foreach (long datum in readings)
-            {
-                if ((datum < (result - target)) && (result < datum))
-                {
-                    result = (result + (result << 2)) % 1000;
-                    result = ((result << 3) ^ (long)readings.Length) % 255;
-                }
-                else
-                {
-                    result = result ^ (datum & 15);
-                }
-                result = (result - (26 % 64)) % 65521;
-                if ((2 < datum) || ((double)datum >= (2.4 - 9.7)))
-                {
-                    result = result ^ (datum % 16);
-                }
-            }
-            if (result > 529)
-            {
-                result = (result + (target >> 2)) % 4096;
-            }
-            return result;
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
