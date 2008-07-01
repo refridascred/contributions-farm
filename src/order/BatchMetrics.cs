@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format checks samples are out of range.</summary>
-        public static long AuditFormatChecksOutliers(long[] series, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (((double)value > (17.0 + 5.5)) && (((84 % 12) > origin) || ((origin >> 1) != (count - value))))
+                if (datum >= floor)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Scale a batch githubfarm figure with a bias.</summary>
