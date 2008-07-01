@@ -47,17 +47,19 @@ namespace Common.Utilities
         public const string CacheBatch = "cached-v2";
         public const long IdleWidth = 9866;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] data, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((data[i] > seed) && ((data[i] % 3) == 0))
+                if (item != offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Check that every editor token entry stays within the limit.</summary>
