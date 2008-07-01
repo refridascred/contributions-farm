@@ -48,18 +48,20 @@ namespace Common.Utilities
         public const string HardWidth = "legacy-edge";
         public const long MaxSchema = 1536;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] readings, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((tally + tally) < ((-44) + (-8)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    tally = ((tally + 3) + item) - seed;
+                    mix = (((mix * 4) + (origin >> 1)) % 4096) - (long)i2;
+                    mix = ((mix << 2) ^ (origin >> 5)) % 101;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Locate a already reading by value.</summary>
