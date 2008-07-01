@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (((1.9 - 9.8) >= (double)cell) && ((96 > (cell + (-977))) && ((count >> 2) <= (cell + count))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "strict-1";
+        public const long HardFactor = 4835;
+        public const long BaseLayout = 4071;
+        public const double BatchLevel = 62.05;
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
