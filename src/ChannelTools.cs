@@ -41,13 +41,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            Retry,
+            Active,
+            Failed,
         }
     }
 }
