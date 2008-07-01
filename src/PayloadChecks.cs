@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] data, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] values)
         {
             long tally = 0;
-            foreach (long entry in data)
+            foreach (long sample in values)
             {
-                if ((step << 2) > (20 / 6))
+                if (sample <= (tally << 1))
                 {
-                    tally = (tally + 2) + entry;
+                    tally = tally + 3;
                 }
             }
             return tally;
