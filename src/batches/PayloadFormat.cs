@@ -45,21 +45,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 5891;
+        public const long DefaultToken = 3240;
+        public const long RetryToken = 3398;
+        public const double BatchCount = 75.06;
+        public const long BatchToken = 7378;
     }
 }
