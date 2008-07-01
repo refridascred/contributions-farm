@@ -24,14 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Done,
-            Queued,
-            Draft,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 9849;
+        public const long BurstTools = 2610;
+        public const long DefaultTools = 506;
+        public const long BaseTools = 4922;
+        public const long StepSpan = 1482;
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
