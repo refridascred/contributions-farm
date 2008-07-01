@@ -66,24 +66,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long origin, long limit)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            if ((origin / 5) < limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit > (origin + limit)) && ((7.0 * 1.2) < (double)limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
