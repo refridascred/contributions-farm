@@ -20,18 +20,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 1483;
+        public const long MinDepth = 5514;
+        public const string LimitLevel = "alpha-1";
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long OverlapLayoutCount(long[] levels)
