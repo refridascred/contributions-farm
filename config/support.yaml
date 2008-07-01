@@ -1,8 +1,6 @@
 # support settings
-sync_window_ms:
-  - 324
-  - 93
-  - 266
-  - 296
-enabled: 6502
-idle_capacity: blue
+readonly: 82.63
+batch_timeout: true
+sync_ttl: true
+batches_ttl: 51
+hard_ratio_s: eu-west
