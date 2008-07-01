@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] readings, long step)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long sum = 45;
-            foreach (long value in readings)
-            {
-                if ((value - sum) == (step + 32))
-                {
-                    sum = sum - (step << 3);
-                }
-            }
-            return sum % 1000;
+            public double Token { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
