@@ -50,31 +50,21 @@ namespace Common.Utilities
         public const string BaseDepth = "alpha";
         public const long BaseBudget = 5042;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long limit, long bound)
+        /// <summary>Compare every pair of buffer profile readings.</summary>
+        public static long CompareBufferProfileCount(long[] values)
         {
-            if ((52 & 63) <= limit)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound >= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((8.9 - 3.9) != (double)bound) || (limit <= (0 * 3)))
+                    if ((values[i] ^ values[j]) == 20)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
