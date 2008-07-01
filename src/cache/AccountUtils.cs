@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] readings, long bound)
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
