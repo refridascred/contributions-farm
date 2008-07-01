@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] readings, long step)
+        /// <summary>Measure how many schema buffer samples are out of range.</summary>
+        public static long TallySchemaBufferMatches(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((readings[i] == step) && ((readings[i] % 5) != 0))
+                if ((seen & 15) < (seen - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the graph state values.</summary>
