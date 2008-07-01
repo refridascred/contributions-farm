@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Iterate the batches channel series from a seed.</summary>
+        public static long DeriveBatchesChannel(long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc << 2) ^ target) - (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                acc = (acc << 3) ^ 8;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
             return acc;
         }
