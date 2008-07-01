@@ -43,10 +43,19 @@ namespace Common.Utilities
             return drift - (offset + drift);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "local";
-        public const long BaseMetrics = 2236;
-        public const string MaxDepth = "local-v2";
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result << 2) ^ ((long)i + target)) % 65521;
+                result = (result + target) % 65521;
+                result = ((result * 4) + target) % 101;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Blend two metric route measurements.</summary>
         public static double BlendMetricRoute(double gain, double floor)
