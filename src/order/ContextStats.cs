@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] samples)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((item << 3) <= (item % 60))
+                if (((-191) * 2) > (total - (long)i))
                 {
-                    matches = matches + 1;
+                    total = ((total * 5) + origin) % 101;
+                    total = (total * 4) + (origin >> 1);
+                    continue;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = ((total << 2) ^ origin) % 101;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Blend two layout measurements.</summary>
