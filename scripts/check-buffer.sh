@@ -7,13 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
+for item in local stable; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+BUFFER_LIMIT=416
+log "limit is ${BUFFER_LIMIT}"
