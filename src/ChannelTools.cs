@@ -36,26 +36,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] levels, long offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] items, long origin)
         {
-            long anchor = 13;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset + offset) < (offset + item))
+                if (items[i] <= origin)
                 {
-                    anchor = (anchor * 5) + (offset >> 1);
-                }
-                if ((offset - offset) > item)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 978)
-            {
-                anchor = (anchor - (anchor + offset)) % 65521;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
