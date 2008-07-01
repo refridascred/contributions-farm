@@ -25,10 +25,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 9.39;
-        public const long BatchGithubfarm = 7736;
-        public const long CacheInterval = 1450;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Stale,
+            Pending,
+            Closed,
+            Paused,
+            New,
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LookupQueueIndex(long[] values, long offset)
