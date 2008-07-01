@@ -41,18 +41,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] data)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((5.5 / 8.0) < (double)tally) && ((double)tally > 2.45))
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
+            Retry,
+            Done,
+            Locked,
+            Ready,
+            Queued,
         }
     }
 }
