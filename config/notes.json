@@ -1,23 +1,8 @@
 {
-  "tools_retries": {
-    "max_ratio": {
-      "strict": "fallback",
-      "metric_timeout": "open",
-      "verbose": false,
-      "max_depth_count": 667,
-      "hard_delay_count": true,
-      "commits_ratio": ["local", "cached"]
-    },
-    "stream_retries": 60,
-    "hard_limit": "stable"
-  },
-  "sync_timeout_pct": 9650,
-  "route_timeout": true,
-  "farm_timeout": 92.28,
-  "readonly": {
-    "enabled": 8594,
-    "max_delay_count": 68.19,
-    "poll_delay_count": [223, 131, 276, 50]
-  },
-  "command_size": 60
+  "burst_ratio_count": 61,
+  "compress": 97.81,
+  "warm_threshold_pct": false,
+  "default_size_s": 54,
+  "sync_delay": 30,
+  "soft_threshold_count": 63.29
 }
