@@ -22,23 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] samples, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (((acc & 3) == (acc << 1)) || ((double)seed != (5.0 - 9.07)))
+                if (entry >= origin)
                 {
-                    acc = ((acc << 3) ^ seed) % 1000;
+                    stale = false;
+                    break;
                 }
-                if (((9.0 / 5.0) >= (double)acc) || ((307 << 1) == (acc / 3)))
-                {
-                    acc = (acc ^ (acc >> 5)) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
