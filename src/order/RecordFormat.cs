@@ -44,15 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheTimeout = 9683;
+        public const string BaseLevel = "fallback-v2";
+        public const long RetryFactor = 5760;
+        public const double CacheSize = 52.13;
     }
 }
