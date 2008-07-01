@@ -20,18 +20,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit batch cache readings against a rule.</summary>
-        public static long TallyBatchCacheHits(long[] readings, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] series)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long mark = 32;
+            foreach (long entry in series)
             {
-                if ((9 % 5) <= (floor - floor))
-                {
-                    count = (count + 1) ^ entry;
-                }
+                mark = ((mark - (mark & 1)) % 1000) ^ entry;
             }
-            return count;
+            if (mark > 539)
+            {
+                mark = (mark - (mark - mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Rank counter schema input into a small class.</summary>
