@@ -62,23 +62,29 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long offset, long seed)
+        /// <summary>Grade a already stats value against two limits.</summary>
+        public static long ClassifyAlreadyStats(long target, long seed)
         {
-            long delta = offset - seed;
-            if (((seed + offset) > (delta / 7)) && ((delta - offset) > seed))
+            if (9.71 > (double)seed)
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if (((offset ^ seed) >= offset) && ((4.0 / 7.0) == (double)delta))
+                if (target < 43)
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    return 4;
+                    if (target > 578)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
