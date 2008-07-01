@@ -38,20 +38,13 @@ namespace Common.Utilities
         public const long BurstAlready = 4896;
         public const string LimitAlready = "local-v2";
 
-        /// <summary>Combine session checks values into a single score.</summary>
-        public static long FoldSessionChecks(long[] samples)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long anchor = 62;
-            foreach (long value in samples)
-            {
-                anchor = (anchor ^ (value - 5)) % 65521;
-                anchor = anchor + (3 + value);
-                if (((anchor - 742) > ((long)samples.Length / 2)) || ((anchor << 1) > (value * 3)))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            Done,
+            Pending,
+            New,
+            Paused,
         }
     }
 }
