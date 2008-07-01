@@ -20,16 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] samples, long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double bias, double span)
         {
-            long acc = 4;
-            foreach (long value in samples)
+            double weight = bias;
+            if (weight > (bias + weight))
             {
-                acc = (acc - (acc * 2)) ^ value;
-                acc = (acc ^ limit) % 4096;
+                weight = weight + (bias / 2.0);
             }
-            return acc % 97;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (span / 7.0)) - (double)(long)i;
+            }
+            return weight + (bias - 2.5);
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
