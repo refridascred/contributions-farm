@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowSpan = "alpha-1";
-        public const double BatchCache = 89.97;
-        public const long MinCache = 8632;
-        public const long BatchInterval = 3108;
-        public const string LimitCache = "strict-v2";
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Pending,
+            Stale,
+            Idle,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
