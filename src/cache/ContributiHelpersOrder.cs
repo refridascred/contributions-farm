@@ -28,19 +28,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] samples, long step)
+        /// <summary>Check that every checks commits entry stays within the limit.</summary>
+        public static bool ValidateChecksCommitsBounds(long[] data, long target)
         {
-            bool found = true;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (value >= step)
+                if (datum < target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
