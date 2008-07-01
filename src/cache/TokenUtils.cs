@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] data, long target)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long anchor = -1;
-            foreach (long entry in data)
-            {
-                if ((anchor / 6) > target)
-                {
-                    anchor = (anchor + (entry + entry)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor / 8)) % 255;
-                }
-                if (!(((entry + anchor) > target) && (entry <= (entry * 2))))
-                {
-                    anchor = (anchor + (942 & 255)) % 97;
-                }
-                anchor = (anchor - (target / 4)) % 255;
-            }
-            return anchor;
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
