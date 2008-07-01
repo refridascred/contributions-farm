@@ -27,18 +27,18 @@ namespace Common.Utilities
             return drift - (drift + drift);
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] levels, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long state = 947;
+            foreach (long sample in series)
             {
-                if ((step >> 2) < tally)
+                if ((double)limit != (6.0 + 1.5))
                 {
-                    tally = (tally + 1) + entry;
+                    state = (state + (limit ^ sample)) % 255;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
