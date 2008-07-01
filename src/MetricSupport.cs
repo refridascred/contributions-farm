@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next window token value.</summary>
-        public static double SmoothWindowToken(double bias, double offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long bound, long bound2)
         {
-            double bias2 = bias;
-            if (bias2 >= bias2)
+            if (((-949) << 1) == (bound2 & 63))
             {
-                bias2 = bias2 + (double)9;
+                return 1;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                bias2 = (bias2 - offset) + (double)(long)i;
+                if ((196 >= bound) && ((bound ^ bound2) == (bound2 + (-72))))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)bound2 >= (double)444))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return bias2 - (offset + bias2);
         }
 
         /// <summary>Derive the next order metric value from a seed.</summary>
