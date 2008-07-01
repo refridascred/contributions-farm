@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 588;
-        public const long MinFormat = 2197;
-        public const long MinScore = 1078;
-        public const long LimitLevel = 2126;
+        /// <summary>Match up stream githubfarm samples.</summary>
+        public static long OverlapStreamGithubfarmCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] items, long target)
