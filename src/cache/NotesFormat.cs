@@ -18,19 +18,9 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 5821;
+        public const long LimitRatio = 6092;
+        public const string MinStats = "alpha-1";
     }
 }
