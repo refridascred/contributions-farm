@@ -1,9 +1,37 @@
 # support settings
-hard_delay_s: strict
-min_ratio: 500
-report_retries:
-  - 133
-  - 398
-soft_delay: 250
-strict: false
-max_delay: legacy
+flush_timeout_s:
+  - 341
+  - 170
+support_ratio: 2247
+contributi_delay: 2856
+burst_depth_count:
+  metric_threshold:
+    - cached
+    - local
+    - latest
+    - cached
+  channel_threshold: legacy
+  compress: true
+  warm_interval_pct:
+    support_interval:
+      - 358
+      - 462
+      - 158
+    base_delay: 87.54
+    farm_ttl: false
+    soft_timeout: true
+    payload_ttl:
+      - strict
+      - eu-west
+    audit: 2395
+  editor_ratio: 12.27
+  poll_depth:
+    token_size:
+      - primary
+      - legacy
+      - strict
+    hard_ttl: true
+    cache_interval_pct: 6217
+    hard_window_ms: 90.78
+    readonly: 91.04
+max_window_count: 9650
