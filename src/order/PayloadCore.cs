@@ -30,13 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Audit layout record readings against a rule.</summary>
+        public static long AuditLayoutRecordHits(long[] levels, long floor)
         {
-            Done,
-            Failed,
-            Closed,
-            Stale,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)seen != (double)floor) || (((seen & 1) <= (floor ^ floor)) || ((double)floor >= 4.0)))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
