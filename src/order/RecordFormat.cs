@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] data, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((data[i] < limit) && ((data[i] % 2) == 0))
+                if ((4.9 + 9.41) <= (double)tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 3) + reading) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
