@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already token readings against a bound.</summary>
-        public static bool GuardAlreadyTokenLimits(long[] series, long limit)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Stale,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
