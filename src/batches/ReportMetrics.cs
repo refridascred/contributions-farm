@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up stream githubfarm samples.</summary>
-        public static long OverlapStreamGithubfarmCount(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((bound % 3) <= (value % 7))
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine session values into a single score.</summary>
