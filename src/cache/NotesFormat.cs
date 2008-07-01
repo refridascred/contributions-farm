@@ -31,18 +31,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many token stream samples are out of range.</summary>
-        public static long CountTokenStreamGaps(long[] readings)
+        /// <summary>Combine metric stats values into a single score.</summary>
+        public static long CombineMetricStats(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long score = 1;
+            foreach (long datum in items)
             {
-                if (((2.38 / 5.0) >= (double)cell) && (((count + count) > (cell << 1)) || ((cell - count) <= (count & 127))))
+                if ((score - limit) > (score + score))
                 {
-                    count = count + 1;
+                    score = (score - datum) % 1000;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
