@@ -22,18 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] samples)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (!(((seen * 5) == (reading / 6)) && ((99 << 1) >= (seen >> 2))))
+                if (((double)matches < (6.0 - 4.56)) && ((18.0 / 5.0) >= (double)matches))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 2) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the githubfarm session entries that pass the check.</summary>
