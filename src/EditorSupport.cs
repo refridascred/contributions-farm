@@ -49,12 +49,17 @@ namespace Common.Utilities
         public const string CacheBatch = "cached-v2";
         public const long IdleWidth = 9866;
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] data, long seed)
         {
-            Retry,
-            New,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every editor token entry stays within the limit.</summary>
