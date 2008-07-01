@@ -1,6 +1,48 @@
 # support settings
-readonly: 82.63
-batch_timeout: true
-sync_ttl: true
-batches_ttl: 51
-hard_ratio_s: eu-west
+idle_threshold:
+  sync_retries_pct: true
+  max_depth: 2.58
+  token_interval: 52.24
+  audit: true
+verbose: false
+cache_ratio_count:
+  cache_ratio_pct:
+    soft_retries: false
+    metrics_ratio: 92.36
+    poll_window_count: false
+    readonly: eu-west
+    batch_ttl_pct: 9130
+    poll_size_count: 48.39
+  max_threshold: 36
+  base_ttl_ms: false
+layout_threshold:
+  - fallback
+  - primary
+  - latest
+  - fallback
+batch_depth_count:
+  tools_window:
+    sync_timeout: open
+    idle_ratio_pct: 86
+    audit: true
+    min_retries_ms:
+      - green
+      - latest
+  burst_limit_pct: 42.32
+  sync_threshold: latest
+  cache_capacity_s:
+    max_ttl: 200
+    counter_delay:
+      - edge
+      - staging
+    retry_capacity:
+      - 403
+      - 489
+      - 24
+      - 213
+    filter_timeout: staging
+  session_limit: blue
+  min_interval_count:
+    - 386
+    - 3
+    - 14
