@@ -20,14 +20,19 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] levels, long step)
         {
-            New,
-            Draft,
-            Retry,
-            Stale,
-            Idle,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a order stats.</summary>
