@@ -1,5 +1,6 @@
 {
-  "support_interval": true,
-  "strict": 80.62,
-  "batch_timeout_ms": "blue"
+  "flush_limit_count": "standard",
+  "cache_depth": 2486,
+  "verbose": 32.99,
+  "command_limit": ["fallback", "staging"]
 }
