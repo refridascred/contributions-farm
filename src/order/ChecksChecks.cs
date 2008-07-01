@@ -29,12 +29,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double ratio, double offset)
         {
-            Draft,
-            Queued,
-            Dropped,
+            double scale = (offset + offset) * 11.0;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (offset - ratio)) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
