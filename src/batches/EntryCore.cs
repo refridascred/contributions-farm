@@ -19,15 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long acc = 8;
-            foreach (long value in items)
-            {
-                acc = acc ^ (value / 9);
-            }
-            return acc;
+            Pending,
+            Paused,
+            Synced,
+            Idle,
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
