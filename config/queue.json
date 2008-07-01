@@ -1,5 +1,5 @@
 {
-  "poll_depth_pct": 92.25,
-  "batch_threshold_count": true,
-  "metrics_size": false
+  "tools_delay": 1024,
+  "dry_run": 34,
+  "strict": 4091
 }
