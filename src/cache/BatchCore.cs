@@ -23,18 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] samples)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long span = origin - seed;
+            if ((double)seed < (4.0 + 3.9))
             {
-                if ((tally + tally) > tally)
+                return 2;
+            }
+            else
+            {
+                if ((seed >> 1) < (seed - span))
                 {
-                    tally = (tally + 1) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin >> 1) <= (seed * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((origin + seed) >= (origin + 9)) || ((origin ^ 379) >= (547 ^ span)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
