@@ -1,5 +1,5 @@
 {
-  "order_threshold": ["strict", "latest", "standard", "green"],
-  "readonly": "legacy",
-  "default_depth_ms": 10
+  "default_size_s": [405, 121],
+  "poll_delay": "blue",
+  "flush_window_ms": 40
 }
