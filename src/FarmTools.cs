@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a metric metrics reading by value.</summary>
-        public static long SeekMetricMetricsIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 4335;
+        public const string HardEntry = "standard-1";
+        public const string BurstEntry = "local-v2";
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long SortQueue(long floor, long bound)
