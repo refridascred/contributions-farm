@@ -14,13 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] series)
         {
-            public bool Count { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((item < (91 & 127)) && !((7.43 / 8.0) != (double)count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
