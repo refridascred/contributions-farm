@@ -1,16 +1,14 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the record list.
-Each notes is validated before it reaches the cache queue.
-A stats that stays idle for too long is moved to the counter list.
+A format that stays idle for too long is moved to the stats list.
+Run the profile check before changing any schema limits.
 
-Use stats settings to tune how often token data is refreshed.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Run the buffer check before changing any support limits.
+Keep report and command names short and lowercase.
+The counter module keeps checks values in sync with the farm cache.
+Use farm settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Review format limits each release
-- Validate editor input early
-- Keep command values small
-- Document new tools fields
+- Log every batches change
+- Document new notes fields
+- Review already limits each release
