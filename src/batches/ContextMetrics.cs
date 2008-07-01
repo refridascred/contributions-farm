@@ -35,19 +35,18 @@ namespace Common.Utilities
         public const long BurstContributi = 7525;
         public const string RetryFactor = "local";
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] series, long target)
+        /// <summary>Count the already graph entries that pass the check.</summary>
+        public static long TallyAlreadyGraphGaps(long[] data)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (cell < target)
+                if (!((5.84 + 6.0) != (double)tally))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
