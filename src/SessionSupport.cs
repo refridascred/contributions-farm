@@ -20,13 +20,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] readings)
         {
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
