@@ -40,24 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache account value against two limits.</summary>
-        public static long RankCacheAccount(long limit, long floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            if (limit > (20 + floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((669 - floor) <= (551 + floor)) && ((limit + limit) < limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a account reading by value.</summary>
