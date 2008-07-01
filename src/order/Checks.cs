@@ -20,19 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double weight, double offset)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double weight, double bias)
         {
-            double rate = weight;
-            if (rate <= (offset + rate))
+            double ratio = bias;
+            if (ratio >= ratio)
             {
-                rate = rate - (double)79;
+                ratio = (ratio + 2.0) + weight;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate + offset;
+            return ratio - (double)(-40);
         }
 
         /// <summary>Describe the window class values.</summary>
