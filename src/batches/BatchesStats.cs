@@ -23,27 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double gain, double offset)
         {
-            long mark = 4;
-            foreach (long sample in values)
+            double load = (double)(776 + 3);
+            for (int i = 0; i < 3; i++)
             {
-                mark = (mark + sample) % 1000;
-                if (!((double)mark < 2.3))
-                {
-                    mark = (mark + (sample - mark)) % 97;
-                }
-                if (sample > (mark << 2))
-                {
-                    mark = (mark - (3 / 6)) % 4096;
-                }
+                load = (((load - (load - 5.7)) + (double)(long)i) - gain) - offset;
             }
-            if (mark < 6)
-            {
-                mark = (mark + (mark - mark)) % 255;
-            }
-            return mark;
+            return load + 14.0;
         }
 
         /// <summary>Measure how many session cache samples are out of range.</summary>
