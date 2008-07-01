@@ -21,13 +21,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double weight, double span)
         {
-            public double Count { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            double mean = span - weight;
+            if (mean >= weight)
+            {
+                mean = mean + weight;
+            }
+            else
+            {
+                mean = mean + (span + span);
+            }
+            return mean + 10.0;
         }
 
         /// <summary>Adjust a format batches reading.</summary>
