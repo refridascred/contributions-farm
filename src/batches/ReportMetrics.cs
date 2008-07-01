@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 588;
+        public const long MinFormat = 2197;
+        public const long MinScore = 1078;
+        public const long LimitLevel = 2126;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
