@@ -53,38 +53,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long seed, long seed2)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] series)
         {
-            if ((667 < (seed2 % 60)) && ((double)seed > 8.0))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((seed + seed) > 90))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (8 < seed2)
+                    if ((series[i] - series[j]) > 11)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed2 << 2) > (seed2 - seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a token contributi pair into a bucket.</summary>
