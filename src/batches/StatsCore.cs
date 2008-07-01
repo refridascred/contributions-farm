@@ -27,16 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next session counter value from a seed.</summary>
-        public static long IterateSessionCounter(long limit)
+        /// <summary>Compare every pair of payload cache readings.</summary>
+        public static long ComparePayloadCacheCount(long[] samples)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum - (sum / 9)) % 65521;
-                sum = ((sum * 2) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
