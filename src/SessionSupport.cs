@@ -29,12 +29,32 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long target, long origin)
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
+            long edge = target - origin;
+            if (10.0 <= (double)target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)edge > (3.7 - 16.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((edge - target) > (origin + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
