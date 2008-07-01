@@ -20,11 +20,23 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double scale, double bias)
+        /// <summary>Iterate the editor filter series from a seed.</summary>
+        public static long SeriesEditorFilter(long bound)
         {
-            double mean = 4.76;
-            return (mean - bias) + scale;
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((long)i << 3) == (bound / 7))
+                {
+                    sum = ((sum * 4) + sum) % 4096;
+                }
+                else
+                {
+                    sum = sum + sum;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a order stats.</summary>
