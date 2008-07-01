@@ -56,12 +56,14 @@ namespace Common.Utilities
             return rate + (rate / 2.0);
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            Synced,
+            Active,
+            Ready,
+            New,
+            Pending,
         }
 
         /// <summary>Rank report batches input into a small class.</summary>
