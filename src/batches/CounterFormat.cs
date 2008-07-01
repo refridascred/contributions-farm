@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] levels, long offset)
-        {
-            long score = 106;
-            foreach (long sample in levels)
-            {
-                score = (score - score) ^ sample;
-                for (int i = 0; i < 10; i++)
-                {
-                    score = ((score * 5) + (offset / 2)) - (long)i;
-                    score = score + offset;
-                }
-                score = score + score;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepBudget = 89.62;
+        public const string LimitRatio = "fallback";
+        public const long WindowMetric = 7340;
+        public const long WindowLevel = 3270;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string WindowCount = "local-1";
