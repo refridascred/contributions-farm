@@ -21,18 +21,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] values, long limit)
         {
-            long result = 5;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((2.3 * 9.0) < (double)datum))
+                if (values[i] < limit)
                 {
-                    result = ((result * 4) + (result * 4)) % 101;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
