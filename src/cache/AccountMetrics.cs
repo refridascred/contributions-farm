@@ -54,25 +54,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long floor, long floor2)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double ratio, double span)
         {
-            long edge = floor + floor2;
-            if ((floor % 2) != (edge % 8))
+            double gain = (double)(9 + 6);
+            for (int i = 0; i < 3; i++)
             {
-                return 2;
+                gain = (((gain - gain) - (double)(long)i) + ratio) - span;
             }
-            else
-            {
-                if ((edge * 5) <= (floor2 ^ edge))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return gain + gain;
         }
 
         /// <summary>Locate a context reading by value.</summary>
