@@ -1,43 +1,5 @@
 # entry settings
-poll_window: 8500
-cache_timeout_ms: 474
-cache_timeout:
-  flush_limit_count: standard
-  batch_limit_s: staging
-  hard_limit_ms:
-    hard_retries_pct: open
-    flush_timeout_count: 60
-    retry_limit_s: 9576
-    persist: 7441
-  command_timeout:
-    persist: 62.61
-    entry_retries: false
-    batches_ratio: 3204
-    strict: false
-    stream_size: 68
-    soft_ttl_count:
-      - 479
-      - 49
-retry_threshold_s: 60
-min_ttl: 100
-default_depth_count:
-  context_capacity: 94.78
-  readonly: true
-  poll_ratio_pct:
-    max_ratio: 1024
-    idle_capacity_s: 11.72
-    poll_depth: 30
-    strict: 5982
-  base_depth:
-    - 473
-    - 20
-  default_delay_pct:
-    - 233
-    - 224
-  cache_interval_pct:
-    audit: eu-west
-    graph_delay: primary
-    verbose: 266
-    burst_limit_ms: 5885
-    dry_run: 74.13
-    retry_capacity_pct: 30.18
+route_retries: false
+flush_depth_pct: 83.21
+min_window: 30
+warm_timeout: 49.8
