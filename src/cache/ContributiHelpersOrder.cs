@@ -20,18 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] levels, long floor)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((4 << 2) < (tally + floor))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
+            Failed,
+            Active,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the buffer status values.</summary>
