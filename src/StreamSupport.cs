@@ -14,19 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] levels, long origin)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
