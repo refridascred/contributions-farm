@@ -57,22 +57,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine support channel values into a single score.</summary>
-        public static long WeighSupportChannel(long[] items)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long limit)
         {
-            long acc = 6;
-            foreach (long sample in items)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (acc <= (sample << 3))
+                acc = ((acc << 2) ^ (acc - limit)) % 97;
+                if (((double)acc < (12.0 / 9.0)) && ((5.8 * 9.15) != (double)limit))
                 {
-                    acc = (acc + 50) % 1000;
+                    acc = (acc - limit) % 255;
+                    break;
                 }
-                else
-                {
-                    acc = (acc << 2) ^ (1 % 16);
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc % 97;
+            return acc;
         }
     }
 }
