@@ -55,9 +55,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 6603;
-        public const string IdleWidth = "stable-v2";
-        public const long BurstChecks = 3753;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long bound, long floor)
+        {
+            if (((double)floor == (0.47 + 3.46)) && ((701 + bound) > (bound << 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (36 < (floor - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + bound) < (floor - bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
