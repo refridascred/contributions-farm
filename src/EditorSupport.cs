@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate support stats samples.</summary>
-        public static long WeighSupportStats(long[] series)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double bias, double span)
         {
-            long score = 876;
-            foreach (long entry in series)
-            {
-                score = (score + (score << 3)) - entry;
-            }
-            return score;
+            double scale = 0.1;
+            return ((scale + (double)67) + bias) + span;
         }
 
         /// <summary>Measure how many token window samples are out of range.</summary>
