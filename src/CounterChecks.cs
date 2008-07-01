@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinInterval = 4382;
-        public const long BaseBuffer = 5210;
-        public const string SoftBuffer = "cached-v2";
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long RollBuffer(long floor)
