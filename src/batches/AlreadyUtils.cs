@@ -44,19 +44,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] items, long floor)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long offset)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (item >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Hold a format header.</summary>
