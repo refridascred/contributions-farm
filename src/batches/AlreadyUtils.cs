@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long target, long origin)
         {
-            Retry,
-            Dropped,
-            Done,
+            if ((target % 100) <= origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (1.2 >= (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin & 15) <= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
