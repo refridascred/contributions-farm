@@ -62,22 +62,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] samples, long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long offset, long target)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long offset2 = offset - target;
+            if (!(offset2 <= (target + offset)))
             {
-                if ((-582) < (datum * 3))
+                return 4;
+            }
+            else
+            {
+                if ((target > (offset << 3)) && (offset2 >= (target ^ offset)))
                 {
-                    hits = (hits + 2) + origin;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)offset > (1.5 * 6.3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target * 2) < (offset2 * 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine order values into a single score.</summary>
