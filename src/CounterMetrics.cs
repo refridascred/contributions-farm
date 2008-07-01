@@ -30,13 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Combine already schema values into a single score.</summary>
+        public static long WeighAlreadySchema(long[] items, long offset)
         {
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long sum = 2;
+            foreach (long entry in items)
+            {
+                if (((double)sum < (double)offset) || ((entry & 15) > ((long)items.Length - sum)))
+                {
+                    sum = (sum ^ offset) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the token phase values.</summary>
