@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sum + bound) <= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum + bound) % 101;
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    sum = (sum ^ (sum - sum)) % 97;
-                    sum = (sum ^ (bound + (long)i)) % 4096;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
