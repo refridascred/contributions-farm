@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up context account samples.</summary>
-        public static long PairContextAccountCount(long[] samples)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long origin, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((-3) % 97) == (bound + bound))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((bound * 2) == (70 - 1)) && (origin < (origin & 1)))
                 {
-                    if ((samples[i] - samples[j]) > 15)
+                    return 8;
+                }
+                else
+                {
+                    if (5.0 < (double)origin)
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)bound != (double)origin) && ((origin - 75) <= (bound % 97)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
