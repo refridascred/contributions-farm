@@ -13,21 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Scale a payload profile figure with a bias.</summary>
+        public static double SmoothPayloadProfile(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double bias = offset;
+            return (bias - 3.0) + weight;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
