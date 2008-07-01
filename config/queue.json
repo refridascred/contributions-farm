@@ -1,5 +1,16 @@
 {
-  "tools_delay": 1024,
-  "dry_run": 34,
-  "strict": 4091
+  "hard_threshold_ms": {
+    "enabled": {
+      "layout_interval": 4162,
+      "batch_depth_count": false,
+      "cache_threshold": "open",
+      "max_timeout_count": 1.45,
+      "retry_ratio_ms": "standard"
+    },
+    "account_limit": "fallback",
+    "token_delay": 5155
+  },
+  "stream_capacity": false,
+  "already_ttl": 1024,
+  "enabled": [80, 360, 462, 356]
 }
