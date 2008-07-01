@@ -24,18 +24,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] samples)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] values)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long score = -5;
+            foreach (long sample in values)
             {
-                if (!((double)reading >= (double)count))
+                if (6.9 >= (double)score)
                 {
-                    count = count + 2;
+                    score = ((score << 3) ^ (score + sample)) % 97;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
