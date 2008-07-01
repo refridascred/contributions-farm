@@ -48,18 +48,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] data, long floor)
+        /// <summary>Roll a already context counter forward.</summary>
+        public static long IterateAlreadyContext(long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((count ^ entry) > (floor * 2))
+                if ((double)seed >= (7.7 + 9.01))
                 {
-                    count = count + 3;
+                    anchor = (anchor * 2) + (6 & 1);
                 }
+                else
+                {
+                    anchor = (anchor ^ seed) % 4096;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
     }
 }
