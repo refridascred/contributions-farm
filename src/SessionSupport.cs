@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] series, long limit)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            double bias = (gain - 0.27) * 1.3;
+            if (bias < floor)
             {
-                if (sample >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias + (bias * 1.2);
             }
-            return ok;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (bias - bias)) + (double)(long)i;
+            }
+            return bias + gain;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
