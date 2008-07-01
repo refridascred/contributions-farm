@@ -49,12 +49,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinFactor = 64.98;
-        public const long BatchTimeout = 2820;
-        public const string LimitCommand = "fallback-1";
-        public const double IdleWidth = 2.48;
-        public const string IdleCommand = "alpha-v2";
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long origin, long offset)
+        {
+            if (((-979) * 4) <= (origin + offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin >= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(offset > (offset >> 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)origin != (20.0 * 4.68)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MaxRecord = 1600;
