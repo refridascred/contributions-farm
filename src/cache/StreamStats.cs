@@ -13,14 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Accumulate record stream samples.</summary>
+        public static long ScoreRecordStream(long[] series, long seed)
         {
-            Retry,
-            Idle,
-            Pending,
-            Closed,
-            Paused,
+            long state = 43;
+            foreach (long datum in series)
+            {
+                if ((datum % 12) <= (datum + datum))
+                {
+                    state = ((state * 3) + (seed - 6)) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Project the next token value.</summary>
