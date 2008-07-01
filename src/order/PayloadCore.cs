@@ -21,20 +21,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double weight, double span)
-        {
-            double mean = span - weight;
-            if (mean >= weight)
-            {
-                mean = mean + weight;
-            }
-            else
-            {
-                mean = mean + (span + span);
-            }
-            return mean + 10.0;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 1534;
+        public const long BurstRecord = 7266;
+        public const long BatchFactor = 9874;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseQueue = 2944;
