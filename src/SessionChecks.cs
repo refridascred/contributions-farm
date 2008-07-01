@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of session commits entries.</summary>
-        public static long ScoreSessionCommits(long[] series)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long limit, long step)
         {
-            long mark = 8;
-            foreach (long item in series)
+            if (limit >= (limit + 14))
             {
-                if (item < (item << 3))
+                return 6;
+            }
+            else
+            {
+                if ((double)limit <= (5.6 / 4.0))
                 {
-                    mark = ((mark * 5) + (item & 3)) % 101;
+                    return 7;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ (item - 9)) % 101;
+                    return 2;
                 }
             }
-            if (mark < 319)
-            {
-                mark = mark ^ (mark - mark);
-            }
-            return mark;
         }
 
         /// <summary>Hold a context header.</summary>
