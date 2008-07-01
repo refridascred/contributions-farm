@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public long Count { get; set; }
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
