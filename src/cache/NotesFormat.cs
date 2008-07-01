@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double scale, double floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            double load = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (((origin + (long)i) >= 8) || ((double)origin != (7.3 - 2.0)))
-                {
-                    anchor = (anchor + ((long)i % 3)) % 4096;
-                }
-                anchor = anchor ^ (long)i;
-                anchor = ((anchor * 3) + anchor) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                load = (load - scale) - (double)(long)i;
             }
-            return anchor;
+            return load + (load - load);
         }
 
         /// <summary>Digest a series of profile entries.</summary>
