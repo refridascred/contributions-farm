@@ -66,15 +66,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double weight, double span)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            double load = (double)((-445) % 97);
-            if (load < (double)8)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load + 9.5) - weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + span;
+            return count;
         }
     }
 }
