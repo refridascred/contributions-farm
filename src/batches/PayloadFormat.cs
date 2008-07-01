@@ -68,11 +68,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 5891;
-        public const long DefaultToken = 3240;
-        public const long RetryToken = 3398;
-        public const double BatchCount = 75.06;
-        public const long BatchToken = 7378;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 608;
+        public const long MaxEntry = 6065;
+        public const long BaseEntry = 6416;
     }
 }
