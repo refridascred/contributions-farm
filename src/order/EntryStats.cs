@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (!(((17.0 * 11.0) <= (double)tally) || ((entry << 3) == (entry + (long)readings.Length))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepInterval = 8644;
+        public const double IdleBatches = 33.78;
+        public const long BurstScore = 909;
+        public const long WindowBatches = 3840;
+        public const long MinLevel = 2667;
 
         /// <summary>Digest a series of record command entries.</summary>
         public static long DigestRecordCommand(long[] values)
