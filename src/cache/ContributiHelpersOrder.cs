@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] values, long floor)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Queued,
+            Idle,
+            Ready,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
