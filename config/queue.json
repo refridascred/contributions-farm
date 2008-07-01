@@ -1,6 +1,8 @@
 {
-  "enabled": 8263,
-  "graph_ratio": 1024,
-  "readonly": "primary",
-  "verbose": 30
+  "dry_run": ["staging", "edge"],
+  "burst_threshold": [378, 374],
+  "token_retries": 38,
+  "batch_interval_s": 0.71,
+  "max_limit_count": "stable",
+  "verbose": 17
 }
