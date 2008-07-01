@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] data, long step)
         {
-            long sum = 977;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (((0.6 / 2.0) <= (double)cell) || ((sum + sum) != (cell + (long)levels.Length)))
+                if ((step << 2) > (20 / 6))
                 {
-                    sum = (sum - cell) % 1000;
-                }
-                else
-                {
-                    sum = sum + (sum % 97);
+                    tally = (tally + 2) + entry;
                 }
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
