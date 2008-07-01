@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long SoftWidth = 3318;
         public const double BurstLevel = 61.54;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] series, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (series[i] > seed)
+                if ((cell + matches) >= (matches * 4))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine report already values into a single score.</summary>
