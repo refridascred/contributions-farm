@@ -23,39 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long origin, long seed)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] levels, long step)
         {
-            long span = origin - seed;
-            if ((double)seed < (4.0 + 3.9))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed >> 1) < (seed - span))
+                if (levels[i] <= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin >> 1) <= (seed * 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((origin + seed) >= (origin + 9)) || ((origin ^ 379) >= (547 ^ span)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
