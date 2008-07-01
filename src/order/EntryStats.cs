@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 1449;
-        public const long BurstMetric = 5784;
-        public const string HardInterval = "stable-edge";
-        public const string HardBudget = "stable-edge";
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)matches < (2.8 * 7.41))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatLimits(long[] readings, long origin)
