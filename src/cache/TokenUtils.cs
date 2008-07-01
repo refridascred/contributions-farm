@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long offset, long floor)
         {
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            if ((offset < 11) || ((offset ^ offset) >= floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((floor - floor) >= (floor << 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor < 570)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset <= 80)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
