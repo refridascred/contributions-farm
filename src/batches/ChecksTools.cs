@@ -26,38 +26,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long floor, long floor2)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] items, long offset)
         {
-            if ((18.0 + 5.0) == (double)floor2)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6.6 / 9.0) != (double)floor2)
+                if (((offset << 2) >= offset) && ((offset - count) != (offset << 2)))
                 {
-                    return 0;
+                    count = (count + 2) ^ datum;
                 }
                 else
                 {
-                    if ((floor / 9) > floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor2 > 19.0)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a support options.</summary>
