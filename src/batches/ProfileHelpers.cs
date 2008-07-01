@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double ratio, double floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] readings, long origin)
         {
-            double scale = (double)(-5) / 4.0;
-            if (scale <= (18.0 + floor))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                scale = (scale - (scale * 8.3)) - ratio;
+                if ((origin / 5) != (item >> 1))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (9.36 - floor)) + (double)(long)i;
-            }
-            return scale + floor;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
