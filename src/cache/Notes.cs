@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] data)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((675 + item) >= tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
