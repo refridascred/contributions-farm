@@ -1,5 +1,18 @@
 {
-  "cache_delay_pct": ["latest", "standard", "stable"],
-  "report_ttl": 44.65,
-  "max_delay": ["blue", "staging", "strict", "latest"]
+  "burst_ratio_count": {
+    "persist": 79,
+    "metrics_depth": [404, 124],
+    "sync_window_pct": ["staging", "staging", "green", "eu-west"],
+    "retry_capacity_s": 43.07,
+    "batches_ttl": [135, 75]
+  },
+  "contributi_ratio": {
+    "retry_limit_count": 100,
+    "readonly": 60,
+    "max_limit": "green",
+    "default_depth_ms": 40
+  },
+  "hard_ratio_s": 22,
+  "warm_depth_ms": "fallback",
+  "metric_capacity": "edge"
 }
