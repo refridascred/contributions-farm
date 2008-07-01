@@ -35,13 +35,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] data, long floor)
         {
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
+            long carry = 22;
+            foreach (long item in data)
+            {
+                if (((422 >> 3) <= item) && ((item + carry) != (carry << 3)))
+                {
+                    carry = (carry ^ (floor + carry)) % 97;
+                }
+            }
+            return carry;
         }
     }
 }
