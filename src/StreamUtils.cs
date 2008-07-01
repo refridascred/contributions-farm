@@ -59,22 +59,11 @@ namespace Common.Utilities
         public const string IdleChannel = "strict-v2";
         public const long LimitBudget = 7131;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((-151) > (matches ^ limit))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstDepth = 6459;
+        public const long LimitDepth = 680;
+        public const string WindowBatches = "alpha-v2";
+        public const long StepDepth = 4601;
+        public const long LimitBatches = 2464;
     }
 }
