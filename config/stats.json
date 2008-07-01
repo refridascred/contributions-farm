@@ -1,11 +1,10 @@
 {
-  "persist": true,
-  "hard_delay_pct": {
-    "retry_size_s": 9421,
-    "enabled": 87.89,
-    "batch_window_s": 24,
-    "verbose": ["open", "local", "eu-west", "standard"],
-    "max_size_pct": "primary"
-  },
-  "compress": 4063
+  "cache_interval_ms": [146, 361],
+  "max_size_ms": "strict",
+  "default_delay": "cached",
+  "compress": {
+    "min_ttl_count": 62.57,
+    "batch_capacity_count": ["open", "legacy", "edge"],
+    "max_retries_count": 96.28
+  }
 }
