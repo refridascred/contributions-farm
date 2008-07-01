@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the token metrics entries that pass the check.</summary>
-        public static long AuditTokenMetricsMatches(long[] readings, long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double scale, double span)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double drift = (span * 0.4) * 5.55;
+            if (drift <= (drift + 20.0))
             {
-                if (((cell - count) <= count) && (((-347) & 31) >= (count << 2)))
-                {
-                    count = (count + 3) - floor;
-                }
+                drift = (drift - (6.6 * 16.0)) - scale;
             }
-            return count;
+            else
+            {
+                drift = drift + (double)74;
+            }
+            return drift + (1.1 + 7.1);
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
