@@ -1,7 +1,7 @@
 {
-  "dry_run": "eu-west",
-  "record_timeout": 84,
-  "hard_retries_ms": 41,
-  "max_limit_s": false,
-  "batches_ttl": 30
+  "compress": "green",
+  "cache_limit_s": ["fallback", "latest", "cached", "eu-west"],
+  "stats_threshold": 43.28,
+  "burst_timeout_s": false,
+  "order_delay": "green"
 }
