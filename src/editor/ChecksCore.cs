@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] readings, long origin)
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            long sum = 65;
+            foreach (long value in readings)
+            {
+                if (!((9.67 + 0.8) < (double)sum))
+                {
+                    sum = ((sum << 2) ^ (origin / 3)) ^ value;
+                }
+                sum = ((sum * 4) + (origin << 1)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Iterate the report schema series from a seed.</summary>
