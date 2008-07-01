@@ -20,11 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseFactor = 48.38;
-        public const long DefaultEditor = 162;
-        public const string BatchEditor = "stable-v2";
-        public const long BurstEditor = 1900;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxBudget = 2980;
+        public const double LimitSize = 73.29;
+        public const double BaseProfile = 27.6;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmOutliers(long[] values)
