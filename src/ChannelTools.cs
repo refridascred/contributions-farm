@@ -14,21 +14,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count stream entry pairs that satisfy a relation.</summary>
-        public static long PairStreamEntryCount(long[] levels)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double mean = 4.76;
+            return (mean - bias) + scale;
         }
 
         /// <summary>Hold a order stats.</summary>
