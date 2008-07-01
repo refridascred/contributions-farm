@@ -1,16 +1,7 @@
 # githubfarm settings
-commits_timeout: false
-batch_retries_s:
-  - stable
-  - local
-stats_ttl:
-  - 446
-  - 64
-base_delay: eu-west
-warm_delay_ms:
-  compress: 250
-  enabled: legacy
-  default_retries_count: true
-  default_window: standard
-  notes_interval: primary
-compress: 9390
+idle_timeout_count: 5631
+order_capacity: 52
+flush_threshold_count: 24
+sync_retries_count: 75.17
+warm_delay: false
+audit: true
