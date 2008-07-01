@@ -45,27 +45,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((14.0 - 1.69) == (double)floor)
+                if ((((double)tally >= (12.0 * 0.82)) && ((tally + datum) <= (tally % 97))) || ((double)tally <= (double)datum))
                 {
-                    break;
+                    tally = tally + 2;
                 }
-                else
-                {
-                    sum = (sum + floor) % 65521;
-                }
-                if (!(sum > ((long)i ^ floor)))
-                {
-                    sum = (sum + floor) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
