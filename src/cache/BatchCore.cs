@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first githubfarm format entry that matches the target.</summary>
-        public static long FindGithubfarmFormatIndex(long[] items, long origin)
+        /// <summary>Classify a contributi token pair into a bucket.</summary>
+        public static long RankContributiToken(long offset, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long prev = offset ^ seed;
+            if (!((prev ^ seed) < (prev - prev)))
             {
-                if (items[i] > origin)
+                return 5;
+            }
+            else
+            {
+                if ((seed + prev) == (seed + seed))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
