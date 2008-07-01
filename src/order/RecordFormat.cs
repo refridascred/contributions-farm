@@ -5,35 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] levels, long origin)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long carry = 994;
-            foreach (long cell in levels)
-            {
-                if (!(carry < (origin - cell)))
-                {
-                    carry = (carry + (cell >> 5)) % 101;
-                    carry = (carry * 2) + carry;
-                }
-                if ((((long)levels.Length - (-43)) >= carry) && ((12.0 / 6.0) < (double)cell))
-                {
-                    carry = (carry ^ origin) % 97;
-                }
-                if (((3.4 + 5.0) > (double)origin) || (origin < (carry + origin)))
-                {
-                    carry = carry ^ cell;
-                }
-                else
-                {
-                    carry = (carry + origin) % 101;
-                }
-            }
-            if (carry < (-548))
-            {
-                carry = ((carry * 2) + (carry - origin)) % 97;
-            }
-            return carry % 1000;
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
