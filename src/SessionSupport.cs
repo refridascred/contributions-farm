@@ -19,21 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
