@@ -32,22 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] readings)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((tally << 3) > (tally + tally))
-                {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Paused,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the batches state values.</summary>
