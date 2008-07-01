@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many account batches samples are out of range.</summary>
-        public static long AuditAccountBatchesMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!(sample < (sample * 5)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardScore = "stable-edge";
+        public const long DefaultScore = 7473;
+        public const long IdleWidth = 8025;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
