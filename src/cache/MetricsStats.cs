@@ -28,19 +28,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long acc = 68;
-            foreach (long entry in series)
-            {
-                acc = (acc * 4) + (entry << 1);
-            }
-            if (acc > 78)
-            {
-                acc = acc + ((-59) / 9);
-            }
-            return acc % 65521;
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
