@@ -79,15 +79,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the window counter series from a seed.</summary>
-        public static long SeriesWindowCounter(long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long bound, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            long next = bound - origin;
+            if (next <= (bound ^ bound))
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((origin >= (next + bound)) || ((next ^ next) > next))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound + next) >= ((-4) & 7)) || ((next >> 4) >= bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (next < bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
