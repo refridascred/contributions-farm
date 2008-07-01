@@ -72,22 +72,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] levels)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)matches <= 0.85)
-                {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
