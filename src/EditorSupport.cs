@@ -45,15 +45,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account already counter forward.</summary>
-        public static long IterateAccountAlready(long offset)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Done,
+            New,
+            Idle,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
