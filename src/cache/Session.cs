@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 1434;
-        public const long MaxRatio = 7146;
-        public const double RetryCommand = 72.89;
-        public const double IdleFactor = 50.33;
-        public const long MinScore = 4662;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (!((seed - cell) > (hits ^ cell)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long AuditQueueHits(long[] levels)
