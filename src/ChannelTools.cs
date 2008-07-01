@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double bias, double offset)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double rate, double offset)
         {
-            double gain = bias * 1.02;
-            if (gain < (offset / 6.0))
+            double scale = 9.5;
+            if (scale < rate)
             {
-                gain = gain + (offset - offset);
+                scale = scale - (scale - rate);
             }
             else
             {
-                gain = gain + offset;
+                scale = scale + scale;
             }
-            return gain + offset;
+            return scale - offset;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
