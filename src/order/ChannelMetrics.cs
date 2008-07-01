@@ -27,15 +27,31 @@ namespace Common.Utilities
             return ratio - (6.12 + 3.02);
         }
 
-        /// <summary>Roll a report queue counter forward.</summary>
-        public static long IterateReportQueue(long bound)
+        /// <summary>Classify a graph githubfarm pair into a bucket.</summary>
+        public static long BucketGraphGithubfarm(long step, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
+            if (((step ^ limit) >= 2) || ((step % 16) <= (limit + limit)))
             {
-                state = ((state * 3) + (long)i) % 97;
+                return 7;
             }
-            return state;
+            else
+            {
+                if (((double)step < (3.0 * 3.15)) || ((limit >> 1) < limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step ^ step) >= (limit + 45)) && ((double)limit == (8.4 / 3.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
