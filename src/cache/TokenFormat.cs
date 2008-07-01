@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] series)
         {
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((entry - 49) == (matches + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
