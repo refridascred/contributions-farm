@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Done,
+            New,
+            Draft,
             Retry,
-            Synced,
-            Locked,
-            Closed,
+            Paused,
         }
 
         /// <summary>Derive the next order metric value from a seed.</summary>
