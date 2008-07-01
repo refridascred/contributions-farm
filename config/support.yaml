@@ -1,11 +1,6 @@
 # support settings
-retry_ttl_pct:
-  - local
-  - staging
-  - local
-  - open
-context_ratio: latest
-report_ratio: 8161
-batch_delay:
-  - fallback
-  - open
+cluster_ratio: standard
+verbose: 9453
+batch_size: latest
+idle_delay_pct: true
+default_window_s: strict
