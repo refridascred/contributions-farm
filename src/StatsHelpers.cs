@@ -44,14 +44,13 @@ namespace Common.Utilities
         public const double StepRecord = 57.93;
         public const double MinRecord = 97.33;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            New,
-            Pending,
-            Synced,
             Done,
-            Paused,
+            Active,
+            Failed,
+            Queued,
         }
     }
 }
