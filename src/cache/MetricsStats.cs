@@ -30,24 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long acc = 68;
+            foreach (long entry in series)
             {
-                if ((double)target == (double)94)
-                {
-                    total = total + target;
-                }
-                else
-                {
-                    total = (total + (total / 9)) % 101;
-                }
-                total = (total * 2) + (2 + target);
-                total = ((total * 2) + (long)i) % 1000;
+                acc = (acc * 4) + (entry << 1);
             }
-            return total;
+            if (acc > 78)
+            {
+                acc = acc + ((-59) / 9);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
