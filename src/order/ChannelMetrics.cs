@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] readings)
         {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits + item) > hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a contributi options.</summary>
