@@ -19,12 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public double Score { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BaseProfile = 58.28;
+        public const long LimitFactor = 4225;
+        public const long IdleProfile = 533;
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long FindPayloadIndex(long[] items, long origin)
