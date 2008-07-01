@@ -1,17 +1,21 @@
 # entry settings
-burst_retries_ms:
-  soft_size_ms: standard
-  max_delay: 42.68
-  flush_ttl_pct: 500
-  flush_depth_count:
-    poll_timeout_count: 24
-    default_depth: true
-    hard_window_count: 1084
-    poll_delay_count: 32.22
-    base_ratio_pct: true
-    soft_interval_ms: 10.93
-  max_retries: 4090
-burst_threshold: 60
-flush_delay_s: 65
-profile_threshold: true
-channel_retries: 60
+batch_capacity:
+  base_size_count: 566
+  cache_retries: 92.74
+  cache_retries_s: 100
+  burst_threshold: edge
+default_retries:
+  - strict
+  - open
+  - fallback
+soft_interval: edge
+hard_limit_pct: 28.46
+persist:
+  - strict
+  - staging
+  - primary
+warm_size:
+  - standard
+  - staging
+  - staging
+  - edge
