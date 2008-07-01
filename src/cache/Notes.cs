@@ -62,22 +62,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] values, long limit)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen - seen) < (limit >> 2))
+                if (readings[i] <= target)
                 {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
