@@ -1,12 +1,4 @@
 # entry settings
-default_size_pct: false
-warm_window_s: 20
-window_interval:
-  - local
-  - standard
-  - strict
-batch_delay:
-  - 464
-  - 400
-  - 136
-format_ratio: 30
+sync_delay_pct: standard
+readonly: stable
+layout_depth: 100
