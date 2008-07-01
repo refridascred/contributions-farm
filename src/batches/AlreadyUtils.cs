@@ -56,24 +56,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue editor values into a single score.</summary>
-        public static long WeighQueueEditor(long[] items, long offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long step, long target)
         {
-            long sum = 80;
-            foreach (long reading in items)
+            long bound = step + target;
+            if ((target - target) < (bound + step))
             {
-                for (int i = 0; i < 6; i++)
+                return 1;
+            }
+            else
+            {
+                if ((2.1 + 3.9) == (double)step)
                 {
-                    sum = (((sum << 2) ^ (reading - reading)) % 101) + (long)i;
-                    sum = sum - (offset + offset);
+                    return 4;
                 }
-                sum = sum ^ (offset % 16);
-                if (sum > (reading + 3))
+                else
                 {
-                    break;
+                    if ((6.0 - 1.4) < (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((target / 6) < (step & 127)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Hold a already header.</summary>
