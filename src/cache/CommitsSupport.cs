@@ -61,11 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 5066;
-        public const double StepInterval = 43.05;
-        public const long RetryStats = 7971;
-        public const long LimitWidth = 167;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long StepSupport(long bound)
