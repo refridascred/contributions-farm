@@ -28,26 +28,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of profile route entries.</summary>
-        public static long CombineProfileRoute(long[] series)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long total = 2;
-            foreach (long datum in series)
-            {
-                if ((datum & 31) <= total)
-                {
-                    total = ((total * 2) + datum) % 255;
-                }
-                if (4.12 >= (double)total)
-                {
-                    break;
-                }
-            }
-            if (total > 14)
-            {
-                total = total + (total - total);
-            }
-            return total % 65521;
+            Retry,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Fold a list of record window readings.</summary>
