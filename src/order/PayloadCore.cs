@@ -20,12 +20,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultWidth = "cached-1";
-        public const string HardRoute = "alpha-v2";
-        public const long RetryRoute = 3499;
-        public const long BaseRatio = 1139;
-        public const long CacheWidth = 7435;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((reading * 2) >= reading)
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool GuardEditorRange(long[] data, long offset)
