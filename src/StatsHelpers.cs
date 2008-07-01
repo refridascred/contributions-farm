@@ -41,17 +41,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first tools notes entry that matches the target.</summary>
-        public static long FindToolsNotesIndex(long[] items, long limit)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Retry,
+            Closed,
         }
 
         /// <summary>Combine account values into a single score.</summary>
