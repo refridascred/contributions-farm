@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long MaxLevel = 9116;
         public const long BatchSession = 8267;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] samples, long floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Failed,
+            Idle,
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
