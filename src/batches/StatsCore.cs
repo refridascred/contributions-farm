@@ -67,12 +67,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Classify a token contributi pair into a bucket.</summary>
+        public static long SortTokenContributi(long seed, long seed2)
         {
-            Dropped,
-            Active,
-            Paused,
+            if ((double)seed != (double)49)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed2 * 2) > seed2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((169 / 5) != (seed2 + seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (double)21)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine buffer command values into a single score.</summary>
