@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long MaxLevel = 9116;
         public const long BatchSession = 8267;
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Draft,
-            Synced,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowWidth = 39.49;
+        public const string MinBudget = "legacy-edge";
+        public const long BurstWidth = 2117;
+        public const long HardMetric = 9022;
+        public const long LimitMetric = 4828;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double BlendMetric(double rate, double floor)
