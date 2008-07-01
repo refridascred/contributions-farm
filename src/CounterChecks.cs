@@ -10,17 +10,16 @@ namespace Common.Utilities
         public const long BaseBuffer = 5210;
         public const string SoftBuffer = "cached-v2";
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] series, long seed)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
+                total = (total << 2) ^ total;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
