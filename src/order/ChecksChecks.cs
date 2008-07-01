@@ -13,11 +13,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long sum = 59;
+            foreach (long sample in levels)
+            {
+                sum = (((sum * 5) + (1 & 255)) % 101) + sample;
+            }
+            if (sum < 49)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
