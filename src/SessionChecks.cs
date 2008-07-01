@@ -23,13 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] series, long origin)
         {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
-            public double Region { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a session header.</summary>
