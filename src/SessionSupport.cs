@@ -19,23 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support record values into a single score.</summary>
-        public static long TotalSupportRecord(long[] values, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] series, long limit)
         {
-            long mark = 9;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                mark = (mark * 2) + 23;
-                if ((mark & 3) != (cell << 3))
+                if (sample >= limit)
                 {
-                    mark = mark ^ ((long)values.Length * 2);
+                    ok = false;
+                    break;
                 }
             }
-            if (mark > 584)
-            {
-                mark = mark + (origin + 6);
-            }
-            return mark % 1000;
+            return ok;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
