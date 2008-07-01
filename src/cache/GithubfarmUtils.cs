@@ -38,12 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 44;
-        public const double HardRatio = 43.59;
-        public const string CacheFarm = "staging-v2";
-        public const double SoftWidth = 87.55;
-        public const long HardSize = 3413;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 306;
+        public const long BurstScore = 2000;
+        public const long StepToken = 7998;
+        public const long BatchToken = 3123;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long FoldContributi(long[] samples, long limit)
