@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long bound)
         {
-            Draft,
-            Pending,
-            Idle,
-            Synced,
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((sum + bound) <= bound)
+                {
+                    sum = (sum + bound) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (sum - sum)) % 97;
+                    sum = (sum ^ (bound + (long)i)) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
