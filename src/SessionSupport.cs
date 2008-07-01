@@ -34,22 +34,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] values)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count ^ value) <= (count * 5))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
