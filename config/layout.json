@@ -1,17 +1,6 @@
 {
-  "max_timeout": 44.94,
-  "batch_capacity": {
-    "strict": {
-      "dry_run": 97.76,
-      "flush_limit_ms": true,
-      "audit": 26.86,
-      "metric_delay": ["staging", "cached", "fallback", "latest"]
-    },
-    "hard_window_ms": "primary",
-    "idle_ttl": [45, 247]
-  },
-  "max_ratio_ms": true,
-  "order_size": ["eu-west", "blue", "primary"],
-  "default_size_pct": "cached",
-  "session_delay": false
+  "metrics_size": 100,
+  "idle_depth": "eu-west",
+  "max_size_pct": [355, 432],
+  "retry_delay": "latest"
 }
