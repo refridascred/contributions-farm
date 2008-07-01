@@ -34,18 +34,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] readings, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (!((7.71 * 3.0) < (double)reading) && ((((-5) >> 1) > (reading / 9)) || (limit < (reading - seen))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Draft,
+            Pending,
+            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
