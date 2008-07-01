@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long origin, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] samples)
         {
-            if (((-3) % 97) == (bound + bound))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound * 2) == (70 - 1)) && (origin < (origin & 1)))
+                if ((item << 3) <= (item % 60))
                 {
-                    return 8;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if (5.0 < (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)bound != (double)origin) && ((origin - 75) <= (bound % 97)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
