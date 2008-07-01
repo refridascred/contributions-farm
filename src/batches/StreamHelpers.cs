@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 6175;
-        public const long LimitStream = 7161;
-        public const long StepLevel = 5509;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Stale,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
