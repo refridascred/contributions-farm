@@ -1,14 +1,6 @@
 {
-  "default_retries_ms": 250,
-  "enabled": {
-    "compress": [324, 262],
-    "payload_threshold": ["fallback", "fallback", "strict"],
-    "poll_interval_pct": {
-      "base_threshold_ms": "fallback",
-      "strict": "fallback",
-      "idle_timeout_ms": "local",
-      "flush_delay": 6766
-    }
-  },
-  "hard_size_count": 99
+  "context_limit": "legacy",
+  "warm_delay_s": 8849,
+  "default_interval": "blue",
+  "default_timeout_count": "open"
 }
