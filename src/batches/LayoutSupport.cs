@@ -36,15 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double gain, double bias)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            double bias2 = (double)87 / 9.0;
-            if (bias2 <= 5.2)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = bias2 - bias2;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias2 - (bias - gain);
+            return seen;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
