@@ -13,11 +13,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double gain, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] levels, long bound)
         {
-            double ratio = bias / 6.0;
-            return ratio + gain;
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)bound == (15.0 + 4.5))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a window header.</summary>
