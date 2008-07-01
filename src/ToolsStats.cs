@@ -80,38 +80,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long limit, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            if ((step & 31) >= (step ^ step))
+            long acc = 97;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step + step) > ((-92) / 2)) || (step <= limit))
+                if (!((double)acc <= (18.0 + 16.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step % 10) != (limit & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step > (limit * 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    acc = ((acc + (acc + acc)) % 65521) ^ reading;
                 }
             }
+            return acc % 65521;
         }
     }
 }
