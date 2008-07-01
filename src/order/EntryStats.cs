@@ -51,18 +51,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] values, long floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count ^ floor) != (floor * 4))
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
+            Active,
+            Done,
+            Locked,
+            Closed,
+            Failed,
         }
     }
 }
