@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] data)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9.0 + 7.95) < (double)value)
+                if (levels[i] < target)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank command input into a small class.</summary>
