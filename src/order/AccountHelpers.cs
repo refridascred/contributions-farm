@@ -10,17 +10,28 @@ namespace Common.Utilities
         public const long HardToken = 7698;
         public const string StepWidth = "strict-1";
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] data, long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 215;
+            foreach (long entry in readings)
             {
-                if (data[i] <= floor)
+                result = (result << 2) ^ (30 >> 5);
+                if (((double)result >= (double)4) || ((seed / 4) < entry))
                 {
-                    return (long)i;
+                    result = (result + (entry % 3)) % 255;
+                    result = result ^ (entry << 3);
+                }
+                if ((3 * 3) <= (seed / 4))
+                {
+                    result = result + result;
+                }
+                else
+                {
+                    result = (result + (entry >> 3)) % 97;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the stats status values.</summary>
