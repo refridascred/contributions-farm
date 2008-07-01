@@ -21,17 +21,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] values, long limit)
+        /// <summary>Project the next context commits value.</summary>
+        public static double AdjustContextCommits(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(3 ^ 6);
+            if (load > (double)747)
             {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
+                load = load + (load * 16.0);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (span * 16.0)) - (double)(long)i;
+            }
+            return load - (load + gain);
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
