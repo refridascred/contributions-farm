@@ -1,19 +1,10 @@
 {
-  "dry_run": "standard",
-  "min_window": 12,
-  "order_threshold": "stable",
-  "warm_window": {
-    "warm_ttl_ms": 79,
-    "persist": 1024,
-    "cache_delay_ms": "strict",
-    "format_depth": {
-      "burst_delay_count": 250,
-      "soft_interval": 5280,
-      "counter_capacity": 3015,
-      "record_threshold": 20.33,
-      "graph_interval": false,
-      "format_threshold": [213, 55, 369, 400]
-    },
-    "warm_interval_s": 27
-  }
+  "warm_ratio_ms": 1438,
+  "flush_delay_count": {
+    "sync_limit_s": [152, 374, 301, 58],
+    "dry_run": "staging",
+    "context_delay": 113
+  },
+  "warm_capacity_s": 93.56,
+  "command_size": "cached"
 }
