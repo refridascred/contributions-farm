@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const double MaxRatio = 7.91;
         public const double LimitSpan = 36.21;
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Retry,
-            Closed,
+            Failed,
+            Queued,
             Idle,
+            Dropped,
         }
 
         /// <summary>Validate contributi support readings against a bound.</summary>
