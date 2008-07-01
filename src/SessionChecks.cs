@@ -46,13 +46,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double ratio, double bias)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            double weight = bias;
+            return (weight + 3.43) + ratio;
         }
     }
 }
