@@ -59,12 +59,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public double Stamp { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            Stale,
+            Done,
+            Active,
+            Ready,
         }
     }
 }
