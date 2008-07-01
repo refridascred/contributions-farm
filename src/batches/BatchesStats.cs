@@ -35,33 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] samples, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (datum != origin)
                 {
-                    anchor = ((anchor + seed) % 65521) ^ (long)i2;
-                }
-                if (!((1 * 3) < seed))
-                {
-                    anchor = ((anchor * 5) + ((-205) ^ (long)i)) % 65521;
-                    anchor = anchor + (anchor + 37);
-                }
-                if (seed > (seed % 2))
-                {
-                    anchor = (anchor + (seed - seed)) % 255;
+                    stale = false;
                     break;
                 }
-                else
-                {
-                    anchor = (anchor << 3) ^ (seed & 15);
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return stale;
         }
     }
 }
