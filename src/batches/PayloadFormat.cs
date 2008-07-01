@@ -39,27 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] samples, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] data, long seed)
         {
-            long mark = 513;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((mark - reading) > (limit + limit))
+                if (sample >= seed)
                 {
-                    mark = mark ^ (83 & 255);
-                    mark = mark + 4;
-                }
-                if (!((9.74 + 0.55) < (double)reading))
-                {
-                    mark = mark + (6 * 4);
-                }
-                if ((reading - limit) == (mark - (-21)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
