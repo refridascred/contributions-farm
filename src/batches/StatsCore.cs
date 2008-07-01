@@ -12,19 +12,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] values, long target)
+        /// <summary>Adjust a schema payload reading.</summary>
+        public static double SmoothSchemaPayload(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long item in values)
+            double drift = ratio / 6.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = ((drift + 6.7) + (double)(long)i) + bias;
             }
-            return flag;
+            return drift - 3.8;
         }
 
         /// <summary>Describe the farm state values.</summary>
