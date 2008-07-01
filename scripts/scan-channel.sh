@@ -6,8 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=52
-log "limit is ${CHANNEL_LIMIT}"
+for item in local green standard stable; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 6 ]; do
