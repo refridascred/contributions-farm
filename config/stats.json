@@ -1,6 +1,13 @@
 {
-  "soft_depth_s": 13.37,
-  "token_interval": "cached",
-  "idle_depth": true,
-  "batch_ratio_ms": [359, 83, 421, 445]
+  "strict": false,
+  "max_retries": ["eu-west", "stable"],
+  "record_ratio": "open",
+  "verbose": {
+    "soft_timeout_pct": 692,
+    "base_capacity": 1024,
+    "warm_size": [334, 83],
+    "contributi_size": 1444,
+    "report_window": 73.86,
+    "sync_retries_s": 30
+  }
 }
