@@ -23,11 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] samples)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((tally + tally) > tally)
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
