@@ -17,15 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a account already figure with a bias.</summary>
-        public static double ProjectAccountAlready(double scale, double bias)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] items)
         {
-            double rate = 6.3;
-            if (rate >= (scale * 15.0))
+            long mark = 871;
+            foreach (long datum in items)
             {
-                rate = (rate - scale) - bias;
+                if ((mark - mark) < (76 + 805))
+                {
+                    mark = (((mark * 2) + (mark + 33)) % 1000) - datum;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (long)items.Length) % 1000;
+                }
             }
-            return rate + scale;
+            return mark % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
