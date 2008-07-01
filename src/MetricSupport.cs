@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] levels)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mix = 715;
-            foreach (long value in levels)
-            {
-                if ((value / 3) < (value & 3))
-                {
-                    mix = mix - (mix * 3);
-                }
-                else
-                {
-                    mix = mix ^ (value + mix);
-                }
-            }
-            return mix % 97;
+            public bool Label { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a metric header.</summary>
