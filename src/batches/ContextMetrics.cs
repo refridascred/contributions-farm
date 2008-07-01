@@ -16,15 +16,14 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double scale, double offset)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            double scale2 = 1.8;
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = ((scale2 + offset) + (double)(long)i) - scale;
-            }
-            return scale2 + scale2;
+            Failed,
+            Locked,
+            Idle,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
