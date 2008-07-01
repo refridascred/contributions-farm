@@ -54,19 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double weight, double bias)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            double weight2 = weight;
-            if (weight2 <= weight2)
-            {
-                weight2 = (weight2 - (weight2 - weight2)) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 + (double)31) + (double)(long)i;
-            }
-            return weight2 + weight;
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Locate a account reading by value.</summary>
