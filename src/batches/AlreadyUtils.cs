@@ -59,14 +59,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Synced,
-            Dropped,
-            Ready,
-            Queued,
-            Failed,
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
