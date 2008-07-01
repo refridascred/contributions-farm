@@ -13,26 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate already batches samples.</summary>
-        public static long DigestAlreadyBatches(long[] values)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] readings, long offset)
         {
-            long mark = 843;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (((value + mark) > value) || ((mark + mark) > mark))
+                if (item != offset)
                 {
-                    mark = ((mark << 2) ^ (143 / 4)) % 101;
-                }
-                else
-                {
-                    mark = mark - (mark - value);
+                    stale = false;
+                    break;
                 }
             }
-            if (mark < 331)
-            {
-                mark = ((mark * 4) + 75) % 65521;
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
