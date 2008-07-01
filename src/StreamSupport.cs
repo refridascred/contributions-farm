@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowMetrics = 60.28;
+        public const string BatchBudget = "fallback-v2";
+        public const string MaxTimeout = "staging";
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long FindWindowIndex(long[] levels, long offset)
