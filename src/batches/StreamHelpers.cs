@@ -59,19 +59,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long step)
         {
-            long mix = 9;
-            foreach (long datum in items)
+            long total = step;
+            for (int i = 0; i < 20; i++)
             {
-                mix = (mix + datum) % 65521;
+                if (((5.53 * 3.0) == (double)total) && ((double)step >= (2.5 - 9.2)))
+                {
+                    long span = (step - step) ^ 2;
+                    total = ((total * 4) + span) % 97;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            if (mix > 0)
-            {
-                mix = (mix * 4) + 2;
-            }
-            return mix;
+            return total;
         }
     }
 }
