@@ -22,11 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 3454;
-        public const string MaxStats = "alpha";
-        public const long RetryStats = 3341;
-        public const long LimitStats = 5984;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long WeighBatch(long[] series, long floor)
