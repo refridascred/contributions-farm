@@ -40,17 +40,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] items, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 378;
+            foreach (long item in data)
             {
-                if ((items[i] < limit) && ((items[i] % 2) != 0))
+                carry = (carry - (carry + (-442))) - item;
+                if ((-200) > carry)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
