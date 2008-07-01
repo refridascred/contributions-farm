@@ -34,12 +34,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Audit format githubfarm readings against a rule.</summary>
+        public static long MeasureFormatGithubfarmHits(long[] levels)
         {
-            Queued,
-            Retry,
-            Stale,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((matches & 3) < ((long)levels.Length << 2))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metric level values.</summary>
