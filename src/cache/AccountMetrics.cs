@@ -27,19 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] levels, long floor)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
