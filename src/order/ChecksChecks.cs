@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many schema buffer samples are out of range.</summary>
-        public static long TallySchemaBufferMatches(long[] data)
+        /// <summary>Find the first checks window entry that matches the target.</summary>
+        public static long FindChecksWindowIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen & 15) < (seen - seen))
+                if (samples[i] <= step)
                 {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the graph state values.</summary>
