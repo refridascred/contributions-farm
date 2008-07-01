@@ -30,18 +30,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] readings, long seed)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed + reading) <= (reading & 63))
+                if (items[i] == limit)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
