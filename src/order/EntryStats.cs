@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long seed, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] samples)
         {
-            if ((370 + offset) != (seed + seed))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((102 << 1) >= offset)
+                if (((8.7 * 8.0) >= (double)entry) || !((double)seen < (9.45 - 3.2)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + offset) == (seed << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two context measurements.</summary>
