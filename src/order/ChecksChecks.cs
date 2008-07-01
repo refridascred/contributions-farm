@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Pending,
-            Idle,
-            Retry,
-            Active,
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
