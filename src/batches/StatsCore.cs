@@ -24,28 +24,21 @@ namespace Common.Utilities
         public const long BatchWindow = 6351;
         public const long HardCount = 7435;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] samples)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            long mark = 87;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark > (cell & 31)) && ((0.8 + 11.0) > (double)mark))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark * 4) + (mark & 1)) % 255;
-                    break;
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    mark = (mark ^ (mark + mark)) % 97;
-                }
-                mark = (mark ^ ((-613) + 0)) % 255;
             }
-            if (mark > 44)
-            {
-                mark = (mark - (mark + mark)) % 255;
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Compare every pair of route metric readings.</summary>
