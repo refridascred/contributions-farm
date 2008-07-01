@@ -27,16 +27,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long step, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            if ((62 + limit) == (limit << 3))
             {
-                mix = ((mix * 2) + origin) % 4096;
-                mix = ((mix * 4) + (long)i) % 101;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((step & 1) <= (limit ^ limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step / 2) == (step ^ limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step & 1) >= 1)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
