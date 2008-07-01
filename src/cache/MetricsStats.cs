@@ -34,22 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload already values into a single score.</summary>
-        public static long DigestPayloadAlready(long[] series)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long anchor = 40;
-            foreach (long value in series)
-            {
-                if (((long)series.Length * 5) > anchor)
-                {
-                    anchor = ((anchor ^ (4 << 1)) % 97) ^ value;
-                }
-            }
-            if (anchor < (-168))
-            {
-                anchor = (anchor ^ anchor) % 97;
-            }
-            return anchor;
+            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
