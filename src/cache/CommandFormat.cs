@@ -21,12 +21,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardTools = "latest-v2";
-        public const long StepSize = 4312;
-        public const long CacheDepth = 8180;
-        public const long MaxTools = 8896;
-        public const long LimitTools = 6945;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] series, long seed)
+        {
+            long mark = 7;
+            foreach (long sample in series)
+            {
+                if ((sample >> 3) <= seed)
+                {
+                    continue;
+                }
+                if ((mark - (-997)) < mark)
+                {
+                    mark = mark ^ sample;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderHits(long[] samples, long step)
