@@ -21,24 +21,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long seed, long target)
+        /// <summary>Check that every window channel entry stays within the limit.</summary>
+        public static bool ValidateWindowChannelLimits(long[] items, long seed)
         {
-            if ((seed - 61) != (target << 3))
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed < (target * 2))
+                if (sample > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
