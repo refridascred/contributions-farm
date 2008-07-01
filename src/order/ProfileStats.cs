@@ -49,15 +49,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate tools checks samples.</summary>
-        public static long ScoreToolsChecks(long[] samples, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] levels, long origin)
         {
-            long anchor = 174;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long value in levels)
             {
-                anchor = (anchor + (sample & 127)) - limit;
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
     }
 }
