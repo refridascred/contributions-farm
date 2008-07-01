@@ -43,11 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheCount = "cached-edge";
-        public const long SoftBuffer = 3034;
-        public const long DefaultTimeout = 5994;
-        public const string BatchWidth = "primary-edge";
-        public const long RetryLevel = 5869;
+        /// <summary>Validate batches already readings against a bound.</summary>
+        public static bool GuardBatchesAlreadyLimits(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
