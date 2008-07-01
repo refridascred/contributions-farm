@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseCount = 3527;
-        public const long BaseDepth = 5381;
-        public const string WindowRecord = "legacy-v2";
-        public const long BatchLevel = 5783;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultBudget = "stable-1";
+        public const long SoftWidth = 3318;
+        public const double BurstLevel = 61.54;
 
         /// <summary>Validate record profile readings against a bound.</summary>
         public static bool GuardRecordProfileBounds(long[] readings, long step)
