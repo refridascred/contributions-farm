@@ -82,12 +82,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            Locked,
+            Active,
+            Failed,
         }
     }
 }
