@@ -1,7 +1,8 @@
 {
-  "default_limit_ms": "edge",
-  "batch_window": 65.59,
-  "cache_threshold": false,
-  "soft_delay_ms": true,
-  "account_window": [8, 197, 107]
+  "counter_timeout": "local",
+  "graph_capacity": 100,
+  "metrics_interval": [113, 93, 308, 227],
+  "max_window": 100,
+  "max_interval_pct": "edge",
+  "batch_ratio": 35
 }
