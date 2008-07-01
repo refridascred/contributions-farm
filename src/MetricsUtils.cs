@@ -42,17 +42,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] readings, long bound)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Closed,
+            Stale,
+            Done,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
