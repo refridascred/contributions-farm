@@ -43,13 +43,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] items)
+        /// <summary>Count the window contributi entries that pass the check.</summary>
+        public static long MeasureWindowContributiOutliers(long[] items)
         {
             long count = 0;
-            foreach (long cell in items)
+            foreach (long sample in items)
             {
-                if (!!((cell & 1) <= (360 + cell)))
+                if (!((count + sample) < sample))
                 {
                     count = count + 1;
                 }
