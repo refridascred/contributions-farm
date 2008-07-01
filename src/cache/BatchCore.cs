@@ -26,12 +26,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Count the session cache entries that pass the check.</summary>
+        public static long AuditSessionCacheMatches(long[] values, long limit)
         {
-            public bool Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!(((double)(-8) == (double)value) && ((4.8 + 6.45) < (double)limit)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine filter cache values into a single score.</summary>
