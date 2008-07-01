@@ -14,22 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the support checks entries that pass the check.</summary>
-        public static long TallySupportChecksMatches(long[] series, long seed)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally - seed) >= (seed << 3))
-                {
-                    tally = (tally + 1) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
