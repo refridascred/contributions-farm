@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] samples)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item == (double)tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a context entry.</summary>
