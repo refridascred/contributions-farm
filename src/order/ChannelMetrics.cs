@@ -12,19 +12,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double weight, double offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] data, long bound)
         {
-            double ratio = weight;
-            if (ratio > (weight - 4.34))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                ratio = (ratio + (double)(-737)) - offset;
+                if (!((entry - matches) >= entry) && (entry > (matches % 2)))
+                {
+                    matches = (matches + 3) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + weight) + (double)(long)i;
-            }
-            return ratio - (6.12 + 3.02);
+            return matches;
         }
 
         /// <summary>Classify a graph githubfarm pair into a bucket.</summary>
