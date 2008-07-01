@@ -1,5 +1,12 @@
 {
-  "readonly": 60,
-  "idle_window_count": 84.09,
-  "batch_ratio_pct": true
+  "session_depth": true,
+  "sync_delay_count": 30,
+  "warm_threshold_ms": "staging",
+  "enabled": true,
+  "default_interval_s": 500,
+  "layout_depth": {
+    "stats_ratio": ["blue", "green", "primary"],
+    "default_timeout_ms": 6343,
+    "max_threshold_count": false
+  }
 }
