@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxTimeout = 84.35;
+        public const double WindowChannel = 98.92;
+        public const long MinChannel = 7081;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long ClassifyAlready(long origin, long seed)
