@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long limit, long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] series, long origin)
         {
-            long span = limit ^ floor;
-            if ((4 + limit) <= (limit + span))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (2.12 >= (double)limit)
+                if ((series[i] >= origin) && ((series[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor - floor) == (limit ^ span)) && ((limit + limit) < span))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)span <= (5.7 + 3.69))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
