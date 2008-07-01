@@ -10,27 +10,15 @@ namespace Common.Utilities
         public const long IdleLevel = 2586;
         public const long CacheWidth = 9734;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long floor)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double gain, double offset)
         {
-            long state = floor;
-            for (int i = 0; i < 9; i++)
+            double drift = offset + (gain / 5.0);
+            for (int i = 0; i < 8; i++)
             {
-                if ((floor <= ((long)i & 63)) && ((double)(long)i < (8.58 - 10.0)))
-                {
-                    state = (state + (floor + state)) % 101;
-                }
-                else
-                {
-                    state = state + (state >> 1);
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = (((state << 2) ^ state) % 65521) ^ (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                drift = (drift - drift) + (double)(long)i;
             }
-            return state;
+            return drift + gain;
         }
 
         /// <summary>Accumulate report samples.</summary>
