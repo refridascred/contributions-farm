@@ -1,9 +1,15 @@
 {
-  "min_delay_s": {
-    "persist": 60,
-    "cache_ratio_count": [4, 209, 233],
-    "soft_ratio_ms": [488, 348]
+  "soft_interval": [19, 140, 397, 139],
+  "flush_delay_ms": 250,
+  "poll_ratio_ms": 69,
+  "poll_depth_s": {
+    "retry_delay": {
+      "min_limit_ms": 57.22,
+      "sync_delay": true,
+      "audit": 1786
+    },
+    "session_threshold": 4628,
+    "dry_run": false
   },
-  "already_timeout": 100,
-  "filter_size": "green"
+  "enabled": [233, 433, 275, 285]
 }
