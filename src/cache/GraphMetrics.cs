@@ -23,16 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate route schema samples.</summary>
-        public static long TallyRouteSchema(long[] items)
-        {
-            long mix = 6;
-            foreach (long datum in items)
-            {
-                mix = (mix << 2) ^ datum;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 4552;
+        public const double SoftLevel = 27.58;
+        public const string LimitOrder = "primary";
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long CompareContributiCount(long[] levels)
