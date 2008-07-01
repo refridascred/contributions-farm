@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheScore = 1974;
-        public const long DefaultProfile = 9762;
-        public const long SoftProfile = 8627;
-        public const long BatchProfile = 3996;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
