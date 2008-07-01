@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] series, long floor)
+        /// <summary>Find the first githubfarm metrics entry that matches the target.</summary>
+        public static long LookupGithubfarmMetricsIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] <= floor)
+                if (levels[i] <= seed)
                 {
                     return (long)i;
                 }
