@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] items, long target)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long acc = 536;
-            foreach (long cell in items)
-            {
-                if ((double)acc > 6.52)
-                {
-                    acc = ((acc * 5) + (36 + cell)) % 255;
-                }
-            }
-            if (acc > (-53))
-            {
-                acc = (acc ^ (target * 4)) % 97;
-            }
-            return acc;
+            public bool Level { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
