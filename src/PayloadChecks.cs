@@ -74,19 +74,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] levels, long offset)
+        /// <summary>Find the first contributi support entry that matches the target.</summary>
+        public static long FindContributiSupportIndex(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry > offset)
+                if (data[i] >= step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
