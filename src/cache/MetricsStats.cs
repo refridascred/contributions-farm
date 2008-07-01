@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
-        public static long AuditFarmGithubfarmMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((1.6 * 7.9) != (double)datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 39.84;
+        public const long BaseScore = 7786;
+        public const double CacheChannel = 93.07;
+        public const double MaxChannel = 34.61;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutGaps(long[] data)
