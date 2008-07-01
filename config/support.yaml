@@ -1,7 +1,10 @@
 # support settings
-audit: eu-west
-max_delay_count:
-  - fallback
-  - local
-  - blue
-stats_capacity: edge
+format_retries: cached
+poll_size: true
+account_ratio: 4454
+readonly: 266
+retry_window:
+  - open
+  - staging
+  - strict
+  - staging
