@@ -29,23 +29,22 @@ namespace Common.Utilities
         public const string StepBatch = "stable-1";
         public const long CacheBatch = 9148;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] data, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] series, long offset)
         {
-            long total = 471;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((long)data.Length == ((long)data.Length + reading))
+                if (((hits + 0) > (hits << 3)) || ((2.5 + 1.17) == (double)sample))
                 {
-                    total = ((total << 2) ^ (total & 63)) % 65521;
+                    hits = (hits + 1) - offset;
                 }
-                total = total ^ (reading - 0);
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (total < 4)
-            {
-                total = (total << 3) ^ (offset + offset);
-            }
-            return total % 1000;
+            return hits;
         }
     }
 }
