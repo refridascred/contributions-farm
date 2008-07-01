@@ -1,7 +1,5 @@
 # entry settings
-burst_depth_s: 70.25
-layout_threshold: 9482
-min_size_ms: primary
-enabled: open
-default_depth_count: 58
-already_timeout: 19
+contributi_limit: 5619
+base_delay_pct: eu-west
+cache_retries_s: 41.96
+commits_window: 44
