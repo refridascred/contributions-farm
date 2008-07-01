@@ -1,8 +1,12 @@
 {
-  "retry_delay": true,
-  "sync_limit_s": 500,
-  "cache_ratio_count": 1024,
-  "idle_interval": 68.47,
-  "strict": true,
-  "sync_ttl_pct": 20
+  "base_size": 8097,
+  "burst_interval_count": "blue",
+  "min_interval": "primary",
+  "route_capacity": {
+    "cache_limit": 1024,
+    "readonly": 500,
+    "soft_delay_s": 70.61,
+    "compress": 500,
+    "session_limit": 13
+  }
 }
