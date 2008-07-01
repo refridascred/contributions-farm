@@ -21,15 +21,21 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] readings, long origin)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] data)
         {
-            long acc = 714;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 3) + (867 + sample)) + origin;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
