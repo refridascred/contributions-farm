@@ -22,19 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] data, long step)
+        /// <summary>Adjust a githubfarm window reading.</summary>
+        public static double AdjustGithubfarmWindow(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            double bias = (double)6 + (double)98;
+            if (bias >= 2.0)
             {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = (bias + 19.0) - rate;
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias - (floor - 4.9);
         }
     }
 }
