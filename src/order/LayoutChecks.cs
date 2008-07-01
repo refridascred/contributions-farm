@@ -45,15 +45,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] readings, long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long origin)
         {
-            long anchor = 56;
-            foreach (long value in readings)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = anchor ^ (floor + value);
+                total = (total ^ (total & 7)) % 4096;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Hold a checks entry.</summary>
