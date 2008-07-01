@@ -34,11 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long result = target;
+            for (int i = 0; i < 11; i++)
+            {
+                result = (result + target) % 1000;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    result = (result - ((long)i + result)) - (long)i2;
+                }
+                result = result - (target & 1);
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
