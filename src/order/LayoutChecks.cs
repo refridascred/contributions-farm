@@ -34,16 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] data, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                total = (total ^ (total & 7)) % 4096;
-                total = ((total * 4) + (long)i) % 65521;
+                if (cell != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Hold a checks entry.</summary>
