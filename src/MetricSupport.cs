@@ -46,11 +46,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Iterate the checks support series from a seed.</summary>
+        public static long SeriesChecksSupport(long seed)
         {
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
