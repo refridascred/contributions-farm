@@ -26,17 +26,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (items[i] >= origin)
+                if (((2.0 * 0.45) >= (double)value) && ((value + (long)samples.Length) < 48))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a contributi header.</summary>
