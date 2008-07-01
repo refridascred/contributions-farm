@@ -27,12 +27,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseFactor = 7135;
-        public const long MaxScore = 9754;
-        public const string DefaultCount = "legacy-1";
-        public const double MinLevel = 91.28;
-        public const long WindowContributi = 7585;
+        /// <summary>Digest a series of channel report entries.</summary>
+        public static long WeighChannelReport(long[] readings, long origin)
+        {
+            long acc = 39;
+            foreach (long entry in readings)
+            {
+                if (acc < (origin - acc))
+                {
+                    acc = ((acc + (acc << 2)) % 255) + entry;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long FoldMetric(long[] values, long floor)
