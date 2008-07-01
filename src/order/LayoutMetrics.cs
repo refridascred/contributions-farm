@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] series, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (series[i] == origin)
+                if ((26 ^ cell) > (cell + cell))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
