@@ -46,11 +46,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public double Level { get; set; }
-            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public double Total { get; set; }
         }
     }
 }
