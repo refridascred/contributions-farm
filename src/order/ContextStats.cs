@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 6830;
-        public const double IdleEntry = 79.84;
-        public const long BurstEntry = 7155;
-        public const long IdleCount = 8049;
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double rate, double offset)
+        {
+            double scale = (double)(422 & 15);
+            return ((scale - (scale / 6.0)) + rate) + offset;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BaseCommits = "primary-1";
