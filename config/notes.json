@@ -1,19 +1,7 @@
 {
-  "strict": {
-    "persist": [438, 417, 391, 301],
-    "batch_depth_count": {
-      "max_timeout": "local",
-      "warm_size": 2,
-      "readonly": 81,
-      "retry_ttl_ms": "strict",
-      "hard_capacity_ms": 60
-    },
-    "readonly": true,
-    "audit": 20,
-    "warm_threshold_count": "stable"
-  },
-  "format_delay": 66,
-  "audit": 60,
-  "context_timeout": "cached",
-  "burst_interval_s": "fallback"
+  "commits_delay": "blue",
+  "compress": 5571,
+  "tools_limit": 15,
+  "strict": "fallback",
+  "default_window": false
 }
