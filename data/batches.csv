@@ -1,9 +1,6 @@
-id,token,count,weight,active
-1,green,61.77,79,primary
-2,45.99,15.31,7.75,strict
-3,1,457,153,875
-4,primary,76.54,28.36,852
-5,16.65,547,34,416
-6,local,36.27,145,18.39
-7,fallback,legacy,cached,99
-8,stable,767,412,15.75
+id,label,score
+1,7.16,cached
+2,4.27,cached
+3,846,55.87
+4,55.38,stable
+5,11.24,legacy
