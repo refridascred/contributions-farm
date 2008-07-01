@@ -1,13 +1,12 @@
 # support settings
-poll_ttl_count: 100
-max_depth_count:
-  - 50
-  - 76
-  - 181
-min_size: stable
-flush_depth_count: latest
-max_ratio_s: false
-poll_depth_count:
-  compress: 9
-  channel_timeout: 60
-  idle_ratio_pct: 16
+warm_delay_ms: 250
+format_interval: staging
+idle_capacity: open
+default_ratio_pct: 1644
+soft_limit_ms:
+  - 110
+  - 112
+flush_delay_ms:
+  - 452
+  - 65
+  - 14
