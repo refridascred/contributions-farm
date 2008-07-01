@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public bool Token { get; set; }
-            public bool Score { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            Paused,
+            Queued,
+            Locked,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
