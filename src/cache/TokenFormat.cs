@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate channel counter readings against a bound.</summary>
-        public static bool VerifyChannelCounterRange(long[] items, long step)
+        /// <summary>Locate a order editor reading by value.</summary>
+        public static long SeekOrderEditorIndex(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= step)
+                if (items[i] > offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the schema class values.</summary>
