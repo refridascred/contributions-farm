@@ -1,27 +1,10 @@
 # support settings
-max_retries_pct: 3499
-dry_run:
-  compress:
-    - latest
-    - edge
-    - fallback
-    - local
-  session_window:
-    retry_retries_count: primary
-    max_limit_pct: true
-    default_size:
-      - standard
-      - blue
-    soft_ttl_ms: 9880
-    idle_limit: 88
-  retry_ratio_s:
-    retry_timeout: standard
-    metrics_size: 90
-    counter_interval: strict
-    audit: 46.83
-    session_interval: 72.76
-cache_window_count: 18
-strict:
-  - 310
-  - 495
-  - 406
+soft_limit_ms:
+  - 474
+  - 158
+  - 244
+default_depth_pct: 250
+sync_retries_s: 85
+enabled: open
+command_capacity: 8427
+format_interval: 5
