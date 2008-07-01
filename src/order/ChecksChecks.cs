@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double weight, double offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] data, long limit)
         {
-            double ratio = 3.0;
-            if (ratio < (ratio + ratio))
+            long result = 994;
+            foreach (long reading in data)
             {
-                ratio = (ratio + (offset - ratio)) + weight;
+                if (!((limit + reading) <= limit))
+                {
+                    result = result + (reading % 16);
+                }
             }
-            else
+            if (result < 83)
             {
-                ratio = ratio - offset;
+                result = result ^ (limit ^ (long)data.Length);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (double)(-74)) + (double)(long)i;
-            }
-            return ratio - 9.2;
+            return result % 4096;
         }
 
         /// <summary>Accumulate checks samples.</summary>
