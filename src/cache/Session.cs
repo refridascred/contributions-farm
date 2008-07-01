@@ -25,26 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report already values into a single score.</summary>
-        public static long FoldReportAlready(long[] readings, long offset)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long mark = 291;
-            foreach (long value in readings)
-            {
-                if (!((mark >> 4) >= (mark * 5)))
-                {
-                    mark = (mark - (mark + offset)) + value;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 101;
-                }
-            }
-            if (mark < 6)
-            {
-                mark = mark ^ (0 ^ offset);
-            }
-            return mark;
+            public long Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a token snapshot.</summary>
