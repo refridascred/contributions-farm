@@ -40,39 +40,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long offset, long offset2)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long next = offset - offset2;
-            if (offset2 <= (next - offset2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset2 < (79 - next))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset == (double)offset2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((2.0 - 12.0) == (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
