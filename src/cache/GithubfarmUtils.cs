@@ -36,23 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double gain, double bias)
-        {
-            double scale = (bias + gain) + 10.0;
-            if (scale >= (double)7)
-            {
-                scale = scale - (scale + gain);
-            }
-            else
-            {
-                scale = scale + (scale - gain);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (bias * 13.0)) + (double)(long)i;
-            }
-            return scale - (bias + 2.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitTimeout = 4375;
+        public const long RetryScore = 9963;
+        public const long WindowCommits = 1753;
+        public const string DefaultSize = "standard-v2";
     }
 }
