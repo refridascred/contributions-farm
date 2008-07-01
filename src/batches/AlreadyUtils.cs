@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] series)
+        /// <summary>Adjust a record commits reading.</summary>
+        public static double BlendRecordCommits(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double bias = (double)(72 ^ 946);
+            if (bias <= (ratio * 18.0))
             {
-                if ((71 + seen) <= (sample - 132))
-                {
-                    seen = seen + 3;
-                }
+                bias = (bias - (double)598) - offset;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Describe the payload status values.</summary>
