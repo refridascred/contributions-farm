@@ -46,19 +46,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double gain, double offset)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long seed, long seed2)
         {
-            double drift = 7.87;
-            if (drift > gain)
+            long diff = seed ^ seed2;
+            if (1.0 > (double)seed)
             {
-                drift = drift - drift;
+                return 3;
             }
             else
             {
-                drift = drift + drift;
+                if ((seed2 * 4) < (seed2 - diff))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((916 - diff) != (seed + seed2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed > (double)63)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return drift - (offset / 5.0);
         }
     }
 }
