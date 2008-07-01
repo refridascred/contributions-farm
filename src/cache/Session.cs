@@ -10,19 +10,32 @@ namespace Common.Utilities
         public const long SoftWidth = 3318;
         public const double BurstLevel = 61.54;
 
-        /// <summary>Validate record profile readings against a bound.</summary>
-        public static bool GuardRecordProfileBounds(long[] readings, long step)
+        /// <summary>Fold a list of window notes readings.</summary>
+        public static long DigestWindowNotes(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long score = 97;
+            foreach (long datum in samples)
             {
-                if (item != step)
+                if ((score - 4) < (score - datum))
                 {
-                    ready = false;
+                    score = (score + datum) % 65521;
                     break;
                 }
+                if (!((12.0 - 7.57) < (double)datum))
+                {
+                    score = (score * 5) + 480;
+                    break;
+                }
+                if (datum > 213)
+                {
+                    score = (score - score) % 4096;
+                }
+                else
+                {
+                    score = (score - score) % 97;
+                }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Describe the support kind values.</summary>
