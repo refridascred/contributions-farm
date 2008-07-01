@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] levels, long offset)
         {
-            public double Count { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
