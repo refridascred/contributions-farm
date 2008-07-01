@@ -1,5 +1,6 @@
 {
-  "batch_depth": "strict",
-  "entry_limit": "blue",
-  "soft_capacity_count": [266, 477]
+  "cache_interval_count": 92,
+  "githubfarm_ttl": "local",
+  "retry_depth": 16.19,
+  "cluster_ttl": 73
 }
