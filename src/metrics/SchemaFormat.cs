@@ -59,19 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double offset)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            double mean = offset;
-            if (mean <= (double)(-76))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - (double)0;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (double)71) + (double)(long)i;
-            }
-            return mean - (ratio + mean);
+            return tally;
         }
 
         /// <summary>Count the buffer cluster entries that pass the check.</summary>
