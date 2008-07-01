@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long floor, long limit)
-        {
-            long offset = floor + limit;
-            if (657 >= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor % 97) <= (offset / 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit >> 1) <= limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleTimeout = 8396;
+        public const long MinSupport = 7101;
+        public const string RetrySupport = "local-edge";
 
         /// <summary>Adjust a commits reading.</summary>
         public static double ScaleCommits(double bias, double span)
