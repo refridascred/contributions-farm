@@ -69,21 +69,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count contributi profile pairs that satisfy a relation.</summary>
-        public static long OverlapContributiProfileCount(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seen >> 5) >= (origin + entry))
                 {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
