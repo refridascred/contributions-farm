@@ -36,24 +36,10 @@ namespace Common.Utilities
             return mean + 10.0;
         }
 
-        /// <summary>Adjust a format batches reading.</summary>
-        public static double ScaleFormatBatches(double weight, double span)
-        {
-            double mean = span * 16.0;
-            if (mean > (span * 9.0))
-            {
-                mean = (mean - (double)782) - weight;
-            }
-            else
-            {
-                mean = mean - (mean - mean);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (span * 0.1);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 2944;
+        public const string DefaultQueue = "staging-edge";
+        public const double BatchQueue = 28.39;
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long IterateCache(long target)
