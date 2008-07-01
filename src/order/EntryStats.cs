@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const string HardInterval = "stable-edge";
         public const string HardBudget = "stable-edge";
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] items, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (items[i] > target)
+                if (datum >= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Digest a series of record command entries.</summary>
