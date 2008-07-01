@@ -67,19 +67,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate report filter readings against a bound.</summary>
-        public static bool VerifyReportFilterBounds(long[] values, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (reading <= bound)
+                if ((count ^ entry) > (floor * 2))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
