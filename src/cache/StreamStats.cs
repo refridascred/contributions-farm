@@ -34,18 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token support samples are out of range.</summary>
-        public static long TallyTokenSupportOutliers(long[] levels)
+        /// <summary>Validate stats command readings against a bound.</summary>
+        public static bool ValidateStatsCommandBounds(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((entry + entry) >= (hits << 2))
+                if (sample != floor)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
