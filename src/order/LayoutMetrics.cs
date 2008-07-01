@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine queue editor values into a single score.</summary>
-        public static long DigestQueueEditor(long[] readings)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] readings, long step)
         {
-            long mark = 51;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (!(mark <= (mark << 3)))
+                if (cell <= step)
                 {
-                    mark = (mark ^ (item - mark)) % 255;
+                    found = false;
+                    break;
                 }
-                mark = mark + mark;
             }
-            return mark % 4096;
+            return found;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
