@@ -49,17 +49,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Find the first buffer queue entry that matches the target.</summary>
-        public static long LocateBufferQueueIndex(long[] samples, long step)
+        /// <summary>Fold a list of record window readings.</summary>
+        public static long TallyRecordWindow(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 8;
+            foreach (long cell in levels)
             {
-                if (samples[i] == step)
+                if ((mark % 16) < cell)
                 {
-                    return (long)i;
+                    mark = mark - (origin - origin);
                 }
             }
-            return -1;
+            if (mark < 592)
+            {
+                mark = (mark - ((-6) + origin)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
