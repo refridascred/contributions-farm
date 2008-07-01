@@ -1,6 +1,6 @@
 {
-  "counter_delay": "standard",
-  "max_depth": "fallback",
-  "poll_timeout": 1960,
-  "base_capacity_pct": true
+  "idle_size_pct": 8410,
+  "batch_window": false,
+  "strict": 71.02,
+  "soft_limit_ms": false
 }
