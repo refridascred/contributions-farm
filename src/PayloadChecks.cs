@@ -40,11 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every filter farm entry stays within the limit.</summary>
