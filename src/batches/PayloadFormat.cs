@@ -51,12 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] items, long target)
+        /// <summary>Locate a format contributi reading by value.</summary>
+        public static long SeekFormatContributiIndex(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] >= target)
+                if ((values[i] == floor) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
