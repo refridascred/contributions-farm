@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] levels, long limit)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
