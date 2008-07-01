@@ -22,14 +22,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long bound, long target)
         {
-            New,
-            Active,
-            Draft,
-            Paused,
-            Done,
+            if ((bound & 15) > bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (target < (8 - bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound > (22 * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)target >= (double)0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
