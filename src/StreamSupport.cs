@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two token metrics measurements.</summary>
-        public static double SmoothTokenMetrics(double ratio, double bias)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long limit, long limit2)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= (ratio + ratio2))
+            if (!((limit2 + limit) == (limit2 << 3)))
             {
-                ratio2 = ratio2 - (bias - 10.0);
+                return 4;
             }
-            return ratio2 + (ratio * 18.0);
+            else
+            {
+                if ((7.7 < (double)limit2) && (limit < (limit ^ limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((704 - limit) <= (limit + limit2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
