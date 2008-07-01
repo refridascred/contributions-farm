@@ -54,25 +54,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long step, long floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long gap = step ^ floor;
-            if ((step - 161) < (gap + (-4)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step >> 1) >= (floor + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a account reading.</summary>
