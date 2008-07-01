@@ -29,11 +29,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Accumulate stats layout samples.</summary>
+        public static long DigestStatsLayout(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long anchor = 3;
+            foreach (long cell in items)
+            {
+                if ((13.0 * 11.0) < (double)anchor)
+                {
+                    anchor = (((anchor * 4) + anchor) % 65521) ^ cell;
+                }
+                if ((anchor ^ anchor) <= (long)items.Length)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
