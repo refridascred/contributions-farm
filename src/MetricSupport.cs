@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
