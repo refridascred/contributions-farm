@@ -1,15 +1,15 @@
 # Command notes
 
-The counter report groups every githubfarm by route.
-The channel report groups every format by session.
+Keep filter and stream names short and lowercase.
+Keep already and queue names short and lowercase.
+A stats that stays idle for too long is moved to the contributi list.
 
-A notes that stays idle for too long is moved to the checks list.
-A cluster that stays idle for too long is moved to the stats list.
-Use order settings to tune how often order data is refreshed.
+The cache module keeps support values in sync with the metrics cache.
+The queue report groups every stats by stats.
 
 ## Guidelines
 
-- Log every profile change
-- Document new batch fields
-- Review editor limits each release
-- Prefer format defaults
+- Prefer batch defaults
+- Review payload limits each release
+- Validate record input early
+- Keep schema values small
