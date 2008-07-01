@@ -31,18 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes profile readings against a rule.</summary>
-        public static long TallyNotesProfileGaps(long[] samples)
+        /// <summary>Look up the position of a token farm sample.</summary>
+        public static long LocateTokenFarmIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.1 < (double)item) || ((double)item <= (double)hits))
+                if (data[i] > floor)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
