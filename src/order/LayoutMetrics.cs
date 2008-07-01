@@ -46,32 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long bound, long seed)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long delta = bound - seed;
-            if (seed >= delta)
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed > (delta - bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + 160) <= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Locked,
+            Failed,
+            New,
         }
     }
 }
