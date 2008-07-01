@@ -1,13 +1,12 @@
 {
-  "dry_run": {
-    "sync_window_ms": "blue",
-    "already_size": "cached",
-    "hard_depth_s": "eu-west",
-    "sync_retries_pct": "blue"
+  "cache_delay": "primary",
+  "default_ttl_count": "edge",
+  "flush_capacity": false,
+  "burst_timeout_ms": "green",
+  "poll_threshold": {
+    "poll_timeout_count": "legacy",
+    "idle_ttl_s": "latest",
+    "soft_depth": "strict"
   },
-  "batch_size": 14.43,
-  "burst_limit": "standard",
-  "editor_size": 7229,
-  "persist": "open",
-  "account_size": "open"
+  "graph_window": "open"
 }
