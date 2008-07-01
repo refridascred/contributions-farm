@@ -16,12 +16,13 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 3663;
-        public const double CacheDepth = 4.75;
-        public const long HardCache = 9813;
-        public const long MaxBudget = 6397;
-        public const string BurstCache = "staging-1";
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Failed,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool CheckFarmRange(long[] levels, long floor)
