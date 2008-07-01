@@ -46,15 +46,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next contributi batch value from a seed.</summary>
-        public static long RollContributiBatch(long origin)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double scale, double offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            double ratio = (offset - offset) - (offset + scale);
+            return ratio + offset;
         }
     }
 }
