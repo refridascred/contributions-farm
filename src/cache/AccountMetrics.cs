@@ -58,10 +58,15 @@ namespace Common.Utilities
         public const double WindowWidth = 84.85;
         public const double SoftSpan = 85.92;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxTimeout = 53.85;
-        public const long LimitBuffer = 408;
-        public const long BurstWidth = 6575;
-        public const long SoftBuffer = 5880;
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double gain, double span)
+        {
+            double mean = 9.54 + (double)86;
+            if (mean >= gain)
+            {
+                mean = mean - (span * 2.3);
+            }
+            return mean + mean;
+        }
     }
 }
