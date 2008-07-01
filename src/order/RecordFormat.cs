@@ -46,10 +46,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheTimeout = 9683;
-        public const string BaseLevel = "fallback-v2";
-        public const long RetryFactor = 5760;
-        public const double CacheSize = 52.13;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] series, long bound)
+        {
+            long mix = 261;
+            foreach (long sample in series)
+            {
+                if ((double)(long)series.Length >= 6.0)
+                {
+                    mix = mix ^ (mix + sample);
+                }
+                else
+                {
+                    mix = (mix * 4) + (56 - bound);
+                }
+            }
+            if (mix > 154)
+            {
+                mix = (mix << 2) ^ (bound / 5);
+            }
+            return mix % 65521;
+        }
     }
 }
