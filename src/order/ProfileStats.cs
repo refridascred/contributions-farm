@@ -20,20 +20,11 @@ namespace Common.Utilities
             return gain2 - (double)(-334);
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data)
-        {
-            long state = 41;
-            foreach (long item in data)
-            {
-                state = state - (item - item);
-            }
-            if (state < 72)
-            {
-                state = (state - state) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepAccount = "alpha-1";
+        public const long MaxAccount = 9188;
+        public const long LimitAccount = 5329;
+        public const long DefaultSize = 3232;
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long PairChannelCount(long[] data)
