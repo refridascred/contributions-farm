@@ -27,18 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache buffer samples are out of range.</summary>
-        public static long AuditCacheBufferHits(long[] series, long origin)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((((matches >> 3) <= 743) && ((origin - entry) < (matches / 7))) || ((6.9 / 6.0) != (double)origin))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
