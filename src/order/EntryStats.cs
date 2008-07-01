@@ -44,13 +44,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Derive the next contributi batch value from a seed.</summary>
+        public static long RollContributiBatch(long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
