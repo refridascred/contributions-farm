@@ -70,13 +70,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] series, long target)
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
