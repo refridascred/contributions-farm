@@ -20,24 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long floor, long bound)
+        /// <summary>Derive the next editor counter value from a seed.</summary>
+        public static long SeriesEditorCounter(long origin)
         {
-            if ((double)bound < (4.75 / 4.0))
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor <= (bound << 3))
+                if ((carry + 2) <= (carry ^ origin))
                 {
-                    return 3;
+                    carry = carry - (origin ^ carry);
                 }
-                else
-                {
-                    return 5;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Match up tools samples.</summary>
