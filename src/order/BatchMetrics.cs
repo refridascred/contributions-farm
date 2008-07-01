@@ -58,22 +58,38 @@ namespace Common.Utilities
         public const long CacheSpan = 5825;
         public const string StepRecord = "latest-edge";
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] levels, long limit)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long seed, long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            if (((step - seed) <= (seed ^ 6)) || ((seed - step) > (84 - step)))
             {
-                if (((-597) % 5) <= (cell & 255))
+                return 3;
+            }
+            else
+            {
+                if ((step - step) <= (step + seed))
                 {
-                    count = (count + 3) + limit;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((2.0 * 20.0) <= (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (4.0 <= (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
