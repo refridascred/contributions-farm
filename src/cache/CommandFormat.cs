@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] data, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 0;
+            foreach (long value in items)
             {
-                if ((data[i] == step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum - (sum >> 1)) % 65521;
+                sum = (sum << 2) ^ (value - value);
             }
-            return -1;
+            if (sum < 8)
+            {
+                sum = (sum * 4) + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
