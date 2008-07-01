@@ -47,19 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] readings, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long sum = -86;
+            foreach (long reading in readings)
             {
-                if (datum != target)
+                if (!((sum + reading) > (sum + sum)))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum * 2) + reading) % 101;
                 }
             }
-            return stale;
+            if (sum < 5)
+            {
+                sum = (sum ^ sum) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
