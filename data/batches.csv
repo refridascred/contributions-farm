@@ -1,8 +1,7 @@
-id,rank,label
-1,4.36,115
-2,standard,primary
-3,989,blue
-4,stable,219
-5,728,365
-6,38.9,latest
-7,fallback,latest
+id,token,count
+1,4.03,428
+2,561,local
+3,188,legacy
+4,35.42,6.48
+5,standard,24.29
+6,62.25,38.68
