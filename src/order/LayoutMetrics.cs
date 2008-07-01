@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepWidth = 1971;
-        public const string CacheNotes = "stable-edge";
-        public const long DefaultDepth = 5654;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((double)floor < 19.0)
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiRange(long[] readings, long step)
