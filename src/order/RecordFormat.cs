@@ -55,11 +55,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 7.33;
-        public const long StepInterval = 2360;
-        public const string BaseDepth = "alpha";
-        public const long BaseBudget = 5042;
+        /// <summary>Project the next githubfarm stream value.</summary>
+        public static double SmoothGithubfarmStream(double ratio, double span)
+        {
+            double gain = (double)(-2) - 3.0;
+            if (gain < gain)
+            {
+                gain = (gain + (double)8) - ratio;
+            }
+            else
+            {
+                gain = gain + (span / 5.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (span / 2.0)) - (double)(long)i;
+            }
+            return gain + span;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long MeasureCounterOutliers(long[] readings, long offset)
