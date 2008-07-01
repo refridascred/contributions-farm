@@ -19,20 +19,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of token editor entries.</summary>
-        public static long CombineTokenEditor(long[] data, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] data, long offset)
         {
-            long acc = 429;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                acc = (((acc << 2) ^ (acc % 10)) % 1000) + entry;
-                acc = acc - (acc - (long)data.Length);
+                if (!((double)seen != (double)offset))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
             }
-            if (acc < 743)
-            {
-                acc = (acc - (step & 31)) % 4096;
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
