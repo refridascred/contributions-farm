@@ -30,10 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftBudget = 715;
-        public const long BaseReport = 2490;
-        public const long HardReport = 6365;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
