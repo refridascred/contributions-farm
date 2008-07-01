@@ -44,16 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics checks reading.</summary>
-        public static double ScaleMetricsChecks(double bias, double floor)
-        {
-            double scale = floor;
-            if (scale <= bias)
-            {
-                scale = scale - bias;
-            }
-            return scale + floor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 7.33;
+        public const long StepInterval = 2360;
+        public const string BaseDepth = "alpha";
+        public const long BaseBudget = 5042;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long BucketChannel(long limit, long bound)
