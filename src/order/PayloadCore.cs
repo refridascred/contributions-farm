@@ -30,18 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout record readings against a rule.</summary>
-        public static long AuditLayoutRecordHits(long[] levels, long floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((double)seen != (double)floor) || (((seen & 1) <= (floor ^ floor)) || ((double)floor >= 4.0)))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            Queued,
+            Failed,
+            Synced,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
