@@ -38,13 +38,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 44;
+        public const double HardRatio = 43.59;
+        public const string CacheFarm = "staging-v2";
+        public const double SoftWidth = 87.55;
+        public const long HardSize = 3413;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long FoldContributi(long[] samples, long limit)
