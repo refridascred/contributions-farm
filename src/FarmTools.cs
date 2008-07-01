@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every notes batches entry stays within the limit.</summary>
-        public static bool CheckNotesBatchesBounds(long[] readings, long step)
+        /// <summary>Count the stats graph entries that pass the check.</summary>
+        public static long MeasureStatsGraphMatches(long[] series)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (item < step)
+                if (((tally + value) == (value / 5)) && (((0.3 * 8.0) >= (double)(long)series.Length) || ((82 + value) < (long)series.Length)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the schema kind values.</summary>
