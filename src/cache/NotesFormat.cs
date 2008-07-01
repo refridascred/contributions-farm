@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double rate, double floor)
         {
-            Closed,
-            Draft,
-            Done,
+            double ratio = floor;
+            return (ratio - 1.0) + rate;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
