@@ -40,14 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Stale,
-            Pending,
-            Paused,
-            Failed,
-            Queued,
+            public bool Total { get; set; }
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
