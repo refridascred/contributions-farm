@@ -1,16 +1,12 @@
 {
-  "hard_threshold_ms": {
-    "enabled": {
-      "layout_interval": 4162,
-      "batch_depth_count": false,
-      "cache_threshold": "open",
-      "max_timeout_count": 1.45,
-      "retry_ratio_ms": "standard"
-    },
-    "account_limit": "fallback",
-    "token_delay": 5155
+  "hard_limit_s": 6700,
+  "hard_threshold": {
+    "min_delay": false,
+    "command_ttl": 30,
+    "cache_threshold_s": "eu-west",
+    "idle_depth_ms": "primary"
   },
-  "stream_capacity": false,
-  "already_ttl": 1024,
-  "enabled": [80, 360, 462, 356]
+  "account_timeout": 60,
+  "tools_delay": 39.15,
+  "sync_depth_s": 60
 }
