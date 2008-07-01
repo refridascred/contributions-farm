@@ -20,14 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Audit stream batch readings against a rule.</summary>
+        public static long CountStreamBatchMatches(long[] samples)
         {
-            Dropped,
-            Paused,
-            Locked,
-            Ready,
-            Done,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)tally < (12.0 / 9.0))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of already readings.</summary>
