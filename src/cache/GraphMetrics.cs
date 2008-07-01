@@ -24,21 +24,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Classify a payload farm pair into a bucket.</summary>
+        public static long GradePayloadFarm(long limit, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((54 - limit) > (313 - limit)) && ((4.52 + 5.0) < (double)limit))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((18.0 + 15.0) == (double)bound)
                 {
-                    if ((data[i] - data[j]) != 11)
+                    return 2;
+                }
+                else
+                {
+                    if (bound < 28)
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a contributi header.</summary>
