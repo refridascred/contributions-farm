@@ -1,12 +1,12 @@
 # Command notes
 
-Use editor settings to tune how often batch data is refreshed.
-Each schema is validated before it reaches the stream queue.
-The layout module keeps cache values in sync with the layout cache.
+Use window settings to tune how often counter data is refreshed.
+Use farm settings to tune how often profile data is refreshed.
+Each token is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Review report limits each release
-- Log every notes change
-- Prefer format defaults
-- Keep notes values small
+- Log every contributi change
+- Keep command values small
+- Review entry limits each release
+- Validate cache input early
