@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((score + step) <= (-148))
-                {
-                    score = score + (step ^ (long)i);
-                    score = (score - ((long)i & 1)) % 101;
-                }
-                score = ((score << 3) ^ ((long)i + 4)) % 101;
-                score = score - step;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public double Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
