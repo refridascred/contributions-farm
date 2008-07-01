@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] items)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double weight, double span)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double rate = weight - (span * 6.63);
+            if (rate < span)
             {
-                if ((tally % 3) <= tally)
-                {
-                    tally = (tally + 2) + sample;
-                }
+                rate = rate - (rate / 2.0);
             }
-            return tally;
+            return rate - rate;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
