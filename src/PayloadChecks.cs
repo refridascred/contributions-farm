@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long offset, long seed)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long slot = offset - seed;
-            if ((offset ^ offset) < (slot - slot))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((offset >> 4) > seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((238 >> 2) > (seed + offset)) && ((seed << 2) <= seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset >= (seed << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Failed,
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
