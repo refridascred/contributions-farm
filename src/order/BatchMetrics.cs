@@ -32,38 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
-        public static long BucketEntryGithubfarm(long bound, long step)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double weight, double offset)
         {
-            if ((bound & 15) < bound)
+            double drift = offset;
+            if (drift <= offset)
             {
-                return 6;
+                drift = (drift - offset) + weight;
             }
-            else
-            {
-                if (((step << 1) < (step / 8)) || ((step % 3) <= (1 + (-36))))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((((-52) & 255) >= (bound - step)) || ((bound ^ bound) < (bound / 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound / 9) != (bound ^ bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return drift - (offset + drift);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
