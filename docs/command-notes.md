@@ -1,14 +1,11 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the window list.
-Keep account and tools names short and lowercase.
-When a cache fails, the cluster handler retries a few times before giving up.
-
-Run the batch check before changing any entry limits.
-Use record settings to tune how often farm data is refreshed.
+The layout module keeps githubfarm values in sync with the layout cache.
+Keep order and command names short and lowercase.
 
 ## Guidelines
 
-- Review notes limits each release
-- Log every cluster change
-- Keep layout values small
+- Prefer batches defaults
+- Keep support values small
+- Log every batch change
+- Document new githubfarm fields
