@@ -1,5 +1,6 @@
 {
-  "max_capacity": 13.2,
-  "retry_retries_pct": "fallback",
-  "account_depth": true
+  "default_depth_s": 500,
+  "enabled": true,
+  "order_ttl": 4552,
+  "cache_retries": "primary"
 }
