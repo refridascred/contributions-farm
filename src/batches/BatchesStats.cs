@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit editor payload readings against a rule.</summary>
-        public static long MeasureEditorPayloadHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry <= 15.0)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitRatio = 6386;
+        public const double DefaultInterval = 69.75;
+        public const long DefaultCommand = 2230;
+        public const long IdleCommand = 5088;
 
         /// <summary>Project the next command value.</summary>
         public static double ProjectCommand(double gain, double offset)
