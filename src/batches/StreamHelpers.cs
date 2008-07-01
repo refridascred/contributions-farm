@@ -63,20 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next editor queue value from a seed.</summary>
-        public static long StepEditorQueue(long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            long mix = 9;
+            foreach (long datum in items)
             {
-                if (!(((long)i * 4) >= step))
-                {
-                    result = result + (long)i;
-                }
-                result = (result << 2) ^ (29 / 9);
-                result = ((result * 3) + (long)i) % 1000;
+                mix = (mix + datum) % 65521;
             }
-            return result;
+            if (mix > 0)
+            {
+                mix = (mix * 4) + 2;
+            }
+            return mix;
         }
     }
 }
