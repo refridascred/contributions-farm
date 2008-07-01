@@ -16,23 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] values, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] data)
         {
-            long anchor = 7;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in data)
             {
-                anchor = (anchor << 2) ^ sample;
-                if ((sample ^ floor) >= sample)
+                if ((count + count) > (count << 1))
                 {
-                    anchor = (anchor - (anchor / 8)) % 101;
+                    count = (count + 3) ^ item;
                 }
             }
-            if (anchor < 51)
-            {
-                anchor = ((anchor << 2) ^ floor) % 255;
-            }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Hold a metrics header.</summary>
