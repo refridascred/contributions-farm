@@ -1,7 +1,24 @@
 # support settings
-idle_depth_count: 500
-retry_retries_pct:
-  - blue
-  - edge
-persist: 23.57
-default_retries: latest
+order_window:
+  sync_ttl: 67
+  cache_delay: green
+  strict:
+    - latest
+    - legacy
+    - local
+  warm_window_ms: cached
+  flush_threshold: false
+compress: 91.88
+retry_threshold_pct:
+  order_ttl:
+    cache_interval_count: 77.45
+    idle_capacity_s: strict
+    checks_limit: open
+    context_limit: 1024
+    cache_retries_s: true
+  soft_ratio_pct:
+    - 118
+    - 169
+    - 81
+  cache_size_ms: 70.01
+  already_limit: strict
