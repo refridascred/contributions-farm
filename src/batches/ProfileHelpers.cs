@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Compare every pair of channel metrics readings.</summary>
+        public static long OverlapChannelMetricsCount(long[] readings)
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public double Rank { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a layout header.</summary>
