@@ -11,23 +11,13 @@ namespace Common.Utilities
         public const long MinWidth = 5739;
         public const long DefaultMetric = 3808;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long acc = 140;
-            foreach (long item in items)
-            {
-                if ((double)acc >= (4.0 / 6.0))
-                {
-                    continue;
-                }
-                acc = ((acc << 3) ^ (acc + acc)) % 255;
-                if (((item + item) == (item ^ item)) || (8 < (acc + (-9))))
-                {
-                    acc = acc ^ (acc + item);
-                }
-            }
-            return acc % 97;
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
