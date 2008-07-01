@@ -45,19 +45,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the counter format series from a seed.</summary>
-        public static long DeriveCounterFormat(long limit)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double gain, double offset)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            double drift = 7.87;
+            if (drift > gain)
             {
-                if ((long)i <= (limit - total))
-                {
-                    total = ((total * 3) + (total / 7)) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                drift = drift - drift;
             }
-            return total;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - (offset / 5.0);
         }
     }
 }
