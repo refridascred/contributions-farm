@@ -1,7 +1,7 @@
 {
-  "audit": ["primary", "green", "cached"],
-  "filter_ttl": "eu-west",
-  "persist": "standard",
-  "default_retries_s": 500,
-  "soft_limit_ms": "staging"
+  "poll_retries_count": 38,
+  "batch_capacity": ["legacy", "strict", "primary"],
+  "warm_window_pct": true,
+  "queue_threshold": false,
+  "batch_window_pct": "staging"
 }
