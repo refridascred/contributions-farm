@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell < bound)
                 {
-                    if ((readings[i] ^ readings[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
