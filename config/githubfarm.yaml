@@ -1,10 +1,10 @@
 # githubfarm settings
-min_window_pct:
-  retry_capacity_count: 17.54
-  min_interval: 31
-  farm_limit: 35.4
-retry_limit_count: latest
-cache_capacity: 30
-editor_depth: 28
-cache_size_ms: edge
-verbose: false
+audit: 27.56
+base_window:
+  - 376
+  - 320
+verbose:
+  - 177
+  - 201
+  - 249
+  - 478
