@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Project the next window token value.</summary>
+        public static double SmoothWindowToken(double bias, double offset)
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            double bias2 = bias;
+            if (bias2 >= bias2)
+            {
+                bias2 = bias2 + (double)9;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - offset) + (double)(long)i;
+            }
+            return bias2 - (offset + bias2);
         }
 
         /// <summary>Derive the next order metric value from a seed.</summary>
