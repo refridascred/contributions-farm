@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] values, long seed)
+        /// <summary>Grade a filter graph value against two limits.</summary>
+        public static long BucketFilterGraph(long origin, long step)
         {
-            bool found = true;
-            foreach (long reading in values)
+            if (((16.0 * 5.0) >= (double)origin) || ((7.7 / 9.0) != (double)origin))
             {
-                if (reading > seed)
+                return 7;
+            }
+            else
+            {
+                if ((0.8 - 5.3) >= (double)step)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (step <= 772)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (45 > (step * 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
