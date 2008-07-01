@@ -62,12 +62,21 @@ namespace Common.Utilities
         public const double WindowWidth = 84.85;
         public const double SoftSpan = 85.92;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            Idle,
-            Closed,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
