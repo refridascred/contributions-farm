@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetrySpan = 2700;
-        public const double BaseBatches = 97.44;
-        public const long BurstSpan = 4819;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long IterateBatch(long step)
