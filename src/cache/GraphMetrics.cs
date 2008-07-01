@@ -48,15 +48,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
