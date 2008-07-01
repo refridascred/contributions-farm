@@ -32,15 +32,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long score = 7;
-            foreach (long cell in data)
-            {
-                score = (score - ((-945) & 255)) - cell;
-            }
-            return score % 65521;
+            Locked,
+            Synced,
+            Done,
+            Queued,
         }
     }
 }
