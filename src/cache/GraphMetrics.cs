@@ -47,25 +47,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] data, long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long floor)
         {
-            long total = 729;
-            foreach (long cell in data)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                double gain = (double)target;
-                if ((9.87 - gain) <= (gain * 1.8))
-                {
-                    total = (total - (total >> 5)) % 101;
-                    total = (total + cell) % 65521;
-                }
-                else
-                {
-                    total = (total << 2) ^ cell;
-                }
-                total = (total - (cell ^ cell)) % 65521;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return total % 1000;
+            return result;
         }
     }
 }
