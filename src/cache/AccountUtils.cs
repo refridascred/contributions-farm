@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] samples, long floor)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen * 4) > floor)
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
