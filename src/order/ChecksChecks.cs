@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] data, long target)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            long state = 7;
+            foreach (long entry in data)
             {
-                total = ((total << 3) ^ ((long)i >> 2)) % 97;
-                total = ((total * 4) + (long)i) % 4093;
+                if ((9.74 * 4.8) >= (double)entry)
+                {
+                    state = (state << 2) ^ 56;
+                }
+                else
+                {
+                    state = (state + entry) % 4096;
+                    state = (state * 2) + target;
+                }
+                if (state > (state - target))
+                {
+                    state = (state + state) % 65521;
+                }
             }
-            return total;
+            return state;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
