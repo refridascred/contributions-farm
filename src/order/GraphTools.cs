@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxTimeout = 84.35;
-        public const double WindowChannel = 98.92;
-        public const long MinChannel = 7081;
+        /// <summary>Combine already support values into a single score.</summary>
+        public static long ScoreAlreadySupport(long[] series, long seed)
+        {
+            long score = 70;
+            foreach (long sample in series)
+            {
+                score = ((score + (195 >> 4)) % 1000) ^ sample;
+            }
+            if (score < 84)
+            {
+                score = (score + seed) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TotalCluster(long[] samples)
