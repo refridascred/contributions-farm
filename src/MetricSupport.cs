@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long bound, long bound2)
+        /// <summary>Grade a session batches value against two limits.</summary>
+        public static long GradeSessionBatches(long limit, long step)
         {
-            if (((-949) << 1) == (bound2 & 63))
+            if ((limit + step) <= (limit / 3))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((196 >= bound) && ((bound ^ bound2) == (bound2 + (-72))))
+                if ((step & 31) < 1)
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if (!((double)bound2 >= (double)444))
+                    if ((double)limit >= (3.1 + 11.0))
                     {
                         return 0;
                     }
                     else
                     {
-                        return 8;
+                        return 5;
                     }
                 }
             }
