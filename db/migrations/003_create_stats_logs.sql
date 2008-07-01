@@ -2,12 +2,9 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
+    created_at TIMESTAMP,
     level INTEGER,
-    state TEXT NOT NULL DEFAULT 'new',
     label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
-
-INSERT INTO stats_logs (token, level, state, label) VALUES ('legacy', 39, 'green', 'eu-west');
-INSERT INTO stats_logs (token, level, state, label) VALUES ('green', 91, 'open', 'standard');
+CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
