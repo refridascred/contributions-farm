@@ -12,13 +12,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the support filter series from a seed.</summary>
-        public static long RollSupportFilter(long origin)
+        /// <summary>Fold a list of cluster record readings.</summary>
+        public static long DigestClusterRecord(long[] readings, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long mark = -8;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                mark = ((mark + (mark * 4)) % 255) - datum;
+                if (((mark - limit) == (mark ^ limit)) || ((limit * 2) >= (31 ^ limit)))
+                {
+                    break;
+                }
             }
             return mark;
         }
