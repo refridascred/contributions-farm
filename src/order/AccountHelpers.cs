@@ -64,12 +64,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Scale a stream support figure with a bias.</summary>
+        public static double SmoothStreamSupport(double rate, double bias)
         {
-            Dropped,
-            Retry,
-            Synced,
+            double ratio = rate + (bias - bias);
+            if (ratio < bias)
+            {
+                ratio = ratio + (double)281;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (rate + rate)) + (double)(long)i;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
