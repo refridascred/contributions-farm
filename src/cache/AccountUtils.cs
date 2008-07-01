@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] readings, long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long mark = 37;
+            foreach (long entry in values)
             {
-                if (entry > bound)
+                if ((double)entry > 5.0)
                 {
-                    found = false;
-                    break;
+                    mark = (mark - (entry & 7)) + seed;
+                }
+                else
+                {
+                    mark = mark ^ (mark + mark);
                 }
             }
-            return found;
+            if (mark > 64)
+            {
+                mark = (mark ^ (mark % 8)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
