@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Fold a list of layout report readings.</summary>
+        public static long TallyLayoutReport(long[] values)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            long anchor = 72;
+            foreach (long item in values)
+            {
+                anchor = anchor + (item % 12);
+                anchor = ((anchor << 2) ^ (anchor ^ item)) % 97;
+            }
+            if (anchor > 499)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
