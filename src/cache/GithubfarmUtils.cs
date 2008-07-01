@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a filter graph value against two limits.</summary>
-        public static long BucketFilterGraph(long origin, long step)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            if (((16.0 * 5.0) >= (double)origin) || ((7.7 / 9.0) != (double)origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((0.8 - 5.3) >= (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step <= 772)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (45 > (step * 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
