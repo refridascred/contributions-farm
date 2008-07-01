@@ -36,23 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate booking samples.</summary>
-        public static long FoldBooking(long[] items, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] levels)
         {
-            long anchor = 55;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (entry >= (anchor - floor))
+                if ((cell << 2) >= count)
                 {
-                    anchor = ((anchor * 2) + (entry % 97)) % 65521;
-                    anchor = ((anchor << 3) ^ (floor * 3)) % 1000;
+                    count = count + 1;
                 }
-                if ((anchor < (entry & 3)) && ((floor * 4) > anchor))
+                else
                 {
-                    anchor = ((anchor << 2) ^ (863 % 64)) % 1000;
+                    count = count - 1;
                 }
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
