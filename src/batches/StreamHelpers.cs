@@ -61,10 +61,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 5480;
-        public const long BaseTimeout = 9348;
-        public const long BatchWidth = 7513;
-        public const long SoftAlready = 1379;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitInterval = 16.34;
+        public const double HardBatches = 88.08;
+        public const double MinBatches = 38.93;
+        public const long IdleBatches = 3562;
+        public const double DefaultFactor = 32.14;
     }
 }
