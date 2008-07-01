@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches tools readings against a rule.</summary>
-        public static long CountBatchesToolsHits(long[] data)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double bias, double span)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double mean = (double)(36 + 23);
+            if (mean >= span)
             {
-                if ((value - seen) == (value << 1))
-                {
-                    seen = seen + 1;
-                }
+                mean = mean - (bias / 7.0);
             }
-            return seen;
+            return mean - 4.98;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
