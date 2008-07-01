@@ -44,22 +44,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 5546;
+        public const string SoftFactor = "primary";
+        public const string HardCount = "open-1";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long HardScore = 2056;
