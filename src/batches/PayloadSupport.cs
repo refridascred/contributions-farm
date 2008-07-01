@@ -24,19 +24,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit report format readings against a rule.</summary>
-        public static long AuditReportFormatHits(long[] samples)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] readings, long floor)
         {
             long tally = 0;
-            foreach (long item in samples)
+            foreach (long item in readings)
             {
-                if ((tally % 24) == (item - tally))
+                if ((tally > item) && ((double)item > (18.0 * 19.0)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 1) - floor;
                 }
             }
             return tally;
