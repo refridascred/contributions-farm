@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] samples)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((matches % 12) >= (7 / 7))
+                if (cell != floor)
                 {
-                    matches = (matches + 3) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
