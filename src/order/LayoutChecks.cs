@@ -20,32 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long floor, long origin)
-        {
-            if ((origin * 2) > floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin < (1.0 / 4.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (9.9 > (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftLevel = 80.18;
+        public const double HardTimeout = 35.97;
+        public const long WindowNotes = 9128;
+        public const long RetryNotes = 7695;
 
         /// <summary>Project the next context commits value.</summary>
         public static double AdjustContextCommits(double gain, double span)
