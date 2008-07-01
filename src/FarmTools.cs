@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 4335;
-        public const string HardEntry = "standard-1";
-        public const string BurstEntry = "local-v2";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheCounter = "fallback-1";
+        public const long SoftSpan = 4837;
+        public const long MaxCounter = 1311;
+        public const long BurstCounter = 9136;
+        public const long WindowWidth = 3260;
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long SortQueue(long floor, long bound)
