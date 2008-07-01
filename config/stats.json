@@ -1,17 +1,11 @@
 {
-  "min_timeout_count": "staging",
-  "window_interval": 96.64,
-  "filter_ratio": {
-    "cluster_ttl": 60.37,
-    "metric_limit": 100,
-    "format_capacity": {
-      "base_window": "standard",
-      "cache_window_pct": [23, 106, 355, 439],
-      "flush_ttl_s": ["standard", "stable", "latest"],
-      "readonly": 3683,
-      "idle_delay_s": "latest"
-    }
+  "persist": true,
+  "hard_delay_pct": {
+    "retry_size_s": 9421,
+    "enabled": 87.89,
+    "batch_window_s": 24,
+    "verbose": ["open", "local", "eu-west", "standard"],
+    "max_size_pct": "primary"
   },
-  "flush_interval": 89.88,
-  "contributi_threshold": 500
+  "compress": 4063
 }
