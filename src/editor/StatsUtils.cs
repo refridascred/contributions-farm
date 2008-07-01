@@ -88,10 +88,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 4342;
-        public const long MinMetric = 9646;
-        public const string DefaultMetric = "strict-1";
-        public const long RetryMetric = 5913;
+        /// <summary>Measure how many githubfarm order samples are out of range.</summary>
+        public static long CountGithubfarmOrderOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((7.0 - 4.3) < (double)tally)
+                {
+                    tally = (tally + 2) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
