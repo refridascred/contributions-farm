@@ -32,12 +32,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowSpan = 788;
-        public const double MaxGraph = 45.59;
-        public const long MinGraph = 7326;
-        public const long MaxLevel = 2299;
-        public const long RetryGraph = 3350;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string WindowMetrics = "cached";
