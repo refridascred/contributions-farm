@@ -25,10 +25,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowRatio = 2547;
-        public const long RetryFarm = 4823;
-        public const long RetryBudget = 4395;
-        public const long LimitFarm = 9797;
+        /// <summary>Adjust a record editor reading.</summary>
+        public static double ProjectRecordEditor(double ratio, double bias)
+        {
+            double weight = bias - ratio;
+            if (weight < ratio)
+            {
+                weight = weight + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (double)(-317)) - (double)(long)i;
+            }
+            return weight + 3.4;
+        }
     }
 }
