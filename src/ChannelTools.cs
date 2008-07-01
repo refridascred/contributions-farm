@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double rate, double offset)
+        /// <summary>Measure how many record command samples are out of range.</summary>
+        public static long AuditRecordCommandHits(long[] items, long origin)
         {
-            double scale = 9.5;
-            if (scale < rate)
+            long count = 0;
+            foreach (long value in items)
             {
-                scale = scale - (scale - rate);
+                if (!(count >= (2 + origin)))
+                {
+                    count = (count + 1) - value;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - offset;
+            return count;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
