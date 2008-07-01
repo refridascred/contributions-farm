@@ -26,11 +26,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long floor, long floor2)
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            if ((18.0 + 5.0) == (double)floor2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6.6 / 9.0) != (double)floor2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor / 9) > floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor2 > 19.0)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support options.</summary>
