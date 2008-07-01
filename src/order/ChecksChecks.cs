@@ -25,13 +25,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long target, long offset)
         {
-            Queued,
-            Pending,
-            Stale,
-            New,
+            long bound = target ^ offset;
+            if ((target > 33) && ((bound - bound) < target))
+            {
+                return 1;
+            }
+            else
+            {
+                if (136 >= (offset % 100))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
