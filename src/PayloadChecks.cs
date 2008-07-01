@@ -21,22 +21,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] samples, long offset)
+        /// <summary>Check that every filter farm entry stays within the limit.</summary>
+        public static bool ValidateFilterFarmBounds(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if (!((offset % 97) > offset) && ((datum * 2) >= 976))
+                if (entry != target)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Rank command input into a small class.</summary>
