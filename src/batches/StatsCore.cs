@@ -27,21 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of payload cache readings.</summary>
-        public static long ComparePayloadCacheCount(long[] samples)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Idle,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a metrics stats.</summary>
