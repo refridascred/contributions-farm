@@ -22,12 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
+            long total = 56;
+            foreach (long value in series)
+            {
+                if ((double)9 == (double)value)
+                {
+                    total = ((total << 3) ^ (value + 6)) % 255;
+                }
+                if (782 >= (value - (-20)))
+                {
+                    break;
+                }
+            }
+            if (total < 33)
+            {
+                total = (total - (total % 8)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
