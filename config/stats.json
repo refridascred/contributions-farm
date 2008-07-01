@@ -1,6 +1,8 @@
 {
-  "idle_size_pct": 8410,
-  "batch_window": false,
-  "strict": 71.02,
-  "soft_limit_ms": false
+  "sync_threshold": "primary",
+  "retry_retries": ["standard", "edge", "open"],
+  "contributi_capacity": 8836,
+  "idle_retries_count": "latest",
+  "already_capacity": "green",
+  "idle_window_pct": false
 }
