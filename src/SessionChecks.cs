@@ -62,18 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix << 3) ^ (mix ^ (long)i)) % 255;
-                mix = ((mix * 5) + seed) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxAlready = 27.2;
+        public const double RetryFactor = 76.33;
+        public const long BurstAlready = 4896;
+        public const string LimitAlready = "local-v2";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long StepBatches = 700;
