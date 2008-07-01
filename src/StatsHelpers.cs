@@ -18,12 +18,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Stale,
-            Retry,
-            Closed,
+            public double Token { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
