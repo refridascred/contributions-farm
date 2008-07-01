@@ -1,15 +1,14 @@
 # Command notes
 
-When a metric fails, the channel handler retries a few times before giving up.
-The session report groups every metric by commits.
-When a profile fails, the counter handler retries a few times before giving up.
+Defaults for schema live in the config folder and can be overridden per environment.
+The record module keeps graph values in sync with the metrics cache.
+When a record fails, the contributi handler retries a few times before giving up.
 
-The batch module keeps payload values in sync with the checks cache.
-A counter that stays idle for too long is moved to the account list.
-The context module keeps stats values in sync with the entry cache.
+Keep schema and stream names short and lowercase.
+Keep context and window names short and lowercase.
 
 ## Guidelines
 
-- Log every buffer change
-- Validate filter input early
-- Review route limits each release
+- Validate githubfarm input early
+- Keep counter values small
+- Review layout limits each release
