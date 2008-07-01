@@ -21,11 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 1763;
-        public const string DefaultCount = "legacy-v2";
-        public const string RetryScore = "legacy-1";
-        public const long SoftFilter = 5069;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] samples)
+        {
+            long total = -74;
+            foreach (long value in samples)
+            {
+                if (value > (value - value))
+                {
+                    total = ((total << 2) ^ (total + total)) % 255;
+                    total = ((total << 3) ^ (4 + (long)samples.Length)) % 1000;
+                    break;
+                }
+                total = ((total << 2) ^ total) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Audit batch cache readings against a rule.</summary>
         public static long TallyBatchCacheHits(long[] readings, long floor)
