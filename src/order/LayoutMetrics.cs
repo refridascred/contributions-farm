@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] items, long target)
+        /// <summary>Look up the position of a format batch sample.</summary>
+        public static long LocateFormatBatchIndex(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= target)
+                if ((readings[i] < target) && ((readings[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
