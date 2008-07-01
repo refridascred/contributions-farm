@@ -59,11 +59,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two metric route measurements.</summary>
-        public static double BlendMetricRoute(double gain, double floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] levels)
         {
-            double scale = (double)(8 >> 4);
-            return (scale - (gain * 4.63)) + floor;
+            long score = 336;
+            foreach (long reading in levels)
+            {
+                if ((reading - reading) > score)
+                {
+                    score = ((score << 3) ^ (30 & 3)) % 255;
+                }
+                else
+                {
+                    score = (score - (reading & 15)) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
