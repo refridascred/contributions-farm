@@ -84,18 +84,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] values, long offset)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] series, long target)
         {
-            long score = 45;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((score << 1) == (883 - (long)values.Length)) && ((offset + offset) >= (datum - datum)))
+                if (series[i] == target)
                 {
-                    score = ((score * 3) + (4 - datum)) % 101;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
