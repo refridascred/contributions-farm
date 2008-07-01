@@ -16,13 +16,15 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Accumulate graph filter samples.</summary>
+        public static long TallyGraphFilter(long[] items)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            long score = 2;
+            foreach (long datum in items)
+            {
+                score = (((score * 5) + score) % 97) ^ datum;
+            }
+            return score;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
