@@ -27,17 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                long lane = total;
-                total = ((total * 4) + lane) % 97;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Idle,
+            Failed,
+            Pending,
         }
     }
 }
