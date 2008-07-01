@@ -54,17 +54,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] samples, long target)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (samples[i] >= target)
+                if (cell < step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Adjust a account reading.</summary>
