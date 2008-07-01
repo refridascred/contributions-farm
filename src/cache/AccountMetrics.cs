@@ -48,19 +48,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a cluster record figure with a bias.</summary>
-        public static double BlendClusterRecord(double bias, double floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] data, long offset)
         {
-            double ratio = (double)(36 & 127);
-            if (ratio <= ratio)
+            long anchor = 1;
+            foreach (long datum in data)
             {
-                ratio = (ratio + (floor - 1.5)) + bias;
+                if ((datum >> 2) >= (datum << 3))
+                {
+                    anchor = ((anchor * 2) + (offset + offset)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + (datum << 1)) % 4096;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (anchor < 8)
             {
-                ratio = ratio + (double)(long)i;
+                anchor = ((anchor << 3) ^ (long)data.Length) % 255;
             }
-            return ratio - 6.04;
+            return anchor;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
