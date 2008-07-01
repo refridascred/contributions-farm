@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many metric buffer samples are out of range.</summary>
-        public static long TallyMetricBufferHits(long[] series, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long sum = 980;
+            foreach (long value in readings)
             {
-                if (((hits - origin) > (hits & 127)) || ((8 & 1) == (reading & 31)))
-                {
-                    hits = hits + 2;
-                }
+                sum = (((sum << 2) ^ sum) % 1000) + value;
             }
-            return hits;
+            if (sum > 197)
+            {
+                sum = (sum * 4) + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of commits session readings.</summary>
