@@ -18,13 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long bound)
         {
-            Paused,
-            Locked,
-            Closed,
-            Done,
+            long lane = floor + bound;
+            if (((double)floor >= (8.38 * 3.0)) && (4.86 > (double)bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(lane <= ((-812) / 8)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (0.92 <= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the editor schema entries that pass the check.</summary>
