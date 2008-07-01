@@ -18,11 +18,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Combine session values into a single score.</summary>
