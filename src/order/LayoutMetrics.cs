@@ -16,15 +16,18 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Accumulate graph filter samples.</summary>
-        public static long TallyGraphFilter(long[] items)
+        /// <summary>Audit stream counter readings against a rule.</summary>
+        public static long MeasureStreamCounterOutliers(long[] values, long target)
         {
-            long score = 2;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                score = (((score * 5) + score) % 97) ^ datum;
+                if (value <= (target * 2))
+                {
+                    count = count + 2;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
