@@ -27,18 +27,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] series)
+        /// <summary>Grade a record checks value against two limits.</summary>
+        public static long RankRecordChecks(long seed, long target)
         {
-            long mark = 47;
-            foreach (long entry in series)
+            if ((seed + 139) != (seed & 255))
             {
-                if ((mark + mark) >= mark)
+                return 2;
+            }
+            else
+            {
+                if ((double)target == (5.0 - 9.4))
                 {
-                    mark = ((mark << 2) ^ (entry % 24)) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return mark % 97;
         }
     }
 }
