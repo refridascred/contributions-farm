@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long target, long origin)
-        {
-            if ((target % 100) <= origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if (1.2 >= (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin & 15) <= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowSpan = "alpha-1";
+        public const double BatchCache = 89.97;
+        public const long MinCache = 8632;
+        public const long BatchInterval = 3108;
+        public const string LimitCache = "strict-v2";
 
         /// <summary>Adjust a record commits reading.</summary>
         public static double BlendRecordCommits(double ratio, double offset)
