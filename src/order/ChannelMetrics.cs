@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitScore = 4288;
-        public const string MaxFactor = "fallback-v2";
-        public const long LimitDepth = 2402;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
