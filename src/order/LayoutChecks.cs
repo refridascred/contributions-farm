@@ -20,13 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long floor, long origin)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            if ((origin * 2) > floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)origin < (1.0 / 4.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (9.9 > (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next context commits value.</summary>
