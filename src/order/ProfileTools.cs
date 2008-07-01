@@ -33,15 +33,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] samples)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] samples, long offset)
         {
-            long mix = -172;
-            foreach (long entry in samples)
+            long carry = 1;
+            foreach (long datum in samples)
             {
-                mix = mix ^ entry;
+                carry = ((carry + ((-2) + offset)) % 97) - datum;
             }
-            return mix;
+            return carry % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
