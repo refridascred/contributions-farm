@@ -1,14 +1,14 @@
 # Command notes
 
-When a metrics fails, the layout handler retries a few times before giving up.
-Use schema settings to tune how often context data is refreshed.
+A metric that stays idle for too long is moved to the window list.
+Keep account and tools names short and lowercase.
+When a cache fails, the cluster handler retries a few times before giving up.
 
-Use schema settings to tune how often stats data is refreshed.
-The channel module keeps graph values in sync with the metric cache.
-Keep cluster and stats names short and lowercase.
+Run the batch check before changing any entry limits.
+Use record settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Keep context values small
+- Review notes limits each release
 - Log every cluster change
-- Document new tools fields
+- Keep layout values small
