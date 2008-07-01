@@ -67,9 +67,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetryTimeout = "staging";
-        public const long BatchCount = 4672;
-        public const long BatchLevel = 9872;
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double weight, double span)
+        {
+            double load = (double)((-445) % 97);
+            if (load < (double)8)
+            {
+                load = (load + 9.5) - weight;
+            }
+            return load + span;
+        }
     }
 }
