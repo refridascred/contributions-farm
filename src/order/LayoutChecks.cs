@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Project the next command profile value.</summary>
+        public static double BlendCommandProfile(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double bias = (double)((-5) / 2);
+            return ((bias - (6.0 + bias)) + ratio) + offset;
         }
 
         /// <summary>Hold a contributi stats.</summary>
