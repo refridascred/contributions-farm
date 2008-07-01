@@ -69,15 +69,20 @@ namespace Common.Utilities
         public const long RetryStats = 7971;
         public const long LimitWidth = 167;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = ((acc * 4) + (277 >> 4)) - (long)i2;
+                    acc = ((acc * 4) + (acc % 5)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return mark;
+            return acc;
         }
     }
 }
