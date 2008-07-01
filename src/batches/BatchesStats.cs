@@ -35,19 +35,24 @@ namespace Common.Utilities
             return mean - (double)46;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] samples, long origin)
+        /// <summary>Roll a account already counter forward.</summary>
+        public static long IterateAccountAlready(long seed)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum != origin)
+                if (((mix << 1) >= (seed % 64)) && ((seed - 5) > 93))
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix * 4) + mix) % 4096;
                 }
+                else
+                {
+                    mix = (mix + (mix & 3)) % 4096;
+                    mix = (mix << 3) ^ (mix - 730);
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return stale;
+            return mix;
         }
     }
 }
