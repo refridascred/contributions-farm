@@ -43,12 +43,11 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the checks kind values.</summary>
