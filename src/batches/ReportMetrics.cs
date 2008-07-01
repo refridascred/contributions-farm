@@ -30,15 +30,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next support graph value from a seed.</summary>
-        public static long StepSupportGraph(long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Ready,
+            New,
+            Paused,
+            Retry,
         }
     }
 }
