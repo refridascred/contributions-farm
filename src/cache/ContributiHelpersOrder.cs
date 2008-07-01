@@ -28,18 +28,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] readings, long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long prev = limit + limit2;
+            if ((limit + limit) <= (limit ^ prev))
             {
-                if (8.5 <= (double)cell)
+                return 5;
+            }
+            else
+            {
+                if ((7 / 8) <= prev)
                 {
-                    matches = (matches + 3) + bound;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit2 ^ 477) == (854 ^ prev))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((3 % 8) > (limit2 + limit)) || (4.5 > (double)limit2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
