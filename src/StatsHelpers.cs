@@ -24,10 +24,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 7318;
-        public const double SoftLayout = 36.18;
-        public const long MinCount = 9864;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Done,
+            Queued,
+            Draft,
+            Active,
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
