@@ -1,10 +1,14 @@
 {
-  "cache_interval_ms": [146, 361],
-  "max_size_ms": "strict",
-  "default_delay": "cached",
-  "compress": {
-    "min_ttl_count": 62.57,
-    "batch_capacity_count": ["open", "legacy", "edge"],
-    "max_retries_count": 96.28
-  }
+  "retry_capacity_ms": "staging",
+  "min_ratio_count": "eu-west",
+  "base_delay_count": "fallback",
+  "compress": "stable",
+  "base_interval": {
+    "enabled": [442, 255, 358],
+    "burst_ttl": "cached",
+    "route_retries": "strict",
+    "base_size_pct": 6521,
+    "idle_retries": 4130
+  },
+  "githubfarm_ttl": 2622
 }
