@@ -39,22 +39,10 @@ namespace Common.Utilities
             return weight + (bias - 2.5);
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] samples)
-        {
-            long carry = 92;
-            foreach (long item in samples)
-            {
-                if (!(item >= (130 + carry)))
-                {
-                    carry = (carry << 3) ^ (carry / 7);
-                }
-            }
-            if (carry < 480)
-            {
-                carry = ((carry << 3) ^ carry) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleWidth = 1804;
+        public const string CacheLevel = "strict";
+        public const long MinFactor = 4919;
+        public const long BurstPayload = 2500;
     }
 }
