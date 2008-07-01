@@ -44,12 +44,13 @@ namespace Common.Utilities
         public const long BaseEditor = 8097;
         public const long HardEditor = 9418;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardLevel = 4392;
-        public const double HardSpan = 18.23;
-        public const string CacheAccount = "legacy";
-        public const double WindowAccount = 86.6;
-        public const long MaxFactor = 1539;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] values, long seed)
