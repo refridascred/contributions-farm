@@ -39,13 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] readings, long step)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (matches > 141)
+                {
+                    matches = ((matches + 2) - sample) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
