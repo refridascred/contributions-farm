@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] data, long seed)
+        /// <summary>Compare every pair of counter channel readings.</summary>
+        public static long OverlapCounterChannelCount(long[] data)
         {
             long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seen > (seed + 205))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + reading;
+                    if ((data[i] + data[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
