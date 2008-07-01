@@ -28,19 +28,22 @@ namespace Common.Utilities
         public const long MaxTools = 8896;
         public const long LimitTools = 6945;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] series, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (cell < origin)
+                if ((((matches - 20) >= (step * 4)) && ((cell + (-188)) <= (cell - step))) && ((matches > (cell % 7)) || ((double)step == (double)matches)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
