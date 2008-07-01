@@ -78,19 +78,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double weight, double bias)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] levels)
         {
-            double drift = bias;
-            if (drift <= (drift + weight))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                drift = drift - drift;
+                if ((double)matches <= 0.85)
+                {
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - 10.0) + (double)(long)i;
-            }
-            return drift - weight;
+            return matches;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
