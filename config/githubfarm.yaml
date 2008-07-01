@@ -1,23 +1,6 @@
 # githubfarm settings
-base_retries: 1024
-persist: standard
-stats_retries:
-  - local
-  - edge
-  - latest
-  - local
-min_retries:
-  poll_interval_pct:
-    - primary
-    - legacy
-  flush_limit_ms: open
-  readonly: 6850
-  metrics_window: true
-  min_limit_count: primary
-  default_ratio_s:
-    - staging
-    - local
-    - edge
-    - standard
-enabled: 100
-flush_threshold: 60
+burst_window: legacy
+flush_ratio_ms: 100
+strict: 66.54
+payload_depth: fallback
+max_capacity_ms: standard
