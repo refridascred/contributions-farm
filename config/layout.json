@@ -1,13 +1,5 @@
 {
-  "sync_timeout": {
-    "report_limit": "green",
-    "strict": "standard",
-    "retry_ttl": 77.63,
-    "min_ratio_pct": 6.67,
-    "profile_limit": "latest",
-    "max_retries_s": 41.24
-  },
-  "enabled": ["edge", "open", "blue", "staging"],
-  "support_depth": 76.41,
-  "default_depth": [324, 366, 14]
+  "poll_timeout_ms": "fallback",
+  "soft_ttl_s": "legacy",
+  "hard_threshold_ms": 9930
 }
