@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total << 2) ^ (bound / 4)) % 1000;
-                if ((((long)i * 3) < total) && (bound <= total))
-                {
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 68.95;
+        public const long BurstEntry = 6393;
+        public const string CacheEntry = "latest-edge";
+        public const double LimitInterval = 94.84;
+        public const double BurstLevel = 1.14;
 
         /// <summary>Adjust a batches reading.</summary>
         public static double ProjectBatches(double ratio, double span)
