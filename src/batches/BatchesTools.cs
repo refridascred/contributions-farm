@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] values, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (datum < step)
+                if (datum < offset)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
