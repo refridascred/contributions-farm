@@ -1,14 +1,14 @@
 # Command notes
 
-A format that stays idle for too long is moved to the stats list.
-Run the profile check before changing any schema limits.
+Keep schema and payload names short and lowercase.
+A channel that stays idle for too long is moved to the support list.
 
-Keep report and command names short and lowercase.
-The counter module keeps checks values in sync with the farm cache.
-Use farm settings to tune how often notes data is refreshed.
+The metric module keeps report values in sync with the editor cache.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Use record settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Log every batches change
-- Document new notes fields
-- Review already limits each release
+- Validate stream input early
+- Keep farm values small
+- Prefer profile defaults
