@@ -26,23 +26,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next stats metric value.</summary>
-        public static double AdjustStatsMetric(double scale, double floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            double ratio = scale * 3.29;
-            if (ratio < (double)98)
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio + (double)1;
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a support options.</summary>
