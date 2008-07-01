@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const double StepRatio = 62.14;
         public const long WindowScore = 4396;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] values, long bound)
         {
-            Retry,
-            Pending,
-            Draft,
-            Stale,
+            long result = 882;
+            foreach (long reading in values)
+            {
+                result = result - bound;
+                if (((11 - reading) < (bound / 4)) && ((4.13 - 4.84) < (double)bound))
+                {
+                    result = (result + result) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
