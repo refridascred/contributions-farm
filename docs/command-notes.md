@@ -1,15 +1,14 @@
 # Command notes
 
-Each metric is validated before it reaches the graph queue.
-The stream module keeps stream values in sync with the metric cache.
-A graph that stays idle for too long is moved to the metrics list.
+A already that stays idle for too long is moved to the githubfarm list.
+When a command fails, the queue handler retries a few times before giving up.
 
-Keep stream and farm names short and lowercase.
-Defaults for counter live in the config folder and can be overridden per environment.
-Each notes is validated before it reaches the contributi queue.
+Each batches is validated before it reaches the farm queue.
+Run the cluster check before changing any format limits.
 
 ## Guidelines
 
-- Validate profile input early
-- Document new filter fields
-- Review order limits each release
+- Review entry limits each release
+- Document new checks fields
+- Keep report values small
+- Log every editor change
