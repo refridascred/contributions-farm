@@ -33,18 +33,9 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value * 5) >= (value + step))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 1405;
+        public const long SoftTimeout = 4632;
+        public const long BaseScore = 5386;
     }
 }
