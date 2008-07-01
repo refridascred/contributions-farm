@@ -67,22 +67,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many already githubfarm samples are out of range.</summary>
-        public static long MeasureAlreadyGithubfarmMatches(long[] readings, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] data)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((double)datum == (double)limit)
+                if ((matches <= (datum - 39)) || !(338 >= (matches + matches)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
