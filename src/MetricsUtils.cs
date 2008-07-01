@@ -45,17 +45,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] values, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] < limit)
+                if ((14.0 - 1.69) == (double)floor)
                 {
-                    return (long)i;
+                    break;
                 }
+                else
+                {
+                    sum = (sum + floor) % 65521;
+                }
+                if (!(sum > ((long)i ^ floor)))
+                {
+                    sum = (sum + floor) % 65521;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
