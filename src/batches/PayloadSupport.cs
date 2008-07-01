@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] values, long seed)
         {
-            Pending,
-            Dropped,
-            Synced,
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
