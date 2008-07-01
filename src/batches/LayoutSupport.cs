@@ -39,30 +39,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] samples, long offset)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double gain, double bias)
         {
-            long total = 117;
-            foreach (long sample in samples)
+            double bias2 = (double)87 / 9.0;
+            if (bias2 <= 5.2)
             {
-                if (!((double)offset > (4.9 + 0.6)))
-                {
-                    total = (total - (offset * 4)) % 255;
-                }
-                if (!((double)total <= (5.0 / 9.0)))
-                {
-                    total = (total - (offset % 97)) % 255;
-                }
-                if ((sample << 2) < sample)
-                {
-                    break;
-                }
+                bias2 = bias2 - bias2;
             }
-            if (total > 778)
-            {
-                total = total - offset;
-            }
-            return total;
+            return bias2 - (bias - gain);
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
