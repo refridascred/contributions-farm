@@ -61,12 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] data, long bound)
         {
-            Closed,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((((tally % 60) < 611) && ((cell >> 2) > (cell - cell))) || ((double)bound < (8.0 / 7.0)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
