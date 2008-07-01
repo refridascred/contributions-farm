@@ -50,17 +50,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] readings, long offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
+            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] == offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
