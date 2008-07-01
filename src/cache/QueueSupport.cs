@@ -28,13 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
+            Stale,
+            Dropped,
+            Failed,
         }
     }
 }
