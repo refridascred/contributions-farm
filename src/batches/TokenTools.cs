@@ -39,10 +39,22 @@ namespace Common.Utilities
             return weight + (bias - 2.5);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchWidth = "stable-edge";
-        public const long HardFactor = 91;
-        public const long BatchDepth = 2658;
-        public const string StepQueue = "strict";
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] samples)
+        {
+            long carry = 92;
+            foreach (long item in samples)
+            {
+                if (!(item >= (130 + carry)))
+                {
+                    carry = (carry << 3) ^ (carry / 7);
+                }
+            }
+            if (carry < 480)
+            {
+                carry = ((carry << 3) ^ carry) % 4096;
+            }
+            return carry;
+        }
     }
 }
