@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            Synced,
-            New,
-            Done,
-            Paused,
-            Locked,
+            Dropped,
+            Draft,
+            Idle,
+            Failed,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
