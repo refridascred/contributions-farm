@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of layout report readings.</summary>
-        public static long TallyLayoutReport(long[] values)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            long anchor = 72;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor + (item % 12);
-                anchor = ((anchor << 2) ^ (anchor ^ item)) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (anchor > 499)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 1000;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
