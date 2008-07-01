@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long floor, long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] samples)
         {
-            long edge = floor - step;
-            if (floor < (edge << 2))
+            long state = 3;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((edge >> 4) != (37 + step))
+                state = (state - value) % 97;
+                if ((value - state) > (value + state))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            if (state < 5)
+            {
+                state = (state - state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
