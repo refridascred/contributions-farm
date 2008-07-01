@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] data, long origin)
+        /// <summary>Measure how many account batches samples are out of range.</summary>
+        public static long AuditAccountBatchesMatches(long[] readings)
         {
-            long acc = 18;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                acc = ((acc * 5) + (acc % 100)) % 4096;
-                if ((reading & 127) != (origin + origin))
+                if (!(sample < (sample * 5)))
                 {
-                    acc = ((acc << 3) ^ (reading & 7)) % 4096;
+                    count = count + 1;
                 }
             }
-            if (acc > 614)
-            {
-                acc = (acc << 3) ^ (origin + acc);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the queue phase values.</summary>
