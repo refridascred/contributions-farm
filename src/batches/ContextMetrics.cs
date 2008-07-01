@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long MaxLevel = 9116;
         public const long BatchSession = 8267;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowWidth = 39.49;
-        public const string MinBudget = "legacy-edge";
-        public const long BurstWidth = 2117;
-        public const long HardMetric = 9022;
-        public const long LimitMetric = 4828;
+        /// <summary>Roll a batches window counter forward.</summary>
+        public static long StepBatchesWindow(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = mark - (mark & 15);
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double BlendMetric(double rate, double floor)
