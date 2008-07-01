@@ -1,18 +1,9 @@
 # entry settings
-compress: 1024
-batches_interval: 65
-soft_size_pct: standard
-cache_limit: false
-checks_retries: true
-metrics_limit:
-  retry_ratio: 4919
-  idle_delay: green
-  sync_ratio: 90
-  hard_retries: 500
-  warm_interval_count:
-    max_window: false
-    readonly: 88.12
-    verbose: 36.06
-    schema_size: green
-    max_delay_count: 1425
-  flush_window: 60
+sync_retries_s: strict
+base_limit_ms: cached
+sync_interval: 71.69
+metrics_ttl:
+  - 295
+  - 23
+  - 92
+base_capacity_ms: false
