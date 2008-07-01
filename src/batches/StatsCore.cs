@@ -12,19 +12,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of cluster record readings.</summary>
-        public static long DigestClusterRecord(long[] readings, long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] values, long target)
         {
-            long mark = -8;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long item in values)
             {
-                mark = ((mark + (mark * 4)) % 255) - datum;
-                if (((mark - limit) == (mark ^ limit)) || ((limit * 2) >= (31 ^ limit)))
+                if (item <= target)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Compare every pair of payload cache readings.</summary>
