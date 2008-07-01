@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const long BurstAlready = 4896;
         public const string LimitAlready = "local-v2";
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] samples)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((6 >> 2) > matches) && (((double)3 > (double)item) || ((matches + matches) != (matches * 4))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Queued,
+            New,
+            Locked,
         }
     }
 }
