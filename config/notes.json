@@ -1,11 +1,11 @@
 {
-  "warm_limit_count": "edge",
-  "compress": false,
-  "retry_capacity": false,
-  "cache_depth_count": {
-    "warm_threshold": 9094,
-    "flush_limit_ms": "stable",
-    "support_limit": 3210
+  "batch_ratio_s": 100,
+  "cache_threshold": {
+    "strict": 6743,
+    "tools_threshold": "eu-west",
+    "already_size": 84,
+    "graph_interval": 5856,
+    "batch_interval": ["local", "eu-west"]
   },
-  "idle_retries": "staging"
+  "soft_limit_count": "staging"
 }
