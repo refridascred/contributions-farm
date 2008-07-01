@@ -54,12 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Locked,
-            Ready,
-            New,
+            public string Flag { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
