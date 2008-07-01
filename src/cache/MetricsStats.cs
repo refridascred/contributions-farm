@@ -47,11 +47,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 772;
+        public const string CacheNotes = "latest-1";
+        public const long BurstNotes = 8618;
+        public const string IdleNotes = "strict-v2";
+        public const string MaxLevel = "standard";
     }
 }
