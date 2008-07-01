@@ -32,11 +32,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxAlready = 27.2;
-        public const double RetryFactor = 76.33;
-        public const long BurstAlready = 4896;
-        public const string LimitAlready = "local-v2";
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Synced,
+            Retry,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Fold a list of payload tools readings.</summary>
         public static long TallyPayloadTools(long[] items)
