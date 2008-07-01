@@ -20,18 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stream batch readings against a rule.</summary>
-        public static long CountStreamBatchMatches(long[] samples)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally < (12.0 / 9.0))
+                if ((readings[i] == seed) && ((readings[i] % 3) == 0))
                 {
-                    tally = (tally + 1) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of already readings.</summary>
