@@ -29,19 +29,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] series, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] items)
         {
-            long mix = 475;
-            foreach (long item in series)
+            long state = 9;
+            foreach (long entry in items)
             {
-                mix = (((mix << 2) ^ (mix & 3)) ^ item) + floor;
+                if ((entry - entry) > (44 * 4))
+                {
+                    state = (state + entry) % 97;
+                }
             }
-            if (mix > 3)
+            if (state < 176)
             {
-                mix = (mix + mix) % 4096;
+                state = (state ^ (state - state)) % 255;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Hold a entry entry.</summary>
