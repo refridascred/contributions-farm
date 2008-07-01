@@ -1,8 +1,6 @@
 {
-  "min_delay_ms": 1024,
-  "strict": true,
-  "metrics_depth": 65,
-  "stream_size": [43, 156, 365, 89],
-  "readonly": 30,
-  "audit": 4501
+  "stream_ratio": 60,
+  "verbose": ["edge", "fallback"],
+  "batch_size_s": "cached",
+  "report_size": 35.14
 }
