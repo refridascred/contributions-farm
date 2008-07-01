@@ -1,10 +1,7 @@
-id,owner,token,weight
-1,33.28,73.39,green
-2,45.33,27.56,111
-3,open,643,legacy
-4,539,975,707
-5,staging,498,green
-6,169,40,91.27
-7,33.83,64.97,3
-8,439,39,22.44
-9,green,82.13,local
+id,state,label,count
+1,31.89,796,723
+2,legacy,50,fallback
+3,56.81,986,643
+4,230,legacy,fallback
+5,598,775,88.01
+6,48.91,714,56.38
