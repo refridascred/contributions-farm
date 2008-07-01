@@ -19,11 +19,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardSpan = 775;
-        public const string IdleContributi = "latest-1";
-        public const long BatchFactor = 5254;
-        public const long RetryContributi = 8989;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (4.0 < (double)reading)
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long IdleSchema = 8007;
