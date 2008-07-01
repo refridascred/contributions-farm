@@ -1,5 +1,12 @@
 {
-  "max_window_s": false,
-  "hard_depth_pct": 250,
-  "min_interval_count": false
+  "cache_window": "strict",
+  "warm_timeout_s": [209, 490, 305],
+  "sync_interval_count": 88.74,
+  "retry_ratio_pct": {
+    "strict": 30,
+    "poll_threshold": 74.17,
+    "max_ratio_s": 70,
+    "report_size": "edge"
+  },
+  "order_size": ["latest", "fallback", "blue", "latest"]
 }
