@@ -44,19 +44,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (tally >= (54 + floor))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleSpan = 6031;
+        public const long BatchScore = 4208;
+        public const long BaseContributi = 3968;
+        public const long BatchContributi = 2316;
+        public const long DefaultContributi = 381;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteOutliers(long[] series)
