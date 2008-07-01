@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] values, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (value != origin)
+                if ((-706) < (reading & 15))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
