@@ -1,6 +1,19 @@
 # entry settings
-burst_size_s: fallback
-min_window_ms: 30
-base_threshold_s: 34.08
-sync_threshold: 30
-min_size_ms: eu-west
+support_limit: 91.65
+report_limit:
+  base_window_ms:
+    - 271
+    - 18
+    - 261
+  base_size: blue
+  default_size_s: legacy
+  enabled: true
+  flush_retries:
+    - strict
+    - blue
+    - strict
+  buffer_interval:
+    - primary
+    - standard
+    - latest
+sync_retries_count: 2923
