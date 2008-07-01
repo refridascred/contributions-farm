@@ -28,21 +28,18 @@ namespace Common.Utilities
         public const double SoftLevel = 27.58;
         public const string LimitOrder = "primary";
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] levels)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((3 + item) != (item * 4)) || ((double)item <= (double)(-28))) || ((item >> 3) < (hits / 6)))
                 {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a already summary.</summary>
