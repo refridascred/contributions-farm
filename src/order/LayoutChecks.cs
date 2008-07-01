@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next command profile value.</summary>
-        public static double BlendCommandProfile(double ratio, double offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] data, long limit)
         {
-            double bias = (double)((-5) / 2);
-            return ((bias - (6.0 + bias)) + ratio) + offset;
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a contributi stats.</summary>
