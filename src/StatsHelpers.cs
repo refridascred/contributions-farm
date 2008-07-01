@@ -50,9 +50,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowChannel = "alpha";
-        public const long DefaultBudget = 569;
-        public const long CacheChannel = 8443;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Synced,
+            Locked,
+            Done,
+        }
     }
 }
