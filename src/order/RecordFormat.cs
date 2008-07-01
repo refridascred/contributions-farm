@@ -55,23 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next githubfarm stream value.</summary>
-        public static double SmoothGithubfarmStream(double ratio, double span)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            double gain = (double)(-2) - 3.0;
-            if (gain < gain)
-            {
-                gain = (gain + (double)8) - ratio;
-            }
-            else
-            {
-                gain = gain + (span / 5.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (span / 2.0)) - (double)(long)i;
-            }
-            return gain + span;
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
