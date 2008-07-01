@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
+            Draft,
+            Active,
+            Dropped,
+            Synced,
+            Retry,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
