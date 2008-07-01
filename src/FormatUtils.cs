@@ -39,11 +39,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstQueue = 89.08;
-        public const double HardScore = 18.22;
-        public const double BatchLevel = 77.86;
-        public const string RetryFactor = "cached-1";
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((17.0 * 5.45) <= (double)(long)i))
+                {
+                    mark = (mark - (mark - limit)) % 255;
+                }
+                mark = mark + (86 & 127);
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Iterate the cache channel series from a seed.</summary>
         public static long IterateCacheChannel(long target)
