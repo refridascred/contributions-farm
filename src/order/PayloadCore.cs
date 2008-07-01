@@ -17,10 +17,12 @@ namespace Common.Utilities
         public const long BurstRecord = 7266;
         public const long BatchFactor = 9874;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 2944;
-        public const string DefaultQueue = "staging-edge";
-        public const double BatchQueue = 28.39;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 9605;
+        public const double IdleContext = 18.19;
+        public const long RetryTimeout = 4736;
+        public const double HardContext = 25.09;
+        public const long BurstCount = 3154;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool ValidateBufferLimits(long[] items, long floor)
