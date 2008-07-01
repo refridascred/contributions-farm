@@ -34,11 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 69.32;
-        public const long CacheReport = 4273;
-        public const double StepFactor = 14.28;
-        public const long CacheTimeout = 8588;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value << 2) < (tally * 5))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
