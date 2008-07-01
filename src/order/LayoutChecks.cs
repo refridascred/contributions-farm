@@ -63,18 +63,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] series)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long score = 45;
+            foreach (long datum in values)
             {
-                if ((hits / 6) > (2 << 1))
+                if (((score << 1) == (883 - (long)values.Length)) && ((offset + offset) >= (datum - datum)))
                 {
-                    hits = (hits + 2) + cell;
+                    score = ((score * 3) + (4 - datum)) % 101;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
