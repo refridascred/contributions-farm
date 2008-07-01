@@ -65,11 +65,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitInterval = 16.34;
-        public const double HardBatches = 88.08;
-        public const double MinBatches = 38.93;
-        public const long IdleBatches = 3562;
-        public const double DefaultFactor = 32.14;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinDepth = 424;
+        public const long BaseRoute = 8641;
+        public const long HardBudget = 2464;
+        public const string SoftRoute = "cached-edge";
+        public const string IdleWidth = "primary-1";
     }
 }
