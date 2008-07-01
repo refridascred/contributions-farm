@@ -24,10 +24,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheCount = "legacy";
-        public const string HardBuffer = "staging";
-        public const string SoftDepth = "local";
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
