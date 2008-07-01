@@ -56,12 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first buffer order entry that matches the target.</summary>
-        public static long LookupBufferOrderIndex(long[] items, long seed)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] >= seed) && ((items[i] % 2) != 0))
+                if (readings[i] == offset)
                 {
                     return (long)i;
                 }
