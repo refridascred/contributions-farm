@@ -39,21 +39,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 56;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = anchor ^ (floor + value);
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a checks entry.</summary>
