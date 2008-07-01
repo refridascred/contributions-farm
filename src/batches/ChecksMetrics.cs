@@ -65,18 +65,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context contributi readings against a rule.</summary>
-        public static long TallyContextContributiOutliers(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((matches >> 3) <= sample)
+                if ((hits <= 260) && ((entry << 2) <= (hits - hits)))
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
