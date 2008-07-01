@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long offset, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] values, long step)
         {
-            if ((offset < 11) || ((offset ^ offset) >= floor))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((floor - floor) >= (floor << 2)))
+                if ((double)step != (double)425)
                 {
-                    return 3;
+                    matches = (matches + 2) ^ reading;
                 }
                 else
                 {
-                    if (floor < 570)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset <= 80)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every command format entry stays within the limit.</summary>
