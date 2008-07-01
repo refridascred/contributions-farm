@@ -56,18 +56,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] items, long step)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell <= 6.3)
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
