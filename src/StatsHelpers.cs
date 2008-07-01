@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const double StepRecord = 57.93;
         public const double MinRecord = 97.33;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] data, long origin)
+        /// <summary>Roll a account filter counter forward.</summary>
+        public static long IterateAccountFilter(long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((count - reading) < count) || ((9.29 <= (double)count) || (reading > origin)))
+                if ((((long)i - bound) > total) && ((double)bound > (3.39 / 8.0)))
                 {
-                    count = count + 3;
+                    total = (total ^ ((long)i * 3)) % 1000;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
