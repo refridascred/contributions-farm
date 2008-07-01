@@ -32,17 +32,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                long next = (total % 7) - (bound << 2);
-                total = (total - (next % 8)) % 4096;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 5192;
+        public const long DefaultSpan = 8422;
+        public const long IdleScore = 4384;
+        public const double HardInterval = 5.31;
+        public const double DefaultBudget = 3.06;
     }
 }
