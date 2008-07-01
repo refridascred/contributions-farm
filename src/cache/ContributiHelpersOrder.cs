@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] values, long floor)
         {
-            Pending,
-            Queued,
-            Idle,
-            Closed,
-            Stale,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a entry header.</summary>
