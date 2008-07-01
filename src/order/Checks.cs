@@ -41,11 +41,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowMetrics = "cached";
-        public const long BaseMetrics = 662;
-        public const long IdleTimeout = 6056;
-        public const long StepMetrics = 9274;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 9188;
+        public const long BatchGraph = 871;
+        public const long DefaultGraph = 5181;
+        public const long BurstRatio = 1275;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
