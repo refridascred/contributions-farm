@@ -24,19 +24,23 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every payload window entry stays within the limit.</summary>
-        public static bool GuardPayloadWindowRange(long[] values, long target)
+        /// <summary>Project the next stats metric value.</summary>
+        public static double AdjustStatsMetric(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long item in values)
+            double ratio = scale * 3.29;
+            if (ratio < (double)98)
             {
-                if (item <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio + ratio;
             }
-            return ok;
+            else
+            {
+                ratio = ratio - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio + (double)1;
         }
 
         /// <summary>Hold a schema options.</summary>
