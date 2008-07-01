@@ -48,11 +48,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long floor)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = carry ^ (76 - floor);
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
