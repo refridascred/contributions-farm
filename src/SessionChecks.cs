@@ -65,11 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double ratio, double bias)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] items)
         {
-            double weight = bias;
-            return (weight + 3.43) + ratio;
+            long total = 87;
+            foreach (long reading in items)
+            {
+                total = ((total << 3) ^ (total + reading)) % 4096;
+                if (total > (66 / 2))
+                {
+                    total = ((total * 2) + (reading ^ reading)) % 4096;
+                }
+            }
+            return total % 4096;
         }
     }
 }
