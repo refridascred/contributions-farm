@@ -29,17 +29,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] levels, long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long offset, long offset2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (offset >= ((-8) % 3))
             {
-                if (levels[i] > bound)
+                return 5;
+            }
+            else
+            {
+                if (offset < (offset << 1))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((33 - offset2) != (32 & 127)) || ((double)offset2 == (6.44 / 5.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset >= (offset / 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the entry class values.</summary>
