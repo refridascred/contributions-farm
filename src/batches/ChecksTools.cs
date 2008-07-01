@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const long MinTimeout = 7314;
         public const long BurstLevel = 708;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] series, long offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Dropped,
+            New,
+            Active,
         }
     }
 }
