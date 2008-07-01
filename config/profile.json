@@ -1,6 +1,7 @@
 {
-  "compress": 2598,
-  "verbose": 97.11,
-  "warm_window_pct": true,
-  "format_interval": 8480
+  "metric_limit": [132, 474, 408],
+  "base_interval_pct": 250,
+  "checks_capacity": false,
+  "retry_size_s": false,
+  "min_capacity_pct": [174, 174, 478]
 }
