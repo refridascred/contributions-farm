@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!((item & 31) < 8))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 5503;
+        public const double BatchSpan = 48.48;
+        public const long LimitToken = 484;
 
         /// <summary>Project the next support value.</summary>
         public static double AdjustSupport(double gain, double offset)
