@@ -30,12 +30,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 9605;
-        public const double IdleContext = 18.19;
-        public const long RetryTimeout = 4736;
-        public const double HardContext = 25.09;
-        public const long BurstCount = 3154;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Done,
+            Failed,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool ValidateBufferLimits(long[] items, long floor)
