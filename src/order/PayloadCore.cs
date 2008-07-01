@@ -38,19 +38,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] data, long offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > offset)
+                if (items[i] >= limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
