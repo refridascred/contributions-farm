@@ -30,22 +30,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] values)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!(item <= hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Queued,
+            Idle,
         }
     }
 }
