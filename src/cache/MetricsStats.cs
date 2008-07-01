@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double rate, double span)
+        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
+        public static long AuditFarmGithubfarmMatches(long[] data)
         {
-            double mean = rate;
-            if (mean > (mean / 6.0))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                mean = mean + rate;
+                if ((1.6 * 7.9) != (double)datum)
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean - mean;
+            return seen;
         }
 
         /// <summary>Hold a record header.</summary>
