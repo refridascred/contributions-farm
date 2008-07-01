@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] values, long seed)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            double gain2 = (double)((-7) % 3);
+            if (gain2 > (double)375)
             {
-                if (sample <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                gain2 = ((gain2 + (double)(-4)) + gain) - bias;
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 - (double)(-334);
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
