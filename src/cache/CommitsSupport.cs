@@ -49,21 +49,12 @@ namespace Common.Utilities
         public const string HardWidth = "legacy-edge";
         public const long MaxSchema = 1536;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a already reading by value.</summary>
