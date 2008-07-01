@@ -1,14 +1,15 @@
 # Command notes
 
-A already that stays idle for too long is moved to the githubfarm list.
-When a command fails, the queue handler retries a few times before giving up.
+Use layout settings to tune how often window data is refreshed.
+The schema module keeps route values in sync with the profile cache.
 
-Each batches is validated before it reaches the farm queue.
-Run the cluster check before changing any format limits.
+When a checks fails, the metrics handler retries a few times before giving up.
+Use metrics settings to tune how often layout data is refreshed.
+Keep queue and batch names short and lowercase.
 
 ## Guidelines
 
-- Review entry limits each release
-- Document new checks fields
-- Keep report values small
-- Log every editor change
+- Document new payload fields
+- Validate metric input early
+- Keep context values small
+- Review route limits each release
