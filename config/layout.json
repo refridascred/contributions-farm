@@ -1,6 +1,11 @@
 {
-  "flush_interval": false,
-  "counter_capacity": "open",
-  "stream_delay": false,
-  "min_ratio_ms": "legacy"
+  "retry_delay_ms": 31.9,
+  "persist": [495, 258, 224, 412],
+  "batch_capacity_s": "standard",
+  "readonly": {
+    "graph_capacity": 89,
+    "dry_run": 500,
+    "flush_timeout_s": 34,
+    "poll_delay_ms": 1073
+  }
 }
