@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Closed,
-            Dropped,
-            Stale,
-            Done,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 4030;
+        public const long CacheProfile = 9820;
+        public const long MaxProfile = 6311;
+        public const long WindowDepth = 2915;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinSpan = 1.45;
