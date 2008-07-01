@@ -30,19 +30,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 7644;
+        public const long IdlePayload = 1065;
+        public const long DefaultWidth = 5773;
+        public const long CacheScore = 6747;
     }
 }
