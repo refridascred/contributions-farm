@@ -1,12 +1,6 @@
 # support settings
-strict:
-  dry_run: local
-  readonly: open
-  default_timeout:
-    idle_limit_count: strict
-    persist: 60
-    cache_ttl: 30
-    readonly: 44.27
-    compress: 83.76
-batch_ratio: 3011
-already_size: blue
+persist: 9237
+max_delay_pct: 42.28
+max_delay_count: fallback
+dry_run: 8638
+token_retries: true
