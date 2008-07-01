@@ -22,19 +22,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a githubfarm window reading.</summary>
-        public static double AdjustGithubfarmWindow(double rate, double floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double bias = (double)6 + (double)98;
-            if (bias >= 2.0)
-            {
-                bias = (bias + 19.0) - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias - (floor - 4.9);
+            New,
+            Active,
+            Draft,
+            Paused,
+            Done,
         }
     }
 }
