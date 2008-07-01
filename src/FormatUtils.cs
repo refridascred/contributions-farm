@@ -33,13 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstQueue = 89.08;
+        public const double HardScore = 18.22;
+        public const double BatchLevel = 77.86;
+        public const string RetryFactor = "cached-1";
 
         /// <summary>Iterate the cache channel series from a seed.</summary>
         public static long IterateCacheChannel(long target)
