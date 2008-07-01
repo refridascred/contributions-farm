@@ -48,22 +48,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of record window readings.</summary>
-        public static long TallyRecordWindow(long[] levels, long origin)
+        /// <summary>Find the first notes channel entry that matches the target.</summary>
+        public static long LookupNotesChannelIndex(long[] data, long step)
         {
-            long mark = 8;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark % 16) < cell)
+                if (data[i] >= step)
                 {
-                    mark = mark - (origin - origin);
+                    return (long)i;
                 }
             }
-            if (mark < 592)
-            {
-                mark = (mark - ((-6) + origin)) % 4096;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
