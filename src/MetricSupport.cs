@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] series, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (datum > target)
+                if (reading < (5 - 0))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
