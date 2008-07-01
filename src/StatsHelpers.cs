@@ -64,19 +64,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every order payload entry stays within the limit.</summary>
-        public static bool GuardOrderPayloadBounds(long[] items, long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
