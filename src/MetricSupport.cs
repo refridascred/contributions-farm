@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinSize = 4157;
-        public const long IdleRecord = 1067;
-        public const long RetryInterval = 9123;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally + item) < 2)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long StepPayload(long origin)
