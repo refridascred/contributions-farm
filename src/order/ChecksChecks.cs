@@ -23,15 +23,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] readings, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long state = 84;
-            foreach (long cell in readings)
+            long carry = -221;
+            foreach (long datum in items)
             {
-                state = ((state ^ cell) % 1000) - floor;
+                if ((carry << 1) > (carry + datum))
+                {
+                    carry = ((carry * 2) + (carry & 3)) % 4096;
+                }
+                else
+                {
+                    carry = carry - (datum * 2);
+                }
             }
-            return state % 65521;
+            return carry;
         }
     }
 }
