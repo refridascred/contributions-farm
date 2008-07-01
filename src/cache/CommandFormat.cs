@@ -38,26 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] data)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] series, long origin)
         {
-            long state = 72;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((state * 3) >= ((long)data.Length & 31))
+                if (cell < origin)
                 {
-                    state = state ^ (value + value);
-                }
-                if (!((double)state <= (9.2 * 3.0)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (state > (-83))
-            {
-                state = (state * 4) + (state - state);
-            }
-            return state % 4096;
+            return valid;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
