@@ -23,18 +23,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cache tools samples are out of range.</summary>
-        public static long AuditCacheToolsHits(long[] values)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (3 > (sample + (long)values.Length))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] - values[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
