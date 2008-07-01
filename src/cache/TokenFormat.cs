@@ -37,19 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] items, long limit)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            double drift = offset;
+            if (drift > (offset * 5.8))
             {
-                if (reading < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = (drift - drift) - scale;
             }
-            return flag;
+            return drift - offset;
         }
     }
 }
