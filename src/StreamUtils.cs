@@ -69,22 +69,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the account githubfarm entries that pass the check.</summary>
-        public static long CountAccountGithubfarmMatches(long[] values)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long result = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading <= (reading + reading))
+                if ((double)3 < (double)target)
                 {
-                    seen = seen + 1;
+                    result = (result - (target >> 2)) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    result = result - (result - (long)i);
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
