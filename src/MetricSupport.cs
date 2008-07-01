@@ -23,27 +23,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] readings)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long carry = 60;
-            foreach (long sample in readings)
-            {
-                if (((double)sample > 4.3) || ((sample + carry) >= (sample * 2)))
-                {
-                    carry = ((carry * 5) + ((-75) << 3)) % 1000;
-                }
-                carry = carry - (carry ^ 46);
-                if (((-86) - carry) == (carry + 0))
-                {
-                    break;
-                }
-            }
-            if (carry > 79)
-            {
-                carry = (carry - carry) % 1000;
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Iterate the checks support series from a seed.</summary>
