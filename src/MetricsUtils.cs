@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double ratio, double floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double drift = ratio;
-            if (drift <= drift)
-            {
-                drift = (drift + (6.43 * 12.0)) - floor;
-            }
-            else
-            {
-                drift = drift - (drift * 7.0);
-            }
-            return drift + (ratio / 4.0);
+            Failed,
+            Draft,
+            Synced,
+            Active,
+            Locked,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
