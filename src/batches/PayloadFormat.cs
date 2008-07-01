@@ -29,22 +29,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate contributi layout samples.</summary>
-        public static long ScoreContributiLayout(long[] values)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] data, long target)
         {
-            long carry = 14;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (((double)carry == (7.03 + 4.19)) && (((long)values.Length % 60) <= (carry & 63)))
+                if (reading <= target)
                 {
-                    carry = ((carry * 4) + (carry - sample)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry > 7)
-            {
-                carry = ((carry * 3) + (90 / 9)) % 4096;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
