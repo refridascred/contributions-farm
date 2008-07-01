@@ -40,33 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long floor, long limit)
-        {
-            long diff = floor - limit;
-            if (diff >= (limit >> 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3.09 / 7.0) >= (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (diff >= (diff + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstTools = 62.64;
+        public const double BatchTools = 98.08;
+        public const long IdleTools = 695;
+        public const long RetryTools = 182;
+        public const string MinCount = "primary-v2";
 
         /// <summary>Iterate the notes stream series from a seed.</summary>
         public static long IterateNotesStream(long bound)
