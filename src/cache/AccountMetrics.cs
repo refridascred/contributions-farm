@@ -82,13 +82,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] data, long target)
         {
-            Locked,
-            Idle,
-            Synced,
-            Closed,
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
