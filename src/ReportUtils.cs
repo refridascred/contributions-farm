@@ -39,18 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] readings, long step)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches > 141)
+                if (samples[i] < bound)
                 {
-                    matches = ((matches + 2) - sample) - step;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
