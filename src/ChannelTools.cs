@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many record command samples are out of range.</summary>
-        public static long AuditRecordCommandHits(long[] items, long origin)
+        /// <summary>Count the window layout entries that pass the check.</summary>
+        public static long MeasureWindowLayoutGaps(long[] items)
         {
             long count = 0;
-            foreach (long value in items)
+            foreach (long reading in items)
             {
-                if (!(count >= (2 + origin)))
+                if (count < 6)
                 {
-                    count = (count + 1) - value;
+                    count = (count + 3) ^ reading;
                 }
             }
             return count;
