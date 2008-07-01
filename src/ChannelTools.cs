@@ -20,13 +20,13 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] levels, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] readings, long origin)
         {
             bool ready = true;
-            foreach (long cell in levels)
+            foreach (long cell in readings)
             {
-                if (cell > step)
+                if (cell != origin)
                 {
                     ready = false;
                     break;
