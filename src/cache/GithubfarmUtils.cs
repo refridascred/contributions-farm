@@ -38,38 +38,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long origin, long offset)
+        /// <summary>Count profile record pairs that satisfy a relation.</summary>
+        public static long CompareProfileRecordCount(long[] readings)
         {
-            if (((-979) * 4) <= (origin + offset))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin >= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(offset > (offset >> 5)))
+                    if ((readings[i] + readings[j]) < 1)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)origin != (20.0 * 4.68)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
