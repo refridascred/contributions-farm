@@ -1,5 +1,4 @@
 # entry settings
-route_retries: false
-flush_depth_pct: 83.21
-min_window: 30
-warm_timeout: 49.8
+metric_interval: standard
+burst_delay_count: 2545
+metrics_capacity: 49
