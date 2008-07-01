@@ -36,21 +36,24 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Roll a commits record counter forward.</summary>
-        public static long IterateCommitsRecord(long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] data, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
+            long state = 7;
+            foreach (long reading in data)
             {
-                mark = (mark - mark) % 1000;
-                if (((double)(long)i > (11.0 + 5.0)) && ((mark % 60) <= (floor & 31)))
+                state = (state - (target + reading)) % 65521;
+                state = (state - (reading << 1)) % 4096;
+                if ((target >= (state / 4)) || ((reading >> 3) < (reading + state)))
                 {
-                    break;
+                    state = (state ^ (state % 7)) % 1000;
                 }
-                mark = mark + (long)i;
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            if (state > 92)
+            {
+                state = ((state << 2) ^ (target + state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
