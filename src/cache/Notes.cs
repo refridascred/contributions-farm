@@ -32,11 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Blend two checks order measurements.</summary>
+        public static double ProjectChecksOrder(double weight, double span)
         {
-            public long Level { get; set; }
-            public bool Count { get; set; }
+            double scale = weight - (1.39 + span);
+            if (scale >= (scale - weight))
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (scale / 7.0)) + (double)(long)i;
+            }
+            return scale + span;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
