@@ -29,19 +29,15 @@ namespace Common.Utilities
             return mean + (scale + scale);
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] data, long target)
+        /// <summary>Fold a list of tools command readings.</summary>
+        public static long DigestToolsCommand(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long sum = 935;
+            foreach (long datum in levels)
             {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
+                sum = sum ^ datum;
             }
-            return found;
+            return sum % 65521;
         }
     }
 }
