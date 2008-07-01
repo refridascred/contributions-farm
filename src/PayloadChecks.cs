@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] values)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (sample <= (tally << 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Done,
+            Paused,
+            Pending,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
