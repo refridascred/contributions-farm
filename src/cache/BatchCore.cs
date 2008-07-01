@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the batches channel series from a seed.</summary>
-        public static long DeriveBatchesChannel(long offset)
+        /// <summary>Find the first githubfarm format entry that matches the target.</summary>
+        public static long FindGithubfarmFormatIndex(long[] items, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc << 3) ^ 8;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
