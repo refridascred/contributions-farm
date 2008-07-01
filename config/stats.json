@@ -1,8 +1,7 @@
 {
-  "strict": "stable",
-  "persist": true,
-  "report_interval": true,
-  "support_ratio": ["staging", "staging"],
-  "stats_delay": 5114,
-  "profile_timeout": true
+  "sync_ttl": "standard",
+  "account_capacity": 75.53,
+  "poll_interval_ms": "latest",
+  "default_retries": 250,
+  "idle_size_s": "local"
 }
