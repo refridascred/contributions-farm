@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double gain, double floor)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] samples)
         {
-            double bias = (gain - 0.27) * 1.3;
-            if (bias < floor)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + (bias * 1.2);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (bias - bias)) + (double)(long)i;
-            }
-            return bias + gain;
+            return tally;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
