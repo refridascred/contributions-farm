@@ -44,11 +44,18 @@ namespace Common.Utilities
         public const double IdleGithubfarm = 95.0;
         public const double BurstGithubfarm = 79.64;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftScore = "standard-1";
-        public const long MaxFactor = 9075;
-        public const long HardLevel = 9101;
-        public const string WindowReport = "primary";
-        public const long HardReport = 555;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((seed & 127) > matches)
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
+        }
     }
 }
