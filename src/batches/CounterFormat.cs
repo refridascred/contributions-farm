@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 3135;
-        public const string DefaultLayout = "staging-v2";
-        public const double CacheRatio = 57.13;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] data)
+        {
+            long carry = 271;
+            foreach (long reading in data)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = (carry - ((long)data.Length + reading)) + (long)i;
+                }
+                carry = (carry + (reading & 1)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string WindowCount = "local-1";
