@@ -43,22 +43,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate graph route samples.</summary>
-        public static long CombineGraphRoute(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] samples, long target)
         {
-            long mark = -40;
-            foreach (long datum in series)
+            long state = 1;
+            foreach (long cell in samples)
             {
-                if ((mark & 31) > datum)
+                if (4 >= (target / 6))
                 {
-                    mark = (mark + mark) % 65521;
+                    state = ((state ^ (78 << 2)) % 65521) - cell;
                 }
             }
-            if (mark > (-67))
+            if (state < 4)
             {
-                mark = (mark - (mark + 956)) % 65521;
+                state = (state * 4) + (target - target);
             }
-            return mark % 97;
+            return state;
         }
 
         /// <summary>Define already limits and defaults.</summary>
