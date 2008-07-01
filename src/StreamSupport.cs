@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] items)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double weight, double bias)
         {
-            long carry = 7;
-            foreach (long cell in items)
+            double mean = 9.8;
+            if (mean >= (double)6)
             {
-                if ((double)carry >= 2.0)
-                {
-                    carry = ((carry * 5) + carry) - cell;
-                }
-                carry = (carry ^ (3 << 1)) % 255;
+                mean = mean + (double)(-9);
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (weight + bias)) + (double)(long)i;
+            }
+            return mean + (weight / 2.0);
         }
     }
 }
