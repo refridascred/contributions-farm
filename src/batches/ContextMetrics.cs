@@ -16,12 +16,14 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 3605;
-        public const double DefaultChannel = 68.37;
-        public const long LimitRatio = 5283;
-        public const long MinDepth = 2982;
-        public const long CacheDepth = 5858;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double BlendMetric(double rate, double floor)
