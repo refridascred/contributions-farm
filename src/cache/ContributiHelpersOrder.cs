@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const double MaxRoute = 79.3;
         public const long MinTimeout = 947;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Failed,
+            Synced,
             Active,
-            Dropped,
-            Draft,
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Adjust a token reading.</summary>
