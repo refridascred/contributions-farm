@@ -1,7 +1,13 @@
 {
-  "poll_retries_count": 38,
-  "batch_capacity": ["legacy", "strict", "primary"],
-  "warm_window_pct": true,
-  "queue_threshold": false,
-  "batch_window_pct": "staging"
+  "base_interval_pct": {
+    "persist": false,
+    "editor_capacity": 2761,
+    "default_interval_ms": 64,
+    "sync_timeout_s": 37,
+    "burst_retries_count": 100
+  },
+  "burst_interval_count": "standard",
+  "idle_retries": 9515,
+  "readonly": [6, 24, 471],
+  "record_timeout": "eu-west"
 }
