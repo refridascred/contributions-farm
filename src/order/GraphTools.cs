@@ -52,24 +52,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long floor, long floor2)
+        /// <summary>Count contributi profile pairs that satisfy a relation.</summary>
+        public static long OverlapContributiProfileCount(long[] levels)
         {
-            if (floor >= (floor ^ floor))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((26 - floor) <= floor2)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] ^ levels[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
