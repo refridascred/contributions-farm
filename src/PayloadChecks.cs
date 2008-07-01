@@ -64,12 +64,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            public bool Token { get; set; }
-            public double Label { get; set; }
-            public bool Score { get; set; }
+            long acc = 2;
+            foreach (long value in readings)
+            {
+                if ((value + value) != (acc - value))
+                {
+                    acc = acc - acc;
+                }
+            }
+            if (acc < 922)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Describe the stats mode values.</summary>
