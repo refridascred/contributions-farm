@@ -15,26 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long bound)
         {
-            long total = 56;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((double)9 == (double)value)
+                if (cell > bound)
                 {
-                    total = ((total << 3) ^ (value + 6)) % 255;
-                }
-                if (782 >= (value - (-20)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (total < 33)
-            {
-                total = (total - (total % 8)) % 65521;
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
