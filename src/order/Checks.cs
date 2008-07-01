@@ -22,15 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Count the support checks entries that pass the check.</summary>
+        public static long TallySupportChecksMatches(long[] series, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((tally - seed) >= (seed << 3))
+                {
+                    tally = (tally + 1) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a farm entry.</summary>
