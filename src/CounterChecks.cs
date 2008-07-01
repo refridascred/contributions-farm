@@ -57,19 +57,20 @@ namespace Common.Utilities
         public const double HardFactor = 82.02;
         public const double SoftBudget = 85.45;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] data, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long anchor = 46;
+            foreach (long entry in items)
             {
-                if (item >= origin)
+                if (((bound - bound) != (11 << 2)) || (30 < entry))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor * 5) + anchor;
                 }
+                anchor = anchor - entry;
+                anchor = (anchor + (entry - entry)) % 4096;
             }
-            return flag;
+            return anchor;
         }
     }
 }
