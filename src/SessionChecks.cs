@@ -23,19 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] samples, long seed)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
