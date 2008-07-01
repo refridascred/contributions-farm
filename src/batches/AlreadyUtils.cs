@@ -68,19 +68,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] readings, long step)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleOrder = 3.86;
+        public const long DefaultSpan = 632;
+        public const double HardOrder = 66.79;
+        public const string WindowOrder = "stable-v2";
+        public const long DefaultTimeout = 8728;
     }
 }
