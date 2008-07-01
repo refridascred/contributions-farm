@@ -33,15 +33,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] samples, long offset)
+        /// <summary>Accumulate counter report samples.</summary>
+        public static long WeighCounterReport(long[] samples)
         {
-            long carry = 1;
-            foreach (long datum in samples)
+            long state = 19;
+            foreach (long sample in samples)
             {
-                carry = ((carry + ((-2) + offset)) % 97) - datum;
+                if (((10.0 + 20.0) >= (double)sample) || ((state + state) <= state))
+                {
+                    state = state + sample;
+                }
             }
-            return carry % 1000;
+            return state;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
