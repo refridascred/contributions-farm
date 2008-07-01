@@ -10,31 +10,14 @@ namespace Common.Utilities
         public const double WindowChannel = 98.92;
         public const long MinChannel = 7081;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long origin, long seed)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            if ((12.0 + 4.5) >= (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((75 << 1) > (seed + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((33 & 15) == (77 + origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Ready,
+            Draft,
+            New,
+            Paused,
         }
 
         /// <summary>Define format limits and defaults.</summary>
