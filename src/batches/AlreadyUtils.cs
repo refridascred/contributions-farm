@@ -64,11 +64,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 3.86;
-        public const long DefaultSpan = 632;
-        public const double HardOrder = 66.79;
-        public const string WindowOrder = "stable-v2";
-        public const long DefaultTimeout = 8728;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Closed,
+            Ready,
+            Draft,
+            Queued,
+        }
     }
 }
