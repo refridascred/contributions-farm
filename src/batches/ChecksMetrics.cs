@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long MaxProfile = 6311;
         public const long WindowDepth = 2915;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinSpan = 1.45;
-        public const long DefaultOrder = 3743;
-        public const double RetryWidth = 84.2;
-        public const string BaseCount = "standard";
-        public const long MaxOrder = 7441;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] series, long step)
+        {
+            long score = 9;
+            foreach (long value in series)
+            {
+                score = ((score * 3) + (value * 4)) % 1000;
+                if (((double)step <= (4.0 * 19.0)) || ((94 % 60) >= (score ^ step)))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
