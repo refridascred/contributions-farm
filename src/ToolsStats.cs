@@ -70,18 +70,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] data)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches <= (datum - 39)) || !(338 >= (matches + matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
