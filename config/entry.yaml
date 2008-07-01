@@ -1,9 +1,10 @@
 # entry settings
-sync_retries_s: strict
-base_limit_ms: cached
-sync_interval: 71.69
-metrics_ttl:
-  - 295
-  - 23
-  - 92
-base_capacity_ms: false
+readonly: local
+poll_depth_s: blue
+min_delay: stable
+poll_limit_s: 532
+strict:
+  - 228
+  - 28
+  - 224
+enabled: 3919
