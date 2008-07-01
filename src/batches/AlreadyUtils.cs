@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long BatchInterval = 3108;
         public const string LimitCache = "strict-v2";
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Draft,
-            Active,
+            New,
+            Stale,
+            Paused,
             Ready,
         }
 
