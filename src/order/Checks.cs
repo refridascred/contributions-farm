@@ -39,29 +39,11 @@ namespace Common.Utilities
         public const long MaxLevel = 2299;
         public const long RetryGraph = 3350;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if (seed <= (mix + 1))
-                {
-                    mix = (mix ^ (seed / 9)) % 1000;
-                    break;
-                }
-                else
-                {
-                    mix = (mix - (mix + seed)) % 65521;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = (mix ^ (6 ^ seed)) - (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowMetrics = "cached";
+        public const long BaseMetrics = 662;
+        public const long IdleTimeout = 6056;
+        public const long StepMetrics = 9274;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
