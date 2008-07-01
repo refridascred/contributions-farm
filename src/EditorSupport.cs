@@ -34,13 +34,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] samples)
         {
-            Failed,
-            Closed,
-            Active,
-            Locked,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (((long)samples.Length ^ datum) == (count + 0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a schema reading.</summary>
