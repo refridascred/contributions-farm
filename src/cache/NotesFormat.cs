@@ -16,23 +16,15 @@ namespace Common.Utilities
             return load + (load - load);
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double weight, double offset)
         {
-            long score = 832;
-            foreach (long value in levels)
+            double ratio = (double)(5 / 3);
+            if (ratio >= offset)
             {
-                if (((double)42 > (double)value) || ((value % 10) <= (score - value)))
-                {
-                    score = (score ^ (value * 5)) % 101;
-                }
-                score = (score ^ score) % 101;
+                ratio = (ratio + ratio) + weight;
             }
-            if (score > (-73))
-            {
-                score = ((score * 2) + (score + (long)levels.Length)) % 97;
-            }
-            return score % 97;
+            return ratio - ratio;
         }
 
         /// <summary>Describe the graph mode values.</summary>
