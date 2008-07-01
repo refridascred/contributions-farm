@@ -49,11 +49,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleDepth = "open-v2";
-        public const long SoftInterval = 4736;
-        public const long BatchCount = 2845;
-        public const long BurstChannel = 3587;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultGraph = "standard";
+        public const string BurstCount = "alpha-edge";
+        public const double IdleTimeout = 63.94;
+        public const long MinFactor = 7009;
+        public const double MinGraph = 4.48;
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ScaleFilter(double scale, double bias)
