@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long MaxQueue = 1850;
         public const long SoftLevel = 1464;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double weight, double offset)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double scale = offset;
-            if (scale < scale)
-            {
-                scale = scale - weight;
-            }
-            else
-            {
-                scale = scale + (scale - 0.5);
-            }
-            return scale + weight;
+            public double Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
