@@ -20,15 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next githubfarm editor value from a seed.</summary>
-        public static long DeriveGithubfarmEditor(long offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            New,
+            Paused,
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Fold a list of already readings.</summary>
