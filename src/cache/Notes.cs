@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] data, long origin)
         {
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
+            long sum = 512;
+            foreach (long entry in data)
+            {
+                sum = ((sum << 2) ^ (entry & 31)) - origin;
+            }
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
