@@ -29,19 +29,23 @@ namespace Common.Utilities
         public const string StepBatch = "stable-1";
         public const long CacheBatch = 9148;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] series, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] data, long offset)
         {
-            long result = 98;
-            foreach (long cell in series)
+            long total = 471;
+            foreach (long reading in data)
             {
-                result = ((result << 3) ^ cell) % 65521;
-                if ((seed * 5) < (9 * 5))
+                if ((long)data.Length == ((long)data.Length + reading))
                 {
-                    result = (result ^ (cell % 64)) % 1000;
+                    total = ((total << 2) ^ (total & 63)) % 65521;
                 }
+                total = total ^ (reading - 0);
             }
-            return result;
+            if (total < 4)
+            {
+                total = (total << 3) ^ (offset + offset);
+            }
+            return total % 1000;
         }
     }
 }
