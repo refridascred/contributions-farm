@@ -1,6 +1,5 @@
 {
-  "min_delay_s": 76.49,
-  "base_depth": "edge",
-  "verbose": "latest",
-  "default_threshold_count": [418, 91]
+  "session_ttl": true,
+  "command_timeout": ["standard", "green", "green", "primary"],
+  "flush_capacity": true
 }
