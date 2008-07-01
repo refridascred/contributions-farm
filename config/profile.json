@@ -1,5 +1,23 @@
 {
-  "poll_interval_s": "staging",
-  "min_interval": false,
-  "cache_ratio": 42
+  "report_limit": {
+    "burst_ttl": 36,
+    "hard_timeout": "strict",
+    "record_timeout": 6988,
+    "compress": 20.21,
+    "audit": [58, 88]
+  },
+  "max_ttl_pct": ["edge", "stable", "blue"],
+  "flush_retries_ms": {
+    "cache_size": "blue",
+    "strict": {
+      "warm_interval_ms": [235, 385, 489, 21],
+      "stream_size": false,
+      "cache_size": "legacy",
+      "graph_depth": 95.37,
+      "flush_ttl_ms": 31.46,
+      "batches_depth": true
+    },
+    "sync_size_count": "stable"
+  },
+  "layout_ratio": 95.18
 }
