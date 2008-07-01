@@ -14,22 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] series)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item < (91 & 127)) && !((7.43 / 8.0) != (double)count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
