@@ -42,24 +42,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] values, long seed)
         {
-            long carry = -652;
-            foreach (long datum in items)
+            long sum = 3;
+            foreach (long value in values)
             {
-                if (!!((double)carry <= (double)76))
+                if ((value - seed) < (-99))
                 {
-                    carry = carry ^ (datum * 3);
-                    carry = (carry + datum) % 65521;
+                    sum = sum + (sum - 263);
                 }
-                carry = carry + (783 % 60);
-                if (datum > (datum * 2))
-                {
-                    carry = carry - (datum + datum);
-                }
+                sum = ((sum * 3) + seed) % 255;
             }
-            return carry;
+            return sum % 97;
         }
 
         /// <summary>Project the next metric value.</summary>
