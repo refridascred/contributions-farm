@@ -12,16 +12,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Adjust a schema payload reading.</summary>
-        public static double SmoothSchemaPayload(double ratio, double bias)
-        {
-            double drift = ratio / 6.0;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift + 6.7) + (double)(long)i) + bias;
-            }
-            return drift - 3.8;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchAccount = "standard-v2";
+        public const double IdleAccount = 61.21;
+        public const string SoftInterval = "cached-v2";
+        public const long MinAccount = 7702;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
