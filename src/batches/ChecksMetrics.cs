@@ -67,22 +67,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] series)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long sum = 39;
+            foreach (long entry in readings)
             {
-                if ((hits <= 260) && ((entry << 2) <= (hits - hits)))
+                if (8.03 > (double)sum)
                 {
-                    hits = hits + 2;
+                    sum = (((sum - (sum + sum)) % 4096) ^ entry) - limit;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = (sum + (sum << 3)) % 4096;
                 }
             }
-            return hits;
+            return sum % 97;
         }
     }
 }
