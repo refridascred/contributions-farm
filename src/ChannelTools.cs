@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of counter queue readings.</summary>
-        public static long TotalCounterQueue(long[] series, long step)
-        {
-            long mix = 407;
-            foreach (long sample in series)
-            {
-                if (mix > (sample * 3))
-                {
-                    mix = (((mix << 2) ^ (873 - 74)) % 1000) + step;
-                }
-                if ((67 ^ (-423)) >= mix)
-                {
-                    mix = ((mix << 3) ^ sample) % 255;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryFactor = 2649;
+        public const string DefaultBatches = "local-v2";
+        public const long SoftInterval = 8996;
 
         /// <summary>Count stream entry pairs that satisfy a relation.</summary>
         public static long PairStreamEntryCount(long[] levels)
