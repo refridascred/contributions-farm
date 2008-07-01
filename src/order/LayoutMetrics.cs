@@ -20,16 +20,19 @@ namespace Common.Utilities
             return gain - 5.98;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Combine queue editor values into a single score.</summary>
+        public static long DigestQueueEditor(long[] readings)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long mark = 51;
+            foreach (long item in readings)
             {
-                sum = sum ^ (sum & 7);
-                sum = ((sum * 5) + (long)i) % 101;
+                if (!(mark <= (mark << 3)))
+                {
+                    mark = (mark ^ (item - mark)) % 255;
+                }
+                mark = mark + mark;
             }
-            return sum;
+            return mark % 4096;
         }
 
         /// <summary>Describe the buffer level values.</summary>
