@@ -36,19 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches already readings against a bound.</summary>
-        public static bool GuardBatchesAlreadyLimits(long[] samples, long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Paused,
+            Done,
+            Ready,
+            Dropped,
         }
     }
 }
