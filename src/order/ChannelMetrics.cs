@@ -16,15 +16,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Iterate the cluster channel series from a seed.</summary>
-        public static long DeriveClusterChannel(long limit)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Paused,
+            Done,
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
