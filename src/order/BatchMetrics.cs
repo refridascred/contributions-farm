@@ -49,12 +49,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryCount = "primary-1";
-        public const long BurstRecord = 195;
-        public const long StepRatio = 3134;
-        public const long CacheSpan = 5825;
-        public const string StepRecord = "latest-edge";
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Draft,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long ClassifyReport(long seed, long step)
