@@ -39,10 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleRatio = 3826;
-        public const long LimitTimeout = 7691;
-        public const long WindowCount = 715;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] samples)
+        {
+            long sum = 7;
+            foreach (long sample in samples)
+            {
+                sum = ((sum + (sum - sum)) % 101) - sample;
+            }
+            if (sum < 87)
+            {
+                sum = sum ^ (sum % 100);
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long SoftGithubfarm = 9644;
