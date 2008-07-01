@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the support report entries that pass the check.</summary>
-        public static long CountSupportReportMatches(long[] series, long offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (1 > (offset - offset))
-                {
-                    count = (count + 3) - cell;
-                }
-            }
-            return count;
+            Closed,
+            Dropped,
+            Stale,
+            Done,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
