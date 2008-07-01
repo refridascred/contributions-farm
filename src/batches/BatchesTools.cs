@@ -27,24 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                long edge = offset << 2;
-                if ((double)(long)i > 15.0)
-                {
-                    edge = ((edge * 3) + offset) % 4096;
-                }
-                if ((carry * 3) < ((-64) - edge))
-                {
-                    edge = (edge + (597 << 3)) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
