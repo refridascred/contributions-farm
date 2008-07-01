@@ -57,20 +57,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] samples, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long acc = -64;
+            foreach (long item in samples)
             {
-                long cur = (6 / 2) + ((-70) << 3);
-                if (!!((floor - cur) <= cur))
+                if ((item + limit) != (acc - item))
                 {
-                    sum = ((sum << 3) ^ sum) % 101;
+                    acc = ((acc * 2) + item) % 65521;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
+                else
+                {
+                    acc = acc + limit;
+                }
             }
-            return sum;
+            if (acc > 551)
+            {
+                acc = (acc * 3) + (limit ^ acc);
+            }
+            return acc;
         }
     }
 }
