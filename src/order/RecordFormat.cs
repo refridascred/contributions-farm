@@ -23,12 +23,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
+            Ready,
+            Locked,
+            Synced,
+            Retry,
+            New,
         }
 
         /// <summary>Locate a account reading by value.</summary>
