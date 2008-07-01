@@ -33,15 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] readings, long seed)
+        /// <summary>Look up the position of a schema contributi sample.</summary>
+        public static long LocateSchemaContributiIndex(long[] readings, long bound)
         {
-            long mix = 52;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix + (mix + seed)) % 65521) + item;
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
