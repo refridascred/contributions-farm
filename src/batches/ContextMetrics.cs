@@ -39,11 +39,19 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleTimeout = "primary-v2";
-        public const long HardAlready = 5770;
-        public const long IdleAlready = 1984;
-        public const long MaxWidth = 8210;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (seen <= (seen & 255))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the counter format series from a seed.</summary>
         public static long DeriveCounterFormat(long limit)
