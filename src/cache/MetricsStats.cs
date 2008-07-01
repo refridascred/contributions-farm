@@ -40,12 +40,18 @@ namespace Common.Utilities
         public const double StepFactor = 14.28;
         public const long CacheTimeout = 8588;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepDepth = 7303;
-        public const long BaseMetrics = 6301;
-        public const long SoftMetrics = 3060;
-        public const double MinRatio = 65.6;
-        public const long CacheMetrics = 4889;
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
