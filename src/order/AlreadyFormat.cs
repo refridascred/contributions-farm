@@ -12,18 +12,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] values, long offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value & 7) >= (offset + offset))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Synced,
+            Retry,
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
