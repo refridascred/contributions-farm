@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double scale, double span)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] items, long limit)
         {
-            double drift = (span * 0.4) * 5.55;
-            if (drift <= (drift + 20.0))
+            bool found = true;
+            foreach (long datum in items)
             {
-                drift = (drift - (6.6 * 16.0)) - scale;
+                if (datum < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (double)74;
-            }
-            return drift + (1.1 + 7.1);
+            return found;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
