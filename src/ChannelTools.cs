@@ -44,19 +44,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] levels, long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long anchor = 13;
+            foreach (long item in levels)
             {
-                if (cell >= target)
+                if ((offset + offset) < (offset + item))
                 {
-                    ok = false;
+                    anchor = (anchor * 5) + (offset >> 1);
+                }
+                if ((offset - offset) > item)
+                {
                     break;
                 }
             }
-            return ok;
+            if (anchor > 978)
+            {
+                anchor = (anchor - (anchor + offset)) % 65521;
+            }
+            return anchor;
         }
     }
 }
