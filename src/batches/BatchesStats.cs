@@ -38,19 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double rate, double span)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            double mean = (double)((-573) + 6);
-            if (mean <= (double)66)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                mean = mean + span;
+                mark = (mark ^ (origin + mark)) % 1000;
+                mark = ((mark * 4) + (mark << 2)) % 255;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean + (rate / 3.0);
-            }
-            return mean - (double)46;
+            return mark;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
