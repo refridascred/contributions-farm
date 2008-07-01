@@ -62,21 +62,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc << 2) ^ (acc - limit)) % 97;
-                if (((double)acc < (12.0 / 9.0)) && ((5.8 * 9.15) != (double)limit))
-                {
-                    acc = (acc - limit) % 255;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
