@@ -41,11 +41,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 9188;
-        public const long BatchGraph = 871;
-        public const long DefaultGraph = 5181;
-        public const long BurstRatio = 1275;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (item < (matches ^ item))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
