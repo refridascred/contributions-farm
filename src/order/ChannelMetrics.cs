@@ -19,13 +19,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Iterate the cluster channel series from a seed.</summary>
+        public static long DeriveClusterChannel(long limit)
         {
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
