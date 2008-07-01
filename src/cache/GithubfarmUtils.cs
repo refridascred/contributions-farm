@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] samples, long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            New,
+            Locked,
+            Failed,
+            Retry,
         }
 
         /// <summary>Fold a list of format readings.</summary>
