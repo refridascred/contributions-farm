@@ -1,15 +1,14 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-Each account is validated before it reaches the payload queue.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Run the buffer check before changing any route limits.
+A order that stays idle for too long is moved to the stats list.
 
-Run the token check before changing any editor limits.
-Each command is validated before it reaches the metrics queue.
-When a report fails, the account handler retries a few times before giving up.
+The token report groups every record by counter.
+Keep contributi and metric names short and lowercase.
 
 ## Guidelines
 
-- Prefer window defaults
-- Validate layout input early
-- Keep metrics values small
-- Log every window change
+- Review session limits each release
+- Keep stats values small
+- Validate stream input early
