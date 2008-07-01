@@ -35,10 +35,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitInterval = 49.16;
-        public const double HardWindow = 61.14;
-        public const string WindowBudget = "primary-v2";
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Combine channel batches values into a single score.</summary>
         public static long WeighChannelBatches(long[] samples)
