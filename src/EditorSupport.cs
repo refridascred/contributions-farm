@@ -22,12 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double ratio, double floor)
-        {
-            double ratio2 = (floor + floor) / 3.0;
-            return (ratio2 - (9.5 + 14.0)) + ratio;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 3421;
+        public const double HardFormat = 38.85;
+        public const long CacheFormat = 866;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountOutliers(long[] data)
