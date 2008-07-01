@@ -59,22 +59,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((double)(long)data.Length < (9.3 + 8.87)) && (datum > (343 % 60)))
-                {
-                    hits = (hits + 1) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultFactor = 4870;
+        public const long DefaultTimeout = 5721;
+        public const long MinCount = 9474;
     }
 }
