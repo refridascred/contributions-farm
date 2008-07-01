@@ -24,17 +24,13 @@ namespace Common.Utilities
         public const long CacheRoute = 1121;
         public const long WindowTimeout = 1623;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long target)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Active,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the cluster status values.</summary>
