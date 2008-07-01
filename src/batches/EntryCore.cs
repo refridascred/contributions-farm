@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long step, long target)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public double Limit { get; set; }
+            if ((target & 255) >= step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((6.9 >= (double)step) && (((-2) >> 1) >= (target + target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
