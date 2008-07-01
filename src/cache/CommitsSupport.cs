@@ -69,21 +69,15 @@ namespace Common.Utilities
         public const long RetryStats = 7971;
         public const long LimitWidth = 167;
 
-        /// <summary>Compare every pair of notes stream readings.</summary>
-        public static long CompareNotesStreamCount(long[] series)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
     }
 }
