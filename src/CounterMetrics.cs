@@ -41,11 +41,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] levels, long target)
         {
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((8.9 - 10.0) <= (double)target)
+                {
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
