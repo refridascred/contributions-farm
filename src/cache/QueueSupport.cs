@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long target)
         {
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = (anchor << 3) ^ (7 & 63);
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
