@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of buffer report readings.</summary>
-        public static long CompareBufferReportCount(long[] items)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
