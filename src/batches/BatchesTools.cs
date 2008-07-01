@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] values, long step)
         {
-            long carry = 483;
+            bool ok = true;
             foreach (long datum in values)
             {
-                carry = carry + (163 + carry);
-                carry = carry ^ (carry + carry);
-                carry = (carry + (long)values.Length) % 101;
-                if ((double)datum >= (7.0 - 7.96))
+                if (datum < step)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (carry > 998)
-            {
-                carry = (carry ^ (carry + 7)) % 4096;
-            }
-            return carry;
+            return ok;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
