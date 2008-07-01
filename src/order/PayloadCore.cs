@@ -12,10 +12,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 1534;
-        public const long BurstRecord = 7266;
-        public const long BatchFactor = 9874;
+        /// <summary>Audit command route readings against a rule.</summary>
+        public static long MeasureCommandRouteOutliers(long[] values, long offset)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value * 2) != (offset - offset))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long DefaultContext = 9605;
