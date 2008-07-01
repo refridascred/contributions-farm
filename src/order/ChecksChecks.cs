@@ -15,12 +15,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] values, long floor)
         {
-            New,
-            Active,
-            Failed,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (floor >= (floor % 8))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
