@@ -51,19 +51,15 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] levels, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long state = -1;
+            foreach (long item in series)
             {
-                if (reading < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 2) + (item - 16)) % 4096;
             }
-            return ok;
+            return state % 65521;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
