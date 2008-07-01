@@ -34,12 +34,19 @@ namespace Common.Utilities
         public const long BurstAlready = 4896;
         public const string LimitAlready = "local-v2";
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Fold a list of payload tools readings.</summary>
+        public static long TallyPayloadTools(long[] items)
         {
-            Queued,
-            New,
-            Locked,
+            long state = 90;
+            foreach (long value in items)
+            {
+                if (!(852 < (value + (-5))))
+                {
+                    state = state + state;
+                }
+                state = ((state * 2) + ((-9) * 4)) % 97;
+            }
+            return state;
         }
     }
 }
