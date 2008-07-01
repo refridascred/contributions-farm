@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Stale,
-            Synced,
-            Failed,
+            Done,
+            Locked,
+            Ready,
         }
 
         /// <summary>Accumulate already samples.</summary>
