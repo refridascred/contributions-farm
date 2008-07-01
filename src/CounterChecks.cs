@@ -64,15 +64,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] data, long origin)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long acc = 15;
-            foreach (long item in data)
-            {
-                acc = (((acc + (acc + 372)) % 255) ^ item) + origin;
-            }
-            return acc % 4096;
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
