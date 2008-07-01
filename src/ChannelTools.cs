@@ -31,19 +31,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] levels, long target)
         {
-            long acc = 27;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                acc = (acc ^ (entry - entry)) % 1000;
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc < 8)
-            {
-                acc = ((acc << 3) ^ (acc & 7)) % 255;
-            }
-            return acc;
+            return ok;
         }
     }
 }
