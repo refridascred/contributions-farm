@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const long WindowTimeout = 9172;
         public const long HardBatch = 1229;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] readings, long origin)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((origin / 5) != (item >> 1))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            Paused,
+            Idle,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a queue options.</summary>
