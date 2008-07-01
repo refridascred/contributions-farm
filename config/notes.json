@@ -1,18 +1,11 @@
 {
-  "warm_capacity_pct": 69.8,
-  "soft_threshold_pct": 250,
-  "route_ratio": 2,
-  "batch_retries_ms": true,
-  "flush_window_ms": {
-    "persist": true,
-    "readonly": "primary",
-    "max_interval_ms": "stable",
-    "soft_ttl_s": [53, 319, 165],
-    "soft_limit_count": 60,
-    "hard_timeout_s": {
-      "base_window_s": ["standard", "latest"],
-      "contributi_limit": false,
-      "soft_ratio_ms": false
-    }
-  }
+  "enabled": 52.14,
+  "dry_run": 59.63,
+  "buffer_capacity": {
+    "batch_interval_s": false,
+    "contributi_capacity": "latest",
+    "audit": [216, 240],
+    "soft_capacity_ms": "fallback"
+  },
+  "burst_delay": "eu-west"
 }
