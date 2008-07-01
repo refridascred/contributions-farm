@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long score = -205;
-            foreach (long item in data)
-            {
-                score = (score - (7 + item)) % 65521;
-            }
-            if (score < 91)
-            {
-                score = score + score;
-            }
-            return score % 65521;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
