@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BaseProfile = 58.28;
-        public const long LimitFactor = 4225;
-        public const long IdleProfile = 533;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public double Owner { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long FindPayloadIndex(long[] items, long origin)
