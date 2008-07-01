@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit contributi githubfarm readings against a rule.</summary>
-        public static long MeasureContributiGithubfarmGaps(long[] series)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!(((hits * 2) == (6 ^ item)) && ((1 >> 5) < hits)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
