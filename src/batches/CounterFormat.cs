@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const double MaxRatio = 7.91;
         public const double LimitSpan = 36.21;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] data, long seed)
         {
-            Failed,
-            Queued,
-            Idle,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a already summary.</summary>
