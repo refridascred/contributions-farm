@@ -20,13 +20,10 @@ namespace Common.Utilities
             return gain + (double)907;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Paused,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchSpan = 3627;
+        public const double HardCount = 67.64;
+        public const long BatchLevel = 6328;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long step, long limit)
