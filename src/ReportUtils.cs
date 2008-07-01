@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of command layout entries.</summary>
-        public static long CombineCommandLayout(long[] data, long offset)
+        /// <summary>Classify a session route pair into a bucket.</summary>
+        public static long BucketSessionRoute(long seed, long step)
         {
-            long state = 2;
-            foreach (long cell in data)
+            if ((double)seed > (1.8 / 9.0))
             {
-                if ((double)cell == (5.6 / 5.0))
+                return 1;
+            }
+            else
+            {
+                if (!((step >> 5) >= seed))
                 {
-                    state = ((state * 5) + offset) % 255;
+                    return 4;
                 }
-                if ((double)state >= (1.2 * 7.2))
+                else
                 {
-                    break;
+                    if (!((double)step == (16.0 * 4.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed - step) != (step + step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Look up the position of a filter graph sample.</summary>
