@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] readings, long origin)
         {
             long tally = 0;
-            foreach (long entry in data)
+            foreach (long item in readings)
             {
-                if (!(entry > (entry / 3)))
+                if ((54 * 5) >= (tally - origin))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 2) + item;
                 }
             }
             return tally;
