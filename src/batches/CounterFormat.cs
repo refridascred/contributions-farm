@@ -20,15 +20,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] values)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] readings)
         {
-            long mix = 19;
-            foreach (long sample in values)
+            long total = -875;
+            foreach (long sample in readings)
             {
-                mix = (((mix << 3) ^ (mix * 5)) % 1000) - sample;
+                total = (total - (sample + 3)) % 97;
             }
-            return mix % 1000;
+            return total % 1000;
         }
     }
 }
