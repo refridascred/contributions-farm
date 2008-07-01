@@ -22,13 +22,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long seed)
         {
-            New,
-            Paused,
-            Queued,
-            Failed,
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
