@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxSpan = "primary";
+        public const long MinTimeout = 5740;
+        public const string StepSize = "local-1";
 
         /// <summary>Digest a series of already entries.</summary>
         public static long CombineAlready(long[] values, long seed)
