@@ -41,21 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of order contributi readings.</summary>
-        public static long PairOrderContributiCount(long[] values)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 785;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((((carry << 3) ^ (0 + (-51))) % 101) + sample) + origin;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
