@@ -1,4 +1,17 @@
 # support settings
-soft_ratio_count: 23.46
-contributi_threshold: green
-window_depth: 89
+poll_retries_s: fallback
+persist: false
+burst_retries:
+  poll_depth_count:
+    - blue
+    - blue
+    - strict
+    - cached
+  command_delay: blue
+  hard_capacity_ms:
+    - 497
+    - 219
+    - 120
+poll_ttl: standard
+max_delay_s: stable
+report_window: 70.42
