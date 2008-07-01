@@ -25,20 +25,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of command payload readings.</summary>
-        public static long TotalCommandPayload(long[] values, long floor)
-        {
-            long acc = 56;
-            foreach (long value in values)
-            {
-                if ((floor + floor) <= (17 >> 1))
-                {
-                    acc = (acc - floor) % 255;
-                    acc = (acc - (value >> 1)) % 4096;
-                }
-                acc = ((acc << 2) ^ (floor - acc)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 4859;
+        public const string MaxTimeout = "strict-edge";
+        public const string LimitFilter = "staging-v2";
+        public const double MinFactor = 79.7;
     }
 }
