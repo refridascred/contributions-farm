@@ -16,11 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Measure how many token window samples are out of range.</summary>
+        public static long CountTokenWindowHits(long[] items)
         {
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (19.0 > (double)matches)
+                {
+                    matches = (matches + 3) - item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
