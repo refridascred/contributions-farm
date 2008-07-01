@@ -1,16 +1,12 @@
 # Command notes
 
-The checks module keeps graph values in sync with the support cache.
-Each queue is validated before it reaches the order queue.
-The batches report groups every route by payload.
-
-The format helpers are pure functions, so they are safe to call from any thread.
-Use notes settings to tune how often window data is refreshed.
-Each record is validated before it reaches the contributi queue.
+A commits that stays idle for too long is moved to the format list.
+Use channel settings to tune how often payload data is refreshed.
+Use cache settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Log every filter change
-- Validate checks input early
-- Review queue limits each release
-- Prefer entry defaults
+- Prefer metric defaults
+- Review stream limits each release
+- Keep metric values small
+- Validate order input early
