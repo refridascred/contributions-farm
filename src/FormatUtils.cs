@@ -28,12 +28,15 @@ namespace Common.Utilities
         public const long RetryScore = 4451;
         public const long HardDepth = 7237;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 6722;
-        public const long CacheBudget = 2122;
-        public const double BurstDepth = 22.52;
-        public const double BatchWidth = 50.77;
-        public const double MinSchema = 86.09;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Retry,
+            Draft,
+            Done,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double IdleNotes = 37.19;
