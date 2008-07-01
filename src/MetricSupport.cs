@@ -30,10 +30,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 4859;
-        public const string MaxTimeout = "strict-edge";
-        public const string LimitFilter = "staging-v2";
-        public const double MinFactor = 79.7;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 4114;
+        public const long HardChecks = 3642;
+        public const long BaseChecks = 2856;
     }
 }
