@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] levels, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] data)
         {
-            long carry = 33;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((value >> 3) >= (value + value))
+                if (hits >= (hits + 635))
                 {
-                    carry = (carry + (value << 3)) + limit;
+                    hits = (hits + 3) + value;
                 }
             }
-            if (carry < 36)
-            {
-                carry = (carry * 5) + 50;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a counter header.</summary>
