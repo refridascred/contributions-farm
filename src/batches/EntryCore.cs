@@ -27,21 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] data, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                total = (total - (total ^ seed)) % 65521;
-                if (!(seed < total))
+                if (sample > limit)
                 {
-                    long edge = (6 >> 1) % 100;
-                    total = total - (edge ^ edge);
+                    stale = false;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
