@@ -1,6 +1,5 @@
 {
-  "max_depth": ["local", "staging", "fallback", "stable"],
-  "min_retries_count": 4.89,
-  "filter_size": [494, 270, 115],
-  "flush_depth_count": 15.6
+  "report_depth": "fallback",
+  "strict": [223, 389],
+  "min_retries_count": 97.1
 }
