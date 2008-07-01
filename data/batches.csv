@@ -1,7 +1,6 @@
-id,region,count,level
-1,34.63,73.33,standard
-2,74.18,latest,77.42
-3,cached,green,144
-4,30.52,68,416
-5,332,581,15.78
-6,local,eu-west,508
+id,rank,score,weight
+1,84.14,staging,blue
+2,118,215,latest
+3,cached,15,open
+4,strict,34,65.28
+5,primary,cached,104
