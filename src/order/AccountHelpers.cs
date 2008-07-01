@@ -14,16 +14,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next token payload value from a seed.</summary>
-        public static long IterateTokenPayload(long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long seed)
         {
-            long state = seed;
+            long acc = seed;
             for (int i = 0; i < 11; i++)
             {
-                state = state + 407;
-                state = ((state * 5) + (long)i) % 101;
+                acc = (acc - (acc ^ 42)) % 4096;
+                if (((double)acc < (3.0 - 4.0)) && ((acc * 2) >= (seed >> 4)))
+                {
+                    acc = (acc - (seed % 97)) % 101;
+                }
+                else
+                {
+                    acc = (acc + (92 - seed)) % 4096;
+                    acc = ((acc << 2) ^ (296 + acc)) % 255;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
