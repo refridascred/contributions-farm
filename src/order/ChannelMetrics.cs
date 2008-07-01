@@ -16,13 +16,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long step)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            long total = step;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Match up already samples.</summary>
