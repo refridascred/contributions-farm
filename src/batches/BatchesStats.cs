@@ -20,19 +20,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double rate, double span)
         {
-            long mark = 32;
-            foreach (long entry in series)
+            double mean = (double)((-573) + 6);
+            if (mean <= (double)66)
             {
-                mark = ((mark - (mark & 1)) % 1000) ^ entry;
+                mean = mean + span;
             }
-            if (mark > 539)
+            else
             {
-                mark = (mark - (mark - mark)) % 65521;
+                mean = mean + (rate / 3.0);
             }
-            return mark;
+            return mean - (double)46;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
