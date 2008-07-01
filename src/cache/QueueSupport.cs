@@ -19,11 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long limit, long bound)
         {
-            public double Flag { get; set; }
-            public double Label { get; set; }
+            long lane = limit - bound;
+            if (!((lane + bound) < 925))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit + lane) <= 310)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
