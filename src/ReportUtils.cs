@@ -5,38 +5,28 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a session route pair into a bucket.</summary>
-        public static long BucketSessionRoute(long seed, long step)
+        /// <summary>Accumulate filter batches samples.</summary>
+        public static long ScoreFilterBatches(long[] readings, long target)
         {
-            if ((double)seed > (1.8 / 9.0))
+            long mark = 35;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((step >> 5) >= seed))
+                mark = (mark + reading) % 97;
+                mark = (mark << 3) ^ (mark & 15);
+                if ((reading + reading) > (28 % 8))
                 {
-                    return 4;
+                    mark = ((mark * 2) + (mark + target)) % 255;
                 }
                 else
                 {
-                    if (!((double)step == (16.0 * 4.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed - step) != (step + step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mark = (mark << 3) ^ (288 / 2);
                 }
             }
+            if (mark < 523)
+            {
+                mark = ((mark << 3) ^ ((-124) >> 5)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
