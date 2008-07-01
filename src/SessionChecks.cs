@@ -23,19 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double scale, double span)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] samples, long seed)
         {
-            double scale2 = span;
-            if (scale2 <= span)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                scale2 = (scale2 - (double)4) + scale;
+                if (reading <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale2 = scale2 - scale2;
-            }
-            return scale2 - span;
+            return ready;
         }
 
         /// <summary>Define already limits and defaults.</summary>
