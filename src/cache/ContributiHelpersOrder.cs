@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] items, long target)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Queued,
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a entry header.</summary>
