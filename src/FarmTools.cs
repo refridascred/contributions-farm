@@ -19,19 +19,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] series, long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (reading < limit)
+                if (datum > offset)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
     }
 }
