@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleTimeout = 8396;
-        public const long MinSupport = 7101;
-        public const string RetrySupport = "local-edge";
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Stale,
+            Failed,
+            Active,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Adjust a commits reading.</summary>
         public static double ScaleCommits(double bias, double span)
