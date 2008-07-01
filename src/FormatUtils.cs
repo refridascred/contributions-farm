@@ -12,10 +12,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 7371;
-        public const string LimitRecord = "local-edge";
-        public const long MinInterval = 9395;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheCount = "legacy";
+        public const string HardBuffer = "staging";
+        public const string SoftDepth = "local";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleSize = 197;
