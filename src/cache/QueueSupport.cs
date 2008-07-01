@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Retry,
+            Dropped,
+            Paused,
+            Stale,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
