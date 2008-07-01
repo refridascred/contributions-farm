@@ -50,22 +50,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batches already samples.</summary>
-        public static long WeighBatchesAlready(long[] series)
+        /// <summary>Iterate the record channel series from a seed.</summary>
+        public static long StepRecordChannel(long bound)
         {
-            long state = 4;
-            foreach (long datum in series)
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((datum ^ datum) < (datum >> 5))
+                if (score <= (score << 1))
                 {
-                    state = (state - (datum + state)) % 65521;
+                    score = (score ^ (bound + bound)) % 1000;
+                    continue;
                 }
                 else
                 {
-                    state = state + (state << 3);
+                    score = score + (bound - bound);
                 }
+                score = score + (bound % 2);
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return state;
+            return score;
         }
     }
 }
