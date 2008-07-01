@@ -43,12 +43,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitBudget = 8992;
-        public const double HardBudget = 46.99;
-        public const double BaseSpan = 24.99;
-        public const long SoftRatio = 5682;
-        public const long DefaultEntry = 6098;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long SeekReportIndex(long[] samples, long target)
