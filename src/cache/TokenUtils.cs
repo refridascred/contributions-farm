@@ -23,18 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] items, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] values, long step)
         {
-            long acc = 0;
-            foreach (long datum in items)
+            long total = 6;
+            foreach (long datum in values)
             {
-                if ((double)datum != (0.24 / 2.0))
-                {
-                    acc = ((acc - (6 / 6)) % 97) - bound;
-                }
+                total = (((total << 3) ^ (datum ^ total)) % 97) + step;
             }
-            return acc;
+            return total % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
