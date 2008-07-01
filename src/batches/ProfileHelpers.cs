@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultRatio = 9969;
-        public const long SoftInterval = 3063;
-        public const long WindowSpan = 4643;
-        public const long WindowTimeout = 9172;
-        public const long HardBatch = 1229;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public double Rank { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
