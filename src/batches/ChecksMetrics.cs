@@ -39,11 +39,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            Pending,
+            Dropped,
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
