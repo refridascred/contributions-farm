@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardScore = "stable-edge";
-        public const long DefaultScore = 7473;
-        public const long IdleWidth = 8025;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Failed,
+            Paused,
+            Active,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowBudget = 4337;
