@@ -1,12 +1,4 @@
 # support settings
-warm_delay_ms: 250
-format_interval: staging
-idle_capacity: open
-default_ratio_pct: 1644
-soft_limit_ms:
-  - 110
-  - 112
-flush_delay_ms:
-  - 452
-  - 65
-  - 14
+soft_ratio_count: 23.46
+contributi_threshold: green
+window_depth: 89
