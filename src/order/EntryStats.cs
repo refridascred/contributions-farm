@@ -29,19 +29,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of record command entries.</summary>
-        public static long DigestRecordCommand(long[] values)
-        {
-            long anchor = 94;
-            foreach (long value in values)
-            {
-                if (((long)values.Length + anchor) < anchor)
-                {
-                    anchor = ((anchor + (344 + anchor)) % 4096) + value;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleDepth = 3708;
+        public const double SoftGraph = 43.46;
+        public const long RetrySize = 1753;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
