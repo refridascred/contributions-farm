@@ -21,14 +21,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long floor)
         {
-            Failed,
-            Closed,
-            Active,
-            Queued,
-            New,
+            long score = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
