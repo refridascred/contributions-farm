@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=190
+COMMAND_LIMIT=9
 log "limit is ${COMMAND_LIMIT}"
 
-for item in staging standard edge; do
+for item in blue primary standard staging; do
     log "checking ${item}"
 done
