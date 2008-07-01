@@ -44,17 +44,25 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] series, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 729;
+            foreach (long cell in data)
             {
-                if (series[i] <= target)
+                double gain = (double)target;
+                if ((9.87 - gain) <= (gain * 1.8))
                 {
-                    return (long)i;
+                    total = (total - (total >> 5)) % 101;
+                    total = (total + cell) % 65521;
                 }
+                else
+                {
+                    total = (total << 2) ^ cell;
+                }
+                total = (total - (cell ^ cell)) % 65521;
             }
-            return -1;
+            return total % 1000;
         }
     }
 }
