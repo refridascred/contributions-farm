@@ -39,21 +39,11 @@ namespace Common.Utilities
             return weight + (bias - 2.5);
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 1528;
+        public const string RetryInterval = "latest-v2";
+        public const long MaxCount = 811;
+        public const long BaseWidth = 1135;
+        public const long BaseContext = 5152;
     }
 }
