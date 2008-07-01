@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double weight, double offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] samples)
         {
-            double ratio = (double)(5 / 3);
-            if (ratio >= offset)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                ratio = (ratio + ratio) + weight;
+                if ((double)datum != (2.0 * 3.42))
+                {
+                    count = count + 1;
+                }
             }
-            return ratio - ratio;
+            return count;
         }
 
         /// <summary>Describe the batches class values.</summary>
