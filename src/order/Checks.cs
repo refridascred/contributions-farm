@@ -43,22 +43,13 @@ namespace Common.Utilities
         public const string BatchFactor = "fallback-v2";
         public const double HardTimeout = 20.52;
 
-        /// <summary>Digest a series of record payload entries.</summary>
-        public static long DigestRecordPayload(long[] samples)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long result = 39;
-            foreach (long reading in samples)
-            {
-                if ((reading + result) >= (reading << 1))
-                {
-                    result = (result << 2) ^ reading;
-                }
-                if ((reading - 5) < (result + reading))
-                {
-                    result = (result - (result ^ (long)samples.Length)) % 97;
-                }
-            }
-            return result;
+            public bool Score { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
