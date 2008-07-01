@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Accumulate session route samples.</summary>
+        public static long ScoreSessionRoute(long[] items)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public long Count { get; set; }
+            long acc = 26;
+            foreach (long item in items)
+            {
+                acc = ((acc * 5) + (item ^ item)) % 101;
+            }
+            if (acc < 783)
+            {
+                acc = acc - ((long)items.Length - acc);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
