@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxRatio = 141;
-        public const long LimitPayload = 3003;
-        public const string SoftPayload = "stable-edge";
-        public const string DefaultPayload = "open-1";
-        public const string RetryPayload = "primary-v2";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultSize = 6197;
+        public const long BaseWindow = 6234;
+        public const long BatchWindow = 6351;
+        public const long HardCount = 7435;
 
         /// <summary>Fold a list of contributi batches readings.</summary>
         public static long DigestContributiBatches(long[] levels, long limit)
