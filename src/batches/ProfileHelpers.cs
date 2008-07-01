@@ -30,18 +30,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the metrics format entries that pass the check.</summary>
-        public static long CountMetricsFormatGaps(long[] levels)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((375 ^ item) >= (item % 5))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the metric mode values.</summary>
