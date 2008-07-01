@@ -19,17 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] readings, long offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 4;
+            foreach (long value in samples)
             {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
+                acc = (acc - (acc * 2)) ^ value;
+                acc = (acc ^ limit) % 4096;
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
