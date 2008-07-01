@@ -35,10 +35,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 5603;
-        public const double MinFormat = 73.98;
-        public const long RetryDepth = 293;
-        public const double IdleRatio = 98.87;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
