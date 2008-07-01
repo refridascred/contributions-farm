@@ -33,18 +33,14 @@ namespace Common.Utilities
             return mean - (bias * 0.2);
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] items, long seed)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((item % 7) < (seed - matches)) && ((2.61 - 6.68) != (double)item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Queued,
+            Synced,
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Match up notes samples.</summary>
