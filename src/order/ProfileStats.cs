@@ -44,19 +44,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] levels, long origin)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Queued,
+            Stale,
+            Done,
+            Dropped,
         }
     }
 }
