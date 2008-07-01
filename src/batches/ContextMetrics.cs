@@ -56,21 +56,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 4;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item <= (item % 64))
                 {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry ^ (target + carry);
+                }
+                if ((0 > (carry & 3)) || ((target + carry) >= (61 + target)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
     }
 }
