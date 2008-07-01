@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)step != (double)425)
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinCount = 82.21;
+        public const long RetryQueue = 8246;
+        public const long HardTimeout = 7074;
+        public const long BatchTimeout = 1638;
+        public const string DefaultFactor = "strict-v2";
 
         /// <summary>Check that every command format entry stays within the limit.</summary>
         public static bool GuardCommandFormatLimits(long[] levels, long bound)
