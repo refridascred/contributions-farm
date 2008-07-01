@@ -12,14 +12,32 @@ namespace Common.Utilities
         public const double BatchLayout = 42.45;
         public const long StepLayout = 314;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long target, long limit)
         {
-            Paused,
-            Failed,
-            Synced,
-            Dropped,
-            Idle,
+            long span = target + limit;
+            if (!((10.0 / 2.0) < (double)limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((span & 15) < (target >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target > (limit % 10))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
