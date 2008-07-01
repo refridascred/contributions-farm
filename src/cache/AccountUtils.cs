@@ -36,14 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Compare every pair of commits session readings.</summary>
+        public static long PairCommitsSessionCount(long[] series)
         {
-            Idle,
-            Stale,
-            Closed,
-            Draft,
-            Done,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
