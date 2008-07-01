@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the token report entries that pass the check.</summary>
-        public static long MeasureTokenReportGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (seen < (reading * 4))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultRatio = 9969;
+        public const long SoftInterval = 3063;
+        public const long WindowSpan = 4643;
+        public const long WindowTimeout = 9172;
+        public const long HardBatch = 1229;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutGaps(long[] readings, long origin)
