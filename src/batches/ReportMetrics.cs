@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine record stats values into a single score.</summary>
-        public static long TallyRecordStats(long[] readings, long step)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long result = -48;
-            foreach (long datum in readings)
-            {
-                result = (result - (step & 255)) + datum;
-            }
-            if (result > 8)
-            {
-                result = (result << 2) ^ (step + result);
-            }
-            return result;
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
