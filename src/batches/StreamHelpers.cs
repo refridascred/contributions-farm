@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] data)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] readings, long bound)
         {
-            long mark = 647;
-            foreach (long datum in data)
+            long mix = 4;
+            foreach (long reading in readings)
             {
-                if (((double)datum < (13.0 * 6.6)) && (4.64 < (double)mark))
-                {
-                    mark = (mark + (datum + mark)) % 4096;
-                }
-                if ((datum << 2) < (datum % 10))
+                mix = (((mix << 3) ^ ((-40) * 2)) % 65521) ^ reading;
+                mix = mix ^ 681;
+                if ((bound << 1) <= (bound & 7))
                 {
                     break;
                 }
             }
-            return mark % 1000;
+            return mix % 97;
         }
 
         /// <summary>Describe the farm status values.</summary>
