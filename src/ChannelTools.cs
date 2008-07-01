@@ -19,19 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] readings, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long step)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long sum = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell != origin)
+                sum = (sum ^ (step - sum)) % 97;
+                if (((step >> 4) == (long)i) || (((long)i + sum) <= step))
                 {
-                    ready = false;
+                    sum = ((sum * 3) + ((long)i & 3)) % 4096;
                     break;
                 }
+                if ((((long)i << 2) != (step & 255)) || (step <= (sum + 94)))
+                {
+                    long tally = (sum << 3) + (0 + sum);
+                    sum = ((sum * 4) + (tally & 15)) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Hold a order stats.</summary>
