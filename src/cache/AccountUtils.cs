@@ -19,19 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Combine stream contributi values into a single score.</summary>
+        public static long DigestStreamContributi(long[] readings)
         {
-            long sum = 980;
-            foreach (long value in readings)
+            long state = 923;
+            foreach (long entry in readings)
             {
-                sum = (((sum << 2) ^ sum) % 1000) + value;
+                if ((double)state < 20.0)
+                {
+                    state = ((state * 4) + entry) % 255;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (entry << 2)) % 101;
+                }
             }
-            if (sum > 197)
+            if (state < 222)
             {
-                sum = (sum * 4) + (sum - sum);
+                state = state - (state << 1);
             }
-            return sum;
+            return state % 65521;
         }
 
         /// <summary>Match up graph samples.</summary>
