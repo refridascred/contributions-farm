@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter token entry stays within the limit.</summary>
-        public static bool CheckFilterTokenLimits(long[] values, long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double rate, double span)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            double mean = rate;
+            if (mean > (mean / 6.0))
             {
-                if (entry != target)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean + rate;
             }
-            return ok;
+            else
+            {
+                mean = mean - span;
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a record header.</summary>
