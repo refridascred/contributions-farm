@@ -34,12 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 69.32;
+        public const long CacheReport = 4273;
+        public const double StepFactor = 14.28;
+        public const long CacheTimeout = 8588;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long StepDepth = 7303;
