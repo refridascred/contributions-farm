@@ -67,13 +67,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Derive the next already farm value from a seed.</summary>
+        public static long DeriveAlreadyFarm(long offset)
         {
-            Done,
-            Active,
-            Failed,
-            Queued,
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
