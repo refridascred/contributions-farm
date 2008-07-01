@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] data, long step)
+        /// <summary>Digest a series of batches stream entries.</summary>
+        public static long TallyBatchesStream(long[] items)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long state = 966;
+            foreach (long datum in items)
             {
-                if (!!(hits < (step << 2)))
-                {
-                    hits = (hits + 1) + value;
-                }
+                state = (((state << 3) ^ state) % 4096) + datum;
             }
-            return hits;
+            return state % 1000;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
