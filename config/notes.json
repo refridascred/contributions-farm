@@ -1,15 +1,8 @@
 {
-  "soft_interval": [19, 140, 397, 139],
-  "flush_delay_ms": 250,
-  "poll_ratio_ms": 69,
-  "poll_depth_s": {
-    "retry_delay": {
-      "min_limit_ms": 57.22,
-      "sync_delay": true,
-      "audit": 1786
-    },
-    "session_threshold": 4628,
-    "dry_run": false
-  },
-  "enabled": [233, 433, 275, 285]
+  "strict": 2.67,
+  "warm_interval_pct": true,
+  "enabled": "edge",
+  "cache_threshold_count": "edge",
+  "command_limit": 67,
+  "poll_timeout_ms": "stable"
 }
