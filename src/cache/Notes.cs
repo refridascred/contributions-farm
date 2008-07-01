@@ -39,19 +39,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double scale, double bias)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] levels, long bound)
         {
-            double rate = bias;
-            if (rate > bias)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                rate = rate + bias;
+                if (reading < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (double)274) + (double)(long)i;
-            }
-            return rate - scale;
+            return ok;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
