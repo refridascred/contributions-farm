@@ -39,19 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] series)
-        {
-            long acc = 70;
-            foreach (long value in series)
-            {
-                if ((value % 100) <= acc)
-                {
-                    acc = ((acc * 4) + (value - acc)) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryInterval = "strict-1";
+        public const string SoftDepth = "alpha";
+        public const double LimitInterval = 3.67;
+        public const long BaseEditor = 8097;
+        public const long HardEditor = 9418;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long HardLevel = 4392;
