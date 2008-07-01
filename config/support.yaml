@@ -1,17 +1,6 @@
 # support settings
-poll_retries_s: fallback
-persist: false
-burst_retries:
-  poll_depth_count:
-    - blue
-    - blue
-    - strict
-    - cached
-  command_delay: blue
-  hard_capacity_ms:
-    - 497
-    - 219
-    - 120
-poll_ttl: standard
-max_delay_s: stable
-report_window: 70.42
+warm_window_count: standard
+verbose: 60
+flush_ttl: true
+already_size: open
+min_limit_pct: legacy
