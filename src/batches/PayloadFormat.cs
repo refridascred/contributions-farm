@@ -75,14 +75,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Retry,
-            New,
-            Active,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryTimeout = "staging";
+        public const long BatchCount = 4672;
+        public const long BatchLevel = 9872;
     }
 }
