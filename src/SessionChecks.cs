@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long limit, long step)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if (limit >= (limit + 14))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit <= (5.6 / 4.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Roll a token farm counter forward.</summary>
