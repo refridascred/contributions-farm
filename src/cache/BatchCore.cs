@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a contributi token pair into a bucket.</summary>
-        public static long RankContributiToken(long offset, long seed)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            long prev = offset ^ seed;
-            if (!((prev ^ seed) < (prev - prev)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + prev) == (seed + seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
