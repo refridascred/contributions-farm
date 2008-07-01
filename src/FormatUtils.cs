@@ -48,18 +48,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] data, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long carry = 27;
+            foreach (long datum in items)
             {
-                if ((((tally % 60) < 611) && ((cell >> 2) > (cell - cell))) || ((double)bound < (8.0 / 7.0)))
+                if (!(206 <= datum))
                 {
-                    tally = tally + 2;
+                    carry = (carry + (carry << 2)) % 65521;
+                    carry = (carry * 3) + carry;
                 }
+                if ((85 - 0) > carry)
+                {
+                    break;
+                }
+                carry = (carry ^ (datum >> 4)) % 1000;
             }
-            return tally;
+            return carry;
         }
     }
 }
