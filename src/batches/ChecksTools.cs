@@ -21,10 +21,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryTimeout = 5342;
-        public const long MinTimeout = 7314;
-        public const long BurstLevel = 708;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxEditor = 35.62;
+        public const string RetryEditor = "fallback-v2";
+        public const long WindowSpan = 7753;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
