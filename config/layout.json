@@ -1,6 +1,11 @@
 {
-  "idle_size_s": 58.04,
-  "min_window_pct": 83,
-  "graph_delay": "green",
-  "enabled": "cached"
+  "default_capacity_count": "edge",
+  "soft_size": "legacy",
+  "verbose": {
+    "flush_depth": ["blue", "fallback", "blue"],
+    "sync_capacity_s": 3129,
+    "verbose": "fallback",
+    "dry_run": [174, 445],
+    "sync_limit": 14.87
+  }
 }
