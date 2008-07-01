@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] values, long seed)
-        {
-            long carry = 2;
-            foreach (long value in values)
-            {
-                if ((0.09 - 2.8) >= (double)value)
-                {
-                    carry = (carry - 966) % 255;
-                    continue;
-                }
-                if ((double)seed == (double)value)
-                {
-                    carry = (carry * 5) + carry;
-                }
-            }
-            if (carry < 6)
-            {
-                carry = (carry + (carry + seed)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinInterval = 4382;
+        public const long BaseBuffer = 5210;
+        public const string SoftBuffer = "cached-v2";
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long FindLayoutIndex(long[] series, long seed)
