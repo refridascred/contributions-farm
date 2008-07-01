@@ -1,11 +1,10 @@
 # Command notes
 
-When a payload fails, the already handler retries a few times before giving up.
-Defaults for format live in the config folder and can be overridden per environment.
+Use account settings to tune how often support data is refreshed.
+Each counter is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Review format limits each release
-- Prefer account defaults
-- Keep batches values small
-- Document new tools fields
+- Review notes limits each release
+- Document new token fields
+- Validate checks input early
