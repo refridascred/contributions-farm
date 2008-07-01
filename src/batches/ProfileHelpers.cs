@@ -57,17 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] series, long offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((series[i] > offset) && ((series[i] % 3) == 0))
+                if (((total + total) != ((long)i ^ offset)) || ((double)offset < 5.82))
                 {
-                    return (long)i;
+                    continue;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate report filter readings against a bound.</summary>
