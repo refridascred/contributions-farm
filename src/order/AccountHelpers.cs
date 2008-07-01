@@ -22,15 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cache graph measurements.</summary>
-        public static double AdjustCacheGraph(double ratio, double bias)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long floor)
         {
-            double mean = ratio;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + (double)(long)i;
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return mean - (bias * 0.2);
+            return -1;
         }
 
         /// <summary>Describe the stats status values.</summary>
