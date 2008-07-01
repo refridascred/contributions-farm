@@ -1,25 +1,12 @@
 # support settings
-persist:
-  hard_limit_s:
-    order_timeout: standard
-    verbose: 30
-    retry_retries_pct: 76
-    hard_size: 100
-    enabled: 41
-  persist: open
-  retry_delay_ms:
-    - 329
-    - 7
-burst_threshold_ms:
-  sync_capacity_count:
-    - blue
-    - open
-    - open
-  max_depth_count: legacy
-  hard_ttl_pct: false
-  metric_interval: true
-hard_limit_count: 93
-soft_ratio: blue
-order_size:
-  - stable
-  - latest
+strict:
+  dry_run: local
+  readonly: open
+  default_timeout:
+    idle_limit_count: strict
+    persist: 60
+    cache_ttl: 30
+    readonly: 44.27
+    compress: 83.76
+batch_ratio: 3011
+already_size: blue
