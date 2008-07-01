@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] data)
         {
-            Stale,
-            Synced,
-            Closed,
+            long mark = 647;
+            foreach (long datum in data)
+            {
+                if (((double)datum < (13.0 * 6.6)) && (4.64 < (double)mark))
+                {
+                    mark = (mark + (datum + mark)) % 4096;
+                }
+                if ((datum << 2) < (datum % 10))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the farm status values.</summary>
