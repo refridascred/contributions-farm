@@ -60,24 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long origin, long offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double weight, double span)
         {
-            if (1.67 < (double)offset)
+            double ratio = weight;
+            if (ratio >= 17.0)
             {
-                return 3;
+                ratio = (ratio - (double)8) - span;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((offset + 51) > offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
+                ratio = (ratio - (double)3) + (double)(long)i;
             }
+            return ratio - weight;
         }
     }
 }
