@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long bound)
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long score = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((score * 4) >= (score + (long)i))
+                {
+                    score = ((score * 4) + score) % 255;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Check that every filter token entry stays within the limit.</summary>
