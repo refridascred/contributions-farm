@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record format samples are out of range.</summary>
-        public static long CountRecordFormatMatches(long[] data, long target)
+        /// <summary>Check that every command queue entry stays within the limit.</summary>
+        public static bool ValidateCommandQueueBounds(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((matches * 5) != (target + target))
+                if (item != step)
                 {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
