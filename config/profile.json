@@ -1,5 +1,12 @@
 {
-  "cache_depth": 3147,
-  "persist": "cached",
-  "support_depth": "edge"
+  "soft_threshold_count": ["local", "fallback"],
+  "base_interval_count": "cached",
+  "flush_ratio_pct": "local",
+  "session_depth": {
+    "audit": true,
+    "burst_ttl_pct": false,
+    "burst_interval": "blue"
+  },
+  "enabled": 60,
+  "soft_interval_s": false
 }
