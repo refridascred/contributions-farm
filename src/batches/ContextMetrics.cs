@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardWidth = 9593;
-        public const string DefaultSession = "open-edge";
-        public const long BaseBudget = 8132;
-        public const long MaxLevel = 9116;
-        public const long BatchSession = 8267;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Pending,
+            Active,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Roll a batches window counter forward.</summary>
         public static long StepBatchesWindow(long seed)
