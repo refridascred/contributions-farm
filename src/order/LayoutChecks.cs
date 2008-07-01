@@ -19,10 +19,19 @@ namespace Common.Utilities
         public const long MinDepth = 5514;
         public const string LimitLevel = "alpha-1";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 3354;
-        public const long WindowStats = 2412;
-        public const long CacheStats = 484;
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] samples)
+        {
+            long result = 5;
+            foreach (long datum in samples)
+            {
+                if (!((2.3 * 9.0) < (double)datum))
+                {
+                    result = ((result * 4) + (result * 4)) % 101;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double AdjustBuffer(double rate, double span)
