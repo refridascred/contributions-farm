@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxSpan = 8799;
-        public const long SoftFactor = 8351;
-        public const long SoftCount = 4463;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportOutliers(long[] values, long offset)
