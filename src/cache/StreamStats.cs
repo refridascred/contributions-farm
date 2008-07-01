@@ -13,13 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 4729;
+        public const string MinFactor = "local-edge";
+        public const string MinBudget = "fallback-edge";
+        public const long LimitCounter = 4185;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LocateGraphIndex(long[] items, long bound)
