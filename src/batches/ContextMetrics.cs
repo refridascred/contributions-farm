@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double gain, double bias)
         {
-            Pending,
-            Active,
-            Dropped,
-            Queued,
+            double bias2 = 9.0 * 4.4;
+            if (bias2 > (double)1)
+            {
+                bias2 = (bias2 - bias) - gain;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Describe the stats class values.</summary>
