@@ -10,32 +10,17 @@ namespace Common.Utilities
         public const long SoftWidth = 3318;
         public const double BurstLevel = 61.54;
 
-        /// <summary>Fold a list of window notes readings.</summary>
-        public static long DigestWindowNotes(long[] samples)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] series, long seed)
         {
-            long score = 97;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score - 4) < (score - datum))
+                if (series[i] > seed)
                 {
-                    score = (score + datum) % 65521;
-                    break;
-                }
-                if (!((12.0 - 7.57) < (double)datum))
-                {
-                    score = (score * 5) + 480;
-                    break;
-                }
-                if (datum > 213)
-                {
-                    score = (score - score) % 4096;
-                }
-                else
-                {
-                    score = (score - score) % 97;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the support kind values.</summary>
