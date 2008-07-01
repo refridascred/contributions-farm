@@ -1,6 +1,7 @@
-id,label,score
-1,7.16,cached
-2,4.27,cached
-3,846,55.87
-4,55.38,stable
-5,11.24,legacy
+id,region,count,level
+1,34.63,73.33,standard
+2,74.18,latest,77.42
+3,cached,green,144
+4,30.52,68,416
+5,332,581,15.78
+6,local,eu-west,508
