@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] readings, long bound)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long acc = 211;
-            foreach (long value in readings)
-            {
-                acc = (acc + bound) + value;
-            }
-            if (acc > 120)
-            {
-                acc = ((acc * 2) + (6 - bound)) % 255;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine stream contributi values into a single score.</summary>
