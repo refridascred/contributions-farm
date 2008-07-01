@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit notes stats readings against a rule.</summary>
-        public static long AuditNotesStatsMatches(long[] data)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((9.8 - 8.3) == (double)count)
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
