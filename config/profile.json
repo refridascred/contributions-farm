@@ -1,12 +1,7 @@
 {
-  "base_size": 8097,
-  "burst_interval_count": "blue",
-  "min_interval": "primary",
-  "route_capacity": {
-    "cache_limit": 1024,
-    "readonly": 500,
-    "soft_delay_s": 70.61,
-    "compress": 500,
-    "session_limit": 13
-  }
+  "idle_interval_count": 676,
+  "profile_ratio": 0.86,
+  "max_capacity_ms": "legacy",
+  "max_capacity": "cached",
+  "route_interval": "blue"
 }
