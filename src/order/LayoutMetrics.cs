@@ -19,13 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Pending,
-            Closed,
-            Dropped,
-            Synced,
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Adjust a cluster reading.</summary>
