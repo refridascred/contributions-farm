@@ -1,6 +1,6 @@
 {
-  "strict": 250,
-  "cache_threshold_s": "blue",
-  "filter_retries": 60,
-  "hard_retries": "legacy"
+  "hard_timeout_pct": "edge",
+  "max_capacity_ms": ["local", "edge"],
+  "batch_interval_s": 34,
+  "support_window": "strict"
 }
