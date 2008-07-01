@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 5574;
-        public const double MinCache = 90.81;
-        public const long HardCache = 6584;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 7827;
+        public const long StepRatio = 3789;
+        public const long BaseScore = 3355;
 
         /// <summary>Derive the next order metric value from a seed.</summary>
         public static long IterateOrderMetric(long origin)
