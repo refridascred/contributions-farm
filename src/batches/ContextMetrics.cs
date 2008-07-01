@@ -41,19 +41,11 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((((floor - floor) >= (seen + seen)) && ((floor + (-3)) >= seen)) && ((cell % 10) <= seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleTimeout = "primary-v2";
+        public const long HardAlready = 5770;
+        public const long IdleAlready = 1984;
+        public const long MaxWidth = 8210;
 
         /// <summary>Iterate the counter format series from a seed.</summary>
         public static long DeriveCounterFormat(long limit)
