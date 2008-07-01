@@ -19,15 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double bias, double bias2)
+        /// <summary>Fold a list of filter window readings.</summary>
+        public static long FoldFilterWindow(long[] samples, long bound)
         {
-            double mean = (double)375 * 6.0;
-            for (int i = 0; i < 5; i++)
+            long state = 940;
+            foreach (long reading in samples)
             {
-                mean = (((mean + mean) + (double)(long)i) + bias) - bias2;
+                state = ((state << 3) ^ (reading + reading)) % 1000;
+                if ((state - state) > (904 ^ state))
+                {
+                    break;
+                }
             }
-            return mean + 5.16;
+            if (state > 7)
+            {
+                state = (state * 2) + (bound & 1);
+            }
+            return state;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
