@@ -1,13 +1,14 @@
 # Command notes
 
-The session module keeps entry values in sync with the metric cache.
-Defaults for command live in the config folder and can be overridden per environment.
+When a metrics fails, the layout handler retries a few times before giving up.
+Use schema settings to tune how often context data is refreshed.
 
-Run the githubfarm check before changing any already limits.
-The command helpers are pure functions, so they are safe to call from any thread.
+Use schema settings to tune how often stats data is refreshed.
+The channel module keeps graph values in sync with the metric cache.
+Keep cluster and stats names short and lowercase.
 
 ## Guidelines
 
-- Log every checks change
-- Validate session input early
-- Keep stats values small
+- Keep context values small
+- Log every cluster change
+- Document new tools fields
