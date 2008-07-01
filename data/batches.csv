@@ -1,9 +1,7 @@
-id,state,weight,rank
-1,strict,92.82,strict
-2,84.81,56.05,94.31
-3,43.21,43.48,554
-4,standard,local,380
-5,810,488,51.28
-6,466,staging,49.26
-7,26.6,820,blue
-8,71.52,legacy,696
+id,active,region
+1,62,582
+2,603,0
+3,primary,eu-west
+4,82.47,932
+5,342,912
+6,eu-west,658
