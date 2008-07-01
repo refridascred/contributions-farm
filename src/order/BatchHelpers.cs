@@ -20,13 +20,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultSpan = 4301;
+        public const double SoftFactor = 34.39;
+        public const long LimitNotes = 6310;
     }
 }
