@@ -85,19 +85,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] data, long target)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
     }
 }
