@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] data)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)value < (double)count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
