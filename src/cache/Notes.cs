@@ -19,17 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long floor)
+        /// <summary>Blend two support already measurements.</summary>
+        public static double ScaleSupportAlready(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = offset;
+            return gain + (offset + ratio);
         }
 
         /// <summary>Describe the route phase values.</summary>
