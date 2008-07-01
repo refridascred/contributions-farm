@@ -36,17 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a schema contributi sample.</summary>
-        public static long LocateSchemaContributiIndex(long[] readings, long bound)
+        /// <summary>Count the githubfarm session entries that pass the check.</summary>
+        public static long AuditGithubfarmSessionGaps(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (readings[i] > bound)
+                if ((double)reading >= 18.0)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
