@@ -13,19 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a token farm counter forward.</summary>
-        public static long IterateTokenFarm(long floor)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    anchor = (anchor + (long)i3) % 1000;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
