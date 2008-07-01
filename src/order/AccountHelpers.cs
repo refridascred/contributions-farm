@@ -89,11 +89,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchSpan = "legacy";
-        public const long CacheCounter = 1514;
-        public const long RetryCounter = 2014;
-        public const string BatchInterval = "alpha-edge";
-        public const double CacheWidth = 4.79;
+        /// <summary>Digest a series of batches metrics entries.</summary>
+        public static long TallyBatchesMetrics(long[] series)
+        {
+            long mark = 1;
+            foreach (long sample in series)
+            {
+                mark = ((mark * 4) + (-5)) % 1000;
+                mark = (mark - 94) % 255;
+                if ((sample + mark) <= (84 + sample))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
+        }
     }
 }
