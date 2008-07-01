@@ -27,17 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] items, long origin)
+        /// <summary>Measure how many cache buffer samples are out of range.</summary>
+        public static long AuditCacheBufferHits(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (items[i] <= origin)
+                if ((((matches >> 3) <= 743) && ((origin - entry) < (matches / 7))) || ((6.9 / 6.0) != (double)origin))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
