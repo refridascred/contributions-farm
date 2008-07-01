@@ -21,10 +21,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxEditor = 35.62;
-        public const string RetryEditor = "fallback-v2";
-        public const long WindowSpan = 7753;
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double ratio, double bias)
+        {
+            double weight = 1.1;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = ((weight + (ratio - 5.0)) + (double)(long)i) + bias;
+            }
+            return weight - (1.34 + weight);
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
