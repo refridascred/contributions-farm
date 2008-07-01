@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long MaxLevel = 9116;
         public const long BatchSession = 8267;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] samples, long floor)
         {
-            Closed,
-            New,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
