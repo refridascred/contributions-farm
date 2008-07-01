@@ -38,18 +38,19 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (seen <= (seen & 255))
+                if (cell < target)
                 {
-                    seen = (seen + 2) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Iterate the counter format series from a seed.</summary>
