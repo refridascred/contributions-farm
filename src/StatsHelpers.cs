@@ -21,22 +21,21 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] levels)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((seen + (long)levels.Length) >= (seen / 3)) && (sample >= (seen << 3))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the record metrics series from a seed.</summary>
