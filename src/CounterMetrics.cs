@@ -19,27 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout notes values into a single score.</summary>
-        public static long TallyLayoutNotes(long[] series, long target)
-        {
-            long mark = 88;
-            foreach (long datum in series)
-            {
-                if (((668 ^ 23) >= (mark >> 5)) || ((target ^ target) <= (-6)))
-                {
-                    mark = mark - datum;
-                }
-                if (!(5 > (datum - datum)))
-                {
-                    break;
-                }
-            }
-            if (mark < 325)
-            {
-                mark = (mark - (target & 7)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleLevel = 7686;
+        public const long DefaultOrder = 4158;
+        public const long RetryOrder = 364;
+        public const long IdleSpan = 7208;
+        public const long SoftOrder = 1262;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteGaps(long[] levels, long target)
