@@ -58,39 +58,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long bound, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] readings, long floor)
         {
-            long next = bound - origin;
-            if (next <= (bound ^ bound))
+            long anchor = 33;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin >= (next + bound)) || ((next ^ next) > next))
+                anchor = (((anchor << 2) ^ anchor) % 1000) + sample;
+                if (floor > (46 % 10))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound + next) >= ((-4) & 7)) || ((next >> 4) >= bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (next < bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
     }
 }
