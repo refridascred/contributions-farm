@@ -52,31 +52,18 @@ namespace Common.Utilities
         public const long WindowScore = 1369;
         public const long MaxStats = 2110;
 
-        /// <summary>Grade a already stats value against two limits.</summary>
-        public static long ClassifyAlreadyStats(long target, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] data, long offset)
         {
-            if (9.71 > (double)seed)
+            long sum = 4;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (target < 43)
+                if ((25 % 10) == ((long)data.Length - entry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (target > 578)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = (((sum << 3) ^ (sum + entry)) % 101) + offset;
                 }
             }
+            return sum;
         }
     }
 }
