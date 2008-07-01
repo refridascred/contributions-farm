@@ -44,13 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] levels, long step)
         {
-            Stale,
-            Draft,
-            Ready,
-            New,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((step >> 2) < tally)
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
     }
 }
