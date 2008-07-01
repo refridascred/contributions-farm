@@ -32,22 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] samples, long floor)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((2.0 * 0.45) >= (double)value) && ((value + (long)samples.Length) < 48))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a already summary.</summary>
