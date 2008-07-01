@@ -1,9 +1,6 @@
-id,token,region,score,count
-1,legacy,edge,219,65.95
-2,304,open,staging,324
-3,28.54,eu-west,57.07,931
-4,27.52,2.19,694,836
-5,97.6,legacy,legacy,112
-6,edge,780,standard,771
-7,latest,184,45.31,523
-8,35.5,699,506,119
+id,region,ratio,count
+1,399,edge,edge
+2,877,strict,97.47
+3,791,green,cached
+4,83.51,815,460
+5,600,394,23.87
