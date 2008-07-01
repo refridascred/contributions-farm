@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 5503;
-        public const double BatchSpan = 48.48;
-        public const long LimitToken = 484;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((bound << 3) < (bound + 93))
+                {
+                    count = (count + 3) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next support value.</summary>
         public static double AdjustSupport(double gain, double offset)
