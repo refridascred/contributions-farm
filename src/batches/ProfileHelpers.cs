@@ -34,23 +34,12 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)offset == (8.4 + 1.6))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitNotes = "local-1";
+        public const long WindowWidth = 7107;
+        public const double RetryNotes = 62.85;
+        public const long StepDepth = 7029;
+        public const long CacheCount = 874;
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
