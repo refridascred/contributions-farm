@@ -21,14 +21,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] series, long step)
         {
-            Ready,
-            Draft,
-            Pending,
-            Synced,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a metrics checks reading.</summary>
