@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the graph editor series from a seed.</summary>
-        public static long StepGraphEditor(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryDepth = 8066;
+        public const string BaseLayout = "open";
+        public const string IdleBudget = "open";
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyRange(long[] values, long floor)
