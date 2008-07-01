@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-cached}"
 case "${mode}" in
-    open)
+    latest)
         log "fast path"
         ;;
     *)
@@ -18,9 +18,6 @@ esac
 
 total=0
 for i in $(seq 1 12); do
-    total=$((total + i * 4))
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-RECORD_LIMIT=366
-log "limit is ${RECORD_LIMIT}"
