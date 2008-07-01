@@ -1,14 +1,7 @@
 {
-  "hard_interval": true,
-  "idle_size_pct": 8.11,
-  "retry_ttl_s": 64.67,
-  "base_ttl": true,
-  "flush_timeout": {
-    "queue_retries": false,
-    "flush_timeout_count": 250,
-    "strict": "stable",
-    "batch_depth": false,
-    "report_size": 22.03
-  },
-  "readonly": "latest"
+  "idle_limit_s": ["staging", "local", "edge"],
+  "context_ttl": "latest",
+  "batch_capacity": 97,
+  "readonly": 10.03,
+  "poll_size_s": 57.38
 }
