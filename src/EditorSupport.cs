@@ -22,10 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 3421;
-        public const double HardFormat = 38.85;
-        public const long CacheFormat = 866;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountOutliers(long[] data)
