@@ -14,11 +14,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] values, long floor)
         {
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every window channel entry stays within the limit.</summary>
