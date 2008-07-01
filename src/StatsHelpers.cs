@@ -54,12 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] data)
         {
-            Synced,
-            Pending,
-            Done,
+            long score = 3;
+            foreach (long datum in data)
+            {
+                score = ((score ^ (499 & 255)) % 101) ^ datum;
+            }
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
