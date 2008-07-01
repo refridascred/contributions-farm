@@ -28,31 +28,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Classify a graph githubfarm pair into a bucket.</summary>
-        public static long BucketGraphGithubfarm(long step, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] values, long seed)
         {
-            if (((step ^ limit) >= 2) || ((step % 16) <= (limit + limit)))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)step < (3.0 * 3.15)) || ((limit >> 1) < limit))
+                if ((717 ^ seed) != (seen << 1))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((step ^ step) >= (limit + 45)) && ((double)limit == (8.4 / 3.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = (seen + 1) ^ cell;
                 }
             }
+            return seen;
         }
     }
 }
