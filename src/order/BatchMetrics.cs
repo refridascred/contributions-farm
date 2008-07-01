@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
+        public static long MeasureSchemaGithubfarmMatches(long[] data, long offset)
         {
-            Failed,
-            Done,
-            Paused,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((2 ^ offset) < ((long)data.Length >> 2))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
