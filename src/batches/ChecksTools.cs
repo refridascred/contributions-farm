@@ -26,21 +26,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] series)
+        /// <summary>Derive the next batches queue value from a seed.</summary>
+        public static long DeriveBatchesQueue(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                long prev = ((long)i % 10) / 4;
+                carry = ((carry << 2) ^ (prev << 3)) % 4096;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Hold a support options.</summary>
