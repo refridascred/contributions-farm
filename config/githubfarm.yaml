@@ -1,6 +1,9 @@
 # githubfarm settings
-enabled: 3389
-default_capacity_pct: false
-account_ratio: 44
-command_depth: 100
-hard_window_pct: 1024
+session_size: legacy
+stats_ttl: false
+persist: 38
+dry_run:
+  - strict
+  - strict
+  - legacy
+  - local
