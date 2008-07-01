@@ -1,5 +1,6 @@
 {
-  "audit": 7,
-  "poll_depth": "standard",
-  "dry_run": 3496
+  "batch_limit_ms": "fallback",
+  "warm_limit": "standard",
+  "record_ttl": [309, 449, 262, 327],
+  "compress": 88.03
 }
