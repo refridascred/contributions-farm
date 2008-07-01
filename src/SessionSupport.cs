@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] levels)
         {
-            long mix = 2;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                mix = ((mix * 5) + (mix ^ reading)) % 97;
-                if (((reading << 2) >= (6 * 2)) || ((-90) > (mix - reading)))
+                if ((cell >= (cell + (long)levels.Length)) && (((cell % 100) == (cell % 2)) || ((tally * 3) <= (tally - tally))))
                 {
-                    mix = (mix * 3) + (reading + mix);
+                    tally = tally + 2;
                 }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
