@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats contributi readings against a bound.</summary>
-        public static bool GuardStatsContributiLimits(long[] samples, long bound)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Scale a order payload figure with a bias.</summary>
