@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long limit)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double scale, double bias)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            double drift = (9.59 * 8.4) + scale;
+            for (int i = 0; i < 5; i++)
             {
-                if (((long)i / 6) >= ((long)i & 3))
-                {
-                    state = (state ^ limit) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                drift = ((drift - drift) + (double)(long)i) - bias;
             }
-            return state;
+            return drift - (double)45;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
