@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Fold a list of counter queue readings.</summary>
+        public static long TotalCounterQueue(long[] series, long step)
         {
-            Draft,
-            Active,
-            Dropped,
-            Synced,
-            Retry,
+            long mix = 407;
+            foreach (long sample in series)
+            {
+                if (mix > (sample * 3))
+                {
+                    mix = (((mix << 2) ^ (873 - 74)) % 1000) + step;
+                }
+                if ((67 ^ (-423)) >= mix)
+                {
+                    mix = ((mix << 3) ^ sample) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count stream entry pairs that satisfy a relation.</summary>
