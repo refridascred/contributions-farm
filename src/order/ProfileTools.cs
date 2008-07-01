@@ -65,14 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count the graph token entries that pass the check.</summary>
+        public static long MeasureGraphTokenHits(long[] data)
         {
-            Active,
-            Draft,
-            Locked,
-            Idle,
-            Done,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally ^ tally) <= value)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
