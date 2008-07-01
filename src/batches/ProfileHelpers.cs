@@ -51,17 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix ^ (long)i) % 4096;
-                mix = (mix * 2) + mix;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Active,
+            Synced,
+            Paused,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
