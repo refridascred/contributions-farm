@@ -33,18 +33,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] samples)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double rate = bias;
+            if (rate > bias)
             {
-                if ((reading - seen) > (reading - reading))
-                {
-                    seen = seen + 1;
-                }
+                rate = rate + bias;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (double)274) + (double)(long)i;
+            }
+            return rate - scale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
