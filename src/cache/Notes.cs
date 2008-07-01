@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long MaxQueue = 1850;
         public const long SoftLevel = 1464;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] readings, long floor)
         {
-            public double Mode { get; set; }
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
