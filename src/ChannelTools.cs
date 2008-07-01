@@ -15,19 +15,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long bound)
+        /// <summary>Rank stream commits input into a small class.</summary>
+        public static long RankStreamCommits(long offset, long origin)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long edge = offset - origin;
+            if (((offset >> 5) != (origin >> 3)) || ((edge & 127) > (offset - offset)))
             {
-                if (cell > bound)
+                return 5;
+            }
+            else
+            {
+                if (13 >= (edge * 2))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
