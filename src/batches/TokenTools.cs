@@ -39,11 +39,10 @@ namespace Common.Utilities
             return weight + (bias - 2.5);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 1528;
-        public const string RetryInterval = "latest-v2";
-        public const long MaxCount = 811;
-        public const long BaseWidth = 1135;
-        public const long BaseContext = 5152;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchWidth = "stable-edge";
+        public const long HardFactor = 91;
+        public const long BatchDepth = 2658;
+        public const string StepQueue = "strict";
     }
 }
