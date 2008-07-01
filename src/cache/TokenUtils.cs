@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double ratio, double span)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            double drift = span / 8.0;
-            if (drift > drift)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (ratio - 2.44);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (ratio - ratio)) - (double)(long)i;
-            }
-            return drift + 7.6;
+            return matches;
         }
 
         /// <summary>Validate stats contributi readings against a bound.</summary>
