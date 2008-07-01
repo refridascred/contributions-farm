@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long WindowTimeout = 9172;
         public const long HardBatch = 1229;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Stale,
-            Paused,
-            Idle,
-            Retry,
-            Active,
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the context kind values.</summary>
