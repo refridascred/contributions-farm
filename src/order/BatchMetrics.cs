@@ -56,15 +56,22 @@ namespace Common.Utilities
         public const long CacheSpan = 5825;
         public const string StepRecord = "latest-edge";
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] levels, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if (((-597) % 5) <= (cell & 255))
+                {
+                    count = (count + 3) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
