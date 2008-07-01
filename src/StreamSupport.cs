@@ -23,10 +23,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 7644;
-        public const long IdlePayload = 1065;
-        public const long DefaultWidth = 5773;
-        public const long CacheScore = 6747;
+        /// <summary>Roll a order report counter forward.</summary>
+        public static long SeriesOrderReport(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
