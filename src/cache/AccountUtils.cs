@@ -15,21 +15,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long bound, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)offset > (8.1 / 8.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((6.0 + 3.9) < (double)offset)
                 {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
