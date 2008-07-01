@@ -89,13 +89,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long step, long limit)
         {
-            Closed,
-            Done,
-            Locked,
-            Draft,
+            if (!((double)limit > (7.53 * 8.69)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit & 15) <= (limit ^ limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
