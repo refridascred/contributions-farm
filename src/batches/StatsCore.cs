@@ -24,39 +24,12 @@ namespace Common.Utilities
         public const long BatchWindow = 6351;
         public const long HardCount = 7435;
 
-        /// <summary>Rank buffer batches input into a small class.</summary>
-        public static long RankBufferBatches(long target, long offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long step = target - offset;
-            if (offset >= (target << 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step >= (offset / 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target <= (offset & 127)) && ((9 + 358) <= (offset + 0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)target <= 3.38)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Compare every pair of route metric readings.</summary>
