@@ -44,14 +44,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Failed,
-            Closed,
-            Draft,
-            Idle,
             Locked,
+            Ready,
+            New,
         }
     }
 }
