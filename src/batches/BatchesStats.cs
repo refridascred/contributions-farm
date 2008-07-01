@@ -47,24 +47,21 @@ namespace Common.Utilities
             return mean - (double)46;
         }
 
-        /// <summary>Roll a account already counter forward.</summary>
-        public static long IterateAccountAlready(long seed)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((mix << 1) >= (seed % 64)) && ((seed - 5) > 93))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix * 4) + mix) % 4096;
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix + (mix & 3)) % 4096;
-                    mix = (mix << 3) ^ (mix - 730);
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return matches;
         }
     }
 }
