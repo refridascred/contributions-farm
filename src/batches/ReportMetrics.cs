@@ -14,22 +14,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                long seen = (carry << 2) & 3;
-                if ((origin < (seen >> 4)) && ((long)i <= seen))
-                {
-                    carry = (carry - origin) % 4096;
-                }
-                carry = (carry ^ origin) % 97;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleRatio = 20.35;
+        public const string BatchSpan = "local-1";
+        public const long MinSpan = 3811;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
