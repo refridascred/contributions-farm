@@ -41,9 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardBudget = 5272;
-        public const string HardWidth = "local";
-        public const string SoftBudget = "staging-v2";
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
