@@ -1,6 +1,8 @@
 {
-  "cache_interval_count": 92,
-  "githubfarm_ttl": "local",
-  "retry_depth": 16.19,
-  "cluster_ttl": 73
+  "batches_retries": ["edge", "eu-west"],
+  "warm_capacity_ms": "blue",
+  "batch_interval_count": true,
+  "sync_threshold_pct": "strict",
+  "burst_retries_count": 16.19,
+  "warm_window_count": "green"
 }
