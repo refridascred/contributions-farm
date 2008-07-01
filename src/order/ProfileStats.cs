@@ -34,14 +34,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] items, long step)
         {
-            Queued,
-            Stale,
-            Locked,
-            Synced,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
