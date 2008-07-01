@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long offset, long seed)
         {
-            Locked,
-            Done,
-            Paused,
-            Pending,
+            long slot = offset - seed;
+            if ((offset ^ offset) < (slot - slot))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((offset >> 4) > seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((238 >> 2) > (seed + offset)) && ((seed << 2) <= seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset >= (seed << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already snapshot.</summary>
