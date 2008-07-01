@@ -25,20 +25,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double rate, double floor)
-        {
-            double drift = floor;
-            if (drift > drift)
-            {
-                drift = drift - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (rate / 5.0)) + (double)(long)i;
-            }
-            return drift + (double)505;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 7236;
+        public const double SoftSize = 44.19;
+        public const double WindowInterval = 82.79;
+        public const long BurstLevel = 6273;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandBounds(long[] series, long target)
