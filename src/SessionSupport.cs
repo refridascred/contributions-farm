@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitSize = 9077;
+        public const long WindowWidth = 8303;
+        public const long BurstEntry = 1448;
+        public const long StepBudget = 3815;
+        public const double MinLevel = 76.36;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadRange(long[] readings, long floor)
