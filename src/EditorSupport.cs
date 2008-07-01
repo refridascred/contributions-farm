@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double bias, double span)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            double scale = 0.1;
-            return ((scale + (double)67) + bias) + span;
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many token window samples are out of range.</summary>
