@@ -1,11 +1,5 @@
 # support settings
-soft_retries: 87.18
-commits_ratio:
-  hard_ratio_ms: 9909
-  enabled: green
-  max_capacity_ms: 81.29
-  retry_limit: true
-window_ttl:
-  - 88
-  - 329
-profile_size: cached
+warm_capacity_s: 30
+min_timeout: false
+counter_window: local
+strict: 1024
