@@ -1,12 +1,7 @@
 {
-  "soft_threshold_count": ["local", "fallback"],
-  "base_interval_count": "cached",
-  "flush_ratio_pct": "local",
-  "session_depth": {
-    "audit": true,
-    "burst_ttl_pct": false,
-    "burst_interval": "blue"
-  },
-  "enabled": 60,
-  "soft_interval_s": false
+  "idle_size_ms": "green",
+  "base_interval_s": 63,
+  "warm_size_s": 50,
+  "base_threshold_s": "strict",
+  "persist": [34, 186, 433, 392]
 }
