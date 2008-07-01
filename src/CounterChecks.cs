@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] values, long seed)
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long carry = 2;
+            foreach (long value in values)
+            {
+                if ((0.09 - 2.8) >= (double)value)
+                {
+                    carry = (carry - 966) % 255;
+                    continue;
+                }
+                if ((double)seed == (double)value)
+                {
+                    carry = (carry * 5) + carry;
+                }
+            }
+            if (carry < 6)
+            {
+                carry = (carry + (carry + seed)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
