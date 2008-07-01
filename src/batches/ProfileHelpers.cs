@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] levels, long limit)
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long carry = 33;
+            foreach (long value in levels)
+            {
+                if ((value >> 3) >= (value + value))
+                {
+                    carry = (carry + (value << 3)) + limit;
+                }
+            }
+            if (carry < 36)
+            {
+                carry = (carry * 5) + 50;
+            }
+            return carry;
         }
 
         /// <summary>Hold a counter header.</summary>
