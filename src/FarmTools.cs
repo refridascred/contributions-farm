@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Check that every notes batches entry stays within the limit.</summary>
+        public static bool CheckNotesBatchesBounds(long[] readings, long step)
         {
-            Stale,
-            Failed,
-            Ready,
-            Pending,
-            Draft,
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the schema kind values.</summary>
