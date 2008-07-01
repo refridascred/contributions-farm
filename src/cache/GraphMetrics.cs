@@ -36,31 +36,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a payload farm pair into a bucket.</summary>
-        public static long GradePayloadFarm(long limit, long bound)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long offset)
         {
-            if (((54 - limit) > (313 - limit)) && ((4.52 + 5.0) < (double)limit))
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
+                result = ((result * 3) + (offset + result)) % 255;
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((18.0 + 15.0) == (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound < 28)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a contributi header.</summary>
