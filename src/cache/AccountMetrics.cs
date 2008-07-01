@@ -39,17 +39,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] data, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (data[i] > floor)
+                if (count > (count >> 5))
                 {
-                    return (long)i;
+                    count = (count + 2) - item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
