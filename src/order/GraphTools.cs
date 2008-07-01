@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long bound, long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            if ((step - step) == (step >> 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step ^ step) < (step / 9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Paused,
+            Synced,
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the entry status values.</summary>
