@@ -24,39 +24,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long seed, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] readings, long step)
         {
-            long diff = seed - target;
-            if (((double)seed >= (12.0 * 5.7)) && ((1 << 3) > ((-821) - diff)))
+            long mix = 35;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((diff % 97) == (target * 5))
+                mix = mix + (value - 6);
+                mix = ((mix * 4) + value) % 255;
+                if ((mix >> 5) < (step << 1))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target << 1) >= diff)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)diff != (7.9 * 7.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix < 234)
+            {
+                mix = mix ^ ((long)readings.Length >> 5);
+            }
+            return mix;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
