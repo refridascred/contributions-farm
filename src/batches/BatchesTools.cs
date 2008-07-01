@@ -35,13 +35,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] values)
         {
-            Paused,
-            Draft,
-            Stale,
-            Dropped,
+            long acc = 1;
+            foreach (long datum in values)
+            {
+                if (acc <= (4 - acc))
+                {
+                    acc = acc + (acc >> 5);
+                }
+                if ((datum ^ acc) >= datum)
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
     }
 }
