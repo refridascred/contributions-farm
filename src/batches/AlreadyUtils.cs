@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools context samples are out of range.</summary>
-        public static long MeasureToolsContextGaps(long[] samples)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((321 + datum) >= (datum / 8))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
