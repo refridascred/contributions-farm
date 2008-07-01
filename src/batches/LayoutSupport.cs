@@ -65,13 +65,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] values)
         {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry <= (2.7 - 2.3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
