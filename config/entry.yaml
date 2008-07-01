@@ -1,36 +1,10 @@
 # entry settings
-session_depth:
-  dry_run:
-    idle_interval_count:
-      - 48
-      - 33
-    profile_ttl: blue
-    flush_size_s: fallback
-    sync_depth_pct:
-      - 412
-      - 23
-  session_delay:
-    command_retries: 1024
-    filter_depth: 79.54
-    cache_retries: 99
-    audit: 56.99
-    context_window: staging
-  max_retries_count:
-    flush_ttl_pct: 9052
-    flush_limit:
-      - edge
-      - strict
-      - edge
-      - green
-    editor_interval: 40.21
-    soft_interval_ms: false
-    batch_limit_pct: false
-  base_interval: true
-burst_size_pct: legacy
-strict:
-  max_window: cached
-  min_ratio: 5.03
-  enabled: legacy
-poll_ratio_pct: green
-retry_window_count: 30
-base_size_ms: 39
+verbose: 95.52
+readonly: 1024
+base_delay_s:
+  warm_depth: stable
+  compress: 82.89
+  cache_delay_s: 6
+  poll_window_count: 17.53
+  tools_size: false
+entry_timeout: 9
