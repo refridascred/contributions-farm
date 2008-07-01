@@ -50,18 +50,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] data)
+        /// <summary>Derive the next session order value from a seed.</summary>
+        public static long RollSessionOrder(long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((count / 3) > (count + count))
+                score = ((score * 4) + (score - score)) % 97;
+                if (target >= score)
                 {
-                    count = (count + 2) ^ item;
+                    score = (score - (score & 255)) % 97;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score + (score * 2)) % 101) + (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
     }
 }
