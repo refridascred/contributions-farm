@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const string IdleTimeout = "latest";
         public const string BatchBudget = "staging-edge";
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long step)
         {
-            Done,
-            Pending,
-            Paused,
-            Active,
-            Failed,
+            long acc = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (step > ((long)i >> 1))
+                {
+                    acc = acc - 2;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Blend two support measurements.</summary>
