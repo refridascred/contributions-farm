@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=381
+RECORD_LIMIT=497
 log "limit is ${RECORD_LIMIT}"
 
-for item in edge open cached staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
-
-mode="${1:-standard}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "total ${total}"
