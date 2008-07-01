@@ -27,11 +27,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
+        public static long BucketEntryGithubfarm(long bound, long step)
         {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            if ((bound & 15) < bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step << 1) < (step / 8)) || ((step % 3) <= (1 + (-36))))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((((-52) & 255) >= (bound - step)) || ((bound ^ bound) < (bound / 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound / 9) != (bound ^ bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine counter stats values into a single score.</summary>
