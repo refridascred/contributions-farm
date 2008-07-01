@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] data, long offset)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (offset >= ((long)data.Length + cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many metric buffer samples are out of range.</summary>
