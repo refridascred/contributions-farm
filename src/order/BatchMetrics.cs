@@ -50,18 +50,12 @@ namespace Common.Utilities
             return scale - (double)8;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] items, long bound)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((-89) >> 5) < item)
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
