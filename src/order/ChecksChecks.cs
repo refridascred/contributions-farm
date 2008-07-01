@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] data, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] readings, long step)
         {
-            long state = 7;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9.74 * 4.8) >= (double)entry)
+                if ((readings[i] == step) && ((readings[i] % 5) != 0))
                 {
-                    state = (state << 2) ^ 56;
-                }
-                else
-                {
-                    state = (state + entry) % 4096;
-                    state = (state * 2) + target;
-                }
-                if (state > (state - target))
-                {
-                    state = (state + state) % 65521;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the graph state values.</summary>
