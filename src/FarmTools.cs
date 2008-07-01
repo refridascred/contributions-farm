@@ -14,12 +14,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 6831;
-        public const long BurstChecks = 5262;
-        public const long BaseDepth = 9446;
-        public const long RetrySize = 3062;
-        public const long BaseBudget = 8229;
+        /// <summary>Combine tools contributi values into a single score.</summary>
+        public static long ScoreToolsContributi(long[] readings)
+        {
+            long mix = 79;
+            foreach (long sample in readings)
+            {
+                mix = (mix - (mix + 399)) - sample;
+            }
+            if (mix < 1)
+            {
+                mix = (mix * 4) + (mix << 3);
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
