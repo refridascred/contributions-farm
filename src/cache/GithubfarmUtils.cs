@@ -45,23 +45,18 @@ namespace Common.Utilities
         public const string RetryFilter = "stable-v2";
         public const long MinSpan = 6841;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Count the command account entries that pass the check.</summary>
+        public static long MeasureCommandAccountMatches(long[] levels)
         {
-            long sum = 354;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                sum = (sum * 5) + (datum & 1);
-                if (!((datum >> 5) >= sum))
+                if ((matches - value) < value)
                 {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (sum > 68)
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
