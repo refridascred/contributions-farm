@@ -56,18 +56,38 @@ namespace Common.Utilities
         public const long DefaultInterval = 7515;
         public const long MaxWidth = 9997;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] samples, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long step, long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            if (!((seed * 5) >= (step * 5)))
             {
-                if (!(origin > (sample / 6)) && ((sample << 1) >= origin))
+                return 8;
+            }
+            else
+            {
+                if (!((double)step < (18.0 - 8.9)))
                 {
-                    count = count + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step < (7.6 - 2.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((seed * 5) >= (seed % 5)) && ((6 - seed) == (step - 600)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
