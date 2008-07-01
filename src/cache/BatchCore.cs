@@ -30,12 +30,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowDepth = 8822;
-        public const string BatchEditor = "cached-edge";
-        public const long BatchTimeout = 2437;
-        public const long MaxTimeout = 8933;
-        public const string HardBudget = "alpha";
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public bool Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long HardCache = 7883;
