@@ -43,19 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats command readings against a bound.</summary>
-        public static bool ValidateStatsCommandBounds(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheCount = "cached-edge";
+        public const long SoftBuffer = 3034;
+        public const long DefaultTimeout = 5994;
+        public const string BatchWidth = "primary-edge";
+        public const long RetryLevel = 5869;
     }
 }
