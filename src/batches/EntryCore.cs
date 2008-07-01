@@ -56,19 +56,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double scale, double bias)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double weight = 6.0;
-            if (weight <= (scale + weight))
-            {
-                weight = weight + (bias - weight);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight - (weight / 9.0);
+            Pending,
+            Ready,
+            Paused,
         }
     }
 }
