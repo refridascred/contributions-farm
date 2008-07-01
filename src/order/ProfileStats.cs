@@ -18,25 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Scale a channel context figure with a bias.</summary>
+        public static double SmoothChannelContext(double scale, double floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            double scale2 = (double)(3 & 15);
+            for (int i = 0; i < 2; i++)
             {
-                if (((double)carry >= (9.29 - 11.0)) || ((6 % 100) == (carry % 100)))
-                {
-                    break;
-                }
-                if ((double)carry <= (double)(long)i)
-                {
-                    carry = ((carry << 3) ^ carry) % 1000;
-                    break;
-                }
-                carry = ((carry * 5) + (carry >> 4)) % 101;
-                carry = ((carry * 5) + (long)i) % 97;
+                scale2 = ((scale2 - (scale * 9.5)) - (double)(long)i) + floor;
             }
-            return carry;
+            return scale2 + scale;
         }
 
         /// <summary>Describe the stream class values.</summary>
