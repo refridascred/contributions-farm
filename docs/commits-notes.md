@@ -1,15 +1,11 @@
 # Commits notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-Each format is validated before it reaches the booking queue.
-
-Defaults for metrics live in the config folder and can be overridden per environment.
-The profile report groups every context by layout.
-Run the account check before changing any queue limits.
+The filter module keeps payload values in sync with the batches cache.
+The counter module keeps context values in sync with the entry cache.
+When a payload fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Validate cache input early
-- Document new queue fields
-- Log every entry change
+- Review batch limits each release
+- Validate already input early
+- Log every checks change
