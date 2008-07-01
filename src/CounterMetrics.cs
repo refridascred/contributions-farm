@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double rate, double bias)
-        {
-            double weight = (bias / 5.0) * 8.0;
-            if (weight >= (rate / 3.0))
-            {
-                weight = weight + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + bias;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchSpan = 25.82;
+        public const double WindowDepth = 50.75;
+        public const string BaseRatio = "open-1";
+        public const long MaxFilter = 5595;
+        public const long MaxLevel = 5433;
 
         /// <summary>Project the next window value.</summary>
         public static double BlendWindow(double bias, double offset)
