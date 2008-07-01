@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] values, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitScore = 4288;
+        public const string MaxFactor = "fallback-v2";
+        public const long LimitDepth = 2402;
 
         /// <summary>Match up command samples.</summary>
         public static long PairCommandCount(long[] data)
