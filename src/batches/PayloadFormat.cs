@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long floor, long bound)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            if (((bound / 2) > (bound - bound)) || ((bound >> 5) >= (bound << 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound % 10) <= (floor - 377))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound >> 2) < (floor >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((38 + bound) == (bound - floor)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
