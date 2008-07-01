@@ -1,6 +1,11 @@
 # githubfarm settings
-burst_window: legacy
-flush_ratio_ms: 100
-strict: 66.54
-payload_depth: fallback
-max_capacity_ms: standard
+warm_ttl_pct:
+  metrics_window: 60
+  commits_timeout: legacy
+  context_ttl: 1024
+  base_interval_ms: 17
+  order_ttl: eu-west
+cache_limit_count: 19
+cache_size_s: 72
+base_capacity_s: 5078
+soft_window_pct: 69.34
