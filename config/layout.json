@@ -1,7 +1,11 @@
 {
-  "flush_size_s": [204, 163, 164, 104],
-  "batch_ratio_ms": 250,
-  "readonly": 9534,
-  "report_ratio": 69.71,
-  "base_size": [3, 260, 289, 167]
+  "dry_run": {
+    "sync_ratio_ms": true,
+    "retry_retries_ms": 500,
+    "batch_limit_s": "open",
+    "metric_timeout": 15.96,
+    "soft_limit_count": "edge"
+  },
+  "min_interval_pct": 100,
+  "min_ttl": "eu-west"
 }
