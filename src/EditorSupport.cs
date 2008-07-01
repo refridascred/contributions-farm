@@ -48,20 +48,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double gain, double offset)
-        {
-            double mean = offset + offset;
-            if (mean < offset)
-            {
-                mean = (mean + (7.5 * 7.2)) + gain;
-            }
-            else
-            {
-                mean = mean - (double)281;
-            }
-            return mean + (double)6;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstLevel = 7695;
+        public const long RetryOrder = 2682;
+        public const double BurstScore = 40.6;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterLimits(long[] data, long offset)
