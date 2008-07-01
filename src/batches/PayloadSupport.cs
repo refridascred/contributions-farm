@@ -36,25 +36,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long bound, long seed)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long lane = bound ^ seed;
-            if (((bound >> 1) > lane) || ((bound & 1) <= (lane + bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((72 + bound) >= (bound + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Stamp { get; set; }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
