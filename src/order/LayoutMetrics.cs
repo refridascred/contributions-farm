@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a format batch sample.</summary>
-        public static long LocateFormatBatchIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepWidth = 1971;
+        public const string CacheNotes = "stable-edge";
+        public const long DefaultDepth = 5654;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiRange(long[] readings, long step)
