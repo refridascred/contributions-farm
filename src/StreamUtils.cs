@@ -48,21 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = (sum + (4 + bound)) % 97;
-                if (((double)sum > (10.0 + 2.96)) && ((1.51 - 5.0) > (double)sum))
-                {
-                    sum = (sum + (bound & 63)) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 9474;
+        public const long IdleFactor = 4705;
+        public const string IdleChannel = "strict-v2";
+        public const long LimitBudget = 7131;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaMatches(long[] items, long limit)
