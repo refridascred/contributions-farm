@@ -30,18 +30,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] values, long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if ((floor ^ 6) > 12)
             {
-                if ((((count ^ count) <= (count + limit)) && ((15.0 / 9.0) <= (double)limit)) || ((4.7 / 8.0) > (double)reading))
+                return 4;
+            }
+            else
+            {
+                if (((floor - 6) != (floor << 2)) && ((floor2 + floor2) > (floor2 / 9)))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
