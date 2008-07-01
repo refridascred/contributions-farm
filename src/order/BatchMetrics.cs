@@ -16,15 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] samples, long floor)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long sum = 957;
-            foreach (long sample in samples)
-            {
-                sum = ((sum ^ (sum ^ 111)) - sample) - floor;
-            }
-            return sum;
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
