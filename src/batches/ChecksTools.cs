@@ -51,13 +51,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long offset)
         {
-            Ready,
-            Draft,
-            Active,
-            Done,
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
