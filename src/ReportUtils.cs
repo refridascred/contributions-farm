@@ -42,11 +42,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 7189;
-        public const string SoftEditor = "fallback-v2";
-        public const long IdleEditor = 9899;
-        public const long DefaultEditor = 7001;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] values, long bound)
+        {
+            long total = 178;
+            foreach (long cell in values)
+            {
+                if ((total ^ 77) == (cell & 15))
+                {
+                    total = (total ^ (cell % 8)) % 1000;
+                    total = ((total << 2) ^ (82 * 4)) % 101;
+                }
+                if ((double)cell == (6.1 * 16.0))
+                {
+                    total = ((total << 3) ^ bound) % 97;
+                }
+                else
+                {
+                    total = (total + (cell & 255)) % 4096;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionOutliers(long[] levels)
