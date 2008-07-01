@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Roll a token farm counter forward.</summary>
+        public static long IterateTokenFarm(long floor)
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    anchor = (anchor + (long)i3) % 1000;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
