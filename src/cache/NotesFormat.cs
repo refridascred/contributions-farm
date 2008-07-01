@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long LimitCount = 7828;
         public const double BatchTimeout = 32.93;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (item < seed)
+                if (value != floor)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Measure how many token stream samples are out of range.</summary>
