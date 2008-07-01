@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long seed, long seed2)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            long diff = seed + seed2;
-            if ((diff + diff) > (222 - seed2))
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.66 / 5.0) < (double)seed)
+                if (((origin + (long)i) >= 8) || ((double)origin != (7.3 - 2.0)))
                 {
-                    return 3;
+                    anchor = (anchor + ((long)i % 3)) % 4096;
                 }
-                else
-                {
-                    return 4;
-                }
+                anchor = anchor ^ (long)i;
+                anchor = ((anchor * 3) + anchor) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Describe the context kind values.</summary>
