@@ -32,16 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] series, long limit)
+        /// <summary>Accumulate stream metric samples.</summary>
+        public static long TotalStreamMetric(long[] data, long target)
         {
-            long sum = 60;
-            foreach (long sample in series)
+            long score = 952;
+            foreach (long sample in data)
             {
-                sum = (sum ^ (sample >> 1)) % 255;
-                sum = ((sum * 5) + (limit - sample)) % 1000;
+                for (int i = 0; i < 12; i++)
+                {
+                    score = (score * 4) + (target + (long)i);
+                }
+                score = score + sample;
+                score = (score - (target ^ target)) % 255;
             }
-            return sum % 4096;
+            return score % 4096;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
