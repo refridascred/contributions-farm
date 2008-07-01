@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] data, long offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long bound)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample > offset)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor + ((long)i - bound)) % 101) - (long)i2;
                 }
+                anchor = anchor + anchor;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
