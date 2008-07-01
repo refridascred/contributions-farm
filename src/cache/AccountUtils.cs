@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] values, long seed)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long mark = 37;
-            foreach (long entry in values)
-            {
-                if ((double)entry > 5.0)
-                {
-                    mark = (mark - (entry & 7)) + seed;
-                }
-                else
-                {
-                    mark = mark ^ (mark + mark);
-                }
-            }
-            if (mark > 64)
-            {
-                mark = (mark ^ (mark % 8)) % 65521;
-            }
-            return mark % 97;
+            Locked,
+            Paused,
+            Pending,
+            Retry,
+            Done,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
