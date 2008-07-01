@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long MaxProfile = 6311;
         public const long WindowDepth = 2915;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] series, long step)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long score = 9;
-            foreach (long value in series)
-            {
-                score = ((score * 3) + (value * 4)) % 1000;
-                if (((double)step <= (4.0 * 19.0)) || ((94 % 60) >= (score ^ step)))
-                {
-                    break;
-                }
-            }
-            return score;
+            Stale,
+            Closed,
+            New,
         }
 
         /// <summary>Fold a list of context channel readings.</summary>
