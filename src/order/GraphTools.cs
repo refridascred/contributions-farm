@@ -52,10 +52,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepRecord = 78.92;
-        public const double WindowDepth = 15.39;
-        public const long BurstRecord = 6890;
-        public const string IdleRatio = "local-1";
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long floor, long floor2)
+        {
+            if (floor >= (floor ^ floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((26 - floor) <= floor2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
