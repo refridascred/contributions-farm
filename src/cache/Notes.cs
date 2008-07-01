@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long MaxQueue = 1850;
         public const long SoftLevel = 1464;
 
-        /// <summary>Blend two batch context measurements.</summary>
-        public static double AdjustBatchContext(double scale, double offset)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double weight, double offset)
         {
-            double ratio = offset;
-            if (ratio <= scale)
+            double scale = offset;
+            if (scale < scale)
             {
-                ratio = ratio - (double)1;
+                scale = scale - weight;
             }
             else
             {
-                ratio = ratio - ratio;
+                scale = scale + (scale - 0.5);
             }
-            return ratio + (offset * 6.7);
+            return scale + weight;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
