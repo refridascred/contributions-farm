@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
-        public static long MeasureSchemaGithubfarmMatches(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((2 ^ offset) < ((long)data.Length >> 2))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCache = 58.03;
+        public const double MaxCache = 30.22;
+        public const double SoftFactor = 56.78;
+        public const string WindowCache = "staging";
+        public const long IdleCache = 6630;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double ScaleContributi(double weight, double offset)
