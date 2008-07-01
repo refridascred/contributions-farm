@@ -48,9 +48,22 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitSize = 42.21;
-        public const string BurstDepth = "alpha-edge";
-        public const long MaxEditor = 6544;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen - seen) < (limit >> 2))
+                {
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
