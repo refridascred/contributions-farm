@@ -1,8 +1,5 @@
 {
-  "githubfarm_timeout": 30,
-  "readonly": 1,
-  "batch_timeout_count": 44.02,
-  "sync_capacity_count": 4150,
-  "command_ratio": ["legacy", "edge", "local"],
-  "idle_ttl_count": false
+  "hard_delay": 13.21,
+  "editor_window": "green",
+  "batch_ttl_ms": "eu-west"
 }
