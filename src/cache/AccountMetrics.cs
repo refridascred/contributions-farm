@@ -61,14 +61,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Find the first metric batch entry that matches the target.</summary>
+        public static long LookupMetricBatchIndex(long[] values, long floor)
         {
-            Draft,
-            Pending,
-            Stale,
-            Idle,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a token reading.</summary>
