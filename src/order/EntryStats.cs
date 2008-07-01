@@ -29,10 +29,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleDepth = 3708;
-        public const double SoftGraph = 43.46;
-        public const long RetrySize = 1753;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowLevel = "standard";
+        public const double RetryScore = 49.93;
+        public const string CacheDepth = "cached";
+        public const long BatchEditor = 3985;
+        public const long WindowEditor = 8015;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
