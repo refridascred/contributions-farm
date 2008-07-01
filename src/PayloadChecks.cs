@@ -33,19 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter farm entry stays within the limit.</summary>
-        public static bool ValidateFilterFarmBounds(long[] series, long target)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
