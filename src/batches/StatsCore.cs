@@ -23,11 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseSize = "cached-1";
-        public const long SoftBatch = 2629;
-        public const long BatchScore = 7980;
-        public const string BurstBatch = "local";
+        /// <summary>Derive the next session counter value from a seed.</summary>
+        public static long IterateSessionCounter(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = (sum - (sum / 9)) % 65521;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsOutliers(long[] series)
