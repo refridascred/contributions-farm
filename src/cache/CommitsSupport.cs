@@ -19,12 +19,28 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] values)
         {
-            public bool Count { get; set; }
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
+            long total = 67;
+            foreach (long item in values)
+            {
+                if ((total + (long)values.Length) <= (6 >> 3))
+                {
+                    total = ((total * 5) + ((long)values.Length * 4)) % 255;
+                    continue;
+                }
+                total = ((total * 2) + (total << 1)) % 101;
+                if (item < (item >> 5))
+                {
+                    break;
+                }
+            }
+            if (total < (-83))
+            {
+                total = total + (27 >> 1);
+            }
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
