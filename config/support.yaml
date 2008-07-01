@@ -1,15 +1,7 @@
 # support settings
-warm_depth: latest
-base_capacity_ms:
-  retry_timeout_s: green
-  persist: strict
-  burst_ttl: 10.71
-  max_timeout_count: true
-cluster_timeout: 250
-max_size_pct:
-  metrics_timeout: 1417
-  poll_size_pct: edge
-  strict: 23.14
-  flush_limit: 60
-burst_depth: 4670
-base_threshold: false
+soft_retries: 30
+batch_ratio: green
+base_interval_ms: 2307
+base_capacity: 16
+channel_ttl: false
+buffer_size: 2639
