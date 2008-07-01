@@ -41,39 +41,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long target, long target2)
-        {
-            if ((double)target2 <= (7.68 * 1.1))
-            {
-                return 3;
-            }
-            else
-            {
-                if (144 <= (target2 << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target >> 3) != (target / 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (8.21 <= (double)target2)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepDepth = 7303;
+        public const long BaseMetrics = 6301;
+        public const long SoftMetrics = 3060;
+        public const double MinRatio = 65.6;
+        public const long CacheMetrics = 4889;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long SortFormat(long bound, long floor)
