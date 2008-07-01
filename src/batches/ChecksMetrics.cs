@@ -43,15 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double scale, double bias)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            double gain = (double)((-4) - 560);
-            if (gain <= scale)
-            {
-                gain = (gain + (gain * 13.0)) - bias;
-            }
-            return gain + scale;
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
