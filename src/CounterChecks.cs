@@ -59,11 +59,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 3284;
-        public const long DefaultStream = 2144;
-        public const long WindowSpan = 3080;
-        public const long BurstStream = 2863;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Draft,
+            Failed,
+            Active,
+            New,
+            Locked,
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BatchBudget = 8037;
