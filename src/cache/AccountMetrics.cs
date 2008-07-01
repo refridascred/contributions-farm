@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double weight, double span)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] data, long offset)
         {
-            double rate = weight - (span * 6.63);
-            if (rate < span)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - (rate / 2.0);
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return rate - rate;
+            return -1;
         }
 
         /// <summary>Fold a list of already readings.</summary>
