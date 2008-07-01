@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] readings)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((double)matches < (2.8 * 7.41))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public bool Score { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
