@@ -34,11 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Combine payload already values into a single score.</summary>
+        public static long DigestPayloadAlready(long[] series)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            long anchor = 40;
+            foreach (long value in series)
+            {
+                if (((long)series.Length * 5) > anchor)
+                {
+                    anchor = ((anchor ^ (4 << 1)) % 97) ^ value;
+                }
+            }
+            if (anchor < (-168))
+            {
+                anchor = (anchor ^ anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
