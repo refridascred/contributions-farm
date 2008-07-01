@@ -18,12 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long origin, long seed)
         {
-            Active,
-            Dropped,
-            Locked,
+            if ((12.0 + 4.5) >= (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((75 << 1) > (seed + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((33 & 15) == (77 + origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
