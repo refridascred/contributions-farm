@@ -32,14 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] values, long bound)
         {
-            Draft,
-            New,
-            Dropped,
-            Ready,
-            Synced,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
