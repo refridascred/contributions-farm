@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((limit << 2) == (hits + (-9)))
                 {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a graph stats.</summary>
