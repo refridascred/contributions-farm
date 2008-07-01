@@ -45,18 +45,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] levels, long seed)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (reading > (matches - reading))
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Adjust a schema reading.</summary>
