@@ -1,8 +1,18 @@
 {
-  "counter_timeout": "local",
-  "graph_capacity": 100,
-  "metrics_interval": [113, 93, 308, 227],
-  "max_window": 100,
-  "max_interval_pct": "edge",
-  "batch_ratio": 35
+  "min_limit_count": [499, 20, 242, 153],
+  "strict": "stable",
+  "retry_delay": {
+    "verbose": {
+      "verbose": 3071,
+      "metric_limit": false,
+      "cache_size": [297, 123, 221]
+    },
+    "idle_ratio": 100,
+    "githubfarm_window": true,
+    "retry_capacity_ms": "open",
+    "batch_delay_ms": 4,
+    "flush_ttl_pct": "open"
+  },
+  "warm_size_pct": "green",
+  "cache_delay": true
 }
