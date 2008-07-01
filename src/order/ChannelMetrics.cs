@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double rate, double offset)
         {
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            double ratio = 5.47 - (double)3;
+            if (ratio < 12.0)
+            {
+                ratio = ((ratio + ratio) + rate) + offset;
+            }
+            else
+            {
+                ratio = ratio + (double)28;
+            }
+            return ratio - 2.0;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
