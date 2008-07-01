@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] items, long seed)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Dropped,
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Derive the next order metric value from a seed.</summary>
