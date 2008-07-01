@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const string SoftInterval = "cached-v2";
         public const long MinAccount = 7702;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] values)
         {
-            New,
-            Idle,
-            Ready,
-            Active,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally / 5) < (tally * 2))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of route metric readings.</summary>
