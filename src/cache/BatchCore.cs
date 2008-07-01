@@ -17,17 +17,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum << 3) ^ ((long)i & 1)) % 65521;
-                sum = (sum + (sum + floor)) % 97;
-                sum = ((sum * 2) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
