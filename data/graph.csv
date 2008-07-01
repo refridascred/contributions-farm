@@ -1,10 +1,7 @@
-id,token,region
-1,780,blue
-2,520,13.55
-3,781,98.42
-4,363,40
-5,blue,8.53
-6,954,27.72
-7,8.58,open
-8,51.87,932
-9,73.13,primary
+id,ratio,region,state
+1,25,416,548
+2,stable,910,open
+3,94,439,989
+4,783,staging,local
+5,primary,374,standard
+6,37.11,15.83,914
