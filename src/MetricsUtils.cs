@@ -52,15 +52,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a context profile counter forward.</summary>
-        public static long DeriveContextProfile(long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] values)
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((entry & 7) == (entry + hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
