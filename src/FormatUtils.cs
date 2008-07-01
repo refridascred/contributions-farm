@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
             public double Label { get; set; }
-            public bool Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
