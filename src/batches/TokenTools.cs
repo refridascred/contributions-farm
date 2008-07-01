@@ -29,21 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up report channel samples.</summary>
-        public static long MatchReportChannelCount(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)(long)values.Length >= (double)hits)
                 {
-                    if ((values[i] - values[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + item;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
