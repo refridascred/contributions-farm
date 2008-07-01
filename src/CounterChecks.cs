@@ -22,18 +22,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftFactor = "strict-edge";
+        public const long BurstAccount = 7789;
+        public const long HardAccount = 7519;
+        public const string CacheTimeout = "stable";
+        public const double MaxAccount = 52.8;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
