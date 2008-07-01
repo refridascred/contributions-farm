@@ -26,20 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] readings, long floor)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 7318;
+        public const double SoftLayout = 36.18;
+        public const long MinCount = 9864;
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
