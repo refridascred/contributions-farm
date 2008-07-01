@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] values, long seed)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long limit)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (value < seed)
+                if (((long)i / 6) >= ((long)i & 3))
                 {
-                    ready = false;
-                    break;
+                    state = (state ^ limit) % 1000;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
