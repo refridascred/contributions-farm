@@ -31,12 +31,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
+            Failed,
+            Closed,
+            Active,
+            Queued,
+            New,
         }
     }
 }
