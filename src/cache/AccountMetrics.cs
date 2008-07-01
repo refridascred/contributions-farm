@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up report payload samples.</summary>
-        public static long MatchReportPayloadCount(long[] samples)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally % 3) <= tally)
                 {
-                    if ((samples[i] + samples[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
