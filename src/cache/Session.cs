@@ -28,18 +28,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many batch session samples are out of range.</summary>
-        public static long TallyBatchSessionGaps(long[] data)
+        /// <summary>Accumulate checks window samples.</summary>
+        public static long DigestChecksWindow(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long carry = 5;
+            foreach (long cell in readings)
             {
-                if ((seen - entry) == (long)data.Length)
+                if ((floor - cell) < floor)
                 {
-                    seen = seen + 1;
+                    carry = (carry + cell) % 101;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
