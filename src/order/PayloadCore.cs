@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] values, long offset)
         {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (datum > (datum - 278))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit command route readings against a rule.</summary>
