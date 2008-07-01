@@ -1,8 +1,8 @@
-id,active,level,count,rank
-1,50.15,764,local,edge
-2,43.74,296,473,23.84
-3,86.05,394,local,64.14
-4,open,432,primary,957
-5,719,291,local,blue
-6,latest,707,238,620
-7,508,strict,54.98,legacy
+id,rank,label
+1,4.36,115
+2,standard,primary
+3,989,blue
+4,stable,219
+5,728,365
+6,38.9,latest
+7,fallback,latest
