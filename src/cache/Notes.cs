@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] data)
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((675 + item) >= tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
