@@ -38,14 +38,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Stale,
-            New,
-            Retry,
-            Draft,
+            Failed,
+            Paused,
             Ready,
+            Done,
         }
 
         /// <summary>Roll a already context counter forward.</summary>
