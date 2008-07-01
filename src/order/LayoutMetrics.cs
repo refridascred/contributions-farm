@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a support channel pair into a bucket.</summary>
-        public static long ClassifySupportChannel(long offset, long limit)
+        /// <summary>Combine checks tools values into a single score.</summary>
+        public static long DigestChecksTools(long[] readings, long bound)
         {
-            if ((offset >> 1) != (limit << 1))
+            long acc = 24;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset < (2.0 / 4.0))
+                if (!(datum >= (bound + 63)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.31 - 3.0) != (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = acc + (bound / 3);
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
