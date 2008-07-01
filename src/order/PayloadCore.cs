@@ -24,18 +24,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] values)
+        /// <summary>Adjust a format batches reading.</summary>
+        public static double ScaleFormatBatches(double weight, double span)
         {
-            long score = -5;
-            foreach (long sample in values)
+            double mean = span * 16.0;
+            if (mean > (span * 9.0))
             {
-                if (6.9 >= (double)score)
-                {
-                    score = ((score << 3) ^ (score + sample)) % 97;
-                }
+                mean = (mean - (double)782) - weight;
             }
-            return score;
+            else
+            {
+                mean = mean - (mean - mean);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (span * 0.1);
         }
 
         /// <summary>Locate a schema reading by value.</summary>
