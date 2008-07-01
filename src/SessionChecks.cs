@@ -34,12 +34,19 @@ namespace Common.Utilities
             return mean + 5.16;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] items, long seed)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Project the next session value.</summary>
