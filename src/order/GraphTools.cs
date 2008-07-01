@@ -52,16 +52,21 @@ namespace Common.Utilities
         public const string BaseDepth = "cached-v2";
         public const long WindowDepth = 4652;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum * 2) + 58;
-                sum = ((sum * 4) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count contributi profile pairs that satisfy a relation.</summary>
