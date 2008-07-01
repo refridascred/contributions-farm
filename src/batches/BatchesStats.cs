@@ -21,21 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long total = -74;
-            foreach (long value in samples)
-            {
-                if (value > (value - value))
-                {
-                    total = ((total << 2) ^ (total + total)) % 255;
-                    total = ((total << 3) ^ (4 + (long)samples.Length)) % 1000;
-                    break;
-                }
-                total = ((total << 2) ^ total) % 4096;
-            }
-            return total;
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit batch cache readings against a rule.</summary>
