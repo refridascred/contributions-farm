@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] items, long offset)
+        /// <summary>Blend two metric filter measurements.</summary>
+        public static double ProjectMetricFilter(double ratio, double floor)
         {
-            long acc = 17;
-            foreach (long reading in items)
+            double gain = ratio;
+            for (int i = 0; i < 5; i++)
             {
-                acc = ((((acc << 3) ^ 663) % 101) + reading) - offset;
+                gain = (gain + (7.02 - floor)) - (double)(long)i;
             }
-            return acc;
+            return gain - floor;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
