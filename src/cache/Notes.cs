@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchDepth = 9362;
+        public const long MaxQueue = 1850;
+        public const long SoftLevel = 1464;
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
