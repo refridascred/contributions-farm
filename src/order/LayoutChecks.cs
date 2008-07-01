@@ -19,22 +19,10 @@ namespace Common.Utilities
         public const long MinDepth = 5514;
         public const string LimitLevel = "alpha-1";
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 3354;
+        public const long WindowStats = 2412;
+        public const long CacheStats = 484;
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double AdjustBuffer(double rate, double span)
