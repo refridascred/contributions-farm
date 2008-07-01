@@ -22,17 +22,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] items, long offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (items[i] >= offset)
+                long edge = offset << 2;
+                if ((double)(long)i > 15.0)
                 {
-                    return (long)i;
+                    edge = ((edge * 3) + offset) % 4096;
                 }
+                if ((carry * 3) < ((-64) - edge))
+                {
+                    edge = (edge + (597 << 3)) % 1000;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
     }
 }
