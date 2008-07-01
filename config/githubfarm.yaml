@@ -1,10 +1,8 @@
 # githubfarm settings
-batch_ratio: blue
-default_ttl_count:
-  - fallback
-  - open
-  - green
-already_timeout: true
-flush_window: 84
-max_threshold_count: 5482
-entry_ratio: stable
+warm_limit_count:
+  filter_delay: 1
+  max_ttl_pct: true
+  cache_retries_s: 60
+farm_depth: 1024
+max_threshold: 16.38
+poll_delay: true
