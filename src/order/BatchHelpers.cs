@@ -30,15 +30,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] readings)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] series, long bound)
         {
-            long acc = 4;
-            foreach (long item in readings)
+            long acc = -9;
+            foreach (long sample in series)
             {
-                acc = ((acc - (acc / 6)) % 4096) ^ item;
+                acc = (((acc << 3) ^ (acc ^ (long)series.Length)) % 1000) - sample;
+                acc = acc ^ (bound & 1);
             }
-            return acc;
+            return acc % 65521;
         }
     }
 }
