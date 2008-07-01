@@ -1,11 +1,7 @@
 # githubfarm settings
-warm_ttl_pct:
-  metrics_window: 60
-  commits_timeout: legacy
-  context_ttl: 1024
-  base_interval_ms: 17
-  order_ttl: eu-west
-cache_limit_count: 19
-cache_size_s: 72
-base_capacity_s: 5078
-soft_window_pct: 69.34
+audit: true
+sync_threshold: standard
+burst_interval:
+  - 394
+  - 35
+  - 37
