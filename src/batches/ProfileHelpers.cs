@@ -37,12 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitNotes = "local-1";
-        public const long WindowWidth = 7107;
-        public const double RetryNotes = 62.85;
-        public const long StepDepth = 7029;
-        public const long CacheCount = 874;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LookupFilterIndex(long[] levels, long seed)
