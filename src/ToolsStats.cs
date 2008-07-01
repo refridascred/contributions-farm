@@ -48,19 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double ratio, double bias)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] levels)
         {
-            double load = bias;
-            if (load > ratio)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - (bias / 6.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - 1.39;
-            }
-            return load - (double)0;
+            return hits;
         }
 
         /// <summary>Roll a account counter forward.</summary>
