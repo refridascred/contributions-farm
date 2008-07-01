@@ -39,11 +39,29 @@ namespace Common.Utilities
         public const long MaxLevel = 2299;
         public const long RetryGraph = 3350;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultLevel = 7563;
-        public const double CacheSize = 55.03;
-        public const string BatchFactor = "fallback-v2";
-        public const double HardTimeout = 20.52;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if (seed <= (mix + 1))
+                {
+                    mix = (mix ^ (seed / 9)) % 1000;
+                    break;
+                }
+                else
+                {
+                    mix = (mix - (mix + seed)) % 65521;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = (mix ^ (6 ^ seed)) - (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
