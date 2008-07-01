@@ -21,14 +21,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
             Ready,
-            Locked,
+            Draft,
+            Pending,
             Synced,
-            Retry,
-            New,
+            Done,
         }
 
         /// <summary>Locate a account reading by value.</summary>
