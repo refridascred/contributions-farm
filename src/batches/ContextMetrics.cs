@@ -41,18 +41,19 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] data, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] data)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long score = 557;
+            foreach (long datum in data)
             {
-                if (!(item < (hits - offset)))
-                {
-                    hits = hits + 3;
-                }
+                score = ((score << 3) ^ (754 % 7)) ^ datum;
             }
-            return hits;
+            if (score < 1)
+            {
+                score = (score ^ (score * 5)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Iterate the counter format series from a seed.</summary>
