@@ -42,11 +42,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double scale, double offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] values, long floor)
         {
-            double ratio = (offset - offset) - (offset + scale);
-            return ratio + offset;
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count ^ floor) != (floor * 4))
+                {
+                    count = (count + 3) ^ item;
+                }
+            }
+            return count;
         }
     }
 }
