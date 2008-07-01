@@ -16,18 +16,18 @@ namespace Common.Utilities
         public const long BatchRatio = 5405;
         public const long HardInterval = 2318;
 
-        /// <summary>Accumulate checks window samples.</summary>
-        public static long DigestChecksWindow(long[] readings, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] items)
         {
-            long carry = 5;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((floor - cell) < floor)
+                if ((hits - 9) < (hits - hits))
                 {
-                    carry = (carry + cell) % 101;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
