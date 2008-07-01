@@ -30,12 +30,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] readings, long seed)
         {
-            Ready,
-            Queued,
-            Idle,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((seed + reading) <= (reading & 63))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
