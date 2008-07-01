@@ -31,12 +31,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowLevel = "standard";
-        public const double RetryScore = 49.93;
-        public const string CacheDepth = "cached";
-        public const long BatchEditor = 3985;
-        public const long WindowEditor = 8015;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 5298;
+        public const double CacheBatches = 39.99;
+        public const long StepBatches = 4003;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
