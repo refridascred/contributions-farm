@@ -27,13 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] levels, long bound)
         {
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
