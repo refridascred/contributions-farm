@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] samples)
-        {
-            long state = 3;
-            foreach (long value in samples)
-            {
-                state = (state - value) % 97;
-                if ((value - state) > (value + state))
-                {
-                    break;
-                }
-            }
-            if (state < 5)
-            {
-                state = (state - state) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "staging-v2";
+        public const long IdleLevel = 2586;
+        public const long CacheWidth = 9734;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheTools = 9849;
