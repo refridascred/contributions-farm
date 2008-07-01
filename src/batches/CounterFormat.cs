@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] levels, long offset)
         {
-            long carry = 271;
-            foreach (long reading in data)
+            long score = 106;
+            foreach (long sample in levels)
             {
-                for (int i = 0; i < 4; i++)
+                score = (score - score) ^ sample;
+                for (int i = 0; i < 10; i++)
                 {
-                    carry = (carry - ((long)data.Length + reading)) + (long)i;
+                    score = ((score * 5) + (offset / 2)) - (long)i;
+                    score = score + offset;
                 }
-                carry = (carry + (reading & 1)) % 1000;
+                score = score + score;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
