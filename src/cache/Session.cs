@@ -42,15 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the format farm series from a seed.</summary>
-        public static long IterateFormatFarm(long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] items)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if (!((tally ^ tally) > (tally + 699)))
+                {
+                    tally = (tally + 3) + reading;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
