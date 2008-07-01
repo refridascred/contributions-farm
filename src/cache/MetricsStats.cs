@@ -42,17 +42,38 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] data, long origin)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long target, long target2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)target2 <= (7.68 * 1.1))
             {
-                if (data[i] >= origin)
+                return 3;
+            }
+            else
+            {
+                if (144 <= (target2 << 2))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((target >> 3) != (target / 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (8.21 <= (double)target2)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank format input into a small class.</summary>
