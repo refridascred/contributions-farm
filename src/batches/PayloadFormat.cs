@@ -33,18 +33,18 @@ namespace Common.Utilities
             return gain2 - (double)21;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long bound, long bound2)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long bound, long step)
         {
-            if ((593 + bound2) >= (bound2 - 72))
+            if ((5 ^ step) != (step - bound))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((9.1 + 1.05) != (double)bound2)
+                if (bound >= step)
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
