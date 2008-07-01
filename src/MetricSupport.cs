@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a session batches value against two limits.</summary>
-        public static long GradeSessionBatches(long limit, long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            if ((limit + step) <= (limit / 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step & 31) < 1)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit >= (3.1 + 11.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next order metric value from a seed.</summary>
