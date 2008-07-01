@@ -52,13 +52,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long limit)
+        /// <summary>Accumulate batches already samples.</summary>
+        public static long WeighBatchesAlready(long[] series)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long state = 4;
+            foreach (long datum in series)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if ((datum ^ datum) < (datum >> 5))
+                {
+                    state = (state - (datum + state)) % 65521;
+                }
+                else
+                {
+                    state = state + (state << 3);
+                }
             }
             return state;
         }
