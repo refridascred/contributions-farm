@@ -1,26 +1,7 @@
 # githubfarm settings
-layout_limit: edge
-window_size: 2241
-cache_interval_pct: 92.2
-verbose:
-  dry_run:
-    - legacy
-    - staging
-    - cached
-  base_capacity_count: open
-  format_depth:
-    compress: blue
-    schema_size: stable
-    base_timeout_count: eu-west
-    flush_ttl_pct: true
-    poll_timeout_pct: 28.66
-  audit:
-    base_ttl: 250
-    filter_interval: true
-    idle_ttl: 60
-  soft_ratio_s:
-    token_retries: false
-    persist: standard
-    batch_size_s: false
-  base_depth: 250
-enabled: 64
+hard_size_count:
+  - 424
+  - 302
+batch_delay_s: stable
+cache_delay_count: legacy
+audit: 34
