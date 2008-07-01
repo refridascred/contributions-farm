@@ -41,11 +41,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxTimeout = 3358;
-        public const string BatchBudget = "alpha-edge";
-        public const string CacheBatch = "cached-v2";
-        public const long IdleWidth = 9866;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitDepth = "latest-v2";
+        public const long BurstSession = 8492;
+        public const long LimitSession = 5277;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardStats = 1203;
