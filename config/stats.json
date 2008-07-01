@@ -1,6 +1,13 @@
 {
-  "retry_retries": 8876,
-  "hard_depth_pct": 83.31,
-  "max_ttl_s": "staging",
-  "stats_capacity": 41
+  "dry_run": {
+    "sync_window_ms": "blue",
+    "already_size": "cached",
+    "hard_depth_s": "eu-west",
+    "sync_retries_pct": "blue"
+  },
+  "batch_size": 14.43,
+  "burst_limit": "standard",
+  "editor_size": 7229,
+  "persist": "open",
+  "account_size": "open"
 }
