@@ -37,15 +37,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            long score = 3;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score ^ (499 & 255)) % 101) ^ datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
