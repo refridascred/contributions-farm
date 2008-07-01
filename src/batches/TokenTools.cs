@@ -29,18 +29,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] series, long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            if (origin >= (39 & 1))
             {
-                if ((double)limit != (2.0 / 6.0))
+                return 8;
+            }
+            else
+            {
+                if ((limit >= (limit >> 3)) || ((-2) > (limit >> 5)))
                 {
-                    hits = (hits + 2) + datum;
+                    return 3;
+                }
+                else
+                {
+                    if ((18.0 * 4.8) < (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
