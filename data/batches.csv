@@ -1,6 +1,9 @@
-id,level,label,score
-1,edge,50.57,3.74
-2,88.66,46.34,strict
-3,11.57,245,27.58
-4,staging,121,272
-5,89.81,primary,332
+id,rank,label,region
+1,145,88.95,26.61
+2,93.61,324,233
+3,strict,360,72.57
+4,735,green,124
+5,36.94,400,57.88
+6,local,699,local
+7,strict,719,local
+8,760,247,52.39
