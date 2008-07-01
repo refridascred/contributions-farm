@@ -23,17 +23,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] items, long bound)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)(273 + 368);
+            if (rate > (span - rate))
             {
-                if ((items[i] < bound) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate + span) - gain;
             }
-            return -1;
+            else
+            {
+                rate = rate + (9.76 - span);
+            }
+            return rate - rate;
         }
 
         /// <summary>Describe the token state values.</summary>
