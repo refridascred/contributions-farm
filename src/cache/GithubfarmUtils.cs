@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long limit, long offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] samples, long limit)
         {
-            if ((double)limit <= 14.0)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(offset >= limit))
+                if (entry < limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit >= (6.9 / 5.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset % 60) <= limit) || ((double)offset >= 4.99))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a entry stats.</summary>
