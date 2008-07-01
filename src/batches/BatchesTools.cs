@@ -35,13 +35,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public double Total { get; set; }
-            public bool Limit { get; set; }
+            Paused,
+            Draft,
+            Stale,
+            Dropped,
         }
     }
 }
