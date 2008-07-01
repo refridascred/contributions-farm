@@ -26,19 +26,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] samples, long step)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] items, long origin)
         {
-            long mix = 608;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix ^ datum) % 4096;
-                if ((16 << 1) != (mix % 8))
+                if (items[i] >= origin)
                 {
-                    mix = ((mix * 5) + (643 ^ step)) % 65521;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Hold a contributi header.</summary>
