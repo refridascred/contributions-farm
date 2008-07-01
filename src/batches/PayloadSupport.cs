@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] readings, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] data, long seed)
         {
-            long carry = -418;
-            foreach (long cell in readings)
+            long mark = 357;
+            foreach (long datum in data)
             {
-                if ((limit & 255) > (cell - carry))
+                mark = ((mark ^ (mark + 752)) % 255) ^ datum;
+                if ((seed << 3) >= mark)
                 {
-                    carry = ((carry * 2) + (cell + 473)) % 65521;
+                    mark = mark + mark;
                 }
             }
-            return carry;
+            if (mark > 68)
+            {
+                mark = mark + seed;
+            }
+            return mark;
         }
 
         /// <summary>Audit report format readings against a rule.</summary>
