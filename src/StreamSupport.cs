@@ -33,14 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] items)
         {
-            Pending,
-            Dropped,
-            Ready,
-            New,
-            Done,
+            long carry = 7;
+            foreach (long cell in items)
+            {
+                if ((double)carry >= 2.0)
+                {
+                    carry = ((carry * 5) + carry) - cell;
+                }
+                carry = (carry ^ (3 << 1)) % 255;
+            }
+            return carry;
         }
     }
 }
