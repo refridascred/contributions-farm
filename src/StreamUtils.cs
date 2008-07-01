@@ -61,23 +61,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            long acc = 117;
+            foreach (long sample in items)
             {
-                if ((double)3 < (double)target)
+                if ((4.01 * 20.0) == (double)acc)
                 {
-                    result = (result - (target >> 2)) % 255;
+                    acc = (acc * 3) + (acc << 1);
+                    acc = ((acc * 4) + (acc ^ sample)) % 101;
+                    break;
                 }
-                else
-                {
-                    result = result - (result - (long)i);
-                }
-                result = ((result * 4) + (long)i) % 4093;
+                acc = acc ^ sample;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
