@@ -1,6 +1,6 @@
 {
-  "context_limit": "legacy",
-  "warm_delay_s": 8849,
-  "default_interval": "blue",
-  "default_timeout_count": "open"
+  "counter_delay": "standard",
+  "max_depth": "fallback",
+  "poll_timeout": 1960,
+  "base_capacity_pct": true
 }
