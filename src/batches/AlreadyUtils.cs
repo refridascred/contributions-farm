@@ -55,13 +55,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Combine queue editor values into a single score.</summary>
+        public static long WeighQueueEditor(long[] items, long offset)
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            long sum = 80;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = (((sum << 2) ^ (reading - reading)) % 101) + (long)i;
+                    sum = sum - (offset + offset);
+                }
+                sum = sum ^ (offset % 16);
+                if (sum > (reading + 3))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a already header.</summary>
