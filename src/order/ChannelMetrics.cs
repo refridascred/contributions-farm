@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] samples, long limit)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long carry = 7;
-            foreach (long datum in samples)
-            {
-                carry = ((carry << 2) ^ (carry - limit)) - datum;
-            }
-            return carry % 1000;
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
