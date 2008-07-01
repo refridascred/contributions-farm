@@ -50,18 +50,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] series)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long target, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long gap = target - bound;
+            if ((gap - target) >= target)
             {
-                if ((((double)tally >= (12.0 * 0.82)) && ((tally + datum) <= (tally % 97))) || ((double)tally <= (double)datum))
+                return 8;
+            }
+            else
+            {
+                if (8.1 < (double)target)
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((489 >> 1) < (bound + gap))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a stats reading.</summary>
