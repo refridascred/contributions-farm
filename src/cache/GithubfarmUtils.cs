@@ -5,33 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of stats batches readings.</summary>
-        public static long TotalStatsBatches(long[] data)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            long acc = 683;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (((acc * 5) + acc) % 255) + (long)i;
+                    if ((items[i] ^ items[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((reading * 4) >= acc)
-                {
-                    acc = acc - reading;
-                    acc = (acc + (acc * 3)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc ^ 7) % 255;
-                }
-                acc = (acc ^ (reading + 686)) % 255;
             }
-            if (acc < 725)
-            {
-                acc = (acc ^ acc) % 4096;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
