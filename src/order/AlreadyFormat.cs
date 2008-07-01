@@ -23,22 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long mix = 2;
+            foreach (long cell in values)
             {
-                if ((count << 2) > (count + item))
+                mix = ((mix << 3) ^ ((long)values.Length * 3)) % 101;
+                if (bound >= ((-377) + bound))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    mix = (mix ^ (cell + bound)) % 4096;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a payload info.</summary>
