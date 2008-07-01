@@ -35,13 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long target)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cluster status values.</summary>
