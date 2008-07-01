@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] samples)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (cell > (1 & 63))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every layout farm entry stays within the limit.</summary>
