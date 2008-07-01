@@ -36,17 +36,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] series, long seed)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long origin, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((offset + offset) < (offset >> 5))
             {
-                if (series[i] == seed)
+                return 8;
+            }
+            else
+            {
+                if (((origin - origin) > offset) || (4.0 > (double)origin))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!(origin > (origin << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((origin & 63) <= origin) && (7.2 > (double)offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
