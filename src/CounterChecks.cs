@@ -22,12 +22,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftFactor = "strict-edge";
-        public const long BurstAccount = 7789;
-        public const long HardAccount = 7519;
-        public const string CacheTimeout = "stable";
-        public const double MaxAccount = 52.8;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
