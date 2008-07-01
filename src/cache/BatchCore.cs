@@ -29,22 +29,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] readings, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] samples, long limit)
         {
-            long mix = 391;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((mix - target) >= (6 ^ 6))
+                if ((((386 >> 3) < (limit - (-4))) && ((limit + matches) == (limit & 3))) && ((limit * 2) != (limit & 31)))
                 {
-                    mix = ((mix << 3) ^ (item + target)) % 255;
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mix > 811)
-            {
-                mix = ((mix << 3) ^ mix) % 255;
-            }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Project the next format value.</summary>
