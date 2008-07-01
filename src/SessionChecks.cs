@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (cell <= (cell << 3))
+                if ((4 + 7) >= (reading * 4))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 1) + limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next editor value.</summary>
