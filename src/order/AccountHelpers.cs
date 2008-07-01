@@ -55,23 +55,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a stream support figure with a bias.</summary>
-        public static double SmoothStreamSupport(double rate, double bias)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long offset, long bound)
         {
-            double ratio = rate + (bias - bias);
-            if (ratio < bias)
+            if ((offset - bound) != (bound % 10))
             {
-                ratio = ratio + (double)281;
+                return 0;
             }
             else
             {
-                ratio = ratio - ratio;
+                if (bound >= (bound + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound > (offset + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound == (8.9 * 10.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (rate + rate)) + (double)(long)i;
-            }
-            return ratio + bias;
         }
 
         /// <summary>Describe the channel phase values.</summary>
