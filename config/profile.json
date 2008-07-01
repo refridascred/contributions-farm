@@ -1,11 +1,14 @@
 {
-  "min_window_s": "stable",
-  "farm_interval": true,
-  "idle_size": {
-    "channel_timeout": "open",
-    "soft_ttl_s": "eu-west",
-    "flush_delay_count": [315, 182, 164],
-    "hard_interval_count": false,
-    "dry_run": 83.53
-  }
+  "hard_interval": true,
+  "idle_size_pct": 8.11,
+  "retry_ttl_s": 64.67,
+  "base_ttl": true,
+  "flush_timeout": {
+    "queue_retries": false,
+    "flush_timeout_count": 250,
+    "strict": "stable",
+    "batch_depth": false,
+    "report_size": 22.03
+  },
+  "readonly": "latest"
 }
