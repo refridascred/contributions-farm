@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value <= (42 / 3)) && (value >= hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 45.41;
+        public const string SoftRoute = "latest-edge";
+        public const string HardCount = "local";
+        public const long WindowFactor = 2337;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long DigestRecord(long[] values, long step)
