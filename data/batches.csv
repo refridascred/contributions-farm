@@ -1,6 +1,11 @@
-id,rank,score,weight
-1,84.14,staging,blue
-2,118,215,latest
-3,cached,15,open
-4,strict,34,65.28
-5,primary,cached,104
+id,ratio,region,count
+1,staging,23.16,5.89
+2,122,stable,81
+3,standard,94.2,7.73
+4,2.66,latest,green
+5,legacy,217,299
+6,492,latest,849
+7,open,786,standard
+8,standard,open,957
+9,6,17.79,237
+10,43.16,latest,cached
