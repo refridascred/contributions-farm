@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] samples)
+        /// <summary>Classify a batch batches pair into a bucket.</summary>
+        public static long GradeBatchBatches(long step, long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            if ((bound * 3) >= step)
             {
-                if (seen > (item / 2))
+                return 2;
+            }
+            else
+            {
+                if ((step - step) <= (bound << 2))
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
