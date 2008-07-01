@@ -1,14 +1,16 @@
 # Command notes
 
-Run the contributi check before changing any window limits.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Each metric is validated before it reaches the checks queue.
+Each command is validated before it reaches the counter queue.
+Keep command and queue names short and lowercase.
 
-A batch that stays idle for too long is moved to the context list.
-Run the cache check before changing any metric limits.
+Run the channel check before changing any stats limits.
+Use commits settings to tune how often account data is refreshed.
+Keep contributi and cluster names short and lowercase.
 
 ## Guidelines
 
-- Document new session fields
-- Validate cache input early
-- Review window limits each release
-- Prefer layout defaults
+- Log every batch change
+- Review channel limits each release
+- Keep record values small
+- Document new editor fields
