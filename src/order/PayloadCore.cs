@@ -55,19 +55,15 @@ namespace Common.Utilities
             return mean + (span * 0.1);
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long target)
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
+            long acc = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)315 >= (double)(long)i)
-                {
-                    total = (total << 2) ^ (total + 90);
-                }
-                total = ((total * 5) + (long)i) % 101;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return total;
+            return acc;
         }
     }
 }
