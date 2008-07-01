@@ -38,12 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many token stream samples are out of range.</summary>
+        public static long CountTokenStreamGaps(long[] readings)
         {
-            Idle,
-            Failed,
-            Pending,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((2.38 / 5.0) >= (double)cell) && (((count + count) > (cell << 1)) || ((cell - count) <= (count & 127))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
