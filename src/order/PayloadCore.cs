@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long BaseLayout = 4071;
         public const double BatchLevel = 62.05;
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            public double Count { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
             public long Label { get; set; }
         }
 
