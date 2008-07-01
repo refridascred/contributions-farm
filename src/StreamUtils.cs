@@ -65,11 +65,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 9474;
-        public const long IdleFactor = 4705;
-        public const string IdleChannel = "strict-v2";
-        public const long LimitBudget = 7131;
+        /// <summary>Count the account githubfarm entries that pass the check.</summary>
+        public static long CountAccountGithubfarmMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (reading <= (reading + reading))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BurstDepth = 6459;
