@@ -21,21 +21,19 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Check that every stats contributi entry stays within the limit.</summary>
+        public static bool CheckStatsContributiRange(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum <= limit)
                 {
-                    if ((data[i] - data[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Iterate the record metrics series from a seed.</summary>
