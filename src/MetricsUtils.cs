@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Validate support schema readings against a bound.</summary>
+        public static bool ValidateSupportSchemaBounds(long[] series, long offset)
         {
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
