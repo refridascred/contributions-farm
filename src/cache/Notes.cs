@@ -19,15 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if ((tally - 23) <= tally)
+                {
+                    tally = (tally + 3) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Blend two checks order measurements.</summary>
