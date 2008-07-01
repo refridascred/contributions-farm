@@ -26,11 +26,24 @@ namespace Common.Utilities
         public const string RetryFilter = "stable-v2";
         public const long MinSpan = 6841;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 306;
-        public const long BurstScore = 2000;
-        public const long StepToken = 7998;
-        public const long BatchToken = 3123;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] levels)
+        {
+            long sum = 354;
+            foreach (long datum in levels)
+            {
+                sum = (sum * 5) + (datum & 1);
+                if (!((datum >> 5) >= sum))
+                {
+                    break;
+                }
+            }
+            if (sum > 68)
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long FoldContributi(long[] samples, long limit)
