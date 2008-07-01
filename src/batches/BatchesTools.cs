@@ -29,22 +29,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] items, long offset)
         {
-            long acc = 1;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (acc <= (4 - acc))
+                if (items[i] >= offset)
                 {
-                    acc = acc + (acc >> 5);
-                }
-                if ((datum ^ acc) >= datum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
     }
 }
