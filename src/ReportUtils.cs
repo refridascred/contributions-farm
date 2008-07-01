@@ -43,18 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] levels)
+        /// <summary>Derive the next report graph value from a seed.</summary>
+        public static long StepReportGraph(long seed)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (count < (count + count))
-                {
-                    count = (count + 1) + cell;
-                }
+                acc = (acc + acc) % 4096;
+                long gap = (seed % 12) + (acc - acc);
+                acc = (acc ^ (gap + seed)) % 4096;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
