@@ -1,12 +1,8 @@
 {
-  "soft_retries_pct": "primary",
-  "min_ttl": {
-    "idle_retries_pct": "edge",
-    "contributi_depth": "edge",
-    "strict": ["stable", "staging", "stable"]
-  },
-  "queue_capacity": ["open", "legacy", "fallback", "latest"],
-  "sync_size": [311, 91, 134],
-  "batch_limit": true,
-  "dry_run": true
+  "base_retries_count": 46,
+  "min_depth": 3592,
+  "payload_retries": 56.47,
+  "base_window": "standard",
+  "enabled": "local",
+  "poll_ttl_s": 666
 }
