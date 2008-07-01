@@ -33,12 +33,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "cached-v2";
-        public const long StepTimeout = 7286;
-        public const long DefaultSize = 2111;
-        public const double MaxReport = 86.8;
-        public const long CacheReport = 6954;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long GradeSchema(long offset, long bound)
