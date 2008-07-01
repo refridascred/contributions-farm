@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] data)
+        /// <summary>Validate profile cache readings against a bound.</summary>
+        public static bool GuardProfileCacheRange(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (((long)data.Length & 1) <= value)
+                if (reading != step)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
