@@ -13,14 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] items, long target)
         {
-            Synced,
-            Active,
-            Ready,
-            New,
-            Queued,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a token reading.</summary>
