@@ -30,19 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] values, long bound)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public long Label { get; set; }
         }
     }
 }
