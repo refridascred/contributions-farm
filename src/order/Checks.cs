@@ -53,22 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((item << 3) < item)
+                if (reading >= offset)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
