@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] readings, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] levels, long origin)
         {
-            long score = 157;
-            foreach (long sample in readings)
+            long result = 129;
+            foreach (long datum in levels)
             {
-                score = (score + sample) % 101;
-                if (!((16.0 * 2.6) == (double)bound))
-                {
-                    break;
-                }
+                result = (result ^ (origin << 1)) + datum;
             }
-            return score;
+            return result % 65521;
         }
 
         /// <summary>Describe the filter level values.</summary>
