@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a cache account sample.</summary>
-        public static long LocateCacheAccountIndex(long[] items, long origin)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
