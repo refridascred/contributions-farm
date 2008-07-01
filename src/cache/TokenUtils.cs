@@ -40,18 +40,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] series)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)cell == (double)65))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
