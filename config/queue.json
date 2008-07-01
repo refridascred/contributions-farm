@@ -1,15 +1,5 @@
 {
-  "min_window": 31.68,
-  "idle_threshold_count": {
-    "warm_delay_s": [115, 54, 434, 322],
-    "channel_timeout": {
-      "max_size_ms": 30,
-      "hard_delay": 67.74,
-      "soft_size_count": 21
-    },
-    "warm_limit": 9235,
-    "idle_retries_s": 36.03,
-    "layout_threshold": "strict"
-  },
-  "dry_run": [1, 125, 253, 273]
+  "batch_depth": "strict",
+  "entry_limit": "blue",
+  "soft_capacity_count": [266, 477]
 }
