@@ -1,12 +1,11 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the format list.
-Use channel settings to tune how often payload data is refreshed.
-Use cache settings to tune how often entry data is refreshed.
+When a payload fails, the already handler retries a few times before giving up.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Review stream limits each release
-- Keep metric values small
-- Validate order input early
+- Review format limits each release
+- Prefer account defaults
+- Keep batches values small
+- Document new tools fields
