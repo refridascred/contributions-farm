@@ -36,21 +36,25 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Match up already githubfarm samples.</summary>
-        public static long CompareAlreadyGithubfarmCount(long[] items)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long bound, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = bound ^ seed;
+            if (((bound >> 1) > lane) || ((bound & 1) <= (lane + bound)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((72 + bound) >= (bound + bound))
                 {
-                    if ((items[i] ^ items[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
