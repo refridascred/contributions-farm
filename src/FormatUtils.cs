@@ -22,12 +22,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleSize = 197;
+        public const long SoftBudget = 9087;
+        public const long RetryScore = 4451;
+        public const long HardDepth = 7237;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BaseSchema = 6722;
