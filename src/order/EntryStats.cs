@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] series)
-        {
-            long mix = -350;
-            foreach (long datum in series)
-            {
-                mix = ((mix * 4) + (datum / 8)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowCount = "standard";
+        public const double RetryQueue = 97.54;
+        public const double BatchQueue = 74.87;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LookupChecksIndex(long[] series, long seed)
