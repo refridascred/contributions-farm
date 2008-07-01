@@ -1,4 +1,11 @@
 # entry settings
-burst_ratio: 250
-sync_size_ms: cached
-support_ratio: 991
+verbose: primary
+poll_capacity_pct: 41.6
+min_limit: standard
+poll_ttl_ms:
+  farm_delay: 88.12
+  max_ratio: 29
+  sync_capacity: 100
+  order_retries: green
+  route_delay: 8350
+  strict: 65.34
