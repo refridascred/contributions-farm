@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long origin, long seed)
+        /// <summary>Accumulate report stats samples.</summary>
+        public static long TotalReportStats(long[] samples, long seed)
         {
-            long step = origin - seed;
-            if (step > (origin - origin))
+            long anchor = 6;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-61) < (step / 2)) || ((origin & 31) <= (seed + step)))
+                if (!(((17 >> 3) <= (anchor * 3)) && ((cell + anchor) < seed)))
                 {
-                    return 1;
+                    anchor = (anchor - seed) % 97;
+                    anchor = (anchor + (seed & 31)) % 101;
                 }
-                else
+                if ((double)seed >= (double)anchor)
                 {
-                    return 0;
+                    anchor = (anchor * 4) + (anchor + seed);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Describe the session status values.</summary>
