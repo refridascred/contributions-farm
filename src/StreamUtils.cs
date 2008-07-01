@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 5122;
-        public const string IdleTimeout = "latest";
-        public const string BatchBudget = "staging-edge";
+        /// <summary>Count commits buffer pairs that satisfy a relation.</summary>
+        public static long PairCommitsBufferCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long SeriesQueue(long step)
