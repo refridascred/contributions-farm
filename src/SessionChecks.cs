@@ -40,19 +40,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of payload tools readings.</summary>
-        public static long TallyPayloadTools(long[] items)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long state = 90;
-            foreach (long value in items)
-            {
-                if (!(852 < (value + (-5))))
-                {
-                    state = state + state;
-                }
-                state = ((state * 2) + ((-9) * 4)) % 97;
-            }
-            return state;
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
