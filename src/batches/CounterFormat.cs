@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepBudget = 89.62;
-        public const string LimitRatio = "fallback";
-        public const long WindowMetric = 7340;
-        public const long WindowLevel = 3270;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Idle,
+            New,
+            Stale,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string WindowCount = "local-1";
