@@ -1,7 +1,8 @@
 {
-  "sync_ttl": "standard",
-  "account_capacity": 75.53,
-  "poll_interval_ms": "latest",
-  "default_retries": 250,
-  "idle_size_s": "local"
+  "persist": 49.76,
+  "default_limit": ["local", "standard"],
+  "stream_ratio": "fallback",
+  "base_interval": "fallback",
+  "dry_run": true,
+  "support_window": 65.67
 }
