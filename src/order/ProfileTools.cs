@@ -50,16 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] items, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                result = result - result;
-                result = ((result * 2) + (long)i) % 1000;
+                if (tally >= (54 + floor))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
