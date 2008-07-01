@@ -62,20 +62,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] items, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] data, long origin)
         {
-            long anchor = 46;
-            foreach (long entry in items)
+            long acc = 15;
+            foreach (long item in data)
             {
-                if (((bound - bound) != (11 << 2)) || (30 < entry))
-                {
-                    anchor = (anchor * 5) + anchor;
-                }
-                anchor = anchor - entry;
-                anchor = (anchor + (entry - entry)) % 4096;
+                acc = (((acc + (acc + 372)) % 255) ^ item) + origin;
             }
-            return anchor;
+            return acc % 4096;
         }
     }
 }
