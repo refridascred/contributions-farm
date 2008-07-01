@@ -49,20 +49,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((17.0 * 5.45) <= (double)(long)i))
-                {
-                    mark = (mark - (mark - limit)) % 255;
-                }
-                mark = mark + (86 & 127);
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Locked,
+            Idle,
+            Synced,
+            Paused,
+            New,
         }
 
         /// <summary>Describe the cache mode values.</summary>
