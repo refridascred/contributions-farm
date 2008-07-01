@@ -24,22 +24,22 @@ namespace Common.Utilities
         public const string SoftInterval = "cached-v2";
         public const long MinAccount = 7702;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] values)
+        /// <summary>Fold a list of contributi batches readings.</summary>
+        public static long DigestContributiBatches(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long score = 6;
+            foreach (long reading in levels)
             {
-                if ((tally / 5) < (tally * 2))
+                if ((score % 100) < reading)
                 {
-                    tally = (tally + 2) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    score = (((score << 2) ^ reading) % 4096) - limit;
                 }
             }
-            return tally;
+            if (score > 28)
+            {
+                score = score ^ (6 % 8);
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of route metric readings.</summary>
