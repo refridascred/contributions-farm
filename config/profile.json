@@ -1,11 +1,16 @@
 {
-  "notes_interval": "primary",
-  "token_retries": 4327,
-  "filter_threshold": 6253,
+  "contributi_timeout": 500,
+  "dry_run": "blue",
   "persist": {
-    "warm_size": true,
-    "commits_limit": false,
-    "max_window": "edge"
+    "cache_depth_pct": true,
+    "hard_depth_count": 9265,
+    "retry_depth_s": {
+      "support_depth": "latest",
+      "warm_retries_s": 55.92,
+      "flush_threshold_pct": 41,
+      "poll_threshold": 19,
+      "report_delay": false
+    }
   },
-  "format_retries": "fallback"
+  "retry_ratio": 95
 }
