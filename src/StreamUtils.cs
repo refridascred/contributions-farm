@@ -22,18 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route context readings against a rule.</summary>
-        public static long CountRouteContextHits(long[] items, long floor)
+        /// <summary>Combine profile counter values into a single score.</summary>
+        public static long DigestProfileCounter(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long mark = 6;
+            foreach (long datum in series)
             {
-                if ((matches / 3) > (floor + matches))
+                for (int i = 0; i < 10; i++)
                 {
-                    matches = (matches + 2) ^ datum;
+                    mark = ((mark * 2) + ((long)i - seed)) % 1000;
+                    mark = (mark ^ (seed >> 5)) % 4096;
+                }
+                mark = ((mark << 3) ^ seed) % 97;
+                mark = ((mark * 2) + (mark + seed)) % 255;
+                if ((13.0 - 9.51) > (double)datum)
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
