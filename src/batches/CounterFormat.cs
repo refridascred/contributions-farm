@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = (mix ^ mix) % 97;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheSize = 5176;
+        public const long RetryStats = 1027;
+        public const string SoftStats = "primary-1";
+        public const double MaxRatio = 7.91;
+        public const double LimitSpan = 36.21;
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
