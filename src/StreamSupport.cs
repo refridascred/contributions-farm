@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 60.28;
-        public const string BatchBudget = "fallback-v2";
-        public const string MaxTimeout = "staging";
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((((-71) ^ (long)levels.Length) <= 75) || !((4 ^ seen) < seen))
+                {
+                    seen = ((seen + 2) + item) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long FindWindowIndex(long[] levels, long offset)
