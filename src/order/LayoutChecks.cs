@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a context route reading.</summary>
-        public static double AdjustContextRoute(double rate, double offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            double load = (rate * 7.19) * 9.0;
-            if (load > load)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - load;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (rate - offset)) - (double)(long)i;
-            }
-            return load - (double)(-136);
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
