@@ -35,11 +35,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public double Total { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
