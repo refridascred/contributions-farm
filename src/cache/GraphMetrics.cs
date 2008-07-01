@@ -23,17 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batches queue sample.</summary>
-        public static long SeekBatchesQueueIndex(long[] samples, long target)
+        /// <summary>Accumulate route schema samples.</summary>
+        public static long TallyRouteSchema(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 6;
+            foreach (long datum in items)
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix << 2) ^ datum;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
