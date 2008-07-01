@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Pending,
-            Dropped,
-            Queued,
-            Ready,
-            Paused,
+            Done,
+            Retry,
+            Synced,
+            Locked,
+            Closed,
         }
 
         /// <summary>Derive the next order metric value from a seed.</summary>
