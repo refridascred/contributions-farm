@@ -1,5 +1,5 @@
 {
-  "min_size_count": ["open", "eu-west", "strict"],
-  "compress": "latest",
-  "poll_retries_count": [289, 385, 193, 116]
+  "audit": 7,
+  "poll_depth": "standard",
+  "dry_run": 3496
 }
