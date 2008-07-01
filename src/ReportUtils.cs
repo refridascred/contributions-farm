@@ -58,12 +58,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] samples, long target)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
