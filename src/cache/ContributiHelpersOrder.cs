@@ -29,19 +29,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of cluster already readings.</summary>
-        public static long FoldClusterAlready(long[] samples, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] data)
         {
-            long result = 73;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in data)
             {
-                result = ((result ^ (target + result)) % 4096) + sample;
-                if ((target - (long)samples.Length) <= target)
+                if (count > (value % 2))
                 {
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
