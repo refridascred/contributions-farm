@@ -47,9 +47,11 @@ namespace Common.Utilities
         public const long RetryTools = 182;
         public const string MinCount = "primary-v2";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryInterval = 2831;
-        public const long WindowLevel = 4014;
-        public const string StepProfile = "latest-edge";
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
