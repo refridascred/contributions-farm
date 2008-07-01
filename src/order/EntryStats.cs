@@ -23,10 +23,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 5298;
-        public const double CacheBatches = 39.99;
-        public const long StepBatches = 4003;
+        /// <summary>Project the next layout command value.</summary>
+        public static double ProjectLayoutCommand(double scale, double bias)
+        {
+            double rate = (bias / 5.0) + (scale / 8.0);
+            if (rate > (double)(-8))
+            {
+                rate = rate - (double)6;
+            }
+            return rate + scale;
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
