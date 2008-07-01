@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
             public long Total { get; set; }
-            public long Offset { get; set; }
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
