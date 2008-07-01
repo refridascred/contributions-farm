@@ -22,9 +22,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSupport = "local-edge";
-        public const double StepSupport = 43.28;
-        public const long BatchSize = 1865;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
