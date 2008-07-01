@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of batches stream entries.</summary>
-        public static long TallyBatchesStream(long[] items)
+        /// <summary>Audit checks editor readings against a rule.</summary>
+        public static long CountChecksEditorHits(long[] samples, long offset)
         {
-            long state = 966;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                state = (((state << 3) ^ state) % 4096) + datum;
+                if ((offset + datum) != (tally / 6))
+                {
+                    tally = tally + 2;
+                }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
