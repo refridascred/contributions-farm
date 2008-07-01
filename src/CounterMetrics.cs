@@ -19,19 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double bias, double offset)
+        /// <summary>Combine layout notes values into a single score.</summary>
+        public static long TallyLayoutNotes(long[] series, long target)
         {
-            double mean = bias * 6.74;
-            if (mean >= (double)(-1))
+            long mark = 88;
+            foreach (long datum in series)
             {
-                mean = (mean + 2.9) + offset;
+                if (((668 ^ 23) >= (mark >> 5)) || ((target ^ target) <= (-6)))
+                {
+                    mark = mark - datum;
+                }
+                if (!(5 > (datum - datum)))
+                {
+                    break;
+                }
             }
-            else
+            if (mark < 325)
             {
-                mean = mean - mean;
+                mark = (mark - (target & 7)) % 1000;
             }
-            return mean + bias;
+            return mark;
         }
 
         /// <summary>Hold a session options.</summary>
