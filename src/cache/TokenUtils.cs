@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Blend two stream editor measurements.</summary>
+        public static double ScaleStreamEditor(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)(2 + 89);
+            if (drift > scale)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift - (double)255) - offset;
             }
-            return matches;
+            else
+            {
+                drift = drift - (double)1;
+            }
+            return drift + (double)98;
         }
 
         /// <summary>Describe the layout kind values.</summary>
