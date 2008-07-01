@@ -22,17 +22,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] values, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((values[i] > bound) && ((values[i] % 5) != 0))
+                if (((hits > (hits + step)) && ((3 + value) > (value + 3))) && (((37 & 31) <= ((long)data.Length + 3)) || (2.7 < (double)step)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
