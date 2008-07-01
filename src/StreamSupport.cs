@@ -5,31 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long limit, long limit2)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] readings, long floor)
         {
-            if (!((limit2 + limit) == (limit2 << 3)))
+            long state = 3;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.7 < (double)limit2) && (limit < (limit ^ limit)))
+                if (13 <= (datum ^ state))
                 {
-                    return 5;
+                    state = state - (68 - (-837));
+                    state = state ^ datum;
+                }
+                if ((4.0 * 5.25) < (double)floor)
+                {
+                    state = (state ^ 75) % 101;
                 }
                 else
                 {
-                    if ((704 - limit) <= (limit + limit2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    state = ((state * 5) + (floor - floor)) % 101;
                 }
             }
+            return state;
         }
 
         /// <summary>Describe the command state values.</summary>
