@@ -20,11 +20,17 @@ namespace Common.Utilities
             return gain - 5.98;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 9677;
-        public const double MinContributi = 76.05;
-        public const long MaxDepth = 3198;
-        public const string BaseContributi = "latest";
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = sum ^ (sum & 7);
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
