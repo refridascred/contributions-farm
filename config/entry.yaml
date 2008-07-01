@@ -1,13 +1,6 @@
 # entry settings
-sync_ratio_count: true
-enabled: true
-persist:
-  - 420
-  - 392
-  - 205
-batch_size:
-  default_capacity_count: 3460
-  enabled: 2060
-  flush_ttl_s: true
-  poll_limit_s: latest
-  flush_timeout_pct: 29.4
+persist: 37.36
+flush_ttl_count: 1.3
+max_size_pct: true
+default_size_ms: fallback
+dry_run: open
