@@ -38,22 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] readings)
+        /// <summary>Validate contributi support readings against a bound.</summary>
+        public static bool GuardContributiSupportRange(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (!((double)matches > 9.0))
+                if (cell > floor)
                 {
-                    matches = (matches + 1) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
