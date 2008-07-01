@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long floor, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] levels, long step)
         {
-            if ((7.4 * 17.0) == (double)origin)
+            long acc = 69;
+            foreach (long cell in levels)
             {
-                return 6;
+                acc = (acc - cell) % 1000;
+                acc = acc ^ (cell + step);
             }
-            else
+            if (acc > 23)
             {
-                if ((floor - floor) == (8 + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor < origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                acc = (acc + (step - step)) % 4096;
             }
+            return acc % 4096;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
