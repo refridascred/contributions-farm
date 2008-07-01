@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepSize = 1004;
-        public const double MaxRoute = 79.3;
-        public const long MinTimeout = 947;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Idle,
+            Active,
+            Locked,
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
