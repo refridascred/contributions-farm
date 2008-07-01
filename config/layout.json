@@ -1,14 +1,12 @@
 {
-  "min_delay_s": ["eu-west", "eu-west", "latest", "cached"],
-  "verbose": 26,
-  "min_ratio": {
-    "max_ratio_pct": {
-      "cache_depth_ms": "stable",
-      "burst_threshold_ms": 74,
-      "poll_interval_count": "latest",
-      "min_depth_count": 35.12
-    },
-    "default_limit_s": "green",
-    "poll_threshold_s": false
-  }
+  "warm_threshold_pct": 1794,
+  "persist": {
+    "burst_retries_count": false,
+    "compress": "edge",
+    "payload_capacity": 23.05,
+    "hard_limit_count": 250,
+    "poll_retries_ms": "primary",
+    "context_depth": false
+  },
+  "stats_ttl": true
 }
