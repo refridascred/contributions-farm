@@ -34,22 +34,39 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Measure how many stream window samples are out of range.</summary>
-        public static long AuditStreamWindowMatches(long[] levels)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long limit, long target)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long gap = limit ^ target;
+            if (!((target >> 2) >= (target / 2)))
             {
-                if ((6.8 - 5.6) > (double)seen)
+                return 3;
+            }
+            else
+            {
+                if ((target << 1) != (gap & 15))
                 {
-                    seen = (seen + 1) + value;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((limit << 1) == (12 - limit)) && ((double)gap > (8.8 * 8.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)gap < 0.44) || (target <= 94))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
