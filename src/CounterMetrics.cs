@@ -49,21 +49,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count window channel pairs that satisfy a relation.</summary>
-        public static long CompareWindowChannelCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepScore = 63.96;
+        public const string SoftWindow = "fallback-v2";
+        public const double DefaultWindow = 30.77;
     }
 }
