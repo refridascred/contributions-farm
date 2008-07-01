@@ -1,7 +1,5 @@
 {
-  "base_delay_s": true,
-  "token_timeout": 71,
-  "min_ratio": "eu-west",
-  "cache_limit": [215, 462, 229, 210],
-  "base_timeout": 344
+  "retry_threshold_count": 5.32,
+  "max_threshold_ms": 13.82,
+  "verbose": false
 }
