@@ -25,16 +25,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                result = (result + (result / 4)) % 97;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Queued,
+            Pending,
+            Stale,
+            New,
         }
     }
 }
