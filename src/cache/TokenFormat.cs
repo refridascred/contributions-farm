@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double scale, double span)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            double mean = (double)((-524) - 1);
-            if (mean <= 6.24)
-            {
-                mean = (mean + (1.26 / 3.0)) + span;
-            }
-            return mean + (scale + scale);
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of tools command readings.</summary>
