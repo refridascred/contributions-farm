@@ -1,8 +1,5 @@
 {
-  "batch_timeout_s": 59.37,
-  "compress": 60,
-  "schema_capacity": "strict",
-  "farm_ratio": ["latest", "primary", "fallback", "legacy"],
-  "hard_ttl_s": 3213,
-  "dry_run": 25.08
+  "warm_ratio_s": 7613,
+  "min_window_pct": [163, 396, 467, 430],
+  "session_size": 32.94
 }
