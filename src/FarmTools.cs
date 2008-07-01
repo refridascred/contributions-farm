@@ -29,12 +29,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Locked,
-            Ready,
-            Paused,
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
