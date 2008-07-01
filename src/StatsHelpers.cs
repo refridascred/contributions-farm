@@ -37,22 +37,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchInterval = 9466;
+        public const long HardWidth = 3604;
+        public const long BaseContext = 3049;
+        public const long IdleContext = 7449;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryHits(long[] data, long origin)
