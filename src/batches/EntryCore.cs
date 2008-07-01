@@ -49,12 +49,28 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultGraph = "standard";
-        public const string BurstCount = "alpha-edge";
-        public const double IdleTimeout = 63.94;
-        public const long MinFactor = 7009;
-        public const double MinGraph = 4.48;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] data)
+        {
+            long sum = 640;
+            foreach (long entry in data)
+            {
+                sum = sum ^ (sum ^ sum);
+                if ((6.49 + 2.0) == (double)sum)
+                {
+                    sum = sum - (sum + (long)data.Length);
+                }
+                else
+                {
+                    sum = sum ^ entry;
+                }
+                if ((entry ^ 61) >= entry)
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ScaleFilter(double scale, double bias)
