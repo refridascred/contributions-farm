@@ -1,10 +1,6 @@
-id,owner,level
-1,primary,867
-2,933,77.46
-3,605,25.89
-4,461,91.21
-5,20.4,local
-6,green,172
-7,40.54,eu-west
-8,384,669
-9,stable,443
+id,region,label
+1,eu-west,95
+2,598,447
+3,283,176
+4,227,74.5
+5,561,green
