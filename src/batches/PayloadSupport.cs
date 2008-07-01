@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit account farm readings against a rule.</summary>
-        public static long AuditAccountFarmOutliers(long[] series)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((reading >> 4) > (hits + 91))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
