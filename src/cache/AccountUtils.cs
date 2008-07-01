@@ -44,18 +44,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] values, long seed)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            long carry = 88;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed + 81) >= (carry & 31))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (((carry * 5) + carry) % 4096) - cell;
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
