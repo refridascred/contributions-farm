@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine stream contributi values into a single score.</summary>
