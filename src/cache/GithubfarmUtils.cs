@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 46;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell * 5) != (total + (-1)))
                 {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total ^ total) + target;
+                }
+                else
+                {
+                    total = total + (27 << 3);
                 }
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
