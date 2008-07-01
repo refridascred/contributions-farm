@@ -50,17 +50,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] readings, long target)
+        /// <summary>Rank report contributi input into a small class.</summary>
+        public static long GradeReportContributi(long seed, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed << 2) == (7 % 24))
             {
-                if (readings[i] <= target)
+                return 4;
+            }
+            else
+            {
+                if (!((offset << 1) < offset))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
