@@ -34,21 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up buffer token samples.</summary>
-        public static long MatchBufferTokenCount(long[] series)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((18.0 * 9.7) < (double)count)
                 {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) ^ datum;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Rank command input into a small class.</summary>
