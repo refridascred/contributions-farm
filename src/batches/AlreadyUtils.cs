@@ -47,14 +47,39 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long bound, long target)
         {
-            Ready,
-            Locked,
-            Paused,
-            Done,
-            Synced,
+            long edge = bound ^ target;
+            if ((8 ^ target) > bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)edge >= 3.4)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((347 % 24) > (target + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound > (bound - bound)) && ((215 * 5) >= (bound << 1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format header.</summary>
