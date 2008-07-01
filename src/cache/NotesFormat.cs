@@ -29,14 +29,14 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
             Retry,
-            Done,
-            Locked,
-            Ready,
-            Queued,
+            Draft,
+            Paused,
+            Dropped,
+            Failed,
         }
     }
 }
