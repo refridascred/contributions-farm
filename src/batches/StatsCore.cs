@@ -44,18 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] series)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((reading + 5) == (1 + reading)) || !((double)(long)series.Length <= (double)reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the payload state values.</summary>
