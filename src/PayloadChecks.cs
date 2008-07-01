@@ -64,12 +64,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double rate, double bias)
         {
-            Active,
-            Locked,
-            Dropped,
+            double ratio = (rate - 3.1) / 5.0;
+            if (ratio <= (double)75)
+            {
+                ratio = ratio - (9.0 - bias);
+            }
+            return ratio - (7.1 - ratio);
         }
 
         /// <summary>Find the first contributi support entry that matches the target.</summary>
