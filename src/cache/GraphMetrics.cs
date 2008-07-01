@@ -24,18 +24,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of notes editor readings.</summary>
-        public static long TallyNotesEditor(long[] readings)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long result = 8;
-            foreach (long datum in readings)
-            {
-                if ((double)result >= (1.5 + 0.6))
-                {
-                    result = ((result << 3) ^ datum) % 1000;
-                }
-            }
-            return result % 1000;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
