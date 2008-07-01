@@ -40,39 +40,14 @@ namespace Common.Utilities
         public const string BaseQueue = "fallback";
         public const double IdleQueue = 95.65;
 
-        /// <summary>Grade a commits order value against two limits.</summary>
-        public static long GradeCommitsOrder(long bound, long seed)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long span = bound ^ seed;
-            if (span > (765 / 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (span < (bound + span))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)span >= (5.2 * 4.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((seed << 2) < bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Dropped,
+            Ready,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
