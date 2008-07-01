@@ -17,22 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] values, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (floor >= (floor % 8))
+                if (item <= step)
                 {
-                    hits = (hits + 3) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Accumulate profile samples.</summary>
