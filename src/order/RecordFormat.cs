@@ -23,19 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double bias, double span)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            double ratio = (span / 3.0) * 9.76;
-            if (ratio < (span - ratio))
-            {
-                ratio = ratio + span;
-            }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - (double)(-367);
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
