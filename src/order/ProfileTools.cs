@@ -33,21 +33,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -172;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = mix ^ entry;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
