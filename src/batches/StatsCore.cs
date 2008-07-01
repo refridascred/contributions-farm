@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchAccount = "standard-v2";
-        public const double IdleAccount = 61.21;
-        public const string SoftInterval = "cached-v2";
-        public const long MinAccount = 7702;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxRatio = 141;
+        public const long LimitPayload = 3003;
+        public const string SoftPayload = "stable-edge";
+        public const string DefaultPayload = "open-1";
+        public const string RetryPayload = "primary-v2";
 
         /// <summary>Fold a list of contributi batches readings.</summary>
         public static long DigestContributiBatches(long[] levels, long limit)
