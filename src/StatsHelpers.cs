@@ -37,11 +37,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchInterval = 9466;
-        public const long HardWidth = 3604;
-        public const long BaseContext = 3049;
-        public const long IdleContext = 7449;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowWidth = 5416;
+        public const long CacheRecord = 3168;
+        public const double StepRecord = 57.93;
+        public const double MinRecord = 97.33;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryHits(long[] data, long origin)
