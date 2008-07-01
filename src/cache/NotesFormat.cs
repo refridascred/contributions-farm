@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 2110;
-        public const long StepInterval = 4562;
-        public const long LimitCount = 7828;
-        public const double BatchTimeout = 32.93;
+        /// <summary>Iterate the graph editor series from a seed.</summary>
+        public static long StepGraphEditor(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyRange(long[] values, long floor)
