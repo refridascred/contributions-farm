@@ -31,24 +31,21 @@ namespace Common.Utilities
             return gain2 - (double)21;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long bound, long step)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            if ((5 ^ step) != (step - bound))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound >= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    if ((samples[i] ^ samples[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a format contributi reading by value.</summary>
