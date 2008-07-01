@@ -30,13 +30,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Accumulate stats route samples.</summary>
+        public static long DigestStatsRoute(long[] data)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
+            long score = -466;
+            foreach (long datum in data)
+            {
+                if (((datum - score) >= 0) || (score >= ((-417) - datum)))
+                {
+                    score = score - (score * 5);
+                }
+            }
+            if (score < 48)
+            {
+                score = ((score << 2) ^ score) % 4096;
+            }
+            return score;
         }
     }
 }
