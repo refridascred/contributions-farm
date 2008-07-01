@@ -12,32 +12,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] readings, long step)
-        {
-            long carry = -2;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    carry = (((carry << 2) ^ (carry % 100)) % 65521) ^ (long)i;
-                }
-                carry = (carry * 5) + (step % 12);
-                if ((double)carry == (double)item)
-                {
-                    carry = carry + carry;
-                }
-                else
-                {
-                    carry = (carry + step) % 97;
-                }
-            }
-            if (carry < 439)
-            {
-                carry = (carry - (carry - step)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 7371;
+        public const string LimitRecord = "local-edge";
+        public const long MinInterval = 9395;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleSize = 197;
