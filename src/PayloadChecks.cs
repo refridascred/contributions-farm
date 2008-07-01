@@ -21,18 +21,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((18.0 * 9.7) < (double)count)
+                if (!((offset % 97) > offset) && ((datum * 2) >= 976))
                 {
-                    count = (count + 1) ^ datum;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank command input into a small class.</summary>
