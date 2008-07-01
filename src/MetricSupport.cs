@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long anchor = 9;
+            foreach (long sample in levels)
             {
-                if (reading < (5 - 0))
+                if (!((anchor >> 2) != (anchor + (long)levels.Length)))
                 {
-                    matches = matches + 2;
+                    anchor = ((anchor << 2) ^ seed) % 65521;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    anchor = (anchor + (sample + sample)) % 97;
+                    anchor = ((anchor * 4) + (seed + (long)i)) % 101;
+                }
+                if (((seed + sample) >= (6 % 60)) || (6.0 > (double)sample))
+                {
+                    anchor = (anchor + (26 - seed)) % 65521;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    anchor = ((anchor << 3) ^ anchor) % 97;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
