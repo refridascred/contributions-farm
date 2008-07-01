@@ -45,14 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Draft,
-            Failed,
-            Active,
-            New,
-            Locked,
+            Ready,
+            Retry,
+            Synced,
+            Pending,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
