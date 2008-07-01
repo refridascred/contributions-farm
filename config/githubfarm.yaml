@@ -1,11 +1,6 @@
 # githubfarm settings
-burst_limit_s:
-  min_retries_count: 6312
-  sync_ttl: fallback
-  hard_limit_ms: cached
-  audit: false
-enabled: standard
-retry_size:
-  - latest
-  - latest
-verbose: fallback
+enabled: 3389
+default_capacity_pct: false
+account_ratio: 44
+command_depth: 100
+hard_window_pct: 1024
