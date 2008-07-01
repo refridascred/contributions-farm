@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Audit editor cluster readings against a rule.</summary>
+        public static long TallyEditorClusterGaps(long[] samples)
         {
-            public bool Flag { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (((count + cell) > (count * 5)) && (((cell + cell) == (cell & 3)) && ((cell << 2) <= cell)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
