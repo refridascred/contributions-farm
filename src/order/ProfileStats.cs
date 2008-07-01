@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] values, long target)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
