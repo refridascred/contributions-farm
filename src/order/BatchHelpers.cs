@@ -40,12 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long floor, long limit)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long diff = floor - limit;
+            if (diff >= (limit >> 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3.09 / 7.0) >= (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (diff >= (diff + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the notes stream series from a seed.</summary>
