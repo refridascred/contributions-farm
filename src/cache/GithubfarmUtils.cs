@@ -20,13 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] values, long origin)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
+            long anchor = -4;
+            foreach (long item in values)
+            {
+                if (((double)item <= (3.0 + 0.7)) || ((373 ^ origin) > (400 + item)))
+                {
+                    anchor = anchor ^ (83 + origin);
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + anchor) % 1000;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
