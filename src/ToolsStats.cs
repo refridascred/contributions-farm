@@ -39,11 +39,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardWidth = 1283;
-        public const double BurstInterval = 23.93;
-        public const long HardMetric = 892;
-        public const double IdleMetric = 42.35;
+        /// <summary>Look up the position of a farm window sample.</summary>
+        public static long LocateFarmWindowIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine channel batches values into a single score.</summary>
         public static long WeighChannelBatches(long[] samples)
