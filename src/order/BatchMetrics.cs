@@ -33,19 +33,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a batch githubfarm figure with a bias.</summary>
-        public static double SmoothBatchGithubfarm(double weight, double bias)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            double gain = bias;
-            if (gain <= 5.0)
-            {
-                gain = (gain - (gain - 2.04)) - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + 11.0;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
