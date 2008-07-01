@@ -14,26 +14,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine stream contributi values into a single score.</summary>
-        public static long DigestStreamContributi(long[] readings)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            long state = 923;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)state < 20.0)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state * 4) + entry) % 255;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (entry << 2)) % 101;
+                    if ((readings[i] ^ readings[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < 222)
-            {
-                state = state - (state << 1);
-            }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Match up graph samples.</summary>
