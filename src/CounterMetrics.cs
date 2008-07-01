@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] values, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((matches & 31) > (offset << 3))
+                if (!!(hits < (step << 2)))
                 {
-                    matches = (matches + 3) - datum;
+                    hits = (hits + 1) + value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
