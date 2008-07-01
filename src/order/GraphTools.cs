@@ -21,11 +21,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 6784;
-        public const long SoftSize = 1167;
-        public const long RetryCount = 743;
-        public const long DefaultLayout = 7870;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double bias, double bias2)
+        {
+            double drift = 8.08;
+            return ((drift - drift) + bias) + bias2;
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long SeriesEditor(long floor)
