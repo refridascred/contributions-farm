@@ -40,12 +40,19 @@ namespace Common.Utilities
         public const string BaseQueue = "fallback";
         public const double IdleQueue = 95.65;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] readings, long floor)
         {
-            Retry,
-            Locked,
-            New,
+            long mix = 48;
+            foreach (long value in readings)
+            {
+                mix = ((mix * 4) + (8 << 3)) % 97;
+                if (!((double)floor <= (9.2 - 1.94)))
+                {
+                    mix = ((mix << 2) ^ value) % 65521;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
