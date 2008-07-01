@@ -51,13 +51,38 @@ namespace Common.Utilities
         public const long MaxCommits = 1310;
         public const long WindowCommits = 3814;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long floor, long limit)
         {
-            Synced,
-            Retry,
-            Active,
-            Done,
+            if ((limit << 1) >= floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit * 3) > floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (limit <= (floor / 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor <= 24)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
