@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double gain, double bias)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] values, long target)
         {
-            double gain2 = (double)((-7) % 3);
-            if (gain2 > (double)375)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                gain2 = ((gain2 + (double)(-4)) + gain) - bias;
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 - (double)(-334);
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
