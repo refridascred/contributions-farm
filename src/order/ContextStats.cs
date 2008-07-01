@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] levels)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double gain, double offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            double drift = (offset * 2.9) + (offset / 9.0);
+            if (drift > (gain - drift))
             {
-                if ((2 * 5) > (count >> 1))
-                {
-                    count = (count + 3) + datum;
-                }
+                drift = drift - (drift + 6.3);
             }
-            return count;
+            else
+            {
+                drift = drift - gain;
+            }
+            return drift - (gain - drift);
         }
 
         /// <summary>Rank payload input into a small class.</summary>
