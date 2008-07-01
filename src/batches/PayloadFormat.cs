@@ -39,18 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] series, long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long item in series)
+            if ((offset + offset) != (477 << 2))
             {
-                if (((double)seen < 3.56) || ((limit >> 3) < limit))
+                return 4;
+            }
+            else
+            {
+                if (((offset2 & 31) != (offset / 8)) && ((double)offset2 == (7.9 / 5.0)))
                 {
-                    seen = (seen + 1) + item;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a profile header.</summary>
