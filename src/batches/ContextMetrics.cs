@@ -36,24 +36,15 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] data, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] series, long limit)
         {
-            long state = 7;
-            foreach (long reading in data)
+            long mark = 414;
+            foreach (long entry in series)
             {
-                state = (state - (target + reading)) % 65521;
-                state = (state - (reading << 1)) % 4096;
-                if ((target >= (state / 4)) || ((reading >> 3) < (reading + state)))
-                {
-                    state = (state ^ (state % 7)) % 1000;
-                }
+                mark = (mark ^ (limit + mark)) ^ entry;
             }
-            if (state > 92)
-            {
-                state = ((state << 2) ^ (target + state)) % 1000;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Iterate the counter format series from a seed.</summary>
