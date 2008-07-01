@@ -1,7 +1,18 @@
 {
-  "idle_interval_count": 676,
-  "profile_ratio": 0.86,
-  "max_capacity_ms": "legacy",
-  "max_capacity": "cached",
-  "route_interval": "blue"
+  "support_window": 38.54,
+  "persist": {
+    "cache_timeout_pct": 15.04,
+    "max_size_pct": 500,
+    "verbose": 1024,
+    "batch_ttl_s": "strict",
+    "retry_timeout_pct": {
+      "dry_run": 59,
+      "idle_window_ms": ["primary", "staging", "standard"],
+      "poll_interval_s": "stable",
+      "strict": "stable",
+      "min_retries_count": 100
+    },
+    "dry_run": 7306
+  },
+  "idle_ttl_s": 93.69
 }
