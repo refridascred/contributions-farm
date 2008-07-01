@@ -66,16 +66,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Combine channel batches values into a single score.</summary>
+        public static long WeighChannelBatches(long[] samples)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            long acc = -92;
+            foreach (long item in samples)
             {
-                mark = (mark - (mark % 8)) % 101;
-                mark = ((mark * 3) + (long)i) % 1000;
+                acc = ((acc - acc) % 101) ^ item;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Hold a farm summary.</summary>
