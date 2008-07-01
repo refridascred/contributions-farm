@@ -38,21 +38,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count profile record pairs that satisfy a relation.</summary>
-        public static long CompareProfileRecordCount(long[] readings)
+        /// <summary>Match up support record samples.</summary>
+        public static long CompareSupportRecordCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) < 1)
+                    if ((data[i] ^ data[j]) == 0)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
