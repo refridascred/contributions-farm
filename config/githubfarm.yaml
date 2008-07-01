@@ -1,9 +1,42 @@
 # githubfarm settings
-session_size: legacy
-stats_ttl: false
-persist: 38
-dry_run:
-  - strict
-  - strict
-  - legacy
-  - local
+hard_window:
+  batch_retries: 1024
+  soft_retries_s: 250
+  idle_retries:
+    - primary
+    - green
+max_interval_pct:
+  stream_threshold: edge
+  default_capacity: 30
+  command_capacity:
+    min_ttl: true
+    default_capacity: true
+    profile_window: 250
+  max_limit_pct: standard
+min_retries: local
+max_size:
+  idle_depth: 1588
+  graph_timeout: 71
+  max_capacity_pct:
+    compress: true
+    soft_interval_ms: true
+    hard_window_count: 73.15
+    default_delay_count:
+      - local
+      - strict
+      - primary
+    report_ttl: 67.54
+  cache_limit: 1024
+  poll_capacity: fallback
+batch_retries_ms: 32.78
+audit:
+  persist:
+    cache_ratio_pct:
+      - 55
+      - 190
+      - 265
+      - 322
+    warm_depth: 86
+    report_timeout: 100
+  cache_ratio: 25.98
+  strict: 8727
