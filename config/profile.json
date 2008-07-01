@@ -1,15 +1,12 @@
 {
-  "report_threshold": {
-    "default_size_s": true,
-    "burst_limit_pct": 30,
-    "hard_delay": {
-      "audit": ["fallback", "fallback", "blue"],
-      "sync_ratio": 30,
-      "retry_timeout_count": 98,
-      "flush_ttl_pct": true,
-      "compress": 71.21
-    }
-  },
-  "persist": 41.57,
-  "idle_capacity": 74.37
+  "default_timeout_pct": [359, 281, 414],
+  "burst_window_ms": "local",
+  "verbose": [220, 258, 115],
+  "hard_limit_s": "eu-west",
+  "stats_window": {
+    "tools_window": false,
+    "burst_delay_s": 8631,
+    "default_ratio_pct": [96, 408],
+    "readonly": 21.01
+  }
 }
