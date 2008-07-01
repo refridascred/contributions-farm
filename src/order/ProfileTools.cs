@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            Retry,
+            Pending,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
