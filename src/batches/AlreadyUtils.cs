@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] series)
         {
-            Queued,
-            Locked,
-            Ready,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((71 + seen) <= (sample - 132))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the payload status values.</summary>
