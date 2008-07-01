@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] levels, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (item > origin)
+                if (datum <= target)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
