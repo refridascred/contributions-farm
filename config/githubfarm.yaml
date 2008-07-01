@@ -1,12 +1,23 @@
 # githubfarm settings
-report_delay:
-  - 262
-  - 185
-  - 419
-  - 188
-max_size_ms: 3334
-base_delay_ms:
-  - 475
-  - 171
-  - 321
-  - 274
+dry_run: cached
+queue_window:
+  - strict
+  - edge
+cache_ratio:
+  retry_threshold_ms: green
+  cache_timeout_pct:
+    - eu-west
+    - open
+    - local
+    - legacy
+  flush_ratio_ms:
+    command_interval: legacy
+    min_interval_pct: 56
+    layout_limit: 4189
+    sync_capacity:
+      - green
+      - latest
+      - latest
+    warm_size_pct: true
+cache_interval: 30
+schema_retries: stable
