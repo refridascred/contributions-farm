@@ -50,21 +50,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of route metric readings.</summary>
-        public static long PairRouteMetricCount(long[] values)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long seed, long seed2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((667 < (seed2 % 60)) && ((double)seed > 8.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((seed + seed) > 90))
                 {
-                    if ((values[i] ^ values[j]) < 3)
+                    return 3;
+                }
+                else
+                {
+                    if (8 < seed2)
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed2 << 2) > (seed2 - seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a token contributi pair into a bucket.</summary>
