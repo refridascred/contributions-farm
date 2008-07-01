@@ -30,15 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double ratio, double span)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] values, long target)
         {
-            double mean = span / 5.0;
-            if (mean <= (double)92)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                mean = mean - (double)562;
+                if (entry <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean - (mean + ratio);
+            return flag;
         }
     }
 }
