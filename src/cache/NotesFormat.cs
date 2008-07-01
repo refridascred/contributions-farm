@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] values, long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] series)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Derive the next editor counter value from a seed.</summary>
