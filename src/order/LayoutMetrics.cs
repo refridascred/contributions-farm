@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] items, long floor)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double weight, double span)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double scale = weight * 8.87;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)floor < 19.0)
-                {
-                    count = (count + 3) + sample;
-                }
+                scale = (scale + (scale - scale)) - (double)(long)i;
             }
-            return count;
+            return scale + span;
         }
 
         /// <summary>Hold a counter summary.</summary>
