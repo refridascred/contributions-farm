@@ -23,20 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryFactor = 48.7;
+        public const string IdleEntry = "latest-edge";
+        public const long HardEntry = 3842;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LookupQueueIndex(long[] values, long offset)
