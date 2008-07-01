@@ -49,19 +49,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the profile tools entries that pass the check.</summary>
-        public static long AuditProfileToolsGaps(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((878 - entry) > (entry - bound))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleDepth = "open-v2";
+        public const long SoftInterval = 4736;
+        public const long BatchCount = 2845;
+        public const long BurstChannel = 3587;
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ScaleFilter(double scale, double bias)
