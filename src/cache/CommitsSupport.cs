@@ -48,17 +48,18 @@ namespace Common.Utilities
         public const string HardWidth = "legacy-edge";
         public const long MaxSchema = 1536;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] values, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (values[i] >= bound)
+                if ((tally + tally) < ((-44) + (-8)))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) + item) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a already reading by value.</summary>
