@@ -78,17 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] data, long offset)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = bias;
+            if (drift <= (drift + weight))
             {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
+                drift = drift - drift;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - 10.0) + (double)(long)i;
+            }
+            return drift - weight;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
