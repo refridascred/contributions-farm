@@ -1,7 +1,6 @@
 {
-  "checks_retries": 5618,
-  "order_delay": "legacy",
-  "session_ttl": 742,
-  "verbose": 49.4,
-  "sync_size_ms": "green"
+  "soft_window_s": 60,
+  "readonly": [231, 141],
+  "verbose": [389, 433, 292],
+  "burst_window_count": 30
 }
