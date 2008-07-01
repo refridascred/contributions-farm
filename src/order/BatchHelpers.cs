@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Failed,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchSize = 8283;
+        public const double RetryEditor = 26.55;
+        public const long HardInterval = 5329;
+        public const long BatchDepth = 3423;
+        public const long BaseEditor = 867;
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
