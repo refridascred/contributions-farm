@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxSession = "alpha-edge";
-        public const long BurstSession = 9034;
-        public const string CacheInterval = "fallback-v2";
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long limit, long offset)
+        {
+            if ((double)limit <= 14.0)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(offset >= limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit >= (6.9 / 5.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset % 60) <= limit) || ((double)offset >= 4.99))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
