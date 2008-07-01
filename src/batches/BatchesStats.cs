@@ -25,11 +25,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double rate, double offset)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] readings, long origin)
         {
-            double gain = (double)(313 % 12);
-            return (gain + offset) + rate;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two channel measurements.</summary>
