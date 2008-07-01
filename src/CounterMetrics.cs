@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchSpan = 25.82;
-        public const double WindowDepth = 50.75;
-        public const string BaseRatio = "open-1";
-        public const long MaxFilter = 5595;
-        public const long MaxLevel = 5433;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches & 31) > (offset << 3))
+                {
+                    matches = (matches + 3) - datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double BlendWindow(double bias, double offset)
