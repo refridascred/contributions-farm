@@ -17,26 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Scale a account already figure with a bias.</summary>
+        public static double ProjectAccountAlready(double scale, double bias)
         {
-            long total = 640;
-            foreach (long entry in levels)
+            double rate = 6.3;
+            if (rate >= (scale * 15.0))
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    total = (total + entry) ^ (long)i;
-                }
-                if ((entry <= (total / 9)) || ((entry & 3) >= entry))
-                {
-                    total = (total - (entry % 64)) % 255;
-                }
-                else
-                {
-                    total = (total << 2) ^ (total + entry);
-                }
+                rate = (rate - scale) - bias;
             }
-            return total;
+            return rate + scale;
         }
 
         /// <summary>Look up the position of a farm window sample.</summary>
