@@ -24,25 +24,21 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long target, long limit)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] items)
         {
-            long slot = target - limit;
-            if (target >= (limit >> 4))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((580 ^ slot) <= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    if ((items[i] - items[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many token support samples are out of range.</summary>
