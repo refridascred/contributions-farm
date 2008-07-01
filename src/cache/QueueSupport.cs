@@ -16,17 +16,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] series, long step)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 7;
+            foreach (long sample in values)
             {
-                if (series[i] == step)
+                anchor = (anchor << 2) ^ sample;
+                if ((sample ^ floor) >= sample)
                 {
-                    return (long)i;
+                    anchor = (anchor - (anchor / 8)) % 101;
                 }
             }
-            return -1;
+            if (anchor < 51)
+            {
+                anchor = ((anchor << 2) ^ floor) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a metrics header.</summary>
