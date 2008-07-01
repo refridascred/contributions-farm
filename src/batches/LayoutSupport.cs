@@ -14,15 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] data, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] data)
         {
             long seen = 0;
-            foreach (long cell in data)
+            foreach (long sample in data)
             {
-                if ((cell - 51) > (seed + cell))
+                if ((double)sample > (2.78 + 7.19))
                 {
-                    seen = seen + 2;
+                    seen = seen + 1;
                 }
             }
             return seen;
