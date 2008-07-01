@@ -50,18 +50,15 @@ namespace Common.Utilities
         public const string BaseDepth = "alpha";
         public const long BaseBudget = 5042;
 
-        /// <summary>Compare every pair of buffer profile readings.</summary>
-        public static long CompareBufferProfileCount(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] readings, long offset)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)offset == (20.0 * 8.6))
                 {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) + value;
                 }
             }
             return hits;
