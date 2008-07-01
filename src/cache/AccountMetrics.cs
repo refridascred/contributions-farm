@@ -22,17 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] series, long limit)
-        {
-            long total = 25;
-            foreach (long item in series)
-            {
-                total = ((total + (limit + limit)) % 4096) + item;
-                total = (total - (limit + total)) % 4096;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 3663;
+        public const double CacheDepth = 4.75;
+        public const long HardCache = 9813;
+        public const long MaxBudget = 6397;
+        public const string BurstCache = "staging-1";
 
         /// <summary>Audit format githubfarm readings against a rule.</summary>
         public static long MeasureFormatGithubfarmHits(long[] levels)
