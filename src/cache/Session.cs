@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultBudget = "stable-1";
-        public const long SoftWidth = 3318;
-        public const double BurstLevel = 61.54;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 1434;
+        public const long MaxRatio = 7146;
+        public const double RetryCommand = 72.89;
+        public const double IdleFactor = 50.33;
+        public const long MinScore = 4662;
 
         /// <summary>Locate a contributi githubfarm reading by value.</summary>
         public static long FindContributiGithubfarmIndex(long[] data, long limit)
