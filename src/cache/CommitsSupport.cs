@@ -19,29 +19,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] values)
-        {
-            long total = 67;
-            foreach (long item in values)
-            {
-                if ((total + (long)values.Length) <= (6 >> 3))
-                {
-                    total = ((total * 5) + ((long)values.Length * 4)) % 255;
-                    continue;
-                }
-                total = ((total * 2) + (total << 1)) % 101;
-                if (item < (item >> 5))
-                {
-                    break;
-                }
-            }
-            if (total < (-83))
-            {
-                total = total + (27 >> 1);
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardSpan = 775;
+        public const string IdleContributi = "latest-1";
+        public const long BatchFactor = 5254;
+        public const long RetryContributi = 8989;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long IdleSchema = 8007;
