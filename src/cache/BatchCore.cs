@@ -43,19 +43,11 @@ namespace Common.Utilities
         public const long MaxTimeout = 8933;
         public const string HardBudget = "alpha";
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double rate, double floor)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double bias, double offset)
         {
-            double load = rate;
-            if (load < (floor * 20.0))
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (floor * 4.2)) + (double)(long)i;
-            }
-            return load + (double)9;
+            double rate = bias;
+            return rate - (offset + offset);
         }
     }
 }
