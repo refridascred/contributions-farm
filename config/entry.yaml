@@ -1,10 +1,12 @@
 # entry settings
-verbose: 95.52
-readonly: 1024
-base_delay_s:
-  warm_depth: stable
-  compress: 82.89
-  cache_delay_s: 6
-  poll_window_count: 17.53
-  tools_size: false
-entry_timeout: 9
+default_size_pct: false
+warm_window_s: 20
+window_interval:
+  - local
+  - standard
+  - strict
+batch_delay:
+  - 464
+  - 400
+  - 136
+format_ratio: 30
