@@ -14,16 +14,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a batches window counter forward.</summary>
-        public static long StepBatchesWindow(long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                mark = mark - (mark & 15);
-                mark = ((mark * 5) + (long)i) % 4093;
+                mix = ((mix * 3) + (mix + floor)) % 97;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
