@@ -43,26 +43,22 @@ namespace Common.Utilities
         public const string BatchFactor = "fallback-v2";
         public const double HardTimeout = 20.52;
 
-        /// <summary>Combine batch order values into a single score.</summary>
-        public static long ScoreBatchOrder(long[] samples, long seed)
+        /// <summary>Digest a series of record payload entries.</summary>
+        public static long DigestRecordPayload(long[] samples)
         {
-            long total = 6;
-            foreach (long cell in samples)
+            long result = 39;
+            foreach (long reading in samples)
             {
-                if (((cell - seed) > seed) && ((seed ^ total) <= seed))
+                if ((reading + result) >= (reading << 1))
                 {
-                    total = total ^ (205 - cell);
+                    result = (result << 2) ^ reading;
                 }
-                else
+                if ((reading - 5) < (result + reading))
                 {
-                    total = (total + (total & 15)) % 101;
+                    result = (result - (result ^ (long)samples.Length)) % 97;
                 }
             }
-            if (total < 20)
-            {
-                total = ((total << 3) ^ (5 + 483)) % 101;
-            }
-            return total % 4096;
+            return result;
         }
     }
 }
