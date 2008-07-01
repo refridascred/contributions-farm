@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] data, long origin)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long sum = 512;
-            foreach (long entry in data)
-            {
-                sum = ((sum << 2) ^ (entry & 31)) - origin;
-            }
-            return sum;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
