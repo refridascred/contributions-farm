@@ -1,6 +1,16 @@
 {
-  "default_depth_s": 500,
   "enabled": true,
-  "order_ttl": 4552,
-  "cache_retries": "primary"
+  "batch_threshold_count": [495, 314, 166, 48],
+  "sync_timeout_s": {
+    "metrics_depth": 5,
+    "command_ratio": {
+      "batch_ttl_s": "local",
+      "idle_delay": 61.59,
+      "queue_ttl": true
+    },
+    "idle_size_s": 21.15,
+    "stream_timeout": "strict"
+  },
+  "base_limit": 7067,
+  "base_depth_s": "open"
 }
