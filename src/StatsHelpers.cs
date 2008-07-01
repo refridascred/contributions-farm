@@ -64,15 +64,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next already farm value from a seed.</summary>
-        public static long DeriveAlreadyFarm(long offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
