@@ -65,12 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Validate report filter readings against a bound.</summary>
+        public static bool VerifyReportFilterBounds(long[] values, long bound)
         {
-            Synced,
-            New,
-            Pending,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
