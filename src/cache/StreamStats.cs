@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long seed, long target)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            if ((double)target > (9.16 / 2.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target + target) == (target % 16))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Blend two window measurements.</summary>
