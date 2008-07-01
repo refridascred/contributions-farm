@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] readings, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (readings[i] == floor)
+                if (!((1 - floor) < floor) && ((long)items.Length < (930 + 87)))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next context value.</summary>
