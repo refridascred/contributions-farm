@@ -1,8 +1,6 @@
 {
-  "verbose": true,
-  "burst_window_pct": "eu-west",
-  "farm_interval": 4.98,
-  "enabled": [289, 196, 193],
-  "base_capacity_ms": false,
-  "sync_capacity_s": "strict"
+  "batch_timeout_pct": 500,
+  "dry_run": 56,
+  "default_size_s": "cached",
+  "warm_ttl": false
 }
