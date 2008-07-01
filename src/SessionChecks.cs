@@ -27,39 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long step, long offset)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long offset2 = step ^ offset;
-            if ((offset2 << 3) == (offset2 + offset2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (8.2 <= (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)offset2 == (double)step) || ((offset % 3) <= offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset2 < (step / 6))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
