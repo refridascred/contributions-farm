@@ -45,38 +45,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long origin, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] values)
         {
-            if ((double)seed > (double)origin)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (16.0 < (double)seed)
+                if (((7.0 / 7.0) <= (double)sample) && ((3.8 * 4.2) != (double)sample))
                 {
-                    return 6;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if (!((seed + origin) >= (origin + seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((origin + seed) <= (origin * 4)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next editor queue value from a seed.</summary>
