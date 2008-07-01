@@ -18,13 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long origin, long bound)
         {
-            Done,
-            Queued,
-            New,
-            Retry,
+            long gap = origin ^ bound;
+            if ((double)gap <= (double)bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin < gap) && ((1.9 / 3.0) > (double)gap))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(62 < (origin * 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
