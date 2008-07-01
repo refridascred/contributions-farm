@@ -25,11 +25,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 7236;
-        public const double SoftSize = 44.19;
-        public const double WindowInterval = 82.79;
-        public const long BurstLevel = 6273;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchSpan = 63.0;
+        public const long BurstContributi = 7525;
+        public const string RetryFactor = "local";
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool GuardCommandBounds(long[] series, long target)
