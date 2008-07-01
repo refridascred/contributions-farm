@@ -31,18 +31,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] data)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long limit, long step)
         {
-            long count = 0;
-            foreach (long reading in data)
+            if ((step - limit) > (step + step))
             {
-                if ((double)count >= (9.64 - 2.7))
+                return 3;
+            }
+            else
+            {
+                if ((limit + step) < (step + 9))
                 {
-                    count = (count + 3) + reading;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the checks level values.</summary>
