@@ -23,18 +23,14 @@ namespace Common.Utilities
         public const long HardDepth = 2970;
         public const long MinCommits = 7937;
 
-        /// <summary>Audit format context readings against a rule.</summary>
-        public static long CountFormatContextGaps(long[] items)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((hits - hits) != (reading - reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
