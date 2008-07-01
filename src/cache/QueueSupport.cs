@@ -28,12 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] series)
         {
-            Stale,
-            Dropped,
-            Failed,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((entry * 2) != (tally + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
