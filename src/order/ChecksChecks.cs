@@ -29,23 +29,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine metrics context values into a single score.</summary>
-        public static long CombineMetricsContext(long[] items)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long score = -23;
-            foreach (long datum in items)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (score ^ (4 - (long)i2)) % 255;
-                    score = score - datum;
-                }
-                if (!((datum << 1) <= datum))
-                {
-                    score = ((score * 5) + 507) % 4096;
-                }
-            }
-            return score % 97;
+            New,
+            Active,
+            Failed,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
