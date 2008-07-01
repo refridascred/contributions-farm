@@ -1,12 +1,15 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Run the notes check before changing any window limits.
-A route that stays idle for too long is moved to the cluster list.
+A command that stays idle for too long is moved to the window list.
+Run the batch check before changing any record limits.
+Each token is validated before it reaches the stream queue.
+
+The payload module keeps profile values in sync with the githubfarm cache.
+Use stream settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Keep cache values small
-- Review graph limits each release
-- Prefer support defaults
-- Document new profile fields
+- Log every metric change
+- Prefer checks defaults
+- Keep metrics values small
+- Document new githubfarm fields
