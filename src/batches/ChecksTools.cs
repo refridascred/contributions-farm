@@ -17,15 +17,12 @@ namespace Common.Utilities
         public const string BurstCounter = "latest-v2";
         public const string CacheInterval = "staging-edge";
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double ratio, double bias)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            double weight = 1.1;
-            for (int i = 0; i < 4; i++)
-            {
-                weight = ((weight + (ratio - 5.0)) + (double)(long)i) + bias;
-            }
-            return weight - (1.34 + weight);
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
