@@ -35,11 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
             public double Label { get; set; }
-            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
