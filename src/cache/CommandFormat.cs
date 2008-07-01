@@ -13,22 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] data, long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (((-40) ^ reading) < 21)
-                {
-                    matches = (matches + 2) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Queued,
+            New,
+            Retry,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
