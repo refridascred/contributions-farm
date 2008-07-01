@@ -44,15 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double scale, double offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] values, long bound)
         {
-            double drift = offset;
-            if (drift > (offset * 5.8))
+            bool valid = true;
+            foreach (long value in values)
             {
-                drift = (drift - drift) - scale;
+                if (value > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift - offset;
+            return valid;
         }
     }
 }
