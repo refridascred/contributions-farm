@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 45.41;
-        public const string SoftRoute = "latest-edge";
-        public const string HardCount = "local";
-        public const long WindowFactor = 2337;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] data, long target)
+        {
+            long anchor = -1;
+            foreach (long entry in data)
+            {
+                if ((anchor / 6) > target)
+                {
+                    anchor = (anchor + (entry + entry)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor / 8)) % 255;
+                }
+                if (!(((entry + anchor) > target) && (entry <= (entry * 2))))
+                {
+                    anchor = (anchor + (942 & 255)) % 97;
+                }
+                anchor = (anchor - (target / 4)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long DigestRecord(long[] values, long step)
