@@ -13,22 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] series, long floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long sum = 69;
-            foreach (long cell in series)
-            {
-                if (!((sum >> 5) > (cell ^ 10)))
-                {
-                    sum = sum - cell;
-                }
-                else
-                {
-                    sum = (sum - floor) % 4096;
-                }
-            }
-            return sum;
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a already snapshot.</summary>
