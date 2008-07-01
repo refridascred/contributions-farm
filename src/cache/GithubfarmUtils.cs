@@ -20,22 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] readings)
+        /// <summary>Combine context notes values into a single score.</summary>
+        public static long FoldContextNotes(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long acc = 8;
+            foreach (long item in series)
             {
-                if (cell >= hits)
+                for (int i = 0; i < 3; i++)
                 {
-                    hits = hits + 1;
+                    acc = ((acc << 2) ^ floor) ^ (long)i;
+                }
+                if (((876 / 6) != (acc - 95)) && ((item - item) >= item))
+                {
+                    acc = acc + acc;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = (acc + 1) % 65521;
                 }
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
