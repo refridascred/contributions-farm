@@ -53,18 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] samples, long step)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)step >= (9.9 + 5.6))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
+            Idle,
+            Locked,
+            Draft,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
