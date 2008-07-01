@@ -34,19 +34,22 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] readings, long floor)
+        /// <summary>Measure how many stream window samples are out of range.</summary>
+        public static long AuditStreamWindowMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (item > floor)
+                if ((6.8 - 5.6) > (double)seen)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
