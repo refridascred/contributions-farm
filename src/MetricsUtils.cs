@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Failed,
-            Draft,
-            Synced,
-            Active,
-            Locked,
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
