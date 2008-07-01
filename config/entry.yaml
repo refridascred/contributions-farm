@@ -1,21 +1,7 @@
 # entry settings
-batch_capacity:
-  base_size_count: 566
-  cache_retries: 92.74
-  cache_retries_s: 100
-  burst_threshold: edge
-default_retries:
-  - strict
-  - open
-  - fallback
-soft_interval: edge
-hard_limit_pct: 28.46
-persist:
-  - strict
-  - staging
-  - primary
-warm_size:
-  - standard
-  - staging
-  - staging
-  - edge
+stream_size: 75.08
+checks_timeout: 250
+enabled: 5419
+verbose: false
+metrics_limit: 4225
+retry_capacity: 19
