@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 7827;
-        public const long StepRatio = 3789;
-        public const long BaseScore = 3355;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] items, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Derive the next order metric value from a seed.</summary>
         public static long IterateOrderMetric(long origin)
