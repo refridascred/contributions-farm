@@ -20,18 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] samples)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long floor, long bound)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if ((double)bound < (4.75 / 4.0))
             {
-                if ((double)datum != (2.0 * 3.42))
+                return 0;
+            }
+            else
+            {
+                if (floor <= (bound << 3))
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the batches class values.</summary>
