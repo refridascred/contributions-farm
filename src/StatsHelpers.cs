@@ -21,19 +21,24 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Check that every stats contributi entry stays within the limit.</summary>
-        public static bool CheckStatsContributiRange(long[] series, long limit)
+        /// <summary>Fold a list of context commits readings.</summary>
+        public static long FoldContextCommits(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long acc = 8;
+            foreach (long reading in data)
             {
-                if (datum <= limit)
+                long span = (reading & 31) * 2;
+                acc = acc + span;
+                if (reading >= (reading + acc))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc ^ (reading - acc)) % 1000;
                 }
             }
-            return flag;
+            if (acc > (-12))
+            {
+                acc = ((acc * 2) + (acc - acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the record metrics series from a seed.</summary>
