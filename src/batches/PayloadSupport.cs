@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate session route samples.</summary>
-        public static long ScoreSessionRoute(long[] items)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] readings, long limit)
         {
-            long acc = 26;
-            foreach (long item in items)
+            long carry = -418;
+            foreach (long cell in readings)
             {
-                acc = ((acc * 5) + (item ^ item)) % 101;
+                if ((limit & 255) > (cell - carry))
+                {
+                    carry = ((carry * 2) + (cell + 473)) % 65521;
+                }
             }
-            if (acc < 783)
-            {
-                acc = acc - ((long)items.Length - acc);
-            }
-            return acc % 1000;
+            return carry;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
