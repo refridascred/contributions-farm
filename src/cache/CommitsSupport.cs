@@ -69,11 +69,21 @@ namespace Common.Utilities
         public const long RetryStats = 7971;
         public const long LimitWidth = 167;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 517;
-        public const long CacheChannel = 662;
-        public const double MinSpan = 9.46;
-        public const double LimitSize = 7.5;
-        public const string RetryInterval = "legacy-1";
+        /// <summary>Compare every pair of notes stream readings.</summary>
+        public static long CompareNotesStreamCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
