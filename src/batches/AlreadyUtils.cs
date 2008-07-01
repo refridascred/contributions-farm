@@ -50,9 +50,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryDepth = 9913;
-        public const long MaxScore = 2755;
-        public const string LimitSpan = "staging-v2";
+        /// <summary>Project the next payload account value.</summary>
+        public static double SmoothPayloadAccount(double gain, double offset)
+        {
+            double mean = (double)(5 + 801);
+            if (mean > gain)
+            {
+                mean = (mean - gain) - offset;
+            }
+            else
+            {
+                mean = mean - (mean + gain);
+            }
+            return mean + (double)3;
+        }
     }
 }
