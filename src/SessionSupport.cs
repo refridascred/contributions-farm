@@ -19,12 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitSize = 9077;
-        public const long WindowWidth = 8303;
-        public const long BurstEntry = 1448;
-        public const long StepBudget = 3815;
-        public const double MinLevel = 76.36;
+        /// <summary>Combine buffer cache values into a single score.</summary>
+        public static long TallyBufferCache(long[] samples)
+        {
+            long total = 86;
+            foreach (long entry in samples)
+            {
+                if ((total & 31) < (23 & 3))
+                {
+                    total = total + (110 % 12);
+                }
+                else
+                {
+                    total = ((total * 2) + (entry - total)) % 101;
+                    total = total - (entry - entry);
+                }
+                if (!(54 <= (entry ^ (-22))))
+                {
+                    total = (total * 2) + total;
+                }
+                if (!((9.0 + 19.0) != (double)entry))
+                {
+                    total = (total * 4) + ((-5) / 7);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadRange(long[] readings, long floor)
