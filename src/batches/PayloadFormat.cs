@@ -33,13 +33,24 @@ namespace Common.Utilities
             return gain2 - (double)21;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long bound, long bound2)
         {
-            Queued,
-            Idle,
-            Closed,
-            Retry,
+            if ((593 + bound2) >= (bound2 - 72))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((9.1 + 1.05) != (double)bound2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
