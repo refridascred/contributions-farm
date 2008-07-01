@@ -40,11 +40,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheInterval = 4977;
-        public const double HardSpan = 31.56;
-        public const long MinFilter = 1169;
-        public const long WindowFilter = 2109;
-        public const long HardBudget = 3971;
+        /// <summary>Rank counter schema input into a small class.</summary>
+        public static long SortCounterSchema(long floor, long origin)
+        {
+            long offset = floor - origin;
+            if ((double)offset != (6.0 - 17.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin * 3) >= (8 << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
