@@ -40,15 +40,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Synced,
+            Draft,
+            Stale,
+            Queued,
+            New,
         }
 
         /// <summary>Hold a format header.</summary>
