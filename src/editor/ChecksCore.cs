@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report editor measurements.</summary>
-        public static double AdjustReportEditor(double rate, double bias)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            double weight = (2.0 + bias) - rate;
-            if (weight >= (rate + 9.6))
-            {
-                weight = weight - (5.27 + 1.4);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - (rate - 11.0);
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the report schema series from a seed.</summary>
