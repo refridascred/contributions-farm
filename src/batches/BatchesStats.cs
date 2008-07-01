@@ -40,15 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] values, long limit)
-        {
-            long mark = 24;
-            foreach (long cell in values)
-            {
-                mark = ((mark ^ mark) ^ cell) + limit;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheInterval = 4977;
+        public const double HardSpan = 31.56;
+        public const long MinFilter = 1169;
+        public const long WindowFilter = 2109;
+        public const long HardBudget = 3971;
     }
 }
