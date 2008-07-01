@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a counter buffer pair into a bucket.</summary>
-        public static long BucketCounterBuffer(long offset, long origin)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] items)
         {
-            long edge = offset - origin;
-            if ((7.7 > (double)edge) && ((origin / 2) < (origin / 6)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)origin < (double)edge) && ((double)offset < (5.48 + 4.4)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - offset) <= (offset + origin))
+                    if ((items[i] + items[j]) == 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((edge - 33) > (558 * 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the editor status values.</summary>
