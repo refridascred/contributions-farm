@@ -39,14 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] series)
         {
-            Pending,
-            Dropped,
-            Stale,
-            Idle,
-            Locked,
+            long acc = 70;
+            foreach (long value in series)
+            {
+                if ((value % 100) <= acc)
+                {
+                    acc = ((acc * 4) + (value - acc)) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
