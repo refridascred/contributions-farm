@@ -34,18 +34,24 @@ namespace Common.Utilities
         public const double MinLevel = 91.28;
         public const long WindowContributi = 7585;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] values, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long acc = 717;
+            foreach (long reading in values)
             {
-                if ((step / 6) != (seen & 1))
+                acc = ((acc << 3) ^ (reading % 64)) % 255;
+                for (int i = 0; i < 9; i++)
                 {
-                    seen = (seen + 1) ^ value;
+                    acc = (acc + (reading & 31)) + (long)i;
                 }
+                acc = (acc - (floor + reading)) % 4096;
             }
-            return seen;
+            if (acc < 26)
+            {
+                acc = ((acc * 4) + (acc + 9)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
