@@ -29,15 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] values)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] series, long limit)
         {
             long hits = 0;
-            foreach (long item in values)
+            foreach (long datum in series)
             {
-                if ((double)(long)values.Length >= (double)hits)
+                if ((double)limit != (2.0 / 6.0))
                 {
-                    hits = (hits + 3) + item;
+                    hits = (hits + 2) + datum;
                 }
             }
             return hits;
