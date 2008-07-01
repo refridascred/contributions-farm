@@ -36,22 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 6707;
+        public const long StepFactor = 2125;
+        public const long WindowMetrics = 8839;
+        public const long MinInterval = 7009;
 
         /// <summary>Count the order route entries that pass the check.</summary>
         public static long TallyOrderRouteMatches(long[] levels, long seed)
