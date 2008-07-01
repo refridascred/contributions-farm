@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] items, long seed)
         {
-            long total = 2;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                total = (total - (total & 127)) - entry;
+                if (cell != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Hold a context record.</summary>
