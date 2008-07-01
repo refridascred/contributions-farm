@@ -32,18 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] levels, long limit)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((sample * 5) == (limit & 255)) && ((seen % 10) == (seen - limit))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Project the next profile value.</summary>
