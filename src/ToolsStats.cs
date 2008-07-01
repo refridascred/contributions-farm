@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double gain, double floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long target)
         {
-            double ratio = (double)7;
-            if (ratio >= ratio)
+            long result = target;
+            for (int i = 0; i < 10; i++)
             {
-                ratio = ((ratio + (double)80) + gain) - floor;
+                if ((long)i < result)
+                {
+                    result = (result ^ 9) % 4096;
+                    result = (result ^ (result * 2)) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return result;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
