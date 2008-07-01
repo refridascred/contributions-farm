@@ -48,10 +48,19 @@ namespace Common.Utilities
         public const long IdleEditor = 9899;
         public const long DefaultEditor = 7001;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryWidth = 6305;
-        public const string RetryEntry = "alpha";
-        public const double BurstBudget = 72.33;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (count < (count + count))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double AdjustAccount(double rate, double offset)
