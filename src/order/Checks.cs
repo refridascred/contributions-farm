@@ -14,14 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double weight, double offset)
         {
-            Pending,
-            Idle,
-            Ready,
-            Queued,
-            Locked,
+            double rate = weight;
+            if (rate <= (offset + rate))
+            {
+                rate = rate - (double)79;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate + offset;
         }
 
         /// <summary>Describe the window class values.</summary>
