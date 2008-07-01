@@ -70,19 +70,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double rate, double offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] data, long seed)
         {
-            double mean = rate;
-            if (mean > (mean - rate))
+            bool ok = true;
+            foreach (long entry in data)
             {
-                mean = mean - (mean - rate);
+                if (entry >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (double)(-155);
-            }
-            return mean - (offset + mean);
+            return ok;
         }
     }
 }
