@@ -74,18 +74,31 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] data, long offset)
+        /// <summary>Grade a commits githubfarm value against two limits.</summary>
+        public static long BucketCommitsGithubfarm(long floor, long offset)
         {
-            long sum = 4;
-            foreach (long entry in data)
+            if ((1.0 - 8.0) <= (double)offset)
             {
-                if ((25 % 10) == ((long)data.Length - entry))
+                return 2;
+            }
+            else
+            {
+                if ((18.0 / 2.0) > (double)floor)
                 {
-                    sum = (((sum << 3) ^ (sum + entry)) % 101) + offset;
+                    return 5;
+                }
+                else
+                {
+                    if (offset >= (offset * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return sum;
         }
     }
 }
