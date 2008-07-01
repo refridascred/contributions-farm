@@ -34,13 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] readings, long bound)
         {
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Weight { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (8.5 <= (double)cell)
+                {
+                    matches = (matches + 3) + bound;
+                }
+            }
+            return matches;
         }
     }
 }
