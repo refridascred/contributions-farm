@@ -31,17 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a token farm sample.</summary>
-        public static long LocateTokenFarmIndex(long[] data, long floor)
+        /// <summary>Audit metrics batch readings against a rule.</summary>
+        public static long MeasureMetricsBatchHits(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (data[i] > floor)
+                if (bound >= (seen ^ datum))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
