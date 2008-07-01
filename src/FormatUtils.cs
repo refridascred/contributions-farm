@@ -65,24 +65,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long floor, long target)
         {
-            long carry = 27;
-            foreach (long datum in items)
+            long next = floor ^ target;
+            if (((double)target < 4.7) && ((739 + target) < (floor + next)))
             {
-                if (!(206 <= datum))
-                {
-                    carry = (carry + (carry << 2)) % 65521;
-                    carry = (carry * 3) + carry;
-                }
-                if ((85 - 0) > carry)
-                {
-                    break;
-                }
-                carry = (carry ^ (datum >> 4)) % 1000;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (next < (target % 24))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((next << 1) < target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target << 3) == (next / 7)) || (floor >= (next - floor)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
