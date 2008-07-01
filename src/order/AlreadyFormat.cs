@@ -49,25 +49,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long bound, long floor)
-        {
-            if (!((472 * 5) > floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor + floor) == (floor % 60))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 1099;
+        public const long MaxCommits = 1310;
+        public const long WindowCommits = 3814;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
