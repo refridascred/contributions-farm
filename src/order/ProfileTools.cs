@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            New,
-            Closed,
-            Idle,
-            Pending,
+            public double Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a counter stats.</summary>
