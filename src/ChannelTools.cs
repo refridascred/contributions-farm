@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Synced,
-            Locked,
-            Queued,
-            Closed,
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
