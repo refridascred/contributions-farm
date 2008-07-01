@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Validate editor graph readings against a bound.</summary>
+        public static bool CheckEditorGraphRange(long[] values, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (value < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
