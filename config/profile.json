@@ -1,8 +1,12 @@
 {
-  "tools_size": 2888,
-  "poll_depth_pct": "fallback",
-  "account_delay": 500,
-  "idle_threshold": ["fallback", "latest", "local", "primary"],
-  "retry_delay_s": 500,
-  "default_depth_pct": "open"
+  "account_retries": 30,
+  "poll_limit_pct": {
+    "burst_timeout_s": "cached",
+    "sync_delay_ms": "open",
+    "max_interval_s": [335, 462, 239],
+    "buffer_ttl": false,
+    "compress": 66
+  },
+  "command_interval": 39,
+  "idle_threshold": "strict"
 }
