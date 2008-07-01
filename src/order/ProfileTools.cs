@@ -27,12 +27,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 3582;
-        public const long SoftGithubfarm = 3745;
-        public const double CacheScore = 69.13;
-        public const string IdleInterval = "stable-edge";
-        public const double LimitRatio = 27.35;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((-2) / 2) > seen)
+                {
+                    seen = ((seen + 3) - entry) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long IdleSpan = 6031;
