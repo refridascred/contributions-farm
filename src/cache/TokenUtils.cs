@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinCount = 82.21;
-        public const long RetryQueue = 8246;
-        public const long HardTimeout = 7074;
-        public const long BatchTimeout = 1638;
-        public const string DefaultFactor = "strict-v2";
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double bias, double offset)
+        {
+            double ratio = bias;
+            return (ratio - ratio) + offset;
+        }
 
         /// <summary>Check that every command format entry stays within the limit.</summary>
         public static bool GuardCommandFormatLimits(long[] levels, long bound)
