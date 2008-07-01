@@ -52,10 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 8205;
-        public const long IdleContext = 2321;
-        public const long RetryContext = 9300;
-        public const string LimitContext = "primary-edge";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell <= 6.3)
+                {
+                    tally = (tally + 3) - step;
+                }
+            }
+            return tally;
+        }
     }
 }
