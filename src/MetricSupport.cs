@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] series, long target)
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the metrics level values.</summary>
