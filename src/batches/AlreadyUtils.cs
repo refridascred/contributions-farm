@@ -32,19 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] readings, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long sum = 60;
+            foreach (long sample in series)
             {
-                if (item != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum ^ (sample >> 1)) % 255;
+                sum = ((sum * 5) + (limit - sample)) % 1000;
             }
-            return stale;
+            return sum % 4096;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
