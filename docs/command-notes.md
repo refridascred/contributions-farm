@@ -1,10 +1,12 @@
 # Command notes
 
-Use account settings to tune how often support data is refreshed.
-Each counter is validated before it reaches the checks queue.
+The buffer report groups every payload by filter.
+A buffer that stays idle for too long is moved to the metric list.
+Use account settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Review notes limits each release
-- Document new token fields
-- Validate checks input early
+- Prefer command defaults
+- Validate counter input early
+- Review githubfarm limits each release
+- Keep format values small
