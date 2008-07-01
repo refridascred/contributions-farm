@@ -24,22 +24,39 @@ namespace Common.Utilities
         public const long BatchWindow = 6351;
         public const long HardCount = 7435;
 
-        /// <summary>Fold a list of contributi batches readings.</summary>
-        public static long DigestContributiBatches(long[] levels, long limit)
+        /// <summary>Rank buffer batches input into a small class.</summary>
+        public static long RankBufferBatches(long target, long offset)
         {
-            long score = 6;
-            foreach (long reading in levels)
+            long step = target - offset;
+            if (offset >= (target << 2))
             {
-                if ((score % 100) < reading)
+                return 6;
+            }
+            else
+            {
+                if (step >= (offset / 4))
                 {
-                    score = (((score << 2) ^ reading) % 4096) - limit;
+                    return 5;
+                }
+                else
+                {
+                    if ((target <= (offset & 127)) && ((9 + 358) <= (offset + 0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target <= 3.38)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (score > 28)
-            {
-                score = score ^ (6 % 8);
-            }
-            return score;
         }
 
         /// <summary>Compare every pair of route metric readings.</summary>
