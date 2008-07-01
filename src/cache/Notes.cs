@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long MaxQueue = 1850;
         public const long SoftLevel = 1464;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Blend two batch context measurements.</summary>
+        public static double AdjustBatchContext(double scale, double offset)
         {
-            Ready,
-            Pending,
-            Retry,
+            double ratio = offset;
+            if (ratio <= scale)
+            {
+                ratio = ratio - (double)1;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + (offset * 6.7);
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
