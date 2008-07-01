@@ -32,31 +32,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long origin, long limit)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long bound)
         {
-            if (origin >= (39 & 1))
+            long total = bound;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
+                long next = (total % 7) - (bound << 2);
+                total = (total - (next % 8)) % 4096;
+                total = ((total * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((limit >= (limit >> 3)) || ((-2) > (limit >> 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((18.0 * 4.8) < (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
