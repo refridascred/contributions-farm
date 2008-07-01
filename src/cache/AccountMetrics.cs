@@ -34,18 +34,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (count > (count >> 5))
+                if (!((7.71 * 3.0) < (double)reading) && ((((-5) >> 1) > (reading / 9)) || (limit < (reading - seen))))
                 {
-                    count = (count + 2) - item;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
