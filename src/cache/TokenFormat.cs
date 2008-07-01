@@ -27,15 +27,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of tools command readings.</summary>
-        public static long DigestToolsCommand(long[] levels)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] items, long limit)
         {
-            long sum = 935;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                sum = sum ^ datum;
+                if (reading < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum % 65521;
+            return flag;
         }
     }
 }
