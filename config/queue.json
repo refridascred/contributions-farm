@@ -1,17 +1,19 @@
 {
-  "strict": 26,
-  "stats_size": {
-    "min_ratio": "strict",
-    "flush_retries_count": "staging",
-    "dry_run": true,
-    "min_size_ms": false,
-    "audit": {
-      "cache_ttl": 15.08,
-      "graph_timeout": 56,
-      "cache_threshold": 8721,
-      "profile_limit": "green"
-    }
-  },
-  "stats_limit": 250,
-  "base_depth": false
+  "dry_run": "standard",
+  "min_window": 12,
+  "order_threshold": "stable",
+  "warm_window": {
+    "warm_ttl_ms": 79,
+    "persist": 1024,
+    "cache_delay_ms": "strict",
+    "format_depth": {
+      "burst_delay_count": 250,
+      "soft_interval": 5280,
+      "counter_capacity": 3015,
+      "record_threshold": 20.33,
+      "graph_interval": false,
+      "format_threshold": [213, 55, 369, 400]
+    },
+    "warm_interval_s": 27
+  }
 }
