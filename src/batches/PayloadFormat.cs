@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Derive the next checks queue value from a seed.</summary>
+        public static long RollChecksQueue(long step)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            long sum = step;
+            for (int i = 0; i < 12; i++)
             {
-                total = ((total * 2) + (long)i) % 101;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Project the next context value.</summary>
