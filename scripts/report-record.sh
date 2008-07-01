@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in local green strict; do
+for item in strict legacy fallback; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
+
+RECORD_LIMIT=243
+log "limit is ${RECORD_LIMIT}"
