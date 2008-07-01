@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] readings, long bound)
         {
-            Retry,
-            Ready,
-            Draft,
+            long acc = 211;
+            foreach (long value in readings)
+            {
+                acc = (acc + bound) + value;
+            }
+            if (acc > 120)
+            {
+                acc = ((acc * 2) + (6 - bound)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Combine stream contributi values into a single score.</summary>
