@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] levels, long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (levels[i] < target)
+                total = ((total << 2) ^ (bound / 4)) % 1000;
+                if ((((long)i * 3) < total) && (bound <= total))
                 {
-                    return (long)i;
+                    continue;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Adjust a batches reading.</summary>
