@@ -20,23 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double bias, double span)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] readings, long step)
         {
-            double gain = (0.74 - bias) - (double)1;
-            if (gain <= (double)48)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                gain = gain + gain;
+                if (step < (9 / 2))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
             }
-            else
-            {
-                gain = gain - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - (double)93;
+            return tally;
         }
 
         /// <summary>Hold a support stats.</summary>
