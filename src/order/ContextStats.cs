@@ -36,24 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long seed, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] levels, long target)
         {
-            if ((seed - step) >= (step << 1))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step + step) <= (seed - step)) && (step > (seed * 4)))
+                if ((1.9 / 8.0) < (double)count)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    count = ((count + 3) + entry) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
