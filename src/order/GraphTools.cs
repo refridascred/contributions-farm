@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
+            Active,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
