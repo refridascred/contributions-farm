@@ -45,10 +45,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitDepth = "latest-v2";
-        public const long BurstSession = 8492;
-        public const long LimitSession = 5277;
+        /// <summary>Roll a account already counter forward.</summary>
+        public static long IterateAccountAlready(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardStats = 1203;
