@@ -31,21 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 88;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seed + 81) >= (carry & 31))
                 {
-                    if ((readings[i] ^ readings[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (((carry * 5) + carry) % 4096) - cell;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
