@@ -48,16 +48,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] readings)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            long acc = 4;
+            foreach (long item in readings)
             {
-                carry = carry ^ (76 - floor);
-                carry = ((carry * 5) + (long)i) % 65521;
+                acc = ((acc - (acc / 6)) % 4096) ^ item;
             }
-            return carry;
+            return acc;
         }
     }
 }
