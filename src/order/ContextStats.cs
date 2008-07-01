@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] values, long floor)
-        {
-            long score = 494;
-            foreach (long reading in values)
-            {
-                if (!(reading > (score & 127)))
-                {
-                    score = (score ^ (reading << 2)) - floor;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseCommits = "primary-1";
+        public const double CacheFactor = 86.16;
+        public const double MaxScore = 50.35;
+        public const long MinLevel = 5631;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
