@@ -14,25 +14,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Compare every pair of metric stream readings.</summary>
+        public static long MatchMetricStreamCount(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc - (acc ^ 42)) % 4096;
-                if (((double)acc < (3.0 - 4.0)) && ((acc * 2) >= (seed >> 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc - (seed % 97)) % 101;
+                    if ((samples[i] - samples[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    acc = (acc + (92 - seed)) % 4096;
-                    acc = ((acc << 2) ^ (296 + acc)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
