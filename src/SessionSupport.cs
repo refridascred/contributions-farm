@@ -37,9 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 4069;
-        public const long WindowAccount = 1292;
-        public const string IdleAccount = "local-v2";
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] readings, long floor)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
