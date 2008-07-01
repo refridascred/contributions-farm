@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const double MinCache = 90.81;
         public const long HardCache = 6584;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] data, long bound)
+        /// <summary>Derive the next order metric value from a seed.</summary>
+        public static long IterateOrderMetric(long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((entry * 5) > hits)
-                {
-                    hits = (hits + 2) + bound;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
