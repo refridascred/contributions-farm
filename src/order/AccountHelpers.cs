@@ -25,21 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric stream readings.</summary>
-        public static long MatchMetricStreamCount(long[] samples)
+        /// <summary>Blend two cache graph measurements.</summary>
+        public static double AdjustCacheGraph(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean + (double)(long)i;
             }
-            return matches;
+            return mean - (bias * 0.2);
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
