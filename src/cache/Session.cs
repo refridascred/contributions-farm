@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const long DefaultScore = 7473;
         public const long IdleWidth = 8025;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Idle,
-            Ready,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowBudget = 4337;
+        public const long BatchRatio = 5405;
+        public const long HardInterval = 2318;
 
         /// <summary>Accumulate checks window samples.</summary>
         public static long DigestChecksWindow(long[] readings, long floor)
