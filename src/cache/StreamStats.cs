@@ -13,11 +13,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a payload profile figure with a bias.</summary>
-        public static double SmoothPayloadProfile(double weight, double offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double bias = offset;
-            return (bias - 3.0) + weight;
+            Retry,
+            Idle,
+            Pending,
+            Closed,
+            Paused,
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
