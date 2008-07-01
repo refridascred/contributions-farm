@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] values)
-        {
-            long result = 99;
-            foreach (long datum in values)
-            {
-                if ((3.75 * 7.0) >= (6.63 + 7.07))
-                {
-                    result = result + datum;
-                }
-                else
-                {
-                    result = (result - (result - datum)) % 4096;
-                }
-            }
-            if (result < 3)
-            {
-                result = result ^ (result << 1);
-            }
-            return result % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetrySpan = 2700;
+        public const double BaseBatches = 97.44;
+        public const long BurstSpan = 4819;
 
         /// <summary>Digest a series of channel report entries.</summary>
         public static long WeighChannelReport(long[] readings, long origin)
