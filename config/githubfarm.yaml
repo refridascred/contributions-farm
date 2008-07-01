@@ -1,7 +1,6 @@
 # githubfarm settings
-hard_size_count:
-  - 424
-  - 302
-batch_delay_s: stable
-cache_delay_count: legacy
-audit: 34
+warm_threshold_ms: 30
+order_threshold: 60
+strict: green
+default_depth_s: 49.18
+retry_limit: green
