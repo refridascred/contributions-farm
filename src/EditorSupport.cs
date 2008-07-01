@@ -62,19 +62,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every editor token entry stays within the limit.</summary>
-        public static bool ValidateEditorTokenBounds(long[] values, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long offset, long seed)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long delta = offset - seed;
+            if (((seed + offset) > (delta / 7)) && ((delta - offset) > seed))
             {
-                if (sample <= seed)
+                return 3;
+            }
+            else
+            {
+                if (((offset ^ seed) >= offset) && ((4.0 / 7.0) == (double)delta))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return valid;
         }
     }
 }
