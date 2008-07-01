@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine already support values into a single score.</summary>
-        public static long ScoreAlreadySupport(long[] series, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] levels, long seed)
         {
-            long score = 70;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score + (195 >> 4)) % 1000) ^ sample;
+                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score < 84)
-            {
-                score = (score + seed) % 97;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
