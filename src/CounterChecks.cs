@@ -23,22 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor filter samples are out of range.</summary>
-        public static long TallyEditorFilterMatches(long[] series)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((8.3 + 2.34) == (double)seen)
-                {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Draft,
+            Failed,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
