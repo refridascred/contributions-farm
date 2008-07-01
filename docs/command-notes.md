@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-Use metrics settings to tune how often route data is refreshed.
+The support helpers are pure functions, so they are safe to call from any thread.
+Each account is validated before it reaches the payload queue.
 
-Each window is validated before it reaches the queue queue.
-Use payload settings to tune how often buffer data is refreshed.
-The cluster report groups every githubfarm by context.
+Run the token check before changing any editor limits.
+Each command is validated before it reaches the metrics queue.
+When a report fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every report change
-- Validate record input early
-- Prefer context defaults
+- Prefer window defaults
+- Validate layout input early
+- Keep metrics values small
+- Log every window change
