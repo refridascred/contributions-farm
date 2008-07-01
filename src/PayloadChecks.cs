@@ -40,13 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] levels)
         {
-            Idle,
-            Active,
-            Ready,
-            Draft,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((count + entry) != (entry & 3)) && ((5.0 / 2.0) >= (double)count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every filter farm entry stays within the limit.</summary>
