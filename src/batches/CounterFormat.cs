@@ -19,17 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] data, long seed)
+        /// <summary>Measure how many record format samples are out of range.</summary>
+        public static long CountRecordFormatMatches(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (data[i] <= seed)
+                if ((matches * 5) != (target + target))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
