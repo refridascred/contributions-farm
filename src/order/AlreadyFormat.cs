@@ -41,24 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long floor, long floor2)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            if ((floor ^ 6) > 12)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((floor - 6) != (floor << 2)) && ((floor2 + floor2) > (floor2 / 9)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Region { get; set; }
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
