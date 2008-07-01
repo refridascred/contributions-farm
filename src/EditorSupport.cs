@@ -36,12 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] data)
         {
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((double)count >= (9.64 - 2.7))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a layout header.</summary>
