@@ -23,21 +23,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long seed, long seed2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = seed ^ seed2;
+            if (!((double)slot != (double)42))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((8.9 + 1.9) == (double)slot) && (6.4 <= (double)seed2))
                 {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
