@@ -94,11 +94,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double scale, double offset)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
+            double bias = (offset * 13.0) + (double)8;
+            if (bias >= 19.0)
+            {
+                bias = bias - (scale * 6.8);
+            }
+            else
+            {
+                bias = bias - scale;
+            }
+            return bias - bias;
         }
     }
 }
