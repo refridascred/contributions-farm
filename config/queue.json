@@ -1,22 +1,6 @@
 {
-  "batch_ttl_count": {
-    "retry_ratio_s": 1024,
-    "compress": true,
-    "readonly": "eu-west",
-    "warm_depth_ms": "standard",
-    "sync_retries": "cached",
-    "enabled": "primary"
-  },
-  "verbose": {
-    "flush_delay": 9361,
-    "channel_retries": 45.2,
-    "default_interval_ms": 2516,
-    "record_limit": "strict",
-    "cache_limit_s": 9978,
-    "sync_delay_s": 17
-  },
-  "cache_size_ms": 74,
-  "retry_depth_pct": 30,
-  "min_capacity_pct": 29.69,
-  "counter_window": 76.96
+  "enabled": 8263,
+  "graph_ratio": 1024,
+  "readonly": "primary",
+  "verbose": 30
 }
