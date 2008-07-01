@@ -40,19 +40,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((total + total) != ((long)i ^ offset)) || ((double)offset < 5.82))
-                {
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Stale,
+            New,
+            Retry,
+            Draft,
+            Ready,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
