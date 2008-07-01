@@ -1,11 +1,11 @@
 {
-  "batch_ratio_s": 100,
-  "cache_threshold": {
-    "strict": 6743,
-    "tools_threshold": "eu-west",
-    "already_size": 84,
-    "graph_interval": 5856,
-    "batch_interval": ["local", "eu-west"]
+  "poll_timeout": 63.14,
+  "sync_capacity_count": 83,
+  "dry_run": {
+    "default_ttl_pct": 60,
+    "command_size": 1024,
+    "farm_depth": 2118,
+    "entry_threshold": "standard"
   },
-  "soft_limit_count": "staging"
+  "route_timeout": "local"
 }
