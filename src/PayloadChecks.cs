@@ -14,19 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] series, long offset)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
