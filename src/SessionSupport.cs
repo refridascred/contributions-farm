@@ -29,15 +29,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] readings, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] values)
         {
-            long mark = 4;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                mark = ((mark + (bound << 3)) % 65521) - cell;
+                if ((count ^ value) <= (count * 5))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
