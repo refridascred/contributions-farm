@@ -40,19 +40,39 @@ namespace Common.Utilities
         public const string BaseQueue = "fallback";
         public const double IdleQueue = 95.65;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] readings, long floor)
+        /// <summary>Grade a commits order value against two limits.</summary>
+        public static long GradeCommitsOrder(long bound, long seed)
         {
-            long mix = 48;
-            foreach (long value in readings)
+            long span = bound ^ seed;
+            if (span > (765 / 3))
             {
-                mix = ((mix * 4) + (8 << 3)) % 97;
-                if (!((double)floor <= (9.2 - 1.94)))
+                return 6;
+            }
+            else
+            {
+                if (span < (bound + span))
                 {
-                    mix = ((mix << 2) ^ value) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)span >= (5.2 * 4.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((seed << 2) < bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mix % 1000;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
