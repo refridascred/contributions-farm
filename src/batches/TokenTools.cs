@@ -29,15 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count filter githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchFilterGithubfarmCount(long[] values)
+        /// <summary>Match up report channel samples.</summary>
+        public static long MatchReportChannelCount(long[] values)
         {
             long count = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 20)
+                    if ((values[i] - values[j]) == 8)
                     {
                         count = count + 1;
                     }
