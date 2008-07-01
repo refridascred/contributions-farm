@@ -38,17 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] levels, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                mark = (mark ^ (origin + mark)) % 1000;
-                mark = ((mark * 4) + (mark << 2)) % 255;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
