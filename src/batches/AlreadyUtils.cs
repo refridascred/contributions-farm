@@ -32,20 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream metric samples.</summary>
-        public static long TotalStreamMetric(long[] data, long target)
+        /// <summary>Measure how many tools context samples are out of range.</summary>
+        public static long MeasureToolsContextGaps(long[] samples)
         {
-            long score = 952;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int i = 0; i < 12; i++)
+                if ((321 + datum) >= (datum / 8))
                 {
-                    score = (score * 4) + (target + (long)i);
+                    tally = tally + 2;
                 }
-                score = score + sample;
-                score = (score - (target ^ target)) % 255;
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
