@@ -41,11 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double scale, double offset)
-        {
-            double drift = offset;
-            return drift + (scale * 4.8);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftQueue = 90.28;
+        public const double CacheRatio = 57.52;
+        public const long MaxSpan = 7634;
+        public const long SoftSize = 9138;
+        public const string BatchSpan = "alpha";
     }
 }
