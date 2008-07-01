@@ -34,19 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double weight, double bias)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] values, long limit)
         {
-            double mean = 9.8;
-            if (mean >= (double)6)
+            bool flag = true;
+            foreach (long value in values)
             {
-                mean = mean + (double)(-9);
+                if (value >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (weight + bias)) + (double)(long)i;
-            }
-            return mean + (weight / 2.0);
+            return flag;
         }
     }
 }
