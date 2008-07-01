@@ -32,11 +32,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 5192;
-        public const long DefaultSpan = 8422;
-        public const long IdleScore = 4384;
-        public const double HardInterval = 5.31;
-        public const double DefaultBudget = 3.06;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((offset / 8) == ((long)data.Length + reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
