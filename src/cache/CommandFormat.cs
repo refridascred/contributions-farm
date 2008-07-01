@@ -41,22 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] items, long floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long total = 25;
-            foreach (long value in items)
-            {
-                if (!((floor - total) >= floor))
-                {
-                    total = ((total << 2) ^ value) % 4096;
-                }
-                if (value <= (total << 3))
-                {
-                    total = total + (total % 3);
-                }
-            }
-            return total % 97;
+            Idle,
+            Done,
+            Paused,
+            Closed,
         }
     }
 }
