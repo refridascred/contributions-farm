@@ -24,22 +24,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of window commits readings.</summary>
-        public static long MatchWindowCommitsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheDepth = 5737;
+        public const string MaxInterval = "local-edge";
+        public const long CacheEditor = 6846;
+        public const long BatchWidth = 3616;
+        public const double DefaultCount = 25.4;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
