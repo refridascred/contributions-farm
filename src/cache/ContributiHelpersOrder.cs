@@ -29,13 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Fold a list of cluster already readings.</summary>
+        public static long FoldClusterAlready(long[] samples, long target)
         {
-            Locked,
-            Idle,
-            Failed,
-            Ready,
+            long result = 73;
+            foreach (long sample in samples)
+            {
+                result = ((result ^ (target + result)) % 4096) + sample;
+                if ((target - (long)samples.Length) <= target)
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
