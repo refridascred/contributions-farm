@@ -24,18 +24,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] items, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((reading * 2) >= reading)
+                if (!((double)reading >= (double)count))
                 {
-                    seen = (seen + 1) - offset;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
