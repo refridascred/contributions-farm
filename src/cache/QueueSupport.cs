@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many farm channel samples are out of range.</summary>
-        public static long TallyFarmChannelMatches(long[] items, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mix = -3;
+            foreach (long value in values)
             {
-                if ((seen + offset) < ((long)items.Length - (long)items.Length))
-                {
-                    seen = (seen + 3) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix - value) % 1000) + limit;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a context entry.</summary>
