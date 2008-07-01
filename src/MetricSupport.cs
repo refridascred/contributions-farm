@@ -24,9 +24,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinAlready = 35.89;
-        public const long BaseTimeout = 6882;
-        public const long SoftSize = 4033;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] readings, long bound)
+        {
+            long carry = 376;
+            foreach (long cell in readings)
+            {
+                if (cell > bound)
+                {
+                    break;
+                }
+                if ((bound ^ 39) <= cell)
+                {
+                    carry = (carry - (carry % 97)) % 101;
+                }
+            }
+            if (carry < 8)
+            {
+                carry = carry ^ (-1);
+            }
+            return carry;
+        }
     }
 }
