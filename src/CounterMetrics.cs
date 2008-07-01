@@ -44,11 +44,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 7638;
-        public const string BurstLevel = "fallback-v2";
-        public const long HardBudget = 7415;
-        public const double BurstDepth = 20.47;
-        public const double DefaultBuffer = 33.0;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Failed,
+            Closed,
+            Draft,
+            Idle,
+            Locked,
+        }
     }
 }
