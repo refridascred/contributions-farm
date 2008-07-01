@@ -1,6 +1,10 @@
-id,region,ratio,count
-1,399,edge,edge
-2,877,strict,97.47
-3,791,green,cached
-4,83.51,815,460
-5,600,394,23.87
+id,state,ratio,weight,token
+1,724,598,470,eu-west
+2,27.0,blue,446,901
+3,standard,329,972,strict
+4,28.42,746,726,282
+5,local,82.74,23.12,66.25
+6,cached,973,441,61.91
+7,5.57,21.7,518,853
+8,199,local,36.63,latest
+9,75.21,55.52,eu-west,90.55
