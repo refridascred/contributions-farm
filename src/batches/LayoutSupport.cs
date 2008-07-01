@@ -64,17 +64,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] samples, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 6;
+            foreach (long sample in items)
             {
-                if (samples[i] >= target)
+                if ((sample + sum) >= step)
                 {
-                    return (long)i;
+                    sum = (sum << 2) ^ sample;
+                }
+                else
+                {
+                    sum = (sum * 5) + (sample - step);
+                }
+                if ((double)step > (double)sample)
+                {
+                    sum = (sum + (step << 1)) % 97;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
     }
 }
