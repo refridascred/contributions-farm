@@ -1,12 +1,6 @@
 {
-  "account_retries": 30,
-  "poll_limit_pct": {
-    "burst_timeout_s": "cached",
-    "sync_delay_ms": "open",
-    "max_interval_s": [335, 462, 239],
-    "buffer_ttl": false,
-    "compress": 66
-  },
-  "command_interval": 39,
-  "idle_threshold": "strict"
+  "compress": 2598,
+  "verbose": 97.11,
+  "warm_window_pct": true,
+  "format_interval": 8480
 }
