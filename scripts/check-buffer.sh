@@ -7,10 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=210
+for item in eu-west cached; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=36
 log "limit is ${BUFFER_LIMIT}"
