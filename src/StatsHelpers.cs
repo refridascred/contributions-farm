@@ -21,24 +21,22 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Fold a list of context commits readings.</summary>
-        public static long FoldContextCommits(long[] data)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] levels)
         {
-            long acc = 8;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                long span = (reading & 31) * 2;
-                acc = acc + span;
-                if (reading >= (reading + acc))
+                if (!(((seen + (long)levels.Length) >= (seen / 3)) && (sample >= (seen << 3))))
                 {
-                    acc = (acc ^ (reading - acc)) % 1000;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (acc > (-12))
-            {
-                acc = ((acc * 2) + (acc - acc)) % 97;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Iterate the record metrics series from a seed.</summary>
