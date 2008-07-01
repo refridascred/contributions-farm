@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const double WindowChannel = 98.92;
         public const long MinChannel = 7081;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] samples)
         {
-            Idle,
-            Ready,
-            Draft,
-            New,
-            Paused,
+            long acc = 1;
+            foreach (long reading in samples)
+            {
+                if (((double)acc <= 14.0) && ((acc << 2) > reading))
+                {
+                    acc = acc + (reading - 637);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
