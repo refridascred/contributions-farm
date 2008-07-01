@@ -1,31 +1,51 @@
 # support settings
-batch_ratio_pct: blue
-cache_size:
-  sync_size: 1024
-  base_retries: 60
-  batch_ratio_s: stable
-  base_limit_pct: 1483
-  warm_retries_ms: false
-  strict:
-    retry_limit: 7
-    hard_capacity_ms: edge
-    compress: false
-    base_threshold_ms: 6600
-    report_ttl: blue
-    layout_timeout: 3772
-default_depth: staging
-dry_run: eu-west
-warm_depth_count:
-  soft_limit_ms: 7535
-  flush_threshold_ms: 7320
-  idle_depth: 7951
-  default_interval_pct: edge
-  entry_depth: 1024
-  max_depth_pct: 80
-warm_interval_count:
-  record_depth: 1769
-  command_retries:
-    - 353
-    - 199
-  persist: 3848
-  strict: stable
+metric_delay:
+  window_interval:
+    - local
+    - latest
+    - edge
+    - standard
+  verbose: local
+  cluster_ratio: false
+  account_window: 71.8
+  base_depth_count: stable
+cluster_depth:
+  stats_window: 1024
+  compress:
+    - staging
+    - stable
+    - blue
+  max_depth_ms:
+    batch_ttl_ms: 5246
+    checks_interval:
+      - strict
+      - edge
+      - staging
+      - eu-west
+    idle_retries_s: 47.87
+    max_limit_pct:
+      - 154
+      - 98
+      - 258
+  flush_limit_pct: blue
+  cache_ttl: open
+  sync_capacity: 1024
+audit:
+  poll_delay_s: true
+  poll_size: open
+  verbose: standard
+  metrics_retries:
+    flush_threshold: false
+    retry_ttl_pct: 3107
+    min_threshold_pct: 250
+    context_interval: false
+    default_threshold_count: 250
+contributi_timeout:
+  sync_size_pct: open
+  burst_timeout:
+    - 495
+    - 424
+    - 202
+  poll_delay_s: 60
+base_interval_s: 5333
+retry_retries: 30.72
