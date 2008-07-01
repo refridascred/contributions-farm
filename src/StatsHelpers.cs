@@ -44,19 +44,14 @@ namespace Common.Utilities
         public const double StepRecord = 57.93;
         public const double MinRecord = 97.33;
 
-        /// <summary>Roll a account filter counter forward.</summary>
-        public static long IterateAccountFilter(long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((((long)i - bound) > total) && ((double)bound > (3.39 / 8.0)))
-                {
-                    total = (total ^ ((long)i * 3)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            New,
+            Pending,
+            Synced,
+            Done,
+            Paused,
         }
     }
 }
