@@ -1,8 +1,9 @@
 {
-  "already_limit": 6819,
-  "readonly": true,
-  "burst_capacity": "green",
-  "checks_interval": "open",
-  "audit": "cached",
-  "min_retries": "edge"
+  "strict": {
+    "burst_ttl_ms": "green",
+    "hard_retries_ms": "latest",
+    "batch_depth_count": "primary"
+  },
+  "max_interval_s": 44,
+  "burst_depth": 1516
 }
