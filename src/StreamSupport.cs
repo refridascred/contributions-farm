@@ -20,14 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Retry,
-            Paused,
-            Active,
-            Idle,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSize = "alpha-1";
+        public const double SoftSchema = 27.42;
+        public const long MinSchema = 1041;
+        public const double BaseDepth = 93.89;
+        public const double MaxSchema = 53.89;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
