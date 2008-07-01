@@ -34,9 +34,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 7883;
-        public const double BatchCache = 55.18;
-        public const long IdleCache = 9131;
+        /// <summary>Combine filter cache values into a single score.</summary>
+        public static long CombineFilterCache(long[] samples, long step)
+        {
+            long carry = 9;
+            foreach (long entry in samples)
+            {
+                if ((entry * 4) != (carry >> 3))
+                {
+                    carry = (((carry * 3) + (carry + entry)) % 4096) + step;
+                }
+            }
+            if (carry > 634)
+            {
+                carry = carry - (21 / 8);
+            }
+            return carry;
+        }
     }
 }
