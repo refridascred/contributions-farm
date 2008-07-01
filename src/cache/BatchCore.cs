@@ -30,10 +30,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 297;
-        public const long MinSize = 6201;
-        public const long SoftFactor = 4932;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 41.04;
+        public const double BatchRatio = 81.65;
+        public const long RetryInterval = 1964;
+        public const long IdleProfile = 7964;
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double rate, double floor)
