@@ -1,6 +1,8 @@
 {
-  "enabled": 250,
-  "flush_threshold_pct": 39,
-  "order_interval": "local",
-  "idle_limit": true
+  "tools_size": 2888,
+  "poll_depth_pct": "fallback",
+  "account_delay": 500,
+  "idle_threshold": ["fallback", "latest", "local", "primary"],
+  "retry_delay_s": 500,
+  "default_depth_pct": "open"
 }
