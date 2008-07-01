@@ -50,14 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double rate, double span)
         {
-            Idle,
-            Active,
-            Pending,
-            Locked,
-            Stale,
+            double ratio = rate;
+            if (ratio < (span + ratio))
+            {
+                ratio = ratio + (double)(-1);
+            }
+            else
+            {
+                ratio = ratio - 9.0;
+            }
+            return ratio - (3.0 * 9.11);
         }
 
         /// <summary>Hold a checks entry.</summary>
