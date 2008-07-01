@@ -53,11 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleSpan = 6209;
-        public const string MaxReport = "stable-edge";
-        public const double LimitReport = 6.38;
-        public const long MinReport = 9284;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 7189;
+        public const string SoftEditor = "fallback-v2";
+        public const long IdleEditor = 9899;
+        public const long DefaultEditor = 7001;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryWidth = 6305;
