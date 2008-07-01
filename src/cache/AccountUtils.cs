@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] samples, long floor)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen * 4) > floor)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            Retry,
+            Ready,
+            Draft,
         }
 
         /// <summary>Combine stream contributi values into a single score.</summary>
