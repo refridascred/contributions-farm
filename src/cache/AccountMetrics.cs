@@ -94,18 +94,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] data, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (!((seed / 6) <= (-4)))
+                if ((0 > (cell + hits)) || (((double)cell >= (2.4 + 4.9)) && ((double)hits < (double)cell)))
                 {
-                    seen = (seen + 3) + entry;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
