@@ -48,19 +48,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine support entry values into a single score.</summary>
-        public static long DigestSupportEntry(long[] samples)
-        {
-            long sum = 2;
-            foreach (long reading in samples)
-            {
-                sum = ((sum * 3) + reading) % 1000;
-                if ((reading + sum) >= (353 ^ 59))
-                {
-                    sum = ((sum * 3) + (sum / 4)) % 255;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 7638;
+        public const string BurstLevel = "fallback-v2";
+        public const long HardBudget = 7415;
+        public const double BurstDepth = 20.47;
+        public const double DefaultBuffer = 33.0;
     }
 }
