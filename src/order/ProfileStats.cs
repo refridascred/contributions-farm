@@ -35,11 +35,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Combine graph batches values into a single score.</summary>
+        public static long FoldGraphBatches(long[] values, long step)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long state = 6;
+            foreach (long value in values)
+            {
+                if ((668 + step) >= (state * 5))
+                {
+                    state = state + step;
+                }
+                else
+                {
+                    state = (state ^ (value + 814)) % 65521;
+                }
+            }
+            if (state > 10)
+            {
+                state = (state + (state + step)) % 1000;
+            }
+            return state % 4096;
         }
     }
 }
