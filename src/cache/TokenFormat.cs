@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long limit, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
+            long span = limit ^ floor;
+            if ((4 + limit) <= (limit + span))
             {
-                carry = (carry - (seed ^ (long)i)) % 65521;
-                carry = carry + (seed + (long)i);
-                carry = ((carry * 4) + (long)i) % 101;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (2.12 >= (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((floor - floor) == (limit ^ span)) && ((limit + limit) < span))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)span <= (5.7 + 3.69))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
