@@ -65,18 +65,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph token entries that pass the check.</summary>
-        public static long MeasureGraphTokenHits(long[] data)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((tally ^ tally) <= value)
-                {
-                    tally = tally + 3;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
     }
 }
