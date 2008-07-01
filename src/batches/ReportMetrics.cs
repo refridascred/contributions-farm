@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const long MinScore = 1078;
         public const long LimitLevel = 2126;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] items, long target)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long sum = 73;
+            foreach (long reading in items)
+            {
+                sum = ((sum ^ (sum % 2)) ^ reading) + target;
+            }
+            return sum;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
