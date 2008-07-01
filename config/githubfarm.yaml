@@ -1,6 +1,16 @@
 # githubfarm settings
-soft_size_count: true
-compress: 59
-base_interval_ms: 1131
-sync_interval_s: 12
-sync_capacity_ms: primary
+commits_timeout: false
+batch_retries_s:
+  - stable
+  - local
+stats_ttl:
+  - 446
+  - 64
+base_delay: eu-west
+warm_delay_ms:
+  compress: 250
+  enabled: legacy
+  default_retries_count: true
+  default_window: standard
+  notes_interval: primary
+compress: 9390
