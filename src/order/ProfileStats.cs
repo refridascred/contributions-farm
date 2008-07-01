@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const long MinTimeout = 5740;
         public const string StepSize = "local-1";
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] values, long seed)
+        /// <summary>Combine contributi farm values into a single score.</summary>
+        public static long ScoreContributiFarm(long[] data, long step)
         {
-            long state = 7;
-            foreach (long datum in values)
+            long sum = 975;
+            foreach (long datum in data)
             {
-                if ((double)datum > (double)seed)
+                sum = ((sum - sum) % 65521) ^ datum;
+                if (((step >> 1) != (step + step)) || ((8.5 - 0.23) >= (double)step))
                 {
-                    break;
+                    sum = sum ^ (step << 2);
                 }
-                state = state + 82;
             }
-            return state % 97;
+            if (sum < 90)
+            {
+                sum = (sum ^ sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Describe the graph phase values.</summary>
