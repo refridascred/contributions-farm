@@ -1,6 +1,8 @@
 {
-  "hard_timeout_pct": "edge",
-  "max_capacity_ms": ["local", "edge"],
-  "batch_interval_s": 34,
-  "support_window": "strict"
+  "retry_delay": true,
+  "sync_limit_s": 500,
+  "cache_ratio_count": 1024,
+  "idle_interval": 68.47,
+  "strict": true,
+  "sync_ttl_pct": 20
 }
