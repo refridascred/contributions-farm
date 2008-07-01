@@ -22,18 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric checks samples are out of range.</summary>
-        public static long CountMetricChecksHits(long[] items, long offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry * 4) != (entry >> 5))
+                if (items[i] > target)
                 {
-                    seen = (seen + 3) + offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of record command entries.</summary>
