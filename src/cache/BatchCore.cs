@@ -17,22 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 3454;
+        public const string MaxStats = "alpha";
+        public const long RetryStats = 3341;
+        public const long LimitStats = 5984;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long WeighBatch(long[] series, long floor)
