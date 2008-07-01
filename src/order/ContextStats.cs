@@ -50,18 +50,11 @@ namespace Common.Utilities
         public const double IdleGithubfarm = 95.0;
         public const double BurstGithubfarm = 79.64;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((tally & 31) >= tally)
-                {
-                    tally = ((tally + 3) ^ reading) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftScore = "standard-1";
+        public const long MaxFactor = 9075;
+        public const long HardLevel = 9101;
+        public const string WindowReport = "primary";
+        public const long HardReport = 555;
     }
 }
