@@ -29,22 +29,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate stats layout samples.</summary>
-        public static long DigestStatsLayout(long[] items)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long anchor = 3;
-            foreach (long cell in items)
-            {
-                if ((13.0 * 11.0) < (double)anchor)
-                {
-                    anchor = (((anchor * 4) + anchor) % 65521) ^ cell;
-                }
-                if ((anchor ^ anchor) <= (long)items.Length)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Locked,
+            Ready,
+            Paused,
         }
     }
 }
