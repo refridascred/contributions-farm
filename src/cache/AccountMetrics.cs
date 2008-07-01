@@ -94,12 +94,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long bound)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] values, long offset)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] <= bound)
+                if (values[i] < offset)
                 {
                     return (long)i;
                 }
