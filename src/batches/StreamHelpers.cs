@@ -59,20 +59,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((5.53 * 3.0) == (double)total) && ((double)step >= (2.5 - 9.2)))
-                {
-                    long span = (step - step) ^ 2;
-                    total = ((total * 4) + span) % 97;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 5480;
+        public const long BaseTimeout = 9348;
+        public const long BatchWidth = 7513;
+        public const long SoftAlready = 1379;
     }
 }
