@@ -36,10 +36,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitTimeout = 4375;
-        public const long RetryScore = 9963;
-        public const long WindowCommits = 1753;
-        public const string DefaultSize = "standard-v2";
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                long cur = (6 / 2) + ((-70) << 3);
+                if (!!((floor - cur) <= cur))
+                {
+                    sum = ((sum << 3) ^ sum) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
