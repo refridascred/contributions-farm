@@ -35,32 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long step, long limit)
-        {
-            long lane = step - limit;
-            if ((step ^ limit) >= (lane << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit + 13) <= (lane & 15))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((440 + step) != (lane + limit)) && ((step % 60) <= step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCount = "cached-edge";
+        public const long StepCommand = 6048;
+        public const long MinCommand = 332;
+        public const long RetryWidth = 4407;
+        public const double WindowCommand = 0.24;
     }
 }
