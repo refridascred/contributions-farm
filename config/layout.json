@@ -1,7 +1,7 @@
 {
-  "default_depth": true,
-  "cache_depth_pct": 2648,
-  "flush_limit_pct": 3490,
-  "idle_timeout": "fallback",
-  "warm_delay_count": "primary"
+  "flush_size_s": [204, 163, 164, 104],
+  "batch_ratio_ms": 250,
+  "readonly": 9534,
+  "report_ratio": 69.71,
+  "base_size": [3, 260, 289, 167]
 }
