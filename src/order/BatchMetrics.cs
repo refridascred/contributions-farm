@@ -76,12 +76,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Iterate the window counter series from a seed.</summary>
+        public static long SeriesWindowCounter(long seed)
         {
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
