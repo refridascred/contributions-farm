@@ -12,14 +12,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] samples)
         {
-            Synced,
-            Retry,
-            Idle,
-            Queued,
-            Done,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((count << 2) > (count + item))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
