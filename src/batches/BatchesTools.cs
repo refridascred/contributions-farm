@@ -20,15 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public bool Limit { get; set; }
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of batches metrics entries.</summary>
