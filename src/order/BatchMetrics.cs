@@ -20,11 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            Failed,
+            Done,
+            Paused,
         }
 
         /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
