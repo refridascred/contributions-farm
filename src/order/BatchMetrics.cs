@@ -62,19 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter stats values into a single score.</summary>
-        public static long WeighCounterStats(long[] readings, long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long sum = 234;
-            foreach (long value in readings)
-            {
-                sum = ((sum - (61 - 3)) ^ value) + bound;
-            }
-            if (sum < 1)
-            {
-                sum = ((sum << 3) ^ sum) % 97;
-            }
-            return sum;
+            Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the token status values.</summary>
