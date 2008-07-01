@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            New,
-            Done,
-            Active,
-            Queued,
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)(long)i <= (6.5 - 1.85))
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Project the next cache value.</summary>
