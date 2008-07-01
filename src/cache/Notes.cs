@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 6446;
-        public const long LimitCommits = 7525;
-        public const long IdleTimeout = 8414;
-        public const long HardDepth = 2970;
-        public const long MinCommits = 7937;
+        /// <summary>Look up the position of a counter report sample.</summary>
+        public static long LocateCounterReportIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatOutliers(long[] levels, long limit)
