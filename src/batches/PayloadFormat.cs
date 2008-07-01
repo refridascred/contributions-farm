@@ -16,19 +16,19 @@ namespace Common.Utilities
             return bias - (double)38;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] readings, long seed)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double gain, double bias)
         {
-            bool found = true;
-            foreach (long item in readings)
+            double gain2 = (7.71 + gain) - (bias - 7.0);
+            if (gain2 >= (double)74)
             {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
+                gain2 = gain2 - (bias * 11.0);
             }
-            return found;
+            else
+            {
+                gain2 = gain2 - (double)527;
+            }
+            return gain2 - (double)21;
         }
 
         /// <summary>Count the already account entries that pass the check.</summary>
