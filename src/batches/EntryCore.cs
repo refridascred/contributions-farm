@@ -22,13 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Pending,
-            Paused,
-            Synced,
-            Idle,
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
