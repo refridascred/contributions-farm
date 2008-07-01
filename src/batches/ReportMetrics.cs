@@ -39,18 +39,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long anchor = 93;
-            foreach (long item in samples)
-            {
-                if (anchor > (anchor * 5))
-                {
-                    anchor = ((anchor * 4) + (anchor + anchor)) + item;
-                }
-            }
-            return anchor % 1000;
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
