@@ -39,15 +39,18 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] series, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] data, long offset)
         {
-            long mark = 414;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in data)
             {
-                mark = (mark ^ (limit + mark)) ^ entry;
+                if (!(item < (hits - offset)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Iterate the counter format series from a seed.</summary>
