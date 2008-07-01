@@ -56,14 +56,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Find the first buffer order entry that matches the target.</summary>
+        public static long LookupBufferOrderIndex(long[] items, long seed)
         {
-            Retry,
-            Synced,
-            Done,
-            Ready,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
