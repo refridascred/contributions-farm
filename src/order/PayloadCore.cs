@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long floor, long origin)
         {
-            Queued,
-            Closed,
-            Ready,
-            Idle,
-            Failed,
+            if ((7.4 * 17.0) == (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor - floor) == (8 + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor < origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
