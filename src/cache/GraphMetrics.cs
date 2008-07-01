@@ -44,11 +44,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] samples)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (((double)count <= 3.65) && ((reading - reading) != (539 % 24)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
