@@ -37,11 +37,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 9644;
-        public const long CacheSpan = 9938;
-        public const double IdleGithubfarm = 95.0;
-        public const double BurstGithubfarm = 79.64;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long seed, long step)
+        {
+            if ((seed - step) >= (step << 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step + step) <= (seed - step)) && (step > (seed * 4)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsGaps(long[] series, long seed)
