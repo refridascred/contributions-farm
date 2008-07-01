@@ -19,11 +19,19 @@ namespace Common.Utilities
         public const string HardBuffer = "staging";
         public const string SoftDepth = "local";
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleSize = 197;
-        public const long SoftBudget = 9087;
-        public const long RetryScore = 4451;
-        public const long HardDepth = 7237;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (origin <= (5 - tally))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
