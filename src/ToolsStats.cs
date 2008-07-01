@@ -78,39 +78,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long offset, long target)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long offset2 = offset - target;
-            if (!(offset2 <= (target + offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target > (offset << 3)) && (offset2 >= (target ^ offset)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset > (1.5 * 6.3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target * 2) < (offset2 * 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
