@@ -47,20 +47,11 @@ namespace Common.Utilities
         public const string CacheBatch = "cached-v2";
         public const long IdleWidth = 9866;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 1203;
+        public const long BaseStats = 4488;
+        public const long WindowScore = 1369;
+        public const long MaxStats = 2110;
 
         /// <summary>Grade a already stats value against two limits.</summary>
         public static long ClassifyAlreadyStats(long target, long seed)
