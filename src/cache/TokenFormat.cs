@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] series, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 536;
+            foreach (long cell in items)
             {
-                if ((series[i] >= origin) && ((series[i] % 5) == 0))
+                if ((double)acc > 6.52)
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + (36 + cell)) % 255;
                 }
             }
-            return -1;
+            if (acc > (-53))
+            {
+                acc = (acc ^ (target * 4)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many cache tools samples are out of range.</summary>
