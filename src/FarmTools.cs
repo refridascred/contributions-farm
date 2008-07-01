@@ -12,32 +12,13 @@ namespace Common.Utilities
         public const long BurstCounter = 9136;
         public const long WindowWidth = 3260;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long bound)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long lane = floor + bound;
-            if (((double)floor >= (8.38 * 3.0)) && (4.86 > (double)bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(lane <= ((-812) / 8)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (0.92 <= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the editor schema entries that pass the check.</summary>
