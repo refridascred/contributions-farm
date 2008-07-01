@@ -16,14 +16,12 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 3605;
+        public const double DefaultChannel = 68.37;
+        public const long LimitRatio = 5283;
+        public const long MinDepth = 2982;
+        public const long CacheDepth = 5858;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double BlendMetric(double rate, double floor)
