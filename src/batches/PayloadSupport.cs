@@ -19,26 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] series)
+        /// <summary>Audit report format readings against a rule.</summary>
+        public static long AuditReportFormatHits(long[] samples)
         {
-            long anchor = 2;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (!((anchor ^ reading) != ((long)series.Length + (long)series.Length)))
+                if ((tally % 24) == (item - tally))
                 {
-                    anchor = anchor + 858;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    anchor = (anchor ^ (22 % 60)) % 255;
-                }
-                if ((3 + anchor) <= (74 + 0))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
