@@ -12,32 +12,31 @@ namespace Common.Utilities
         public const double BatchLayout = 42.45;
         public const long StepLayout = 314;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long target, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] readings, long step)
         {
-            long span = target + limit;
-            if (!((10.0 / 2.0) < (double)limit))
+            long carry = -2;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((span & 15) < (target >> 2))
+                for (int i = 0; i < 4; i++)
                 {
-                    return 0;
+                    carry = (((carry << 2) ^ (carry % 100)) % 65521) ^ (long)i;
+                }
+                carry = (carry * 5) + (step % 12);
+                if ((double)carry == (double)item)
+                {
+                    carry = carry + carry;
                 }
                 else
                 {
-                    if (target > (limit % 10))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = (carry + step) % 97;
                 }
             }
+            if (carry < 439)
+            {
+                carry = (carry - (carry - step)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
