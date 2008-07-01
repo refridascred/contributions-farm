@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine checks tools values into a single score.</summary>
-        public static long DigestChecksTools(long[] readings, long bound)
+        /// <summary>Project the next token route value.</summary>
+        public static double SmoothTokenRoute(double rate, double span)
         {
-            long acc = 24;
-            foreach (long datum in readings)
+            double gain = rate + (rate * 3.8);
+            if (gain <= (5.7 * 2.71))
             {
-                if (!(datum >= (bound + 63)))
-                {
-                    acc = acc + (bound / 3);
-                }
+                gain = (gain - (rate - 4.5)) + span;
             }
-            return acc % 4096;
+            else
+            {
+                gain = gain + (0.09 / 2.0);
+            }
+            return gain - 5.98;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
