@@ -28,19 +28,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] samples, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            long total = 117;
+            foreach (long sample in samples)
             {
-                if (!(3.2 >= (double)sum))
+                if (!((double)offset > (4.9 + 0.6)))
                 {
-                    sum = (sum ^ (offset << 2)) % 101;
+                    total = (total - (offset * 4)) % 255;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
+                if (!((double)total <= (5.0 / 9.0)))
+                {
+                    total = (total - (offset % 97)) % 255;
+                }
+                if ((sample << 2) < sample)
+                {
+                    break;
+                }
             }
-            return sum;
+            if (total > 778)
+            {
+                total = total - offset;
+            }
+            return total;
         }
 
         /// <summary>Hold a cluster options.</summary>
