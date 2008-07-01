@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate editor graph readings against a bound.</summary>
-        public static bool CheckEditorGraphRange(long[] values, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] values)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long carry = 483;
+            foreach (long datum in values)
             {
-                if (value < origin)
+                carry = carry + (163 + carry);
+                carry = carry ^ (carry + carry);
+                carry = (carry + (long)values.Length) % 101;
+                if ((double)datum >= (7.0 - 7.96))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (carry > 998)
+            {
+                carry = (carry ^ (carry + 7)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
