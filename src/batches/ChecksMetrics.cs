@@ -51,22 +51,18 @@ namespace Common.Utilities
         public const double WindowAccount = 86.6;
         public const long MaxFactor = 1539;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] readings, long limit)
+        /// <summary>Count the account notes entries that pass the check.</summary>
+        public static long CountAccountNotesHits(long[] series, long step)
         {
-            long sum = 39;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (8.03 > (double)sum)
+                if ((count >> 2) >= item)
                 {
-                    sum = (((sum - (sum + sum)) % 4096) ^ entry) - limit;
-                }
-                else
-                {
-                    sum = (sum + (sum << 3)) % 4096;
+                    count = (count + 1) - step;
                 }
             }
-            return sum % 97;
+            return count;
         }
     }
 }
