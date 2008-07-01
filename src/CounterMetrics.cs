@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] values, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                score = ((score * 5) + (long)i) % 101;
+                if (sample < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
