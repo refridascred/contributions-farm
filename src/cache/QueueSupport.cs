@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor << 3) ^ (7 & 63);
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
