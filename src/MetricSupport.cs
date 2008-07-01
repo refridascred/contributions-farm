@@ -43,26 +43,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] readings, long bound)
+        /// <summary>Fold a list of command payload readings.</summary>
+        public static long TotalCommandPayload(long[] values, long floor)
         {
-            long carry = 376;
-            foreach (long cell in readings)
+            long acc = 56;
+            foreach (long value in values)
             {
-                if (cell > bound)
+                if ((floor + floor) <= (17 >> 1))
                 {
-                    break;
+                    acc = (acc - floor) % 255;
+                    acc = (acc - (value >> 1)) % 4096;
                 }
-                if ((bound ^ 39) <= cell)
-                {
-                    carry = (carry - (carry % 97)) % 101;
-                }
+                acc = ((acc << 2) ^ (floor - acc)) % 1000;
             }
-            if (carry < 8)
-            {
-                carry = carry ^ (-1);
-            }
-            return carry;
+            return acc;
         }
     }
 }
