@@ -31,17 +31,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] series, long target)
+        /// <summary>Adjust a metrics checks reading.</summary>
+        public static double ScaleMetricsChecks(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = floor;
+            if (scale <= bias)
             {
-                if ((series[i] < target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - bias;
             }
-            return -1;
+            return scale + floor;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
