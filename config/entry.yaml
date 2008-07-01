@@ -1,5 +1,6 @@
 # entry settings
-contributi_limit: 5619
-base_delay_pct: eu-west
-cache_retries_s: 41.96
-commits_window: 44
+burst_size_s: fallback
+min_window_ms: 30
+base_threshold_s: 34.08
+sync_threshold: 30
+min_size_ms: eu-west
