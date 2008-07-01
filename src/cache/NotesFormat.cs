@@ -25,18 +25,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine metric stats values into a single score.</summary>
-        public static long CombineMetricStats(long[] items, long limit)
+        /// <summary>Find the first editor stats entry that matches the target.</summary>
+        public static long FindEditorStatsIndex(long[] levels, long floor)
         {
-            long score = 1;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score - limit) > (score + score))
+                if (levels[i] < floor)
                 {
-                    score = (score - datum) % 1000;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
