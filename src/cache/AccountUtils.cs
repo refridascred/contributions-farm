@@ -12,24 +12,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long bound, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] series)
         {
-            if ((double)offset > (8.1 / 8.0))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6.0 + 3.9) < (double)offset)
+                if ((double)seen >= (3.8 - 5.62))
                 {
-                    return 8;
+                    seen = (seen + 3) + value;
                 }
                 else
                 {
-                    return 5;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
