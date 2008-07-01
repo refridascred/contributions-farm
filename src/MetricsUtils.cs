@@ -42,18 +42,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] items, long target)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(target > (entry ^ target)))
+                if (data[i] == bound)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
