@@ -47,15 +47,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] series)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] readings)
         {
-            long state = -1;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                state = ((state * 2) + (item - 16)) % 4096;
+                if ((double)matches == (5.6 * 15.0))
+                {
+                    matches = (matches + 3) + reading;
+                }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
