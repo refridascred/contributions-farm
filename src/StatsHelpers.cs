@@ -38,11 +38,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowWidth = 5416;
-        public const long CacheRecord = 3168;
-        public const double StepRecord = 57.93;
-        public const double MinRecord = 97.33;
+        /// <summary>Iterate the record metrics series from a seed.</summary>
+        public static long StepRecordMetrics(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((16.0 * 7.0) <= (double)mix)
+                {
+                    mix = mix ^ (mix - bound);
+                    mix = ((mix * 5) + (bound - bound)) % 65521;
+                }
+                mix = (mix << 2) ^ 83;
+                if (((long)i + (long)i) == (mix + (long)i))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = (mix * 5) + (bound / 4);
+                    mix = (mix + (bound / 2)) % 1000;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
