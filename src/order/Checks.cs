@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] readings)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + seen) == (seen * 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
