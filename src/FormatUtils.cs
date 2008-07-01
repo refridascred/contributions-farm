@@ -41,12 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            New,
-            Done,
-            Synced,
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the counter kind values.</summary>
