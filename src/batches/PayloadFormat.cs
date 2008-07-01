@@ -29,19 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] data, long target)
+        /// <summary>Count the already account entries that pass the check.</summary>
+        public static long MeasureAlreadyAccountMatches(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (reading <= target)
+                if (2.97 <= (double)item)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
