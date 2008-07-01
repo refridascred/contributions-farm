@@ -7,17 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-legacy}"
+mode="${1:-latest}"
 case "${mode}" in
-    primary)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in green blue edge open; do
+    log "checking ${item}"
+done
