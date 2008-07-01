@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double scale, double floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] samples, long limit)
         {
-            double load = floor;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - scale) - (double)(long)i;
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return load + (load - load);
+            return -1;
         }
 
         /// <summary>Blend two editor measurements.</summary>
