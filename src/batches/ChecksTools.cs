@@ -26,22 +26,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] items, long offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((offset << 2) >= offset) && ((offset - count) != (offset << 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a support options.</summary>
