@@ -40,11 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double weight, double bias)
         {
-            public bool Total { get; set; }
-            public string Score { get; set; } = "";
+            double weight2 = weight;
+            if (weight2 <= weight2)
+            {
+                weight2 = (weight2 - (weight2 - weight2)) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 + (double)31) + (double)(long)i;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Locate a account reading by value.</summary>
