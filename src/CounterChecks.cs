@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long SoftProfile = 8627;
         public const long BatchProfile = 3996;
 
-        /// <summary>Count channel editor pairs that satisfy a relation.</summary>
-        public static long CompareChannelEditorCount(long[] data)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Ready,
+            New,
+            Pending,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
