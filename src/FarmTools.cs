@@ -21,18 +21,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the editor schema entries that pass the check.</summary>
-        public static long MeasureEditorSchemaGaps(long[] samples, long seed)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (seed < (long)samples.Length)
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
+            Stale,
+            Ready,
+            New,
+            Dropped,
+            Idle,
         }
     }
 }
