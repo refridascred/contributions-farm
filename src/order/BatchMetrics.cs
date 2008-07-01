@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] data, long floor)
+        /// <summary>Validate already token readings against a bound.</summary>
+        public static bool GuardAlreadyTokenLimits(long[] series, long limit)
         {
             bool ready = true;
-            foreach (long datum in data)
+            foreach (long cell in series)
             {
-                if (datum >= floor)
+                if (cell > limit)
                 {
                     ready = false;
                     break;
