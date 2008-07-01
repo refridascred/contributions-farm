@@ -16,14 +16,39 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long bound, long bound2)
         {
-            Paused,
-            Done,
-            Dropped,
-            Synced,
-            Draft,
+            long diff = bound ^ bound2;
+            if (((bound ^ diff) <= diff) && (bound2 >= (8 << 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((bound2 ^ bound) <= bound2) || ((double)bound2 > (1.9 + 9.3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound >= (double)diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((741 - bound2) < (bound2 << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
