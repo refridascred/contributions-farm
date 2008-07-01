@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] readings)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long score = 817;
-            foreach (long item in readings)
-            {
-                if (!((score >> 5) < item))
-                {
-                    score = (score + (score >> 3)) % 255;
-                }
-                score = score ^ 2;
-            }
-            return score % 1000;
+            Queued,
+            Ready,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
