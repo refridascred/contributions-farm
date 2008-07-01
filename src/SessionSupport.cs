@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double weight, double offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] samples)
         {
-            double rate = (double)(33 & 255);
-            if (rate > weight)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                rate = rate - (rate + offset);
+                if ((matches % 12) >= (7 / 7))
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            return rate - weight;
+            return matches;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
