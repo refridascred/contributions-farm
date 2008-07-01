@@ -52,13 +52,13 @@ namespace Common.Utilities
         public const string HardWidth = "legacy-edge";
         public const long MaxSchema = 1536;
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            Idle,
+            Closed,
+            New,
+            Pending,
         }
 
         /// <summary>Locate a already reading by value.</summary>
