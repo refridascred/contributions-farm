@@ -45,19 +45,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate cache profile readings against a bound.</summary>
-        public static bool GuardCacheProfileBounds(long[] readings, long limit)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long origin, long seed)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            if ((double)seed > (double)origin)
             {
-                if (sample != limit)
+                return 2;
+            }
+            else
+            {
+                if (16.0 < (double)seed)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed + origin) >= (origin + seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((origin + seed) <= (origin * 4)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
