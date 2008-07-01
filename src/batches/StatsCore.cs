@@ -61,39 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token contributi pair into a bucket.</summary>
-        public static long SortTokenContributi(long seed, long seed2)
-        {
-            if ((double)seed != (double)49)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed2 * 2) > seed2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((169 / 5) != (seed2 + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (double)21)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardScore = 2056;
+        public const long RetrySpan = 4970;
+        public const long LimitLevel = 6691;
+        public const long StepCount = 2340;
+        public const long MinLevel = 2603;
 
         /// <summary>Combine buffer command values into a single score.</summary>
         public static long TallyBufferCommand(long[] levels)
