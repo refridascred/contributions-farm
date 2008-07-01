@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            New,
-            Draft,
-            Retry,
-            Paused,
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Derive the next order metric value from a seed.</summary>
