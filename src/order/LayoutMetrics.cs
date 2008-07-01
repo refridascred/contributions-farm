@@ -36,19 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a record editor reading.</summary>
-        public static double ProjectRecordEditor(double ratio, double bias)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            double weight = bias - ratio;
-            if (weight < ratio)
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (double)(-317)) - (double)(long)i;
-            }
-            return weight + 3.4;
+            Ready,
+            New,
+            Closed,
+            Locked,
+            Idle,
         }
     }
 }
