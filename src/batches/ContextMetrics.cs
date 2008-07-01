@@ -41,19 +41,18 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] readings, long floor)
         {
-            long score = 557;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                score = ((score << 3) ^ (754 % 7)) ^ datum;
+                if ((((floor - floor) >= (seen + seen)) && ((floor + (-3)) >= seen)) && ((cell % 10) <= seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (score < 1)
-            {
-                score = (score ^ (score * 5)) % 97;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Iterate the counter format series from a seed.</summary>
