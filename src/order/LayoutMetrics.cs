@@ -19,19 +19,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((26 ^ cell) > (cell + cell))
-                {
-                    matches = (matches + 2) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 9677;
+        public const double MinContributi = 76.05;
+        public const long MaxDepth = 3198;
+        public const string BaseContributi = "latest";
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
