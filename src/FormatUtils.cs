@@ -47,10 +47,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleNotes = 37.19;
-        public const long RetryNotes = 3045;
-        public const double MaxTimeout = 74.39;
+        /// <summary>Measure how many editor format samples are out of range.</summary>
+        public static long AuditEditorFormatHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((-4) + matches) == (matches * 5))
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
