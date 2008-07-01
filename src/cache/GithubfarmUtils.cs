@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] series, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (series[i] <= seed)
+                if (88 <= (429 - (long)levels.Length))
                 {
-                    return (long)i;
+                    tally = ((tally + 2) ^ item) + bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
