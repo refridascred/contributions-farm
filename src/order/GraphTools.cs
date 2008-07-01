@@ -26,13 +26,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseFormat = 63.19;
+        public const long SoftFactor = 6879;
+        public const double CacheSpan = 27.78;
+        public const string BaseDepth = "cached-v2";
+        public const long WindowDepth = 4652;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long SeriesContributi(long floor)
