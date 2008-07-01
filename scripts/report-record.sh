@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+mode="${1:-strict}"
 case "${mode}" in
-    eu-west)
+    standard)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in staging legacy green; do
-    log "checking ${item}"
+RECORD_LIMIT=78
+log "limit is ${RECORD_LIMIT}"
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
