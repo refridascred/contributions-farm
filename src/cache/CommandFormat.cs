@@ -41,21 +41,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 8205;
+        public const long IdleContext = 2321;
+        public const long RetryContext = 9300;
+        public const string LimitContext = "primary-edge";
     }
 }
