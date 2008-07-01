@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Failed,
-            Paused,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 4111;
+        public const string IdleLevel = "staging-edge";
+        public const long HardBudget = 3268;
 
         /// <summary>Combine tools contributi values into a single score.</summary>
         public static long ScoreToolsContributi(long[] readings)
