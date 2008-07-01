@@ -29,22 +29,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Count batches notes pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesNotesCount(long[] series)
         {
-            long state = 490;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)value <= (4.4 + 19.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = state + 70;
-                }
-                if ((state >> 5) > state)
-                {
-                    state = (state * 5) + (state << 2);
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Accumulate payload samples.</summary>
