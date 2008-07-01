@@ -43,18 +43,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the window contributi entries that pass the check.</summary>
-        public static long MeasureWindowContributiOutliers(long[] items)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!((count + sample) < sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a report options.</summary>
