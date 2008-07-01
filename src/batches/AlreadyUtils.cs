@@ -62,13 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a already header.</summary>
