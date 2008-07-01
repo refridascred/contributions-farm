@@ -39,12 +39,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 6115;
+        public const double SoftFilter = 87.49;
+        public const double RetrySpan = 5.43;
     }
 }
