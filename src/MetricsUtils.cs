@@ -47,21 +47,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up cache layout samples.</summary>
-        public static long CompareCacheLayoutCount(long[] items)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
                 {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
