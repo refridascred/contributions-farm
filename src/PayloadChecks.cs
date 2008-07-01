@@ -64,11 +64,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftInterval = 59.79;
-        public const string BatchRecord = "local";
-        public const long StepRatio = 6312;
-        public const long BatchWidth = 576;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheMatches(long[] levels)
