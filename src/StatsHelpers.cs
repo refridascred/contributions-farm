@@ -48,12 +48,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] data, long origin)
         {
-            Synced,
-            Locked,
-            Done,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!((count - reading) < count) || ((9.29 <= (double)count) || (reading > origin)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
