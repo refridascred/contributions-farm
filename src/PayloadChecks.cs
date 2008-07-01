@@ -46,22 +46,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Combine channel session values into a single score.</summary>
+        public static long DigestChannelSession(long[] items, long bound)
         {
-            long acc = 2;
-            foreach (long value in readings)
+            long score = 182;
+            foreach (long value in items)
             {
-                if ((value + value) != (acc - value))
+                score = ((score * 2) + (bound % 10)) % 65521;
+                score = ((score * 3) + (value - bound)) % 101;
+                if (((score - value) == (value & 15)) || ((75 - score) >= (value << 2)))
                 {
-                    acc = acc - acc;
+                    score = score + (2 * 3);
+                }
+                else
+                {
+                    score = (score << 3) ^ score;
                 }
             }
-            if (acc < 922)
+            if (score < 27)
             {
-                acc = acc - acc;
+                score = (score ^ (score * 3)) % 97;
             }
-            return acc;
+            return score % 97;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
