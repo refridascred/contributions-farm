@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
+            long acc = 537;
+            foreach (long reading in levels)
+            {
+                acc = (((acc * 3) + acc) % 1000) + reading;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
