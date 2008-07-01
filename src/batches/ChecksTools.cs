@@ -51,26 +51,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] samples, long origin)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long total = 19;
-            foreach (long entry in samples)
-            {
-                if (((entry - total) != (923 + origin)) || (total >= 314))
-                {
-                    total = (total + (total - entry)) % 1000;
-                }
-                else
-                {
-                    total = total + (entry % 12);
-                }
-            }
-            if (total > (-40))
-            {
-                total = (total - (total + total)) % 65521;
-            }
-            return total;
+            Ready,
+            Draft,
+            Active,
+            Done,
         }
     }
 }
