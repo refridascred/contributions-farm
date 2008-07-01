@@ -1,8 +1,14 @@
 {
-  "persist": false,
-  "flush_retries_ms": true,
-  "soft_timeout_count": "cached",
-  "verbose": 58,
-  "context_timeout": 8104,
-  "sync_threshold_s": "legacy"
+  "default_retries_ms": 250,
+  "enabled": {
+    "compress": [324, 262],
+    "payload_threshold": ["fallback", "fallback", "strict"],
+    "poll_interval_pct": {
+      "base_threshold_ms": "fallback",
+      "strict": "fallback",
+      "idle_timeout_ms": "local",
+      "flush_delay": 6766
+    }
+  },
+  "hard_size_count": 99
 }
