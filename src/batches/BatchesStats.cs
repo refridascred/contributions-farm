@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitRatio = 6386;
-        public const double DefaultInterval = 69.75;
-        public const long DefaultCommand = 2230;
-        public const long IdleCommand = 5088;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] data, long offset)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double ProjectCommand(double gain, double offset)
