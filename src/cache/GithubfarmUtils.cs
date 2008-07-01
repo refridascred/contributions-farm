@@ -72,14 +72,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double gain, double bias)
         {
-            Ready,
-            Dropped,
-            Queued,
-            Closed,
-            Draft,
+            double scale = (bias + gain) + 10.0;
+            if (scale >= (double)7)
+            {
+                scale = scale - (scale + gain);
+            }
+            else
+            {
+                scale = scale + (scale - gain);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (bias * 13.0)) + (double)(long)i;
+            }
+            return scale - (bias + 2.0);
         }
     }
 }
