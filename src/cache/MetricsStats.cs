@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((score * 4) >= (score + (long)i))
-                {
-                    score = ((score * 4) + score) % 255;
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 1367;
+        public const long BatchNotes = 4569;
+        public const double WindowCount = 3.08;
+        public const long DefaultNotes = 737;
+        public const long BatchScore = 9348;
 
         /// <summary>Check that every filter token entry stays within the limit.</summary>
         public static bool CheckFilterTokenLimits(long[] values, long target)
