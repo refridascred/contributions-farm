@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] series, long target)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] data, long limit)
         {
-            long acc = 83;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target - (-94)) >= cell)
+                if ((data[i] < limit) && ((data[i] % 2) == 0))
                 {
-                    acc = (acc << 3) ^ 11;
+                    return (long)i;
                 }
             }
-            if (acc < 650)
-            {
-                acc = acc + (898 % 5);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a token header.</summary>
