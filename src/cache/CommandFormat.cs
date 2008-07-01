@@ -31,22 +31,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] levels, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (89 <= matches)
+                if (!((12.0 + 3.2) < (double)datum))
                 {
-                    matches = ((matches + 3) + cell) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
