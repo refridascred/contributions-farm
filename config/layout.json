@@ -1,12 +1,6 @@
 {
-  "dry_run": ["standard", "cached", "open", "eu-west"],
-  "base_timeout_ms": {
-    "burst_ratio": ["legacy", "standard", "legacy"],
-    "editor_threshold": 45.69,
-    "compress": [78, 487, 26],
-    "report_size": false,
-    "base_capacity_count": "legacy",
-    "verbose": ["local", "green", "staging"]
-  },
-  "compress": 94
+  "sync_threshold": 35.58,
+  "soft_window_s": [451, 417],
+  "hard_ttl_pct": 23.27,
+  "retry_delay_count": [205, 236, 128, 429]
 }
