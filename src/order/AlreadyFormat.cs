@@ -60,19 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double weight, double span)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            double ratio = weight;
-            if (ratio >= 17.0)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio - (double)8) - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (double)3) + (double)(long)i;
-            }
-            return ratio - weight;
+            return matches;
         }
     }
 }
