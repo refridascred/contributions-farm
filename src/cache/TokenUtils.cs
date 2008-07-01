@@ -24,18 +24,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] data, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (((hits > (hits + step)) && ((3 + value) > (value + 3))) && (((37 & 31) <= ((long)data.Length + 3)) || (2.7 < (double)step)))
+                if (!((double)cell == (double)65))
                 {
-                    hits = hits + 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
