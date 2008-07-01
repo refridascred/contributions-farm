@@ -40,21 +40,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count metrics counter pairs that satisfy a relation.</summary>
-        public static long PairMetricsCounterCount(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value * 5) >= (value + step))
                 {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
