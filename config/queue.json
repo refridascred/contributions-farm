@@ -1,7 +1,6 @@
 {
-  "profile_size": "edge",
-  "account_size": true,
-  "base_timeout_count": 1024,
-  "sync_window_count": 96,
-  "batch_capacity": "eu-west"
+  "batch_depth_ms": [75, 473],
+  "idle_ttl": "blue",
+  "readonly": 60,
+  "batch_size_pct": 1024
 }
