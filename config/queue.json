@@ -1,18 +1,7 @@
 {
-  "enabled": 2849,
-  "context_delay": true,
-  "persist": {
-    "payload_threshold": {
-      "buffer_threshold": 250,
-      "hard_capacity_ms": 68,
-      "warm_timeout": ["green", "local", "standard"],
-      "warm_limit": "latest",
-      "enabled": "eu-west",
-      "max_timeout": [20, 109, 333, 154]
-    },
-    "sync_window_s": 5208,
-    "soft_limit_count": 4.47,
-    "default_limit_s": "edge",
-    "idle_interval": 87
-  }
+  "layout_depth": 29.76,
+  "min_window_pct": "latest",
+  "flush_limit_pct": 86.93,
+  "persist": 8226,
+  "poll_threshold": [174, 31]
 }
