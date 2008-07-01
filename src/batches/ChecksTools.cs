@@ -51,13 +51,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] samples, long origin)
         {
-            Queued,
-            Dropped,
-            New,
-            Active,
+            long total = 19;
+            foreach (long entry in samples)
+            {
+                if (((entry - total) != (923 + origin)) || (total >= 314))
+                {
+                    total = (total + (total - entry)) % 1000;
+                }
+                else
+                {
+                    total = total + (entry % 12);
+                }
+            }
+            if (total > (-40))
+            {
+                total = (total - (total + total)) % 65521;
+            }
+            return total;
         }
     }
 }
