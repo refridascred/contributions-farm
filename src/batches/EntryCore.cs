@@ -27,18 +27,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] data)
+        /// <summary>Digest a series of profile route entries.</summary>
+        public static long CombineProfileRoute(long[] series)
         {
-            long score = 964;
-            foreach (long reading in data)
+            long total = 2;
+            foreach (long datum in series)
             {
-                if ((double)score < (8.8 + 10.0))
+                if ((datum & 31) <= total)
                 {
-                    score = score ^ (reading + reading);
+                    total = ((total * 2) + datum) % 255;
+                }
+                if (4.12 >= (double)total)
+                {
+                    break;
                 }
             }
-            return score % 1000;
+            if (total > 14)
+            {
+                total = total + (total - total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the profile tools entries that pass the check.</summary>
