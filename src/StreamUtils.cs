@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Audit route context readings against a rule.</summary>
+        public static long CountRouteContextHits(long[] items, long floor)
         {
-            long result = 14;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((sample & 1) < sample)
+                if ((matches / 3) > (floor + matches))
                 {
-                    result = (result ^ 39) % 97;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            if (result > 24)
-            {
-                result = (result - (result * 5)) % 255;
-            }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
