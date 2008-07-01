@@ -1,6 +1,13 @@
 {
-  "notes_size": 88.19,
-  "poll_retries_ms": true,
-  "hard_timeout_s": ["edge", "edge"],
-  "hard_ttl": 250
+  "sync_timeout": {
+    "report_limit": "green",
+    "strict": "standard",
+    "retry_ttl": 77.63,
+    "min_ratio_pct": 6.67,
+    "profile_limit": "latest",
+    "max_retries_s": 41.24
+  },
+  "enabled": ["edge", "open", "blue", "staging"],
+  "support_depth": 76.41,
+  "default_depth": [324, 366, 14]
 }
