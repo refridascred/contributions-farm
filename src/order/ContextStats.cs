@@ -33,26 +33,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] values)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long mix = 9;
-            foreach (long reading in values)
-            {
-                if (762 >= (mix + reading))
-                {
-                    mix = (mix ^ (reading >> 3)) % 4096;
-                }
-                else
-                {
-                    mix = (mix * 3) + (reading >> 4);
-                }
-            }
-            if (mix > 56)
-            {
-                mix = (mix - (mix ^ mix)) % 97;
-            }
-            return mix;
+            public double Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Derive the next session order value from a seed.</summary>
