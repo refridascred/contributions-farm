@@ -53,12 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Count the order route entries that pass the check.</summary>
+        public static long TallyOrderRouteMatches(long[] levels, long seed)
         {
-            Idle,
-            Locked,
-            Draft,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((tally << 1) > (tally / 3))
+                {
+                    tally = ((tally + 3) ^ value) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
