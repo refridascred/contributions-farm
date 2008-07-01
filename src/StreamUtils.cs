@@ -37,13 +37,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long floor)
         {
-            Stale,
-            Idle,
-            Paused,
-            Closed,
+            long score = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
