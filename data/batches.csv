@@ -1,7 +1,6 @@
-id,active,token,owner,region
-1,eu-west,cached,54.96,57.43
-2,375,staging,901,892
-3,edge,26.01,eu-west,27.26
-4,50.31,265,569,strict
-5,308,staging,324,826
-6,200,cached,552,fallback
+id,weight,rank,region
+1,11.55,999,565
+2,944,345,15
+3,33.47,604,72.04
+4,784,blue,331
+5,open,latest,eu-west
