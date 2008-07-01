@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] items, long limit)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double weight, double floor)
         {
-            bool found = true;
-            foreach (long datum in items)
+            double gain = (floor * 9.3) / 3.0;
+            if (gain < floor)
             {
-                if (datum < limit)
-                {
-                    found = false;
-                    break;
-                }
+                gain = gain - (weight / 5.0);
             }
-            return found;
+            else
+            {
+                gain = gain - (floor / 2.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (double)885;
         }
 
         /// <summary>Describe the profile level values.</summary>
