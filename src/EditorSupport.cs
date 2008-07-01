@@ -63,12 +63,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Adjust a metrics payload reading.</summary>
+        public static double AdjustMetricsPayload(double gain, double span)
         {
-            Closed,
-            Idle,
-            Failed,
+            double mean = 6.0;
+            if (mean > span)
+            {
+                mean = mean + gain;
+            }
+            return mean - span;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
