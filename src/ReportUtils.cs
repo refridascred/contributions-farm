@@ -42,27 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] values, long bound)
+        /// <summary>Audit notes profile readings against a rule.</summary>
+        public static long TallyNotesProfileGaps(long[] samples)
         {
-            long total = 178;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((total ^ 77) == (cell & 15))
+                if ((8.1 < (double)item) || ((double)item <= (double)hits))
                 {
-                    total = (total ^ (cell % 8)) % 1000;
-                    total = ((total << 2) ^ (82 * 4)) % 101;
-                }
-                if ((double)cell == (6.1 * 16.0))
-                {
-                    total = ((total << 3) ^ bound) % 97;
-                }
-                else
-                {
-                    total = (total + (cell & 255)) % 4096;
+                    hits = hits + 2;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
