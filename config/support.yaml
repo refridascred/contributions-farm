@@ -1,6 +1,14 @@
 # support settings
-persist: 9237
-max_delay_pct: 42.28
-max_delay_count: fallback
-dry_run: 8638
-token_retries: true
+hard_timeout:
+  - blue
+  - primary
+  - legacy
+persist: false
+max_capacity_s:
+  hard_size: 33.64
+  strict: 64.23
+  hard_retries_count: 32.69
+  readonly: 43
+verbose: standard
+dry_run: true
+max_size_ms: 41.28
