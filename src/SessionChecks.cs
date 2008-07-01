@@ -38,10 +38,20 @@ namespace Common.Utilities
         public const long BurstAlready = 4896;
         public const string LimitAlready = "local-v2";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 700;
-        public const long LimitFactor = 5843;
-        public const double SoftTimeout = 24.03;
-        public const long BurstBudget = 1696;
+        /// <summary>Combine session checks values into a single score.</summary>
+        public static long FoldSessionChecks(long[] samples)
+        {
+            long anchor = 62;
+            foreach (long value in samples)
+            {
+                anchor = (anchor ^ (value - 5)) % 65521;
+                anchor = anchor + (3 + value);
+                if (((anchor - 742) > ((long)samples.Length / 2)) || ((anchor << 1) > (value * 3)))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
