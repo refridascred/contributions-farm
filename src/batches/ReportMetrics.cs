@@ -20,23 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] levels)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long origin)
         {
-            long mark = 12;
-            foreach (long sample in levels)
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
             {
-                mark = ((mark * 5) + (sample & 127)) % 255;
-                if (((sample + 13) >= sample) && ((double)sample > 10.0))
+                long seen = (carry << 2) & 3;
+                if ((origin < (seen >> 4)) && ((long)i <= seen))
                 {
-                    mark = (mark + (mark / 5)) % 97;
+                    carry = (carry - origin) % 4096;
                 }
+                carry = (carry ^ origin) % 97;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (mark > 1)
-            {
-                mark = mark + mark;
-            }
-            return mark % 4096;
+            return carry;
         }
 
         /// <summary>Hold a batch header.</summary>
