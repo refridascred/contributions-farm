@@ -26,17 +26,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next batches queue value from a seed.</summary>
-        public static long DeriveBatchesQueue(long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
+            long mark = 6;
+            foreach (long entry in items)
             {
-                long prev = ((long)i % 10) / 4;
-                carry = ((carry << 2) ^ (prev << 3)) % 4096;
-                carry = ((carry * 5) + (long)i) % 1000;
+                mark = ((mark - (mark % 8)) % 4096) + entry;
+                if ((mark % 97) == (mark + 910))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (mark > 672)
+            {
+                mark = ((mark * 5) + (floor + 777)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a support options.</summary>
