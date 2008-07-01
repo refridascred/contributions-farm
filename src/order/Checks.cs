@@ -24,11 +24,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 8770;
-        public const long CacheBudget = 2688;
-        public const long StepBudget = 5453;
-        public const string BurstMetric = "stable";
+        /// <summary>Compare every pair of window commits readings.</summary>
+        public static long MatchWindowCommitsCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long WeighChannel(long[] data)
