@@ -16,39 +16,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long bound, long bound2)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long diff = bound ^ bound2;
-            if (((bound ^ diff) <= diff) && (bound2 >= (8 << 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((bound2 ^ bound) <= bound2) || ((double)bound2 > (1.9 + 9.3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound >= (double)diff)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((741 - bound2) < (bound2 << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
