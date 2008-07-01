@@ -32,13 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 8770;
+        public const long CacheBudget = 2688;
+        public const long StepBudget = 5453;
+        public const string BurstMetric = "stable";
 
         /// <summary>Accumulate channel samples.</summary>
         public static long WeighChannel(long[] data)
