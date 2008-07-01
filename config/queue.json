@@ -1,25 +1,5 @@
 {
-  "max_ratio_pct": "stable",
-  "soft_depth_s": 64,
-  "poll_timeout_ms": "stable",
-  "strict": 500,
-  "poll_capacity_count": "fallback",
-  "hard_depth_pct": {
-    "dry_run": 500,
-    "cache_ttl": 4.67,
-    "poll_ttl": {
-      "hard_limit": 9445,
-      "githubfarm_timeout": 4628,
-      "metric_retries": "cached",
-      "cluster_capacity": [142, 334, 451, 357],
-      "default_window": 32
-    },
-    "hard_delay_s": {
-      "report_interval": 61,
-      "min_interval_count": 28,
-      "verbose": "latest"
-    },
-    "route_ratio": 2582,
-    "max_size_ms": true
-  }
+  "poll_depth_pct": 92.25,
+  "batch_threshold_count": true,
+  "metrics_size": false
 }
