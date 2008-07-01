@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 4204;
-        public const long RetryBuffer = 3789;
-        public const double BatchDepth = 18.58;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = (state ^ (seed >> 4)) ^ (long)i2;
+                }
+                long bound = state;
+                if ((bound % 3) >= (seed + (long)i))
+                {
+                    bound = (bound - ((-34) - bound)) % 255;
+                    state = (state ^ (state * 2)) % 101;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Project the next stats metric value.</summary>
         public static double AdjustStatsMetric(double scale, double floor)
