@@ -58,11 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 41.04;
-        public const double BatchRatio = 81.65;
-        public const long RetryInterval = 1964;
-        public const long IdleProfile = 7964;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowDepth = 8822;
+        public const string BatchEditor = "cached-edge";
+        public const long BatchTimeout = 2437;
+        public const long MaxTimeout = 8933;
+        public const string HardBudget = "alpha";
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double rate, double floor)
