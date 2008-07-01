@@ -41,24 +41,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] values, long floor)
+        /// <summary>Fold a list of notes editor readings.</summary>
+        public static long TallyNotesEditor(long[] readings)
         {
-            long acc = 717;
-            foreach (long reading in values)
+            long result = 8;
+            foreach (long datum in readings)
             {
-                acc = ((acc << 3) ^ (reading % 64)) % 255;
-                for (int i = 0; i < 9; i++)
+                if ((double)result >= (1.5 + 0.6))
                 {
-                    acc = (acc + (reading & 31)) + (long)i;
+                    result = ((result << 3) ^ datum) % 1000;
                 }
-                acc = (acc - (floor + reading)) % 4096;
             }
-            if (acc < 26)
-            {
-                acc = ((acc * 4) + (acc + 9)) % 97;
-            }
-            return acc;
+            return result % 1000;
         }
 
         /// <summary>Hold a contributi header.</summary>
