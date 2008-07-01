@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] levels, long target)
-        {
-            long total = 46;
-            foreach (long cell in levels)
-            {
-                if ((cell * 5) != (total + (-1)))
-                {
-                    total = (total ^ total) + target;
-                }
-                else
-                {
-                    total = total + (27 << 3);
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSession = "alpha-edge";
+        public const long BurstSession = 9034;
+        public const string CacheInterval = "fallback-v2";
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long SeriesRecord(long limit)
