@@ -64,32 +64,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long floor, long target)
-        {
-            if ((target & 31) <= target)
-            {
-                return 8;
-            }
-            else
-            {
-                if (7.22 > (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor < (floor / 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftInterval = 59.79;
+        public const string BatchRecord = "local";
+        public const long StepRatio = 6312;
+        public const long BatchWidth = 576;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheMatches(long[] levels)
