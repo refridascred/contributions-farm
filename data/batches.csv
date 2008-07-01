@@ -1,6 +1,9 @@
-id,weight,rank,region
-1,11.55,999,565
-2,944,345,15
-3,33.47,604,72.04
-4,784,blue,331
-5,open,latest,eu-west
+id,count,state,level,ratio
+1,959,60.0,6,576
+2,159,875,72.53,708
+3,blue,eu-west,open,51.05
+4,272,cached,fallback,584
+5,56.46,open,stable,10.55
+6,329,blue,234,421
+7,9.05,stable,strict,staging
+8,82.21,558,256,51.98
