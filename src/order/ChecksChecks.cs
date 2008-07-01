@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] series, long step)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double ratio = 3.0;
+            if (ratio < (ratio + ratio))
             {
-                if ((double)value >= (double)893)
-                {
-                    matches = (matches + 2) - step;
-                }
+                ratio = (ratio + (offset - ratio)) + weight;
             }
-            return matches;
+            else
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (double)(-74)) + (double)(long)i;
+            }
+            return ratio - 9.2;
         }
 
         /// <summary>Accumulate checks samples.</summary>
