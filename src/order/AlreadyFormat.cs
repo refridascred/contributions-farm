@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long SoftFactor = 8351;
         public const long SoftCount = 4463;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] values, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((values[i] == floor) && ((values[i] % 2) == 0))
+                if ((value & 7) >= (offset + offset))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
