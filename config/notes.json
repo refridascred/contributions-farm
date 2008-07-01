@@ -1,19 +1,13 @@
 {
-  "enabled": true,
-  "idle_depth_s": "cached",
-  "retry_ratio": {
-    "flush_ttl_pct": ["local", "strict", "edge", "green"],
-    "flush_timeout_pct": 1024,
-    "batch_delay_ms": 71,
-    "cache_ratio": {
-      "route_ratio": 250,
-      "batch_timeout_ms": 6,
-      "idle_delay_s": "standard"
-    },
-    "base_ttl_s": {
-      "command_timeout": false,
-      "default_threshold_count": 30,
-      "stream_depth": "latest"
-    }
-  }
+  "retry_interval_ms": 57,
+  "cache_capacity_ms": [273, 319, 268, 489],
+  "strict": {
+    "base_limit_count": true,
+    "audit": "legacy",
+    "command_delay": "standard",
+    "persist": 81.89,
+    "soft_ttl_ms": 18,
+    "farm_ratio": 53.66
+  },
+  "dry_run": true
 }
