@@ -18,14 +18,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long target)
         {
-            Retry,
-            Dropped,
-            Pending,
-            Active,
-            Closed,
+            long mix = target;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix << 3) ^ (mix + mix)) % 65521;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
