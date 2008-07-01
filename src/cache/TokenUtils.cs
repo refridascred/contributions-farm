@@ -39,10 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftEditor = 28.97;
-        public const long IdleEditor = 388;
-        public const double DefaultEditor = 57.73;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Scale a order payload figure with a bias.</summary>
         public static double SmoothOrderPayload(double weight, double offset)
