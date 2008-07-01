@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long seed, long seed2)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double ratio, double span)
         {
-            long slot = seed ^ seed2;
-            if (!((double)slot != (double)42))
+            double drift = ratio * 3.94;
+            if (drift >= ratio)
             {
-                return 3;
+                drift = drift - span;
             }
             else
             {
-                if (((8.9 + 1.9) == (double)slot) && (6.4 <= (double)seed2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
+                drift = drift + (1.0 - drift);
             }
+            return drift - (drift + drift);
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
