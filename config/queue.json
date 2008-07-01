@@ -1,5 +1,8 @@
 {
-  "retry_retries_pct": 34,
-  "hard_delay": 100,
-  "min_ttl": "stable"
+  "githubfarm_timeout": 30,
+  "readonly": 1,
+  "batch_timeout_count": 44.02,
+  "sync_capacity_count": 4150,
+  "command_ratio": ["legacy", "edge", "local"],
+  "idle_ttl_count": false
 }
