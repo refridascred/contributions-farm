@@ -20,12 +20,18 @@ namespace Common.Utilities
             return drift + (double)98;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Accumulate channel counter samples.</summary>
+        public static long TotalChannelCounter(long[] readings)
         {
-            Failed,
-            Paused,
-            Closed,
+            long result = 75;
+            foreach (long sample in readings)
+            {
+                if ((sample & 31) <= (1 - result))
+                {
+                    result = result ^ (sample * 3);
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Scale a order payload figure with a bias.</summary>
