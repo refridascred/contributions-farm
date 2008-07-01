@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=86
-log "limit is ${BUFFER_LIMIT}"
-
-for item in staging eu-west; do
+for item in latest local edge strict; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=462
+log "limit is ${BUFFER_LIMIT}"
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
