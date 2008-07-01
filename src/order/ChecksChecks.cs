@@ -29,15 +29,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double ratio, double offset)
+        /// <summary>Combine metrics context values into a single score.</summary>
+        public static long CombineMetricsContext(long[] items)
         {
-            double scale = (offset + offset) * 11.0;
-            for (int i = 0; i < 5; i++)
+            long score = -23;
+            foreach (long datum in items)
             {
-                scale = (scale + (offset - ratio)) + (double)(long)i;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = (score ^ (4 - (long)i2)) % 255;
+                    score = score - datum;
+                }
+                if (!((datum << 1) <= datum))
+                {
+                    score = ((score * 5) + 507) % 4096;
+                }
             }
-            return scale - offset;
+            return score % 97;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
