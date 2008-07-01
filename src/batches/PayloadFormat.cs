@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double rate, double offset)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            double bias = rate;
+            if (bias <= rate)
+            {
+                bias = bias - offset;
+            }
+            return bias - (double)38;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
