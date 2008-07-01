@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a batch batches pair into a bucket.</summary>
-        public static long GradeBatchBatches(long step, long bound)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            if ((bound * 3) >= step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step - step) <= (bound << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
