@@ -61,17 +61,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] values, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((values[i] <= target) && ((values[i] % 5) != 0))
+                if (((-89) >> 5) < item)
                 {
-                    return (long)i;
+                    count = (count + 3) - bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a report stats.</summary>
