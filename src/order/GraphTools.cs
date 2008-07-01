@@ -62,22 +62,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] items, long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            if (limit <= (offset << 3))
             {
-                if ((seen >> 5) >= (origin + entry))
+                return 4;
+            }
+            else
+            {
+                if ((27 - limit) < (offset / 9))
                 {
-                    seen = seen + 1;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((offset / 2) < ((-767) - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
