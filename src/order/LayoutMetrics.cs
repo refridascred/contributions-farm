@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next token route value.</summary>
-        public static double SmoothTokenRoute(double rate, double span)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] levels, long origin)
         {
-            double gain = rate + (rate * 3.8);
-            if (gain <= (5.7 * 2.71))
+            bool valid = true;
+            foreach (long item in levels)
             {
-                gain = (gain - (rate - 4.5)) + span;
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (0.09 / 2.0);
-            }
-            return gain - 5.98;
+            return valid;
         }
 
         /// <summary>Combine queue editor values into a single score.</summary>
