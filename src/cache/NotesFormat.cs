@@ -13,19 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next editor counter value from a seed.</summary>
-        public static long SeriesEditorCounter(long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((carry + 2) <= (carry ^ origin))
+                if (item < seed)
                 {
-                    carry = carry - (origin ^ carry);
+                    valid = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
