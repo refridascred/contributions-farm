@@ -23,15 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout command value.</summary>
-        public static double ProjectLayoutCommand(double scale, double bias)
+        /// <summary>Derive the next checks already value from a seed.</summary>
+        public static long SeriesChecksAlready(long offset)
         {
-            double rate = (bias / 5.0) + (scale / 8.0);
-            if (rate > (double)(-8))
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                rate = rate - (double)6;
+                sum = ((sum << 2) ^ (offset / 6)) % 255;
+                sum = sum ^ (477 - offset);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return rate + scale;
+            return sum;
         }
 
         /// <summary>Hold a layout info.</summary>
