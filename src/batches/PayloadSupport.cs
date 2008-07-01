@@ -38,16 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] data, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                state = (state - (state % 16)) % 65521;
-                state = ((state * 3) + (long)i) % 4093;
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
     }
 }
