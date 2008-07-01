@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Measure how many format checks samples are out of range.</summary>
+        public static long AuditFormatChecksOutliers(long[] series, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                sum = sum - (sum / 4);
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (((double)value > (17.0 + 5.5)) && (((84 % 12) > origin) || ((origin >> 1) != (count - value))))
+                {
+                    count = count + 3;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Scale a batch githubfarm figure with a bias.</summary>
