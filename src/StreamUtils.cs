@@ -40,15 +40,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
