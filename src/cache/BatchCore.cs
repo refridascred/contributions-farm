@@ -15,19 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double weight, double offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long floor)
         {
-            double mean = offset;
-            if (mean < offset)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                mean = (mean - offset) - weight;
+                sum = ((sum << 3) ^ ((long)i & 1)) % 65521;
+                sum = (sum + (sum + floor)) % 97;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (offset + 2.0)) - (double)(long)i;
-            }
-            return mean - (mean + mean);
+            return sum;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
