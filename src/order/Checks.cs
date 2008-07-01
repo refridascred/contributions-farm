@@ -41,19 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] data)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long carry = 378;
-            foreach (long item in data)
-            {
-                carry = (carry - (carry + (-442))) - item;
-                if ((-200) > carry)
-                {
-                    break;
-                }
-            }
-            return carry;
+            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
