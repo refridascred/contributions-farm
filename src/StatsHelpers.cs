@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long IdleLevel = 2586;
         public const long CacheWidth = 9734;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 9849;
-        public const long BurstTools = 2610;
-        public const long DefaultTools = 506;
-        public const long BaseTools = 4922;
-        public const long StepSpan = 1482;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public string Size { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
