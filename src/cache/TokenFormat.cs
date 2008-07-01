@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a order editor reading by value.</summary>
-        public static long SeekOrderEditorIndex(long[] items, long offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the schema class values.</summary>
