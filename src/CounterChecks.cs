@@ -54,17 +54,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] data, long target)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Active,
+            Locked,
+            Ready,
+            Draft,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
