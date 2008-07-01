@@ -29,21 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of commits session readings.</summary>
-        public static long PairCommitsSessionCount(long[] series)
+        /// <summary>Iterate the tools counter series from a seed.</summary>
+        public static long IterateToolsCounter(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (result > (long)i)
                 {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result + (target << 2)) % 101;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
     }
 }
