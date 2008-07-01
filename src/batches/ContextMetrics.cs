@@ -16,14 +16,18 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] data, long target)
         {
-            Failed,
-            Locked,
-            Idle,
-            Queued,
-            Closed,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((7 % 5) < (target ^ target))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
