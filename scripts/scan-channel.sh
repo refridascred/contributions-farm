@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest open edge; do
+for item in standard latest; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=114
+log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
