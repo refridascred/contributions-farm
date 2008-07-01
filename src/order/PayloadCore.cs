@@ -27,13 +27,19 @@ namespace Common.Utilities
         public const long BaseRatio = 1139;
         public const long CacheWidth = 7435;
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] data, long offset)
         {
-            public double Token { get; set; }
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
