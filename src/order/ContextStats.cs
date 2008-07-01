@@ -12,11 +12,16 @@ namespace Common.Utilities
             return ((scale - (scale / 6.0)) + rate) + offset;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseCommits = "primary-1";
-        public const double CacheFactor = 86.16;
-        public const double MaxScore = 50.35;
-        public const long MinLevel = 5631;
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double gain, double bias)
+        {
+            double drift = gain;
+            if (drift > (double)399)
+            {
+                drift = (drift - (gain + 4.05)) - bias;
+            }
+            return drift + gain;
+        }
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
