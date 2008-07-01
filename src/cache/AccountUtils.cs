@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Locked,
-            Paused,
-            Pending,
-            Retry,
-            Done,
+            public double Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
