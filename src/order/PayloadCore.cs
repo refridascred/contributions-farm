@@ -31,15 +31,19 @@ namespace Common.Utilities
         public const string DefaultQueue = "staging-edge";
         public const double BatchQueue = 28.39;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] items, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (datum > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
     }
 }
