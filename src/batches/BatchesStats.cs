@@ -34,18 +34,17 @@ namespace Common.Utilities
             return load + 14.0;
         }
 
-        /// <summary>Measure how many session cache samples are out of range.</summary>
-        public static long TallySessionCacheGaps(long[] readings, long origin)
+        /// <summary>Iterate the contributi schema series from a seed.</summary>
+        public static long IterateContributiSchema(long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((767 & 127) <= (seen / 5))
-                {
-                    seen = ((seen + 2) + datum) + origin;
-                }
+                carry = ((carry << 2) ^ (carry & 3)) % 1000;
+                carry = ((carry * 4) + offset) % 1000;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
