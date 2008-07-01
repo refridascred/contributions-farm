@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
-            public long Region { get; set; }
+            long mix = 65;
+            foreach (long value in items)
+            {
+                mix = mix ^ (value * 3);
+                if ((double)mix == (double)value)
+                {
+                    mix = mix ^ (value + 9);
+                }
+            }
+            if (mix < 5)
+            {
+                mix = mix + (mix ^ mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
