@@ -13,13 +13,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinSize = 4157;
+        public const long IdleRecord = 1067;
+        public const long RetryInterval = 9123;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long StepPayload(long origin)
