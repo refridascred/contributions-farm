@@ -48,26 +48,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] data, long offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] samples, long floor)
         {
-            long anchor = 1;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum >> 2) >= (datum << 3))
+                if (samples[i] <= floor)
                 {
-                    anchor = ((anchor * 2) + (offset + offset)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (datum << 1)) % 4096;
+                    return (long)i;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = ((anchor << 3) ^ (long)data.Length) % 255;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
