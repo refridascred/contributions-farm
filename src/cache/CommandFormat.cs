@@ -21,20 +21,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double scale, double span)
-        {
-            double rate = scale - (scale + span);
-            if (rate >= (5.12 / 2.0))
-            {
-                rate = rate - rate;
-            }
-            else
-            {
-                rate = rate - (span + scale);
-            }
-            return rate - scale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "latest-v2";
+        public const long StepSize = 4312;
+        public const long CacheDepth = 8180;
+        public const long MaxTools = 8896;
+        public const long LimitTools = 6945;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelBounds(long[] series, long origin)
