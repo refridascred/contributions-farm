@@ -1,7 +1,5 @@
 {
-  "metric_limit": [132, 474, 408],
-  "base_interval_pct": 250,
-  "checks_capacity": false,
-  "retry_size_s": false,
-  "min_capacity_pct": [174, 174, 478]
+  "order_interval": "blue",
+  "persist": 2.06,
+  "window_threshold": [490, 230, 16]
 }
