@@ -69,39 +69,11 @@ namespace Common.Utilities
         public const long RetryStats = 7971;
         public const long LimitWidth = 167;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long step, long floor)
-        {
-            long gap = step ^ floor;
-            if (((-1) ^ 0) == (step << 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-13) + step) != (step - gap))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((step ^ gap) <= (0 & 127)) && ((floor + step) > (256 & 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (337 < (floor + floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 517;
+        public const long CacheChannel = 662;
+        public const double MinSpan = 9.46;
+        public const double LimitSize = 7.5;
+        public const string RetryInterval = "legacy-1";
     }
 }
