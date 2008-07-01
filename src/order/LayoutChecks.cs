@@ -56,11 +56,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Count format contributi pairs that satisfy a relation.</summary>
