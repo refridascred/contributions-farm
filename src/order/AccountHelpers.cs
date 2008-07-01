@@ -94,24 +94,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long step, long limit)
-        {
-            if (!((double)limit > (7.53 * 8.69)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit & 15) <= (limit ^ limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchSpan = "legacy";
+        public const long CacheCounter = 1514;
+        public const long RetryCounter = 2014;
+        public const string BatchInterval = "alpha-edge";
+        public const double CacheWidth = 4.79;
     }
 }
