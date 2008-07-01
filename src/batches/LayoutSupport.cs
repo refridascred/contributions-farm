@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Audit contributi githubfarm readings against a rule.</summary>
+        public static long MeasureContributiGithubfarmGaps(long[] series)
         {
-            public long Label { get; set; }
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!(((hits * 2) == (6 ^ item)) && ((1 >> 5) < hits)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
