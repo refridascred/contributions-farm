@@ -28,15 +28,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double scale, double offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] samples, long step)
         {
-            double ratio = offset;
-            if (ratio <= 3.6)
+            bool found = true;
+            foreach (long value in samples)
             {
-                ratio = ratio - (scale + 3.7);
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio - (double)(-582);
+            return found;
         }
     }
 }
