@@ -1,6 +1,7 @@
 {
-  "flush_limit_count": "standard",
-  "cache_depth": 2486,
-  "verbose": 32.99,
-  "command_limit": ["fallback", "staging"]
+  "audit": [118, 358, 254],
+  "sync_depth_ms": 48.58,
+  "verbose": 30,
+  "cache_limit": 3281,
+  "min_size_pct": true
 }
