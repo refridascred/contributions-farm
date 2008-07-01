@@ -1,12 +1,11 @@
 {
-  "default_timeout_pct": [359, 281, 414],
-  "burst_window_ms": "local",
-  "verbose": [220, 258, 115],
-  "hard_limit_s": "eu-west",
-  "stats_window": {
-    "tools_window": false,
-    "burst_delay_s": 8631,
-    "default_ratio_pct": [96, 408],
-    "readonly": 21.01
-  }
+  "notes_interval": "primary",
+  "token_retries": 4327,
+  "filter_threshold": 6253,
+  "persist": {
+    "warm_size": true,
+    "commits_limit": false,
+    "max_window": "edge"
+  },
+  "format_retries": "fallback"
 }
