@@ -51,21 +51,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cluster batch readings.</summary>
-        public static long MatchClusterBatchCount(long[] levels)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long origin, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (1.67 < (double)offset)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((offset + 51) > offset)
                 {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
     }
 }
