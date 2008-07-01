@@ -1,37 +1,11 @@
 # support settings
-flush_timeout_s:
-  - 341
-  - 170
-support_ratio: 2247
-contributi_delay: 2856
-burst_depth_count:
-  metric_threshold:
-    - cached
-    - local
-    - latest
-    - cached
-  channel_threshold: legacy
-  compress: true
-  warm_interval_pct:
-    support_interval:
-      - 358
-      - 462
-      - 158
-    base_delay: 87.54
-    farm_ttl: false
-    soft_timeout: true
-    payload_ttl:
-      - strict
-      - eu-west
-    audit: 2395
-  editor_ratio: 12.27
-  poll_depth:
-    token_size:
-      - primary
-      - legacy
-      - strict
-    hard_ttl: true
-    cache_interval_pct: 6217
-    hard_window_ms: 90.78
-    readonly: 91.04
-max_window_count: 9650
+soft_retries: 87.18
+commits_ratio:
+  hard_ratio_ms: 9909
+  enabled: green
+  max_capacity_ms: 81.29
+  retry_limit: true
+window_ttl:
+  - 88
+  - 329
+profile_size: cached
