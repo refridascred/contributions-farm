@@ -37,13 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Ready,
-            Retry,
-            Synced,
-            Pending,
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the already phase values.</summary>
