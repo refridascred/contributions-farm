@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate filter batches samples.</summary>
-        public static long ScoreFilterBatches(long[] readings, long target)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] series, long floor)
         {
-            long mark = 35;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark + reading) % 97;
-                mark = (mark << 3) ^ (mark & 15);
-                if ((reading + reading) > (28 % 8))
+                if (series[i] <= floor)
                 {
-                    mark = ((mark * 2) + (mark + target)) % 255;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (288 / 2);
+                    return (long)i;
                 }
             }
-            if (mark < 523)
-            {
-                mark = ((mark << 3) ^ ((-124) >> 5)) % 4096;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
