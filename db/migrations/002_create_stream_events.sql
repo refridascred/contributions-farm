@@ -2,9 +2,12 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    ratio REAL,
+    score REAL NOT NULL DEFAULT 0,
     owner TEXT NOT NULL,
-    level INTEGER
+    token TEXT,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_ratio ON stream_events (ratio);
+CREATE INDEX IF NOT EXISTS idx_stream_events_label ON stream_events (label);
+
+INSERT INTO stream_events (state, score, owner, token, label) VALUES ('staging', 86.87, 'green', 'legacy', 'strict');
