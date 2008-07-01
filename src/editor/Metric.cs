@@ -22,17 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first session layout entry that matches the target.</summary>
-        public static long LocateSessionLayoutIndex(long[] series, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((series[i] <= target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
