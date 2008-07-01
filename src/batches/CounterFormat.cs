@@ -20,15 +20,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] readings)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long total = -875;
-            foreach (long sample in readings)
-            {
-                total = (total - (sample + 3)) % 97;
-            }
-            return total % 1000;
+            Idle,
+            Pending,
+            New,
+            Synced,
+            Done,
         }
     }
 }
