@@ -51,19 +51,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double weight, double floor)
+        /// <summary>Count the support buffer entries that pass the check.</summary>
+        public static long TallySupportBufferGaps(long[] values)
         {
-            double load = (double)(77 & 63);
-            if (load > (double)991)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                load = load + floor;
+                if (!(matches >= datum))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load - (weight / 6.0);
+            return matches;
         }
 
         /// <summary>Accumulate context samples.</summary>
