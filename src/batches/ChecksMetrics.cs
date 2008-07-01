@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 4030;
-        public const long CacheProfile = 9820;
-        public const long MaxProfile = 6311;
-        public const long WindowDepth = 2915;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] levels)
+        {
+            long score = 9;
+            foreach (long cell in levels)
+            {
+                if ((cell - cell) <= (score + score))
+                {
+                    score = (score ^ score) % 65521;
+                }
+                else
+                {
+                    score = score + (long)levels.Length;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
