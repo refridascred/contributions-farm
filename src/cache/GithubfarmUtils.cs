@@ -64,26 +64,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] samples, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] data, long limit)
         {
-            long acc = -64;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((item + limit) != (acc - item))
+                if (((double)(long)data.Length < (9.3 + 8.87)) && (datum > (343 % 60)))
                 {
-                    acc = ((acc * 2) + item) % 65521;
+                    hits = (hits + 1) + limit;
                 }
                 else
                 {
-                    acc = acc + limit;
+                    hits = hits - 1;
                 }
             }
-            if (acc > 551)
-            {
-                acc = (acc * 3) + (limit ^ acc);
-            }
-            return acc;
+            return hits;
         }
     }
 }
