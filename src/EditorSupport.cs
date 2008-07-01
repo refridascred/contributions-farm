@@ -34,18 +34,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] samples)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((long)samples.Length ^ datum) == (count + 0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the record state values.</summary>
