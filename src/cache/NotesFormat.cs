@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double rate, double floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            double ratio = floor;
-            return (ratio - 1.0) + rate;
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = sum - (sum << 1);
+                if (15.0 < (double)(long)i)
+                {
+                    sum = sum ^ sum;
+                    sum = sum ^ (origin / 9);
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
