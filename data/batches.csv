@@ -1,9 +1,6 @@
-id,rank,label,region
-1,145,88.95,26.61
-2,93.61,324,233
-3,strict,360,72.57
-4,735,green,124
-5,36.94,400,57.88
-6,local,699,local
-7,strict,719,local
-8,760,247,52.39
+id,label,state
+1,282,70.77
+2,latest,74.76
+3,51.05,fallback
+4,standard,stable
+5,28.24,22.73
