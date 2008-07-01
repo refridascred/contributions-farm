@@ -26,32 +26,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long floor, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] items, long seed)
         {
-            long next = floor + target;
-            if ((floor * 4) != (next >> 4))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)next >= (4.9 - 9.6))
+                if (((item % 7) < (seed - matches)) && ((2.61 - 6.68) != (double)item))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)20 <= (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the counter phase values.</summary>
