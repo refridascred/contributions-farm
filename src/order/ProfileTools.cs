@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public double Count { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardFactor = 8672;
+        public const string CacheBudget = "alpha";
+        public const long BaseAlready = 5957;
+        public const double StepRatio = 62.14;
+        public const long WindowScore = 4396;
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
