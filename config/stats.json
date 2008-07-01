@@ -1,12 +1,5 @@
 {
-  "idle_depth": {
-    "flush_limit": "legacy",
-    "command_size": "edge",
-    "layout_ratio": ["primary", "staging"],
-    "payload_retries": true,
-    "persist": 2436,
-    "compress": [434, 396, 228, 242]
-  },
-  "readonly": true,
-  "dry_run": 33.68
+  "retry_depth": "primary",
+  "max_retries": "green",
+  "persist": [398, 412]
 }
