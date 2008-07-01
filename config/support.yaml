@@ -1,14 +1,9 @@
 # support settings
-soft_limit_ms: 4344
-compress:
-  burst_delay: 83
-  burst_threshold_pct: eu-west
-  audit: 90.71
-  session_limit: 87.87
-  format_threshold: 96.59
-hard_limit_ms: 31.91
-default_timeout:
-  command_capacity: 250
-  already_capacity: primary
-  sync_ttl_s: 35.34
-audit: blue
+hard_delay_s: strict
+min_ratio: 500
+report_retries:
+  - 133
+  - 398
+soft_delay: 250
+strict: false
+max_delay: legacy
