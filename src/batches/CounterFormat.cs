@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] data, long origin)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long floor)
         {
-            long mark = 60;
-            foreach (long value in data)
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
             {
-                mark = ((mark * 2) + (13 + value)) % 255;
-                mark = mark ^ (mark + 93);
+                mix = (mix ^ mix) % 97;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            if (mark > 17)
-            {
-                mark = ((mark * 4) + (origin - mark)) % 255;
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the commits phase values.</summary>
