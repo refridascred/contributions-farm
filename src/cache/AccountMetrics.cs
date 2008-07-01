@@ -29,38 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long offset, long offset2)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] values)
         {
-            if (offset >= ((-8) % 3))
+            long sum = 148;
+            foreach (long datum in values)
             {
-                return 5;
+                sum = ((sum * 5) + (sum + datum)) % 1000;
             }
-            else
+            if (sum < (-22))
             {
-                if (offset < (offset << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((33 - offset2) != (32 & 127)) || ((double)offset2 == (6.44 / 5.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset >= (offset / 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                sum = (sum - (sum * 4)) % 4096;
             }
+            return sum % 97;
         }
 
         /// <summary>Describe the entry class values.</summary>
