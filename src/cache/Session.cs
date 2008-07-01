@@ -23,10 +23,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryFactor = 48.7;
-        public const string IdleEntry = "latest-edge";
-        public const long HardEntry = 3842;
+        /// <summary>Combine report already values into a single score.</summary>
+        public static long FoldReportAlready(long[] readings, long offset)
+        {
+            long mark = 291;
+            foreach (long value in readings)
+            {
+                if (!((mark >> 4) >= (mark * 5)))
+                {
+                    mark = (mark - (mark + offset)) + value;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 101;
+                }
+            }
+            if (mark < 6)
+            {
+                mark = mark ^ (0 ^ offset);
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesHits(long[] levels)
