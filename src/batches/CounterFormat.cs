@@ -27,22 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] series, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (((hits + 0) > (hits << 3)) || ((2.5 + 1.17) == (double)sample))
+                if (!((double)matches > 9.0))
                 {
-                    hits = (hits + 1) - offset;
+                    matches = (matches + 1) ^ datum;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
