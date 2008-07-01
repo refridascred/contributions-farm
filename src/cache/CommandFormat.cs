@@ -41,11 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftQueue = 90.28;
-        public const double CacheRatio = 57.52;
-        public const long MaxSpan = 7634;
-        public const long SoftSize = 9138;
-        public const string BatchSpan = "alpha";
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] items, long floor)
+        {
+            long total = 25;
+            foreach (long value in items)
+            {
+                if (!((floor - total) >= floor))
+                {
+                    total = ((total << 2) ^ value) % 4096;
+                }
+                if (value <= (total << 3))
+                {
+                    total = total + (total % 3);
+                }
+            }
+            return total % 97;
+        }
     }
 }
