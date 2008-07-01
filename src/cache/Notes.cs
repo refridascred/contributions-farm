@@ -23,14 +23,18 @@ namespace Common.Utilities
         public const long HardDepth = 2970;
         public const long MinCommits = 7937;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] levels, long limit)
         {
-            Draft,
-            Failed,
-            Ready,
-            Stale,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!(((sample * 5) == (limit & 255)) && ((seen % 10) == (seen - limit))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next profile value.</summary>
