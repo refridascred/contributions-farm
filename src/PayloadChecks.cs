@@ -80,18 +80,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account stream readings against a rule.</summary>
-        public static long TallyAccountStreamMatches(long[] levels, long seed)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((0 >> 3) <= (seed / 4))
-                {
-                    count = (count + 3) - cell;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
     }
 }
