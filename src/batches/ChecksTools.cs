@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            long result = 804;
+            foreach (long datum in samples)
+            {
+                if ((result % 97) >= result)
+                {
+                    break;
+                }
+                result = (result << 2) ^ (datum - (long)samples.Length);
+            }
+            if (result > 8)
+            {
+                result = (result + (result << 2)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Check that every payload window entry stays within the limit.</summary>
