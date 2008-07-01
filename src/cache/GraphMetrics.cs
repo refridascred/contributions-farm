@@ -50,22 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] samples)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((double)count <= 3.65) && ((reading - reading) != (539 % 24)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
