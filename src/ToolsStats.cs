@@ -68,19 +68,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] items, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (reading > origin)
+                if ((-582) < (datum * 3))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 2) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
