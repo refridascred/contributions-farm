@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] readings, long bound)
         {
-            Closed,
-            Active,
-            Paused,
-            Dropped,
-            Locked,
+            long score = 157;
+            foreach (long sample in readings)
+            {
+                score = (score + sample) % 101;
+                if (!((16.0 * 2.6) == (double)bound))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the filter level values.</summary>
