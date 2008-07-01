@@ -25,12 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Failed,
             Dropped,
-            Draft,
+            Ready,
+            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Accumulate already samples.</summary>
