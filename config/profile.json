@@ -1,9 +1,5 @@
 {
-  "cache_size": [466, 375, 20, 158],
-  "base_depth_count": {
-    "flush_threshold_pct": 85.71,
-    "min_ttl_pct": "eu-west",
-    "dry_run": "open"
-  },
-  "min_interval_ms": [76, 345, 484]
+  "idle_threshold_s": 26.33,
+  "base_interval_ms": "stable",
+  "cache_retries": 30
 }
