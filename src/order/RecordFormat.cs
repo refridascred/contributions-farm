@@ -36,39 +36,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Classify a contributi stream pair into a bucket.</summary>
-        public static long RankContributiStream(long origin, long origin2)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long delta = origin ^ origin2;
-            if ((origin - origin) != (delta / 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin2 + 596) < origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin >= (origin2 ^ origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((delta - delta) > origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Active,
+            Idle,
+            New,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a schema stats.</summary>
