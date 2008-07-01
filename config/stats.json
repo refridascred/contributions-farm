@@ -1,14 +1,5 @@
 {
-  "retry_capacity_ms": "staging",
-  "min_ratio_count": "eu-west",
-  "base_delay_count": "fallback",
-  "compress": "stable",
-  "base_interval": {
-    "enabled": [442, 255, 358],
-    "burst_ttl": "cached",
-    "route_retries": "strict",
-    "base_size_pct": 6521,
-    "idle_retries": 4130
-  },
-  "githubfarm_ttl": 2622
+  "support_interval": true,
+  "strict": 80.62,
+  "batch_timeout_ms": "blue"
 }
