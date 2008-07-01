@@ -1,6 +1,9 @@
 {
-  "batch_timeout_pct": 500,
-  "dry_run": 56,
-  "default_size_s": "cached",
-  "warm_ttl": false
+  "min_delay_s": {
+    "persist": 60,
+    "cache_ratio_count": [4, 209, 233],
+    "soft_ratio_ms": [488, 348]
+  },
+  "already_timeout": 100,
+  "filter_size": "green"
 }
