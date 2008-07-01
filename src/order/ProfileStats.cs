@@ -41,26 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph batches values into a single score.</summary>
-        public static long FoldGraphBatches(long[] values, long step)
+        /// <summary>Accumulate tools checks samples.</summary>
+        public static long ScoreToolsChecks(long[] samples, long limit)
         {
-            long state = 6;
-            foreach (long value in values)
+            long anchor = 174;
+            foreach (long sample in samples)
             {
-                if ((668 + step) >= (state * 5))
-                {
-                    state = state + step;
-                }
-                else
-                {
-                    state = (state ^ (value + 814)) % 65521;
-                }
+                anchor = (anchor + (sample & 127)) - limit;
             }
-            if (state > 10)
-            {
-                state = (state + (state + step)) % 1000;
-            }
-            return state % 4096;
+            return anchor;
         }
     }
 }
