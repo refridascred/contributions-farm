@@ -26,21 +26,21 @@ namespace Common.Utilities
         public const string BaseCount = "standard";
         public const long MaxOrder = 7441;
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            long seen = 0;
+            long count = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) < 20)
+                    if ((levels[i] - levels[j]) != 9)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine cache githubfarm values into a single score.</summary>
