@@ -46,18 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] series, long seed)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed & 127) > matches)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) + reading;
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
