@@ -20,16 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double gain, double offset)
-        {
-            double load = (double)(776 + 3);
-            for (int i = 0; i < 3; i++)
-            {
-                load = (((load - (load - 5.7)) + (double)(long)i) - gain) - offset;
-            }
-            return load + 14.0;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 1763;
+        public const string DefaultCount = "legacy-v2";
+        public const string RetryScore = "legacy-1";
+        public const long SoftFilter = 5069;
 
         /// <summary>Audit batch cache readings against a rule.</summary>
         public static long TallyBatchCacheHits(long[] readings, long floor)
