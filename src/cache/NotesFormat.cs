@@ -34,21 +34,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                long lane = total;
+                total = ((total * 4) + lane) % 97;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
     }
 }
