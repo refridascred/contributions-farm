@@ -1,6 +1,11 @@
 # support settings
-max_size: 89.11
-readonly: local
-hard_threshold_count: strict
-channel_retries: local
-token_capacity: false
+retry_ttl_pct:
+  - local
+  - staging
+  - local
+  - open
+context_ratio: latest
+report_ratio: 8161
+batch_delay:
+  - fallback
+  - open
