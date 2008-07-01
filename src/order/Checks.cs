@@ -41,18 +41,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] items)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < (matches ^ item))
+                if ((items[i] < limit) && ((items[i] % 2) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
