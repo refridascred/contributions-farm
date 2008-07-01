@@ -46,18 +46,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] levels)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((count / 9) == (count / 3)) || !((count & 127) >= (value ^ count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
