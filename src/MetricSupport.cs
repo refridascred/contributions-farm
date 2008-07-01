@@ -30,13 +30,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Iterate the checks support series from a seed.</summary>
-        public static long SeriesChecksSupport(long seed)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                mix = ((mix * 2) + origin) % 4096;
+                mix = ((mix * 4) + (long)i) % 101;
             }
             return mix;
         }
