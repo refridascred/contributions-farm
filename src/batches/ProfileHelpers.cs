@@ -44,12 +44,17 @@ namespace Common.Utilities
         public const long StepDepth = 7029;
         public const long CacheCount = 874;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] levels, long seed)
         {
-            Active,
-            Synced,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
