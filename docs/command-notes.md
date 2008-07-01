@@ -1,12 +1,14 @@
 # Command notes
 
-The schema report groups every queue by batch.
-Use cluster settings to tune how often editor data is refreshed.
-Use token settings to tune how often format data is refreshed.
+Run the contributi check before changing any window limits.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+
+A batch that stays idle for too long is moved to the context list.
+Run the cache check before changing any metric limits.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Log every layout change
-- Document new batches fields
-- Validate metrics input early
+- Document new session fields
+- Validate cache input early
+- Review window limits each release
+- Prefer layout defaults
