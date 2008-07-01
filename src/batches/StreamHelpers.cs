@@ -45,22 +45,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] values)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (((7.0 / 7.0) <= (double)sample) && ((3.8 * 4.2) != (double)sample))
+                if ((((target * 4) >= (target * 3)) || ((8 / 2) <= (target + target))) || ((matches << 2) > entry))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of already entries.</summary>
