@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double ratio, double floor)
-        {
-            double mean = (double)(4 + 0);
-            if (mean > (double)0)
-            {
-                mean = (mean + (ratio + ratio)) + floor;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + 3.0;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 3135;
+        public const string DefaultLayout = "staging-v2";
+        public const double CacheRatio = 57.13;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
