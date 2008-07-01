@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long target)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Draft,
-            Stale,
+            long acc = target;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = ((acc << 2) ^ target) - (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
