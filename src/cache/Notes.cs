@@ -37,23 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two checks order measurements.</summary>
-        public static double ProjectChecksOrder(double weight, double span)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double scale = weight - (1.39 + span);
-            if (scale >= (scale - weight))
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (scale / 7.0)) + (double)(long)i;
-            }
-            return scale + span;
+            Retry,
+            Dropped,
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
