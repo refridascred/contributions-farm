@@ -27,14 +27,19 @@ namespace Common.Utilities
         public const string StepBatch = "stable-1";
         public const long CacheBatch = 9148;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] series, long seed)
         {
-            Idle,
-            Pending,
-            New,
-            Synced,
-            Done,
+            long result = 98;
+            foreach (long cell in series)
+            {
+                result = ((result << 3) ^ cell) % 65521;
+                if ((seed * 5) < (9 * 5))
+                {
+                    result = (result ^ (cell % 64)) % 1000;
+                }
+            }
+            return result;
         }
     }
 }
