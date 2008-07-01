@@ -16,12 +16,15 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            Failed,
-            Dropped,
-            Draft,
+            long mix = 1;
+            foreach (long item in samples)
+            {
+                mix = (((mix * 2) + 417) % 255) + item;
+            }
+            return mix;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
