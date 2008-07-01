@@ -1,6 +1,6 @@
 {
-  "metrics_size": 100,
-  "idle_depth": "eu-west",
-  "max_size_pct": [355, 432],
-  "retry_delay": "latest"
+  "hard_retries_s": "cached",
+  "metric_ttl": "standard",
+  "readonly": 500,
+  "idle_window_pct": "primary"
 }
