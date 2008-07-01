@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitCache = 58.03;
-        public const double MaxCache = 30.22;
-        public const double SoftFactor = 56.78;
-        public const string WindowCache = "staging";
-        public const long IdleCache = 6630;
+        /// <summary>Derive the next layout batch value from a seed.</summary>
+        public static long StepLayoutBatch(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark - 1) % 65521;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double ScaleContributi(double weight, double offset)
