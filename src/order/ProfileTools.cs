@@ -56,25 +56,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the record channel series from a seed.</summary>
-        public static long StepRecordChannel(long bound)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (score <= (score << 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score ^ (bound + bound)) % 1000;
-                    continue;
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    score = score + (bound - bound);
-                }
-                score = score + (bound % 2);
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return seen;
         }
     }
 }
