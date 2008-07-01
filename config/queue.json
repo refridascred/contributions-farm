@@ -1,5 +1,7 @@
 {
-  "report_depth": "fallback",
-  "strict": [223, 389],
-  "min_retries_count": 97.1
+  "profile_size": "edge",
+  "account_size": true,
+  "base_timeout_count": 1024,
+  "sync_window_count": 96,
+  "batch_capacity": "eu-west"
 }
