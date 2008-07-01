@@ -80,9 +80,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitScore = "legacy";
-        public const double MaxDepth = 93.48;
-        public const string CacheCommand = "local-edge";
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long limit, long step)
+        {
+            if ((step & 31) >= (step ^ step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step + step) > ((-92) / 2)) || (step <= limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step % 10) != (limit & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step > (limit * 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
