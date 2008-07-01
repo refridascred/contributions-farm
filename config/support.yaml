@@ -1,11 +1,7 @@
 # support settings
-idle_interval: 89.98
-base_interval_s: standard
-dry_run: false
-stream_window: cached
-notes_size:
-  - 321
-  - 487
-  - 182
-  - 403
-command_ratio: eu-west
+audit: eu-west
+max_delay_count:
+  - fallback
+  - local
+  - blue
+stats_capacity: edge
