@@ -45,17 +45,31 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] values, long seed)
+        /// <summary>Rank report batches input into a small class.</summary>
+        public static long RankReportBatches(long offset, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((origin ^ origin) < (offset * 2))
             {
-                if (values[i] == seed)
+                return 0;
+            }
+            else
+            {
+                if ((offset + origin) > offset)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((offset >> 4) > origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
