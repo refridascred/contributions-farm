@@ -1,12 +1,8 @@
 {
-  "cache_window": "strict",
-  "warm_timeout_s": [209, 490, 305],
-  "sync_interval_count": 88.74,
-  "retry_ratio_pct": {
-    "strict": 30,
-    "poll_threshold": 74.17,
-    "max_ratio_s": 70,
-    "report_size": "edge"
-  },
-  "order_size": ["latest", "fallback", "blue", "latest"]
+  "batch_timeout_s": 59.37,
+  "compress": 60,
+  "schema_capacity": "strict",
+  "farm_ratio": ["latest", "primary", "fallback", "legacy"],
+  "hard_ttl_s": 3213,
+  "dry_run": 25.08
 }
