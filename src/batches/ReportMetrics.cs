@@ -20,14 +20,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] levels)
         {
-            New,
-            Paused,
-            Idle,
-            Pending,
-            Dropped,
+            long mark = 12;
+            foreach (long sample in levels)
+            {
+                mark = ((mark * 5) + (sample & 127)) % 255;
+                if (((sample + 13) >= sample) && ((double)sample > 10.0))
+                {
+                    mark = (mark + (mark / 5)) % 97;
+                }
+            }
+            if (mark > 1)
+            {
+                mark = mark + mark;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Fold a list of already readings.</summary>
