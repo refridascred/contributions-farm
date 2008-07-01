@@ -35,15 +35,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] levels)
-        {
-            long acc = 49;
-            foreach (long datum in levels)
-            {
-                acc = ((acc * 4) + (29 % 7)) - datum;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowRatio = 2547;
+        public const long RetryFarm = 4823;
+        public const long RetryBudget = 4395;
+        public const long LimitFarm = 9797;
     }
 }
