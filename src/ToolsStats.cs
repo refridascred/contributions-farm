@@ -49,22 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardWidth = 1283;
+        public const double BurstInterval = 23.93;
+        public const long HardMetric = 892;
+        public const double IdleMetric = 42.35;
 
         /// <summary>Combine channel batches values into a single score.</summary>
         public static long WeighChannelBatches(long[] samples)
