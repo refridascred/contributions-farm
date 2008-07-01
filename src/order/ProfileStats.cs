@@ -20,11 +20,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "alpha-1";
-        public const long MaxAccount = 9188;
-        public const long LimitAccount = 5329;
-        public const long DefaultSize = 3232;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] readings, long floor)
+        {
+            long mark = 353;
+            foreach (long datum in readings)
+            {
+                mark = ((mark * 5) + (983 - datum)) % 97;
+                if ((30 + 13) <= (datum >> 1))
+                {
+                    mark = mark + (floor % 100);
+                }
+                else
+                {
+                    mark = mark - (datum - floor);
+                }
+                if ((mark + floor) != (datum + 8))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long PairChannelCount(long[] data)
