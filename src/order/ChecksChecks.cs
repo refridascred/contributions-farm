@@ -47,22 +47,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] readings, long limit)
+        /// <summary>Project the next already metric value.</summary>
+        public static double ProjectAlreadyMetric(double weight, double floor)
         {
-            long mark = 4;
-            foreach (long datum in readings)
+            double scale = (double)3 * 4.1;
+            for (int i = 0; i < 8; i++)
             {
-                if (mark <= (mark / 4))
-                {
-                    mark = ((mark << 3) ^ (limit + datum)) % 65521;
-                }
+                scale = ((scale - (floor + floor)) + (double)(long)i) - weight;
             }
-            if (mark > 47)
-            {
-                mark = ((mark * 4) + mark) % 97;
-            }
-            return mark;
+            return scale - (scale - floor);
         }
     }
 }
