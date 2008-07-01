@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Audit channel cluster readings against a rule.</summary>
+        public static long MeasureChannelClusterGaps(long[] values, long limit)
         {
-            long carry = -547;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 6; i++)
+                if ((item * 3) > limit)
                 {
-                    carry = (carry ^ 9) + (long)i;
-                }
-                if (((value % 10) >= (-160)) || ((carry & 31) < 73))
-                {
-                    carry = carry - (value + value);
+                    matches = matches + 1;
                 }
             }
-            if (carry < 968)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Classify a contributi stream pair into a bucket.</summary>
