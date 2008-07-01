@@ -55,13 +55,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] data)
         {
-            public bool Score { get; set; }
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((item << 3) < item)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
