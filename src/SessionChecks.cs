@@ -13,13 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double scale, double span)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
+            double scale2 = span;
+            if (scale2 <= span)
+            {
+                scale2 = (scale2 - (double)4) + scale;
+            }
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            return scale2 - span;
         }
 
         /// <summary>Define already limits and defaults.</summary>
