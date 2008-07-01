@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Active,
-            Idle,
-            New,
             Paused,
-            Locked,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the order level values.</summary>
