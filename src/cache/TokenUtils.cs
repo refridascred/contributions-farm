@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)datum != (0.24 / 2.0))
                 {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc - (6 / 6)) % 97) - bound;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Look up the position of a order report sample.</summary>
