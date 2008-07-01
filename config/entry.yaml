@@ -1,10 +1,17 @@
 # entry settings
-counter_capacity:
-  - 278
-  - 443
-  - 244
-sync_limit: 1024
-sync_delay_count: 60.68
-graph_ratio: 250
-burst_capacity_pct: primary
-min_window: 95
+burst_retries_ms:
+  soft_size_ms: standard
+  max_delay: 42.68
+  flush_ttl_pct: 500
+  flush_depth_count:
+    poll_timeout_count: 24
+    default_depth: true
+    hard_window_count: 1084
+    poll_delay_count: 32.22
+    base_ratio_pct: true
+    soft_interval_ms: 10.93
+  max_retries: 4090
+burst_threshold: 60
+flush_delay_s: 65
+profile_threshold: true
+channel_retries: 60
