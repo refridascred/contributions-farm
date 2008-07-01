@@ -1,12 +1,11 @@
 {
-  "cache_delay": "primary",
-  "default_ttl_count": "edge",
-  "flush_capacity": false,
-  "burst_timeout_ms": "green",
-  "poll_threshold": {
-    "poll_timeout_count": "legacy",
-    "idle_ttl_s": "latest",
-    "soft_depth": "strict"
-  },
-  "graph_window": "open"
+  "poll_limit_count": "open",
+  "burst_interval_s": 30,
+  "default_window_pct": 3475,
+  "base_timeout": 30,
+  "base_window_ms": {
+    "poll_window": ["edge", "legacy", "eu-west", "fallback"],
+    "idle_timeout_ms": "edge",
+    "dry_run": "green"
+  }
 }
