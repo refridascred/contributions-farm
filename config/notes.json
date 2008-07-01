@@ -1,7 +1,11 @@
 {
-  "commits_delay": "blue",
-  "compress": 5571,
-  "tools_limit": 15,
-  "strict": "fallback",
-  "default_window": false
+  "audit": 500,
+  "sync_threshold": {
+    "audit": "green",
+    "contributi_retries": 60,
+    "burst_capacity_count": 1024,
+    "max_ttl_s": "cached"
+  },
+  "max_ratio": 5085,
+  "strict": 500
 }
