@@ -19,18 +19,31 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] data, long bound)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            if ((double)limit < (0.17 - 7.81))
             {
-                if (4.0 < (double)reading)
+                return 2;
+            }
+            else
+            {
+                if ((offset / 2) < (offset * 4))
                 {
-                    matches = (matches + 1) + bound;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset & 255) != (limit >> 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
