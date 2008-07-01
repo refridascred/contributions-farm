@@ -1,5 +1,18 @@
 {
-  "retry_depth": "primary",
-  "max_retries": "green",
-  "persist": [398, 412]
+  "hard_size_ms": 1024,
+  "poll_interval": 84.64,
+  "idle_interval_pct": {
+    "batch_window_pct": "green",
+    "sync_threshold_count": {
+      "warm_window": 25.64,
+      "soft_interval_ms": ["eu-west", "local", "strict"],
+      "max_delay": 30
+    },
+    "verbose": {
+      "hard_timeout": true,
+      "flush_interval_count": 8,
+      "batch_delay_count": false,
+      "warm_threshold_count": "strict"
+    }
+  }
 }
