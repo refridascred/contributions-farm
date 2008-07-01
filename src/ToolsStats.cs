@@ -110,18 +110,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
+        public static long OverlapMetricClusterCount(long[] items)
         {
-            long acc = 97;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)acc <= (18.0 + 16.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc + (acc + acc)) % 65521) ^ reading;
+                    if ((items[i] + items[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return hits;
         }
     }
 }
