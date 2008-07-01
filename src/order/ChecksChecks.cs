@@ -47,23 +47,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of metrics format readings.</summary>
-        public static long ScoreMetricsFormat(long[] series)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] readings, long limit)
         {
-            long carry = 129;
-            foreach (long sample in series)
+            long mark = 4;
+            foreach (long datum in readings)
             {
-                carry = ((carry << 3) ^ ((-148) ^ carry)) % 97;
-                if ((sample << 3) < ((long)series.Length >> 1))
+                if (mark <= (mark / 4))
                 {
-                    break;
+                    mark = ((mark << 3) ^ (limit + datum)) % 65521;
                 }
             }
-            if (carry > 246)
+            if (mark > 47)
             {
-                carry = (carry ^ (carry * 3)) % 255;
+                mark = ((mark * 4) + mark) % 97;
             }
-            return carry % 1000;
+            return mark;
         }
     }
 }
