@@ -19,11 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two support already measurements.</summary>
-        public static double ScaleSupportAlready(double ratio, double offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long step, long origin)
         {
-            double gain = offset;
-            return gain + (offset + ratio);
+            long span = step + origin;
+            if ((span + step) < origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)span < (2.0 * 3.9)) && ((span % 2) > (span ^ 0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((span / 7) < step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((63 ^ 91) <= (step - span))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route phase values.</summary>
