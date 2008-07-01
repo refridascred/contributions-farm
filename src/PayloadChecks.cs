@@ -95,24 +95,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cache queue input into a small class.</summary>
-        public static long GradeCacheQueue(long origin, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if (!(5.68 <= (double)step))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin >= (step >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Retry,
+            Stale,
+            Draft,
+            Done,
+            Locked,
         }
     }
 }
