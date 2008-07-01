@@ -34,19 +34,31 @@ namespace Common.Utilities
             return mean + 5.16;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] items, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long target, long bound)
         {
-            bool stale = true;
-            foreach (long value in items)
+            if ((target * 2) > bound)
             {
-                if (value < seed)
+                return 4;
+            }
+            else
+            {
+                if (((target & 127) > target) || ((target + bound) >= (target + target)))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound & 1) != (target >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Project the next session value.</summary>
