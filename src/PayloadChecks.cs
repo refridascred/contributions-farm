@@ -84,12 +84,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
             public long Token { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
