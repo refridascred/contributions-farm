@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two metric filter measurements.</summary>
-        public static double ProjectMetricFilter(double ratio, double floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] data)
         {
-            double gain = ratio;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                gain = (gain + (7.02 - floor)) - (double)(long)i;
+                if (((long)data.Length & 1) <= value)
+                {
+                    seen = seen + 2;
+                }
             }
-            return gain - floor;
+            return seen;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
