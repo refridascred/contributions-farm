@@ -24,12 +24,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheDepth = 5737;
-        public const string MaxInterval = "local-edge";
-        public const long CacheEditor = 6846;
-        public const long BatchWidth = 3616;
-        public const double DefaultCount = 25.4;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Dropped,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
