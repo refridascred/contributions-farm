@@ -28,39 +28,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long limit, long limit2)
-        {
-            long prev = limit + limit2;
-            if ((limit + limit) <= (limit ^ prev))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7 / 8) <= prev)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit2 ^ 477) == (854 ^ prev))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((3 % 8) > (limit2 + limit)) || (4.5 > (double)limit2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepCount = 5095;
+        public const double DefaultRatio = 48.01;
+        public const double BatchBuffer = 21.61;
+        public const long BurstInterval = 8604;
     }
 }
