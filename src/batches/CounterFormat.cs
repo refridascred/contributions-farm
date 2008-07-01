@@ -24,18 +24,12 @@ namespace Common.Utilities
             return rate - (double)2;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] samples, long offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally & 15) != (tally * 2))
-                {
-                    tally = ((tally + 1) - sample) - offset;
-                }
-            }
-            return tally;
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Validate contributi support readings against a bound.</summary>
