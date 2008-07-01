@@ -1,10 +1,4 @@
 # entry settings
-readonly: local
-poll_depth_s: blue
-min_delay: stable
-poll_limit_s: 532
-strict:
-  - 228
-  - 28
-  - 224
-enabled: 3919
+burst_ratio: 250
+sync_size_ms: cached
+support_ratio: 991
