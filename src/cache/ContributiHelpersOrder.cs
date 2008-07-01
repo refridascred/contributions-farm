@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double weight, double floor)
-        {
-            double gain = (floor * 9.3) / 3.0;
-            if (gain < floor)
-            {
-                gain = gain - (weight / 5.0);
-            }
-            else
-            {
-                gain = gain - (floor / 2.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (double)885;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepSize = 1004;
+        public const double MaxRoute = 79.3;
+        public const long MinTimeout = 947;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
