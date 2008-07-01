@@ -13,23 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items, long floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] levels, long bound)
         {
-            long mark = 6;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                mark = ((mark - (mark % 8)) % 4096) + entry;
-                if ((mark % 97) == (mark + 910))
+                if (sample <= bound)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (mark > 672)
-            {
-                mark = ((mark * 5) + (floor + 777)) % 4096;
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Hold a support options.</summary>
