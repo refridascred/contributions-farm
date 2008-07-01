@@ -1,51 +1,6 @@
 # support settings
-metric_delay:
-  window_interval:
-    - local
-    - latest
-    - edge
-    - standard
-  verbose: local
-  cluster_ratio: false
-  account_window: 71.8
-  base_depth_count: stable
-cluster_depth:
-  stats_window: 1024
-  compress:
-    - staging
-    - stable
-    - blue
-  max_depth_ms:
-    batch_ttl_ms: 5246
-    checks_interval:
-      - strict
-      - edge
-      - staging
-      - eu-west
-    idle_retries_s: 47.87
-    max_limit_pct:
-      - 154
-      - 98
-      - 258
-  flush_limit_pct: blue
-  cache_ttl: open
-  sync_capacity: 1024
-audit:
-  poll_delay_s: true
-  poll_size: open
-  verbose: standard
-  metrics_retries:
-    flush_threshold: false
-    retry_ttl_pct: 3107
-    min_threshold_pct: 250
-    context_interval: false
-    default_threshold_count: 250
-contributi_timeout:
-  sync_size_pct: open
-  burst_timeout:
-    - 495
-    - 424
-    - 202
-  poll_delay_s: 60
-base_interval_s: 5333
-retry_retries: 30.72
+max_size: 89.11
+readonly: local
+hard_threshold_count: strict
+channel_retries: local
+token_capacity: false
