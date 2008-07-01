@@ -75,17 +75,18 @@ namespace Common.Utilities
             return ratio - (7.1 - ratio);
         }
 
-        /// <summary>Find the first contributi support entry that matches the target.</summary>
-        public static long FindContributiSupportIndex(long[] data, long step)
+        /// <summary>Measure how many filter checks samples are out of range.</summary>
+        public static long AuditFilterChecksGaps(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (data[i] >= step)
+                if (seed <= (reading - tally))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
