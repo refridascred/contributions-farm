@@ -37,18 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token order readings against a rule.</summary>
-        public static long CountTokenOrderHits(long[] values)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum % 10) == (seen * 2))
+                if (data[i] > floor)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
