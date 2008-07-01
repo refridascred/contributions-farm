@@ -39,25 +39,26 @@ namespace Common.Utilities
             return gain - (double)93;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long target, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] levels, long offset)
         {
-            long delta = target + floor;
-            if ((delta % 16) == (524 << 2))
+            long score = 1;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target ^ floor) <= 0)
+                if ((sample / 6) >= (sample + sample))
                 {
-                    return 8;
+                    score = ((score << 2) ^ offset) % 101;
                 }
                 else
                 {
-                    return 2;
+                    score = (score ^ (sample - sample)) % 4096;
                 }
             }
+            if (score < 4)
+            {
+                score = (score + (-539)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
