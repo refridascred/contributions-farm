@@ -73,21 +73,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count metric cluster pairs that satisfy a relation.</summary>
-        public static long OverlapMetricClusterCount(long[] items)
+        /// <summary>Measure how many already githubfarm samples are out of range.</summary>
+        public static long MeasureAlreadyGithubfarmMatches(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)datum == (double)limit)
                 {
-                    if ((items[i] + items[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
