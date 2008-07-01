@@ -24,12 +24,15 @@ namespace Common.Utilities
             return mean + 3.0;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 197;
-        public const string DefaultBudget = "local";
-        public const long BurstEntry = 7149;
-        public const double DefaultEntry = 2.72;
-        public const long HardBudget = 5977;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Locked,
+            Idle,
+            Ready,
+            Active,
+            Closed,
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TallyGraph(long[] values)
