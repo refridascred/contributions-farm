@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (((-191) * 2) > (total - (long)i))
+                if ((seen <= (seen + datum)) && ((6 - seen) > ((-25) % 24)))
                 {
-                    total = ((total * 5) + origin) % 101;
-                    total = (total * 4) + (origin >> 1);
-                    continue;
+                    seen = seen + 2;
                 }
-                total = ((total << 2) ^ origin) % 101;
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Adjust a commits reading.</summary>
