@@ -36,19 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double bias, double offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double drift = bias;
-            if (drift <= (offset * 3.3))
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift - 4.6;
-            }
-            return drift + (double)2;
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
