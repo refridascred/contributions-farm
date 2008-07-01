@@ -30,13 +30,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            Ready,
-            New,
-            Paused,
-            Retry,
+            long anchor = 93;
+            foreach (long item in samples)
+            {
+                if (anchor > (anchor * 5))
+                {
+                    anchor = ((anchor * 4) + (anchor + anchor)) + item;
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
