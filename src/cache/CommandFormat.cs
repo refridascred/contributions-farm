@@ -41,13 +41,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Idle,
-            Done,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardBudget = 5272;
+        public const string HardWidth = "local";
+        public const string SoftBudget = "staging-v2";
     }
 }
