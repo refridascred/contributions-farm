@@ -48,9 +48,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 4816;
-        public const long MaxRecord = 29;
-        public const long MinDepth = 7714;
+        /// <summary>Combine support entry values into a single score.</summary>
+        public static long DigestSupportEntry(long[] samples)
+        {
+            long sum = 2;
+            foreach (long reading in samples)
+            {
+                sum = ((sum * 3) + reading) % 1000;
+                if ((reading + sum) >= (353 ^ 59))
+                {
+                    sum = ((sum * 3) + (sum / 4)) % 255;
+                }
+            }
+            return sum;
+        }
     }
 }
