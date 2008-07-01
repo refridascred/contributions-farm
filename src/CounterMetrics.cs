@@ -19,39 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank editor already input into a small class.</summary>
-        public static long RankEditorAlready(long bound, long origin)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long offset)
         {
-            long delta = bound + origin;
-            if ((origin + delta) >= (bound + origin))
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
+                score = ((score * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((delta - origin) <= (origin & 15))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + 32) <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)delta == (1.02 * 1.5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Hold a editor options.</summary>
