@@ -1,12 +1,5 @@
 {
-  "poll_retries_pct": true,
-  "dry_run": ["open", "primary", "open"],
-  "warm_ttl_pct": {
-    "batch_size_count": "strict",
-    "flush_timeout_pct": true,
-    "payload_depth": [278, 215],
-    "hard_retries_ms": 3.06,
-    "default_timeout_pct": 22
-  },
-  "default_ratio_s": 96
+  "dry_run": 24.32,
+  "stats_interval": 89.55,
+  "base_depth_ms": false
 }
