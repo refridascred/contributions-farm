@@ -44,21 +44,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long limit, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((52 & 63) <= limit)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (bound >= limit)
                 {
-                    if ((data[i] + data[j]) > 5)
+                    return 3;
+                }
+                else
+                {
+                    if (((8.9 - 3.9) != (double)bound) || (limit <= (0 * 3)))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
     }
 }
