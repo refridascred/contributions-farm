@@ -13,15 +13,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] values, long step)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long total = 6;
-            foreach (long datum in values)
-            {
-                total = (((total << 3) ^ (datum ^ total)) % 97) + step;
-            }
-            return total % 1000;
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
