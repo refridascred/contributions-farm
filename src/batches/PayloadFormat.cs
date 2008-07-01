@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long target, long target2)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] readings, long floor)
         {
-            if ((target & 127) > (target << 3))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (3 <= target)
+                if (readings[i] == floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target > 14.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)target2 >= 9.11)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next context value.</summary>
