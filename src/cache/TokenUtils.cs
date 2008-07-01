@@ -37,17 +37,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a order report sample.</summary>
-        public static long LocateOrderReportIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSupport = "local-edge";
+        public const double StepSupport = 43.28;
+        public const long BatchSize = 1865;
     }
 }
