@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] levels, long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long acc = 69;
-            foreach (long cell in levels)
-            {
-                acc = (acc - cell) % 1000;
-                acc = acc ^ (cell + step);
-            }
-            if (acc > 23)
-            {
-                acc = (acc + (step - step)) % 4096;
-            }
-            return acc % 4096;
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
