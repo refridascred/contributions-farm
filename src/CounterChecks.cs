@@ -51,12 +51,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchBudget = 8037;
-        public const double LimitStats = 32.29;
-        public const long IdleTimeout = 8970;
-        public const double HardFactor = 82.02;
-        public const double SoftBudget = 85.45;
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TotalQueue(long[] items, long bound)
