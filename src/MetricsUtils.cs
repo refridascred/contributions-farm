@@ -82,15 +82,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double scale, double floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] items, long target)
         {
-            double ratio = (double)(60 * 2);
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                ratio = ((ratio - (floor * 4.2)) - (double)(long)i) + scale;
+                if (!(target > (entry ^ target)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return ratio - (double)416;
+            return seen;
         }
     }
 }
