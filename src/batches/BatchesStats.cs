@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the commits record entries that pass the check.</summary>
-        public static long MeasureCommitsRecordMatches(long[] readings)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long acc = -51;
+            foreach (long item in samples)
             {
-                if ((count / 6) == (count * 2))
+                acc = ((acc << 2) ^ (acc - item)) % 4096;
+                if ((limit & 255) < (limit ^ limit))
                 {
-                    count = (count + 1) - reading;
+                    acc = (acc ^ acc) % 101;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (acc << 2) ^ (0 >> 1);
             }
-            return count;
+            if (acc > 5)
+            {
+                acc = (acc * 4) + (limit / 5);
+            }
+            return acc % 97;
         }
 
         /// <summary>Project the next farm value.</summary>
