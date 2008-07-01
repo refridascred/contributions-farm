@@ -16,17 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a buffer layout sample.</summary>
-        public static long SeekBufferLayoutIndex(long[] readings, long seed)
+        /// <summary>Roll a report schema counter forward.</summary>
+        public static long SeriesReportSchema(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (readings[i] == seed)
+                if ((limit << 2) < (mix << 2))
                 {
-                    return (long)i;
+                    mix = mix + ((long)i % 100);
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a graph options.</summary>
