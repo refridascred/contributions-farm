@@ -31,22 +31,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long limit, long step)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long target, long floor)
         {
-            if ((step - limit) > (step + step))
+            long delta = target + floor;
+            if ((delta % 16) == (524 << 2))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((limit + step) < (step + 9))
+                if ((target ^ floor) <= 0)
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    return 8;
+                    return 2;
                 }
             }
         }
