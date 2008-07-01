@@ -1,6 +1,9 @@
-id,owner,region,score,level
-1,open,698,fallback,15.57
-2,966,864,231,14.44
-3,847,266,72.55,691
-4,69.4,staging,390,57
-5,eu-west,fallback,38.51,774
+id,level,state,ratio,label
+1,950,blue,primary,361
+2,13.88,83.44,stable,28.88
+3,19.7,standard,58.63,primary
+4,950,980,66.78,strict
+5,54.58,33.57,238,802
+6,fallback,45.3,staging,333
+7,60.83,local,standard,local
+8,3,legacy,blue,920
