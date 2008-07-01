@@ -1,7 +1,10 @@
 # support settings
-soft_retries: 30
-batch_ratio: green
-base_interval_ms: 2307
-base_capacity: 16
-channel_ttl: false
-buffer_size: 2639
+githubfarm_ttl: false
+flush_ratio_pct:
+  - 238
+  - 38
+  - 135
+tools_size: 93.72
+graph_threshold: cached
+readonly: primary
+entry_timeout: 25
