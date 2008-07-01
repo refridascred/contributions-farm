@@ -43,13 +43,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long bound, long bound2)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            long step = bound ^ bound2;
+            if (!((step + bound) > bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound >= 1.2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
