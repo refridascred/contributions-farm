@@ -14,24 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long offset, long offset2)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] readings, long seed)
         {
-            if ((offset + offset) != (477 << 2))
+            bool found = true;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset2 & 31) != (offset / 8)) && ((double)offset2 == (7.9 / 5.0)))
+                if (item != seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Accumulate contributi layout samples.</summary>
