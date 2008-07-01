@@ -18,15 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long step, long seed)
         {
-            long mix = 1;
-            foreach (long item in samples)
+            long gap = step - seed;
+            if (gap < seed)
             {
-                mix = (((mix * 2) + 417) % 255) + item;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (!((double)gap <= 6.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)926 != (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
