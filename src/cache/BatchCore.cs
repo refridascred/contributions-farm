@@ -47,13 +47,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double rate, double floor)
         {
-            public double Size { get; set; }
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            double load = rate;
+            if (load < (floor * 20.0))
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (floor * 4.2)) + (double)(long)i;
+            }
+            return load + (double)9;
         }
     }
 }
