@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Audit metric contributi readings against a rule.</summary>
+        public static long TallyMetricContributiOutliers(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (!((double)hits == (double)entry) && ((entry >> 1) == (hits & 31)))
+                if (!((7 + value) <= (3 / 3)))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 3) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Look up the position of a batches queue sample.</summary>
