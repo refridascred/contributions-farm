@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowCount = "standard";
-        public const double RetryQueue = 97.54;
-        public const double BatchQueue = 74.87;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long seed, long offset)
+        {
+            if ((370 + offset) != (seed + seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((102 << 1) >= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + offset) == (seed << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double AdjustContext(double scale, double floor)
