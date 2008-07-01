@@ -19,15 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double bias, double span)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long step, long bound)
         {
-            double mean = (double)(36 + 23);
-            if (mean >= span)
+            long gap = step ^ bound;
+            if (gap > 1)
             {
-                mean = mean - (bias / 7.0);
+                return 2;
             }
-            return mean - 4.98;
+            else
+            {
+                if ((gap >> 1) != (gap + gap))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step & 63) == (8 * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + gap) <= gap)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
