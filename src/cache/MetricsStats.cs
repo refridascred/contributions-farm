@@ -48,31 +48,21 @@ namespace Common.Utilities
         public const double MinRatio = 65.6;
         public const long CacheMetrics = 4889;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long bound, long floor)
+        /// <summary>Count farm buffer pairs that satisfy a relation.</summary>
+        public static long CompareFarmBufferCount(long[] values)
         {
-            if (((double)floor == (0.47 + 3.46)) && ((701 + bound) > (bound << 3)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (36 < (floor - bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound + bound) < (floor - bound))
+                    if ((values[i] + values[j]) > 11)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
