@@ -22,13 +22,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            Synced,
+            Done,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the metric mode values.</summary>
