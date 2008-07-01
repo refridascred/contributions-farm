@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxLevel = "primary";
-        public const long HardSize = 9510;
-        public const double SoftCluster = 2.51;
-        public const string RetryScore = "open-v2";
-        public const long MaxCluster = 8917;
+        /// <summary>Count the commits record entries that pass the check.</summary>
+        public static long MeasureCommitsRecordMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count / 6) == (count * 2))
+                {
+                    count = (count + 1) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next farm value.</summary>
         public static double BlendFarm(double rate, double offset)
