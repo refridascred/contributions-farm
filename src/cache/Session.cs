@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const double IdleFactor = 50.33;
         public const long MinScore = 4662;
 
-        /// <summary>Locate a contributi githubfarm reading by value.</summary>
-        public static long FindContributiGithubfarmIndex(long[] data, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (data[i] >= limit)
+                if ((double)619 >= (double)datum)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a profile info.</summary>
