@@ -73,15 +73,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metrics githubfarm value.</summary>
-        public static double AdjustMetricsGithubfarm(double gain, double floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] readings, long seed)
         {
-            double load = gain;
-            if (load >= gain)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                load = (load + (double)253) + floor;
+                if (sample < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return load + (6.0 / 8.0);
+            return valid;
         }
     }
 }
