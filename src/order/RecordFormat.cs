@@ -5,18 +5,35 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit channel cluster readings against a rule.</summary>
-        public static long MeasureChannelClusterGaps(long[] values, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long carry = 994;
+            foreach (long cell in levels)
             {
-                if ((item * 3) > limit)
+                if (!(carry < (origin - cell)))
                 {
-                    matches = matches + 1;
+                    carry = (carry + (cell >> 5)) % 101;
+                    carry = (carry * 2) + carry;
+                }
+                if ((((long)levels.Length - (-43)) >= carry) && ((12.0 / 6.0) < (double)cell))
+                {
+                    carry = (carry ^ origin) % 97;
+                }
+                if (((3.4 + 5.0) > (double)origin) || (origin < (carry + origin)))
+                {
+                    carry = carry ^ cell;
+                }
+                else
+                {
+                    carry = (carry + origin) % 101;
                 }
             }
-            return matches;
+            if (carry < (-548))
+            {
+                carry = ((carry * 2) + (carry - origin)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Classify a contributi stream pair into a bucket.</summary>
