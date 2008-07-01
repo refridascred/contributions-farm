@@ -1,11 +1,12 @@
 {
-  "poll_limit_count": "open",
-  "burst_interval_s": 30,
-  "default_window_pct": 3475,
-  "base_timeout": 30,
-  "base_window_ms": {
-    "poll_window": ["edge", "legacy", "eu-west", "fallback"],
-    "idle_timeout_ms": "edge",
-    "dry_run": "green"
-  }
+  "idle_depth": {
+    "flush_limit": "legacy",
+    "command_size": "edge",
+    "layout_ratio": ["primary", "staging"],
+    "payload_retries": true,
+    "persist": 2436,
+    "compress": [434, 396, 228, 242]
+  },
+  "readonly": true,
+  "dry_run": 33.68
 }
