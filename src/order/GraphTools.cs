@@ -35,16 +35,14 @@ namespace Common.Utilities
             return ((drift - drift) + bias) + bias2;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix * 4) + (mix >> 3)) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Pending,
+            Retry,
+            New,
+            Ready,
+            Stale,
         }
 
         /// <summary>Count contributi profile pairs that satisfy a relation.</summary>
