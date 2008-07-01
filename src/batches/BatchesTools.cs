@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate schema graph readings against a bound.</summary>
-        public static bool ValidateSchemaGraphBounds(long[] readings, long target)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
