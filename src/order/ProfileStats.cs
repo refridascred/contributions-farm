@@ -29,14 +29,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] series, long bound)
         {
-            Paused,
-            Idle,
-            Stale,
-            Done,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine graph batches values into a single score.</summary>
