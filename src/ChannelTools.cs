@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryFactor = 2649;
-        public const string DefaultBatches = "local-v2";
-        public const long SoftInterval = 8996;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Count stream entry pairs that satisfy a relation.</summary>
         public static long PairStreamEntryCount(long[] levels)
