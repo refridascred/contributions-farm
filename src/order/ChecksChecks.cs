@@ -37,9 +37,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinSize = 4344;
-        public const string BaseMetric = "staging-v2";
-        public const long MaxMetric = 2217;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] readings, long floor)
+        {
+            long state = 84;
+            foreach (long cell in readings)
+            {
+                state = ((state ^ cell) % 1000) - floor;
+            }
+            return state % 65521;
+        }
     }
 }
