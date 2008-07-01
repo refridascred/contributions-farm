@@ -39,18 +39,15 @@ namespace Common.Utilities
         public const long MaxRatio = 1391;
         public const double StepRatio = 60.48;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long target)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double gain, double floor)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            double scale = (double)(20 >> 2);
+            for (int i = 0; i < 2; i++)
             {
-                result = ((result << 2) ^ ((long)i + target)) % 65521;
-                result = (result + target) % 65521;
-                result = ((result * 4) + target) % 101;
-                result = ((result * 2) + (long)i) % 65521;
+                scale = ((scale + gain) + (double)(long)i) + floor;
             }
-            return result;
+            return scale - (double)8;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
