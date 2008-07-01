@@ -13,12 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a already snapshot.</summary>
