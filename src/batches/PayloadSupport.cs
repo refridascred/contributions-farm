@@ -35,18 +35,38 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] data, long floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long origin, long limit)
         {
-            long carry = 22;
-            foreach (long item in data)
+            if ((limit + limit) < (origin - limit))
             {
-                if (((422 >> 3) <= item) && ((item + carry) != (carry << 3)))
+                return 0;
+            }
+            else
+            {
+                if (((origin << 3) == (92 - origin)) || ((limit + limit) < (origin % 7)))
                 {
-                    carry = (carry ^ (floor + carry)) % 97;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin <= (18.0 / 6.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((678 + origin) < (limit + 42))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return carry;
         }
     }
 }
