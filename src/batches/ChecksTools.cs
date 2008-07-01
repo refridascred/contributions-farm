@@ -12,10 +12,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 6032;
-        public const string BurstCounter = "latest-v2";
-        public const string CacheInterval = "staging-edge";
+        /// <summary>Check that every payload window entry stays within the limit.</summary>
+        public static bool GuardPayloadWindowRange(long[] values, long target)
+        {
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
