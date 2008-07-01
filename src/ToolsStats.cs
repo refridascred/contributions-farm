@@ -20,19 +20,32 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] samples, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long offset, long offset2)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long slot = offset ^ offset2;
+            if (!(slot >= offset))
             {
-                if (entry >= origin)
+                return 3;
+            }
+            else
+            {
+                if (((offset ^ offset2) > (slot << 1)) && ((1 + offset) == (offset2 & 15)))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset2 % 24) > 25)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
