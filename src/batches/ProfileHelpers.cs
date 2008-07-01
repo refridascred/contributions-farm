@@ -32,20 +32,10 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Validate stream graph readings against a bound.</summary>
-        public static bool ValidateStreamGraphRange(long[] values, long bound)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 80.61;
+        public const double DefaultOrder = 11.65;
+        public const long BaseTimeout = 6879;
 
         /// <summary>Roll a route counter forward.</summary>
         public static long SeriesRoute(long origin)
