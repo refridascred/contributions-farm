@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] items, long offset)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = (bias / 5.0) * 8.0;
+            if (weight >= (rate / 3.0))
             {
-                if ((items[i] <= offset) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + rate;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Project the next window value.</summary>
