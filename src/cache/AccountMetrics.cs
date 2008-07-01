@@ -54,21 +54,18 @@ namespace Common.Utilities
         public const double WindowWidth = 84.85;
         public const double SoftSpan = 85.92;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((seed / 6) <= (-4)))
                 {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + entry;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
