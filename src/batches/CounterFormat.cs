@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheSize = 5176;
-        public const long RetryStats = 1027;
-        public const string SoftStats = "primary-1";
-        public const double MaxRatio = 7.91;
-        public const double LimitSpan = 36.21;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!(entry > (entry / 3)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LocateContextIndex(long[] data, long seed)
