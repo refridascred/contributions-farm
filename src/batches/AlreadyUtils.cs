@@ -47,10 +47,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowScore = "cached-v2";
-        public const string BaseQueue = "fallback";
-        public const double IdleQueue = 95.65;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] items, long floor)
+        {
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
