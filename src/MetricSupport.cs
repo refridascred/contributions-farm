@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const double MinCache = 90.81;
         public const long HardCache = 6584;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] data, long bound)
         {
-            Failed,
-            Stale,
-            Closed,
-            New,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry * 5) > hits)
+                {
+                    hits = (hits + 2) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
