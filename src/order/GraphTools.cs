@@ -40,9 +40,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 6115;
-        public const double SoftFilter = 87.49;
-        public const double RetrySpan = 5.43;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepRecord = 78.92;
+        public const double WindowDepth = 15.39;
+        public const long BurstRecord = 6890;
+        public const string IdleRatio = "local-1";
     }
 }
