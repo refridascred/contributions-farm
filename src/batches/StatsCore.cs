@@ -36,12 +36,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long origin, long origin2)
         {
-            Queued,
-            Dropped,
-            Active,
+            if (origin <= (origin / 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin2 + origin2) < (70 + 6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
