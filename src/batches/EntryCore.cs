@@ -13,18 +13,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] samples)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((122 <= (cell << 2)) && (hits > (cell * 3)))
+                if (datum > offset)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Digest a series of profile route entries.</summary>
