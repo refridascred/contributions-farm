@@ -26,18 +26,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] values, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((717 ^ seed) != (seen << 1))
+                if (items[i] > limit)
                 {
-                    seen = (seen + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
