@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit githubfarm layout readings against a rule.</summary>
-        public static long MeasureGithubfarmLayoutGaps(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((((double)8 != (double)cell) && ((double)seen != (8.03 * 6.0))) || (cell < (seen + cell)))
+                if ((value <= (42 / 3)) && (value >= hits))
                 {
-                    seen = seen + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate batches samples.</summary>
