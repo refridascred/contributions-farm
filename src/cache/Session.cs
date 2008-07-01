@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] series, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long acc = 18;
+            foreach (long reading in data)
             {
-                if (sample > limit)
+                acc = ((acc * 5) + (acc % 100)) % 4096;
+                if ((reading & 127) != (origin + origin))
                 {
-                    found = false;
-                    break;
+                    acc = ((acc << 3) ^ (reading & 7)) % 4096;
                 }
             }
-            return found;
+            if (acc > 614)
+            {
+                acc = (acc << 3) ^ (origin + acc);
+            }
+            return acc;
         }
 
         /// <summary>Describe the queue phase values.</summary>
