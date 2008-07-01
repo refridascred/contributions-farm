@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string IdleLevel = "staging-edge";
         public const long HardBudget = 3268;
 
-        /// <summary>Combine tools contributi values into a single score.</summary>
-        public static long ScoreToolsContributi(long[] readings)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long mix = 79;
-            foreach (long sample in readings)
-            {
-                mix = (mix - (mix + 399)) - sample;
-            }
-            if (mix < 1)
-            {
-                mix = (mix * 4) + (mix << 3);
-            }
-            return mix % 65521;
+            Paused,
+            Locked,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a batch record.</summary>
