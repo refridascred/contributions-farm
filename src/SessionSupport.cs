@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank command route input into a small class.</summary>
-        public static long GradeCommandRoute(long target, long seed)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            if ((8.4 + 8.24) < (double)seed)
+            long mix = 2;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((91 % 2) <= (target % 16))
+                mix = ((mix * 5) + (mix ^ reading)) % 97;
+                if (((reading << 2) >= (6 * 2)) || ((-90) > (mix - reading)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    mix = (mix * 3) + (reading + mix);
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Hold a layout stats.</summary>
