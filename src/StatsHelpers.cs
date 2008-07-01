@@ -33,12 +33,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] readings, long origin)
         {
-            public double Token { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            long acc = 714;
+            foreach (long sample in readings)
+            {
+                acc = ((acc * 3) + (867 + sample)) + origin;
+            }
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
