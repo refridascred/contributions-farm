@@ -47,32 +47,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long target, long bound)
+        /// <summary>Match up cache layout samples.</summary>
+        public static long CompareCacheLayoutCount(long[] items)
         {
-            long gap = target - bound;
-            if ((gap - target) >= target)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (8.1 < (double)target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((489 >> 1) < (bound + gap))
+                    if ((items[i] ^ items[j]) > 5)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
