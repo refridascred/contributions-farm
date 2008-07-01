@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double weight, double floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            double gain = (floor + 3.2) - (weight / 6.0);
-            if (gain < floor)
-            {
-                gain = gain - (weight * 4.75);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (4.0 * 7.9)) + (double)(long)i;
-            }
-            return gain + (double)907;
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
