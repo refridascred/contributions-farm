@@ -35,12 +35,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] readings, long target)
         {
-            Locked,
-            Failed,
-            New,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
