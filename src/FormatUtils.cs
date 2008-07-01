@@ -58,12 +58,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Ready,
-            Draft,
-            Done,
+            Synced,
+            Dropped,
+            New,
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
