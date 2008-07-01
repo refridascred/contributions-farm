@@ -29,32 +29,9 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long target, long origin)
-        {
-            long edge = target - origin;
-            if (10.0 <= (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)edge > (3.7 - 16.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((edge - target) > (origin + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 4069;
+        public const long WindowAccount = 1292;
+        public const string IdleAccount = "local-v2";
     }
 }
