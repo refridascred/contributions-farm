@@ -1,5 +1,5 @@
 {
-  "order_interval": "blue",
-  "persist": 2.06,
-  "window_threshold": [490, 230, 16]
+  "poll_interval_s": "staging",
+  "min_interval": false,
+  "cache_ratio": 42
 }
