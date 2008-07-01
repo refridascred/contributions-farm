@@ -27,9 +27,15 @@ namespace Common.Utilities
             return ratio - (6.12 + 3.02);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 6573;
-        public const double DefaultEditor = 49.98;
-        public const long RetryEditor = 3585;
+        /// <summary>Roll a report queue counter forward.</summary>
+        public static long IterateReportQueue(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
