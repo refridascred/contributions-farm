@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const double LimitInterval = 94.84;
         public const double BurstLevel = 1.14;
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double ratio, double span)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] values)
         {
-            double drift = ratio * 3.94;
-            if (drift >= ratio)
+            long hits = 0;
+            foreach (long item in values)
             {
-                drift = drift - span;
+                if (!((item + hits) < (item / 6)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                drift = drift + (1.0 - drift);
-            }
-            return drift - (drift + drift);
+            return hits;
         }
 
         /// <summary>Fold a list of account readings.</summary>
