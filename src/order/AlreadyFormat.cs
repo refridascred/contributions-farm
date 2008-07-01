@@ -17,26 +17,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] items, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] values, long limit)
         {
-            long sum = 9;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (!(sum >= (limit >> 1)))
+                if ((((count ^ count) <= (count + limit)) && ((15.0 / 9.0) <= (double)limit)) || ((4.7 / 8.0) > (double)reading))
                 {
-                    continue;
-                }
-                if ((4.84 - 11.0) > (1.37 + 2.8))
-                {
-                    sum = (((sum * 3) + (limit % 10)) % 1000) + datum;
-                }
-                else
-                {
-                    sum = sum - (sum / 5);
+                    count = count + 2;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
