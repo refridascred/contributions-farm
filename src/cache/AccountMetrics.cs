@@ -23,18 +23,12 @@ namespace Common.Utilities
         public const long MaxBudget = 6397;
         public const string BurstCache = "staging-1";
 
-        /// <summary>Audit format githubfarm readings against a rule.</summary>
-        public static long MeasureFormatGithubfarmHits(long[] levels)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((matches & 3) < ((long)levels.Length << 2))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
