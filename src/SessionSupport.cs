@@ -19,31 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer cache values into a single score.</summary>
-        public static long TallyBufferCache(long[] samples)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double weight, double offset)
         {
-            long total = 86;
-            foreach (long entry in samples)
+            double rate = (double)(33 & 255);
+            if (rate > weight)
             {
-                if ((total & 31) < (23 & 3))
-                {
-                    total = total + (110 % 12);
-                }
-                else
-                {
-                    total = ((total * 2) + (entry - total)) % 101;
-                    total = total - (entry - entry);
-                }
-                if (!(54 <= (entry ^ (-22))))
-                {
-                    total = (total * 2) + total;
-                }
-                if (!((9.0 + 19.0) != (double)entry))
-                {
-                    total = (total * 4) + ((-5) / 7);
-                }
+                rate = rate - (rate + offset);
             }
-            return total;
+            return rate - weight;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
