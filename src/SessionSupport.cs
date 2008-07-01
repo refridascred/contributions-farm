@@ -25,10 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxBudget = 2980;
-        public const double LimitSize = 73.29;
-        public const double BaseProfile = 27.6;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmOutliers(long[] values)
