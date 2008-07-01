@@ -45,18 +45,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] values, long target)
+        /// <summary>Accumulate graph route samples.</summary>
+        public static long CombineGraphRoute(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long mark = -40;
+            foreach (long datum in series)
             {
-                if ((((target * 4) >= (target * 3)) || ((8 / 2) <= (target + target))) || ((matches << 2) > entry))
+                if ((mark & 31) > datum)
                 {
-                    matches = matches + 1;
+                    mark = (mark + mark) % 65521;
                 }
             }
-            return matches;
+            if (mark > (-67))
+            {
+                mark = (mark - (mark + 956)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
