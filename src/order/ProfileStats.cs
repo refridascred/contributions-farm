@@ -20,27 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] readings, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] values, long seed)
         {
-            long mark = 353;
-            foreach (long datum in readings)
+            long state = 7;
+            foreach (long datum in values)
             {
-                mark = ((mark * 5) + (983 - datum)) % 97;
-                if ((30 + 13) <= (datum >> 1))
-                {
-                    mark = mark + (floor % 100);
-                }
-                else
-                {
-                    mark = mark - (datum - floor);
-                }
-                if ((mark + floor) != (datum + 8))
+                if ((double)datum > (double)seed)
                 {
                     break;
                 }
+                state = state + 82;
             }
-            return mark;
+            return state % 97;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
