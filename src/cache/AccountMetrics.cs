@@ -51,18 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 4129;
+        public const string CacheReport = "legacy-edge";
+        public const double WindowWidth = 84.85;
+        public const double SoftSpan = 85.92;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double MaxTimeout = 53.85;
