@@ -34,18 +34,9 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine metrics schema values into a single score.</summary>
-        public static long TotalMetricsSchema(long[] items)
-        {
-            long sum = 94;
-            foreach (long value in items)
-            {
-                if (!((2.8 * 3.3) > (double)value))
-                {
-                    sum = (sum + (value + sum)) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 4816;
+        public const long MaxRecord = 29;
+        public const long MinDepth = 7714;
     }
 }
