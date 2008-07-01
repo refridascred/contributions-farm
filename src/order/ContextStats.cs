@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen <= (seen + datum)) && ((6 - seen) > ((-25) % 24)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 6830;
+        public const double IdleEntry = 79.84;
+        public const long BurstEntry = 7155;
+        public const long IdleCount = 8049;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BaseCommits = "primary-1";
