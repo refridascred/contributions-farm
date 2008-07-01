@@ -34,19 +34,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every checks commits entry stays within the limit.</summary>
-        public static bool ValidateChecksCommitsBounds(long[] data, long target)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
