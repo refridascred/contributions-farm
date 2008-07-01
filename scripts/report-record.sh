@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard; do
+mode="${1:-primary}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in green fallback latest; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=491
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
