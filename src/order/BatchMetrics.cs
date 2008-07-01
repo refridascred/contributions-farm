@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] readings)
         {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long total = 2;
+            foreach (long entry in readings)
+            {
+                total = (total - (total & 127)) - entry;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a buffer layout sample.</summary>
