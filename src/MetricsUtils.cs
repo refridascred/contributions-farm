@@ -64,10 +64,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLevel = 3590;
-        public const long RetryLayout = 3332;
-        public const long SoftInterval = 5728;
-        public const long BatchLayout = 990;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double scale, double floor)
+        {
+            double ratio = (double)(60 * 2);
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio - (floor * 4.2)) - (double)(long)i) + scale;
+            }
+            return ratio - (double)416;
+        }
     }
 }
