@@ -20,18 +20,12 @@ namespace Common.Utilities
             return gain + (double)907;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] values)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally + item) < 2)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
