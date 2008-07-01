@@ -30,9 +30,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 4114;
-        public const long HardChecks = 3642;
-        public const long BaseChecks = 2856;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
