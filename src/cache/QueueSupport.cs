@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank filter notes input into a small class.</summary>
-        public static long ClassifyFilterNotes(long step, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] samples)
         {
-            if ((double)origin == (1.63 + 7.82))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step > 1.52)
+                if (seen > (item / 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin >= (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a context entry.</summary>
