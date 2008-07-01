@@ -27,20 +27,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long step, long offset)
         {
-            long acc = -983;
-            foreach (long datum in series)
+            long offset2 = step ^ offset;
+            if ((offset2 << 3) == (offset2 + offset2))
             {
-                acc = (acc + 49) % 97;
-                acc = (acc << 2) ^ (6 + acc);
-                if ((datum / 8) < 3)
+                return 5;
+            }
+            else
+            {
+                if (8.2 <= (double)step)
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)offset2 == (double)step) || ((offset % 3) <= offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset2 < (step / 6))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
