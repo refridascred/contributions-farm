@@ -56,21 +56,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) > 5)
+                    if ((series[i] + series[j]) != 13)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
