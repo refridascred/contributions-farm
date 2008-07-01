@@ -54,22 +54,12 @@ namespace Common.Utilities
         public const long WindowSpan = 3080;
         public const long BurstStream = 2863;
 
-        /// <summary>Count stream metric pairs that satisfy a relation.</summary>
-        public static long CompareStreamMetricCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchBudget = 8037;
+        public const double LimitStats = 32.29;
+        public const long IdleTimeout = 8970;
+        public const double HardFactor = 82.02;
+        public const double SoftBudget = 85.45;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowRange(long[] data, long origin)
