@@ -33,11 +33,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 6707;
-        public const long StepFactor = 2125;
-        public const long WindowMetrics = 8839;
-        public const long MinInterval = 7009;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the order route entries that pass the check.</summary>
         public static long TallyOrderRouteMatches(long[] levels, long seed)
