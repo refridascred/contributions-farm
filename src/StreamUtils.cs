@@ -45,22 +45,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] levels, long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long bound)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((origin & 7) == (count << 2))
+                sum = (sum + (4 + bound)) % 97;
+                if (((double)sum > (10.0 + 2.96)) && ((1.51 - 5.0) > (double)sum))
                 {
-                    count = (count + 1) ^ cell;
+                    sum = (sum + (bound & 63)) % 101;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
