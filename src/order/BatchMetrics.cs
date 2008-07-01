@@ -79,38 +79,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long seed, long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] levels)
         {
-            if (((step - seed) <= (seed ^ 6)) || ((seed - step) > (84 - step)))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - step) <= (step + seed))
+                if (((count % 64) > sample) && ((double)sample > (9.7 - 20.0)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.0 * 20.0) <= (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (4.0 <= (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
