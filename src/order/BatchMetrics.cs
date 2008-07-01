@@ -62,13 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Stale,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "local";
+        public const long BaseMetrics = 2236;
+        public const string MaxDepth = "local-v2";
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
