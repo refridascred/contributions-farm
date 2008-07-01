@@ -27,17 +27,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] data, long step)
+        /// <summary>Classify a contributi stream pair into a bucket.</summary>
+        public static long RankContributiStream(long origin, long origin2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long delta = origin ^ origin2;
+            if ((origin - origin) != (delta / 3))
             {
-                if ((data[i] <= step) && ((data[i] % 5) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((origin2 + 596) < origin)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (origin >= (origin2 ^ origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((delta - delta) > origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next payload value.</summary>
