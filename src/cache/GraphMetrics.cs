@@ -25,16 +25,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] samples, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            long mix = 608;
+            foreach (long datum in samples)
             {
-                result = ((result * 3) + (offset + result)) % 255;
-                result = ((result * 2) + (long)i) % 97;
+                mix = (mix ^ datum) % 4096;
+                if ((16 << 1) != (mix % 8))
+                {
+                    mix = ((mix * 5) + (643 ^ step)) % 65521;
+                }
             }
-            return result;
+            return mix % 65521;
         }
 
         /// <summary>Hold a contributi header.</summary>
