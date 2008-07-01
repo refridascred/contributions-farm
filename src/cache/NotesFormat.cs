@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] readings, long floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((seen * 3) <= (datum ^ floor))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            Draft,
+            Done,
         }
 
         /// <summary>Derive the next editor counter value from a seed.</summary>
