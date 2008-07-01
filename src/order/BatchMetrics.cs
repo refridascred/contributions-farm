@@ -48,12 +48,11 @@ namespace Common.Utilities
         public const long BaseMetrics = 2236;
         public const string MaxDepth = "local-v2";
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Blend two metric route measurements.</summary>
+        public static double BlendMetricRoute(double gain, double floor)
         {
-            Draft,
-            Ready,
-            Closed,
+            double scale = (double)(8 >> 4);
+            return (scale - (gain * 4.63)) + floor;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
