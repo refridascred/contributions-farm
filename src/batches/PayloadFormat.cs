@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] items, long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long total = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((1 - floor) < floor) && ((long)items.Length < (930 + 87)))
-                {
-                    count = (count + 3) ^ cell;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Project the next context value.</summary>
