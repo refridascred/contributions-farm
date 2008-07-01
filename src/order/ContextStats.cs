@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] levels)
         {
-            long sum = 7;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                sum = ((sum + (sum - sum)) % 101) - sample;
+                if ((2 * 5) > (count >> 1))
+                {
+                    count = (count + 3) + datum;
+                }
             }
-            if (sum < 87)
-            {
-                sum = sum ^ (sum % 100);
-            }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
