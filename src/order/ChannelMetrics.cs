@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double rate, double offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] values, long limit)
         {
-            double ratio = 5.47 - (double)3;
-            if (ratio < 12.0)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                ratio = ((ratio + ratio) + rate) + offset;
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)28;
-            }
-            return ratio - 2.0;
+            return ready;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
