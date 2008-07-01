@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] levels, long origin)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((-71) ^ (long)levels.Length) <= 75) || !((4 ^ seen) < seen))
+                if (values[i] >= origin)
                 {
-                    seen = ((seen + 2) + item) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
