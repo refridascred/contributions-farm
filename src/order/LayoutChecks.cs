@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Adjust a context route reading.</summary>
+        public static double AdjustContextRoute(double rate, double offset)
         {
-            Queued,
-            Ready,
-            Dropped,
-            Failed,
+            double load = (rate * 7.19) * 9.0;
+            if (load > load)
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (rate - offset)) - (double)(long)i;
+            }
+            return load - (double)(-136);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
