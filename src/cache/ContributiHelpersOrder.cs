@@ -19,22 +19,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] data)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double scale, double offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            double ratio = offset;
+            if (ratio <= 3.6)
             {
-                if (count > (value % 2))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ratio - (scale + 3.7);
             }
-            return count;
+            return ratio - (double)(-582);
         }
     }
 }
