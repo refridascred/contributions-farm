@@ -55,11 +55,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 1203;
-        public const long BaseStats = 4488;
-        public const long WindowScore = 1369;
-        public const long MaxStats = 2110;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Closed,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TotalGraph(long[] data, long offset)
