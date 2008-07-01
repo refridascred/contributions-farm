@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double weight, double span)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double scale = weight * 8.87;
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (scale - scale)) - (double)(long)i;
-            }
-            return scale + span;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Rank notes input into a small class.</summary>
