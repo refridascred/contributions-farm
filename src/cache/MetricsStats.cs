@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 1367;
-        public const long BatchNotes = 4569;
-        public const double WindowCount = 3.08;
-        public const long DefaultNotes = 737;
-        public const long BatchScore = 9348;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry < (1.12 + 6.54))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every filter token entry stays within the limit.</summary>
         public static bool CheckFilterTokenLimits(long[] values, long target)
