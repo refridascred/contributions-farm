@@ -28,17 +28,18 @@ namespace Common.Utilities
         public const string IdleEntry = "latest-edge";
         public const long HardEntry = 3842;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] values, long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
+                if (((count / 9) == (count / 3)) || !((count & 127) >= (value ^ count)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
