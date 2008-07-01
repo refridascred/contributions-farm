@@ -31,18 +31,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many editor format samples are out of range.</summary>
-        public static long AuditEditorFormatHits(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (((-4) + matches) == (matches * 5))
+                if (sample > bound)
                 {
-                    matches = (matches + 3) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
