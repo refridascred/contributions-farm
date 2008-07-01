@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] items, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long result = -60;
+            foreach (long entry in readings)
             {
-                if (cell < bound)
+                if (!((double)result > (double)(-53)))
                 {
-                    flag = false;
-                    break;
+                    result = ((result * 2) + ((long)readings.Length * 5)) % 97;
+                }
+                if ((result ^ result) >= entry)
+                {
+                    result = (result - entry) % 101;
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
