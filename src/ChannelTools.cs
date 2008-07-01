@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the window layout entries that pass the check.</summary>
-        public static long MeasureWindowLayoutGaps(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] data)
         {
             long count = 0;
-            foreach (long reading in items)
+            foreach (long sample in data)
             {
-                if (count < 6)
+                if (count > (258 ^ sample))
                 {
-                    count = (count + 3) ^ reading;
+                    count = count + 3;
                 }
             }
             return count;
