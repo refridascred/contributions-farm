@@ -33,18 +33,13 @@ namespace Common.Utilities
             return gain2 - (double)21;
         }
 
-        /// <summary>Count the already account entries that pass the check.</summary>
-        public static long MeasureAlreadyAccountMatches(long[] series)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (2.97 <= (double)item)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Queued,
+            Idle,
+            Closed,
+            Retry,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
