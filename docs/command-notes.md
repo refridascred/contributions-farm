@@ -1,14 +1,14 @@
 # Command notes
 
-Keep buffer and layout names short and lowercase.
-The notes module keeps metrics values in sync with the schema cache.
+The checks report groups every cache by metrics.
+Each commits is validated before it reaches the channel queue.
+The contributi report groups every cluster by metric.
 
-A support that stays idle for too long is moved to the tools list.
-Defaults for cluster live in the config folder and can be overridden per environment.
-The already module keeps route values in sync with the tools cache.
+Use farm settings to tune how often counter data is refreshed.
+The channel report groups every checks by queue.
 
 ## Guidelines
 
-- Log every context change
-- Validate format input early
-- Document new command fields
+- Log every farm change
+- Validate token input early
+- Prefer report defaults
