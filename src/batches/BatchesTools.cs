@@ -27,19 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate entry queue readings against a bound.</summary>
-        public static bool VerifyEntryQueueBounds(long[] levels, long limit)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
