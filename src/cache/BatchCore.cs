@@ -29,22 +29,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] readings, long target)
         {
-            long state = 9;
-            foreach (long entry in items)
+            long mix = 391;
+            foreach (long item in readings)
             {
-                if ((entry - entry) > (44 * 4))
+                if ((mix - target) >= (6 ^ 6))
                 {
-                    state = (state + entry) % 97;
+                    mix = ((mix << 3) ^ (item + target)) % 255;
                 }
             }
-            if (state < 176)
+            if (mix > 811)
             {
-                state = (state ^ (state - state)) % 255;
+                mix = ((mix << 3) ^ mix) % 255;
             }
-            return state;
+            return mix % 1000;
         }
 
         /// <summary>Hold a entry entry.</summary>
