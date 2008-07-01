@@ -48,20 +48,13 @@ namespace Common.Utilities
         public const string HardWidth = "legacy-edge";
         public const long MaxSchema = 1536;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = (((mix * 4) + (origin >> 1)) % 4096) - (long)i2;
-                    mix = ((mix << 2) ^ (origin >> 5)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Locate a already reading by value.</summary>
