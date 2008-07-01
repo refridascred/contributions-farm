@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const string DefaultLayout = "staging-v2";
         public const double CacheRatio = 57.13;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Locked,
-            Idle,
-            Ready,
-            Active,
-            Closed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowCount = "local-1";
+        public const long BaseWidth = 5249;
+        public const string BurstBatch = "standard";
+        public const string StepBatch = "stable-1";
+        public const long CacheBatch = 9148;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
