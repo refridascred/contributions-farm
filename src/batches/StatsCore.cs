@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultSize = 6197;
-        public const long BaseWindow = 6234;
-        public const long BatchWindow = 6351;
-        public const long HardCount = 7435;
+        /// <summary>Project the next checks channel value.</summary>
+        public static double SmoothChecksChannel(double rate, double span)
+        {
+            double mean = (double)(80 << 2);
+            if (mean < (mean - span))
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (3.3 - rate)) + (double)(long)i;
+            }
+            return mean - rate;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long PairToolsCount(long[] data)
