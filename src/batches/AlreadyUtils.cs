@@ -27,31 +27,31 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long bound, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long seed, long target)
         {
-            long edge = bound ^ target;
-            if ((8 ^ target) > bound)
+            long diff = seed - target;
+            if (((double)seed >= (12.0 * 5.7)) && ((1 << 3) > ((-821) - diff)))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((double)edge >= 3.4)
+                if ((diff % 97) == (target * 5))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((347 % 24) > (target + bound))
+                    if ((target << 1) >= diff)
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        if ((bound > (bound - bound)) && ((215 * 5) >= (bound << 1)))
+                        if ((double)diff != (7.9 * 7.0))
                         {
-                            return 5;
+                            return 0;
                         }
                         else
                         {
