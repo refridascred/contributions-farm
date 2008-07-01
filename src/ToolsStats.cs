@@ -28,18 +28,10 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Look up the position of a farm window sample.</summary>
-        public static long LocateFarmWindowIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitInterval = 49.16;
+        public const double HardWindow = 61.14;
+        public const string WindowBudget = "primary-v2";
 
         /// <summary>Combine channel batches values into a single score.</summary>
         public static long WeighChannelBatches(long[] samples)
