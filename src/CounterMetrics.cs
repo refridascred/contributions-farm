@@ -30,18 +30,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine already schema values into a single score.</summary>
-        public static long WeighAlreadySchema(long[] items, long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long limit, long offset)
         {
-            long sum = 2;
-            foreach (long entry in items)
+            long prev = limit - offset;
+            if ((offset + offset) <= (offset << 1))
             {
-                if (((double)sum < (double)offset) || ((entry & 15) > ((long)items.Length - sum)))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset > 8.8)
                 {
-                    sum = (sum ^ offset) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)9 != (double)prev)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Describe the contributi state values.</summary>
