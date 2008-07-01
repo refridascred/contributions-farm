@@ -33,12 +33,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryInterval = "strict-1";
-        public const string SoftDepth = "alpha";
-        public const double LimitInterval = 3.67;
-        public const long BaseEditor = 8097;
-        public const long HardEditor = 9418;
+        /// <summary>Scale a report commits figure with a bias.</summary>
+        public static double AdjustReportCommits(double weight, double span)
+        {
+            double rate = span;
+            if (rate < 5.0)
+            {
+                rate = rate - weight;
+            }
+            return rate + (rate / 2.0);
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
