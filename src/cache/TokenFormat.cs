@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double bias, double bias2)
         {
-            Stale,
-            Failed,
-            Draft,
+            double bias3 = bias2 + bias;
+            if (bias3 > (bias2 - bias2))
+            {
+                bias3 = bias3 + 4.86;
+            }
+            else
+            {
+                bias3 = bias3 + (bias - bias2);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias3 = (bias3 + (double)470) - (double)(long)i;
+            }
+            return bias3 + (bias + bias2);
         }
 
         /// <summary>Fold a list of account readings.</summary>
