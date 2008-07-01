@@ -34,14 +34,16 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long floor)
         {
-            Pending,
-            Retry,
-            New,
-            Ready,
-            Stale,
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = (sum * 2) + 58;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count contributi profile pairs that satisfy a relation.</summary>
