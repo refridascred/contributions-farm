@@ -20,13 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of batches metrics entries.</summary>
