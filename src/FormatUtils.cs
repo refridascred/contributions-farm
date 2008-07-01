@@ -24,21 +24,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = (bias2 + (offset / 3.0)) + (double)(long)i;
             }
-            return count;
+            return bias2 + bias;
         }
 
         /// <summary>Hold a profile options.</summary>
