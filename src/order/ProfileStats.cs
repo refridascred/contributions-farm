@@ -13,10 +13,20 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftLevel = "standard-1";
-        public const long RetryBuffer = 7092;
-        public const string CacheBuffer = "primary-1";
+        /// <summary>Check that every layout farm entry stays within the limit.</summary>
+        public static bool ValidateLayoutFarmBounds(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LocateAccountIndex(long[] series, long bound)
