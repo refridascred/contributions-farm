@@ -63,13 +63,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] series)
         {
-            Queued,
-            Active,
-            Ready,
-            Failed,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits / 6) > (2 << 1))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
