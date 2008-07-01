@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] readings)
+        /// <summary>Fold a list of checks cluster readings.</summary>
+        public static long TallyChecksCluster(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long carry = 647;
+            foreach (long reading in samples)
             {
-                if ((hits + item) > hits)
+                if (!((carry + 5) > (carry ^ reading)))
                 {
-                    hits = hits + 1;
+                    carry = (carry * 4) + (reading - offset);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a contributi options.</summary>
