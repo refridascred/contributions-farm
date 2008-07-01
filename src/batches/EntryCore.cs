@@ -27,19 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] data, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long score = 964;
+            foreach (long reading in data)
             {
-                if (sample > limit)
+                if ((double)score < (8.8 + 10.0))
                 {
-                    stale = false;
-                    break;
+                    score = score ^ (reading + reading);
                 }
             }
-            return stale;
+            return score % 1000;
         }
 
         /// <summary>Digest a series of order entries.</summary>
