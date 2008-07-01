@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepInterval = 8644;
-        public const double IdleBatches = 33.78;
-        public const long BurstScore = 909;
-        public const long WindowBatches = 3840;
-        public const long MinLevel = 2667;
+        /// <summary>Measure how many metric checks samples are out of range.</summary>
+        public static long CountMetricChecksHits(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((entry * 4) != (entry >> 5))
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of record command entries.</summary>
         public static long DigestRecordCommand(long[] values)
