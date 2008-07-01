@@ -33,13 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] data, long offset)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
+            long sum = 45;
+            foreach (long reading in data)
+            {
+                sum = ((sum << 3) ^ sum) % 65521;
+                if ((5 + offset) >= reading)
+                {
+                    sum = (sum + (sum & 127)) % 255;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
