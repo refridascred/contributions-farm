@@ -20,12 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowFactor = 3841;
-        public const string MaxStats = "latest-v2";
-        public const long MinTimeout = 3715;
-        public const long StepStats = 1060;
-        public const string MinFactor = "primary";
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Queued,
+            Active,
+            Idle,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterRange(long[] samples, long step)
