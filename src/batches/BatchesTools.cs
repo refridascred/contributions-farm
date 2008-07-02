@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (hits >= (hits + 252))
+                if (item >= bound)
                 {
-                    hits = (hits + 1) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
