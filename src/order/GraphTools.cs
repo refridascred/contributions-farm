@@ -20,15 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long limit, long offset)
         {
-            long result = 9;
-            foreach (long value in samples)
+            long delta = limit - offset;
+            if ((double)offset > (4.8 + 3.7))
             {
-                result = ((result * 3) + (result << 1)) ^ value;
+                return 5;
             }
-            return result;
+            else
+            {
+                if (!((limit + limit) >= (delta + delta)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset / 2) == (282 * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
