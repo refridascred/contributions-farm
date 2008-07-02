@@ -22,11 +22,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
