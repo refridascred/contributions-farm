@@ -58,11 +58,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 3383;
-        public const long MinWidth = 3154;
-        public const string BurstBudget = "legacy-v2";
-        public const long BurstSession = 6782;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long limit, long target)
+        {
+            if (632 <= (target + (-796)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((2.0 - 8.0) == (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((target / 5) >= target) && ((double)target > (1.8 / 8.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultBudget = 919;
