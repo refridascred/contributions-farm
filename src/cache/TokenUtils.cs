@@ -34,19 +34,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Scale a order payload figure with a bias.</summary>
-        public static double SmoothOrderPayload(double weight, double offset)
+        /// <summary>Measure how many cluster layout samples are out of range.</summary>
+        public static long TallyClusterLayoutHits(long[] samples, long step)
         {
-            double scale = (offset + 9.6) / 3.0;
-            if (scale <= weight)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                scale = scale - (double)90;
+                if (!((step / 3) > seen))
+                {
+                    seen = (seen + 2) - value;
+                }
             }
-            else
-            {
-                scale = scale - (weight / 6.0);
-            }
-            return scale - 0.9;
+            return seen;
         }
     }
 }
