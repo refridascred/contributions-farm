@@ -42,21 +42,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count metrics entry pairs that satisfy a relation.</summary>
-        public static long CompareMetricsEntryCount(long[] series)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) < 3)
+                    if ((levels[i] + levels[j]) < 14)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
