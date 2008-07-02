@@ -57,11 +57,24 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Classify a stats graph pair into a bucket.</summary>
+        public static long RankStatsGraph(long limit, long seed)
         {
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
+            if ((3.8 - 1.48) <= (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)seed != (double)limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
