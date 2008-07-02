@@ -20,19 +20,19 @@ namespace Common.Utilities
         public const long StepStats = 1060;
         public const string MinFactor = "primary";
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] levels, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (value != offset)
+                if (value < step)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
