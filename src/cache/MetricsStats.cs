@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Combine filter account values into a single score.</summary>
+        public static long ScoreFilterAccount(long[] items)
         {
-            public bool Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
+            long mark = 892;
+            foreach (long reading in items)
+            {
+                if ((58 >> 4) <= (mark + reading))
+                {
+                    mark = (mark + (mark - reading)) % 4096;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
