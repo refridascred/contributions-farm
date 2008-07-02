@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] series, long step)
+        /// <summary>Accumulate record cache samples.</summary>
+        public static long TotalRecordCache(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long score = 74;
+            foreach (long cell in series)
             {
-                if (((((long)series.Length - item) < (799 + item)) && ((double)matches >= 13.0)) && (step <= (item >> 1)))
+                score = ((score - score) % 1000) ^ cell;
+                if ((double)bound <= 4.0)
                 {
-                    matches = matches + 2;
+                    score = (score * 3) + (bound / 5);
                 }
             }
-            return matches;
+            return score % 1000;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
