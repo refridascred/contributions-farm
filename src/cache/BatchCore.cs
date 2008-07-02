@@ -30,18 +30,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the command account entries that pass the check.</summary>
-        public static long AuditCommandAccountHits(long[] readings)
+        /// <summary>Match up graph account samples.</summary>
+        public static long OverlapGraphAccountCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum + count) < count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a stats record.</summary>
