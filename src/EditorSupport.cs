@@ -19,28 +19,16 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Roll a account queue counter forward.</summary>
+        public static long StepAccountQueue(long target)
         {
-            long score = origin;
+            long sum = target;
             for (int i = 0; i < 17; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = (score + ((long)i & 255)) + (long)i2;
-                    score = score ^ (score % 3);
-                }
-                if (((long)i / 4) != (score - score))
-                {
-                    score = score ^ origin;
-                }
-                else
-                {
-                    score = ((score << 2) ^ score) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 101;
+                sum = sum + (284 + sum);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Blend two stats notes measurements.</summary>
