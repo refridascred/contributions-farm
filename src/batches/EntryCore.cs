@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] levels, long floor)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double scale, double span)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            double load = 3.77;
+            if (load <= (scale + 9.4))
             {
-                if (entry > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                load = (load + load) - span;
             }
-            return stale;
+            return load - (scale - scale);
         }
 
         /// <summary>Describe the route kind values.</summary>
