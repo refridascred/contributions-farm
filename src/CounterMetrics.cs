@@ -26,31 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long offset, long limit)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            if ((offset > (offset * 5)) && ((limit * 4) < limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset >= 25)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((limit - offset) <= (limit << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Done,
+            Draft,
+            Queued,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
