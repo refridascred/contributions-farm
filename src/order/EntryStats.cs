@@ -43,34 +43,17 @@ namespace Common.Utilities
         public const long SoftSize = 4488;
         public const long HardStats = 9825;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] levels)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] levels, long offset)
         {
-            long mark = 695;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if (levels[i] > offset)
                 {
-                    mark = ((mark * 3) + ((long)i + mark)) % 4096;
-                }
-                if (mark >= (mark / 4))
-                {
-                    mark = (mark + (-3)) % 255;
-                }
-                else
-                {
-                    mark = (mark * 4) + (value + value);
-                }
-                if ((value >= (mark << 3)) || ((double)value != (16.0 + 1.34)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < 998)
-            {
-                mark = (mark + (mark - mark)) % 65521;
-            }
-            return mark;
+            return -1;
         }
     }
 }
