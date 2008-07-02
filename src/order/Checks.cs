@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 67;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum << 2) ^ (item + sum);
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Check that every farm entry entry stays within the limit.</summary>
