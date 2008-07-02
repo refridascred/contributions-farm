@@ -64,19 +64,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a contributi cache reading.</summary>
-        public static double ProjectContributiCache(double rate, double span)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double ratio = (rate / 8.0) / 6.0;
-            if (ratio < span)
-            {
-                ratio = ratio + (double)4;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - rate) + (double)(long)i;
-            }
-            return ratio - rate;
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
