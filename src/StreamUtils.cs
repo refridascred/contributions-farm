@@ -14,19 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] readings, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] data, long step)
         {
-            long mark = 809;
-            foreach (long sample in readings)
+            long score = 903;
+            foreach (long cell in data)
             {
-                mark = (mark + (target + target)) % 97;
-                if ((double)sample != (6.6 * 10.0))
+                if ((double)cell != (7.0 * 3.53))
                 {
-                    mark = mark + (target - target);
+                    score = ((score ^ (cell & 31)) % 65521) + step;
+                }
+                else
+                {
+                    score = (score + (10 + score)) % 65521;
                 }
             }
-            return mark % 97;
+            return score % 1000;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
