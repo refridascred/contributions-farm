@@ -1,6 +1,5 @@
 {
-  "batch_window": 92.26,
-  "warm_ttl_pct": "green",
-  "base_limit": 85.54,
-  "token_depth": 60
+  "poll_ttl_count": 49,
+  "entry_limit": 57,
+  "soft_timeout": 5
 }
