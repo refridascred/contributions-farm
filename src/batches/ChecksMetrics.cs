@@ -19,10 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "primary-v2";
-        public const string LimitSize = "stable-v2";
-        public const long CacheFilter = 7057;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] values, long offset)
