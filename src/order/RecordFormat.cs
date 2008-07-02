@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of support channel readings.</summary>
-        public static long CompareSupportChannelCount(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (81 <= (offset + offset))
                 {
-                    if ((readings[i] - readings[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) + reading;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the command mode values.</summary>
