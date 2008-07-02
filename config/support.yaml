@@ -1,7 +1,11 @@
 # support settings
-poll_depth: false
-graph_interval: edge
-min_interval_s: true
-batch_limit_ms: 446
-metric_ratio: 100
-readonly: standard
+retry_capacity_pct: true
+cache_window:
+  - cached
+  - cached
+  - staging
+batch_interval_pct:
+  - edge
+  - fallback
+payload_interval: blue
+min_ttl: blue
