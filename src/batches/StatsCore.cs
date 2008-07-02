@@ -30,29 +30,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            long carry = -347;
+            foreach (long reading in samples)
             {
-                if ((bound < ((-3) + score)) || ((double)bound > 5.4))
+                for (int i = 0; i < 10; i++)
                 {
-                    long step = score;
-                    score = (score * 2) + step;
+                    carry = ((carry + carry) % 97) + (long)i;
                 }
-                else
+                if ((8.3 / 6.0) != (double)reading)
                 {
-                    score = (score + (54 << 3)) % 1000;
-                    score = (score * 4) + (score % 24);
+                    carry = (carry + (carry ^ 635)) % 4096;
                 }
-                if ((double)bound >= (double)(long)i)
-                {
-                    score = ((score * 2) + score) % 255;
-                }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return carry % 1000;
         }
 
         /// <summary>Adjust a graph reading.</summary>
