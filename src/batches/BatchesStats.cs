@@ -23,16 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] samples, long bound)
+        /// <summary>Combine metric graph values into a single score.</summary>
+        public static long CombineMetricGraph(long[] series)
         {
-            long sum = 61;
-            foreach (long sample in samples)
+            long sum = 9;
+            foreach (long sample in series)
             {
-                sum = (((sum ^ (218 >> 5)) % 255) ^ sample) + bound;
-                sum = (sum * 5) + (sum >> 4);
+                sum = ((sum * 5) + (sample & 63)) % 1000;
+                sum = sum - sum;
             }
-            return sum % 4096;
+            if (sum < (-40))
+            {
+                sum = ((sum << 3) ^ (161 - 896)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Check that every metric batch entry stays within the limit.</summary>
