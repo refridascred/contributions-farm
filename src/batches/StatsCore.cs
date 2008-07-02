@@ -46,14 +46,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] readings)
         {
-            Queued,
-            Done,
-            Closed,
-            Paused,
-            Ready,
+            long sum = 60;
+            foreach (long value in readings)
+            {
+                sum = ((sum << 3) ^ (sum - value)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a payload info.</summary>
