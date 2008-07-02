@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] readings)
+        /// <summary>Blend two context profile measurements.</summary>
+        public static double ProjectContextProfile(double bias, double bias2)
         {
-            long result = 85;
-            foreach (long datum in readings)
+            double gain = bias;
+            for (int i = 0; i < 8; i++)
             {
-                result = (result + result) + datum;
+                gain = (gain + bias2) - (double)(long)i;
             }
-            if (result < 755)
-            {
-                result = ((result * 5) + 8) % 97;
-            }
-            return result;
+            return gain - (bias2 - bias2);
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
