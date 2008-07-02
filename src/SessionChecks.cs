@@ -55,9 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 1209;
-        public const long BatchWidth = 783;
-        public const double WindowSession = 44.31;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double weight, double offset)
+        {
+            double rate = weight + offset;
+            if (rate > offset)
+            {
+                rate = rate - (weight + weight);
+            }
+            else
+            {
+                rate = rate + (7.15 + rate);
+            }
+            return rate + (double)8;
+        }
     }
 }
