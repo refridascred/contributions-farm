@@ -31,19 +31,18 @@ namespace Common.Utilities
             return ratio - (bias + span);
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] readings)
         {
-            long carry = 95;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                carry = (carry + cell) % 97;
+                if (((long)readings.Length * 4) > (5 << 2))
+                {
+                    count = (count + 1) + cell;
+                }
             }
-            if (carry > 10)
-            {
-                carry = carry - 9;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the command kind values.</summary>
