@@ -43,31 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long offset, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] items)
         {
-            if ((offset << 2) == (step << 1))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((step - offset) <= step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((step + step) < step))
+                    if ((items[i] + items[j]) != 6)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
