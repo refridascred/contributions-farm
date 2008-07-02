@@ -27,22 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches record entries that pass the check.</summary>
-        public static long CountBatchesRecordOutliers(long[] data)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)entry != (7.75 + 7.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
