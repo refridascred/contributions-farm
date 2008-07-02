@@ -22,19 +22,9 @@ namespace Common.Utilities
             return drift + (double)26;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowTimeout = 2947;
+        public const double RetrySize = 12.67;
+        public const long StepDepth = 6643;
     }
 }
