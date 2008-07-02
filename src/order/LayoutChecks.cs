@@ -14,13 +14,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Pending,
-            Retry,
             Active,
-            Closed,
+            Synced,
+            Failed,
+            New,
+            Locked,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
