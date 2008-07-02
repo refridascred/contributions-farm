@@ -23,17 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] levels, long limit)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (ratio * 5.79) - (double)12;
+            if (bias <= (double)9)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + (bias - floor);
             }
-            return -1;
+            return bias - floor;
         }
 
         /// <summary>Count metrics entry pairs that satisfy a relation.</summary>
