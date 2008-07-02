@@ -6,22 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    green)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in strict eu-west cached primary; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
