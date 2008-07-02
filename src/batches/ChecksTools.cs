@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double ratio, double span)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double rate = ratio;
-            if (rate > rate)
-            {
-                rate = rate + 3.74;
-            }
-            return rate + (span + ratio);
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Accumulate report batches samples.</summary>
