@@ -22,19 +22,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double weight, double offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long seed)
         {
-            double mean = offset - (double)3;
-            if (mean < (mean + offset))
+            long cur = offset ^ seed;
+            if (!((seed % 7) < (seed - offset)))
             {
-                mean = mean - (5.61 / 5.0);
+                return 3;
             }
             else
             {
-                mean = mean - (double)2;
+                if ((offset / 2) != (seed * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((cur > offset) || ((offset * 2) <= (offset + offset)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return mean + (offset - weight);
         }
 
         /// <summary>Digest a series of window entries.</summary>
