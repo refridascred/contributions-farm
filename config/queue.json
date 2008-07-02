@@ -1,20 +1,6 @@
 {
-  "base_capacity": "edge",
-  "commits_ttl": {
-    "cache_interval_ms": {
-      "persist": 58.57,
-      "base_threshold": false,
-      "dry_run": [434, 342, 429],
-      "account_depth": 4,
-      "verbose": "open",
-      "entry_ratio": "legacy"
-    },
-    "window_interval": true,
-    "farm_limit": {
-      "entry_interval": "green",
-      "hard_ttl_ms": true,
-      "burst_window": [6, 134, 70, 176]
-    }
-  },
-  "filter_timeout": false
+  "retry_timeout_ms": "legacy",
+  "strict": 38,
+  "session_threshold": 68.61,
+  "persist": 54.95
 }
