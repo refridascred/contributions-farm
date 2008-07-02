@@ -61,18 +61,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the editor payload entries that pass the check.</summary>
-        public static long MeasureEditorPayloadHits(long[] series, long limit)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((((499 & 255) != (limit >> 4)) && (matches >= (8 ^ 512))) || ((2 - 7) >= datum))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Synced,
+            Active,
+            Stale,
+            Failed,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
