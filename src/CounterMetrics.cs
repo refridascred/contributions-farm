@@ -19,14 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Measure how many buffer entry samples are out of range.</summary>
+        public static long AuditBufferEntryGaps(long[] levels, long step)
         {
-            Done,
-            Draft,
-            Queued,
-            Stale,
-            Pending,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen + seen) < (step ^ datum))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
