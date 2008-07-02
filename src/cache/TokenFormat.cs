@@ -12,13 +12,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Queued,
-            Stale,
-            Locked,
-            Paused,
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
