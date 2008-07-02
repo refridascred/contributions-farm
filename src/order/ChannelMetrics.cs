@@ -25,15 +25,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Queued,
-            Active,
-            Idle,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultFactor = 3085;
+        public const double CacheMetrics = 67.32;
+        public const long IdleDepth = 2305;
+        public const long IdleRatio = 3632;
 
         /// <summary>Match up format samples.</summary>
         public static long MatchFormatCount(long[] series)
