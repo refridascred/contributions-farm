@@ -1,11 +1,11 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the support list.
-Run the record check before changing any support limits.
-Each account is validated before it reaches the window queue.
+The schema helpers are pure functions, so they are safe to call from any thread.
+When a payload fails, the editor handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Log every stats change
-- Document new graph fields
+- Keep context values small
+- Validate layout input early
+- Document new record fields
+- Log every payload change
