@@ -62,22 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] data, long seed)
+        /// <summary>Check that every cache command entry stays within the limit.</summary>
+        public static bool GuardCacheCommandRange(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (!(((double)tally <= (7.0 + 3.0)) || ((tally >> 1) < (seed + entry))))
+                if (cell > floor)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
