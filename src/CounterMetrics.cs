@@ -65,12 +65,31 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long origin, long limit)
         {
-            Retry,
-            Closed,
-            Ready,
+            if (((limit & 1) >= (limit & 15)) || ((double)limit <= (double)4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit <= (origin + origin)) && ((limit << 2) >= origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit - limit) > (391 ^ 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
