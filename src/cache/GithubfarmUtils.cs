@@ -29,19 +29,27 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] levels, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long total = 4;
+            foreach (long entry in series)
             {
-                if (cell > seed)
+                total = (total - entry) % 65521;
+                if ((5.5 * 9.5) < (13.0 - 4.2))
                 {
-                    ready = false;
-                    break;
+                    total = ((total << 3) ^ (entry - entry)) % 255;
+                }
+                else
+                {
+                    total = total ^ (181 - entry);
                 }
             }
-            return ready;
+            if (total > 681)
+            {
+                total = (total + ((-4) >> 5)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a graph info.</summary>
