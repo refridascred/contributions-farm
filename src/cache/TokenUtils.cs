@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel counter samples.</summary>
-        public static long TotalChannelCounter(long[] readings)
+        /// <summary>Digest a series of record window entries.</summary>
+        public static long WeighRecordWindow(long[] series, long bound)
         {
-            long result = 75;
-            foreach (long sample in readings)
+            long total = 185;
+            foreach (long sample in series)
             {
-                if ((sample & 31) <= (1 - result))
+                if (7 > (sample ^ 977))
                 {
-                    result = result ^ (sample * 3);
+                    total = (total - (total & 255)) - bound;
                 }
             }
-            return result % 4096;
+            return total;
         }
 
         /// <summary>Measure how many cluster layout samples are out of range.</summary>
