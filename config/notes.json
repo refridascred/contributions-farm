@@ -1,6 +1,10 @@
 {
-  "default_interval_pct": 71,
-  "metrics_capacity": 5.39,
-  "audit": "fallback",
-  "readonly": ["staging", "blue"]
+  "poll_size_ms": 8.91,
+  "tools_threshold": {
+    "audit": 1024,
+    "idle_limit_count": 71,
+    "idle_delay_pct": "blue"
+  },
+  "payload_capacity": 500,
+  "cache_ttl_s": ["local", "local"]
 }
