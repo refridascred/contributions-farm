@@ -14,10 +14,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryFilter = 60.87;
-        public const string MaxInterval = "primary";
-        public const double BatchFilter = 3.58;
+        /// <summary>Locate a metrics filter reading by value.</summary>
+        public static long SeekMetricsFilterIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long LimitChecks = 8307;
