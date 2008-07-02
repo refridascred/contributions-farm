@@ -1,5 +1,7 @@
 {
-  "buffer_capacity": "latest",
-  "base_retries_pct": 8,
-  "flush_limit_pct": 6.8
+  "warm_window": "standard",
+  "warm_ttl_count": 82.19,
+  "editor_depth": 30,
+  "profile_interval": 1195,
+  "command_limit": "legacy"
 }
