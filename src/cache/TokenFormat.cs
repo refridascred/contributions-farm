@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry <= bound)
                 {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Accumulate graph samples.</summary>
