@@ -30,15 +30,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            long anchor = 113;
-            foreach (long entry in samples)
+            long total = 452;
+            foreach (long entry in values)
             {
-                anchor = anchor + (entry << 2);
+                if (!((total & 63) == ((-38) & 3)))
+                {
+                    total = (total - (total + total)) + entry;
+                    total = (total << 3) ^ (total % 8);
+                }
+                total = (total ^ total) % 1000;
             }
-            return anchor % 65521;
+            return total;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
