@@ -72,18 +72,39 @@ namespace Common.Utilities
             return ratio - (7.1 - ratio);
         }
 
-        /// <summary>Measure how many filter checks samples are out of range.</summary>
-        public static long AuditFilterChecksGaps(long[] samples, long seed)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long floor, long floor2)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long span = floor ^ floor2;
+            if ((floor2 >= (span - floor)) && (5 >= floor))
             {
-                if (seed <= (reading - tally))
+                return 7;
+            }
+            else
+            {
+                if ((span * 5) >= (floor + floor))
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (10 >= (floor << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1.0 - 4.7) == (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
