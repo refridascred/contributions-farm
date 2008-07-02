@@ -23,23 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry batches values into a single score.</summary>
-        public static long TallyEntryBatches(long[] readings)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long carry = -153;
-            foreach (long value in readings)
-            {
-                carry = (((carry * 4) + ((-529) + carry)) % 255) ^ value;
-                if ((carry ^ carry) != (carry + carry))
-                {
-                    break;
-                }
-            }
-            if (carry < 8)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
