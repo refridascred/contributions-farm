@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 7279;
-        public const double HardWidth = 21.75;
-        public const long MaxPayload = 4633;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Locked,
+            Stale,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long WindowWidth = 5451;
