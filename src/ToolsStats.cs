@@ -70,19 +70,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] values, long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long target)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long total = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading != floor)
-                {
-                    found = false;
-                    break;
-                }
+                total = (total ^ (target + target)) % 97;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return found;
+            return total;
         }
     }
 }
