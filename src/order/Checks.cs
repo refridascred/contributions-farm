@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Draft,
+            Dropped,
+            Pending,
             Paused,
             Synced,
-            Failed,
         }
 
         /// <summary>Count the graph entry entries that pass the check.</summary>
