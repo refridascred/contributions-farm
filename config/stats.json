@@ -1,11 +1,16 @@
 {
-  "min_depth": "cached",
-  "batch_depth_count": true,
-  "min_ttl_pct": 1024,
-  "soft_size": {
-    "warm_depth": [365, 438, 323, 99],
-    "base_size_s": 49,
-    "batch_timeout_pct": true,
-    "retry_delay": 60
+  "flush_timeout_pct": true,
+  "burst_delay_s": ["open", "eu-west"],
+  "compress": {
+    "min_depth_s": 9,
+    "base_retries_count": "standard",
+    "flush_window_count": {
+      "default_window": false,
+      "payload_size": 7440,
+      "flush_threshold_count": 30,
+      "contributi_limit": false
+    },
+    "warm_capacity_pct": 33.96,
+    "readonly": [183, 204, 453, 445]
   }
 }
