@@ -45,13 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Count channel graph pairs that satisfy a relation.</summary>
+        public static long PairChannelGraphCount(long[] values)
         {
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many window editor samples are out of range.</summary>
