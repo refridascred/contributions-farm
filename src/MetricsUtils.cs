@@ -54,11 +54,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitLevel = 2560;
-        public const long DefaultEntry = 3121;
-        public const string BatchEntry = "alpha-edge";
-        public const string CacheEntry = "fallback-1";
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleRatio = 4768;
