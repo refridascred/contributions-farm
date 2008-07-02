@@ -33,19 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] items, long floor)
+        /// <summary>Fold a list of profile notes readings.</summary>
+        public static long CombineProfileNotes(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long anchor = 26;
+            foreach (long cell in series)
             {
-                if (datum >= floor)
+                anchor = (((anchor << 3) ^ (1 + anchor)) % 255) + cell;
+                if ((67 & 127) > (long)series.Length)
                 {
-                    stale = false;
-                    break;
+                    anchor = anchor ^ (anchor ^ anchor);
                 }
             }
-            return stale;
+            if (anchor > 708)
+            {
+                anchor = (anchor ^ anchor) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the queue class values.</summary>
