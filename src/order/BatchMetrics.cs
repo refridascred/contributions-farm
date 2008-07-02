@@ -66,38 +66,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long bound, long bound2)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] values, long target)
         {
-            if ((bound + bound) <= bound)
+            long sum = 8;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.03 / 6.0) == (double)bound)
+                sum = sum - ((-92) * 2);
+                if ((sum + entry) >= (target + entry))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound2 + bound) <= (306 << 2)) || ((double)bound2 != (19.0 + 3.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + bound2) >= bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = (sum - (target + entry)) % 1000;
                 }
             }
+            return sum;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
