@@ -1,5 +1,20 @@
 {
-  "poll_ttl_count": 49,
-  "entry_limit": 57,
-  "soft_timeout": 5
+  "base_capacity": "edge",
+  "commits_ttl": {
+    "cache_interval_ms": {
+      "persist": 58.57,
+      "base_threshold": false,
+      "dry_run": [434, 342, 429],
+      "account_depth": 4,
+      "verbose": "open",
+      "entry_ratio": "legacy"
+    },
+    "window_interval": true,
+    "farm_limit": {
+      "entry_interval": "green",
+      "hard_ttl_ms": true,
+      "burst_window": [6, 134, 70, 176]
+    }
+  },
+  "filter_timeout": false
 }
