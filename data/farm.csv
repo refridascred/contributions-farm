@@ -1,9 +1,6 @@
-id,token,region,weight
-1,20.75,742,stable
-2,strict,staging,fallback
-3,63.89,blue,48.74
-4,18.31,8.12,34.03
-5,29.67,587,352
-6,781,469,832
-7,latest,57.97,572
-8,stable,630,589
+id,ratio,owner,count
+1,6.39,eu-west,997
+2,97.09,fallback,primary
+3,221,69.4,466
+4,92.72,615,136
+5,902,42.33,4.14
