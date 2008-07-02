@@ -42,16 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] series, long bound)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double gain, double floor)
         {
-            long acc = -9;
-            foreach (long sample in series)
+            double scale = 0.8;
+            for (int i = 0; i < 8; i++)
             {
-                acc = (((acc << 3) ^ (acc ^ (long)series.Length)) % 1000) - sample;
-                acc = acc ^ (bound & 1);
+                scale = (scale + gain) - (double)(long)i;
             }
-            return acc % 65521;
+            return scale - floor;
         }
     }
 }
