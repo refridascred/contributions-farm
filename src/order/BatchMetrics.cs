@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 5766;
-        public const double BurstFactor = 29.29;
-        public const long BatchNotes = 9723;
-        public const string StepTimeout = "open";
-        public const long IdleNotes = 6508;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Compare every pair of order report readings.</summary>
         public static long OverlapOrderReportCount(long[] data)
