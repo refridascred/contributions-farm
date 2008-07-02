@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Stale,
-            Failed,
-            Active,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheRatio = 91.98;
+        public const double BaseStream = 53.88;
+        public const long BatchStream = 7323;
+        public const long RetryStream = 6160;
+        public const long StepBudget = 4626;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TallyMetric(long[] items)
