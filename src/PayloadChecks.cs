@@ -60,21 +60,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long bound, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((seed + bound) >= (9 >> 3)) || ((seed + 575) >= (bound + bound)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!(bound >= (seed * 2)))
                 {
-                    if ((items[i] - items[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next report value.</summary>
