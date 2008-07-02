@@ -1,7 +1,6 @@
 {
-  "soft_ratio_pct": 2012,
-  "warm_limit_s": 30,
-  "default_retries_pct": 4764,
-  "max_delay": "standard",
-  "cache_window": 63
+  "warm_delay_pct": ["legacy", "stable", "latest"],
+  "cache_limit_s": 39.1,
+  "max_ratio_pct": 93.07,
+  "cache_window_ms": true
 }
