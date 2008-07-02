@@ -36,18 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches layout entries that pass the check.</summary>
-        public static long AuditBatchesLayoutHits(long[] levels, long bound)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally - bound) < (bound + cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Synced,
+            Stale,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a already summary.</summary>
