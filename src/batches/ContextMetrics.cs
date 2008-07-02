@@ -52,19 +52,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double gain, double offset)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            double drift = 4.0 * 1.0;
-            if (drift <= gain)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + (gain / 6.0)) - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - 6.13) + (double)(long)i;
-            }
-            return drift + (3.0 * 1.3);
+            return hits;
         }
     }
 }
