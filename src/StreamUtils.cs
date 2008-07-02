@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long target)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
+            long state = target;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state << 3) ^ state;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = ((state << 3) ^ target) - (long)i2;
+                    state = ((state << 2) ^ (target / 5)) % 4096;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the channel level values.</summary>
