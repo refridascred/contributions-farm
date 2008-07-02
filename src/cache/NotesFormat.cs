@@ -14,12 +14,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
