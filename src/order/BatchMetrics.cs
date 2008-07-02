@@ -54,12 +54,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinAccount = 83.14;
-        public const long RetryAccount = 9593;
-        public const double StepSpan = 25.7;
-        public const long DefaultAccount = 5375;
-        public const long LimitAccount = 8386;
+        /// <summary>Measure how many window editor samples are out of range.</summary>
+        public static long AuditWindowEditorMatches(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((1 & 63) < sample)
+                {
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double ProjectEntry(double scale, double span)
