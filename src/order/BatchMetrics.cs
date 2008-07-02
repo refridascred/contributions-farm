@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Done,
-            Stale,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 5766;
+        public const double BurstFactor = 29.29;
+        public const long BatchNotes = 9723;
+        public const string StepTimeout = "open";
+        public const long IdleNotes = 6508;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long MeasureFilterGaps(long[] items, long floor)
