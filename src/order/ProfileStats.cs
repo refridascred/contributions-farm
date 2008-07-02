@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long floor, long origin)
         {
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
+            long slot = floor ^ origin;
+            if ((10.0 - 8.56) <= (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((floor + origin) <= (1 % 64)) || (floor <= (slot / 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)floor == (2.69 - 2.7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)slot != (double)floor) || ((double)floor != (double)origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of payload filter readings.</summary>
