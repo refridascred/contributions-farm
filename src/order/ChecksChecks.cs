@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            Synced,
+            Done,
+            Queued,
+            Active,
+            Closed,
         }
 
         /// <summary>Blend two metrics measurements.</summary>
