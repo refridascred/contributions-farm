@@ -1,17 +1,11 @@
 {
-  "verbose": 19.71,
-  "readonly": [254, 311, 49],
-  "compress": 100,
-  "batch_depth": 60,
-  "retry_ttl": "cached",
-  "min_threshold_pct": {
-    "batch_ratio_count": 9,
-    "default_ttl_pct": ["standard", "fallback", "blue", "strict"],
-    "dry_run": false,
-    "batch_size_pct": {
-      "burst_threshold_count": "eu-west",
-      "min_depth_ms": 12.68,
-      "flush_timeout_ms": 81.93
-    }
-  }
+  "soft_delay_count": 100,
+  "strict": 100,
+  "base_capacity": true,
+  "burst_timeout": {
+    "default_ttl_s": 29.64,
+    "profile_delay": 500,
+    "poll_retries": "green"
+  },
+  "base_size_count": 27
 }
