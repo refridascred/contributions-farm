@@ -1,13 +1,9 @@
 {
-  "dry_run": "blue",
-  "warm_window_count": {
-    "cache_delay": 16.82,
-    "max_retries_pct": 72.75,
-    "base_delay_ms": "edge",
-    "idle_ratio": [196, 133],
-    "contributi_timeout": "open",
-    "layout_size": 30
+  "hard_capacity": {
+    "base_threshold_count": "stable",
+    "verbose": "open",
+    "audit": "strict"
   },
-  "batch_size": 9997,
-  "filter_capacity": 100
+  "readonly": 9,
+  "strict": ["stable", "eu-west"]
 }
