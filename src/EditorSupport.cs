@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of support notes readings.</summary>
-        public static long OverlapSupportNotesCount(long[] items)
+        /// <summary>Derive the next layout schema value from a seed.</summary>
+        public static long SeriesLayoutSchema(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((items[i] ^ items[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 3) ^ (bound + bound)) + (long)i2;
                 }
+                if (!((bound & 127) == (5 ^ bound)))
+                {
+                    state = state + (state % 5);
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
