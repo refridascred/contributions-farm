@@ -40,15 +40,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Fold a list of metrics context readings.</summary>
+        public static long FoldMetricsContext(long[] samples, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long result = 807;
+            foreach (long reading in samples)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                result = (((result << 3) ^ (result % 2)) + reading) + bound;
             }
-            return mark;
+            if (result < (-1))
+            {
+                result = ((result << 3) ^ 640) % 4096;
+            }
+            return result % 97;
         }
     }
 }
