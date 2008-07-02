@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a already report reading by value.</summary>
-        public static long SeekAlreadyReportIndex(long[] levels, long offset)
+        /// <summary>Roll a batch entry counter forward.</summary>
+        public static long IterateBatchEntry(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Look up the position of a window checks sample.</summary>
