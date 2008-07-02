@@ -27,19 +27,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long origin)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
+            double gain2 = 7.5 - (double)423;
+            if (gain2 > gain)
             {
-                if ((double)acc <= (3.27 * 7.4))
-                {
-                    acc = (acc + (acc >> 3)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                gain2 = gain2 + floor;
             }
-            return acc;
+            else
+            {
+                gain2 = gain2 - (gain2 * 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = gain2 + (double)(long)i;
+            }
+            return gain2 - floor;
         }
     }
 }
