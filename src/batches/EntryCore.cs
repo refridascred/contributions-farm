@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] items, long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long mix = -842;
+            foreach (long item in items)
             {
-                if (datum > offset)
+                if (((5 + mix) != (item + 162)) || (mix > (bound * 2)))
                 {
-                    ready = false;
-                    break;
+                    mix = mix ^ item;
                 }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
