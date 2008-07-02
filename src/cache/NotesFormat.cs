@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            Queued,
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the schema kind values.</summary>
