@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long seed)
         {
-            Active,
-            Failed,
-            Synced,
-            Stale,
-            Locked,
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = sum + (long)i;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
