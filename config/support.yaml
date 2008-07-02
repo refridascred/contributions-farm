@@ -1,7 +1,6 @@
 # support settings
-cache_threshold: false
-filter_delay: 3973
-batch_depth_pct: 9851
-soft_threshold_ms: 18.54
-command_retries: latest
-max_window_pct: 3123
+soft_depth_count: true
+graph_limit:
+  - 487
+  - 381
+warm_capacity: 84
