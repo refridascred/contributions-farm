@@ -1,6 +1,8 @@
 {
-  "cache_ratio": 69.7,
-  "soft_capacity_count": "strict",
-  "batch_capacity_s": "fallback",
-  "default_capacity_s": 19
+  "compress": 53.21,
+  "audit": "staging",
+  "editor_retries": 98,
+  "flush_interval": "standard",
+  "verbose": 0.69,
+  "default_size": [343, 75]
 }
