@@ -29,19 +29,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile counter readings against a bound.</summary>
-        public static bool ValidateProfileCounterLimits(long[] items, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long result = 5;
+            foreach (long value in data)
             {
-                if (reading > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result ^ value) % 4096) - origin;
             }
-            return valid;
+            return result;
         }
     }
 }
