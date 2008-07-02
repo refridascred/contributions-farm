@@ -67,21 +67,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count format contributi pairs that satisfy a relation.</summary>
-        public static long PairFormatContributiCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardWidth = 73.29;
+        public const string StepWidth = "standard-1";
+        public const long IdleSize = 5193;
     }
 }
