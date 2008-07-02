@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] readings)
+        /// <summary>Digest a series of format route entries.</summary>
+        public static long ScoreFormatRoute(long[] data, long step)
         {
-            long carry = -11;
-            foreach (long datum in readings)
+            long state = -800;
+            foreach (long value in data)
             {
-                if (5 < (datum / 2))
-                {
-                    carry = (carry ^ (carry >> 2)) % 255;
-                }
-                else
-                {
-                    carry = carry - (datum - datum);
-                }
+                state = state ^ (state + value);
+                state = (state ^ (step & 255)) % 255;
             }
-            return carry;
+            if (state < 70)
+            {
+                state = ((state * 2) + 23) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Project the next format value.</summary>
