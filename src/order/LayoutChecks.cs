@@ -34,13 +34,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double scale, double offset)
         {
-            Active,
-            New,
-            Dropped,
-            Closed,
+            double rate = scale;
+            if (rate < 4.6)
+            {
+                rate = rate - offset;
+            }
+            else
+            {
+                rate = rate + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (rate + scale);
         }
 
         /// <summary>Blend two metric measurements.</summary>
