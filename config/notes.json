@@ -1,17 +1,11 @@
 {
-  "hard_threshold_pct": ["fallback", "primary", "green"],
-  "enabled": {
-    "persist": [443, 396, 5],
-    "checks_capacity": 6.61,
-    "already_ratio": 10.16,
-    "min_size": "blue"
+  "soft_timeout_s": "latest",
+  "soft_depth_ms": {
+    "cache_retries_s": "primary",
+    "burst_ttl_pct": 32,
+    "hard_limit_s": true,
+    "flush_retries_pct": "latest"
   },
-  "editor_ratio": {
-    "idle_limit_pct": 69.15,
-    "base_depth_ms": 30,
-    "filter_window": "open"
-  },
-  "channel_limit": "open",
-  "readonly": 26,
-  "format_threshold": 500
+  "soft_retries_s": "local",
+  "hard_threshold_pct": 500
 }
