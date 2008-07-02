@@ -35,11 +35,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheBudget = 321;
-        public const long MinWidth = 515;
-        public const double HardFactor = 18.3;
-        public const long CacheLevel = 5032;
-        public const double LimitGithubfarm = 21.84;
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
