@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinContext = "primary-1";
-        public const long MaxContext = 8328;
-        public const long HardBudget = 5867;
-        public const long HardLevel = 6370;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public bool Level { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricMatches(long[] readings)
