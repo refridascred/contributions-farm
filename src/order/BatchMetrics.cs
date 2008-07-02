@@ -80,19 +80,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double scale, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] readings, long seed)
         {
-            double gain = (span * 7.02) / 4.0;
-            if (gain > span)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                gain = (gain + 3.01) + scale;
+                if ((double)tally == (2.14 / 3.0))
+                {
+                    tally = ((tally + 1) + item) - seed;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - 8.88) + (double)(long)i;
-            }
-            return gain + span;
+            return tally;
         }
     }
 }
