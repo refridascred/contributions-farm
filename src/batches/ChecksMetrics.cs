@@ -19,12 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            Stale,
-            Closed,
-            New,
+            long mix = 2;
+            foreach (long datum in readings)
+            {
+                mix = (mix - (234 >> 4)) % 97;
+                if ((datum / 5) > datum)
+                {
+                    mix = (mix ^ (long)readings.Length) % 255;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
