@@ -73,12 +73,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Combine support format values into a single score.</summary>
+        public static long TallySupportFormat(long[] data, long bound)
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = -76;
+            foreach (long sample in data)
+            {
+                if (!(bound < (6 ^ mix)))
+                {
+                    mix = ((mix * 2) + (24 >> 5)) % 65521;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (mix - sample);
+                }
+            }
+            if (mix > 17)
+            {
+                mix = (mix * 5) + bound;
+            }
+            return mix % 1000;
         }
     }
 }
