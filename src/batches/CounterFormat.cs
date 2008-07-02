@@ -39,9 +39,18 @@ namespace Common.Utilities
         public const string RetryOrder = "staging-1";
         public const long CacheSpan = 1075;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleWidth = 19.03;
-        public const long LimitNotes = 6534;
-        public const string IdleTimeout = "primary-v2";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (seed <= (seed % 100))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+            }
+            return matches;
+        }
     }
 }
