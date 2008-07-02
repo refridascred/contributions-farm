@@ -23,12 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 92.31;
-        public const long MaxRatio = 1024;
-        public const double CacheCount = 42.13;
-        public const double StepCount = 94.99;
-        public const long BurstLayout = 3914;
+        /// <summary>Derive the next route editor value from a seed.</summary>
+        public static long StepRouteEditor(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiMatches(long[] data, long bound)
