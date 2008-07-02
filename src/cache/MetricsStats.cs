@@ -58,22 +58,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!((19.0 / 5.0) <= (double)value))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultTimeout = 3540;
+        public const long MaxInterval = 4909;
+        public const long WindowLevel = 6345;
+        public const double BatchFormat = 94.43;
+        public const string RetryLevel = "primary-v2";
     }
 }
