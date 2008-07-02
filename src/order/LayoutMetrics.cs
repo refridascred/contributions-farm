@@ -20,11 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public string Stamp { get; set; } = "";
-            public string Size { get; set; } = "";
+            public double Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
