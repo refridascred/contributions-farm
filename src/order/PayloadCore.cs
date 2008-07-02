@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command route readings against a rule.</summary>
-        public static long MeasureCommandRouteOutliers(long[] values, long offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] items)
         {
             long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value * 2) != (offset - offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] + items[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
