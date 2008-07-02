@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseCount = 3625;
-        public const long BatchSize = 1977;
-        public const double BatchFormat = 51.99;
-        public const string RetryFormat = "primary-v2";
-        public const double BatchDepth = 95.49;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Pending,
+            Synced,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] series)
