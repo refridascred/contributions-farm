@@ -1,6 +1,10 @@
 {
-  "hard_threshold": 60,
-  "base_window_pct": "cached",
-  "filter_delay": [295, 370, 87],
-  "retry_interval_ms": false
+  "cache_threshold_ms": {
+    "warm_delay_ms": 62.85,
+    "retry_threshold_count": "cached",
+    "soft_timeout": 6558
+  },
+  "cache_limit": 92.12,
+  "persist": "cached",
+  "max_limit_ms": 1024
 }
