@@ -1,9 +1,4 @@
 # githubfarm settings
-flush_ratio: 6032
-readonly: 59.53
-base_capacity_s: 61.38
-soft_timeout_ms:
-  - 49
-  - 229
-sync_ttl_pct: 26.38
-audit: strict
+window_threshold: local
+strict: local
+batch_ttl: cached
