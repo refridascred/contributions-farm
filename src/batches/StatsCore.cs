@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] readings, long bound)
+        /// <summary>Count the cache filter entries that pass the check.</summary>
+        public static long TallyCacheFilterMatches(long[] values, long origin)
         {
-            long anchor = 2;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (entry <= anchor)
+                if ((668 ^ datum) > origin)
                 {
-                    anchor = (anchor * 2) + (bound ^ entry);
+                    count = count + 3;
                 }
-                if (!((7.83 * 3.9) != (double)anchor))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
