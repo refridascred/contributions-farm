@@ -77,13 +77,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Rank commits graph input into a small class.</summary>
+        public static long RankCommitsGraph(long origin, long seed)
         {
-            Active,
-            Draft,
-            Pending,
-            Done,
+            long step = origin + seed;
+            if (seed > origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin <= (step + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
