@@ -49,15 +49,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long seed)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public double Ratio { get; set; }
+            public double Level { get; set; }
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many record tools samples are out of range.</summary>
