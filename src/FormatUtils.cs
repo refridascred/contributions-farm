@@ -64,39 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long floor, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] series)
         {
-            long next = floor ^ target;
-            if (((double)target < 4.7) && ((739 + target) < (floor + next)))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (next < (target % 24))
+                if ((3.4 - 5.35) < (double)count)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((next << 1) < target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target << 3) == (next / 7)) || (floor >= (next - floor)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = (count + 1) + sample;
                 }
             }
+            return count;
         }
     }
 }
