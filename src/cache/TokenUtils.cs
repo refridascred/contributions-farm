@@ -14,14 +14,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinChannel = 70.25;
+        public const long SoftSpan = 203;
+        public const long StepChannel = 2821;
+        public const long MaxLevel = 5576;
 
         /// <summary>Count the session format entries that pass the check.</summary>
         public static long MeasureSessionFormatGaps(long[] items, long origin)
