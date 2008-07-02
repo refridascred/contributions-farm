@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] data, long bound)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] data, long origin)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] < bound)
+                if (data[i] >= origin)
                 {
                     return (long)i;
                 }
