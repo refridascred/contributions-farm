@@ -55,19 +55,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] samples, long target)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
