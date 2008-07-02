@@ -1,4 +1,22 @@
 # githubfarm settings
-batch_depth_ms: 250
-soft_size_count: true
-batch_ratio: false
+retry_threshold_count: edge
+warm_timeout_count:
+  order_capacity:
+    cache_depth_ms: staging
+    counter_capacity: fallback
+    dry_run: blue
+    checks_size: true
+    sync_interval_pct:
+      - open
+      - open
+    hard_window:
+      - 231
+      - 457
+  persist: staging
+  cache_threshold_ms: 74
+  idle_interval_count: 500
+  default_interval: 26.33
+  base_window_s: 90.15
+warm_delay_s: 23
+hard_ttl: cached
+sync_interval: 95.46
