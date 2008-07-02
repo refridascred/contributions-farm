@@ -14,19 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] values, long bound)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long result = 882;
-            foreach (long reading in values)
-            {
-                result = result - bound;
-                if (((11 - reading) < (bound / 4)) && ((4.13 - 4.84) < (double)bound))
-                {
-                    result = (result + result) % 1000;
-                }
-            }
-            return result;
+            Active,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
