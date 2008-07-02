@@ -32,16 +32,9 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = (acc + ((-22) + limit)) % 255;
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 8655;
+        public const double WindowFactor = 48.91;
+        public const string RetryScore = "strict-edge";
     }
 }
