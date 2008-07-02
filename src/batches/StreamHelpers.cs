@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            Queued,
-            Idle,
-            Pending,
-            Paused,
+            long result = 18;
+            foreach (long cell in readings)
+            {
+                result = (result - (result & 255)) ^ cell;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define account limits and defaults.</summary>
