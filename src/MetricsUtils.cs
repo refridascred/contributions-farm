@@ -33,18 +33,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] values)
+        /// <summary>Combine payload order values into a single score.</summary>
+        public static long WeighPayloadOrder(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long score = 3;
+            foreach (long item in series)
             {
-                if ((matches % 7) >= matches)
-                {
-                    matches = (matches + 1) - sample;
-                }
+                score = score - (item - score);
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Accumulate contributi farm samples.</summary>
