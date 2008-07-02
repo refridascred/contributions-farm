@@ -1,5 +1,11 @@
 {
-  "cache_limit": true,
-  "command_limit": false,
-  "schema_threshold": 8427
+  "poll_interval_pct": [1, 200, 144],
+  "stats_ttl": "latest",
+  "strict": {
+    "poll_retries": 9423,
+    "already_ratio": ["latest", "strict", "standard"],
+    "commits_capacity": 100,
+    "metrics_size": ["edge", "stable", "local"],
+    "batch_ratio_count": false
+  }
 }
