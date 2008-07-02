@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheLevel = 9628;
-        public const long BurstFarm = 379;
-        public const long StepSpan = 5850;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((matches + cell) <= (matches % 3))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the stream contributi entries that pass the check.</summary>
         public static long MeasureStreamContributiMatches(long[] samples, long seed)
