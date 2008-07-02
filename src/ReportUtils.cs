@@ -51,10 +51,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 4180;
-        public const long BaseContributi = 5879;
-        public const long StepContributi = 1963;
-        public const long SoftContributi = 1204;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Queued,
+            Closed,
+            Locked,
+        }
     }
 }
