@@ -22,14 +22,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Failed,
-            Pending,
-            Dropped,
-            Idle,
-            Paused,
+            Queued,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count the command account entries that pass the check.</summary>
