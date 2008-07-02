@@ -29,13 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] series, long target)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
