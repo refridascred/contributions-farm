@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const double WindowSpan = 12.05;
         public const long SoftTimeout = 8252;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] items)
+        /// <summary>Audit stats metric readings against a rule.</summary>
+        public static long CountStatsMetricHits(long[] samples)
         {
-            long mark = 871;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((mark - mark) < (76 + 805))
+                if ((double)datum == (10.0 * 8.0))
                 {
-                    mark = (((mark * 2) + (mark + 33)) % 1000) - datum;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (long)items.Length) % 1000;
+                    tally = tally + 1;
                 }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
