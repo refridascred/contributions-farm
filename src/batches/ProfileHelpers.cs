@@ -58,13 +58,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Accumulate metric window samples.</summary>
+        public static long ScoreMetricWindow(long[] data, long bound)
         {
-            Synced,
-            Locked,
-            Ready,
-            Active,
+            long acc = 894;
+            foreach (long reading in data)
+            {
+                if ((reading + reading) < (-80))
+                {
+                    acc = (acc ^ acc) % 1000;
+                }
+                if (((acc << 3) > acc) || ((bound % 24) > (acc + bound)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
