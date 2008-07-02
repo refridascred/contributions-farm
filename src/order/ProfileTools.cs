@@ -20,13 +20,15 @@ namespace Common.Utilities
             return gain - (gain / 6.0);
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            long sum = 340;
+            foreach (long cell in readings)
+            {
+                sum = ((sum << 3) ^ (-39)) ^ cell;
+            }
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
