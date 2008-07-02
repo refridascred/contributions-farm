@@ -41,12 +41,21 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Count editor channel pairs that satisfy a relation.</summary>
+        public static long MatchEditorChannelCount(long[] values)
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next notes value.</summary>
