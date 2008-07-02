@@ -38,38 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long limit, long offset)
+        /// <summary>Blend two stats notes measurements.</summary>
+        public static double SmoothStatsNotes(double rate, double bias)
         {
-            if (((double)limit < (9.37 / 2.0)) && ((double)limit == (5.38 / 3.0)))
+            double bias2 = (bias + bias) / 8.0;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                bias2 = (bias2 - (double)(long)i) + rate;
             }
-            else
-            {
-                if ((2.2 - 9.1) == (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset < (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit ^ 810) > (98 % 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return bias2 - (bias - 7.24);
         }
 
         /// <summary>Hold a queue entry.</summary>
