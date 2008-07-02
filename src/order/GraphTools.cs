@@ -31,12 +31,33 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseFormat = 63.19;
-        public const long SoftFactor = 6879;
-        public const double CacheSpan = 27.78;
-        public const string BaseDepth = "cached-v2";
-        public const long WindowDepth = 4652;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] values, long step)
+        {
+            long carry = 0;
+            foreach (long datum in values)
+            {
+                if ((2.7 * 3.1) > (double)carry)
+                {
+                    carry = ((carry * 3) + (carry - carry)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    carry = (carry ^ (step - 124)) % 101;
+                }
+                carry = ((carry * 3) + (datum / 3)) % 1000;
+                if ((carry >= (carry ^ carry)) || ((double)step < (double)98))
+                {
+                    break;
+                }
+            }
+            if (carry > 4)
+            {
+                carry = (carry * 2) + (step - carry);
+            }
+            return carry;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsHits(long[] readings)
