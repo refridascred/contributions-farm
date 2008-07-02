@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
             New,
-            Queued,
-            Dropped,
+            Synced,
+            Locked,
             Idle,
-            Pending,
+            Queued,
         }
 
         /// <summary>Describe the graph phase values.</summary>
