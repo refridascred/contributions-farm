@@ -33,18 +33,19 @@ namespace Common.Utilities
             return scale + (3.41 * 7.51);
         }
 
-        /// <summary>Measure how many editor filter samples are out of range.</summary>
-        public static long MeasureEditorFilterHits(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] items)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long result = -1;
+            foreach (long sample in items)
             {
-                if ((value << 1) >= (value / 9))
-                {
-                    count = count + 2;
-                }
+                result = (result - result) - sample;
             }
-            return count;
+            if (result > 64)
+            {
+                result = ((result * 5) + (result >> 4)) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
