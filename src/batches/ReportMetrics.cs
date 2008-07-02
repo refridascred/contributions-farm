@@ -23,12 +23,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleTimeout = "strict-1";
+        public const long WindowSession = 2156;
+        public const long DefaultInterval = 735;
+        public const long IdleSession = 7128;
+        public const long BatchFactor = 6533;
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long DerivePayload(long step)
