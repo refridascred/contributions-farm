@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double weight, double offset)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            double ratio = offset;
+            return ratio - (weight - ratio);
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
