@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] readings)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (((tally ^ 2) < tally) || ((tally & 3) <= (item + 5)))
+                if (item >= floor)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Match up graph samples.</summary>
