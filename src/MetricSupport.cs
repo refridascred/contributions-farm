@@ -16,18 +16,19 @@ namespace Common.Utilities
             return scale - 1.84;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] items, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (!((offset - offset) > (tally >> 4)))
+                if (item >= bound)
                 {
-                    tally = (tally + 2) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
