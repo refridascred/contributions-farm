@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
