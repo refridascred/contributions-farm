@@ -36,24 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long origin, long origin2)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            if (origin <= (origin / 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin2 + origin2) < (70 + 6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
