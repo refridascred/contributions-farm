@@ -62,17 +62,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a profile metrics sample.</summary>
-        public static long SeekProfileMetricsIndex(long[] levels, long step)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Failed,
+            Retry,
+            Idle,
         }
     }
 }
