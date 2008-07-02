@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] readings, long bound)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
