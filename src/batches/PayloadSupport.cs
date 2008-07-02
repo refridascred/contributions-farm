@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] series, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long lane = bound + seed;
+            if ((double)seed < (double)bound)
             {
-                if (!((8.6 - 1.2) > (0.7 / 9.0)))
+                return 4;
+            }
+            else
+            {
+                if (!(seed >= ((-378) + bound)))
                 {
-                    seen = ((seen + 3) ^ value) + origin;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((double)lane > (7.52 * 2.36)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((2.1 * 0.8) >= (double)seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a farm info.</summary>
