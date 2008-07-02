@@ -1,8 +1,9 @@
-id,level,count,state,weight
-1,cached,blue,69.47,34.94
-2,90,primary,397,95.76
-3,359,stable,latest,staging
-4,348,cached,10.15,89.14
-5,72.02,92.2,5.28,65.94
-6,35.55,edge,242,eu-west
-7,741,840,3.37,latest
+id,region,owner,label,level
+1,1.05,primary,226,697
+2,667,75.41,701,open
+3,84.26,228,185,748
+4,fallback,68,887,98.44
+5,22.92,881,337,local
+6,449,796,standard,strict
+7,legacy,legacy,3.79,261
+8,strict,480,58.68,eu-west
