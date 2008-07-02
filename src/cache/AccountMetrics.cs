@@ -72,22 +72,9 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!(((double)sample == (13.0 / 2.0)) || ((step << 1) != (count + (long)series.Length))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 7293;
+        public const long SoftRatio = 3942;
+        public const long BatchScore = 674;
     }
 }
