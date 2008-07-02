@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double rate, double offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double weight, double floor)
         {
-            double scale = (double)(422 & 15);
-            return ((scale - (scale / 6.0)) + rate) + offset;
+            double load = (weight - weight) - (7.4 * 15.0);
+            if (load < (double)605)
+            {
+                load = load + (floor - load);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Project the next order value.</summary>
