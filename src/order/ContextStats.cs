@@ -31,11 +31,26 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] levels)
         {
-            public double Size { get; set; }
-            public double Count { get; set; }
+            long sum = 9;
+            foreach (long sample in levels)
+            {
+                if ((sample + sample) <= (sum - 799))
+                {
+                    sum = sum - (sample + sample);
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 65521;
+                }
+                if (!((sample & 31) == (sum - sample)))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
