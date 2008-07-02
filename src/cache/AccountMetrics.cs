@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long BurstFarm = 379;
         public const long StepSpan = 5850;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the stream contributi entries that pass the check.</summary>
+        public static long MeasureStreamContributiMatches(long[] samples, long seed)
         {
-            Closed,
-            Active,
-            Retry,
-            Stale,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((seed <= value) && (((matches << 3) > (seed + 2)) || ((double)matches > (17.0 / 4.0))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the window entry series from a seed.</summary>
