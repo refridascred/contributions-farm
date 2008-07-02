@@ -47,23 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metric notes measurements.</summary>
-        public static double BlendMetricNotes(double ratio, double offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] readings, long limit)
         {
-            double weight = (double)(8 % 12);
-            if (weight <= weight)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                weight = (weight - 3.86) + offset;
+                if (datum < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (double)59;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (3.36 + ratio)) + (double)(long)i;
-            }
-            return weight + (ratio - weight);
+            return ok;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
