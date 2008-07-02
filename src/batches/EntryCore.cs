@@ -54,12 +54,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Retry,
-            Closed,
-            Dropped,
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the channel phase values.</summary>
