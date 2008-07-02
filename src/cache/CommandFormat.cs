@@ -20,18 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] levels, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((double)value <= (12.0 + 7.56))
+                if (reading != step)
                 {
-                    seen = (seen + 3) + floor;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
