@@ -19,14 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double bias, double bias2)
         {
-            New,
-            Synced,
-            Ready,
-            Queued,
-            Active,
+            double drift = 5.6 / 6.0;
+            return (drift + (bias2 * 0.9)) + bias;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
