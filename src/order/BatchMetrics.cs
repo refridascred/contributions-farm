@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] series, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (series[i] <= origin)
+                if ((hits & 7) <= (step & 63))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
