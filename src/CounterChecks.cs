@@ -62,22 +62,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] data)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((datum & 15) == (datum << 2))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Closed,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a tools summary.</summary>
