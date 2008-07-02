@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Draft,
-            Locked,
-            Active,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 7751;
+        public const long MaxTimeout = 2300;
+        public const long DefaultTimeout = 6304;
+        public const long MaxWidth = 2392;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long RankCounter(long limit, long offset)
