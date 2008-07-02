@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] values, long step)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double drift = weight;
+            if (drift >= (drift + floor))
             {
-                if ((hits & 7) <= (step & 63))
-                {
-                    hits = (hits + 3) + item;
-                }
+                drift = drift + drift;
             }
-            return hits;
+            else
+            {
+                drift = drift - (double)795;
+            }
+            return drift - (floor + drift);
         }
 
         /// <summary>Hold a already summary.</summary>
