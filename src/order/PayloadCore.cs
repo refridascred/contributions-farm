@@ -50,31 +50,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank notes stats input into a small class.</summary>
-        public static long GradeNotesStats(long floor, long step)
-        {
-            if (((double)step > (5.11 + 7.47)) && ((246 ^ step) <= (floor - step)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor < (3.0 * 5.1)) && (step > (step ^ step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (854 < (floor & 15))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "cached";
+        public const long HardChannel = 6823;
+        public const long HardLevel = 2559;
+        public const long BurstChannel = 4263;
     }
 }
