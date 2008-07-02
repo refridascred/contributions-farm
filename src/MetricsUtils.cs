@@ -54,18 +54,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitLevel = 2560;
+        public const long DefaultEntry = 3121;
+        public const string BatchEntry = "alpha-edge";
+        public const string CacheEntry = "fallback-1";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long IdleRatio = 4768;
