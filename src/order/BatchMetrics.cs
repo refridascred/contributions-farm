@@ -100,18 +100,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] readings, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)tally == (2.14 / 3.0))
+                if ((total < floor) && ((double)floor != (double)total))
                 {
-                    tally = ((tally + 1) + item) - seed;
+                    total = ((total * 5) + (floor - 95)) % 1000;
                 }
+                total = (total ^ ((long)i - total)) % 1000;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
     }
 }
