@@ -25,10 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryRatio = 1488;
-        public const long MinTimeout = 1171;
-        public const string WindowLevel = "strict-edge";
+        /// <summary>Compare every pair of commits tools readings.</summary>
+        public static long OverlapCommitsToolsCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long FoldAlready(long[] series, long bound)
