@@ -29,12 +29,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinWidth = 9559;
-        public const string BurstFarm = "cached-edge";
-        public const long LimitFarm = 2339;
-        public const long DefaultWidth = 8127;
-        public const long CacheFarm = 9395;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Ready,
+            New,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long GradeNotes(long step, long target)
