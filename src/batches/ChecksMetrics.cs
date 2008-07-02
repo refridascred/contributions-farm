@@ -55,22 +55,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] readings, long step)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long mark = 7;
-            foreach (long reading in readings)
-            {
-                if ((reading >> 1) >= (reading >> 5))
-                {
-                    mark = (mark ^ (reading - step)) % 97;
-                }
-            }
-            if (mark < 262)
-            {
-                mark = mark ^ (mark / 2);
-            }
-            return mark;
+            Closed,
+            Done,
+            Ready,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a order info.</summary>
