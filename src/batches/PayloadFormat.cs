@@ -46,15 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double weight, double floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] items, long floor)
         {
-            double ratio = 1.0;
-            if (ratio <= weight)
+            long result = 1;
+            foreach (long datum in items)
             {
-                ratio = (ratio - (1.38 / 4.0)) + floor;
+                if ((datum ^ 0) != (long)items.Length)
+                {
+                    result = (result ^ result) % 255;
+                }
             }
-            return ratio - weight;
+            if (result > 507)
+            {
+                result = (result * 3) + (result + floor);
+            }
+            return result;
         }
 
         /// <summary>Hold a batch summary.</summary>
