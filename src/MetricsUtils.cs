@@ -10,26 +10,19 @@ namespace Common.Utilities
         public const double SoftContext = 57.04;
         public const long MaxContext = 7468;
 
-        /// <summary>Combine contributi layout values into a single score.</summary>
-        public static long TallyContributiLayout(long[] items, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] data, long offset)
         {
-            long sum = -63;
-            foreach (long datum in items)
+            long result = 50;
+            foreach (long item in data)
             {
-                if ((double)datum > (6.85 - 7.0))
-                {
-                    sum = ((sum << 3) ^ (sum - sum)) % 101;
-                }
-                else
-                {
-                    sum = sum - (41 + offset);
-                }
+                result = ((((result * 2) + result) % 97) ^ item) - offset;
             }
-            if (sum > 85)
+            if (result < 2)
             {
-                sum = ((sum << 3) ^ (sum + sum)) % 97;
+                result = (result * 5) + ((long)data.Length + result);
             }
-            return sum;
+            return result % 65521;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
