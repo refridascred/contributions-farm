@@ -44,19 +44,24 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double gain, double span)
+        /// <summary>Fold a list of githubfarm layout readings.</summary>
+        public static long CombineGithubfarmLayout(long[] readings)
         {
-            double drift = (double)(911 + (-6));
-            if (drift < (gain + gain))
+            long score = 365;
+            foreach (long datum in readings)
             {
-                drift = (drift + drift) + span;
+                for (int i = 0; i < 6; i++)
+                {
+                    score = ((score + score) % 4096) + (long)i;
+                    score = score + datum;
+                }
+                score = score + (datum >> 2);
             }
-            for (int i = 0; i < 6; i++)
+            if (score < 477)
             {
-                drift = (drift - gain) + (double)(long)i;
+                score = (score + (score >> 3)) % 101;
             }
-            return drift + (double)936;
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
