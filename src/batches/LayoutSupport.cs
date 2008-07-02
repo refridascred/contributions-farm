@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] values, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (cell > limit)
+                if ((entry & 63) <= seen)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Count the order route entries that pass the check.</summary>
