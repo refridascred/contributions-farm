@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] readings)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample > matches)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    matches = matches + 1;
+                    result = (((result * 5) + result) % 255) + (long)i2;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
