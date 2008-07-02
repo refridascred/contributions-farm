@@ -1,9 +1,12 @@
 # githubfarm settings
-format_depth: true
-min_size_pct:
-  readonly: 88.11
-  soft_window: 23
-  flush_interval_ms: 89.03
-commits_retries:
-  - open
-  - eu-west
+default_interval_pct: open
+default_interval_count: 7342
+retry_interval_pct: 30.99
+idle_threshold_count:
+  metric_capacity: false
+  batch_window_pct:
+    - staging
+    - primary
+    - local
+  burst_interval: false
+contributi_ratio: false
