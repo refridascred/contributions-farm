@@ -29,16 +29,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double scale, double bias)
-        {
-            double gain = (double)453;
-            if (gain <= (scale - bias))
-            {
-                gain = gain + (scale - scale);
-            }
-            return gain - (double)660;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowTimeout = 30.11;
+        public const long MaxCount = 5690;
+        public const long HardTimeout = 1285;
+        public const long HardRatio = 7122;
+        public const long DefaultTimeout = 3413;
 
         /// <summary>Accumulate window samples.</summary>
         public static long FoldWindow(long[] readings)
