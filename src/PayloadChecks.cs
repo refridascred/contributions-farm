@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 7914;
-        public const string RetryBudget = "fallback";
-        public const double StepSpan = 14.93;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long target, long bound)
+        {
+            if ((double)bound <= (0.1 + 15.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound - bound) >= bound) || ((target << 1) > 249))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportMatches(long[] levels)
