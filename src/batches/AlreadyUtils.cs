@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] values, long bound)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
-            long mark = 99;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark ^ ((-345) + bound)) % 97;
-                if ((double)item <= (6.3 / 8.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a layout record.</summary>
