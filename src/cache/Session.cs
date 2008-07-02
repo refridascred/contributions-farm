@@ -35,10 +35,13 @@ namespace Common.Utilities
             return weight - (weight / 8.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "strict-v2";
-        public const long BatchWidth = 6679;
-        public const long HardLevel = 110;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Done,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Check that every channel commits entry stays within the limit.</summary>
         public static bool VerifyChannelCommitsRange(long[] items, long bound)
