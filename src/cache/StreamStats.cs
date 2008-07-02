@@ -32,17 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a route editor counter forward.</summary>
-        public static long SeriesRouteEditor(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 6; i++)
-            {
-                result = (result << 2) ^ target;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepCommits = "staging-edge";
+        public const string BaseFactor = "alpha-edge";
+        public const double LimitCommits = 4.64;
+        public const double SoftCommits = 5.34;
+        public const string RetryCommits = "staging-edge";
 
         /// <summary>Accumulate context samples.</summary>
         public static long DigestContext(long[] data)
