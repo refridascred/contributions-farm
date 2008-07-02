@@ -1,24 +1,7 @@
 # entry settings
-max_ttl:
-  - 355
-  - 324
-  - 17
-retry_depth_ms: false
-default_depth_ms:
-  compress:
-    - local
-    - legacy
-    - legacy
-  persist: 7.98
-  burst_ttl: 18.59
-  max_ratio_ms: 2823
-  min_window_pct:
-    - fallback
-    - staging
-  max_interval:
-    dry_run: 49.32
-    route_retries:
-      - green
-      - staging
-      - fallback
-    format_size: false
+flush_size_ms: 14.48
+sync_limit_ms: 84
+support_threshold: 5432
+retry_size_count: 1024
+soft_ttl_s: 43.68
+sync_ratio_count: false
