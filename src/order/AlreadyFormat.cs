@@ -36,19 +36,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate support githubfarm readings against a bound.</summary>
-        public static bool CheckSupportGithubfarmRange(long[] values, long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long origin, long floor)
         {
-            bool found = true;
-            foreach (long entry in values)
+            if ((5.88 - 6.0) >= (double)origin)
             {
-                if (entry >= bound)
+                return 5;
+            }
+            else
+            {
+                if (((0.5 / 2.0) != (double)floor) && ((double)floor > 9.63))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((3.9 + 0.79) <= (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
