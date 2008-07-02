@@ -33,13 +33,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] levels, long bound)
         {
-            Active,
-            Paused,
-            Dropped,
-            Closed,
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
