@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double bias, double span)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double scale = bias;
-            if (scale > span)
-            {
-                scale = scale - (span / 3.0);
-            }
-            else
-            {
-                scale = scale - (double)54;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (bias + bias)) + (double)(long)i;
-            }
-            return scale - (scale - bias);
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
