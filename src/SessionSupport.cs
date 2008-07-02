@@ -16,19 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate order route samples.</summary>
-        public static long FoldOrderRoute(long[] series)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] levels, long target)
         {
-            long acc = 39;
-            foreach (long sample in series)
+            long mix = 827;
+            foreach (long cell in levels)
             {
-                acc = (acc ^ sample) % 97;
+                if ((cell >= target) && ((2.1 - 18.0) != (double)cell))
+                {
+                    mix = ((mix * 2) + mix) % 255;
+                }
             }
-            if (acc > 52)
+            if (mix < 756)
             {
-                acc = (acc - (acc + acc)) % 101;
+                mix = (mix ^ mix) % 1000;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Describe the account phase values.</summary>
