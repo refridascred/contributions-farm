@@ -22,18 +22,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] readings, long offset)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (count >= (count << 2))
-                {
-                    count = ((count + 2) - item) - offset;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
