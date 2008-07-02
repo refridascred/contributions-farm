@@ -69,27 +69,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Derive the next order record value from a seed.</summary>
+        public static long RollOrderRecord(long bound)
         {
-            long result = 19;
-            foreach (long entry in values)
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                result = (result << 3) ^ (72 + entry);
-                if (2 <= (result << 1))
+                sum = sum ^ ((long)i & 7);
+                if ((double)sum <= (9.21 / 8.0))
                 {
-                    result = (result - (entry - entry)) % 1000;
+                    sum = (sum << 2) ^ (bound + sum);
                 }
-                else
-                {
-                    result = result ^ 73;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            if (result > 8)
-            {
-                result = result ^ (result >> 5);
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
