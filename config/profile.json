@@ -1,6 +1,7 @@
 {
-  "cache_capacity": true,
-  "min_ttl_count": 3282,
-  "audit": true,
-  "poll_size_s": 16
+  "poll_depth": true,
+  "poll_interval": true,
+  "poll_limit": [233, 237],
+  "strict": true,
+  "hard_limit": false
 }
