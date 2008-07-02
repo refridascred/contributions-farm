@@ -28,25 +28,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine entry schema values into a single score.</summary>
-        public static long CombineEntrySchema(long[] levels, long bound)
-        {
-            long acc = 1;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = (acc + ((long)i / 4)) + value;
-                    acc = ((acc << 3) ^ (acc + acc)) % 65521;
-                }
-                acc = acc - 72;
-                if (!((2.71 * 10.0) > (double)bound))
-                {
-                    acc = (acc - acc) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitFactor = 8.64;
+        public const string RetryMetrics = "stable-edge";
+        public const long DefaultInterval = 2697;
+        public const string WindowRatio = "legacy-v2";
+        public const long RetrySpan = 6103;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long DeriveNotes(long limit)
