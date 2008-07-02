@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a session farm reading.</summary>
-        public static double AdjustSessionFarm(double scale, double offset)
+        /// <summary>Locate a entry route reading by value.</summary>
+        public static long LookupEntryRouteIndex(long[] readings, long seed)
         {
-            double load = scale;
-            if (load <= load)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - (scale - load);
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return load - (offset * 1.69);
+            return -1;
         }
 
         /// <summary>Describe the record level values.</summary>
