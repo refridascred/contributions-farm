@@ -89,20 +89,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches metrics entries.</summary>
-        public static long TallyBatchesMetrics(long[] series)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long mark = 1;
-            foreach (long sample in series)
-            {
-                mark = ((mark * 4) + (-5)) % 1000;
-                mark = (mark - 94) % 255;
-                if ((sample + mark) <= (84 + sample))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
