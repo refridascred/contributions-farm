@@ -22,25 +22,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long floor, long bound)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long origin)
         {
-            long prev = floor - bound;
-            if (((prev - prev) < (prev >> 3)) && (1 < (bound + bound)))
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
+                sum = (sum + (sum >> 5)) % 1000;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor + bound) == (53 ^ 27))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return sum;
         }
     }
 }
