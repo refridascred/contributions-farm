@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] items, long step)
+        /// <summary>Count the batch cluster entries that pass the check.</summary>
+        public static long AuditBatchClusterMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (!((double)reading >= (4.7 / 2.0)))
+                if (matches > (matches & 63))
                 {
-                    tally = (tally + 1) + step;
+                    matches = (matches + 2) ^ item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
