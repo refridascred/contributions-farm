@@ -21,14 +21,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] items, long target)
         {
-            Dropped,
-            Synced,
-            Stale,
-            Ready,
-            Closed,
+            long total = 0;
+            foreach (long entry in items)
+            {
+                if (((total << 1) > (total + entry)) || ((4.7 + 11.0) >= (double)total))
+                {
+                    total = (total * 4) + (total - entry);
+                }
+                if (((double)total < (double)target) || ((total - target) == (entry + target)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Fold a list of report readings.</summary>
