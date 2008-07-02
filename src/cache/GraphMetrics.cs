@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit metric contributi readings against a rule.</summary>
-        public static long TallyMetricContributiOutliers(long[] data, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (!((7 + value) <= (3 / 3)))
+                if (item < (count ^ item))
                 {
-                    tally = (tally + 3) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
