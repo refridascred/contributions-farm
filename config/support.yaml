@@ -1,6 +1,6 @@
 # support settings
-token_ratio: 86
-min_delay: strict
-graph_limit: 9
-flush_interval_pct: legacy
-idle_retries_count: 15.58
+cluster_delay: false
+min_retries: local
+flush_size: 1024
+min_limit_ms: 94.61
+burst_ttl: blue
