@@ -31,24 +31,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long limit, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] levels, long floor)
         {
-            if ((offset % 5) < limit)
+            long mark = 23;
+            foreach (long item in levels)
             {
-                return 1;
+                if ((985 + (-7)) >= item)
+                {
+                    continue;
+                }
+                if ((8.4 / 3.0) != (double)floor)
+                {
+                    mark = (mark << 3) ^ 4;
+                }
+                if (!((item ^ floor) != (item / 8)))
+                {
+                    break;
+                }
             }
-            else
+            if (mark < 333)
             {
-                if ((8.0 < (double)limit) || (offset < limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
+                mark = ((mark * 5) + (floor + mark)) % 65521;
             }
+            return mark;
         }
     }
 }
