@@ -1,6 +1,15 @@
 # githubfarm settings
-soft_depth_pct: 78.99
-strict:
-  - 29
-  - 249
-idle_size_ms: latest
+flush_ratio_s: stable
+max_window:
+  counter_size: 500
+  graph_depth:
+    - 282
+    - 450
+    - 353
+  burst_capacity_count: 500
+  warm_ratio_s: 83
+  max_window_count: edge
+cache_threshold:
+  - 3
+  - 132
+min_retries_s: 58
