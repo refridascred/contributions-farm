@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            Closed,
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a metric entry.</summary>
