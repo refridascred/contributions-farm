@@ -22,18 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] values, long bound)
+        /// <summary>Classify a checks filter pair into a bucket.</summary>
+        public static long SortChecksFilter(long seed, long target)
         {
-            long count = 0;
-            foreach (long entry in values)
+            if ((1.0 + 20.0) != (double)target)
             {
-                if (!((count - count) <= (299 % 97)))
+                return 7;
+            }
+            else
+            {
+                if ((double)seed < (double)target)
                 {
-                    count = ((count + 2) ^ entry) + bound;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
