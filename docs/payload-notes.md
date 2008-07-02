@@ -1,14 +1,11 @@
 # Payload notes
 
-Keep order and route names short and lowercase.
-The graph module keeps checks values in sync with the booking cache.
-A batch that stays idle for too long is moved to the profile list.
-
-The buffer report groups every checks by command.
-Keep stream and token names short and lowercase.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Each schema is validated before it reaches the cluster queue.
+Run the metrics check before changing any context limits.
 
 ## Guidelines
 
-- Log every counter change
-- Prefer format defaults
-- Validate window input early
+- Log every route change
+- Validate farm input early
+- Review support limits each release
