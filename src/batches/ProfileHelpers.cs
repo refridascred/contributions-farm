@@ -12,22 +12,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] series, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            long result = 7;
-            foreach (long reading in series)
+            long score = 70;
+            foreach (long sample in samples)
             {
-                if ((limit + reading) >= result)
+                if ((double)sample != (7.52 + 7.0))
                 {
-                    result = result - (limit + result);
+                    score = score ^ (sample ^ score);
+                }
+                else
+                {
+                    score = score ^ sample;
                 }
             }
-            if (result < (-812))
-            {
-                result = result ^ (result - result);
-            }
-            return result;
+            return score % 65521;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
