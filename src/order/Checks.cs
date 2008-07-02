@@ -16,19 +16,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every farm entry entry stays within the limit.</summary>
-        public static bool GuardFarmEntryBounds(long[] readings, long bound)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double weight = floor;
+            if (weight >= (double)56)
             {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight - (weight * 6.55);
             }
-            return stale;
+            return weight + ratio;
         }
 
         /// <summary>Audit contributi token readings against a rule.</summary>
