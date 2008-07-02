@@ -32,19 +32,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] readings, long offset)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
