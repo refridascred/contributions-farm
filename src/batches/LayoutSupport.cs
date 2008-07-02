@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            Synced,
+            Locked,
+            Queued,
+            Done,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
