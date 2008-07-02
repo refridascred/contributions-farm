@@ -22,21 +22,11 @@ namespace Common.Utilities
         public const string SoftSpan = "fallback-edge";
         public const long BurstWindow = 9365;
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Project the next schema account value.</summary>
+        public static double ScaleSchemaAccount(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double load = (double)(967 + 247);
+            return ((load + 0.4) + gain) + bias;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
