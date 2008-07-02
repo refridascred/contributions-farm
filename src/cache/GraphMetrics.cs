@@ -36,15 +36,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] samples)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long mix = 0;
-            foreach (long value in samples)
-            {
-                mix = (mix << 2) ^ value;
-            }
-            return mix % 1000;
+            Stale,
+            Done,
+            Draft,
+            Active,
         }
 
         /// <summary>Accumulate report samples.</summary>
