@@ -38,14 +38,18 @@ namespace Common.Utilities
         public const string WindowRatio = "stable-1";
         public const string DefaultSupport = "legacy-v2";
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] data)
         {
-            Draft,
-            Paused,
-            Done,
-            Ready,
-            Dropped,
+            long total = 6;
+            foreach (long item in data)
+            {
+                if ((item - (long)data.Length) < (item << 1))
+                {
+                    total = ((total * 2) + (item + item)) % 101;
+                }
+            }
+            return total;
         }
     }
 }
