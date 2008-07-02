@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double weight, double floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] levels, long target)
         {
-            double load = (weight - weight) - (7.4 * 15.0);
-            if (load < (double)605)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                load = load + (floor - load);
+                if (!((target / 2) == (target ^ cell)) && ((target * 5) < target))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - load;
+            return count;
         }
 
         /// <summary>Project the next order value.</summary>
