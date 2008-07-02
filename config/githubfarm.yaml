@@ -1,13 +1,17 @@
 # githubfarm settings
-notes_ttl:
-  - 390
-  - 287
-  - 376
-retry_ratio:
-  - local
-  - eu-west
-  - standard
-  - cached
-flush_interval_ms: 28.12
-default_depth: 86.94
-warm_size: 4521
+idle_threshold: 92.48
+batch_window_pct: 100
+retry_threshold: 5960
+readonly: 1024
+channel_retries:
+  warm_interval_ms:
+    burst_threshold_count: false
+    strict: 250
+    default_depth_pct: false
+    warm_ttl_ms: fallback
+    cache_interval_ms: 73.1
+    hard_capacity: false
+  schema_ratio: 7
+  profile_size: 100
+  readonly: strict
+  burst_limit_ms: staging
