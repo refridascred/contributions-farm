@@ -51,39 +51,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long target, long origin)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] values)
         {
-            long edge = target - origin;
-            if ((double)11 != (double)edge)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target & 7) != (target - edge)) || (target >= (target - 83)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(edge >= (edge - edge)))
+                    if ((values[i] - values[j]) < 17)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)edge >= (15.0 / 5.0)) || ((edge - edge) <= edge))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the queue payload entries that pass the check.</summary>
