@@ -14,22 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] series)
+        /// <summary>Digest a series of editor cache entries.</summary>
+        public static long ScoreEditorCache(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long total = 846;
+            foreach (long cell in data)
             {
-                if (seen <= (seen & 255))
-                {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (((total * 2) + (8 << 3)) + cell) + origin;
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
