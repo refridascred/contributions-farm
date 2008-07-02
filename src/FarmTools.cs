@@ -21,12 +21,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Audit route report readings against a rule.</summary>
+        public static long AuditRouteReportGaps(long[] data)
         {
-            Queued,
-            Failed,
-            Closed,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits ^ hits) >= (7 + hits))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
     }
 }
