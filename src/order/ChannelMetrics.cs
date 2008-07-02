@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Active,
-            New,
-            Dropped,
+            Draft,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
