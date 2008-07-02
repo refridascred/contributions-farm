@@ -12,15 +12,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double weight, double span)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double drift = (weight / 7.0) - 15.0;
-            if (drift > weight)
-            {
-                drift = (drift + (double)4) - span;
-            }
-            return drift + weight;
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Project the next profile value.</summary>
