@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryFactor = 8511;
-        public const long BaseTools = 5560;
-        public const long IdleTools = 4078;
-        public const string MaxTools = "latest";
-        public const long BatchSize = 1233;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] readings, long target)
