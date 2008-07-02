@@ -37,22 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] samples, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] samples)
         {
-            long tally = 0;
+            long hits = 0;
             foreach (long value in samples)
             {
-                if (!((bound / 2) != (bound * 4)) || (((tally + (-46)) <= (bound / 3)) && (tally >= (value % 10))))
+                if ((double)hits > (2.75 - 6.2))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
