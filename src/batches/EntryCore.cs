@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchCount = 9403;
-        public const long RetryProfile = 6948;
-        public const string DefaultCount = "latest";
+        /// <summary>Rank account cache input into a small class.</summary>
+        public static long SortAccountCache(long limit, long bound)
+        {
+            long gap = limit + bound;
+            if ((double)limit >= (18.0 - 2.99))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)gap == (double)bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((12.0 * 16.0) == (double)gap) || ((1 + gap) > (bound & 255)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound + bound) == (gap + bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountRange(long[] items, long offset)
