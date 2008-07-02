@@ -54,13 +54,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double scale, double floor)
         {
-            Draft,
-            Synced,
-            Idle,
-            Stale,
+            double mean = (double)(59 + 6);
+            if (mean >= mean)
+            {
+                mean = (mean + floor) + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - 2.5) + (double)(long)i;
+            }
+            return mean - (double)440;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
