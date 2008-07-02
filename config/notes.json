@@ -1,5 +1,18 @@
 {
-  "report_window": true,
-  "idle_limit_ms": 9410,
-  "base_capacity_s": 22.21
+  "batch_threshold": {
+    "retry_timeout": {
+      "burst_interval": [81, 365, 117],
+      "warm_window_s": 40,
+      "batch_limit_s": true,
+      "max_size_count": "open",
+      "persist": 67,
+      "strict": false
+    },
+    "payload_depth": 34,
+    "dry_run": "staging"
+  },
+  "retry_capacity": "strict",
+  "sync_ttl": 100,
+  "already_retries": 86.48,
+  "route_window": ["fallback", "fallback", "green", "latest"]
 }
