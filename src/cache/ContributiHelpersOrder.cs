@@ -20,19 +20,17 @@ namespace Common.Utilities
         public const long StepSession = 2772;
         public const long BaseSize = 8471;
 
-        /// <summary>Project the next queue batches value.</summary>
-        public static double ProjectQueueBatches(double weight, double bias)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] readings, long target)
         {
-            double load = 9.0;
-            if (load < weight)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load + weight) - bias;
+                if ((readings[i] == target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - weight;
-            }
-            return load + (double)8;
+            return -1;
         }
     }
 }
