@@ -18,18 +18,19 @@ namespace Common.Utilities
         public const long MaxCount = 1051;
         public const long BaseSize = 6281;
 
-        /// <summary>Measure how many token record samples are out of range.</summary>
-        public static long MeasureTokenRecordMatches(long[] values, long limit)
+        /// <summary>Validate already context readings against a bound.</summary>
+        public static bool ValidateAlreadyContextRange(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((item + 19) > (item << 3))
+                if (cell > step)
                 {
-                    tally = (tally + 1) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
