@@ -68,15 +68,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine report already values into a single score.</summary>
-        public static long CombineReportAlready(long[] items, long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double rate, double floor)
         {
-            long carry = 6;
-            foreach (long datum in items)
-            {
-                carry = ((((carry << 2) ^ (carry << 1)) % 101) + datum) + step;
-            }
-            return carry % 65521;
+            double bias = rate - (floor - rate);
+            return bias + rate;
         }
     }
 }
