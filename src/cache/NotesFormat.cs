@@ -21,14 +21,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Queued,
-            Failed,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 95.88;
+        public const long SoftGithubfarm = 3634;
+        public const long BaseLevel = 2879;
+        public const double BurstDepth = 84.56;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueRange(long[] data, long target)
