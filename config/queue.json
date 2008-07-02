@@ -1,6 +1,7 @@
 {
-  "retry_timeout_ms": "legacy",
-  "strict": 38,
-  "session_threshold": 68.61,
-  "persist": 54.95
+  "sync_threshold_s": "stable",
+  "tools_timeout": 21.8,
+  "base_delay": "local",
+  "burst_delay": 74.95,
+  "metric_retries": ["fallback", "staging"]
 }
