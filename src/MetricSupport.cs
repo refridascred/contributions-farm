@@ -14,19 +14,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] items, long bound)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            bool found = true;
-            foreach (long item in items)
+            long sum = 56;
+            foreach (long sample in levels)
             {
-                if (item >= bound)
+                if ((sum - sum) <= (sample % 24))
                 {
-                    found = false;
-                    break;
+                    sum = (sum << 3) ^ (sample & 7);
                 }
             }
-            return found;
+            if (sum > 807)
+            {
+                sum = (sum + (sum - 7)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
