@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Count the counter buffer entries that pass the check.</summary>
+        public static long MeasureCounterBufferMatches(long[] items, long floor)
         {
-            long state = 916;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int i = 0; i < 5; i++)
+                if ((sample % 64) == (sample & 7))
                 {
-                    state = (((state * 3) + (value + state)) % 65521) + (long)i;
+                    count = (count + 2) - floor;
                 }
-                if ((1.49 + 1.0) != (double)state)
+                else
                 {
-                    state = (state ^ (76 - value)) % 1000;
+                    count = count - 1;
                 }
             }
-            if (state < 6)
-            {
-                state = ((state * 4) + state) % 97;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a checks stats.</summary>
