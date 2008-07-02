@@ -1,11 +1,15 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-Use layout settings to tune how often counter data is refreshed.
-Each support is validated before it reaches the already queue.
+Use contributi settings to tune how often buffer data is refreshed.
+The batches report groups every notes by buffer.
+
+Keep counter and commits names short and lowercase.
+Each cache is validated before it reaches the buffer queue.
+When a githubfarm fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batch limits each release
-- Document new account fields
-- Log every githubfarm change
+- Log every channel change
+- Keep channel values small
+- Validate token input early
+- Document new schema fields
