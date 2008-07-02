@@ -11,11 +11,25 @@ namespace Common.Utilities
         public const double BatchDepth = 83.52;
         public const long BaseRatio = 3527;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftDepth = 49.83;
-        public const double LimitLevel = 60.81;
-        public const double IdleBudget = 0.67;
-        public const string BurstToken = "alpha-1";
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long origin, long limit)
+        {
+            if ((double)origin != (1.72 + 19.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin & 3) > origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultBudget = 4558;
