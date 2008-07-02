@@ -32,18 +32,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] data)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((29 % 64) < (reading / 9))
-                {
-                    count = count + 3;
-                }
+                acc = (acc + ((-22) + limit)) % 255;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
     }
 }
