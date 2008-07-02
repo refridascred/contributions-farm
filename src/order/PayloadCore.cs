@@ -44,21 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -439;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mark = ((mark + (30 + mark)) % 255) + limit;
+                if ((mark < (datum * 4)) && ((7.96 + 8.85) >= (double)mark))
                 {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark ^ (datum >> 1);
                 }
             }
-            return tally;
+            return mark;
         }
     }
 }
