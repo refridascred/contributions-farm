@@ -60,17 +60,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first metric batch entry that matches the target.</summary>
-        public static long LookupMetricBatchIndex(long[] values, long floor)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Done,
+            New,
+            Idle,
         }
 
         /// <summary>Adjust a token reading.</summary>
