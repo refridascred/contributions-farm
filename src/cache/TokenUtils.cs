@@ -28,18 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many cluster layout samples are out of range.</summary>
-        public static long TallyClusterLayoutHits(long[] samples, long step)
+        /// <summary>Count the metric queue entries that pass the check.</summary>
+        public static long TallyMetricQueueOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (!((step / 3) > seen))
+                if ((tally - (-75)) >= tally)
                 {
-                    seen = (seen + 2) - value;
+                    tally = (tally + 1) - item;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
