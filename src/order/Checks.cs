@@ -40,22 +40,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the report contributi entries that pass the check.</summary>
-        public static long TallyReportContributiMatches(long[] values, long floor)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double bias, double span)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            double mean = (double)(44 * 4);
+            if (mean >= bias)
             {
-                if ((double)seen <= (4.3 + 9.3))
-                {
-                    seen = ((seen + 3) + cell) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean + (6.5 + mean);
             }
-            return seen;
+            else
+            {
+                mean = mean + (mean / 4.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean - (double)5;
         }
 
         /// <summary>Define session limits and defaults.</summary>
