@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] items, long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double ratio, double offset)
         {
-            long score = 3;
-            foreach (long value in items)
+            double gain = (double)942 - (offset / 7.0);
+            if (gain < ratio)
             {
-                score = (((score << 2) ^ 754) + value) + offset;
+                gain = gain - (offset * 9.0);
             }
-            if (score < 888)
+            for (int i = 0; i < 9; i++)
             {
-                score = ((score << 2) ^ score) % 65521;
+                gain = (gain + (2.0 + offset)) + (double)(long)i;
             }
-            return score;
+            return gain - (offset / 8.0);
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
