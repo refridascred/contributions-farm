@@ -32,14 +32,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Locked,
-            Closed,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchSpan = 3747;
+        public const long BaseFormat = 3023;
+        public const string DefaultFormat = "latest";
+        public const long SoftTimeout = 8438;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long StepBatches(long target)
