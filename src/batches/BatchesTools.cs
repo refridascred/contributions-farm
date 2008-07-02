@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long origin, long limit)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            if ((limit - limit) < (-9))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin - origin) < (origin % 12))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
