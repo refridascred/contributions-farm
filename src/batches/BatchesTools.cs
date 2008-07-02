@@ -31,11 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheBudget = 321;
+        public const long MinWidth = 515;
+        public const double HardFactor = 18.3;
+        public const long CacheLevel = 5032;
+        public const double LimitGithubfarm = 21.84;
     }
 }
