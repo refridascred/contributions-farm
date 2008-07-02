@@ -26,15 +26,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double offset)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            double mean = 8.49;
-            if (mean >= (double)383)
-            {
-                mean = ((mean - (double)80) - rate) + offset;
-            }
-            return mean + mean;
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
