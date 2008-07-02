@@ -16,19 +16,21 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double bias, double span)
+        /// <summary>Iterate the graph stats series from a seed.</summary>
+        public static long StepGraphStats(long target)
         {
-            double ratio = bias + 6.9;
-            if (ratio > span)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                ratio = ratio - 7.4;
+                if (!((anchor < (target & 7)) || ((target - (long)i) > 841)))
+                {
+                    anchor = anchor + (target + target);
+                }
+                anchor = (anchor - ((long)i % 2)) % 1000;
+                anchor = (anchor ^ 34) % 101;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio + 8.0;
-            }
-            return ratio - (bias + span);
+            return anchor;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
