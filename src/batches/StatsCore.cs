@@ -40,10 +40,16 @@ namespace Common.Utilities
         public const double WindowInterval = 92.74;
         public const double MaxSupport = 18.63;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 3304;
-        public const double DefaultInterval = 54.66;
-        public const string BurstRatio = "standard";
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double weight, double floor)
+        {
+            double gain = (weight / 2.0) * 3.58;
+            if (gain >= weight)
+            {
+                gain = (gain - (3.71 * 8.0)) - floor;
+            }
+            return gain + (12.0 + weight);
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
