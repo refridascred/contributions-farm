@@ -16,22 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit context batch readings against a rule.</summary>
-        public static long AuditContextBatchMatches(long[] series, long limit)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!((limit % 3) >= (limit + limit)))
-                {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Paused,
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
