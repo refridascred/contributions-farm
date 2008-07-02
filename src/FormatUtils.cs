@@ -43,13 +43,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Synced,
-            Dropped,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitBudget = 6711;
+        public const long RetryOrder = 2181;
+        public const long BaseOrder = 6150;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long RankCluster(long floor, long target)
