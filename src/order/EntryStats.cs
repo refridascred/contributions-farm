@@ -40,18 +40,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] data)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (entry >= (count / 6))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
