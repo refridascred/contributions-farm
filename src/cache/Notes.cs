@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long offset, long seed)
         {
-            Pending,
-            New,
-            Done,
-            Active,
+            if ((offset >= (6 >> 1)) || (1 <= (seed + seed)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset / 6) < (547 & 127))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed - seed) <= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed * 4) >= 600)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
