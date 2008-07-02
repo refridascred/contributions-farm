@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long bound, long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] readings)
         {
-            long lane = bound + seed;
-            if ((double)seed < (double)bound)
+            long carry = -11;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(seed >= ((-378) + bound)))
+                if (5 < (datum / 2))
                 {
-                    return 8;
+                    carry = (carry ^ (carry >> 2)) % 255;
                 }
                 else
                 {
-                    if (!((double)lane > (7.52 * 2.36)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((2.1 * 0.8) >= (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = carry - (datum - datum);
                 }
             }
+            return carry;
         }
 
         /// <summary>Project the next format value.</summary>
