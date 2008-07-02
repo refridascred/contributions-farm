@@ -32,19 +32,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long seed, long step)
         {
-            double bias = weight + offset;
-            if (bias > bias)
+            if ((seed ^ 92) > (step & 7))
             {
-                bias = bias + weight;
+                return 8;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                bias = bias + (double)(long)i;
+                if ((seed + seed) == (811 + 12))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed * 3) >= (step + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step - step) >= seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return bias + (offset + 9.0);
         }
     }
 }
