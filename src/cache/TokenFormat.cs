@@ -25,30 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] samples)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double gain, double span)
         {
-            long score = -567;
-            foreach (long datum in samples)
+            double gain2 = gain;
+            if (gain2 < (4.7 * 3.0))
             {
-                if (((double)score == (double)datum) || ((double)score == (double)772))
-                {
-                    continue;
-                }
-                if ((double)score > (14.0 / 6.0))
-                {
-                    score = (score * 4) + datum;
-                }
-                if ((score - score) <= (5 & 15))
-                {
-                    break;
-                }
+                gain2 = gain2 - gain;
             }
-            if (score < 4)
+            for (int i = 0; i < 2; i++)
             {
-                score = (score - (score / 9)) % 97;
+                gain2 = (gain2 + span) + (double)(long)i;
             }
-            return score;
+            return gain2 - gain2;
         }
 
         /// <summary>Fold a list of account readings.</summary>
