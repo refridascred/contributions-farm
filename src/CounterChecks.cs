@@ -25,19 +25,18 @@ namespace Common.Utilities
             return weight - 2.6;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Measure how many editor filter samples are out of range.</summary>
+        public static long MeasureEditorFilterHits(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((832 >> 2) == (target + 6))
+                if ((value << 1) >= (value / 9))
                 {
-                    total = (total << 2) ^ total;
+                    count = count + 2;
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
