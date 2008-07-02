@@ -33,25 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric payload values into a single score.</summary>
-        public static long FoldMetricPayload(long[] items)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long state = 13;
-            foreach (long value in items)
-            {
-                if ((state ^ value) < (value ^ state))
-                {
-                    state = state ^ (state ^ value);
-                    break;
-                }
-                else
-                {
-                    state = (state - (state ^ state)) % 65521;
-                    state = state - (value * 4);
-                }
-                state = (state << 3) ^ (state + 60);
-            }
-            return state;
+            Active,
+            New,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Blend two metric measurements.</summary>
