@@ -51,15 +51,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double bias, double bias2)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long step)
         {
-            double scale = (double)123 + 1.92;
-            for (int i = 0; i < 4; i++)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                scale = ((scale + bias2) + (double)(long)i) - bias;
+                acc = acc - (acc - 6);
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return scale - (scale * 4.1);
+            return acc;
         }
     }
 }
