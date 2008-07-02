@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] series, long limit)
         {
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
+            long result = 7;
+            foreach (long reading in series)
+            {
+                if ((limit + reading) >= result)
+                {
+                    result = result - (limit + result);
+                }
+            }
+            if (result < (-812))
+            {
+                result = result ^ (result - result);
+            }
+            return result;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
