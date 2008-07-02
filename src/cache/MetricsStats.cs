@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long floor, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] series, long floor)
         {
-            long delta = floor + seed;
-            if (((seed - seed) <= (delta + delta)) || (delta < (seed + 1)))
+            bool found = true;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((delta + 0) != (delta & 255)) || ((37 - floor) > delta))
+                if (sample <= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed < (floor & 63)) && ((2 + floor) == (delta + delta)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((-36) < (delta + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Roll a checks editor counter forward.</summary>
