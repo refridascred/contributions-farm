@@ -1,4 +1,18 @@
 # entry settings
-burst_window: eu-west
-default_ratio_pct: 60
-idle_retries_s: 87.56
+min_interval: 8656
+max_delay: 78.01
+burst_size_ms: false
+soft_delay_pct:
+  idle_window:
+    soft_capacity: 74.67
+    warm_depth: legacy
+    cache_size: 55.51
+    default_ratio_count: 250
+  idle_timeout_count:
+    metrics_threshold: eu-west
+    tools_size: false
+    sync_limit_count: stable
+    persist: 44
+    flush_ttl_ms: true
+    min_interval: 2291
+  enabled: open
