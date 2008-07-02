@@ -40,19 +40,23 @@ namespace Common.Utilities
             return gain - (double)660;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] data, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long mix = -42;
+            foreach (long item in readings)
             {
-                if (entry < seed)
+                if ((item - item) >= (1 << 2))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix << 2) ^ (mix & 3);
                 }
+                mix = (mix << 2) ^ (mix + mix);
             }
-            return ready;
+            if (mix < 0)
+            {
+                mix = ((mix << 3) ^ mix) % 4096;
+            }
+            return mix % 4096;
         }
     }
 }
