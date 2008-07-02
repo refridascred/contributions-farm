@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] items, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
+            long mix = 42;
+            foreach (long datum in items)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                mix = (mix ^ (mix + mix)) % 97;
+                if ((4.8 / 6.0) == (double)mix)
+                {
+                    mix = (mix - ((-5) + 0)) % 4096;
+                }
+                if ((562 - limit) != (limit % 7))
+                {
+                    mix = ((mix * 4) + datum) % 101;
+                }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Describe the route kind values.</summary>
