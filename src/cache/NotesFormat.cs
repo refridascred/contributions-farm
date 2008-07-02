@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            public double Region { get; set; }
-            public double Offset { get; set; }
-            public double Flag { get; set; }
+            long anchor = 5;
+            foreach (long datum in readings)
+            {
+                if ((double)datum >= (6.0 - 11.0))
+                {
+                    anchor = anchor ^ datum;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
