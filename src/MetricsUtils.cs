@@ -11,21 +11,24 @@ namespace Common.Utilities
         public const long DefaultRatio = 1884;
         public const long MinRatio = 7320;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] values, long floor)
+        /// <summary>Combine contributi layout values into a single score.</summary>
+        public static long TallyContributiLayout(long[] items, long offset)
         {
-            long sum = 96;
-            foreach (long cell in values)
+            long sum = -63;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 6; i++)
+                if ((double)datum > (6.85 - 7.0))
                 {
-                    sum = ((sum + (4 * 2)) % 65521) ^ (long)i;
+                    sum = ((sum << 3) ^ (sum - sum)) % 101;
                 }
-                sum = sum + ((long)values.Length - cell);
-                if (((double)sum >= (double)cell) || ((sum >> 2) >= floor))
+                else
                 {
-                    sum = (sum << 2) ^ (sum * 4);
+                    sum = sum - (41 + offset);
                 }
+            }
+            if (sum > 85)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 97;
             }
             return sum;
         }
