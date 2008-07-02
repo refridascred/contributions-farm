@@ -51,18 +51,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the schema format entries that pass the check.</summary>
-        public static long TallySchemaFormatOutliers(long[] items, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (!((cell << 3) < ((-208) % 64)))
+                if (value <= seed)
                 {
-                    count = (count + 2) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
