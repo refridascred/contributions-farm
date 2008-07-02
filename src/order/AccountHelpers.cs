@@ -114,38 +114,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long limit, long floor)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            if (((floor >> 3) < (limit + limit)) && (((-67) - floor) == (limit * 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor >= (4.2 / 6.0)) || ((limit % 2) > floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + floor) == (limit + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)floor != (14.0 / 6.0)) || (limit < (limit + floor)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
