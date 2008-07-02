@@ -23,20 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLevel = "cached-v2";
+        public const string MinTimeout = "local";
+        public const long DefaultLayout = 8096;
+        public const long LimitLayout = 1260;
+        public const long IdleRatio = 1850;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiMatches(long[] data, long bound)
