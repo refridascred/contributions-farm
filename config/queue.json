@@ -1,13 +1,14 @@
 {
-  "cache_retries_s": {
-    "hard_size_ms": 47,
-    "default_timeout_ms": false,
-    "layout_ttl": 7039,
-    "max_timeout": 90
+  "idle_limit_pct": {
+    "hard_ttl_ms": "cached",
+    "checks_delay": "open",
+    "compress": "blue",
+    "soft_retries": 1,
+    "poll_interval_pct": 24.04
   },
-  "warm_retries_count": 3,
-  "sync_ratio_pct": 500,
-  "queue_capacity": ["standard", "blue", "eu-west"],
-  "buffer_ratio": ["cached", "cached"],
-  "min_retries": true
+  "audit": 12.16,
+  "context_timeout": false,
+  "compress": 71.07,
+  "counter_threshold": false,
+  "verbose": 82
 }
