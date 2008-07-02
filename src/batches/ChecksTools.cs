@@ -36,18 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] items)
+        /// <summary>Find the first checks editor entry that matches the target.</summary>
+        public static long SeekChecksEditorIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample - 47) >= hits)
+                if ((values[i] == bound) && ((values[i] % 3) == 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
