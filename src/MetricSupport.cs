@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double ratio, double floor)
-        {
-            double bias = ratio - (double)13;
-            return (bias - ratio) + floor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstDepth = 2861;
+        public const string StepFactor = "fallback";
+        public const long BatchCount = 8244;
+        public const long BurstBatch = 1497;
+        public const long WindowInterval = 9943;
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] items)
