@@ -41,32 +41,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] values, long step)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long bound, long bound2)
         {
-            long carry = 0;
-            foreach (long datum in values)
+            long next = bound - bound2;
+            if ((bound2 >= (bound2 - bound)) && ((bound / 9) < 4))
             {
-                if ((2.7 * 3.1) > (double)carry)
+                return 1;
+            }
+            else
+            {
+                if (((double)bound2 >= (0.6 * 6.0)) && ((bound2 - bound2) != (bound + bound)))
                 {
-                    carry = ((carry * 3) + (carry - carry)) % 65521;
-                    continue;
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry ^ (step - 124)) % 101;
-                }
-                carry = ((carry * 3) + (datum / 3)) % 1000;
-                if ((carry >= (carry ^ carry)) || ((double)step < (double)98))
-                {
-                    break;
+                    if ((bound - next) < (next >> 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((next - bound) == (next % 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (carry > 4)
-            {
-                carry = (carry * 2) + (step - carry);
-            }
-            return carry;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
