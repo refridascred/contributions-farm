@@ -62,22 +62,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window editor samples are out of range.</summary>
-        public static long AuditWindowEditorMatches(long[] samples, long floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            if ((bound + bound) <= bound)
             {
-                if ((1 & 63) < sample)
+                return 8;
+            }
+            else
+            {
+                if ((3.03 / 6.0) == (double)bound)
                 {
-                    hits = (hits + 3) + floor;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((bound2 + bound) <= (306 << 2)) || ((double)bound2 != (19.0 + 3.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound + bound2) >= bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
