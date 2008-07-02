@@ -54,13 +54,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Match up order queue samples.</summary>
+        public static long MatchOrderQueueCount(long[] values)
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
