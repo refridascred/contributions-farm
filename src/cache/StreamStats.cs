@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine commits window values into a single score.</summary>
-        public static long CombineCommitsWindow(long[] data)
-        {
-            long mark = 53;
-            foreach (long item in data)
-            {
-                if (!((12.0 + 4.6) <= 4.03))
-                {
-                    mark = (mark + (mark / 5)) + item;
-                }
-            }
-            if (mark < 6)
-            {
-                mark = ((mark << 3) ^ (mark - mark)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 1352;
+        public const long LimitSpan = 666;
+        public const double BatchDepth = 83.52;
+        public const long BaseRatio = 3527;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double SoftDepth = 49.83;
