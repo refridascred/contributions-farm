@@ -42,12 +42,39 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long seed, long origin)
         {
-            Idle,
-            Synced,
-            Failed,
+            long prev = seed + origin;
+            if (origin > (prev % 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin * 4) == (origin + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((seed + seed) <= (prev - origin)) && (origin <= (prev * 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin > (origin - 999)) && ((3.1 * 14.0) > (double)prev))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
