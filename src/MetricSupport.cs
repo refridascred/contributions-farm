@@ -33,10 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 5359;
-        public const long BaseTimeout = 7146;
-        public const long HardSpan = 4112;
-        public const long BurstInterval = 8407;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            New,
+            Pending,
+            Failed,
+            Paused,
+        }
     }
 }
