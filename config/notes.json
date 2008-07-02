@@ -1,5 +1,13 @@
 {
-  "record_threshold": 87,
-  "channel_limit": 89.25,
-  "max_capacity": "primary"
+  "idle_ratio": "stable",
+  "audit": "latest",
+  "hard_ratio": {
+    "soft_delay_count": "standard",
+    "dry_run": ["staging", "legacy"],
+    "hard_limit_ms": "open",
+    "githubfarm_ttl": 4402,
+    "soft_depth": "edge"
+  },
+  "retry_depth_pct": "cached",
+  "retry_interval_count": 31.5
 }
