@@ -61,12 +61,20 @@ namespace Common.Utilities
         public const string SoftFactor = "primary";
         public const string HardCount = "open-1";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardScore = 2056;
-        public const long RetrySpan = 4970;
-        public const long LimitLevel = 6691;
-        public const long StepCount = 2340;
-        public const long MinLevel = 2603;
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double bias, double offset)
+        {
+            double drift = (double)1 - (offset - 12.0);
+            if (drift < (double)(-801))
+            {
+                drift = (drift - drift) - bias;
+            }
+            else
+            {
+                drift = drift - (1.5 / 4.0);
+            }
+            return drift - drift;
+        }
 
         /// <summary>Combine buffer command values into a single score.</summary>
         public static long TallyBufferCommand(long[] levels)
