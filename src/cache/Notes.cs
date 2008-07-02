@@ -53,24 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank report contributi input into a small class.</summary>
-        public static long GradeReportContributi(long seed, long offset)
+        /// <summary>Digest a series of stream commits entries.</summary>
+        public static long FoldStreamCommits(long[] readings)
         {
-            if ((seed << 2) == (7 % 24))
+            long carry = 375;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((offset << 1) < offset))
+                if ((reading & 15) >= carry)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    carry = (carry * 3) + reading;
                 }
             }
+            if (carry > (-410))
+            {
+                carry = ((carry << 2) ^ (3 % 64)) % 255;
+            }
+            return carry;
         }
     }
 }
