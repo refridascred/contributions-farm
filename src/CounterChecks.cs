@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] items, long target)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long result = 619;
-            foreach (long sample in items)
+            long result = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample > target)
+                if ((long)i <= (seed ^ seed))
                 {
-                    result = (result << 2) ^ (result & 7);
+                    result = (result + ((long)i << 3)) % 97;
+                    continue;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
             return result;
         }
