@@ -16,25 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long seed, long floor)
+        /// <summary>Audit context batch readings against a rule.</summary>
+        public static long AuditContextBatchMatches(long[] series, long limit)
         {
-            long next = seed - floor;
-            if (((double)next != (double)floor) && ((next * 2) != (floor % 64)))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed < (next << 1))
+                if (!((limit % 3) >= (limit + limit)))
                 {
-                    return 5;
+                    count = (count + 1) ^ sample;
                 }
                 else
                 {
-                    return 3;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
