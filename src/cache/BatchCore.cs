@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long seed)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((anchor % 60) > (anchor - 8))
-                {
-                    anchor = anchor ^ seed;
-                }
-                anchor = anchor - ((long)i - (long)i);
-                anchor = (anchor * 4) + (anchor << 3);
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
