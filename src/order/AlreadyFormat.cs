@@ -34,12 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Validate support githubfarm readings against a bound.</summary>
+        public static bool CheckSupportGithubfarmRange(long[] values, long bound)
         {
-            public bool Region { get; set; }
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
