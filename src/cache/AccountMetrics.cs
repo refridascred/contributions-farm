@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double gain, double bias)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] items, long limit)
         {
-            double gain2 = 4.3 / 9.0;
-            if (gain2 >= (double)884)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain2 = (gain2 + (2.97 / 4.0)) + bias;
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (double)93;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - (gain + gain2)) - (double)(long)i;
-            }
-            return gain2 + gain2;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
