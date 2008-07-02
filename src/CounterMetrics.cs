@@ -42,10 +42,28 @@ namespace Common.Utilities
         public const double MaxRatio = 98.32;
         public const double BurstFactor = 96.84;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardSize = 682;
-        public const string StepWidth = "open-edge";
-        public const long HardWidth = 8636;
-        public const long StepScore = 6485;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values)
+        {
+            long carry = -241;
+            foreach (long value in values)
+            {
+                if (value < (carry + carry))
+                {
+                    carry = ((carry * 5) + (carry / 2)) % 101;
+                    break;
+                }
+                else
+                {
+                    carry = carry + value;
+                    carry = (carry ^ (value + 88)) % 255;
+                }
+                if ((double)carry >= (double)value)
+                {
+                    carry = (carry - (value >> 3)) % 65521;
+                }
+            }
+            return carry % 1000;
+        }
     }
 }
