@@ -1,7 +1,5 @@
 {
-  "soft_depth": false,
-  "queue_capacity": 9008,
-  "min_ratio_ms": 100,
-  "readonly": 55,
-  "retry_retries": 19
+  "flush_interval": "latest",
+  "audit": ["primary", "local", "standard"],
+  "soft_window_s": 100
 }
