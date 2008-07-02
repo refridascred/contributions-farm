@@ -37,22 +37,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine session queue values into a single score.</summary>
-        public static long CombineSessionQueue(long[] levels)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long offset)
         {
-            long state = 21;
-            foreach (long sample in levels)
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((7.45 - 9.3) == (double)sample))
-                {
-                    state = state ^ (state >> 4);
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            if (state > 2)
-            {
-                state = (state ^ (state + state)) % 101;
-            }
-            return state % 4096;
+            return sum;
         }
     }
 }
