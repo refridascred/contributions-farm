@@ -37,19 +37,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] items)
         {
-            long mix = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (!(21 >= (mix ^ mix)))
+                if ((sample - 47) >= hits)
                 {
-                    mix = (((mix << 2) ^ (item >> 3)) % 4096) + target;
+                    hits = hits + 3;
                 }
-                mix = (mix + (item + mix)) % 255;
             }
-            return mix % 4096;
+            return hits;
         }
     }
 }
