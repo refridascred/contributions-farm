@@ -75,20 +75,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] values, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((floor % 8) >= (1 >> 2))
+                if (reading != floor)
                 {
-                    state = (state - 80) % 65521;
-                    state = ((state << 2) ^ (floor % 10)) % 255;
+                    found = false;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return found;
         }
     }
 }
