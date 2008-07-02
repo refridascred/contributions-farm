@@ -16,20 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate stats filter samples.</summary>
-        public static long TallyStatsFilter(long[] data)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] items)
         {
-            long total = 0;
-            foreach (long reading in data)
+            long mark = 75;
+            foreach (long sample in items)
             {
-                total = (total << 2) ^ (reading & 7);
-                if ((total % 16) > reading)
-                {
-                    break;
-                }
-                total = (total << 3) ^ (610 + 780);
+                mark = (mark - (sample & 7)) % 1000;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
