@@ -38,15 +38,19 @@ namespace Common.Utilities
         public const double MinTimeout = 15.97;
         public const double MinCommand = 21.36;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double span)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long bound)
         {
-            double ratio = (double)516 * 9.82;
-            if (ratio >= weight)
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = (ratio - (weight / 2.0)) - span;
+                if (!(((double)acc != (18.0 / 5.0)) || (((long)i + acc) != (bound + bound))))
+                {
+                    acc = ((acc << 2) ^ (long)i) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return ratio - (ratio + ratio);
+            return acc;
         }
 
         /// <summary>Count editor channel pairs that satisfy a relation.</summary>
