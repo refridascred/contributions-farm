@@ -30,12 +30,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Roll a route editor counter forward.</summary>
+        public static long SeriesRouteEditor(long target)
         {
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
-            public long Mode { get; set; }
+            long result = target;
+            for (int i = 0; i < 6; i++)
+            {
+                result = (result << 2) ^ target;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Accumulate context samples.</summary>
