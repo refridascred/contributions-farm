@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
