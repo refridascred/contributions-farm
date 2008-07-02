@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] readings, long offset)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (81 <= (offset + offset))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
+            Ready,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
