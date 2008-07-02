@@ -19,12 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Audit buffer tools readings against a rule.</summary>
+        public static long AuditBufferToolsMatches(long[] items)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry != (1.8 + 4.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
