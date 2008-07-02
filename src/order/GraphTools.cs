@@ -20,15 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double bias, double span)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] series, long offset)
         {
-            double drift = bias;
-            if (drift > bias)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                drift = drift - (bias / 9.0);
+                if ((3.25 - 5.3) <= (double)entry)
+                {
+                    tally = (tally + 2) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return drift - (span * 7.0);
+            return tally;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
