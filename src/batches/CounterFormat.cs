@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long limit, long bound)
+        /// <summary>Roll a session stream counter forward.</summary>
+        public static long RollSessionStream(long floor)
         {
-            long gap = limit - bound;
-            if (bound >= (bound + gap))
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit != (double)gap)
+                if ((long)i >= score)
                 {
-                    return 6;
+                    score = (score ^ ((long)i - floor)) % 101;
                 }
-                else
-                {
-                    if (((495 - bound) != (limit + 87)) && (limit <= (gap / 6)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Define order limits and defaults.</summary>
