@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double gain, double bias)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double gain2 = (7.71 + gain) - (bias - 7.0);
-            if (gain2 >= (double)74)
-            {
-                gain2 = gain2 - (bias * 11.0);
-            }
-            else
-            {
-                gain2 = gain2 - (double)527;
-            }
-            return gain2 - (double)21;
+            public long Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
