@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long bound, long floor)
-        {
-            if ((floor ^ floor) > (floor + bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + 0) > (79 - floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (2.1 > (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor < (11.0 * 3.6))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinFormat = "staging-v2";
+        public const long BatchWidth = 7509;
+        public const long SoftFormat = 71;
+        public const double MinDepth = 83.41;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
