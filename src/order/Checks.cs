@@ -68,9 +68,14 @@ namespace Common.Utilities
             return mean - (double)5;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSession = "cached-1";
-        public const long WindowInterval = 2460;
-        public const long SoftInterval = 8487;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Dropped,
+            Locked,
+            Pending,
+            Paused,
+            New,
+        }
     }
 }
