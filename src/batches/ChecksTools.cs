@@ -44,17 +44,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks editor entry that matches the target.</summary>
-        public static long SeekChecksEditorIndex(long[] values, long bound)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark + mark) % 65521;
+                mark = (mark << 3) ^ ((long)i * 2);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
     }
 }
