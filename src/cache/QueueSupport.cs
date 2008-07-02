@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Check that every batch queue entry stays within the limit.</summary>
+        public static bool GuardBatchQueueBounds(long[] samples, long seed)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the order class values.</summary>
