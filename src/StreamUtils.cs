@@ -70,9 +70,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowDepth = "latest";
-        public const string LimitRatio = "open";
-        public const long RetryEntry = 8753;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((floor / 5) == (datum + tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
