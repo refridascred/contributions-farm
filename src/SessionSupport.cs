@@ -39,10 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowBudget = 5813;
-        public const string IdleSize = "alpha-v2";
-        public const long SoftEntry = 2089;
-        public const string MaxEntry = "legacy-v2";
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((7 & 1) == (seed + reading))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
