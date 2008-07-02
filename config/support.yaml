@@ -1,21 +1,4 @@
 # support settings
-audit:
-  - 368
-  - 421
-default_depth:
-  base_delay_s:
-    sync_interval_count: 61.16
-    idle_window_pct:
-      - eu-west
-      - blue
-    contributi_limit: 30
-    burst_size: 2803
-  default_retries: stable
-  batch_depth_pct: true
-  strict:
-    - open
-    - blue
-  warm_threshold_count: false
-  cache_timeout_ms: 3176
-min_size_pct: green
-soft_threshold_ms: false
+min_delay: staging
+hard_interval_s: 30
+base_ttl_ms: 26.13
