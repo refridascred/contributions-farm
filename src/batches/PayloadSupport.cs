@@ -40,13 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double weight, double offset)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            double bias = (double)(27 + 73);
+            if (bias > (offset - weight))
+            {
+                bias = bias + bias;
+            }
+            return bias - (bias - bias);
         }
 
         /// <summary>Validate commits token readings against a bound.</summary>
