@@ -20,13 +20,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long step, long limit)
         {
-            Paused,
-            Stale,
-            Queued,
-            Closed,
+            if ((step - limit) >= step)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)limit <= 8.7) && ((double)step != (0.47 * 5.38)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
