@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] readings, long seed)
+        /// <summary>Derive the next counter context value from a seed.</summary>
+        public static long RollCounterContext(long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (((datum ^ count) == (count >> 3)) && ((seed + seed) >= (66 << 1)))
+                if ((origin * 3) < (mark - mark))
                 {
-                    count = count + 2;
+                    mark = (mark * 2) + (mark - mark);
                 }
+                mark = mark - (mark * 2);
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Accumulate graph samples.</summary>
