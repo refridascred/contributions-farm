@@ -26,17 +26,31 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] series, long bound)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long target, long target2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (target2 < (target2 / 2))
             {
-                if (series[i] < bound)
+                return 2;
+            }
+            else
+            {
+                if (target <= (target >> 1))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((target2 & 3) >= (51 % 24))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the counter kind values.</summary>
