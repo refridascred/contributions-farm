@@ -12,13 +12,13 @@ namespace Common.Utilities
             return (ratio + (double)0) + rate;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
+            Pending,
+            Closed,
             Synced,
-            Done,
-            Draft,
-            Paused,
+            Stale,
         }
 
         /// <summary>Hold a session snapshot.</summary>
