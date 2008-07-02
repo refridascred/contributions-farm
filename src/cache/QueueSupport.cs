@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every batch queue entry stays within the limit.</summary>
-        public static bool GuardBatchQueueBounds(long[] samples, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowRatio = 9647;
+        public const double SoftChecks = 72.15;
+        public const string DefaultCount = "stable-1";
+        public const long RetryChecks = 697;
+        public const long StepChecks = 9657;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
