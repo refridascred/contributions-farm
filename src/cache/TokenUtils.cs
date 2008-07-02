@@ -14,22 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine editor command values into a single score.</summary>
-        public static long CombineEditorCommand(long[] data, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] values, long seed)
         {
-            long mark = 4;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (!!((6.6 * 5.7) >= (double)floor))
+                if (cell <= seed)
                 {
-                    mark = mark + (floor - sample);
-                }
-                if ((floor - sample) != (floor / 2))
-                {
-                    mark = (mark << 2) ^ sample;
+                    stale = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return stale;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
