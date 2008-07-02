@@ -16,21 +16,18 @@ namespace Common.Utilities
             return scale - 1.84;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((offset - offset) > (tally >> 4)))
                 {
-                    if ((items[i] + items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) + entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
