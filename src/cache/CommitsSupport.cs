@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate cluster window samples.</summary>
-        public static long ScoreClusterWindow(long[] series, long step)
+        /// <summary>Iterate the account cache series from a seed.</summary>
+        public static long DeriveAccountCache(long seed)
         {
-            long mark = -17;
-            foreach (long entry in series)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (10.0 < (double)mark)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    continue;
+                    state = (((state << 3) ^ (seed + seed)) % 255) ^ (long)i2;
+                    state = ((state << 3) ^ (seed / 9)) % 4096;
                 }
-                mark = ((((mark * 3) + (5 * 4)) % 255) ^ entry) - step;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
