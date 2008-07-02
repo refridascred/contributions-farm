@@ -1,11 +1,20 @@
 {
-  "readonly": 30,
-  "flush_depth_pct": {
-    "cache_timeout_ms": "staging",
-    "burst_interval_count": "stable",
-    "warm_limit_pct": [106, 180]
+  "sync_ttl_count": "primary",
+  "cluster_threshold": {
+    "strict": "fallback",
+    "readonly": 1660,
+    "hard_timeout_pct": true,
+    "default_ratio_s": {
+      "cluster_size": 500,
+      "retry_retries": 81,
+      "min_threshold_pct": 30,
+      "audit": 8498,
+      "route_ratio": "eu-west",
+      "metric_timeout": "blue"
+    },
+    "dry_run": 30
   },
-  "default_retries_count": "eu-west",
-  "persist": "local",
-  "command_size": 2784
+  "cache_timeout": true,
+  "buffer_delay": "strict",
+  "poll_delay": 34.66
 }
