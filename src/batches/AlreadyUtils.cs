@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] samples)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mark = 99;
+            foreach (long item in values)
             {
-                if (entry <= (entry + entry))
+                mark = (mark ^ ((-345) + bound)) % 97;
+                if ((double)item <= (6.3 / 8.0))
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a layout record.</summary>
