@@ -31,21 +31,18 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)value < 6.52)
                 {
-                    if ((levels[i] + levels[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the record metrics series from a seed.</summary>
