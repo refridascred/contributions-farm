@@ -52,18 +52,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Adjust a filter record reading.</summary>
+        public static double SmoothFilterRecord(double ratio, double offset)
         {
-            long mark = 6;
-            foreach (long reading in data)
+            double bias = offset;
+            if (bias > bias)
             {
-                if ((mark * 2) >= reading)
-                {
-                    mark = (mark + (reading % 3)) % 101;
-                }
+                bias = (bias + (double)498) - ratio;
             }
-            return mark;
+            else
+            {
+                bias = bias + (5.83 + offset);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias - (0.2 * 4.9);
         }
     }
 }
