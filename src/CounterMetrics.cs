@@ -16,12 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 3985;
-        public const long StepFactor = 9525;
-        public const long CacheTimeout = 1055;
-        public const long CacheChecks = 2694;
-        public const long IdleFactor = 5104;
+        /// <summary>Accumulate stats filter samples.</summary>
+        public static long TallyStatsFilter(long[] data)
+        {
+            long total = 0;
+            foreach (long reading in data)
+            {
+                total = (total << 2) ^ (reading & 7);
+                if ((total % 16) > reading)
+                {
+                    break;
+                }
+                total = (total << 3) ^ (610 + 780);
+            }
+            return total;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string HardRatio = "legacy-1";
