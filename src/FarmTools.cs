@@ -25,13 +25,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] series)
         {
-            Failed,
-            Done,
-            Retry,
-            New,
+            long mark = 758;
+            foreach (long reading in series)
+            {
+                if ((mark + reading) == (767 & 63))
+                {
+                    mark = ((mark << 2) ^ (mark ^ mark)) % 1000;
+                }
+            }
+            return mark;
         }
     }
 }
