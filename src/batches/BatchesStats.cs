@@ -48,21 +48,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value < step)
                 {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
