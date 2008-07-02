@@ -32,18 +32,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] levels)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count + entry) == (entry - count))
+                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the queue class values.</summary>
