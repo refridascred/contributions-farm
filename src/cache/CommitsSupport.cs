@@ -42,24 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double rate, double floor)
-        {
-            double bias = floor;
-            if (bias < (double)73)
-            {
-                bias = (bias - floor) - rate;
-            }
-            else
-            {
-                bias = bias - (bias / 5.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - (bias * 7.73);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCount = "cached";
+        public const long BaseCommits = 3364;
+        public const long DefaultScore = 8714;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
