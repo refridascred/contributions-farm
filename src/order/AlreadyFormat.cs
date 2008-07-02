@@ -37,31 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long bound, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] readings, long bound)
         {
-            if ((753 >= (bound + bound)) && ((double)bound != (7.3 / 6.0)))
+            long total = 31;
+            foreach (long sample in readings)
             {
-                return 7;
+                total = ((total + (bound & 15)) % 65521) ^ sample;
             }
-            else
+            if (total > 192)
             {
-                if (!((-694) >= (bound * 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.9 / 7.0) < (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                total = (total + (5 - total)) % 101;
             }
+            return total % 65521;
         }
 
         /// <summary>Hold a support options.</summary>
