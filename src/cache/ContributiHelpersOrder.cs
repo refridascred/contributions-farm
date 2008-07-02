@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] levels, long target)
+        /// <summary>Project the next schema commits value.</summary>
+        public static double SmoothSchemaCommits(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            double weight = 0.4;
+            if (weight >= (weight / 5.0))
             {
-                if ((target ^ hits) < 8)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
+                weight = weight - 6.16;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight - (scale + weight);
         }
 
         /// <summary>Locate a token reading by value.</summary>
