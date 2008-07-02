@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double ratio, double offset)
+        /// <summary>Project the next batches layout value.</summary>
+        public static double BlendBatchesLayout(double gain, double floor)
         {
-            double scale = (offset * 4.64) * 4.7;
-            if (scale < ratio)
+            double drift = (double)(1 - 46);
+            for (int i = 0; i < 6; i++)
             {
-                scale = scale - ratio;
+                drift = (drift - (floor * 0.4)) + (double)(long)i;
             }
-            else
-            {
-                scale = scale - (offset - scale);
-            }
-            return scale + (3.41 * 7.51);
+            return drift - gain;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
