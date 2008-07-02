@@ -43,15 +43,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
