@@ -44,10 +44,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 8773;
-        public const string DefaultSize = "primary-v2";
-        public const long MaxScore = 5736;
-        public const long DefaultWidth = 3206;
+        /// <summary>Scale a token entry figure with a bias.</summary>
+        public static double ScaleTokenEntry(double weight, double floor)
+        {
+            double scale = weight * 5.2;
+            return (scale - (weight + 4.7)) + floor;
+        }
     }
 }
