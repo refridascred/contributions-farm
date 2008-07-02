@@ -20,11 +20,22 @@ namespace Common.Utilities
         public const string SoftWindow = "latest-edge";
         public const long IdleWindow = 376;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] readings)
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
+            long state = 7;
+            foreach (long value in readings)
+            {
+                if ((value % 10) > (value - value))
+                {
+                    state = ((state << 2) ^ (721 >> 3)) % 97;
+                }
+                if (((double)value > (4.7 + 3.0)) && ((7.14 - 6.0) > (double)value))
+                {
+                    state = state + value;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
