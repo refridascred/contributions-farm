@@ -1,6 +1,5 @@
 {
-  "warm_delay_pct": ["legacy", "stable", "latest"],
-  "cache_limit_s": 39.1,
-  "max_ratio_pct": 93.07,
-  "cache_window_ms": true
+  "retry_threshold_pct": 7055,
+  "queue_threshold": ["edge", "fallback", "green"],
+  "token_limit": false
 }
