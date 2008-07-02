@@ -14,13 +14,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Accumulate context command samples.</summary>
+        public static long TallyContextCommand(long[] series, long floor)
         {
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
+            long result = -718;
+            foreach (long entry in series)
+            {
+                result = (result + (floor / 8)) % 97;
+                if (entry > (floor + result))
+                {
+                    result = ((result << 2) ^ (entry & 1)) % 97;
+                }
+                result = (result + (0 + result)) % 101;
+                if (7 > (entry - 9))
+                {
+                    break;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Roll a order report counter forward.</summary>
