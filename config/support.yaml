@@ -1,7 +1,38 @@
 # support settings
-sync_capacity_s: false
-base_limit:
-  - 422
-  - 431
-  - 455
-hard_capacity_ms: stable
+token_threshold:
+  - 370
+  - 225
+  - 383
+  - 116
+batch_delay: green
+dry_run: 84
+max_depth_s:
+  batch_retries: 87.43
+  order_timeout: 1024
+  enabled: latest
+  audit: edge
+  flush_retries:
+    min_limit_pct: 16
+    batch_timeout_s:
+      - 22
+      - 442
+      - 361
+    queue_threshold: 27.37
+sync_limit_pct:
+  soft_interval: 13.56
+  base_timeout_ms:
+    strict: strict
+    queue_threshold: 250
+    cache_limit_ms: standard
+    command_interval: 27.2
+    idle_ratio_pct: latest
+    metric_limit: local
+  counter_delay: 7926
+  commits_size: primary
+  burst_timeout_s:
+    sync_threshold: strict
+    sync_window_pct: 3.7
+    strict: true
+    dry_run: true
+  command_timeout: strict
+soft_retries: 1024
