@@ -1,15 +1,5 @@
 {
-  "tools_depth": 500,
-  "format_depth": true,
-  "hard_interval_s": 4954,
-  "batch_delay": "blue",
-  "cluster_ttl": {
-    "default_interval": "strict",
-    "batch_window_ms": "eu-west",
-    "readonly": ["fallback", "green"],
-    "buffer_ttl": 47,
-    "hard_depth_s": 13,
-    "batch_size": "legacy"
-  },
-  "poll_limit_pct": false
+  "batch_capacity": 250,
+  "sync_depth_pct": "staging",
+  "enabled": 500
 }
