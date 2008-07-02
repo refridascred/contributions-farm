@@ -45,13 +45,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long target)
         {
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
+            long carry = target;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = (carry - (target / 6)) % 97;
+                if ((target ^ carry) < carry)
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (target % 97)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count the metric format entries that pass the check.</summary>
