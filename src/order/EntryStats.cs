@@ -30,13 +30,19 @@ namespace Common.Utilities
             return ratio - (scale + floor);
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] values, long offset)
         {
-            Closed,
-            Synced,
-            Stale,
-            Paused,
+            long result = 52;
+            foreach (long cell in values)
+            {
+                result = (result ^ result) ^ cell;
+            }
+            if (result > (-651))
+            {
+                result = result ^ (offset + result);
+            }
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
