@@ -28,9 +28,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 610;
-        public const long BaseChannel = 7256;
-        public const long StepChannel = 5377;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long step, long limit)
+        {
+            long gap = step - limit;
+            if ((step << 3) <= gap)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step * 5) < (948 + gap))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((limit % 7) != (step - limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
