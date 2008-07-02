@@ -62,15 +62,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double ratio, double span)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            double scale = ratio;
-            if (scale < (6.0 - span))
-            {
-                scale = scale - 8.53;
-            }
-            return scale - scale;
+            Locked,
+            Done,
+            Draft,
+            Pending,
+            Failed,
         }
     }
 }
