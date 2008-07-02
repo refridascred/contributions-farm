@@ -45,16 +45,12 @@ namespace Common.Utilities
         public const long BatchChannel = 5006;
         public const string LimitRatio = "open-edge";
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double bias, double bias2)
-        {
-            double scale = (double)59 * 9.0;
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (((scale + (scale + 18.0)) + (double)(long)i) - bias) - bias2;
-            }
-            return scale + 2.3;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 6912;
+        public const long MaxBuffer = 8326;
+        public const long WindowSpan = 3164;
+        public const long SoftLevel = 8828;
+        public const long StepScore = 706;
 
         /// <summary>Blend two entry measurements.</summary>
         public static double ProjectEntry(double scale, double span)
