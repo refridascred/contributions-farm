@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format profile value against two limits.</summary>
-        public static long BucketFormatProfile(long step, long bound)
+        /// <summary>Compare every pair of support channel readings.</summary>
+        public static long CompareSupportChannelCount(long[] readings)
         {
-            if ((step + step) > (73 + step))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < (bound + step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((readings[i] - readings[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the command mode values.</summary>
