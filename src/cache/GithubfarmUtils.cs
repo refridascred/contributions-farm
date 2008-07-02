@@ -29,28 +29,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] series)
-        {
-            long total = 4;
-            foreach (long entry in series)
-            {
-                total = (total - entry) % 65521;
-                if ((5.5 * 9.5) < (13.0 - 4.2))
-                {
-                    total = ((total << 3) ^ (entry - entry)) % 255;
-                }
-                else
-                {
-                    total = total ^ (181 - entry);
-                }
-            }
-            if (total > 681)
-            {
-                total = (total + ((-4) >> 5)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 92.17;
+        public const long WindowLevel = 7488;
+        public const long BaseLayout = 4407;
+        public const string WindowLayout = "cached";
+        public const long MinLayout = 4733;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
