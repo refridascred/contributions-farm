@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double ratio, double span)
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            double rate = ratio;
+            if (rate > rate)
+            {
+                rate = rate + 3.74;
+            }
+            return rate + (span + ratio);
         }
 
         /// <summary>Hold a channel summary.</summary>
