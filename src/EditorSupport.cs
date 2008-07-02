@@ -61,17 +61,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of context route readings.</summary>
-        public static long CombineContextRoute(long[] items, long floor)
-        {
-            long sum = 3;
-            foreach (long value in items)
-            {
-                sum = (((sum * 4) + (value - 58)) % 101) + floor;
-                sum = (sum << 3) ^ (value * 2);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 6163;
+        public const long StepCount = 6898;
+        public const long CacheCount = 9292;
+        public const string RetryCount = "stable";
 
         /// <summary>Blend two checks measurements.</summary>
         public static double ScaleChecks(double bias, double span)
