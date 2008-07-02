@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchSize = 9407;
-        public const long SoftFactor = 6720;
-        public const long HardScore = 2314;
-        public const string IdleMetric = "staging-edge";
-        public const double LimitMetric = 42.74;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterOutliers(long[] data)
