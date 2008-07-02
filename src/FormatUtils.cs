@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 1500;
-        public const long WindowScore = 1487;
-        public const long DefaultReport = 6798;
-        public const long SoftReport = 9821;
-        public const long IdleReport = 5430;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long floor, long target)
+        {
+            long step = floor ^ target;
+            if (step > (step * 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step != (2.0 + 1.8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target ^ target) > (5 - floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MaxReport = 7814;
