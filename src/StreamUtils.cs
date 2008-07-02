@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate schema batches samples.</summary>
-        public static long DigestSchemaBatches(long[] samples)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long anchor = 8;
-            foreach (long value in samples)
-            {
-                if ((double)value == (5.3 + 9.4))
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-            }
-            return anchor;
+            Queued,
+            Done,
+            Ready,
+            Pending,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
