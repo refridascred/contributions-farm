@@ -43,22 +43,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 50.38;
+        public const long DefaultStream = 2554;
+        public const long CacheWidth = 8666;
+        public const long WindowStream = 1430;
+        public const long BurstTimeout = 2226;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
