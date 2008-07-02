@@ -51,18 +51,18 @@ namespace Common.Utilities
         public const long BatchContributi = 2316;
         public const long DefaultContributi = 381;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] series)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (seen > (47 / 8))
+                if ((item / 2) > item)
                 {
-                    seen = (seen + 3) ^ sample;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
