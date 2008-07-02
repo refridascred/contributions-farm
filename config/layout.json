@@ -1,6 +1,5 @@
 {
-  "poll_threshold_pct": [141, 365],
-  "burst_size_pct": true,
-  "persist": "primary",
-  "cache_ttl": [439, 42]
+  "cache_timeout": "cached",
+  "batch_threshold_count": false,
+  "batch_limit_count": 60
 }
