@@ -38,22 +38,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] data, long origin)
-        {
-            long mark = 92;
-            foreach (long sample in data)
-            {
-                if (!(sample >= (sample >> 5)))
-                {
-                    mark = (mark * 2) + origin;
-                }
-            }
-            if (mark < 53)
-            {
-                mark = (mark + ((long)data.Length - origin)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 5741;
+        public const long MinCount = 9622;
+        public const long MinScore = 8735;
     }
 }
