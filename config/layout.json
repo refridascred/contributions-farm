@@ -1,16 +1,9 @@
 {
-  "soft_threshold_s": 250,
-  "cache_size_count": {
-    "retry_retries_s": 889,
-    "sync_timeout_ms": ["primary", "fallback"],
-    "poll_ttl_s": "primary",
-    "verbose": {
-      "flush_retries_pct": 872,
-      "flush_window": true,
-      "dry_run": 56,
-      "poll_threshold_count": "eu-west"
-    }
+  "cluster_threshold": {
+    "default_capacity": [448, 453, 305],
+    "audit": true,
+    "sync_interval_count": "staging"
   },
-  "report_size": true,
-  "soft_capacity_s": "edge"
+  "stats_window": "fallback",
+  "strict": "local"
 }
