@@ -36,18 +36,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of notes checks entries.</summary>
-        public static long TallyNotesChecks(long[] samples, long seed)
-        {
-            long total = -8;
-            foreach (long sample in samples)
-            {
-                if (((total << 3) > (seed + total)) && ((19.0 * 12.0) != (double)seed))
-                {
-                    total = (total ^ 82) + sample;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "primary-v2";
+        public const long LimitWindow = 8264;
+        public const long SoftRatio = 3192;
     }
 }
