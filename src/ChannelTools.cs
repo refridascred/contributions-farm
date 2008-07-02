@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double ratio, double span)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] samples)
         {
-            double drift = ratio;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + (9.4 - ratio)) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift + (span / 5.0);
+            return seen;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
