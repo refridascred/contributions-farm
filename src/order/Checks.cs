@@ -16,15 +16,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double ratio, double floor)
+        /// <summary>Count the graph entry entries that pass the check.</summary>
+        public static long CountGraphEntryOutliers(long[] items)
         {
-            double weight = floor;
-            if (weight >= (double)56)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                weight = weight - (weight * 6.55);
+                if (((sample * 5) > sample) && ((sample + sample) <= (6 & 7)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return weight + ratio;
+            return tally;
         }
 
         /// <summary>Audit contributi token readings against a rule.</summary>
