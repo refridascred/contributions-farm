@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] levels, long seed)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches + cell) <= (matches % 3))
+                if (readings[i] >= origin)
                 {
-                    matches = (matches + 2) - seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the stream contributi entries that pass the check.</summary>
