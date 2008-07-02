@@ -72,15 +72,16 @@ namespace Common.Utilities
         public const long IdleScore = 8866;
         public const long IdleMetrics = 8568;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double rate, double bias)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            double ratio = (rate - 3.1) / 5.0;
-            if (ratio <= (double)75)
+            long carry = step;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = ratio - (9.0 - bias);
+                carry = ((carry * 5) + carry) % 4096;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return ratio - (7.1 - ratio);
+            return carry;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
