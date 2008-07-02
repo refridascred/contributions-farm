@@ -53,17 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] data, long limit)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate2 = floor;
+            if (rate2 > rate2)
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 - (rate / 8.0);
             }
-            return -1;
+            else
+            {
+                rate2 = rate2 - (rate / 7.0);
+            }
+            return rate2 + (double)7;
         }
     }
 }
