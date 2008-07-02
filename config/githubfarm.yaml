@@ -1,5 +1,11 @@
 # githubfarm settings
-strict: stable
-poll_ratio: true
-base_threshold: primary
-cache_depth_pct: open
+cache_limit: true
+checks_capacity: eu-west
+hard_depth_count:
+  - standard
+  - cached
+  - legacy
+  - strict
+retry_limit_count: 5461
+audit: standard
+dry_run: 2
