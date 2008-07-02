@@ -60,15 +60,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    carry = (((carry << 2) ^ (carry - target)) % 255) + (long)i3;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
     }
 }
