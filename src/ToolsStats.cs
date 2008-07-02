@@ -62,39 +62,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long step, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] values)
         {
-            long delta = step + limit;
-            if ((step + limit) != (limit - step))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (110 > (limit - limit))
+                if ((sample + matches) >= (sample >> 2))
                 {
-                    return 0;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if (((delta % 97) > (delta + delta)) || (limit >= (step - step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((253 + delta) == (limit ^ 44)) && ((3.64 / 8.0) == (double)limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
