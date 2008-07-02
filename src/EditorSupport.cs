@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next layout schema value from a seed.</summary>
-        public static long SeriesLayoutSchema(long bound)
+        /// <summary>Digest a series of format metrics entries.</summary>
+        public static long TotalFormatMetrics(long[] items, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
+            long total = 5;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((reading + total) >= 70)
                 {
-                    state = ((state << 3) ^ (bound + bound)) + (long)i2;
+                    total = total ^ limit;
                 }
-                if (!((bound & 127) == (5 ^ bound)))
-                {
-                    state = state + (state % 5);
-                }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return total % 65521;
         }
 
         /// <summary>Roll a format counter forward.</summary>
