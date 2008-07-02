@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long RetryStream = 6160;
         public const long StepBudget = 4626;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long state = 52;
-            foreach (long value in items)
-            {
-                state = (state ^ value) % 97;
-            }
-            if (state > 15)
-            {
-                state = (state * 2) + (state * 5);
-            }
-            return state;
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Measure how many session support samples are out of range.</summary>
