@@ -52,17 +52,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] samples, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
+                if (sample != step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Match up batch samples.</summary>
