@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double weight, double offset)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double weight, double bias)
         {
-            double weight2 = offset;
-            if (weight2 > (offset - offset))
-            {
-                weight2 = weight2 + weight;
-            }
-            return weight2 + weight2;
+            double bias2 = (bias / 9.0) - (weight - bias);
+            return bias2 + bias2;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
