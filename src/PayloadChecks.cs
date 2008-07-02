@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] items)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] items, long target)
         {
-            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((items[i] == target) && ((items[i] % 3) == 0))
                 {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
