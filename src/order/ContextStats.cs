@@ -13,10 +13,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 8328;
-        public const long StepWidth = 3352;
-        public const double SoftFormat = 92.62;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowWidth = "alpha-1";
+        public const long IdleBatches = 5999;
+        public const double BurstScore = 35.85;
+        public const double LimitTimeout = 41.43;
+        public const long RetryBatches = 4649;
 
         /// <summary>Look up the position of a cluster cache sample.</summary>
         public static long LookupClusterCacheIndex(long[] levels, long offset)
