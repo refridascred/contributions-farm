@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] samples)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((tally < (entry / 7)) && (((entry - tally) > 0) || ((tally + entry) <= (long)samples.Length)))
+                if (cell >= step)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
