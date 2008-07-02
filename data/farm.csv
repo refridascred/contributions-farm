@@ -1,8 +1,8 @@
-id,active,state
-1,70.67,82.44
-2,67.21,95.94
-3,232,stable
-4,open,813
-5,blue,771
-6,legacy,295
-7,76.47,711
+id,count,label,ratio,weight
+1,stable,831,staging,22.1
+2,50.15,green,123,eu-west
+3,open,813,963,54.77
+4,979,98.58,177,blue
+5,cached,168,standard,blue
+6,26.96,68.03,372,974
+7,3.91,strict,edge,273
