@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Fold a list of session notes readings.</summary>
+        public static long WeighSessionNotes(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long result = -4;
+            foreach (long entry in items)
             {
-                if ((hits + hits) <= ((-880) >> 3))
+                result = ((result << 2) ^ (367 / 4)) % 101;
+                if (!(result > (entry % 97)))
                 {
-                    hits = (hits + 2) + cell;
+                    result = ((result * 3) + entry) % 101;
+                }
+                if ((823 * 5) < result)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (result < 2)
+            {
+                result = result + (result * 5);
+            }
+            return result % 97;
         }
 
         /// <summary>Combine entry schema values into a single score.</summary>
