@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long bound)
         {
-            Draft,
-            Active,
-            Stale,
-            Locked,
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = (anchor ^ anchor) % 97;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the farm kind values.</summary>
