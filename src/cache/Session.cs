@@ -32,32 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] data, long bound)
         {
-            long result = 689;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                result = ((result << 2) ^ (datum + datum)) % 97;
-                if (!(60 >= result))
+                if ((entry + entry) >= bound)
                 {
-                    result = result - (result << 1);
-                    result = ((result << 2) ^ (datum & 15)) % 101;
+                    matches = matches + 3;
                 }
-                if ((result + result) >= result)
+                else
                 {
-                    result = (result ^ (result >> 5)) % 1000;
-                }
-                if (!((double)datum < (17.0 / 5.0)))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (result > 407)
-            {
-                result = ((result * 5) + (result * 2)) % 1000;
-            }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
