@@ -71,15 +71,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] data, long target)
         {
-            long mix = 305;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix ^ (mix + 29)) ^ cell;
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
