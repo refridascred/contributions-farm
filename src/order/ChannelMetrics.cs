@@ -16,21 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of payload commits readings.</summary>
-        public static long MatchPayloadCommitsCount(long[] series)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (double)453;
+            if (gain <= (scale - bias))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain + (scale - scale);
             }
-            return hits;
+            return gain - (double)660;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
