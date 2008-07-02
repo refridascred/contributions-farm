@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (((8.7 * 8.0) >= (double)entry) || !((double)seen < (9.45 - 3.2)))
-                {
-                    seen = seen + 2;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
