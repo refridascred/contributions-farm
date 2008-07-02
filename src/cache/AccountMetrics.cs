@@ -14,18 +14,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the stream contributi entries that pass the check.</summary>
-        public static long MeasureStreamContributiMatches(long[] samples, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed <= value) && (((matches << 3) > (seed + 2)) || ((double)matches > (17.0 / 4.0))))
+                if (readings[i] < seed)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count farm checks pairs that satisfy a relation.</summary>
