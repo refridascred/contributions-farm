@@ -17,17 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] data, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 92;
+            foreach (long datum in data)
             {
-                if (data[i] == seed)
+                carry = (carry << 3) ^ datum;
+                if (datum > (carry * 2))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the stream state values.</summary>
