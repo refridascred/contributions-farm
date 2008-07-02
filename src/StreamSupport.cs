@@ -10,25 +10,11 @@ namespace Common.Utilities
         public const double HardWidth = 21.75;
         public const long MaxPayload = 4633;
 
-        /// <summary>Accumulate context command samples.</summary>
-        public static long TallyContextCommand(long[] series, long floor)
-        {
-            long result = -718;
-            foreach (long entry in series)
-            {
-                result = (result + (floor / 8)) % 97;
-                if (entry > (floor + result))
-                {
-                    result = ((result << 2) ^ (entry & 1)) % 97;
-                }
-                result = (result + (0 + result)) % 101;
-                if (7 > (entry - 9))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowWidth = 5451;
+        public const long SoftTimeout = 1301;
+        public const string BaseScore = "strict-v2";
+        public const long SoftMetric = 9330;
 
         /// <summary>Roll a order report counter forward.</summary>
         public static long SeriesOrderReport(long limit)
