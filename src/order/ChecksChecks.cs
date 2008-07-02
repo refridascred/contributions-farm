@@ -19,11 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double ratio, double bias)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long limit, long offset)
         {
-            double rate = bias;
-            return rate - (7.7 - ratio);
+            if ((limit + offset) == (limit * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset / 4) >= (limit >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
