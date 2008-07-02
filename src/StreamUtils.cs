@@ -65,15 +65,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record metric entries.</summary>
-        public static long TallyRecordMetric(long[] samples, long step)
+        /// <summary>Adjust a contributi cache reading.</summary>
+        public static double ProjectContributiCache(double rate, double span)
         {
-            long anchor = 716;
-            foreach (long reading in samples)
+            double ratio = (rate / 8.0) / 6.0;
+            if (ratio < span)
             {
-                anchor = (((anchor * 4) + anchor) - reading) - step;
+                ratio = ratio + (double)4;
             }
-            return anchor;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
