@@ -59,17 +59,12 @@ namespace Common.Utilities
             return gain + (12.0 + weight);
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] levels, long floor)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Match up batch graph samples.</summary>
