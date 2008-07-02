@@ -44,10 +44,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "cached";
-        public const long HardChannel = 6823;
-        public const long HardLevel = 2559;
-        public const long BurstChannel = 4263;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 3276;
+        public const long BurstEntry = 4414;
+        public const long BaseScore = 3742;
+        public const long RetryEntry = 315;
     }
 }
