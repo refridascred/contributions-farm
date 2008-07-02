@@ -1,7 +1,15 @@
 {
-  "schema_ratio": ["stable", "green", "latest"],
-  "flush_timeout_ms": [251, 135],
-  "default_ratio_s": "staging",
-  "default_retries": [381, 59, 456],
-  "hard_window": true
+  "strict": 3723,
+  "report_delay": {
+    "editor_size": "cached",
+    "hard_limit": {
+      "context_window": [356, 99],
+      "hard_interval_pct": "staging",
+      "editor_depth": 8920
+    },
+    "burst_size_s": 1024
+  },
+  "max_size_pct": 55,
+  "graph_size": false,
+  "graph_threshold": "strict"
 }
