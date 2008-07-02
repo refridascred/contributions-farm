@@ -34,32 +34,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long seed)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] series, long bound)
         {
-            long cur = offset ^ seed;
-            if (!((seed % 7) < (seed - offset)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset / 2) != (seed * 4))
+                if (series[i] < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((cur > offset) || ((offset * 2) <= (offset + offset)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a session options.</summary>
