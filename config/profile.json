@@ -1,5 +1,7 @@
 {
-  "idle_threshold_s": 26.33,
-  "base_interval_ms": "stable",
-  "cache_retries": 30
+  "dry_run": false,
+  "report_delay": ["edge", "blue"],
+  "max_ratio": 61,
+  "soft_delay_s": "fallback",
+  "audit": ["primary", "primary"]
 }
