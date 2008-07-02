@@ -40,15 +40,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long origin)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
