@@ -1,24 +1,11 @@
 {
-  "sync_ratio_pct": {
-    "record_timeout": true,
-    "retry_delay_ms": 36,
-    "idle_size": "fallback",
-    "default_retries": {
-      "metric_capacity": false,
-      "enabled": false,
-      "cache_window_pct": 70,
-      "batch_threshold_ms": [386, 307, 205, 105]
-    },
-    "batch_delay_pct": "edge",
-    "compress": "standard"
-  },
-  "strict": [41, 419, 71],
-  "idle_ttl": "edge",
-  "token_ttl": "latest",
-  "default_capacity": 57.98,
-  "idle_threshold_pct": {
-    "batch_ttl_ms": 30,
-    "retry_timeout_s": 98.35,
-    "strict": "blue"
+  "min_depth": "cached",
+  "batch_depth_count": true,
+  "min_ttl_pct": 1024,
+  "soft_size": {
+    "warm_depth": [365, 438, 323, 99],
+    "base_size_s": 49,
+    "batch_timeout_pct": true,
+    "retry_delay": 60
   }
 }
