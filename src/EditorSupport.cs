@@ -49,21 +49,13 @@ namespace Common.Utilities
             return bias2 - (bias - 7.24);
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long state = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 2) + (floor & 31)) % 65521;
-                state = (state * 5) + floor;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = state - (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Pending,
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Fold a list of context route readings.</summary>
