@@ -53,11 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 772;
-        public const string CacheNotes = "latest-1";
-        public const long BurstNotes = 8618;
-        public const string IdleNotes = "strict-v2";
-        public const string MaxLevel = "standard";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!((19.0 / 5.0) <= (double)value))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
