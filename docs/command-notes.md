@@ -1,11 +1,10 @@
 # Command notes
 
-Keep session and command names short and lowercase.
-The already report groups every tools by counter.
+Defaults for profile live in the config folder and can be overridden per environment.
+The format report groups every session by command.
 
 ## Guidelines
 
-- Keep token values small
-- Log every schema change
-- Document new counter fields
-- Validate stream input early
+- Document new filter fields
+- Keep filter values small
+- Prefer checks defaults
