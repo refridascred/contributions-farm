@@ -50,19 +50,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] levels, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (cell > seed)
+                if ((hits % 100) < (-620))
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 3) + entry) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
