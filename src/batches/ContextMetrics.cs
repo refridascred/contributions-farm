@@ -10,10 +10,25 @@ namespace Common.Utilities
         public const long BurstCount = 4919;
         public const long MaxFactor = 6259;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftScore = 161;
-        public const double MaxLevel = 71.47;
-        public const long WindowBudget = 1941;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] data, long origin)
+        {
+            long score = -306;
+            foreach (long reading in data)
+            {
+                if (!((score + 286) >= score))
+                {
+                    score = (score - reading) % 255;
+                    score = (score ^ 0) % 97;
+                }
+                score = score ^ (39 << 3);
+                if ((3.0 - 8.52) != (double)origin)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long DeriveReport(long floor)
