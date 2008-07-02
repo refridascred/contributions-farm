@@ -1,5 +1,4 @@
 # githubfarm settings
-max_depth_pct: primary
-layout_size: edge
-strict: local
-verbose: legacy
+strict: staging
+soft_delay_s: latest
+compress: 60
