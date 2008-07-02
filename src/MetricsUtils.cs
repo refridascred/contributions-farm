@@ -24,13 +24,12 @@ namespace Common.Utilities
         public const long CacheRoute = 1121;
         public const long WindowTimeout = 1623;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            Closed,
-            Active,
-            Dropped,
-            Done,
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
