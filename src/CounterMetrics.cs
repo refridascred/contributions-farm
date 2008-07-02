@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long origin, long bound)
         {
-            Draft,
-            Closed,
-            New,
-            Idle,
+            if ((double)bound >= (double)733)
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin > (bound ^ bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin <= (origin >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate profile report samples.</summary>
