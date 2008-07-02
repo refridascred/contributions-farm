@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] readings, long bound)
+        /// <summary>Project the next route payload value.</summary>
+        public static double SmoothRoutePayload(double scale, double span)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double gain = span;
+            if (gain < (span + scale))
             {
-                if ((4.9 + 9.41) <= (double)tally)
-                {
-                    tally = ((tally + 3) + reading) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain = gain + gain;
             }
-            return tally;
+            else
+            {
+                gain = gain - (span - gain);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + scale) - (double)(long)i;
+            }
+            return gain - (double)2;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
