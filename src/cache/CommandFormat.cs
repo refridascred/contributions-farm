@@ -62,17 +62,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a stats githubfarm sample.</summary>
-        public static long FindStatsGithubfarmIndex(long[] series, long seed)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Paused,
+            New,
         }
     }
 }
