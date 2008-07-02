@@ -15,15 +15,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double bias, double offset)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            double bias2 = 4.0;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = (bias2 + (offset / 3.0)) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias2 + bias;
+            return count;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
