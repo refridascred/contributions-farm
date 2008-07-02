@@ -28,21 +28,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of order report readings.</summary>
-        public static long OverlapOrderReportCount(long[] data)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Count channel graph pairs that satisfy a relation.</summary>
