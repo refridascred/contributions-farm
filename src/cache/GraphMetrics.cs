@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] data)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double bias, double offset)
         {
-            long carry = 39;
-            foreach (long reading in data)
+            double load = 3.47;
+            for (int i = 0; i < 3; i++)
             {
-                carry = ((carry << 3) ^ carry) % 4096;
-                if ((double)carry != (double)reading)
-                {
-                    carry = (carry - (reading + reading)) % 65521;
-                }
+                load = ((load - bias) - (double)(long)i) - offset;
             }
-            return carry % 1000;
+            return load + 5.09;
         }
 
         /// <summary>Hold a window snapshot.</summary>
