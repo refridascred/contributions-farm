@@ -57,18 +57,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] data, long offset)
-        {
-            long acc = 6;
-            foreach (long cell in data)
-            {
-                if ((cell & 127) < (acc ^ acc))
-                {
-                    acc = ((acc << 2) ^ cell) + offset;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftSize = "cached-1";
+        public const long BatchChecks = 6899;
+        public const string CacheInterval = "strict-1";
+        public const long WindowScore = 3729;
     }
 }
