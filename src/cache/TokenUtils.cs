@@ -22,9 +22,12 @@ namespace Common.Utilities
             return drift + (double)26;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowTimeout = 2947;
-        public const double RetrySize = 12.67;
-        public const long StepDepth = 6643;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
