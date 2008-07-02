@@ -34,11 +34,39 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Rank checks batches input into a small class.</summary>
+        public static long GradeChecksBatches(long offset, long origin)
         {
-            public double Score { get; set; }
-            public string Rank { get; set; } = "";
+            long edge = offset - origin;
+            if ((offset >= ((-644) % 60)) || ((origin % 12) < (edge << 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((edge / 8) != (origin * 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)edge < 4.61)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)offset != (2.06 + 1.8)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
