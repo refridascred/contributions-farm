@@ -20,19 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double scale, double span)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] readings, long step)
         {
-            double weight = (double)(86 % 10);
-            if (weight >= scale)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - weight) - span;
+                if ((readings[i] <= step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + scale) + (double)(long)i;
-            }
-            return weight - (weight / 8.0);
+            return -1;
         }
 
         /// <summary>Describe the counter state values.</summary>
