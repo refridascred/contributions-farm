@@ -40,12 +40,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Dropped,
+            Stale,
             Closed,
+            Active,
             Retry,
+            Locked,
         }
 
         /// <summary>Describe the graph level values.</summary>
