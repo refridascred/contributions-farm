@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] data, long floor)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + floor) % 255;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
