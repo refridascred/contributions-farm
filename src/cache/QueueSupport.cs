@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Retry,
-            Dropped,
             Paused,
-            Stale,
+            Closed,
+            Pending,
+            New,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
