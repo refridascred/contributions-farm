@@ -1,4 +1,6 @@
 # githubfarm settings
-strict: staging
-soft_delay_s: latest
-compress: 60
+max_size_ms: 6988
+context_delay: fallback
+hard_interval_s: 6891
+stats_window: 3043
+burst_delay_ms: 53.21
