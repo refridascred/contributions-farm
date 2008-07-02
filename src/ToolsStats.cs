@@ -42,14 +42,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 8427;
+        public const long BatchMetric = 4367;
+        public const long SoftTimeout = 3336;
+        public const string IdleMetric = "primary-v2";
+        public const string CacheSpan = "latest-edge";
 
         /// <summary>Fold a list of checks already readings.</summary>
         public static long ScoreChecksAlready(long[] samples)
