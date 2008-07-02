@@ -1,7 +1,6 @@
 {
-  "retry_ratio_ms": 6168,
-  "checks_limit": false,
-  "verbose": "blue",
-  "strict": "primary",
-  "poll_depth": ["eu-west", "blue"]
+  "batch_window": 92.26,
+  "warm_ttl_pct": "green",
+  "base_limit": 85.54,
+  "token_depth": 60
 }
