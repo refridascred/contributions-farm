@@ -28,23 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] values)
         {
-            long mark = 1;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                mark = (mark * 5) + mark;
-                if (((limit / 9) <= (limit + 65)) && ((0 + limit) <= (reading >> 3)))
+                if ((hits * 4) >= (cell / 5))
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (mark > 11)
-            {
-                mark = mark + (limit << 1);
-            }
-            return mark % 1000;
+            return hits;
         }
     }
 }
