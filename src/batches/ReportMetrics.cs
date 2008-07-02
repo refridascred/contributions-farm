@@ -27,12 +27,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowTimeout = 2416;
-        public const double RetryTimeout = 10.96;
-        public const long SoftSize = 9402;
-        public const long HardOrder = 2548;
-        public const long CacheOrder = 688;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((seed * 3) >= (sample ^ seed))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
