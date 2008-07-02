@@ -38,19 +38,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] levels, long step)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long bound)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            if (step <= bound)
             {
-                if (value < step)
+                return 7;
+            }
+            else
+            {
+                if ((bound - 429) <= (step << 3))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
