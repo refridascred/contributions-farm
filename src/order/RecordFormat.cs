@@ -45,19 +45,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] items, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] items)
         {
-            long carry = 45;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                carry = (((carry << 3) ^ carry) % 1000) + bound;
-                if (value <= (value & 63))
+                if ((long)items.Length < (entry + entry))
                 {
-                    carry = ((carry << 3) ^ (carry + 499)) % 4096;
+                    matches = matches + 3;
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
