@@ -39,11 +39,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long bound)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long score = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score << 3) ^ (bound * 3)) % 65521;
+                score = (score + (long)i) % 97;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
