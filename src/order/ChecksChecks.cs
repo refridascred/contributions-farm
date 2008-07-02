@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Active,
-            Dropped,
-            Retry,
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
