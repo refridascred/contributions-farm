@@ -13,22 +13,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up command farm samples.</summary>
-        public static long CompareCommandFarmCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 8328;
+        public const long StepWidth = 3352;
+        public const double SoftFormat = 92.62;
 
         /// <summary>Look up the position of a cluster cache sample.</summary>
         public static long LookupClusterCacheIndex(long[] levels, long offset)
