@@ -45,17 +45,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] series, long target)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Adjust a filter stats reading.</summary>
