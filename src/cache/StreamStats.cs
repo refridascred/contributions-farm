@@ -37,11 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 8292;
-        public const long RetrySupport = 4395;
-        public const string WindowRatio = "stable-1";
-        public const string DefaultSupport = "legacy-v2";
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long DigestContext(long[] data)
