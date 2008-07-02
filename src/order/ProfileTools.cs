@@ -33,11 +33,11 @@ namespace Common.Utilities
         public const long DefaultSize = 1187;
         public const long BaseWindow = 9785;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxRatio = 2936;
-        public const long RetryFilter = 4323;
-        public const string MaxScore = "standard-edge";
-        public const long BurstFilter = 8278;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleFactor = "latest-1";
+        public const string StepReport = "staging";
+        public const double StepWidth = 82.68;
+        public const long WindowWidth = 3867;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long FindGraphIndex(long[] samples, long offset)
