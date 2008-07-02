@@ -59,19 +59,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter contributi entry stays within the limit.</summary>
-        public static bool CheckFilterContributiBounds(long[] levels, long floor)
+        /// <summary>Digest a series of record metric entries.</summary>
+        public static long TallyRecordMetric(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long anchor = 716;
+            foreach (long reading in samples)
             {
-                if (datum != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (((anchor * 4) + anchor) - reading) - step;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
