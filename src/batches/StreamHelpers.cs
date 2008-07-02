@@ -47,32 +47,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long origin, long target)
-        {
-            if (!((origin / 7) != (392 / 7)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin & 127) == (target ^ origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target == (5.2 / 8.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CachePayload = "alpha-edge";
+        public const long BaseScore = 8054;
+        public const string BasePayload = "alpha";
+        public const long IdlePayload = 1604;
+        public const string BaseBudget = "fallback-1";
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
