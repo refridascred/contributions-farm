@@ -35,19 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (mix ^ (long)i2) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Pending,
+            Queued,
+            Draft,
         }
     }
 }
