@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster contributi readings.</summary>
-        public static long TallyClusterContributi(long[] series)
+        /// <summary>Check that every format order entry stays within the limit.</summary>
+        public static bool VerifyFormatOrderBounds(long[] data, long seed)
         {
-            long carry = -322;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((item + carry) < (carry + item))
+                if (entry < seed)
                 {
-                    carry = (carry - item) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry > 9)
-            {
-                carry = (carry ^ (1 - carry)) % 1000;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Describe the graph mode values.</summary>
