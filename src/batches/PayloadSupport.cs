@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryCluster = 27.03;
-        public const long MinCluster = 9064;
-        public const long MaxRatio = 7832;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!((8.6 - 1.2) > (0.7 / 9.0)))
+                {
+                    seen = ((seen + 3) ^ value) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
