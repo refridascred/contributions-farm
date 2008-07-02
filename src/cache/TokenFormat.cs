@@ -14,12 +14,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long floor, long seed)
         {
-            Pending,
-            Active,
-            Done,
+            long next = floor + seed;
+            if ((double)seed > (4.7 - 8.1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((next - next) >= (next * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
