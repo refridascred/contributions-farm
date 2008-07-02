@@ -30,22 +30,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] samples)
+        /// <summary>Count metrics entry pairs that satisfy a relation.</summary>
+        public static long CompareMetricsEntryCount(long[] series)
         {
-            long acc = 65;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((629 / 5) > datum) && ((acc << 2) >= (acc + datum)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (243 >> 1)) % 4096;
-                }
-                if ((datum % 97) <= (acc & 31))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
