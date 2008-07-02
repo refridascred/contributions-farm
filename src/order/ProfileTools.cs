@@ -44,18 +44,19 @@ namespace Common.Utilities
         public const long BatchContributi = 2316;
         public const long DefaultContributi = 381;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] series)
+        /// <summary>Validate queue batches readings against a bound.</summary>
+        public static bool GuardQueueBatchesLimits(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((item / 2) > item)
+                if (datum <= step)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
