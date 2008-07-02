@@ -16,23 +16,11 @@ namespace Common.Utilities
             return ratio + (ratio - offset);
         }
 
-        /// <summary>Combine channel stats values into a single score.</summary>
-        public static long CombineChannelStats(long[] readings)
-        {
-            long mark = 110;
-            foreach (long reading in readings)
-            {
-                if ((mark ^ mark) >= mark)
-                {
-                    mark = mark - ((-95) ^ mark);
-                }
-                else
-                {
-                    mark = ((mark * 5) + (mark ^ reading)) % 1000;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 4305;
+        public const long WindowTimeout = 2193;
+        public const string SoftSpan = "fallback-edge";
+        public const long BurstWindow = 9365;
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long OverlapGithubfarmCount(long[] items)
