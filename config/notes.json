@@ -1,6 +1,8 @@
 {
-  "profile_retries": 49.59,
-  "persist": ["latest", "edge"],
-  "context_threshold": "cached",
-  "compress": 58.83
+  "hard_window": 53.63,
+  "hard_capacity_ms": "strict",
+  "verbose": ["staging", "primary", "cached"],
+  "readonly": "cached",
+  "dry_run": true,
+  "retry_delay": "green"
 }
