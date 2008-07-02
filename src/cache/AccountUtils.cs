@@ -29,22 +29,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] data)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((datum ^ datum) > (matches << 2))
+                if ((seen + (-614)) == (seen * 5))
                 {
-                    matches = matches + 3;
+                    seen = (seen + 1) ^ reading;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
