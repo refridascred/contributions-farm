@@ -33,17 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] values, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((values[i] <= offset) && ((values[i] % 5) == 0))
+                if ((3.6 * 3.7) < (double)sample)
                 {
-                    return (long)i;
+                    count = (count + 2) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
