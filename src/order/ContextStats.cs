@@ -14,11 +14,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 94.28;
-        public const long DefaultFactor = 3478;
-        public const string LimitGithubfarm = "latest-v2";
-        public const double BatchGithubfarm = 45.65;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!(hits >= (datum + hits)))
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TotalAccount(long[] samples, long offset)
