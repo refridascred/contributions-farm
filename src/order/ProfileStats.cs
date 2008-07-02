@@ -16,28 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next graph profile value from a seed.</summary>
-        public static long SeriesGraphProfile(long offset)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((double)offset <= (7.23 + 4.68))
-                {
-                    carry = ((carry * 5) + ((long)i & 7)) % 4096;
-                    carry = (carry + (carry + (long)i)) % 97;
-                }
-                else
-                {
-                    carry = carry - ((-27) - 3);
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = ((carry - (offset >> 1)) % 97) + (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Adjust a counter reading.</summary>
