@@ -16,22 +16,32 @@ namespace Common.Utilities
             return gain - (bias2 - bias2);
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] series, long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long offset, long step)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long lane = offset + step;
+            if ((step & 31) > (lane - step))
             {
-                if (sample >= ((long)series.Length ^ matches))
+                return 1;
+            }
+            else
+            {
+                if ((double)step >= (1.55 * 1.2))
                 {
-                    matches = (matches + 1) - step;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((offset ^ lane) >= lane)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of support entries.</summary>
