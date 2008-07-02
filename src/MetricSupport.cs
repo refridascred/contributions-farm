@@ -27,38 +27,19 @@ namespace Common.Utilities
             return scale - (floor - 7.0);
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long step, long limit)
+        /// <summary>Validate profile counter readings against a bound.</summary>
+        public static bool ValidateProfileCounterLimits(long[] items, long origin)
         {
-            if ((62 + limit) == (limit << 3))
+            bool valid = true;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step & 1) <= (limit ^ limit))
+                if (reading > origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step / 2) == (step ^ limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step & 1) >= 1)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
