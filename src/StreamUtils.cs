@@ -48,14 +48,12 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            New,
-            Paused,
-            Draft,
-            Queued,
-            Dropped,
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Project the next notes value.</summary>
