@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            long state = 1;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((state >> 5) > (value & 15)) && ((state * 5) != (190 ^ value)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state << 2) ^ (value % 16)) % 97;
-                }
-                if (((value - value) > (state % 2)) && ((5 % 2) != ((long)samples.Length % 16)))
-                {
-                    state = (state - value) % 1000;
-                }
-                else
-                {
-                    state = ((state * 4) + ((long)samples.Length * 3)) % 101;
+                    if ((levels[i] ^ levels[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state > 8)
-            {
-                state = state - state;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Accumulate graph samples.</summary>
