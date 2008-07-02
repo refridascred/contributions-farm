@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            Ready,
+            Pending,
+            Draft,
+            Queued,
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
