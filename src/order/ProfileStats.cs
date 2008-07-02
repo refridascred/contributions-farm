@@ -26,18 +26,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit stream channel readings against a rule.</summary>
-        public static long MeasureStreamChannelMatches(long[] levels)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item + 9) <= item)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Locked,
+            Done,
+            Queued,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Digest a series of notes checks entries.</summary>
