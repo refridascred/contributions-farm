@@ -66,19 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double scale, double offset)
-        {
-            double bias = (offset * 13.0) + (double)8;
-            if (bias >= 19.0)
-            {
-                bias = bias - (scale * 6.8);
-            }
-            else
-            {
-                bias = bias - scale;
-            }
-            return bias - bias;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSpan = 13.77;
+        public const string WindowSchema = "legacy-edge";
+        public const long WindowInterval = 3221;
+        public const long BaseSchema = 5858;
     }
 }
