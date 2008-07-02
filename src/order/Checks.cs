@@ -22,15 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double weight, double bias)
+        /// <summary>Fold a list of cluster contributi readings.</summary>
+        public static long TallyClusterContributi(long[] series)
         {
-            double ratio = bias;
-            if (ratio >= ratio)
+            long carry = -322;
+            foreach (long item in series)
             {
-                ratio = (ratio + 2.0) + weight;
+                if ((item + carry) < (carry + item))
+                {
+                    carry = (carry - item) % 65521;
+                }
             }
-            return ratio - (double)(-40);
+            if (carry > 9)
+            {
+                carry = (carry ^ (1 - carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the window class values.</summary>
