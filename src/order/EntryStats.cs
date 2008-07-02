@@ -43,14 +43,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 15.72;
+        public const double HardTimeout = 85.6;
+        public const string RetryFactor = "fallback-v2";
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
