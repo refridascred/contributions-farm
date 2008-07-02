@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFormat = 47.13;
-        public const double BaseFormat = 82.21;
-        public const long BurstSize = 9190;
-        public const string DefaultCount = "cached-1";
-        public const long MinFormat = 5892;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((entry ^ seen) == (seen & 31)) || ((entry % 12) == (entry - seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
