@@ -1,15 +1,10 @@
 {
-  "strict": "edge",
-  "cache_threshold_ms": {
-    "cluster_ttl": ["eu-west", "eu-west", "strict"],
-    "command_delay": 8492,
-    "queue_depth": 58,
-    "cache_ttl": ["blue", "standard", "latest"],
-    "verbose": {
-      "entry_interval": 12.61,
-      "max_delay_s": "green",
-      "min_retries_ms": "standard"
-    }
+  "sync_ratio": "strict",
+  "poll_delay_s": {
+    "hard_ratio_pct": [352, 193],
+    "poll_timeout": false,
+    "burst_threshold_ms": 500
   },
-  "flush_timeout_pct": 97.38
+  "batch_ttl_pct": true,
+  "sync_ttl_count": true
 }
