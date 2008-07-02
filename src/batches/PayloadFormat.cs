@@ -43,11 +43,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
