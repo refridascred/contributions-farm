@@ -27,15 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] series)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] levels, long seed)
         {
-            long mark = 758;
-            foreach (long reading in series)
+            long mark = 82;
+            foreach (long value in levels)
             {
-                if ((mark + reading) == (767 & 63))
+                if ((value << 3) >= (mark + 82))
                 {
-                    mark = ((mark << 2) ^ (mark ^ mark)) % 1000;
+                    mark = (mark << 3) ^ (seed >> 5);
+                }
+                else
+                {
+                    mark = mark ^ (value + value);
                 }
             }
             return mark;
