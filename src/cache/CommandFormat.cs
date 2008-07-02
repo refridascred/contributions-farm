@@ -51,10 +51,17 @@ namespace Common.Utilities
         public const long LimitRatio = 6789;
         public const long SoftChannel = 9196;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultGithubfarm = "fallback-edge";
-        public const long DefaultTimeout = 529;
-        public const long RetryGithubfarm = 6545;
-        public const long BurstGithubfarm = 9265;
+        /// <summary>Look up the position of a stats githubfarm sample.</summary>
+        public static long FindStatsGithubfarmIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
