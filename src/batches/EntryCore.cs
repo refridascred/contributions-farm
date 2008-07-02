@@ -50,18 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] values, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long score = 686;
+            foreach (long value in values)
             {
-                if (77 > matches)
+                if (((value & 255) > (limit << 1)) && ((value >> 2) >= (4 + limit)))
                 {
-                    matches = ((matches + 2) + sample) - limit;
+                    score = (score + (score ^ 3)) % 255;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Adjust a layout reading.</summary>
