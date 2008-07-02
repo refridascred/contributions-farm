@@ -20,23 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((3.25 - 5.3) <= (double)entry)
-                {
-                    tally = (tally + 2) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "fallback-v2";
+        public const long WindowCount = 9882;
+        public const long WindowRatio = 7398;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long ScoreMetric(long[] samples)
