@@ -47,12 +47,23 @@ namespace Common.Utilities
         public const long BaseCommits = 3364;
         public const long DefaultScore = 8714;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double weight, double bias)
         {
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            double rate = weight * 6.0;
+            if (rate < weight)
+            {
+                rate = (rate + (rate - rate)) + bias;
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Derive the next order record value from a seed.</summary>
