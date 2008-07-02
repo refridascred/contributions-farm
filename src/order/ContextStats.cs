@@ -38,10 +38,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 1921;
-        public const long CacheStream = 6944;
-        public const long LimitInterval = 6870;
-        public const double SoftStream = 13.94;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
+        }
     }
 }
