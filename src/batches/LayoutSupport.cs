@@ -25,11 +25,16 @@ namespace Common.Utilities
             return rate + 1.9;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 503;
-        public const long CacheCount = 3574;
-        public const long StepStats = 8238;
-        public const string CacheStats = "legacy-v2";
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double gain, double span)
+        {
+            double load = span;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (double)117) + (double)(long)i;
+            }
+            return load - gain;
+        }
 
         /// <summary>Iterate the filter buffer series from a seed.</summary>
         public static long RollFilterBuffer(long seed)
