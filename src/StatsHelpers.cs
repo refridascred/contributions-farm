@@ -39,13 +39,10 @@ namespace Common.Utilities
         public const long CacheChecks = 4674;
         public const double LimitChecks = 38.53;
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinLevel = 8599;
+        public const string RetryTimeout = "alpha-v2";
+        public const double CacheWidth = 84.73;
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
