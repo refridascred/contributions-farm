@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up editor channel samples.</summary>
-        public static long MatchEditorChannelCount(long[] values)
+        /// <summary>Compare every pair of support notes readings.</summary>
+        public static long OverlapSupportNotesCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] - values[j]) < 16)
+                    if ((items[i] ^ items[j]) == 20)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
