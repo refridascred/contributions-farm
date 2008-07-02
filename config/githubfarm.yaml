@@ -1,4 +1,4 @@
 # githubfarm settings
-base_size_s: 98.43
-warm_timeout_s: latest
-hard_interval_count: latest
+profile_threshold: false
+notes_timeout: legacy
+idle_capacity: false
