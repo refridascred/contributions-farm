@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] levels, long step)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((16.0 / 5.0) > (double)step)
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
+            Retry,
+            Draft,
+            Closed,
+            Locked,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
