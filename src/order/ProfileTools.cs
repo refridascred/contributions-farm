@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count buffer contributi pairs that satisfy a relation.</summary>
-        public static long PairBufferContributiCount(long[] levels)
+        /// <summary>Blend two contributi editor measurements.</summary>
+        public static double SmoothContributiEditor(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)801 * 4.1;
+            if (gain <= (span * 1.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain + 13.0;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (bias / 3.0)) - (double)(long)i;
+            }
+            return gain - (gain / 6.0);
         }
 
         /// <summary>Define support limits and defaults.</summary>
