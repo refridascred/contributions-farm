@@ -2,11 +2,9 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    token TEXT,
     weight REAL,
-    state TEXT NOT NULL DEFAULT 'new'
+    owner TEXT NOT NULL,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
-
-INSERT INTO commits_records (level, token, weight, state) VALUES (61, 'latest', 58.77, 'fallback');
+CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
