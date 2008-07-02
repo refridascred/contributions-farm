@@ -1,14 +1,5 @@
 {
-  "persist": 250,
-  "report_limit": {
-    "githubfarm_retries": [54, 328, 39, 450],
-    "burst_ratio_count": 18.52,
-    "base_size": 64.45,
-    "metric_ratio": "stable",
-    "verbose": 2282
-  },
-  "warm_threshold": ["open", "latest", "blue"],
-  "soft_ratio": 43,
-  "idle_delay": "strict",
-  "batch_retries": "fallback"
+  "retry_window": false,
+  "burst_ttl_count": 87.02,
+  "compress": 9097
 }
