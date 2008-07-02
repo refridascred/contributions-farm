@@ -1,10 +1,23 @@
 # support settings
-soft_limit_count: false
-retry_delay: green
-audit: blue
-layout_window: strict
-base_size_pct: 98.3
-readonly:
+soft_size_ms:
+  warm_size: primary
+  min_limit:
+    - standard
+    - latest
+    - edge
+    - cached
+  audit:
+    - cached
+    - primary
+    - staging
+  burst_ratio_s: 1900
+  warm_window_count: cached
+poll_limit_count:
+  - local
+  - staging
   - strict
-  - strict
-  - cached
+batch_retries_ms:
+  - 297
+  - 246
+  - 109
+  - 12
