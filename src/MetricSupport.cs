@@ -21,10 +21,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchSpan = 3627;
-        public const double HardCount = 67.64;
-        public const long BatchLevel = 6328;
+        /// <summary>Blend two layout tools measurements.</summary>
+        public static double BlendLayoutTools(double bias, double floor)
+        {
+            double scale = floor;
+            if (scale < bias)
+            {
+                scale = scale + (double)554;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - 3.5) + (double)(long)i;
+            }
+            return scale - (floor - 7.0);
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long step, long limit)
