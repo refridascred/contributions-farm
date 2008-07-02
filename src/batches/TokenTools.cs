@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (!((limit * 3) > (sample - sample)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 47.13;
+        public const double BaseFormat = 82.21;
+        public const long BurstSize = 9190;
+        public const string DefaultCount = "cached-1";
+        public const long MinFormat = 5892;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
