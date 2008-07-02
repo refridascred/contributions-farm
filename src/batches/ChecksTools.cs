@@ -23,18 +23,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] readings)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] values, long step)
         {
-            long mix = 3;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((value + value) > mix) && ((double)value <= (double)(-21)))
+                if ((values[i] > step) && ((values[i] % 5) == 0))
                 {
-                    mix = (mix ^ (value % 7)) % 4096;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
