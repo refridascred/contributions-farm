@@ -31,13 +31,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Ready,
-            New,
-            Locked,
-            Stale,
+            public long Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
