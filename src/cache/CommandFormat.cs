@@ -48,12 +48,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseSpan = 23.52;
-        public const string SoftFactor = "open-1";
-        public const string IdleSpan = "alpha";
-        public const long LimitRatio = 6789;
-        public const long SoftChannel = 9196;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] readings, long floor)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((1.7 + 20.0) <= (double)floor)
+                {
+                    seen = (seen + 1) ^ item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a stats githubfarm sample.</summary>
         public static long FindStatsGithubfarmIndex(long[] series, long seed)
