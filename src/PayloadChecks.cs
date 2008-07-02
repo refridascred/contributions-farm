@@ -60,24 +60,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long bound, long seed)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            if (((seed + bound) >= (9 >> 3)) || ((seed + 575) >= (bound + bound)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(bound >= (seed * 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Project the next report value.</summary>
