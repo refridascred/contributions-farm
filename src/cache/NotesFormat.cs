@@ -31,17 +31,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] samples, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long limit, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset % 5) < limit)
             {
-                if (samples[i] >= floor)
+                return 1;
+            }
+            else
+            {
+                if ((8.0 < (double)limit) || (offset < limit))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
