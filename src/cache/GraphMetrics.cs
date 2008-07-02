@@ -32,15 +32,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] items, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long origin)
         {
-            long carry = 301;
-            foreach (long item in items)
+            long total = origin;
+            for (int i = 0; i < 10; i++)
             {
-                carry = (((carry ^ carry) % 4096) + item) + step;
+                total = (total * 2) + (long)i;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return carry % 65521;
+            return total;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
