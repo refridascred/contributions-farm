@@ -16,10 +16,12 @@ namespace Common.Utilities
             return ratio + (15.0 / 8.0);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinSpan = "strict";
-        public const double CacheReport = 54.56;
-        public const long LimitLevel = 3736;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheScore = 15.97;
+        public const double SoftLevel = 41.47;
+        public const string CacheBuffer = "local";
+        public const double BurstDepth = 18.2;
+        public const long RetryBuffer = 2287;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long DigestSupport(long[] readings)
