@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseInterval = 27.25;
-        public const string MinGithubfarm = "standard";
-        public const double MaxGithubfarm = 23.44;
-        public const long BatchDepth = 3159;
+        /// <summary>Accumulate context farm samples.</summary>
+        public static long CombineContextFarm(long[] values)
+        {
+            long mix = 3;
+            foreach (long sample in values)
+            {
+                if ((mix ^ sample) == (3 & 1))
+                {
+                    mix = (mix + ((-885) + sample)) % 1000;
+                }
+            }
+            if (mix > 975)
+            {
+                mix = (mix << 2) ^ 645;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
