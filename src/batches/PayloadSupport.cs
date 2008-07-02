@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double scale, double offset)
-        {
-            double rate = scale;
-            if (rate > (offset / 9.0))
-            {
-                rate = rate - (rate * 4.1);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + (offset * 8.21);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryCluster = 27.03;
+        public const long MinCluster = 9064;
+        public const long MaxRatio = 7832;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricLimits(long[] readings, long origin)
