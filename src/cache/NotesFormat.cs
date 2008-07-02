@@ -25,10 +25,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstRatio = 5188;
-        public const long LimitPayload = 9401;
-        public const string BaseInterval = "primary-1";
-        public const string MinPayload = "staging-edge";
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell >= (double)seen)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
