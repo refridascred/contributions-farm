@@ -16,11 +16,13 @@ namespace Common.Utilities
             return load - (offset * 1.69);
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            Synced,
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
