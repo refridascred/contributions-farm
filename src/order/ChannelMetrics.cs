@@ -41,23 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] readings)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long mix = -42;
-            foreach (long item in readings)
-            {
-                if ((item - item) >= (1 << 2))
-                {
-                    mix = (mix << 2) ^ (mix & 3);
-                }
-                mix = (mix << 2) ^ (mix + mix);
-            }
-            if (mix < 0)
-            {
-                mix = ((mix << 3) ^ mix) % 4096;
-            }
-            return mix % 4096;
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
