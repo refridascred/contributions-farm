@@ -60,15 +60,22 @@ namespace Common.Utilities
             return scale - (double)(-9);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] items)
         {
-            long sum = 347;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                sum = ((sum * 4) + 9) ^ reading;
+                if ((((datum / 5) >= datum) || ((matches ^ (long)items.Length) <= (matches + matches))) && (((double)datum == (0.93 - 6.05)) && ((7 << 2) < (long)items.Length)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
