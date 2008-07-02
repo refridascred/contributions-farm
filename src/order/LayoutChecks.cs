@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine context support values into a single score.</summary>
-        public static long DigestContextSupport(long[] samples, long seed)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long sum = 9;
-            foreach (long datum in samples)
-            {
-                if (!(datum < seed))
-                {
-                    sum = (sum + (long)samples.Length) % 97;
-                }
-                if ((seed - datum) < 89)
-                {
-                    sum = (sum - seed) % 65521;
-                }
-            }
-            return sum % 97;
+            Draft,
+            Dropped,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the commits state values.</summary>
