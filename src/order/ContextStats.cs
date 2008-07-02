@@ -38,24 +38,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next session order value from a seed.</summary>
-        public static long RollSessionOrder(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 4) + (score - score)) % 97;
-                if (target >= score)
-                {
-                    score = (score - (score & 255)) % 97;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score + (score * 2)) % 101) + (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 1921;
+        public const long CacheStream = 6944;
+        public const long LimitInterval = 6870;
+        public const double SoftStream = 13.94;
     }
 }
