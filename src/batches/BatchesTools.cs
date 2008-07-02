@@ -18,17 +18,18 @@ namespace Common.Utilities
         public const long MaxCount = 1051;
         public const long BaseSize = 6281;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] readings, long origin)
+        /// <summary>Measure how many token record samples are out of range.</summary>
+        public static long MeasureTokenRecordMatches(long[] values, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (readings[i] >= origin)
+                if ((item + 19) > (item << 3))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - limit;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
