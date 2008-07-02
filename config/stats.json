@@ -1,6 +1,15 @@
 {
-  "farm_ratio": "strict",
-  "order_capacity": 31,
-  "farm_ttl": true,
-  "max_ratio": "edge"
+  "githubfarm_delay": 4198,
+  "soft_retries_count": {
+    "audit": ["staging", "blue", "edge", "blue"],
+    "enabled": "edge",
+    "batch_depth": {
+      "flush_threshold_ms": "open",
+      "flush_delay": "latest",
+      "layout_retries": ["staging", "open", "fallback", "cached"],
+      "default_size": 93,
+      "poll_limit": 3476
+    }
+  },
+  "batch_timeout": "cached"
 }
