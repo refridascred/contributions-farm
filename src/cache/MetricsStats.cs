@@ -20,19 +20,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine record batches values into a single score.</summary>
-        public static long WeighRecordBatches(long[] readings, long offset)
+        /// <summary>Count the record order entries that pass the check.</summary>
+        public static long CountRecordOrderGaps(long[] data, long bound)
         {
-            long carry = 2;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                carry = ((carry + (long)readings.Length) % 97) + value;
+                if (bound < (seen - sample))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (carry > 138)
-            {
-                carry = (carry << 2) ^ (carry + offset);
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
