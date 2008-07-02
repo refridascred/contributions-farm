@@ -37,19 +37,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] readings, long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long bound, long target)
         {
-            long total = 31;
-            foreach (long sample in readings)
+            if (bound >= (target ^ target))
             {
-                total = ((total + (bound & 15)) % 65521) ^ sample;
+                return 2;
             }
-            if (total > 192)
+            else
             {
-                total = (total + (5 - total)) % 101;
+                if ((double)target < 6.87)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return total % 65521;
         }
 
         /// <summary>Hold a support options.</summary>
