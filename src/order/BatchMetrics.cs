@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double weight, double floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] items)
         {
-            double drift = weight;
-            if (drift >= (drift + floor))
+            long mix = 13;
+            foreach (long entry in items)
             {
-                drift = drift + drift;
+                if (((3.7 * 14.0) <= (double)entry) && (mix > 93))
+                {
+                    mix = (mix - (mix + mix)) % 97;
+                }
             }
-            else
+            if (mix > 6)
             {
-                drift = drift - (double)795;
+                mix = (mix * 2) + (mix << 3);
             }
-            return drift - (floor + drift);
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of already entries.</summary>
