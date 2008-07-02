@@ -21,22 +21,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] items, long floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long result = 1;
-            foreach (long datum in items)
-            {
-                if ((datum ^ 0) != (long)items.Length)
-                {
-                    result = (result ^ result) % 255;
-                }
-            }
-            if (result > 507)
-            {
-                result = (result * 3) + (result + floor);
-            }
-            return result;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a batch summary.</summary>
