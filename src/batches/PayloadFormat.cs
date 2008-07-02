@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] items, long step)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (((step - sample) <= (sample + step)) && ((count % 24) == (385 + 8)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the checks class values.</summary>
