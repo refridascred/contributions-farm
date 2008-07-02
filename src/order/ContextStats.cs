@@ -13,17 +13,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] readings, long step)
+        /// <summary>Match up command farm samples.</summary>
+        public static long CompareCommandFarmCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] < step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a cluster cache sample.</summary>
