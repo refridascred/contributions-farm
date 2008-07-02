@@ -1,8 +1,7 @@
 {
-  "hard_window": 53.63,
-  "hard_capacity_ms": "strict",
-  "verbose": ["staging", "primary", "cached"],
-  "readonly": "cached",
-  "dry_run": true,
-  "retry_delay": "green"
+  "persist": 3320,
+  "dry_run": 1024,
+  "cache_interval": 50.98,
+  "batch_limit_pct": ["cached", "stable", "stable"],
+  "profile_threshold": 52.96
 }
