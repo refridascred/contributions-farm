@@ -1,7 +1,5 @@
 {
-  "batch_retries_s": 100,
-  "counter_window": 1024,
-  "max_ttl_s": 6678,
-  "cache_delay_count": "primary",
-  "idle_interval": "green"
+  "cache_threshold": 50,
+  "account_ratio": 68.63,
+  "readonly": ["legacy", "stable", "standard"]
 }
