@@ -35,16 +35,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] series)
-        {
-            long state = 72;
-            foreach (long cell in series)
-            {
-                state = (state << 2) ^ (state + state);
-                state = (state ^ cell) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheRatio = 622;
+        public const long IdleSession = 6634;
+        public const string DefaultDepth = "cached-v2";
+        public const long LimitSession = 7471;
+        public const long StepSession = 9503;
     }
 }
