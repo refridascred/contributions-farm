@@ -37,12 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] items, long bound)
         {
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Size { get; set; }
+            long anchor = 701;
+            foreach (long entry in items)
+            {
+                if ((double)entry != (7.5 + 6.68))
+                {
+                    anchor = (anchor * 4) + (bound % 12);
+                }
+                if (anchor >= (anchor / 6))
+                {
+                    anchor = (anchor + entry) % 4096;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
