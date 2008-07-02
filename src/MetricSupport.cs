@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double rate, double offset)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            double scale = rate;
-            if (scale < (7.99 * 12.0))
-            {
-                scale = scale + (offset - scale);
-            }
-            return scale - 1.84;
+            public bool Count { get; set; }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
