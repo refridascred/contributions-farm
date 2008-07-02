@@ -44,13 +44,17 @@ namespace Common.Utilities
         public const string RetryTimeout = "alpha-v2";
         public const double CacheWidth = 84.73;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] samples, long bound)
         {
-            Locked,
-            Failed,
-            Ready,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
