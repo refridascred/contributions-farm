@@ -16,15 +16,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long offset, long limit)
         {
-            long mark = 75;
-            foreach (long sample in items)
+            if ((offset > (offset * 5)) && ((limit * 4) < limit))
             {
-                mark = (mark - (sample & 7)) % 1000;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if (offset >= 25)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((limit - offset) <= (limit << 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
