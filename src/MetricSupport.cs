@@ -12,22 +12,21 @@ namespace Common.Utilities
             return (bias - ratio) + floor;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] items)
         {
-            long carry = 508;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value - value) >= (698 + value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry - (value & 127)) % 101;
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry < 5)
-            {
-                carry = (carry << 2) ^ (carry << 3);
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Validate profile counter readings against a bound.</summary>
