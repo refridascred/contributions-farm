@@ -15,16 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = carry ^ (carry + bound);
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many session support samples are out of range.</summary>
