@@ -28,13 +28,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Locked,
-            Done,
-            New,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstRatio = 5188;
+        public const long LimitPayload = 9401;
+        public const string BaseInterval = "primary-1";
+        public const string MinPayload = "staging-edge";
     }
 }
