@@ -38,12 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Draft,
-            New,
-            Retry,
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
