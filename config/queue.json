@@ -1,14 +1,5 @@
 {
-  "idle_limit_pct": {
-    "hard_ttl_ms": "cached",
-    "checks_delay": "open",
-    "compress": "blue",
-    "soft_retries": 1,
-    "poll_interval_pct": 24.04
-  },
-  "audit": 12.16,
-  "context_timeout": false,
-  "compress": 71.07,
-  "counter_threshold": false,
-  "verbose": 82
+  "default_window_s": ["cached", "open", "eu-west"],
+  "retry_capacity_count": 250,
+  "sync_capacity": 73.35
 }
