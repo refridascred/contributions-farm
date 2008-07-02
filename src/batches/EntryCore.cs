@@ -37,14 +37,11 @@ namespace Common.Utilities
             return rate2 - (span / 8.0);
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Paused,
-            Retry,
-            Draft,
-            Dropped,
-            Failed,
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a format reading by value.</summary>
