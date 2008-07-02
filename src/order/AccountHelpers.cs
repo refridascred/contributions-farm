@@ -127,10 +127,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 5744;
-        public const string RetryOrder = "standard-edge";
-        public const double IdleOrder = 18.17;
-        public const long MinOrder = 2777;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long limit, long floor)
+        {
+            if (((floor >> 3) < (limit + limit)) && (((-67) - floor) == (limit * 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)floor >= (4.2 / 6.0)) || ((limit % 2) > floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + floor) == (limit + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)floor != (14.0 / 6.0)) || (limit < (limit + floor)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
