@@ -23,22 +23,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many buffer entry samples are out of range.</summary>
-        public static long AuditBufferEntryGaps(long[] levels, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((seen + seen) < (step ^ datum))
+                if (reading != bound)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Project the next counter value.</summary>
