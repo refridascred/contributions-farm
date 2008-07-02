@@ -71,19 +71,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] values, long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] values)
         {
-            long sum = 8;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = sum - ((-92) * 2);
-                if ((sum + entry) >= (target + entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum - (target + entry)) % 1000;
+                    if ((values[i] ^ values[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
