@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 2614;
-        public const long LimitEditor = 1397;
-        public const long StepEditor = 9221;
-        public const long CacheEditor = 6693;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Ready,
+            Failed,
+            Synced,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Check that every command queue entry stays within the limit.</summary>
         public static bool ValidateCommandQueueBounds(long[] values, long step)
