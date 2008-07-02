@@ -35,19 +35,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] series, long target)
         {
-            long result = 38;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                result = ((result ^ result) % 65521) ^ item;
-                if ((result % 97) < (55 % 5))
+                if (8.78 < (double)seen)
                 {
-                    break;
+                    seen = ((seen + 1) - entry) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
