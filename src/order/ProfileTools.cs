@@ -77,18 +77,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metric format entries that pass the check.</summary>
-        public static long CountMetricFormatHits(long[] data)
+        /// <summary>Measure how many checks batches samples are out of range.</summary>
+        public static long AuditChecksBatchesGaps(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (!((20.0 / 4.0) == (double)tally) || ((tally & 1) < (cell * 3)))
+                if ((cell + origin) >= origin)
                 {
-                    tally = tally + 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
