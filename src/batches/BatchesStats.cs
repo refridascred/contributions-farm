@@ -31,18 +31,19 @@ namespace Common.Utilities
             return drift + (rate * 2.0);
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] items)
+        /// <summary>Check that every metric batch entry stays within the limit.</summary>
+        public static bool GuardMetricBatchBounds(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((374 - tally) > (tally / 5))
+                if (sample <= origin)
                 {
-                    tally = (tally + 1) ^ entry;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the stream state values.</summary>
