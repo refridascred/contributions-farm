@@ -44,18 +44,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many payload cluster samples are out of range.</summary>
-        public static long TallyPayloadClusterOutliers(long[] data)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + 347) <= (3 & 63))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Closed,
+            Pending,
+            Ready,
+            Retry,
+            Active,
         }
 
         /// <summary>Define already limits and defaults.</summary>
