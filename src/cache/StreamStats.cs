@@ -19,11 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long seed, long floor)
         {
-            public long Region { get; set; }
-            public bool Count { get; set; }
+            long span = seed - floor;
+            if ((double)seed > (double)span)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((5.6 / 9.0) != (double)span)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a metrics stats.</summary>
