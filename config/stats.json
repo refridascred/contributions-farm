@@ -1,8 +1,13 @@
 {
-  "profile_size": "open",
-  "soft_ratio": "local",
-  "hard_capacity_ms": false,
-  "poll_capacity_s": 93.86,
-  "max_interval_ms": "local",
-  "hard_ratio": 100
+  "soft_limit_ms": "staging",
+  "strict": 71.18,
+  "idle_capacity_ms": {
+    "strict": 4370,
+    "persist": "latest",
+    "sync_size_pct": 2.65,
+    "compress": "stable"
+  },
+  "sync_ratio": 8.13,
+  "format_window": ["staging", "strict", "blue"],
+  "poll_threshold_pct": "blue"
 }
