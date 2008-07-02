@@ -53,18 +53,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine batches filter values into a single score.</summary>
-        public static long FoldBatchesFilter(long[] items, long bound)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long state = 5;
-            foreach (long cell in items)
-            {
-                if (((double)state <= (0.97 - 1.7)) && ((2 - state) > (cell * 5)))
-                {
-                    state = state - (bound + bound);
-                }
-            }
-            return state % 97;
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
