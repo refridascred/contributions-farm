@@ -42,19 +42,15 @@ namespace Common.Utilities
         public const double MaxRatio = 98.32;
         public const double BurstFactor = 96.84;
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double gain, double offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            double load = gain * 6.65;
-            if (load < load)
+            long sum = 347;
+            foreach (long reading in levels)
             {
-                load = load + (load * 0.76);
+                sum = ((sum * 4) + 9) ^ reading;
             }
-            else
-            {
-                load = load + load;
-            }
-            return load - offset;
+            return sum;
         }
     }
 }
