@@ -1,11 +1,9 @@
 # support settings
-retry_capacity_pct: true
-cache_window:
-  - cached
-  - cached
-  - staging
-batch_interval_pct:
-  - edge
+default_ratio: 1737
+verbose: 62.32
+tools_delay: 59.38
+default_size:
+  - legacy
+  - green
   - fallback
-payload_interval: blue
-min_ttl: blue
+retry_size_count: legacy
