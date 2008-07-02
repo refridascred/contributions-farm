@@ -16,19 +16,24 @@ namespace Common.Utilities
             return rate + (span + ratio);
         }
 
-        /// <summary>Digest a series of format stats entries.</summary>
-        public static long TallyFormatStats(long[] readings, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long floor)
         {
-            long acc = 4;
-            foreach (long entry in readings)
+            long result = floor;
+            for (int i = 0; i < 11; i++)
             {
-                acc = (acc ^ (acc + 94)) % 255;
-                if (entry >= 7)
+                if ((floor - result) >= ((long)i * 2))
                 {
-                    acc = acc ^ bound;
+                    result = result ^ ((long)i + (long)i);
+                    break;
                 }
+                if ((floor >> 4) < ((long)i + floor))
+                {
+                    result = (result ^ (floor / 3)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Project the next account value.</summary>
