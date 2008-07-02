@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinFormat = "staging-v2";
-        public const long BatchWidth = 7509;
-        public const long SoftFormat = 71;
-        public const double MinDepth = 83.41;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] items)
+        {
+            long result = -3;
+            foreach (long cell in items)
+            {
+                if ((0 <= (826 + cell)) || ((double)result <= 2.2))
+                {
+                    result = ((result * 4) + result) % 101;
+                }
+                result = result + (result % 24);
+                result = (result ^ ((long)items.Length - 55)) % 97;
+            }
+            if (result < 619)
+            {
+                result = ((result * 5) + (result - result)) % 1000;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool ValidateProfileRange(long[] levels, long origin)
