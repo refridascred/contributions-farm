@@ -37,14 +37,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Digest a series of notes checks entries.</summary>
+        public static long TallyNotesChecks(long[] samples, long seed)
         {
-            Closed,
-            Queued,
-            Stale,
-            Done,
-            Dropped,
+            long total = -8;
+            foreach (long sample in samples)
+            {
+                if (((total << 3) > (seed + total)) && ((19.0 * 12.0) != (double)seed))
+                {
+                    total = (total ^ 82) + sample;
+                }
+            }
+            return total;
         }
     }
 }
