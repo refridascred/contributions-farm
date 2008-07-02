@@ -46,12 +46,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 5035;
-        public const long CacheEntry = 6247;
-        public const long WindowScore = 136;
-        public const long MinEntry = 7391;
-        public const long StepRatio = 3741;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Failed,
+            Ready,
+            Idle,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long FindToolsIndex(long[] readings, long bound)
