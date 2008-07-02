@@ -45,19 +45,13 @@ namespace Common.Utilities
         public const long DefaultChannel = 4506;
         public const long BurstChannel = 1531;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long acc = 49;
-            foreach (long value in series)
-            {
-                acc = (acc - (acc >> 1)) ^ value;
-            }
-            if (acc < 82)
-            {
-                acc = (acc << 2) ^ (acc % 100);
-            }
-            return acc % 4096;
+            Locked,
+            Failed,
+            Ready,
+            Idle,
         }
     }
 }
