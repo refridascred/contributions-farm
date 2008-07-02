@@ -12,11 +12,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 4305;
-        public const long WindowTimeout = 2193;
-        public const string SoftSpan = "fallback-edge";
-        public const long BurstWindow = 9365;
+        /// <summary>Compare every pair of payload filter readings.</summary>
+        public static long ComparePayloadFilterCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long WeighMetrics(long[] values, long offset)
