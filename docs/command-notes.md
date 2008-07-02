@@ -1,11 +1,11 @@
 # Command notes
 
-The tools report groups every farm by notes.
-The window report groups every profile by checks.
-Run the account check before changing any cache limits.
+Keep session and command names short and lowercase.
+The already report groups every tools by counter.
 
 ## Guidelines
 
-- Log every queue change
-- Document new session fields
-- Prefer batch defaults
+- Keep token values small
+- Log every schema change
+- Document new counter fields
+- Validate stream input early
