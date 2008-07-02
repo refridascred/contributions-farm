@@ -1,12 +1,4 @@
 # githubfarm settings
-default_interval_pct: open
-default_interval_count: 7342
-retry_interval_pct: 30.99
-idle_threshold_count:
-  metric_capacity: false
-  batch_window_pct:
-    - staging
-    - primary
-    - local
-  burst_interval: false
-contributi_ratio: false
+base_size_s: 98.43
+warm_timeout_s: latest
+hard_interval_count: latest
