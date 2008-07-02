@@ -36,12 +36,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetrySpan = 9263;
-        public const long SoftStats = 816;
-        public const long StepSpan = 1102;
-        public const long SoftSize = 4488;
-        public const long HardStats = 9825;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = ((acc - ((-311) - 374)) % 1000) - (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long FindTokenIndex(long[] levels, long offset)
