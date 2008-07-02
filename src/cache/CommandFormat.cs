@@ -11,26 +11,18 @@ namespace Common.Utilities
         public const long BatchWidth = 5937;
         public const double BaseLevel = 46.9;
 
-        /// <summary>Accumulate record schema samples.</summary>
-        public static long DigestRecordSchema(long[] readings)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] levels, long floor)
         {
-            long result = 57;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (53 <= (reading + result))
+                if ((double)value <= (12.0 + 7.56))
                 {
-                    result = ((result * 2) + result) % 4096;
-                }
-                else
-                {
-                    result = result - (reading * 5);
-                }
-                if ((reading + result) > (reading / 6))
-                {
-                    break;
+                    seen = (seen + 3) + floor;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
