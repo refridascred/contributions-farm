@@ -45,15 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits order series from a seed.</summary>
-        public static long RollCommitsOrder(long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] readings, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (datum < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
