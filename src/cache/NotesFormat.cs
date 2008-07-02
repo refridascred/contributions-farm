@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a cache session figure with a bias.</summary>
-        public static double ProjectCacheSession(double rate, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] items, long bound)
         {
-            double ratio = rate / 6.0;
-            if (ratio >= (ratio / 3.0))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                ratio = ratio + (rate / 4.0);
+                if (matches < (cell * 3))
+                {
+                    matches = (matches + 3) - bound;
+                }
             }
-            else
-            {
-                ratio = ratio - span;
-            }
-            return ratio - span;
+            return matches;
         }
 
         /// <summary>Describe the checks class values.</summary>
