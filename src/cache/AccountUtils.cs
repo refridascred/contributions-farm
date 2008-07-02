@@ -29,18 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Accumulate already format samples.</summary>
+        public static long WeighAlreadyFormat(long[] levels, long offset)
         {
-            long mix = -50;
-            foreach (long cell in readings)
+            long state = 6;
+            foreach (long value in levels)
             {
-                if ((37 - mix) >= (cell >> 2))
+                if (71 >= (value ^ value))
                 {
-                    mix = mix ^ (mix / 2);
+                    state = (state ^ (offset - state)) % 1000;
                 }
             }
-            return mix;
+            return state % 97;
         }
     }
 }
