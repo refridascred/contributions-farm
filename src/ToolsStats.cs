@@ -67,11 +67,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Measure how many queue farm samples are out of range.</summary>
+        public static long CountQueueFarmGaps(long[] items)
         {
-            public double Label { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((count + count) != (sample + sample))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
