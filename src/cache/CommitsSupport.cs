@@ -45,13 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Blend two metric notes measurements.</summary>
+        public static double BlendMetricNotes(double ratio, double offset)
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public bool Count { get; set; }
+            double weight = (double)(8 % 12);
+            if (weight <= weight)
+            {
+                weight = (weight - 3.86) + offset;
+            }
+            else
+            {
+                weight = weight + (double)59;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (3.36 + ratio)) + (double)(long)i;
+            }
+            return weight + (ratio - weight);
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
