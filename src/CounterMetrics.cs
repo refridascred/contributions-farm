@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] readings, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long total = 27;
+            foreach (long item in series)
             {
-                if (reading > seed)
+                if ((9.24 / 2.0) == (double)item)
                 {
-                    stale = false;
-                    break;
+                    total = total + total;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total & 3)) % 97;
                 }
             }
-            return stale;
+            return total % 4096;
         }
 
         /// <summary>Measure how many buffer entry samples are out of range.</summary>
