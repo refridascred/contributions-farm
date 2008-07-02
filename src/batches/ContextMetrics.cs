@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public long Level { get; set; }
             public bool Weight { get; set; }
-            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
