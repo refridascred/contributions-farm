@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-blue}"
 case "${mode}" in
-    local)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+for item in staging fallback eu-west open; do
+    log "checking ${item}"
 done
-log "total ${total}"
-
-RECORD_LIMIT=388
-log "limit is ${RECORD_LIMIT}"
