@@ -57,11 +57,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "legacy-edge";
-        public const long MinMetrics = 8810;
-        public const long BatchScore = 4048;
-        public const long RetryMetrics = 9706;
-        public const long BatchMetrics = 7016;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
     }
 }
