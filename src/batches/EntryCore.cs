@@ -46,11 +46,15 @@ namespace Common.Utilities
         public const long LimitCount = 4601;
         public const long RetryBatch = 1337;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxFactor = 44.31;
-        public const long IdleCluster = 609;
-        public const string BurstCluster = "standard-edge";
-        public const long MaxCluster = 3330;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Paused,
+            Retry,
+            Draft,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
