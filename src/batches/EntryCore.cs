@@ -40,12 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            Active,
+            Ready,
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
