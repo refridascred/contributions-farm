@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Scale a cache session figure with a bias.</summary>
+        public static double ProjectCacheSession(double rate, double span)
         {
-            long total = -535;
-            foreach (long reading in readings)
+            double ratio = rate / 6.0;
+            if (ratio >= (ratio / 3.0))
             {
-                if ((double)58 <= (double)reading)
-                {
-                    total = (total ^ total) % 4096;
-                }
+                ratio = ratio + (rate / 4.0);
             }
-            if (total > 2)
+            else
             {
-                total = ((total * 2) + (total % 7)) % 65521;
+                ratio = ratio - span;
             }
-            return total;
+            return ratio - span;
         }
 
         /// <summary>Hold a token options.</summary>
