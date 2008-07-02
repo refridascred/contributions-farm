@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate format record readings against a bound.</summary>
-        public static bool GuardFormatRecordBounds(long[] series, long offset)
+        /// <summary>Combine cache record values into a single score.</summary>
+        public static long TotalCacheRecord(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long carry = 8;
+            foreach (long datum in levels)
             {
-                if (item >= offset)
+                if ((double)carry >= (6.3 + 6.22))
                 {
-                    flag = false;
-                    break;
+                    carry = carry - 485;
+                }
+                else
+                {
+                    carry = (carry ^ (datum & 63)) % 1000;
                 }
             }
-            return flag;
+            if (carry < (-160))
+            {
+                carry = (carry - 56) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a route header.</summary>
