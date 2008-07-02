@@ -39,10 +39,18 @@ namespace Common.Utilities
         public const long CacheChecks = 4674;
         public const double LimitChecks = 38.53;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinLevel = 8599;
-        public const string RetryTimeout = "alpha-v2";
-        public const double CacheWidth = 84.73;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long FoldReport(long[] data)
