@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (tally >= (58 & 255))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
