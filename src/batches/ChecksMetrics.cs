@@ -66,19 +66,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] readings, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (entry > floor)
+                if ((hits - 489) > reading)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) + origin;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
