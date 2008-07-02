@@ -31,20 +31,10 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] samples, long bound)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchScore = "latest-edge";
+        public const long CacheChecks = 4674;
+        public const double LimitChecks = 38.53;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinChannel = 8603;
