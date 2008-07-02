@@ -41,19 +41,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate tools batches readings against a bound.</summary>
-        public static bool CheckToolsBatchesBounds(long[] readings, long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            double scale = (double)123 + 1.92;
+            for (int i = 0; i < 4; i++)
             {
-                if (item >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = ((scale + bias2) + (double)(long)i) - bias;
             }
-            return ok;
+            return scale - (scale * 4.1);
         }
     }
 }
