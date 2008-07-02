@@ -29,12 +29,20 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] levels, long floor)
         {
-            public bool Region { get; set; }
-            public double Limit { get; set; }
-            public double Score { get; set; }
+            long total = 35;
+            foreach (long sample in levels)
+            {
+                total = total - (sample ^ floor);
+                total = (total * 2) + total;
+                if ((2.1 * 5.53) < (2.53 + 1.6))
+                {
+                    total = ((total << 3) ^ total) % 255;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Project the next buffer value.</summary>
