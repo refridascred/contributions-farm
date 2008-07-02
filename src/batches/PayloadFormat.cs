@@ -14,13 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Closed,
-            Pending,
-            Failed,
-            Dropped,
+            Ready,
+            Queued,
             Active,
         }
 
