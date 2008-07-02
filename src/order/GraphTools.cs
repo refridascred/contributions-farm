@@ -20,18 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] readings)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double bias, double span)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double drift = bias;
+            if (drift > bias)
             {
-                if (tally >= (58 & 255))
-                {
-                    tally = (tally + 3) + reading;
-                }
+                drift = drift - (bias / 9.0);
             }
-            return tally;
+            return drift - (span * 7.0);
         }
 
         /// <summary>Combine metric values into a single score.</summary>
