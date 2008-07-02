@@ -1,6 +1,11 @@
-id,rank,weight,region
-1,89.13,49.02,stable
-2,50.13,local,latest
-3,791,102,cached
-4,68.65,71.78,46.05
-5,769,874,cached
+id,owner,token
+1,standard,73.31
+2,49.02,stable
+3,170,fallback
+4,74.31,20.4
+5,56.39,31.21
+6,768,550
+7,staging,830
+8,63.05,local
+9,2.27,staging
+10,301,73.92
