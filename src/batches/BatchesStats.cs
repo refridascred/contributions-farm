@@ -49,19 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] samples, long step)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Stale,
+            Failed,
         }
     }
 }
