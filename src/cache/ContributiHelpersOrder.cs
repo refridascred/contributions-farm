@@ -32,18 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] samples, long bound)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] series)
         {
-            long anchor = 9;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)bound < 3.02))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor + (anchor << 2)) % 65521) ^ item;
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return tally;
         }
     }
 }
