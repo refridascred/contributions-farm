@@ -1,12 +1,12 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-A channel that stays idle for too long is moved to the entry list.
-Keep session and layout names short and lowercase.
+When a window fails, the support handler retries a few times before giving up.
+Each cache is validated before it reaches the metrics queue.
+Use githubfarm settings to tune how often context data is refreshed.
 
 ## Guidelines
 
-- Log every route change
-- Document new schema fields
-- Review graph limits each release
-- Validate window input early
+- Document new layout fields
+- Validate editor input early
+- Keep support values small
+- Review notes limits each release
