@@ -77,37 +77,23 @@ namespace Common.Utilities
             return ratio2 + (ratio - ratio2);
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long floor, long floor2)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long seed, long offset)
         {
-            long span = floor ^ floor2;
-            if ((floor2 >= (span - floor)) && (5 >= floor))
+            long slot = seed - offset;
+            if ((40 * 5) <= seed)
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((span * 5) >= (floor + floor))
+                if ((offset ^ slot) <= offset)
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (10 >= (floor << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.0 - 4.7) == (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
