@@ -30,22 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] samples)
         {
-            long carry = -347;
-            foreach (long reading in samples)
+            long anchor = 113;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = ((carry + carry) % 97) + (long)i;
-                }
-                if ((8.3 / 6.0) != (double)reading)
-                {
-                    carry = (carry + (carry ^ 635)) % 4096;
-                }
+                anchor = anchor + (entry << 2);
             }
-            return carry % 1000;
+            return anchor % 65521;
         }
 
         /// <summary>Adjust a graph reading.</summary>
