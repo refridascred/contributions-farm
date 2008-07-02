@@ -22,39 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long seed, long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long cur = seed ^ origin;
-            if ((cur >> 2) >= (origin + 24))
-            {
-                return 2;
-            }
-            else
-            {
-                if (seed <= (seed + 14))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((0.6 + 8.95) > (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin + cur) < (35 ^ cur))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Done,
+            Dropped,
+            Queued,
+            Active,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
