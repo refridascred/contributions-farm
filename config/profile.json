@@ -1,6 +1,11 @@
 {
-  "contributi_retries": true,
-  "verbose": [357, 257],
-  "compress": 95,
-  "max_window_count": 6502
+  "compress": {
+    "batch_size_pct": false,
+    "route_depth": 86.14,
+    "order_size": ["edge", "local", "local", "standard"],
+    "idle_capacity": false
+  },
+  "route_interval": 67,
+  "window_depth": "green",
+  "readonly": 32.29
 }
