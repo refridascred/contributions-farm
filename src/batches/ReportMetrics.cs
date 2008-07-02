@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit counter record readings against a rule.</summary>
-        public static long MeasureCounterRecordMatches(long[] items)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long state = 916;
+            foreach (long value in values)
             {
-                if (!((6.58 / 8.0) > (double)reading))
+                for (int i = 0; i < 5; i++)
                 {
-                    matches = matches + 2;
+                    state = (((state * 3) + (value + state)) % 65521) + (long)i;
                 }
-                else
+                if ((1.49 + 1.0) != (double)state)
                 {
-                    matches = matches - 1;
+                    state = (state ^ (76 - value)) % 1000;
                 }
             }
-            return matches;
+            if (state < 6)
+            {
+                state = ((state * 4) + state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
