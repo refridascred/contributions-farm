@@ -26,18 +26,21 @@ namespace Common.Utilities
         public const string StepTimeout = "open";
         public const long IdleNotes = 6508;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] items, long floor)
+        /// <summary>Compare every pair of order report readings.</summary>
+        public static long OverlapOrderReportCount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item >> 3) <= (seen & 255))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) - floor;
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a already commits counter forward.</summary>
