@@ -60,19 +60,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)matches == (5.6 * 15.0))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseDepth = "primary-1";
+        public const long LimitSpan = 2623;
+        public const double MinScore = 81.7;
+        public const long WindowFormat = 6574;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstDepth = 7517;
