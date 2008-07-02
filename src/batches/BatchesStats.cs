@@ -23,20 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metric graph values into a single score.</summary>
-        public static long CombineMetricGraph(long[] series)
+        /// <summary>Combine checks tools values into a single score.</summary>
+        public static long CombineChecksTools(long[] series, long origin)
         {
-            long sum = 9;
-            foreach (long sample in series)
+            long acc = 942;
+            foreach (long datum in series)
             {
-                sum = ((sum * 5) + (sample & 63)) % 1000;
-                sum = sum - sum;
+                acc = ((acc << 3) ^ (datum << 3)) + origin;
             }
-            if (sum < (-40))
-            {
-                sum = ((sum << 3) ^ (161 - 896)) % 101;
-            }
-            return sum % 1000;
+            return acc;
         }
 
         /// <summary>Check that every metric batch entry stays within the limit.</summary>
