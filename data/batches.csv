@@ -1,6 +1,8 @@
-id,rank,token
-1,576,latest
-2,76,green
-3,latest,83.37
-4,875,40.68
-5,711,612
+id,active,region
+1,0,39.78
+2,primary,staging
+3,60.31,edge
+4,444,998
+5,local,324
+6,80.31,70.82
+7,82.96,eu-west
