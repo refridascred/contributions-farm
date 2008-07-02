@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] levels)
         {
             long tally = 0;
-            foreach (long entry in series)
+            foreach (long value in levels)
             {
-                if ((tally - 249) >= entry)
+                if (38 > (tally + tally))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 3) + value;
                 }
             }
             return tally;
