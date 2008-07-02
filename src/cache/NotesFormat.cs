@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Failed,
-            Stale,
-            Synced,
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
