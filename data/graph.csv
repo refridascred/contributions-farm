@@ -1,7 +1,6 @@
-id,count,label,active
-1,87.26,166,32.87
-2,585,stable,719
-3,fallback,green,6.05
-4,40.66,staging,704
-5,101,local,34.07
-6,strict,796,green
+id,count,score,ratio,rank
+1,34.31,469,325,primary
+2,126,75.36,primary,361
+3,429,434,997,21.79
+4,257,cached,eu-west,52.96
+5,21.08,131,fallback,128
