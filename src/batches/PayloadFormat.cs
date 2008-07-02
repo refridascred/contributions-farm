@@ -57,39 +57,11 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long bound, long floor)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long bound2 = bound ^ floor;
-            if ((bound > (bound2 ^ bound)) && (4.0 <= (double)bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (4.45 > (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor * 5) <= (bound + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(bound <= (bound + bound2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
