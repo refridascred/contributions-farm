@@ -44,17 +44,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 8095;
+        public const string CacheSpan = "latest";
+        public const double StepFarm = 98.88;
     }
 }
