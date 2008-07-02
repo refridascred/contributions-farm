@@ -38,19 +38,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine metrics notes values into a single score.</summary>
-        public static long FoldMetricsNotes(long[] readings, long limit)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long mix = 53;
-            foreach (long value in readings)
-            {
-                mix = (mix - (mix / 8)) ^ value;
-                if (mix <= (mix >> 1))
-                {
-                    mix = ((mix << 2) ^ limit) % 4096;
-                }
-            }
-            return mix % 65521;
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
