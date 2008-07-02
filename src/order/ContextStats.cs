@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
             public long Label { get; set; }
         }
 
