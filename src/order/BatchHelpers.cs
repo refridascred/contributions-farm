@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a entry route reading by value.</summary>
-        public static long LookupEntryRouteIndex(long[] readings, long seed)
+        /// <summary>Digest a series of notes route entries.</summary>
+        public static long FoldNotesRoute(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 4;
+            foreach (long datum in items)
             {
-                if (readings[i] < seed)
+                if ((0.53 - 1.68) >= (double)result)
                 {
-                    return (long)i;
+                    result = (((result << 3) ^ (seed - seed)) % 97) - datum;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the record level values.</summary>
