@@ -70,18 +70,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] levels)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long result = 37;
+            foreach (long value in series)
             {
-                if (seen < (seen << 2))
+                if (((result - result) != (value + result)) || ((result ^ (long)series.Length) < (value / 5)))
                 {
-                    seen = (seen + 1) ^ reading;
+                    result = ((result * 4) + (6 % 7)) % 97;
                 }
             }
-            return seen;
+            if (result < 376)
+            {
+                result = (result + (result - result)) % 97;
+            }
+            return result;
         }
     }
 }
