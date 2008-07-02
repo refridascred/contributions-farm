@@ -14,19 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] items, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long mix = 81;
+            foreach (long datum in levels)
             {
-                if (datum < bound)
+                if (!((2.7 / 5.0) >= (double)mix))
                 {
-                    flag = false;
-                    break;
+                    mix = (((mix * 4) + (target / 9)) % 1000) + datum;
                 }
             }
-            return flag;
+            if (mix > (-24))
+            {
+                mix = ((mix << 3) ^ (mix + (long)levels.Length)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
