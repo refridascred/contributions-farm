@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format order entry stays within the limit.</summary>
-        public static bool VerifyFormatOrderBounds(long[] data, long seed)
+        /// <summary>Check that every farm entry entry stays within the limit.</summary>
+        public static bool GuardFarmEntryBounds(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (entry < seed)
+                if (item <= bound)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
