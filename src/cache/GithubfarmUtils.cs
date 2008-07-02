@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double bias, double bias2)
-        {
-            double drift = 5.6 / 6.0;
-            return (drift + (bias2 * 0.9)) + bias;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 7178;
+        public const double MinOrder = 13.0;
+        public const long CacheOrder = 8636;
+        public const long StepOrder = 9698;
+        public const long BaseOrder = 9058;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double SoftLayout = 92.17;
