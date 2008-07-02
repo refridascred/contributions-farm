@@ -23,19 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] levels)
+        /// <summary>Accumulate order route samples.</summary>
+        public static long FoldOrderRoute(long[] series)
         {
-            long carry = 7;
-            foreach (long reading in levels)
+            long acc = 39;
+            foreach (long sample in series)
             {
-                if (7 < (carry + reading))
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (45 * 5)) % 65521;
+                acc = (acc ^ sample) % 97;
             }
-            return carry % 65521;
+            if (acc > 52)
+            {
+                acc = (acc - (acc + acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the account phase values.</summary>
