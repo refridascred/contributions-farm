@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const string RetryLevel = "primary";
         public const long DefaultRoute = 7152;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] items, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (reading >= floor)
+                if (sample >= ((long)series.Length ^ matches))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Digest a series of support entries.</summary>
