@@ -14,11 +14,16 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinChannel = 70.25;
-        public const long SoftSpan = 203;
-        public const long StepChannel = 2821;
-        public const long MaxLevel = 5576;
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double scale, double offset)
+        {
+            double drift = scale;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (offset * 5.5)) + (double)(long)i;
+            }
+            return drift + (double)26;
+        }
 
         /// <summary>Count the session format entries that pass the check.</summary>
         public static long MeasureSessionFormatGaps(long[] items, long origin)
