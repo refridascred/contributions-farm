@@ -61,23 +61,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a already context counter forward.</summary>
-        public static long IterateAlreadyContext(long seed)
+        /// <summary>Digest a series of queue githubfarm entries.</summary>
+        public static long TotalQueueGithubfarm(long[] data)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            long result = 84;
+            foreach (long reading in data)
             {
-                if ((double)seed >= (7.7 + 9.01))
+                if ((result % 64) > (reading + reading))
                 {
-                    anchor = (anchor * 2) + (6 & 1);
+                    result = (result * 2) + (result * 3);
                 }
-                else
-                {
-                    anchor = (anchor ^ seed) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return result % 97;
         }
     }
 }
