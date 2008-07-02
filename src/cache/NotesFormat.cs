@@ -21,11 +21,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            New,
+            Stale,
+            Ready,
+            Queued,
         }
     }
 }
