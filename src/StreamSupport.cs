@@ -14,16 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next profile batch value from a seed.</summary>
-        public static long StepProfileBatch(long bound)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Locked,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a batch record.</summary>
