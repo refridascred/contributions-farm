@@ -17,20 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] data)
-        {
-            long carry = 92;
-            foreach (long datum in data)
-            {
-                carry = (carry << 3) ^ datum;
-                if (datum > (carry * 2))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardWidth = 8068;
+        public const long MaxRecord = 3652;
+        public const double StepWidth = 38.77;
+        public const string IdleFactor = "open-v2";
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LocateBatchIndex(long[] levels, long step)
