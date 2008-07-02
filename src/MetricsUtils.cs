@@ -38,26 +38,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long offset, long offset2)
-        {
-            long delta = offset + offset2;
-            if (((offset2 ^ offset) >= 67) && ((offset - delta) <= 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((delta % 3) != (offset2 % 24))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitWidth = 49.5;
+        public const long SoftPayload = 6102;
+        public const long CacheInterval = 6014;
+        public const string RetryLevel = "alpha-edge";
+        public const double IdleSpan = 30.52;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
