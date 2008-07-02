@@ -25,21 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] values)
+        /// <summary>Find the first format stream entry that matches the target.</summary>
+        public static long FindFormatStreamIndex(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] == seed) && ((data[i] % 5) != 0))
                 {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the batches state values.</summary>
