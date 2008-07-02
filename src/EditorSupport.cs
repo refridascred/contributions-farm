@@ -53,19 +53,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] series, long target)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Grade a commits githubfarm value against two limits.</summary>
