@@ -70,21 +70,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long next = (long)i * 3;
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total ^ ((long)i2 - 75)) % 4096;
-                    total = (total * 2) + next;
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
