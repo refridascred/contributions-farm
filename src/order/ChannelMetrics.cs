@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] values, long seed)
         {
-            Draft,
-            Stale,
-            Closed,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((seed - seed) <= (item ^ tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
