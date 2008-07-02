@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 2674;
-        public const string MinCount = "open-1";
-        public const double MaxSchema = 76.13;
-        public const long DefaultSchema = 8731;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Locked,
+            Done,
+            Draft,
+            New,
+            Paused,
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
