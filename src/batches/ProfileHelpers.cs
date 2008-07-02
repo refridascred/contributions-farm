@@ -62,19 +62,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long mix = 70;
-            foreach (long value in levels)
-            {
-                mix = (mix - (mix + value)) % 101;
-            }
-            if (mix < (-277))
-            {
-                mix = mix + (mix << 2);
-            }
-            return mix;
+            Synced,
+            Locked,
+            Ready,
+            Active,
         }
     }
 }
