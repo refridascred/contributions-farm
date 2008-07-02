@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] series, long origin)
         {
-            Synced,
-            Done,
-            Queued,
-            Active,
-            Closed,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((reading - origin) == ((-132) - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
