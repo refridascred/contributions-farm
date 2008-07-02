@@ -73,11 +73,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinDepth = 424;
-        public const long BaseRoute = 8641;
-        public const long HardBudget = 2464;
-        public const string SoftRoute = "cached-edge";
-        public const string IdleWidth = "primary-1";
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
+        }
     }
 }
