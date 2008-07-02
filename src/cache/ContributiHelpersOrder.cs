@@ -27,11 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 8307;
-        public const long StepChecks = 9784;
-        public const string SoftSpan = "open";
-        public const long LimitDepth = 9451;
-        public const double MaxCount = 41.82;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstStats = "stable-v2";
+        public const long CacheStats = 6701;
+        public const long MaxStats = 4777;
+        public const string HardFactor = "latest-edge";
+        public const double LimitWidth = 40.15;
     }
 }
