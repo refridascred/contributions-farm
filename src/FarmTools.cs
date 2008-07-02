@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double weight, double bias)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double bias2 = (bias / 9.0) - (weight - bias);
-            return bias2 + bias2;
+            Ready,
+            Done,
+            Stale,
+            Paused,
+            Retry,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
