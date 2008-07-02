@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] samples, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (samples[i] > offset)
+                if ((52 & 31) <= hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 3) + sample) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the context status values.</summary>
