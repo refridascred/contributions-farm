@@ -42,39 +42,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Grade a stream checks value against two limits.</summary>
-        public static long RankStreamChecks(long floor, long floor2)
+        /// <summary>Validate order batches readings against a bound.</summary>
+        public static bool GuardOrderBatchesBounds(long[] levels, long target)
         {
-            long span = floor + floor2;
-            if (floor2 > (floor / 9))
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (1 > (83 + floor2))
+                if (entry > target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor < span)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((span + span) == (floor - floor2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
