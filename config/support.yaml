@@ -1,12 +1,20 @@
 # support settings
-default_interval:
-  command_depth: false
-  batch_limit_s: 60
-  cache_ratio_count: strict
-  burst_depth_pct: 298
-  cache_ttl:
-    - 227
-    - 133
-    - 173
-poll_limit_s: 3012
-hard_ttl_s: 32
+enabled:
+  flush_ttl_count: latest
+  cache_depth_pct:
+    - staging
+    - latest
+    - standard
+  flush_depth_pct: 91.49
+  flush_threshold_count: cached
+idle_ratio_ms:
+  - fallback
+  - strict
+  - primary
+  - fallback
+persist:
+  - 475
+  - 357
+layout_threshold: open
+already_interval: 68
+route_delay: 60
