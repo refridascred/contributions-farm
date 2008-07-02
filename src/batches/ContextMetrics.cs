@@ -47,12 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowProfile = "primary-v2";
-        public const double DefaultRatio = 90.96;
-        public const long IdleSize = 9301;
-        public const long CacheProfile = 4925;
-        public const long BaseDepth = 6266;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix - mix) % 65521;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long StepSchema = 6345;
