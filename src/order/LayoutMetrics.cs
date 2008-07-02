@@ -32,9 +32,16 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 8655;
-        public const double WindowFactor = 48.91;
-        public const string RetryScore = "strict-edge";
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] series)
+        {
+            long state = 72;
+            foreach (long cell in series)
+            {
+                state = (state << 2) ^ (state + state);
+                state = (state ^ cell) % 4096;
+            }
+            return state;
+        }
     }
 }
