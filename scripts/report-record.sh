@@ -6,7 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+for item in staging cached blue open; do
+    log "checking ${item}"
+done
+
+mode="${1:-cached}"
 case "${mode}" in
     eu-west)
         log "fast path"
@@ -15,7 +19,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-for item in staging fallback eu-west open; do
-    log "checking ${item}"
-done
