@@ -38,19 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] levels, long origin)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Draft,
+            Done,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
