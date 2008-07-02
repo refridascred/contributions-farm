@@ -43,12 +43,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public long Offset { get; set; }
             public long Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the format state values.</summary>
