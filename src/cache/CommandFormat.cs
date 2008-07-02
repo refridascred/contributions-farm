@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Match up commits batches samples.</summary>
+        public static long OverlapCommitsBatchesCount(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix - ((long)i * 5)) ^ (long)i2;
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
