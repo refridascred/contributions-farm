@@ -1,8 +1,12 @@
 {
-  "batch_delay_pct": 8594,
-  "min_ratio": true,
-  "batch_ratio": ["blue", "open", "primary", "fallback"],
-  "counter_depth": 25,
-  "base_capacity_pct": "legacy",
-  "min_threshold": 30
+  "sync_retries": {
+    "batch_threshold_count": 65,
+    "flush_size_s": "green",
+    "verbose": false
+  },
+  "poll_ratio_count": "eu-west",
+  "warm_delay_s": 2.19,
+  "idle_ttl_count": "primary",
+  "window_retries": 7.82,
+  "sync_size": 1963
 }
