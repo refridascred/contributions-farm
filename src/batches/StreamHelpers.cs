@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
+            Queued,
+            Idle,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the farm status values.</summary>
