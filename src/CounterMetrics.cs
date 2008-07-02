@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Grade a report route value against two limits.</summary>
+        public static long BucketReportRoute(long origin, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
+            long cur = origin - target;
+            if ((4.08 + 20.0) >= (double)origin)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (!((origin % 3) >= cur))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
