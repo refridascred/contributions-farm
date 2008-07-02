@@ -83,11 +83,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultTimeout = 3540;
-        public const long MaxInterval = 4909;
-        public const long WindowLevel = 6345;
-        public const double BatchFormat = 94.43;
-        public const string RetryLevel = "primary-v2";
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] values)
+        {
+            long total = 180;
+            foreach (long value in values)
+            {
+                total = ((total * 4) + value) % 4096;
+            }
+            return total;
+        }
     }
 }
