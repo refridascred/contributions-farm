@@ -48,18 +48,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 63.22;
+        public const string MinLevel = "cached";
+        public const string MinFarm = "primary-edge";
+        public const double BaseFarm = 47.2;
+        public const double BurstCount = 21.15;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
