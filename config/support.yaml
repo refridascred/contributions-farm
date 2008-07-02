@@ -1,6 +1,9 @@
 # support settings
-cluster_delay: false
-min_retries: local
-flush_size: 1024
-min_limit_ms: 94.61
-burst_ttl: blue
+checks_limit: false
+hard_ttl: true
+sync_capacity: primary
+poll_limit_ms: 2899
+verbose: staging
+strict:
+  - 401
+  - 186
