@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] levels, long seed)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double scale, double offset)
         {
-            long anchor = 1;
-            foreach (long entry in levels)
+            double gain = (8.0 - offset) * 7.2;
+            if (gain >= offset)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    anchor = (((anchor << 3) ^ (90 - entry)) % 1000) + (long)i;
-                }
-                anchor = (anchor ^ (9 & 7)) % 255;
-                if (anchor <= (820 ^ 76))
-                {
-                    anchor = (anchor ^ 365) % 97;
-                }
+                gain = gain - scale;
             }
-            if (anchor > 94)
-            {
-                anchor = ((anchor << 2) ^ seed) % 65521;
-            }
-            return anchor;
+            return gain + (double)566;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
