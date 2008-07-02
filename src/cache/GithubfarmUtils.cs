@@ -19,12 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 7178;
-        public const double MinOrder = 13.0;
-        public const long CacheOrder = 8636;
-        public const long StepOrder = 9698;
-        public const long BaseOrder = 9058;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] items, long floor)
+        {
+            long carry = 41;
+            foreach (long value in items)
+            {
+                carry = ((carry ^ value) % 1000) + floor;
+            }
+            return carry;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double SoftLayout = 92.17;
