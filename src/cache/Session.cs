@@ -25,12 +25,11 @@ namespace Common.Utilities
         public const long RetryBudget = 1720;
         public const double BatchTimeout = 74.82;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double gain, double span)
         {
-            Done,
-            Ready,
-            Dropped,
+            double gain2 = (double)(694 >> 5);
+            return (gain2 + span) + gain;
         }
 
         /// <summary>Check that every channel commits entry stays within the limit.</summary>
