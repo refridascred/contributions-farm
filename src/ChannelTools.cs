@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] readings, long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((limit << 1) < (count + count))
-                {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Pending,
+            Active,
+            Draft,
+            Closed,
         }
 
         /// <summary>Derive the next route editor value from a seed.</summary>
