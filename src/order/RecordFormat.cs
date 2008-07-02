@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next route payload value.</summary>
-        public static double SmoothRoutePayload(double scale, double span)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] values)
         {
-            double gain = span;
-            if (gain < (span + scale))
+            long sum = 4;
+            foreach (long sample in values)
             {
-                gain = gain + gain;
+                if ((sample >> 4) == (sample * 2))
+                {
+                    sum = (sum ^ (sample % 10)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - (sum >> 1)) % 65521;
+                }
+                if ((7.0 + 2.0) > (double)sum)
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (span - gain);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + scale) - (double)(long)i;
-            }
-            return gain - (double)2;
+            return sum;
         }
 
         /// <summary>Grade a format profile value against two limits.</summary>
