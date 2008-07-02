@@ -53,18 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record order entries that pass the check.</summary>
-        public static long CountRecordOrderGaps(long[] data, long bound)
+        /// <summary>Match up order command samples.</summary>
+        public static long MatchOrderCommandCount(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (bound < (seen - sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((items[i] - items[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
