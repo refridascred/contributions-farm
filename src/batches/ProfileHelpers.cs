@@ -38,12 +38,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Roll a profile context counter forward.</summary>
+        public static long StepProfileContext(long step)
         {
-            public long Level { get; set; }
-            public bool Region { get; set; }
-            public double Rank { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 65521;
+                anchor = (anchor * 2) + (anchor - 6);
+                if ((double)(long)i > (14.0 * 20.0))
+                {
+                    anchor = ((anchor << 2) ^ step) % 4096;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
