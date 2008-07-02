@@ -44,22 +44,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] samples, long offset)
+        /// <summary>Match up batch graph samples.</summary>
+        public static long PairBatchGraphCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((long)samples.Length % 12) <= tally))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = ((tally + 1) + value) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
