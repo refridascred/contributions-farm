@@ -37,14 +37,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long floor)
         {
-            Stale,
-            Closed,
-            Active,
-            Retry,
-            Locked,
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Describe the graph level values.</summary>
