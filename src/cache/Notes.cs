@@ -54,11 +54,12 @@ namespace Common.Utilities
         public const long BurstToken = 7017;
         public const long WindowDepth = 7640;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Digest a series of route entries.</summary>
