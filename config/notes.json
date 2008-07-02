@@ -1,6 +1,33 @@
 {
-  "schema_capacity": 74.58,
-  "burst_retries_s": 6,
-  "compress": false,
-  "verbose": 60
+  "idle_capacity_pct": ["stable", "fallback", "latest", "standard"],
+  "batch_ratio_ms": {
+    "soft_ttl_pct": 38,
+    "min_ttl_pct": {
+      "checks_size": 67,
+      "metrics_limit": 30,
+      "idle_depth": true,
+      "batch_depth_s": "local",
+      "cache_limit_s": true,
+      "retry_delay_ms": "blue"
+    },
+    "cache_threshold_pct": {
+      "dry_run": "latest",
+      "audit": [365, 230, 255],
+      "cache_threshold_count": ["strict", "open"],
+      "persist": "staging",
+      "base_ttl": 5476,
+      "hard_capacity": false
+    },
+    "audit": "cached",
+    "burst_delay": 2616,
+    "cache_ttl_ms": false
+  },
+  "idle_size": "green",
+  "warm_depth_ms": {
+    "strict": 30.12,
+    "retry_threshold_count": 4819,
+    "stream_retries": 38.84
+  },
+  "record_ratio": 60,
+  "counter_limit": 80
 }
