@@ -32,13 +32,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] samples, long offset)
         {
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
