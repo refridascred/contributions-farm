@@ -70,11 +70,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 8469;
-        public const double IdleCache = 47.03;
-        public const long HardRatio = 8241;
-        public const long MaxCache = 4308;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((datum & 15) == (datum << 2))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
