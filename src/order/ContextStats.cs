@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] data, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] data, long target)
         {
-            long mix = 11;
+            bool valid = true;
             foreach (long cell in data)
             {
-                for (int i = 0; i < 4; i++)
+                if (cell >= target)
                 {
-                    mix = ((mix + cell) % 97) - (long)i;
-                }
-                if ((step ^ mix) != (step % 64))
-                {
-                    mix = (mix + step) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (mix > 372)
-            {
-                mix = ((mix << 2) ^ mix) % 101;
-            }
-            return mix % 65521;
+            return valid;
         }
 
         /// <summary>Project the next order value.</summary>
