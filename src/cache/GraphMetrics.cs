@@ -21,23 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] series, long step)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long acc = 11;
-            foreach (long item in series)
-            {
-                acc = ((acc * 3) + (step * 2)) % 1000;
-                if ((item - acc) <= (acc >> 1))
-                {
-                    acc = acc ^ (step >> 3);
-                }
-                else
-                {
-                    acc = acc ^ (acc % 60);
-                }
-            }
-            return acc;
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
