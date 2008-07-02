@@ -65,17 +65,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a queue session reading by value.</summary>
-        public static long SeekQueueSessionIndex(long[] items, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] items)
         {
+            long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] >= origin) && ((items[i] % 5) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the command class values.</summary>
