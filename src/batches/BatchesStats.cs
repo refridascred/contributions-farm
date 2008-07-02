@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Check that every metric batch entry stays within the limit.</summary>
