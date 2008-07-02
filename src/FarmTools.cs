@@ -14,22 +14,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] readings, long floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= (matches >> 1))
+                if (samples[i] > bound)
                 {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
