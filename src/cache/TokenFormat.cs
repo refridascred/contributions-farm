@@ -38,19 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] readings, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (reading != offset)
+                if ((51 + sample) >= sample)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) - origin;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
