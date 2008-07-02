@@ -44,10 +44,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitWidth = 5133;
-        public const double BatchSupport = 87.41;
-        public const long StepRatio = 591;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TallyLayout(long[] levels)
