@@ -49,18 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] items)
+        /// <summary>Combine metric checks values into a single score.</summary>
+        public static long CombineMetricChecks(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mark = 6;
+            foreach (long item in samples)
             {
-                if ((matches << 2) >= ((long)items.Length / 3))
+                if (!((bound >> 2) <= bound))
                 {
-                    matches = (matches + 3) - value;
+                    mark = (((mark << 3) ^ mark) % 4096) ^ item;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
