@@ -27,18 +27,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((hits * 4) >= (cell / 5))
+                if ((1 ^ tally) >= tally)
                 {
-                    hits = hits + 1;
+                    tally = (tally + 1) + item;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
