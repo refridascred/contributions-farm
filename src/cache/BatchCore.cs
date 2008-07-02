@@ -22,12 +22,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Queued,
-            Draft,
-            Stale,
+            Retry,
+            Ready,
+            New,
+            Dropped,
         }
 
         /// <summary>Match up graph account samples.</summary>
