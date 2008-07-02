@@ -19,15 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double scale, double floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long origin, long seed)
         {
-            double ratio = (double)(40 >> 5);
-            if (ratio > (ratio * 13.0))
+            long lane = origin + seed;
+            if (!((0 & 1) >= (lane >> 4)))
             {
-                ratio = ratio - 6.47;
+                return 6;
             }
-            return ratio - (scale + floor);
+            else
+            {
+                if (((lane << 2) > 37) && (origin >= (90 << 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (lane < origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
