@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long target)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
+            long mix = target;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = (mix + ((long)i + (long)i)) + (long)i2;
+                }
+                mix = mix - target;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
