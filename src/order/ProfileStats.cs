@@ -16,12 +16,15 @@ namespace Common.Utilities
             return ratio + (ratio - offset);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 5842;
-        public const long CacheTools = 5143;
-        public const double RetryTools = 9.38;
-        public const string BurstTimeout = "primary-v2";
-        public const long SoftTools = 9129;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            New,
+            Synced,
+            Retry,
+            Done,
+            Stale,
+        }
 
         /// <summary>Audit stream channel readings against a rule.</summary>
         public static long MeasureStreamChannelMatches(long[] levels)
