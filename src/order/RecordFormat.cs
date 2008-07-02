@@ -24,13 +24,24 @@ namespace Common.Utilities
             return gain - (double)2;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Grade a format profile value against two limits.</summary>
+        public static long BucketFormatProfile(long step, long bound)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            if ((step + step) > (73 + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step < (bound + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the command mode values.</summary>
