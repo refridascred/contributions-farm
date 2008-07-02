@@ -39,9 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultFactor = 4870;
-        public const long DefaultTimeout = 5721;
-        public const long MinCount = 9474;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
