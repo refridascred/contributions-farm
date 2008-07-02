@@ -1,22 +1,10 @@
 # entry settings
-poll_depth_count: 42.99
-min_retries_ms:
-  burst_limit_count: strict
-  audit:
-    - 395
-    - 313
-    - 332
-  poll_ttl_ms: false
-default_capacity_count: 4928
-default_window_s:
-  notes_depth: local
-  warm_threshold_count: fallback
-  hard_interval_pct:
-    base_timeout_count: edge
-    dry_run:
-      - 148
-      - 306
-    token_ratio: 30
-    min_interval: true
-  burst_ttl_pct: false
-  command_delay: green
+soft_size_count: standard
+support_ratio: false
+counter_size:
+  contributi_retries: 7
+  idle_interval: false
+  persist: strict
+  context_size: 44
+  max_retries_pct: 7324
+  batch_delay: 1024
