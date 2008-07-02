@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] samples, long bound)
         {
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            long mix = 30;
+            foreach (long reading in samples)
+            {
+                mix = ((mix - (mix - bound)) % 65521) - reading;
+            }
+            if (mix < 967)
+            {
+                mix = (mix + (951 & 15)) % 101;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
