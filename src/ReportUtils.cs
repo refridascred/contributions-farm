@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
