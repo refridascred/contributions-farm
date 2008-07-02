@@ -1,15 +1,11 @@
 # Command notes
 
-Each cache is validated before it reaches the filter queue.
-The buffer report groups every command by cluster.
-
-The tools helpers are pure functions, so they are safe to call from any thread.
-When a cluster fails, the payload handler retries a few times before giving up.
-Defaults for batches live in the config folder and can be overridden per environment.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Use layout settings to tune how often counter data is refreshed.
+Each support is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Review stream limits each release
-- Document new farm fields
-- Prefer cache defaults
-- Keep tools values small
+- Review batch limits each release
+- Document new account fields
+- Log every githubfarm change
