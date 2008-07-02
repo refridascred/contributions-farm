@@ -28,19 +28,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] values, long offset)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long result = 52;
-            foreach (long cell in values)
-            {
-                result = (result ^ result) ^ cell;
-            }
-            if (result > (-651))
-            {
-                result = result ^ (offset + result);
-            }
-            return result;
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
