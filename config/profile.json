@@ -1,19 +1,6 @@
 {
-  "cluster_timeout": "legacy",
-  "soft_interval": {
-    "soft_limit_s": "eu-west",
-    "default_timeout_count": "strict",
-    "soft_delay_count": 9,
-    "githubfarm_ttl": false,
-    "verbose": {
-      "max_timeout": 53.78,
-      "warm_ttl": ["standard", "legacy", "local"],
-      "min_delay_count": 13.57,
-      "verbose": 56,
-      "enabled": [408, 383, 498]
-    },
-    "session_depth": 100
-  },
-  "checks_capacity": 2781,
-  "idle_retries": false
+  "format_window": "staging",
+  "dry_run": "stable",
+  "format_size": 48,
+  "cache_size_s": 18.38
 }
