@@ -14,10 +14,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepSize = 60;
-        public const double WindowRatio = 9.75;
-        public const long MinDepth = 6910;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmGaps(long[] levels, long floor)
