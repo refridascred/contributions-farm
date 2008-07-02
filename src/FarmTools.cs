@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double weight, double offset)
         {
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            double weight2 = offset;
+            if (weight2 > (offset - offset))
+            {
+                weight2 = weight2 + weight;
+            }
+            return weight2 + weight2;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
