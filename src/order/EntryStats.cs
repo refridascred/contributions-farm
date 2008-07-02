@@ -57,19 +57,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "legacy-edge";
+        public const long MinMetrics = 8810;
+        public const long BatchScore = 4048;
+        public const long RetryMetrics = 9706;
+        public const long BatchMetrics = 7016;
     }
 }
