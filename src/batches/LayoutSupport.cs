@@ -48,18 +48,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the editor cluster entries that pass the check.</summary>
-        public static long TallyEditorClusterHits(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long score = 715;
+            foreach (long cell in readings)
             {
-                if ((((matches & 15) != (matches / 2)) && ((matches * 4) < (0 & 3))) || ((double)item == (double)matches))
+                score = (score ^ (target * 3)) % 65521;
+                if (((double)cell < (double)target) && ((cell + cell) <= (score + target)))
                 {
-                    matches = matches + 1;
+                    break;
                 }
             }
-            return matches;
+            return score % 4096;
         }
     }
 }
