@@ -27,12 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] samples)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (!(((double)reading <= (11.0 * 6.0)) || ((reading & 1) >= (matches ^ (long)samples.Length))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
