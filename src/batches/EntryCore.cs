@@ -14,12 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Measure how many token profile samples are out of range.</summary>
+        public static long AuditTokenProfileMatches(long[] items, long bound)
         {
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((cell / 4) != ((-3) >> 3))
+                {
+                    tally = (tally + 2) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up route samples.</summary>
