@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long step, long bound)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long lane = step - bound;
-            if ((80 - (-6)) <= lane)
-            {
-                return 6;
-            }
-            else
-            {
-                if (lane < (9 ^ 50))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((lane >> 2) >= (1 + lane))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((730 << 1) <= (lane + bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
