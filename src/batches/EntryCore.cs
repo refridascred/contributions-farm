@@ -72,18 +72,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            long mark = 397;
-            foreach (long entry in values)
+            long mix = 305;
+            foreach (long cell in items)
             {
-                if ((double)mark == (3.98 + 0.58))
-                {
-                    mark = (mark - (entry - entry)) % 4096;
-                }
+                mix = (mix ^ (mix + 29)) ^ cell;
             }
-            return mark % 65521;
+            return mix;
         }
     }
 }
