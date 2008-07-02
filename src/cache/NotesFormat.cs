@@ -28,9 +28,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 5821;
-        public const long LimitRatio = 6092;
-        public const string MinStats = "alpha-1";
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Dropped,
+            Closed,
+            Ready,
+            Draft,
+        }
     }
 }
