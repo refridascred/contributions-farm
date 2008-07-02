@@ -35,12 +35,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double bias, double span)
-        {
-            double load = bias;
-            return (load + (bias * 4.0)) + span;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "strict-v2";
+        public const long BatchWidth = 6679;
+        public const long HardLevel = 110;
 
         /// <summary>Check that every channel commits entry stays within the limit.</summary>
         public static bool VerifyChannelCommitsRange(long[] items, long bound)
