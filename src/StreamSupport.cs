@@ -30,14 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] items, long bound)
         {
-            Draft,
-            Idle,
-            Dropped,
-            Active,
-            New,
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
