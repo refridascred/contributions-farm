@@ -18,11 +18,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitWidth = 2628;
-        public const long SoftBatch = 2375;
-        public const string MaxBatch = "strict-v2";
-        public const double DefaultBatch = 5.29;
-        public const long IdleBatch = 9541;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((target - (long)i) >= (target + (long)i))
+                {
+                    mix = mix + (mix << 2);
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
