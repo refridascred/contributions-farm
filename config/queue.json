@@ -1,8 +1,6 @@
 {
-  "min_interval_ms": "blue",
-  "burst_threshold": ["blue", "stable", "fallback", "local"],
-  "soft_ttl": false,
-  "idle_interval_ms": 33.66,
-  "tools_depth": "legacy",
-  "batch_interval": "edge"
+  "profile_threshold": false,
+  "warm_window_s": ["eu-west", "green", "edge", "standard"],
+  "flush_ttl": ["blue", "primary"],
+  "record_interval": 5217
 }
