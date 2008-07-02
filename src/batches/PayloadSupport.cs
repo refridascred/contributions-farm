@@ -19,18 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] readings, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] data)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long result = 77;
+            foreach (long reading in data)
             {
-                if ((tally > item) && ((double)item > (18.0 * 19.0)))
+                if (((9.28 * 1.93) < (double)result) || ((reading >> 3) <= (20 + 497)))
                 {
-                    tally = (tally + 1) - floor;
+                    result = (result + reading) % 65521;
+                }
+                else
+                {
+                    result = (result * 5) + (reading >> 3);
+                }
+                if (((double)reading < (3.7 - 4.91)) || ((result << 1) > (reading - reading)))
+                {
+                    result = ((result * 5) + (result - reading)) % 255;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
