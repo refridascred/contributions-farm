@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] series, long origin)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
