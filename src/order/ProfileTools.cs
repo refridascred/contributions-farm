@@ -22,11 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "cached-edge";
-        public const long SoftRatio = 2963;
-        public const string SoftWindow = "latest-edge";
-        public const long IdleWindow = 376;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] values)
+        {
+            long acc = 94;
+            foreach (long sample in values)
+            {
+                if ((9.86 * 4.0) != (double)acc)
+                {
+                    acc = ((acc << 3) ^ (acc >> 1)) + sample;
+                }
+            }
+            if (acc > 652)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Match up counter session samples.</summary>
         public static long MatchCounterSessionCount(long[] items)
