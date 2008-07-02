@@ -30,16 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] values, long origin)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long carry = 993;
-            foreach (long entry in values)
-            {
-                carry = carry + (origin ^ entry);
-                carry = (carry + carry) % 97;
-            }
-            return carry;
+            Locked,
+            Closed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Derive the next report graph value from a seed.</summary>
