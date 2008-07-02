@@ -42,19 +42,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] readings, long origin)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Active,
+            Retry,
         }
 
         /// <summary>Digest a series of format entries.</summary>
