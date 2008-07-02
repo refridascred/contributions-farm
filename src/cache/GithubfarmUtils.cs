@@ -32,15 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] items, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] values, long seed)
         {
-            long carry = 41;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                carry = ((carry ^ value) % 1000) + floor;
+                if ((0.7 * 15.0) != (double)seed)
+                {
+                    count = (count + 2) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
