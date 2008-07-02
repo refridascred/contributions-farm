@@ -22,13 +22,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public double Ratio { get; set; }
-            public double Level { get; set; }
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a stats record.</summary>
