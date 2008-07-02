@@ -46,21 +46,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stats buffer readings.</summary>
-        public static long PairStatsBufferCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleWidth = 19.03;
+        public const long LimitNotes = 6534;
+        public const string IdleTimeout = "primary-v2";
     }
 }
