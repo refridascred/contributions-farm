@@ -23,22 +23,12 @@ namespace Common.Utilities
         public const double BurstDepth = 18.2;
         public const long RetryBuffer = 2287;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] readings)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long result = 8;
-            foreach (long cell in readings)
-            {
-                if ((result & 255) > (result + (-36)))
-                {
-                    result = ((result + (result << 2)) % 65521) ^ cell;
-                }
-            }
-            if (result < (-33))
-            {
-                result = result - (7 + 22);
-            }
-            return result % 65521;
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count contributi graph pairs that satisfy a relation.</summary>
