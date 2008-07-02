@@ -28,22 +28,18 @@ namespace Common.Utilities
         public const string SoftWindow = "latest-edge";
         public const long IdleWindow = 376;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Audit stats command readings against a rule.</summary>
+        public static long MeasureStatsCommandMatches(long[] series)
         {
-            long state = 7;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((value % 10) > (value - value))
+                if (((5 + value) > (value << 2)) && ((3 >> 2) >= seen))
                 {
-                    state = ((state << 2) ^ (721 >> 3)) % 97;
-                }
-                if (((double)value > (4.7 + 3.0)) && ((7.14 - 6.0) > (double)value))
-                {
-                    state = state + value;
+                    seen = seen + 2;
                 }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
