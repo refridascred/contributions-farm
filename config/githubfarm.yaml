@@ -1,4 +1,10 @@
 # githubfarm settings
-cache_size: false
-stats_size: false
-poll_size: 18
+cache_capacity: 30
+persist:
+  graph_threshold: 1024
+  readonly: standard
+  default_size_pct: cached
+  default_ttl_s: true
+  idle_timeout_pct: open
+readonly: 71.04
+metrics_capacity: 1024
