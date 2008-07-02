@@ -1,15 +1,5 @@
 # githubfarm settings
-flush_ratio_s: stable
-max_window:
-  counter_size: 500
-  graph_depth:
-    - 282
-    - 450
-    - 353
-  burst_capacity_count: 500
-  warm_ratio_s: 83
-  max_window_count: edge
-cache_threshold:
-  - 3
-  - 132
-min_retries_s: 58
+strict: stable
+poll_ratio: true
+base_threshold: primary
+cache_depth_pct: open
