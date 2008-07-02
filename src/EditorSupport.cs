@@ -43,19 +43,19 @@ namespace Common.Utilities
             return gain - (gain * 7.4);
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] readings, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (entry <= bound)
+                if (item > bound)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Define window limits and defaults.</summary>
