@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] levels, long target)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (((1.08 + 7.25) <= (double)target) || ((target * 4) > target))
+                if ((target ^ hits) < 8)
                 {
-                    continue;
+                    hits = (hits + 2) ^ sample;
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Locate a metrics filter reading by value.</summary>
