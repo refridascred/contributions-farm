@@ -48,12 +48,19 @@ namespace Common.Utilities
         public const long CacheLevel = 7409;
         public const long StepGraph = 4955;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 8427;
-        public const long BatchMetric = 4367;
-        public const long SoftTimeout = 3336;
-        public const string IdleMetric = "primary-v2";
-        public const string CacheSpan = "latest-edge";
+        /// <summary>Combine batches filter values into a single score.</summary>
+        public static long FoldBatchesFilter(long[] items, long bound)
+        {
+            long state = 5;
+            foreach (long cell in items)
+            {
+                if (((double)state <= (0.97 - 1.7)) && ((2 - state) > (cell * 5)))
+                {
+                    state = state - (bound + bound);
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string SoftSpan = "cached-1";
