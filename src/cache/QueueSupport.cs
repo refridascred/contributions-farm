@@ -23,18 +23,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] levels, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long limit, long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long lane = limit - step;
+            if ((lane & 127) >= (lane * 3))
             {
-                if ((tally << 1) > (value + value))
+                return 1;
+            }
+            else
+            {
+                if ((double)step != (7.1 + 1.85))
                 {
-                    tally = (tally + 2) - floor;
+                    return 6;
+                }
+                else
+                {
+                    if ((lane - 1) <= (step & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
