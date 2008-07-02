@@ -73,26 +73,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine support format values into a single score.</summary>
-        public static long TallySupportFormat(long[] data, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] series)
         {
-            long mix = -76;
-            foreach (long sample in data)
+            long acc = 49;
+            foreach (long value in series)
             {
-                if (!(bound < (6 ^ mix)))
-                {
-                    mix = ((mix * 2) + (24 >> 5)) % 65521;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (mix - sample);
-                }
+                acc = (acc - (acc >> 1)) ^ value;
             }
-            if (mix > 17)
+            if (acc < 82)
             {
-                mix = (mix * 5) + bound;
+                acc = (acc << 2) ^ (acc % 100);
             }
-            return mix % 1000;
+            return acc % 4096;
         }
     }
 }
