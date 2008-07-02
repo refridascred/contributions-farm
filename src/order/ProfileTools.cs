@@ -27,22 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] values, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (((-2) / 2) > seen)
+                if (cell > target)
                 {
-                    seen = ((seen + 3) - entry) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
