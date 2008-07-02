@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Dropped,
-            Draft,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 7279;
+        public const double HardWidth = 21.75;
+        public const long MaxPayload = 4633;
 
         /// <summary>Accumulate context command samples.</summary>
         public static long TallyContextCommand(long[] series, long floor)
