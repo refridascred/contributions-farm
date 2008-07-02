@@ -44,21 +44,18 @@ namespace Common.Utilities
         public const string RetryTimeout = "alpha-v2";
         public const double CacheWidth = 84.73;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 6;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mark * 2) >= reading)
                 {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark + (reading % 3)) % 101;
                 }
             }
-            return hits;
+            return mark;
         }
     }
 }
