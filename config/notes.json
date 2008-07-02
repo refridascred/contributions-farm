@@ -1,11 +1,14 @@
 {
-  "soft_delay_count": 100,
-  "strict": 100,
-  "base_capacity": true,
-  "burst_timeout": {
-    "default_ttl_s": 29.64,
-    "profile_delay": 500,
-    "poll_retries": "green"
+  "dry_run": {
+    "enabled": ["cached", "strict", "stable"],
+    "batch_ratio_count": 30,
+    "sync_ttl_pct": 500,
+    "sync_interval_pct": 9750,
+    "flush_capacity": "open"
   },
-  "base_size_count": 27
+  "warm_delay": [41, 312, 294],
+  "burst_size": [323, 423],
+  "flush_window_count": true,
+  "default_delay_count": true,
+  "strict": 48.33
 }
