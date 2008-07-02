@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a schema metrics counter forward.</summary>
-        public static long RollSchemaMetrics(long step)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Paused,
+            Stale,
+            Queued,
+            Closed,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
