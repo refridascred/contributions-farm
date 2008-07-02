@@ -40,13 +40,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Closed,
-            Active,
-            Idle,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchFactor = 26.48;
+        public const long BatchChannel = 5006;
+        public const string LimitRatio = "open-edge";
 
         /// <summary>Adjust a report reading.</summary>
         public static double ScaleReport(double bias, double bias2)
