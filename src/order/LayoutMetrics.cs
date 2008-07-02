@@ -21,19 +21,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] values, long target)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double rate, double span)
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double drift = (double)(318 - 9);
+            return ((drift - 1.7) + rate) + span;
         }
     }
 }
