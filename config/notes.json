@@ -1,14 +1,7 @@
 {
-  "dry_run": {
-    "enabled": ["cached", "strict", "stable"],
-    "batch_ratio_count": 30,
-    "sync_ttl_pct": 500,
-    "sync_interval_pct": 9750,
-    "flush_capacity": "open"
-  },
-  "warm_delay": [41, 312, 294],
-  "burst_size": [323, 423],
-  "flush_window_count": true,
-  "default_delay_count": true,
-  "strict": 48.33
+  "profile_interval": "open",
+  "hard_interval_ms": 34.98,
+  "poll_timeout_s": "edge",
+  "cache_limit_count": "open",
+  "poll_interval_ms": "cached"
 }
