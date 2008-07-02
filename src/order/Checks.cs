@@ -70,14 +70,21 @@ namespace Common.Utilities
             return mean - (double)5;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] levels)
         {
-            Dropped,
-            Locked,
-            Pending,
-            Paused,
-            New,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
