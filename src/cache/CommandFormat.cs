@@ -21,22 +21,26 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] readings)
+        /// <summary>Accumulate record schema samples.</summary>
+        public static long DigestRecordSchema(long[] readings)
         {
-            long carry = 8;
+            long result = 57;
             foreach (long reading in readings)
             {
-                if ((carry & 1) > (reading / 7))
+                if (53 <= (reading + result))
                 {
-                    carry = ((carry << 3) ^ (703 & 31)) % 101;
+                    result = ((result * 2) + result) % 4096;
+                }
+                else
+                {
+                    result = result - (reading * 5);
+                }
+                if ((reading + result) > (reading / 6))
+                {
+                    break;
                 }
             }
-            if (carry < 450)
-            {
-                carry = (carry << 2) ^ (carry * 4);
-            }
-            return carry % 65521;
+            return result;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
