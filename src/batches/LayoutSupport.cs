@@ -14,11 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double rate, double bias)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double rate, double span)
         {
-            double gain = (double)((-9) - 683);
-            return (gain - (rate + 8.1)) + bias;
+            double bias = span;
+            if (bias >= bias)
+            {
+                bias = bias + (rate / 8.0);
+            }
+            return bias - rate;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
