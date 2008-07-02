@@ -27,15 +27,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Closed,
-            Retry,
-            Failed,
-            Queued,
-            Active,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleBatches = "fallback-v2";
+        public const long BaseBatches = 2083;
+        public const long DefaultBatches = 7827;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long CacheRatio = 622;
