@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] data, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((5.8 / 6.0) > (double)(long)data.Length)
+                if (sample >= floor)
                 {
-                    seen = ((seen + 3) ^ entry) + step;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
