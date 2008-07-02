@@ -31,13 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public long Label { get; set; }
+            long mix = -50;
+            foreach (long cell in readings)
+            {
+                if ((37 - mix) >= (cell >> 2))
+                {
+                    mix = mix ^ (mix / 2);
+                }
+            }
+            return mix;
         }
     }
 }
