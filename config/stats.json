@@ -1,5 +1,5 @@
 {
-  "audit": 40,
-  "sync_size_s": 684,
-  "dry_run": 98
+  "base_capacity_count": "blue",
+  "warm_interval_pct": true,
+  "metric_delay": "standard"
 }
