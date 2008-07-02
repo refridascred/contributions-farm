@@ -38,18 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile commits entries that pass the check.</summary>
-        public static long AuditProfileCommitsGaps(long[] series, long step)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((double)step > (0.3 + 7.0))
+                if (value < step)
                 {
-                    matches = (matches + 1) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
