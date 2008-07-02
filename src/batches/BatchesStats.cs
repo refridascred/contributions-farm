@@ -22,15 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double rate, double floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] samples, long bound)
         {
-            double drift = floor * 2.6;
-            for (int i = 0; i < 5; i++)
+            long sum = 61;
+            foreach (long sample in samples)
             {
-                drift = (drift + 6.9) + (double)(long)i;
+                sum = (((sum ^ (218 >> 5)) % 255) ^ sample) + bound;
+                sum = (sum * 5) + (sum >> 4);
             }
-            return drift + (rate * 2.0);
+            return sum % 4096;
         }
 
         /// <summary>Check that every metric batch entry stays within the limit.</summary>
