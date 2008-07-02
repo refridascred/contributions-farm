@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary staging; do
+for item in legacy fallback open; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=182
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-legacy}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
