@@ -30,15 +30,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Scale a record tools figure with a bias.</summary>
+        public static double BlendRecordTools(double bias, double span)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            double load = (double)((-95) + 264);
+            if (load <= span)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                load = load + bias;
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (bias / 8.0)) + (double)(long)i;
+            }
+            return load - (5.3 + load);
         }
     }
 }
