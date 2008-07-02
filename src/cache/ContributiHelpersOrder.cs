@@ -23,10 +23,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepCount = 5095;
-        public const double DefaultRatio = 48.01;
-        public const double BatchBuffer = 21.61;
-        public const long BurstInterval = 8604;
+        /// <summary>Project the next queue batches value.</summary>
+        public static double ProjectQueueBatches(double weight, double bias)
+        {
+            double load = 9.0;
+            if (load < weight)
+            {
+                load = (load + weight) - bias;
+            }
+            else
+            {
+                load = load - weight;
+            }
+            return load + (double)8;
+        }
     }
 }
