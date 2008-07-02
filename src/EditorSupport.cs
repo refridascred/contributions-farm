@@ -33,19 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] data, long offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long sum = 45;
-            foreach (long reading in data)
-            {
-                sum = ((sum << 3) ^ sum) % 65521;
-                if ((5 + offset) >= reading)
-                {
-                    sum = (sum + (sum & 127)) % 255;
-                }
-            }
-            return sum % 1000;
+            Stale,
+            Draft,
+            Failed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
