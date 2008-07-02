@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] series, long seed)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] == seed)
+                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
