@@ -38,39 +38,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long step, long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] levels, long limit)
         {
-            long bound = step + target;
-            if ((target - target) < (bound + step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2.1 + 3.9) == (double)step)
+                if ((levels[i] == limit) && ((levels[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.0 - 1.4) < (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((target / 6) < (step & 127)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a command info.</summary>
