@@ -16,33 +16,10 @@ namespace Common.Utilities
             return ratio + (15.0 / 8.0);
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long offset, long step)
-        {
-            long lane = offset + step;
-            if ((step & 31) > (lane - step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step >= (1.55 * 1.2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset ^ lane) >= lane)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinSpan = "strict";
+        public const double CacheReport = 54.56;
+        public const long LimitLevel = 3736;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long DigestSupport(long[] readings)
