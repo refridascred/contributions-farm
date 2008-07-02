@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many token stream samples are out of range.</summary>
-        public static long CountTokenStreamOutliers(long[] levels)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mark = 58;
+            foreach (long sample in samples)
             {
-                if (((double)tally != (double)74) && ((tally - tally) < tally))
+                if ((mark >> 1) > mark)
                 {
-                    tally = (tally + 3) - datum;
+                    mark = mark + (sample + mark);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = (mark * 2) + mark;
+                }
+                if ((double)mark == (double)sample)
+                {
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Accumulate notes samples.</summary>
