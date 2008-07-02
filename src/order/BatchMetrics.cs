@@ -41,18 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter queue readings against a rule.</summary>
-        public static long AuditFilterQueueMatches(long[] samples, long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)floor >= (7.0 / 2.0))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
+            Closed,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a context options.</summary>
