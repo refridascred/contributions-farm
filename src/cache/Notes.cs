@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] items, long seed)
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the editor mode values.</summary>
