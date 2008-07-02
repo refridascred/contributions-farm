@@ -56,12 +56,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the editor payload entries that pass the check.</summary>
+        public static long MeasureEditorPayloadHits(long[] series, long limit)
         {
-            Draft,
-            Closed,
-            Paused,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((((499 & 255) != (limit >> 4)) && (matches >= (8 ^ 512))) || ((2 - 7) >= datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
