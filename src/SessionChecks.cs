@@ -70,18 +70,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] readings, long origin)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((origin << 2) < (500 + sample)) || (origin < (hits + origin)))
+                if (data[i] <= limit)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
