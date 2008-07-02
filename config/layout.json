@@ -1,11 +1,8 @@
 {
-  "poll_interval_pct": [1, 200, 144],
-  "stats_ttl": "latest",
-  "strict": {
-    "poll_retries": 9423,
-    "already_ratio": ["latest", "strict", "standard"],
-    "commits_capacity": 100,
-    "metrics_size": ["edge", "stable", "local"],
-    "batch_ratio_count": false
-  }
+  "window_capacity": 2205,
+  "base_ttl_count": 8637,
+  "base_interval": 500,
+  "default_timeout_ms": false,
+  "tools_interval": "eu-west",
+  "strict": 96
 }
