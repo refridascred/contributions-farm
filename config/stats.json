@@ -1,21 +1,6 @@
 {
-  "audit": 5950,
-  "compress": 7735,
-  "idle_delay_ms": {
-    "context_limit": ["standard", "primary", "legacy"],
-    "retry_timeout_s": {
-      "min_window": 63,
-      "dry_run": [306, 242, 56, 471],
-      "report_delay": "local"
-    },
-    "strict": 64,
-    "idle_threshold_ms": "strict"
-  },
-  "filter_capacity": 69.63,
-  "default_delay_count": {
-    "command_threshold": 45,
-    "persist": 250,
-    "already_window": 2,
-    "sync_size_count": "eu-west"
-  }
+  "farm_ratio": "strict",
+  "order_capacity": 31,
+  "farm_ttl": true,
+  "max_ratio": "edge"
 }
