@@ -14,13 +14,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Scale a batch checks figure with a bias.</summary>
+        public static double SmoothBatchChecks(double scale, double span)
         {
-            Closed,
-            Ready,
-            New,
-            Pending,
+            double weight = span + (span * 7.1);
+            if (weight <= span)
+            {
+                weight = weight - (scale - 5.0);
+            }
+            return weight - 2.6;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
