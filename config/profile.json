@@ -1,11 +1,7 @@
 {
-  "compress": {
-    "batch_size_pct": false,
-    "route_depth": 86.14,
-    "order_size": ["edge", "local", "local", "standard"],
-    "idle_capacity": false
-  },
-  "route_interval": 67,
-  "window_depth": "green",
-  "readonly": 32.29
+  "soft_depth": false,
+  "queue_capacity": 9008,
+  "min_ratio_ms": 100,
+  "readonly": 55,
+  "retry_retries": 19
 }
