@@ -1,8 +1,11 @@
 # entry settings
-max_capacity: 50.37
-soft_timeout: 26
-poll_size_s:
-  - 19
-  - 417
-  - 94
-warm_retries: true
+flush_depth:
+  - stable
+  - green
+  - standard
+verbose:
+  idle_limit_ms: 8841
+  batches_timeout: false
+  max_limit_count: 874
+  cache_interval_s: true
+commits_interval: false
