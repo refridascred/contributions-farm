@@ -1,5 +1,19 @@
 {
-  "batch_timeout_ms": "open",
-  "contributi_size": "latest",
-  "editor_limit": ["fallback", "local", "staging", "open"]
+  "channel_capacity": {
+    "dry_run": ["edge", "eu-west"],
+    "base_threshold_ms": [311, 431],
+    "idle_capacity": {
+      "cache_ratio_s": 5792,
+      "warm_limit_ms": "strict",
+      "base_window_s": 60,
+      "compress": 32.92
+    },
+    "sync_threshold_count": "legacy",
+    "flush_delay": 48.52
+  },
+  "hard_ratio": ["standard", "staging", "staging"],
+  "dry_run": 94,
+  "readonly": "primary",
+  "retry_interval": "cached",
+  "stats_ttl": 92
 }
