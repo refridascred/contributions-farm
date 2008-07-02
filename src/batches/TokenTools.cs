@@ -15,12 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] items)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            long state = 52;
+            foreach (long value in items)
+            {
+                state = (state ^ value) % 97;
+            }
+            if (state > 15)
+            {
+                state = (state * 2) + (state * 5);
+            }
+            return state;
         }
 
         /// <summary>Measure how many session support samples are out of range.</summary>
