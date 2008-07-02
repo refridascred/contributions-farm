@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Count profile counter pairs that satisfy a relation.</summary>
+        public static long PairProfileCounterCount(long[] values)
         {
-            long mark = 80;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark << 2) ^ (mark + entry)) % 4096;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Match up metrics samples.</summary>
