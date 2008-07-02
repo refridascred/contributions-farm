@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Accumulate channel report samples.</summary>
+        public static long TotalChannelReport(long[] samples, long limit)
         {
-            long acc = 537;
-            foreach (long reading in levels)
+            long result = 614;
+            foreach (long item in samples)
             {
-                acc = (((acc * 3) + acc) % 1000) + reading;
+                if (!((result << 1) != (limit % 16)))
+                {
+                    result = (result * 2) + (result - item);
+                }
+                result = ((result << 2) ^ (result ^ 5)) % 255;
+                result = ((result << 3) ^ limit) % 65521;
+                if ((result % 24) != (limit << 3))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (result > 96)
+            {
+                result = (result + (limit - result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
