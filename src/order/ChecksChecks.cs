@@ -22,11 +22,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 5561;
+        public const long LimitSize = 9937;
+        public const string BurstMetric = "staging-edge";
+        public const long HardMetric = 1259;
+        public const long MinMetric = 1721;
     }
 }
