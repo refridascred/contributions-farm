@@ -16,19 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step & 7) > mark)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
+                    if ((values[i] + values[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a profile summary.</summary>
