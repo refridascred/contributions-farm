@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Queued,
-            Done,
-            Ready,
-            Pending,
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
