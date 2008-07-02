@@ -73,12 +73,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double bias, double span)
         {
-            Ready,
-            Dropped,
-            Closed,
+            double gain = (span + bias) - (5.5 + 1.74);
+            if (gain < (double)80)
+            {
+                gain = gain - bias;
+            }
+            return gain + (9.0 / 6.0);
         }
     }
 }
