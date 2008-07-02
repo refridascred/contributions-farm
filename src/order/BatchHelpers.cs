@@ -24,17 +24,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a cache profile reading by value.</summary>
-        public static long FindCacheProfileIndex(long[] data, long limit)
+        /// <summary>Measure how many session payload samples are out of range.</summary>
+        public static long TallySessionPayloadMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((data[i] == limit) && ((data[i] % 2) == 0))
+                if (!((double)reading >= (double)tally))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
