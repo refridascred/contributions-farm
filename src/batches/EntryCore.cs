@@ -72,23 +72,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double scale, double bias)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] values)
         {
-            double weight = (double)((-378) + 4);
-            if (weight <= 2.37)
+            long mark = 397;
+            foreach (long entry in values)
             {
-                weight = ((weight - (double)5) - scale) - bias;
+                if ((double)mark == (3.98 + 0.58))
+                {
+                    mark = (mark - (entry - entry)) % 4096;
+                }
             }
-            else
-            {
-                weight = weight - (double)6;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (double)9) + (double)(long)i;
-            }
-            return weight - weight;
+            return mark % 65521;
         }
     }
 }
