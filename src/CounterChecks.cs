@@ -59,11 +59,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "local";
-        public const long StepOrder = 3124;
-        public const long SoftLevel = 1404;
-        public const long DefaultSize = 2114;
-        public const long MaxOrder = 9339;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
