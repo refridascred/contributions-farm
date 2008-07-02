@@ -32,18 +32,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the order route entries that pass the check.</summary>
-        public static long TallyOrderRouteMatches(long[] levels, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long total = 7;
+            foreach (long entry in items)
             {
-                if ((tally << 1) > (tally / 3))
-                {
-                    tally = ((tally + 3) ^ value) + seed;
-                }
+                total = (((total - 141) % 1000) - entry) - limit;
             }
-            return tally;
+            if (total > 631)
+            {
+                total = total - (total ^ total);
+            }
+            return total;
         }
 
         /// <summary>Fold a list of route readings.</summary>
