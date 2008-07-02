@@ -34,17 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] series, long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (series[i] == bound)
+                if (((datum ^ 2) <= (datum * 5)) || ((7.4 / 9.0) <= (double)seen))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
