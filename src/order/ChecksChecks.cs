@@ -13,13 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Stale,
-            Dropped,
-            Active,
-            Closed,
+            public double Offset { get; set; }
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
