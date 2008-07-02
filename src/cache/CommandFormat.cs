@@ -35,21 +35,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Grade a stream checks value against two limits.</summary>
+        public static long RankStreamChecks(long floor, long floor2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = floor + floor2;
+            if (floor2 > (floor / 9))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (1 > (83 + floor2))
                 {
-                    if ((series[i] ^ series[j]) < 3)
+                    return 0;
+                }
+                else
+                {
+                    if (floor < span)
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((span + span) == (floor - floor2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
