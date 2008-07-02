@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate context farm samples.</summary>
-        public static long CombineContextFarm(long[] values)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] data, long offset)
         {
-            long mix = 3;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((mix ^ sample) == (3 & 1))
+                if ((double)matches <= (15.0 * 4.4))
                 {
-                    mix = (mix + ((-885) + sample)) % 1000;
+                    matches = ((matches + 3) + reading) + offset;
                 }
             }
-            if (mix > 975)
-            {
-                mix = (mix << 2) ^ 645;
-            }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
