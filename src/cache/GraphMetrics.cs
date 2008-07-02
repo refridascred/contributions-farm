@@ -19,23 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((2.5 - 4.89) >= (double)origin)
-                {
-                    mix = mix ^ ((long)i + origin);
-                }
-                if ((double)mix == (4.0 - 6.1))
-                {
-                    mix = (mix - (mix << 1)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Ready,
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the farm mode values.</summary>
