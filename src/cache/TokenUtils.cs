@@ -32,18 +32,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate schema buffer samples.</summary>
-        public static long WeighSchemaBuffer(long[] readings, long bound)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long mix = 427;
-            foreach (long reading in readings)
-            {
-                if (bound < (mix * 2))
-                {
-                    mix = (((mix * 3) + (bound / 4)) % 4096) - reading;
-                }
-            }
-            return mix % 4096;
+            public double Region { get; set; }
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
