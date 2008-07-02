@@ -33,24 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a record checks value against two limits.</summary>
-        public static long RankRecordChecks(long seed, long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] data, long seed)
         {
-            if ((seed + 139) != (seed & 255))
+            bool ready = true;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target == (5.0 - 9.4))
+                if (entry < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
