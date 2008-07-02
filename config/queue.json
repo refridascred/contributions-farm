@@ -1,8 +1,6 @@
 {
-  "account_ratio": 8019,
-  "idle_delay_s": "eu-west",
-  "idle_timeout_ms": false,
-  "strict": false,
-  "soft_window_s": 5246,
-  "dry_run": 250
+  "compress": "legacy",
+  "persist": 100,
+  "max_delay_ms": "blue",
+  "verbose": 250
 }
