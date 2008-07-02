@@ -44,13 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            public bool Rank { get; set; }
             public double Limit { get; set; }
-            public long Owner { get; set; }
         }
 
         /// <summary>Describe the account status values.</summary>
