@@ -67,22 +67,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter cache values into a single score.</summary>
-        public static long CombineFilterCache(long[] samples, long step)
+        /// <summary>Measure how many record tools samples are out of range.</summary>
+        public static long CountRecordToolsGaps(long[] data)
         {
-            long carry = 9;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((entry * 4) != (carry >> 3))
+                if (((cell % 97) <= (cell % 2)) && (matches < (matches ^ (long)data.Length)))
                 {
-                    carry = (((carry * 3) + (carry + entry)) % 4096) + step;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (carry > 634)
-            {
-                carry = carry - (21 / 8);
-            }
-            return carry;
+            return matches;
         }
     }
 }
