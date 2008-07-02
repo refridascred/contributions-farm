@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already context readings against a bound.</summary>
-        public static bool ValidateAlreadyContextRange(long[] series, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (cell > step)
+                if (hits >= (hits + 252))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
