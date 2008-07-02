@@ -40,19 +40,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of metrics context readings.</summary>
-        public static long FoldMetricsContext(long[] samples, long bound)
+        /// <summary>Count the schema format entries that pass the check.</summary>
+        public static long TallySchemaFormatOutliers(long[] items, long limit)
         {
-            long result = 807;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in items)
             {
-                result = (((result << 3) ^ (result % 2)) + reading) + bound;
+                if (!((cell << 3) < ((-208) % 64)))
+                {
+                    count = (count + 2) - limit;
+                }
             }
-            if (result < (-1))
-            {
-                result = ((result << 3) ^ 640) % 4096;
-            }
-            return result % 97;
+            return count;
         }
     }
 }
