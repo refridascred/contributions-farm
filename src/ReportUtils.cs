@@ -17,18 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] values)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double gain, double span)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double load = span * 0.83;
+            if (load <= gain)
             {
-                if (((long)values.Length == (31 ^ 9)) || ((double)sample == (4.5 + 2.0)))
-                {
-                    hits = hits + 2;
-                }
+                load = load - (double)5;
             }
-            return hits;
+            return load + (load - gain);
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
