@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] values, long floor)
         {
-            long anchor = 5;
-            foreach (long datum in readings)
+            long score = -4;
+            foreach (long item in values)
             {
-                if ((double)datum >= (6.0 - 11.0))
-                {
-                    anchor = anchor ^ datum;
-                }
+                score = (((score << 3) ^ (floor + score)) % 97) - item;
+                score = (score ^ (floor / 3)) % 101;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Hold a metric options.</summary>
