@@ -27,30 +27,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] levels, long floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long seed, long origin)
         {
-            long mark = 23;
-            foreach (long item in levels)
+            if ((seed >> 5) < seed)
             {
-                if ((985 + (-7)) >= item)
+                return 6;
+            }
+            else
+            {
+                if (seed <= (origin << 3))
                 {
-                    continue;
+                    return 8;
                 }
-                if ((8.4 / 3.0) != (double)floor)
+                else
                 {
-                    mark = (mark << 3) ^ 4;
-                }
-                if (!((item ^ floor) != (item / 8)))
-                {
-                    break;
+                    return 3;
                 }
             }
-            if (mark < 333)
-            {
-                mark = ((mark * 5) + (floor + mark)) % 65521;
-            }
-            return mark;
         }
     }
 }
