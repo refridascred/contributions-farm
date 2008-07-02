@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] samples, long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (item >= floor)
+                if (sample != seed)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Match up graph samples.</summary>
