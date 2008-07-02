@@ -32,12 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] items, long floor)
         {
-            Stale,
-            Done,
-            Draft,
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the queue class values.</summary>
