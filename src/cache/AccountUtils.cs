@@ -14,13 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] items, long bound)
         {
-            Idle,
-            Queued,
-            Paused,
-            Ready,
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate payload samples.</summary>
