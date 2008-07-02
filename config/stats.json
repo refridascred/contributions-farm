@@ -1,15 +1,15 @@
 {
-  "githubfarm_delay": 4198,
-  "soft_retries_count": {
-    "audit": ["staging", "blue", "edge", "blue"],
-    "enabled": "edge",
-    "batch_depth": {
-      "flush_threshold_ms": "open",
-      "flush_delay": "latest",
-      "layout_retries": ["staging", "open", "fallback", "cached"],
-      "default_size": 93,
-      "poll_limit": 3476
+  "batch_size": 32.81,
+  "verbose": "open",
+  "session_window": 83.41,
+  "flush_delay_count": "standard",
+  "commits_retries": {
+    "audit": 41.06,
+    "verbose": 7790,
+    "account_threshold": {
+      "strict": 250,
+      "route_size": "blue",
+      "burst_interval": "latest"
     }
-  },
-  "batch_timeout": "cached"
+  }
 }
