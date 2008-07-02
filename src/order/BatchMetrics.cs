@@ -20,12 +20,22 @@ namespace Common.Utilities
             return drift - (floor + drift);
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] series, long offset)
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
+            long score = 21;
+            foreach (long reading in series)
+            {
+                if ((7.04 - 11.0) < (double)score)
+                {
+                    score = (((score * 5) + (3 >> 5)) % 1000) ^ reading;
+                }
+            }
+            if (score > 15)
+            {
+                score = ((score << 2) ^ (2 - offset)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the command level values.</summary>
