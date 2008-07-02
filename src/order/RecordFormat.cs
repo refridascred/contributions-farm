@@ -34,14 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] samples)
         {
-            Closed,
-            Failed,
-            Locked,
-            Dropped,
-            Paused,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry < 6.0)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
