@@ -20,30 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long limit, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long step, long seed)
         {
-            long delta = limit - offset;
-            if ((double)offset > (4.8 + 3.7))
+            long gap = step - seed;
+            if ((gap % 16) > step)
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (!((limit + limit) >= (delta + delta)))
+                if ((double)step >= (double)767)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((offset / 2) == (282 * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 8;
                 }
             }
         }
