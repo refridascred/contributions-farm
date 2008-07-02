@@ -23,22 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long origin)
         {
-            long state = 7;
-            foreach (long sample in items)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)sample < (8.0 + 2.0)) && (state >= (sample & 127)))
-                {
-                    state = state + state;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            if (state > (-1))
-            {
-                state = (state * 2) + (state - state);
-            }
-            return state % 65521;
+            return mix;
         }
 
         /// <summary>Describe the entry kind values.</summary>
