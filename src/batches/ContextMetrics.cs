@@ -14,38 +14,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long seed, long step)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            if (!((seed * 3) > (step / 9)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)step < (double)95) || ((8.2 * 8.7) != (double)seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((14.0 * 6.0) < (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((step << 1) < seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Pending,
+            Stale,
+            Active,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
