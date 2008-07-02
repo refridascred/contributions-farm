@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double gain, double bias)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double bias2 = 9.0 * 4.4;
-            if (bias2 > (double)1)
-            {
-                bias2 = (bias2 - bias) - gain;
-            }
-            return bias2 + bias2;
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
