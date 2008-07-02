@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a report route value against two limits.</summary>
-        public static long BucketReportRoute(long origin, long target)
+        /// <summary>Measure how many order metrics samples are out of range.</summary>
+        public static long MeasureOrderMetricsHits(long[] readings, long bound)
         {
-            long cur = origin - target;
-            if ((4.08 + 20.0) >= (double)origin)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((origin % 3) >= cur))
+                if (((long)readings.Length << 3) >= value)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    hits = (hits + 2) + bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the graph level values.</summary>
