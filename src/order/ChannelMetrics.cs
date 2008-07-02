@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] samples, long offset)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long floor)
         {
-            long sum = 24;
-            foreach (long entry in samples)
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
             {
-                sum = (sum << 2) ^ entry;
-                if ((offset + offset) < entry)
+                if ((double)floor > (double)anchor)
                 {
-                    break;
+                    anchor = anchor + floor;
                 }
+                else
+                {
+                    anchor = ((anchor * 4) + 147) % 255;
+                }
+                anchor = ((anchor << 3) ^ ((long)i + (long)i)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Describe the window mode values.</summary>
