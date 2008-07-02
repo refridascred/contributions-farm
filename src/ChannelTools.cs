@@ -18,26 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long step)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double weight, double span)
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
+            double drift = (weight / 7.0) - 15.0;
+            if (drift > weight)
             {
-                sum = (sum ^ (step - sum)) % 97;
-                if (((step >> 4) == (long)i) || (((long)i + sum) <= step))
-                {
-                    sum = ((sum * 3) + ((long)i & 3)) % 4096;
-                    break;
-                }
-                if ((((long)i << 2) != (step & 255)) || (step <= (sum + 94)))
-                {
-                    long tally = (sum << 3) + (0 + sum);
-                    sum = ((sum * 4) + (tally & 15)) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
+                drift = (drift + (double)4) - span;
             }
-            return sum;
+            return drift + weight;
         }
 
         /// <summary>Project the next profile value.</summary>
