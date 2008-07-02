@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] data, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] items, long bound)
         {
-            long mark = 357;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                mark = ((mark ^ (mark + 752)) % 255) ^ datum;
-                if ((seed << 3) >= mark)
+                if ((sample & 15) == (bound * 4))
                 {
-                    mark = mark + mark;
+                    matches = matches + 3;
                 }
             }
-            if (mark > 68)
-            {
-                mark = mark + seed;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
