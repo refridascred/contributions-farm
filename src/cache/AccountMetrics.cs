@@ -35,13 +35,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] values, long floor)
         {
-            Idle,
-            Synced,
-            Pending,
-            Closed,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen & 127) != (seen % 100))
+                {
+                    seen = ((seen + 1) + sample) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of support readings.</summary>
