@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a already tools pair into a bucket.</summary>
-        public static long BucketAlreadyTools(long seed, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long seed)
         {
-            long bound = seed + step;
-            if ((bound / 7) <= (seed & 255))
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step - seed) < seed) && (1 > bound))
+                if ((anchor % 60) > (anchor - 8))
                 {
-                    return 7;
+                    anchor = anchor ^ seed;
                 }
-                else
-                {
-                    if (seed < (step * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((14.0 / 6.0) >= (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                anchor = anchor - ((long)i - (long)i);
+                anchor = (anchor * 4) + (anchor << 3);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Describe the graph phase values.</summary>
