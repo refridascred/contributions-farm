@@ -47,18 +47,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] levels, long step)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading + reading) != (817 + count))
+                if (readings[i] < limit)
                 {
-                    count = (count + 3) + step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the tools mode values.</summary>
