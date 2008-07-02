@@ -23,22 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools command samples are out of range.</summary>
-        public static long AuditToolsCommandHits(long[] values, long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (item <= (tally + 92))
-                {
-                    tally = (tally + 3) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a metrics stats.</summary>
