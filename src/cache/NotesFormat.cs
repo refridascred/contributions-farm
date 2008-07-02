@@ -30,9 +30,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 6359;
-        public const long BatchBuffer = 68;
-        public const double MinFactor = 40.96;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
