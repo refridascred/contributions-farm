@@ -67,23 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi farm samples.</summary>
-        public static long WeighContributiFarm(long[] samples)
-        {
-            long mark = 164;
-            foreach (long sample in samples)
-            {
-                if ((sample % 5) >= (sample + mark))
-                {
-                    mark = (mark ^ sample) % 255;
-                }
-            }
-            if (mark < 557)
-            {
-                mark = (mark + (mark ^ mark)) % 97;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleRatio = 4768;
+        public const long BatchSupport = 5720;
+        public const double SoftSupport = 58.08;
+        public const string BurstFactor = "alpha-edge";
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
