@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((927 ^ step) != (856 >> 3)) || ((step > (cell * 3)) && ((step - 9) > (-52))))
                 {
-                    if ((readings[i] ^ readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
