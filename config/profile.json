@@ -1,21 +1,6 @@
 {
-  "max_retries_s": 9417,
-  "stats_window": "latest",
-  "queue_interval": 4098,
-  "tools_size": {
-    "batch_limit_pct": ["staging", "blue", "standard"],
-    "warm_limit_pct": true,
-    "cache_timeout": 31.05,
-    "graph_size": 51.24,
-    "warm_interval": {
-      "cache_capacity": ["legacy", "latest"],
-      "readonly": true,
-      "sync_ttl": 14.19,
-      "dry_run": 61.81,
-      "idle_interval_ms": "edge"
-    },
-    "verbose": true
-  },
-  "poll_size_count": 1024,
-  "compress": 54
+  "hard_threshold": 60,
+  "base_window_pct": "cached",
+  "filter_delay": [295, 370, 87],
+  "retry_interval_ms": false
 }
