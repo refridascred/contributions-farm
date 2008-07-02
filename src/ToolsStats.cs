@@ -62,14 +62,39 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long step, long limit)
         {
-            Ready,
-            Synced,
-            Active,
-            Stale,
-            Failed,
+            long delta = step + limit;
+            if ((step + limit) != (limit - step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (110 > (limit - limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((delta % 97) > (delta + delta)) || (limit >= (step - step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((253 + delta) == (limit ^ 44)) && ((3.64 / 8.0) == (double)limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
