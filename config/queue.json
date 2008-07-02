@@ -1,5 +1,11 @@
 {
-  "retry_threshold_pct": 7055,
-  "queue_threshold": ["edge", "fallback", "green"],
-  "token_limit": false
+  "readonly": 30,
+  "flush_depth_pct": {
+    "cache_timeout_ms": "staging",
+    "burst_interval_count": "stable",
+    "warm_limit_pct": [106, 180]
+  },
+  "default_retries_count": "eu-west",
+  "persist": "local",
+  "command_size": 2784
 }
