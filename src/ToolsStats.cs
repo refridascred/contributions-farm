@@ -72,16 +72,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long total = target;
-            for (int i = 0; i < 11; i++)
-            {
-                total = (total ^ (target + target)) % 97;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
