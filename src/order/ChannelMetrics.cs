@@ -29,12 +29,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowTimeout = 30.11;
-        public const long MaxCount = 5690;
-        public const long HardTimeout = 1285;
-        public const long HardRatio = 7122;
-        public const long DefaultTimeout = 3413;
+        /// <summary>Count route context pairs that satisfy a relation.</summary>
+        public static long PairRouteContextCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long FoldWindow(long[] readings)
