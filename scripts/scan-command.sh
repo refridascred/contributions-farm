@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy eu-west cached edge; do
+for item in fallback latest eu-west; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=35
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
