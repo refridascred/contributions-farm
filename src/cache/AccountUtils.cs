@@ -14,11 +14,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 5782;
-        public const double LimitDepth = 74.77;
-        public const string CacheBuffer = "strict-edge";
-        public const long RetryLevel = 3782;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BaseMetrics = 42.81;
