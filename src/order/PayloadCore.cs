@@ -23,21 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 45;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading + anchor) >= anchor)
                 {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor + (168 << 1);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the commits level values.</summary>
