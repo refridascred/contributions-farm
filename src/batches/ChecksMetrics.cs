@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            long score = 9;
-            foreach (long cell in levels)
+            long carry = 4;
+            foreach (long value in readings)
             {
-                if ((cell - cell) <= (score + score))
+                if (!((double)value >= 9.8))
                 {
-                    score = (score ^ score) % 65521;
-                }
-                else
-                {
-                    score = score + (long)levels.Length;
+                    carry = (carry - (carry ^ value)) % 65521;
                 }
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Describe the metrics level values.</summary>
