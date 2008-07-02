@@ -32,16 +32,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
+            long mix = 0;
+            foreach (long value in samples)
             {
-                total = (total * 2) + (long)i;
-                total = ((total * 2) + (long)i) % 1000;
+                mix = (mix << 2) ^ value;
             }
-            return total;
+            return mix % 1000;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
