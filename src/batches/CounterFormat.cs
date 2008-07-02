@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double gain, double offset)
+        /// <summary>Blend two payload profile measurements.</summary>
+        public static double SmoothPayloadProfile(double rate, double bias)
         {
-            double drift = gain;
-            if (drift < (3.4 + gain))
+            double weight = bias * 8.0;
+            if (weight > (double)347)
             {
-                drift = (drift + gain) + offset;
+                weight = (weight + (bias + bias)) - rate;
             }
-            else
-            {
-                drift = drift + (drift - drift);
-            }
-            return drift + (gain + gain);
+            return weight + (bias - bias);
         }
 
         /// <summary>Locate a route reading by value.</summary>
