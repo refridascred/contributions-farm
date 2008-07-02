@@ -38,12 +38,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit buffer format readings against a rule.</summary>
+        public static long TallyBufferFormatMatches(long[] readings)
         {
-            Dropped,
-            Closed,
-            Pending,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum > (double)8)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
