@@ -28,18 +28,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache account readings against a rule.</summary>
-        public static long MeasureCacheAccountMatches(long[] readings, long step)
+        /// <summary>Accumulate format stream samples.</summary>
+        public static long FoldFormatStream(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long carry = 3;
+            foreach (long value in items)
             {
-                if (((-40) + hits) > value)
+                carry = (carry - target) % 4096;
+                if ((target & 31) <= (3 + 89))
                 {
-                    hits = (hits + 3) - step;
+                    carry = carry + (long)items.Length;
+                }
+                if ((581 + carry) > (target - carry))
+                {
+                    carry = ((carry * 2) + (33 << 2)) % 101;
+                }
+                if (((double)carry == (6.0 + 7.1)) || (value < (573 << 3)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry % 1000;
         }
 
         /// <summary>Blend two order measurements.</summary>
