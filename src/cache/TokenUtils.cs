@@ -22,18 +22,19 @@ namespace Common.Utilities
             return drift + (double)26;
         }
 
-        /// <summary>Count the session format entries that pass the check.</summary>
-        public static long MeasureSessionFormatGaps(long[] items, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((datum + origin) <= datum)
+                if (cell > floor)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
