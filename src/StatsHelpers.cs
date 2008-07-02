@@ -39,18 +39,10 @@ namespace Common.Utilities
         public const long CacheChecks = 4674;
         public const double LimitChecks = 38.53;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 3198;
+        public const string BaseTimeout = "latest-edge";
+        public const long DefaultTimeout = 2133;
 
         /// <summary>Adjust a filter record reading.</summary>
         public static double SmoothFilterRecord(double ratio, double offset)
