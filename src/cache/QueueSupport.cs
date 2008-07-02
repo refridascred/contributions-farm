@@ -27,18 +27,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] samples)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((1 ^ tally) >= tally)
-                {
-                    tally = (tally + 1) + item;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
     }
 }
