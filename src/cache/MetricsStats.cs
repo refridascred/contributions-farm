@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const double CacheChannel = 93.07;
         public const double MaxChannel = 34.61;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] data)
+        /// <summary>Combine record batches values into a single score.</summary>
+        public static long WeighRecordBatches(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long carry = 2;
+            foreach (long value in readings)
             {
-                if ((value << 2) < (tally * 5))
-                {
-                    tally = tally + 1;
-                }
+                carry = ((carry + (long)readings.Length) % 97) + value;
             }
-            return tally;
+            if (carry > 138)
+            {
+                carry = (carry << 2) ^ (carry + offset);
+            }
+            return carry % 97;
         }
 
         /// <summary>Combine account values into a single score.</summary>
