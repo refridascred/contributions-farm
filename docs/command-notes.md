@@ -1,14 +1,15 @@
 # Command notes
 
-The window module keeps profile values in sync with the githubfarm cache.
-Defaults for session live in the config folder and can be overridden per environment.
+Defaults for route live in the config folder and can be overridden per environment.
+Keep checks and route names short and lowercase.
+When a window fails, the support handler retries a few times before giving up.
 
-Defaults for already live in the config folder and can be overridden per environment.
-When a profile fails, the contributi handler retries a few times before giving up.
-The stats module keeps report values in sync with the editor cache.
+Defaults for batches live in the config folder and can be overridden per environment.
+Each metrics is validated before it reaches the contributi queue.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review checks limits each release
-- Document new order fields
-- Validate commits input early
+- Log every layout change
+- Document new metric fields
+- Review buffer limits each release
