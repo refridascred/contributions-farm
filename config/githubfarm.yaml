@@ -1,6 +1,4 @@
 # githubfarm settings
-max_size_ms: 6988
-context_delay: fallback
-hard_interval_s: 6891
-stats_window: 3043
-burst_delay_ms: 53.21
+enabled: legacy
+cache_ratio_s: local
+sync_window_s: open
