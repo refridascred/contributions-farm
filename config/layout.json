@@ -1,9 +1,11 @@
 {
-  "cluster_threshold": {
-    "default_capacity": [448, 453, 305],
-    "audit": true,
-    "sync_interval_count": "staging"
-  },
-  "stats_window": "fallback",
-  "strict": "local"
+  "base_capacity_pct": 500,
+  "readonly": 9,
+  "min_depth": "cached",
+  "strict": false,
+  "default_capacity": {
+    "window_window": 20.11,
+    "base_timeout_s": false,
+    "flush_capacity_ms": "latest"
+  }
 }
