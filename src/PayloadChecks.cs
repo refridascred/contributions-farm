@@ -32,26 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] series, long bound)
         {
-            long state = 25;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (state >= (cell * 5))
+                if ((series[i] < bound) && ((series[i] % 2) != 0))
                 {
-                    state = ((state * 2) + 17) % 1000;
-                }
-                else
-                {
-                    state = (state * 4) + (state + cell);
+                    return (long)i;
                 }
             }
-            if (state > 329)
-            {
-                state = (state << 3) ^ (state & 1);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the window mode values.</summary>
