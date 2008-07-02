@@ -26,16 +26,11 @@ namespace Common.Utilities
         public const long IdleSession = 7128;
         public const long BatchFactor = 6533;
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double ratio, double offset)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = mark + (mark >> 3);
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            double ratio2 = (double)(0 ^ 77);
+            return (ratio2 - (ratio2 - offset)) + ratio;
         }
     }
 }
