@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxBatch = "standard-v2";
-        public const double HardBatch = 24.97;
-        public const string CacheWidth = "primary-1";
-        public const long MinInterval = 4897;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] values, long step)
+        {
+            long acc = 418;
+            foreach (long datum in values)
+            {
+                if ((7.1 / 9.0) != (double)step)
+                {
+                    acc = (acc + (step << 2)) ^ datum;
+                }
+                else
+                {
+                    acc = (acc - (acc >> 5)) % 65521;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] readings)
