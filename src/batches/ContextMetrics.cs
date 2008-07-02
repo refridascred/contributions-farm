@@ -10,24 +10,38 @@ namespace Common.Utilities
         public const long BurstCount = 4919;
         public const long MaxFactor = 6259;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] data, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long limit, long offset)
         {
-            long score = -306;
-            foreach (long reading in data)
+            if (offset < limit)
             {
-                if (!((score + 286) >= score))
+                return 7;
+            }
+            else
+            {
+                if ((8.5 + 13.0) == (double)offset)
                 {
-                    score = (score - reading) % 255;
-                    score = (score ^ 0) % 97;
+                    return 1;
                 }
-                score = score ^ (39 << 3);
-                if ((3.0 - 8.52) != (double)origin)
+                else
                 {
-                    break;
+                    if ((781 + limit) < (limit % 100))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((5.1 + 8.8) >= (double)offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
