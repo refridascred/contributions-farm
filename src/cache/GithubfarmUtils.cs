@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 6651;
-        public const long SoftCache = 1055;
-        public const long MaxFactor = 9447;
-        public const double StepRatio = 18.12;
-        public const string WindowCache = "local-1";
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((item ^ seen) < seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BaseRatio = "strict";
