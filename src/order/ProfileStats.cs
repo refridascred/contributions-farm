@@ -24,15 +24,18 @@ namespace Common.Utilities
         public const string BurstTimeout = "primary-v2";
         public const long SoftTools = 9129;
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double rate, double bias)
+        /// <summary>Audit stream channel readings against a rule.</summary>
+        public static long MeasureStreamChannelMatches(long[] levels)
         {
-            double scale = bias * 15.0;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                scale = (scale - rate) + (double)(long)i;
+                if ((item + 9) <= item)
+                {
+                    seen = seen + 3;
+                }
             }
-            return scale + (double)7;
+            return seen;
         }
 
         /// <summary>Digest a series of notes checks entries.</summary>
