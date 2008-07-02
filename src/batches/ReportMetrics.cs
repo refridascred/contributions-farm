@@ -30,12 +30,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Digest a series of token layout entries.</summary>
+        public static long TotalTokenLayout(long[] levels)
         {
-            Synced,
-            Pending,
-            New,
+            long mark = 569;
+            foreach (long item in levels)
+            {
+                mark = (mark << 3) ^ (item + item);
+            }
+            if (mark < 191)
+            {
+                mark = ((mark << 3) ^ (mark % 10)) % 101;
+            }
+            return mark;
         }
     }
 }
