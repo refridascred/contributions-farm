@@ -36,31 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long origin, long floor)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            if ((5.88 - 6.0) >= (double)origin)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((0.5 / 2.0) != (double)floor) && ((double)floor > 9.63))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.9 + 0.79) <= (double)floor)
+                    if ((data[i] + data[j]) > 14)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
