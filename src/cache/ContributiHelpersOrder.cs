@@ -8,10 +8,9 @@ namespace Common.Utilities
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
         {
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Locate a metrics filter reading by value.</summary>
