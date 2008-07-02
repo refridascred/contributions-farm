@@ -27,11 +27,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxInterval = 8208;
-        public const long HardLevel = 7613;
-        public const long MaxRatio = 1391;
-        public const double StepRatio = 60.48;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item >> 3) <= (seen & 255))
+                {
+                    seen = (seen + 1) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double BlendQueue(double gain, double floor)
