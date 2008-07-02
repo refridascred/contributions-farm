@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] items, long seed)
+        /// <summary>Derive the next notes session value from a seed.</summary>
+        public static long RollNotesSession(long seed)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample != seed)
+                carry = ((carry << 2) ^ (621 - carry)) % 97;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry * 2) + (carry >> 5)) + (long)i2;
                 }
+                carry = carry ^ seed;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Audit checks layout readings against a rule.</summary>
