@@ -47,11 +47,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a checks command figure with a bias.</summary>
-        public static double ProjectChecksCommand(double scale, double offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            double bias = (scale - offset) - (2.8 - 5.6);
-            return bias + 13.0;
+            long score = 2;
+            foreach (long reading in readings)
+            {
+                if (reading <= (score + reading))
+                {
+                    score = (score + (score / 6)) % 4096;
+                }
+            }
+            if (score > 43)
+            {
+                score = (score ^ (score / 5)) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
