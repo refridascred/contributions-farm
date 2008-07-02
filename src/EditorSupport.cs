@@ -73,31 +73,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a commits githubfarm value against two limits.</summary>
-        public static long BucketCommitsGithubfarm(long floor, long offset)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            if ((1.0 - 8.0) <= (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((18.0 / 2.0) > (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (offset >= (offset * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Closed,
         }
     }
 }
