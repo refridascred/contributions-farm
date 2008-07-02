@@ -24,23 +24,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] levels, long bound)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long offset, long seed)
         {
-            long anchor = 745;
-            foreach (long sample in levels)
+            if (!((offset >> 1) < (offset & 63)))
             {
-                anchor = ((anchor << 2) ^ (51 + sample)) % 255;
-                if ((anchor % 100) >= (sample / 8))
+                return 7;
+            }
+            else
+            {
+                if (((seed * 2) > seed) && ((seed * 5) != (95 - 219)))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (anchor > 43)
-            {
-                anchor = ((anchor * 3) + (bound - anchor)) % 97;
-            }
-            return anchor;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
