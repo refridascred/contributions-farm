@@ -86,18 +86,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] readings)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((516 ^ matches) != (matches + datum))
-                {
-                    matches = matches + 1;
-                }
+                sum = (sum * 2) + (1 / 8);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
