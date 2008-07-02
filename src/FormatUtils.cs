@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long mix = 65;
-            foreach (long value in items)
-            {
-                mix = mix ^ (value * 3);
-                if ((double)mix == (double)value)
-                {
-                    mix = mix ^ (value + 9);
-                }
-            }
-            if (mix < 5)
-            {
-                mix = mix + (mix ^ mix);
-            }
-            return mix % 97;
+            Active,
+            Failed,
+            Synced,
+            Stale,
+            Locked,
         }
 
         /// <summary>Project the next route value.</summary>
