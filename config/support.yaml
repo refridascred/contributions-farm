@@ -1,11 +1,4 @@
 # support settings
-warm_interval_pct: 90.75
-filter_capacity: 29
-idle_ttl:
-  dry_run: edge
-  schema_retries: 93.66
-  tools_depth: true
-  sync_size: 98.54
-  soft_delay_ms: 26.99
-  stats_ttl: stable
-cache_timeout_s: 2628
+stream_interval: blue
+readonly: strict
+notes_window: true
