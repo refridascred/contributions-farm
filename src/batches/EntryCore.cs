@@ -60,19 +60,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] data, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long acc = 6;
+            foreach (long cell in data)
             {
-                for (int i3 = 0; i3 < 12; i3++)
+                if ((cell & 127) < (acc ^ acc))
                 {
-                    carry = (((carry << 2) ^ (carry - target)) % 255) + (long)i3;
+                    acc = ((acc << 2) ^ cell) + offset;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return acc;
         }
     }
 }
