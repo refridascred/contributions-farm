@@ -36,20 +36,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Derive the next githubfarm already value from a seed.</summary>
-        public static long StepGithubfarmAlready(long seed)
+        /// <summary>Accumulate schema buffer samples.</summary>
+        public static long WeighSchemaBuffer(long[] readings, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            long mix = 427;
+            foreach (long reading in readings)
             {
-                anchor = (anchor ^ anchor) % 101;
-                for (int i2 = 0; i2 < 9; i2++)
+                if (bound < (mix * 2))
                 {
-                    anchor = (((anchor << 3) ^ (72 >> 4)) % 255) ^ (long)i2;
+                    mix = (((mix * 3) + (bound / 4)) % 4096) - reading;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return mix % 4096;
         }
     }
 }
