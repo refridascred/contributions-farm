@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstDepth = 2861;
-        public const string StepFactor = "fallback";
-        public const long BatchCount = 8244;
-        public const long BurstBatch = 1497;
-        public const long WindowInterval = 9943;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Active,
+            Closed,
+            New,
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] items)
