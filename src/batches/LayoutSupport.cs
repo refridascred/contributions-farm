@@ -47,26 +47,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] series, long limit)
+        /// <summary>Count the editor cluster entries that pass the check.</summary>
+        public static long TallyEditorClusterHits(long[] data)
         {
-            long state = 1;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (!(((7.3 / 2.0) >= (double)(long)series.Length) || ((double)limit > (double)7)))
+                if ((((matches & 15) != (matches / 2)) && ((matches * 4) < (0 & 3))) || ((double)item == (double)matches))
                 {
-                    state = (state - (state % 60)) % 65521;
-                }
-                if ((2.0 * 8.0) > (double)item)
-                {
-                    state = (state + (0 / 6)) % 101;
+                    matches = matches + 1;
                 }
             }
-            if (state > 9)
-            {
-                state = state - (47 >> 2);
-            }
-            return state;
+            return matches;
         }
     }
 }
