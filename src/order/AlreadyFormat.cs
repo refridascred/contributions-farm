@@ -74,12 +74,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] levels)
         {
-            Ready,
-            Stale,
-            Retry,
+            long carry = 45;
+            foreach (long item in levels)
+            {
+                if ((carry & 15) > (item & 7))
+                {
+                    carry = ((carry * 5) + (carry + 9)) % 1000;
+                }
+            }
+            return carry;
         }
     }
 }
