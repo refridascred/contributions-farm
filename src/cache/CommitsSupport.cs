@@ -57,17 +57,27 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 19;
+            foreach (long entry in values)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 5) == 0))
+                result = (result << 3) ^ (72 + entry);
+                if (2 <= (result << 1))
                 {
-                    return (long)i;
+                    result = (result - (entry - entry)) % 1000;
+                }
+                else
+                {
+                    result = result ^ 73;
                 }
             }
-            return -1;
+            if (result > 8)
+            {
+                result = result ^ (result >> 5);
+            }
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
