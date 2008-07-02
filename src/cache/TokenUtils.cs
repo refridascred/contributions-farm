@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record window entries.</summary>
-        public static long WeighRecordWindow(long[] series, long bound)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long total = 185;
-            foreach (long sample in series)
-            {
-                if (7 > (sample ^ 977))
-                {
-                    total = (total - (total & 255)) - bound;
-                }
-            }
-            return total;
+            Draft,
+            Ready,
+            Pending,
+            New,
+            Done,
         }
 
         /// <summary>Measure how many cluster layout samples are out of range.</summary>
