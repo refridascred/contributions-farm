@@ -1,9 +1,21 @@
 # support settings
-default_ratio: 1737
-verbose: 62.32
-tools_delay: 59.38
-default_size:
-  - legacy
-  - green
-  - fallback
-retry_size_count: legacy
+max_timeout:
+  - 407
+  - 379
+  - 334
+  - 140
+editor_delay: cached
+window_timeout:
+  enabled: 94
+  editor_window:
+    - staging
+    - latest
+    - staging
+    - green
+  counter_size:
+    - 455
+    - 200
+    - 439
+    - 119
+  verbose: 2716
+  tools_ratio: strict
