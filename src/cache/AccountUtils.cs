@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double scale, double span)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] levels, long step)
         {
-            double load = (double)(304 + 19);
-            if (load > scale)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                load = load + span;
+                if ((16.0 / 5.0) > (double)step)
+                {
+                    count = (count + 3) ^ reading;
+                }
             }
-            return load - (4.01 + span);
+            return count;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
