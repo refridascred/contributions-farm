@@ -20,10 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseTimeout = 3246;
-        public const long RetryBudget = 1720;
-        public const double BatchTimeout = 74.82;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultWidth = "standard-edge";
+        public const double IdleToken = 13.42;
+        public const long IdleDepth = 9697;
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ScaleProfile(double gain, double span)
