@@ -31,26 +31,21 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] levels)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] items)
         {
-            long sum = 9;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample + sample) <= (sum - 799))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = sum - (sample + sample);
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 65521;
-                }
-                if (!((sample & 31) == (sum - sample)))
-                {
-                    break;
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Grade a profile batch value against two limits.</summary>
