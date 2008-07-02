@@ -44,11 +44,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a token entry figure with a bias.</summary>
-        public static double ScaleTokenEntry(double weight, double floor)
+        /// <summary>Combine checks cluster values into a single score.</summary>
+        public static long ScoreChecksCluster(long[] data)
         {
-            double scale = weight * 5.2;
-            return (scale - (weight + 4.7)) + floor;
+            long anchor = 22;
+            foreach (long item in data)
+            {
+                anchor = (anchor * 3) + (14 - anchor);
+                anchor = (anchor * 2) + item;
+            }
+            return anchor;
         }
     }
 }
