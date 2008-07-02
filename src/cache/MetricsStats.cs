@@ -34,22 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] series, long target)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (8.78 < (double)seen)
+                if (series[i] == bound)
                 {
-                    seen = ((seen + 1) - entry) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
