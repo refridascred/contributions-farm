@@ -14,21 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((count - count) <= (299 % 97)))
                 {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 2) ^ entry) + bound;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
