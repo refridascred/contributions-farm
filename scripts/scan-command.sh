@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=127
-log "limit is ${COMMAND_LIMIT}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in legacy staging blue; do
+for item in cached standard edge; do
     log "checking ${item}"
 done
