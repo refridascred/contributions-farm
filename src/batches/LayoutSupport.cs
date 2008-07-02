@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long HardBudget = 5867;
         public const long HardLevel = 6370;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] items, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (datum >= seed)
+                if (sample > matches)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a queue stats.</summary>
