@@ -1,7 +1,37 @@
 # entry settings
-poll_window: true
-sync_retries: eu-west
-cache_depth_pct: true
-hard_retries_pct: strict
-burst_ratio_ms: 48
-audit: 3303
+cache_threshold_pct:
+  metric_ttl:
+    max_depth_pct: 500
+    compress:
+      - 217
+      - 279
+      - 154
+    max_size_count: standard
+    burst_ratio_count: legacy
+  cache_ttl_s:
+    default_delay: true
+    burst_depth:
+      - standard
+      - legacy
+      - open
+      - legacy
+    readonly: legacy
+  default_threshold_pct:
+    - 220
+    - 198
+    - 479
+  cache_size: 47.91
+  burst_ttl_s: 61.02
+burst_capacity: true
+enabled:
+  max_retries: 42.73
+  enabled: primary
+  min_threshold_s: standard
+  support_window: 7
+  channel_timeout: 500
+hard_delay: 30
+sync_interval:
+  - edge
+  - fallback
+  - open
+warm_limit_ms: 16.65
