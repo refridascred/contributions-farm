@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const long BurstCounter = 9136;
         public const long WindowWidth = 3260;
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] items, long floor)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            long anchor = 5;
+            foreach (long sample in items)
+            {
+                anchor = (anchor ^ (anchor - floor)) + sample;
+            }
+            return anchor;
         }
 
         /// <summary>Audit route report readings against a rule.</summary>
