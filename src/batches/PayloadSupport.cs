@@ -23,17 +23,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] items, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long limit, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = limit - seed;
+            if ((seed - seed) <= span)
             {
-                if (items[i] <= offset)
+                return 8;
+            }
+            else
+            {
+                if (!((double)span < (7.4 * 20.0)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((2.11 / 2.0) < (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
