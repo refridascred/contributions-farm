@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] readings, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            long state = 66;
+            foreach (long entry in readings)
             {
-                anchor = (anchor ^ anchor) % 97;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (state >= (state / 3))
+                {
+                    state = ((((state << 2) ^ ((-560) % 2)) % 255) ^ entry) - offset;
+                }
             }
-            return anchor;
+            return state % 97;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
