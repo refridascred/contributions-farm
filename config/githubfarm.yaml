@@ -1,17 +1,8 @@
 # githubfarm settings
-idle_threshold: 92.48
-batch_window_pct: 100
-retry_threshold: 5960
-readonly: 1024
-channel_retries:
-  warm_interval_ms:
-    burst_threshold_count: false
-    strict: 250
-    default_depth_pct: false
-    warm_ttl_ms: fallback
-    cache_interval_ms: 73.1
-    hard_capacity: false
-  schema_ratio: 7
-  profile_size: 100
-  readonly: strict
-  burst_limit_ms: staging
+idle_interval_count: false
+base_interval_count: false
+cache_size: 250
+soft_ratio_ms:
+  sync_window_ms: true
+  entry_capacity: 500
+  command_timeout: stable
