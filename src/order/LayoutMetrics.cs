@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] values, long seed)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a metric entry.</summary>
