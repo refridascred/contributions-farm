@@ -67,9 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardWidth = 73.29;
-        public const string StepWidth = "standard-1";
-        public const long IdleSize = 5193;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultBudget = 919;
+        public const long MaxSize = 1973;
+        public const long BurstAlready = 6893;
+        public const string CacheSize = "local";
+        public const string BatchAlready = "cached";
     }
 }
