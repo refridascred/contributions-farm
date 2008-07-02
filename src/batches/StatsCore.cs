@@ -36,19 +36,13 @@ namespace Common.Utilities
         public const double DefaultInterval = 54.66;
         public const string BurstRatio = "standard";
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double bias, double offset)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double drift = (double)1 - (offset - 12.0);
-            if (drift < (double)(-801))
-            {
-                drift = (drift - drift) - bias;
-            }
-            else
-            {
-                drift = drift - (1.5 / 4.0);
-            }
-            return drift - drift;
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
