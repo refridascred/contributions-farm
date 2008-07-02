@@ -22,18 +22,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit checks layout readings against a rule.</summary>
-        public static long MeasureChecksLayoutMatches(long[] data, long step)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((4.0 - 7.0) < (double)value)
-                {
-                    hits = (hits + 2) - step;
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            New,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
