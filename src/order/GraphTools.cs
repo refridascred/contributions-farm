@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] items, long seed)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            long mix = -39;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 4) + (seed + value)) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mix < 58)
-            {
-                mix = (mix ^ seed) % 1000;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
