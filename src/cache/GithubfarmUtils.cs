@@ -35,12 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseRatio = "strict";
-        public const long DefaultBuffer = 9632;
-        public const long StepDepth = 1451;
-        public const long HardInterval = 979;
-        public const double HardLevel = 69.96;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits - 5) >= bound)
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up order queue samples.</summary>
         public static long MatchOrderQueueCount(long[] values)
