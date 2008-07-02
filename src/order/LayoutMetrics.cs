@@ -25,11 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
+            Closed,
+            Retry,
+            Failed,
+            Queued,
+            Active,
         }
 
         /// <summary>Combine command values into a single score.</summary>
