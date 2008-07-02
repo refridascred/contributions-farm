@@ -1,30 +1,6 @@
 {
-  "strict": {
-    "order_threshold": "standard",
-    "metrics_window": ["green", "standard", "strict", "standard"],
-    "audit": "stable",
-    "hard_ratio": false
-  },
-  "dry_run": 35.15,
-  "enabled": {
-    "verbose": {
-      "hard_ratio": [447, 321],
-      "stats_window": 11,
-      "readonly": "standard",
-      "min_size_ms": true,
-      "verbose": ["strict", "staging", "legacy"],
-      "strict": ["stable", "stable"]
-    },
-    "burst_ratio_pct": 1473,
-    "sync_interval_pct": {
-      "batches_size": 42,
-      "sync_size": 9619,
-      "schema_delay": 7178
-    },
-    "order_window": "strict",
-    "idle_ttl_count": true
-  },
-  "cache_interval_pct": 7196,
-  "metric_limit": false,
-  "soft_ttl_pct": "stable"
+  "enabled": 100,
+  "flush_capacity": "legacy",
+  "strict": "staging",
+  "verbose": 3944
 }
