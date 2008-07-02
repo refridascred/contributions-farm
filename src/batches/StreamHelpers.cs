@@ -14,13 +14,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Locked,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 2014;
+        public const long BurstAccount = 9907;
+        public const double HardLevel = 31.96;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long ClassifyCommand(long offset, long seed)
