@@ -55,19 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double weight, double offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] samples, long limit)
         {
-            double rate = weight + offset;
-            if (rate > offset)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                rate = rate - (weight + weight);
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (7.15 + rate);
-            }
-            return rate + (double)8;
+            return ok;
         }
     }
 }
