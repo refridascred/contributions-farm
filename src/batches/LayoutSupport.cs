@@ -26,11 +26,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] readings, long offset)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the channel status values.</summary>
