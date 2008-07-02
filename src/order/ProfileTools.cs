@@ -37,11 +37,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 9667;
-        public const long RetryFactor = 446;
-        public const long HardRecord = 6059;
-        public const double BatchSize = 33.9;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 1.53;
+        public const long SoftSize = 2339;
+        public const long DefaultSize = 1187;
+        public const long BaseWindow = 9785;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MaxRatio = 2936;
