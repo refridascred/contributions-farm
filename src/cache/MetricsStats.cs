@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the command channel entries that pass the check.</summary>
-        public static long CountCommandChannelMatches(long[] readings, long seed)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long delta = floor + seed;
+            if (((seed - seed) <= (delta + delta)) || (delta < (seed + 1)))
             {
-                if (seed < (tally >> 1))
+                return 0;
+            }
+            else
+            {
+                if (((delta + 0) != (delta & 255)) || ((37 - floor) > delta))
                 {
-                    tally = (tally + 3) + cell;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed < (floor & 63)) && ((2 + floor) == (delta + delta)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((-36) < (delta + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the counter mode values.</summary>
