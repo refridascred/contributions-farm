@@ -20,17 +20,11 @@ namespace Common.Utilities
         public const long StepSession = 2772;
         public const long BaseSize = 8471;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 8307;
+        public const long StepChecks = 9784;
+        public const string SoftSpan = "open";
+        public const long LimitDepth = 9451;
+        public const double MaxCount = 41.82;
     }
 }
