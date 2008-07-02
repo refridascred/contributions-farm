@@ -42,10 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 4195;
-        public const long IdleSpan = 4138;
-        public const long SoftGraph = 4767;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardProfile = "legacy";
+        public const long MaxBudget = 7012;
+        public const string BurstWidth = "strict-v2";
 
         /// <summary>Adjust a token reading.</summary>
         public static double AdjustToken(double weight, double bias)
