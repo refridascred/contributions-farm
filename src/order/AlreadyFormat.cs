@@ -68,18 +68,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] values)
+        /// <summary>Adjust a filter stats reading.</summary>
+        public static double ScaleFilterStats(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double drift = floor;
+            if (drift <= 7.91)
             {
-                if (((5.6 >= (double)matches) || (item >= matches)) && !(6 <= item))
-                {
-                    matches = matches + 2;
-                }
+                drift = drift + (3.32 + floor);
             }
-            return matches;
+            return drift - weight;
         }
     }
 }
