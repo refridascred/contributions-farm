@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] levels, long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long total = 720;
+            foreach (long reading in samples)
             {
-                if ((4 + 7) >= (reading * 4))
+                total = (total ^ ((-12) ^ (-817))) % 4096;
+                if ((16 - total) < total)
                 {
-                    hits = (hits + 1) + limit;
+                    total = (total ^ (reading >> 5)) % 255;
+                }
+                else
+                {
+                    total = (total << 3) ^ (reading - total);
                 }
             }
-            return hits;
+            return total % 65521;
         }
 
         /// <summary>Fold a list of filter window readings.</summary>
