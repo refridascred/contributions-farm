@@ -33,10 +33,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 5546;
-        public const string SoftFactor = "primary";
-        public const string HardCount = "open-1";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 3304;
+        public const double DefaultInterval = 54.66;
+        public const string BurstRatio = "standard";
 
         /// <summary>Project the next notes value.</summary>
         public static double ProjectNotes(double bias, double offset)
