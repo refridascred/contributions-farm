@@ -48,19 +48,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] readings, long target)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long score = 715;
-            foreach (long cell in readings)
-            {
-                score = (score ^ (target * 3)) % 65521;
-                if (((double)cell < (double)target) && ((cell + cell) <= (score + target)))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
