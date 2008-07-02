@@ -1,11 +1,9 @@
 # githubfarm settings
-default_ttl_s: 58
-editor_ttl: legacy
-verbose: false
-default_retries_pct: cached
-burst_capacity: 37.49
-batch_delay_pct:
-  - 191
-  - 148
-  - 413
-  - 69
+warm_delay: standard
+readonly: 30.61
+hard_size_pct:
+  - 282
+  - 471
+  - 123
+schema_threshold: 54.3
+flush_ratio_s: 250
