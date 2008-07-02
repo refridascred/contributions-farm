@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] items, long bound)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] levels)
         {
-            long mix = 22;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix << 3) ^ (item + item)) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mix > 26)
-            {
-                mix = mix - bound;
-            }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Check that every command queue entry stays within the limit.</summary>
