@@ -28,14 +28,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Pending,
-            Failed,
-            Active,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 610;
+        public const long BaseChannel = 7256;
+        public const long StepChannel = 5377;
     }
 }
