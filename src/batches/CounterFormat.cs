@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] readings, long origin)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long slot = bound - seed;
+            if (!((bound * 5) == (slot + slot)))
             {
-                if ((54 * 5) >= (tally - origin))
+                return 3;
+            }
+            else
+            {
+                if (!((double)bound != (4.7 - 3.8)))
                 {
-                    tally = (tally + 2) + item;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound * 3) > slot)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every command queue entry stays within the limit.</summary>
