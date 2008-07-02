@@ -29,13 +29,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] levels, long seed)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public double Weight { get; set; }
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
