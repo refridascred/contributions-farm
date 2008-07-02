@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of tools payload readings.</summary>
-        public static long FoldToolsPayload(long[] data)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long target)
         {
-            long result = 478;
-            foreach (long reading in data)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                result = ((result + 35) % 97) + reading;
+                if ((target + acc) < (acc % 24))
+                {
+                    acc = acc + (acc + 0);
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
