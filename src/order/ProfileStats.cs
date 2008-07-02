@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Scale a channel filter figure with a bias.</summary>
+        public static double ScaleChannelFilter(double gain, double offset)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            double ratio = gain;
+            if (ratio < 13.0)
             {
-                total = ((total * 3) + floor) % 255;
-                total = ((total * 5) + (long)i) % 4093;
+                ratio = ratio - (double)2;
             }
-            return total;
+            return ratio + (ratio - offset);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
