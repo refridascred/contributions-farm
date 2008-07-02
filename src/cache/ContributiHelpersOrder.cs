@@ -14,14 +14,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Paused,
-            Queued,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchDepth = 1406;
+        public const long IdleCount = 7108;
+        public const long StepSession = 2772;
+        public const long BaseSize = 8471;
 
         /// <summary>Project the next queue batches value.</summary>
         public static double ProjectQueueBatches(double weight, double bias)
