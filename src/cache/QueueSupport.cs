@@ -29,32 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long limit, long step)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long lane = limit - step;
-            if ((lane & 127) >= (lane * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step != (7.1 + 1.85))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((lane - 1) <= (step & 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
