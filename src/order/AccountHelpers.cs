@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] series)
         {
-            long mark = 58;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((mark >> 1) > mark)
+                if ((0.6 - 7.4) >= (double)item)
                 {
-                    mark = mark + (sample + mark);
-                }
-                else
-                {
-                    mark = (mark * 2) + mark;
-                }
-                if ((double)mark == (double)sample)
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
