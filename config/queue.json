@@ -1,5 +1,23 @@
 {
-  "batch_capacity": 250,
-  "sync_depth_pct": "staging",
-  "enabled": 500
+  "soft_capacity": {
+    "editor_timeout": 44.27,
+    "hard_size_pct": true,
+    "burst_window_ms": 6522,
+    "warm_retries": {
+      "default_interval_s": "cached",
+      "context_window": false,
+      "batch_threshold_s": "local",
+      "already_size": [446, 377, 7, 17],
+      "flush_window_pct": false
+    },
+    "warm_interval_pct": 3474,
+    "batch_threshold": "primary"
+  },
+  "enabled": 250,
+  "base_ratio_pct": {
+    "sync_capacity_ms": "latest",
+    "graph_capacity": 250,
+    "warm_limit_s": 69.28,
+    "flush_ttl": "local"
+  }
 }
