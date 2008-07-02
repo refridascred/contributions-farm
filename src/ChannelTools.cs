@@ -19,13 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Combine entry schema values into a single score.</summary>
+        public static long CombineEntrySchema(long[] levels, long bound)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
-            public double Limit { get; set; }
+            long acc = 1;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = (acc + ((long)i / 4)) + value;
+                    acc = ((acc << 3) ^ (acc + acc)) % 65521;
+                }
+                acc = acc - 72;
+                if (!((2.71 * 10.0) > (double)bound))
+                {
+                    acc = (acc - acc) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
