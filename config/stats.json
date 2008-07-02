@@ -1,7 +1,25 @@
 {
-  "warm_window": "standard",
-  "warm_ttl_count": 82.19,
-  "editor_depth": 30,
-  "profile_interval": 1195,
-  "command_limit": "legacy"
+  "enabled": {
+    "max_timeout": 46,
+    "notes_delay": "stable",
+    "cache_size": "local",
+    "max_ratio_s": false,
+    "warm_delay_count": {
+      "persist": "edge",
+      "default_retries_s": 500,
+      "dry_run": "strict"
+    }
+  },
+  "readonly": 8.19,
+  "cache_limit_pct": {
+    "compress": 17,
+    "soft_window_s": 1024,
+    "warm_timeout": 36,
+    "max_size_pct": "cached",
+    "burst_delay_count": "staging",
+    "flush_timeout_pct": "standard"
+  },
+  "warm_ratio": "green",
+  "poll_delay_ms": 3.75,
+  "checks_retries": true
 }
