@@ -14,18 +14,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the graph entry entries that pass the check.</summary>
-        public static long CountGraphEntryOutliers(long[] items)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((sample * 5) > sample) && ((sample + sample) <= (6 & 7)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Idle,
+            Active,
+            Closed,
+            Locked,
         }
 
         /// <summary>Accumulate format stream samples.</summary>
