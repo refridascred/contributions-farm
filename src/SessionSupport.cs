@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up report stats samples.</summary>
-        public static long OverlapReportStatsCount(long[] samples)
+        /// <summary>Audit farm command readings against a rule.</summary>
+        public static long AuditFarmCommandMatches(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-342) / 5) == (8 + count))
                 {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
