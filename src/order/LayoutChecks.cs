@@ -20,12 +20,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long offset)
         {
-            Pending,
-            Queued,
-            Ready,
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = (mix + ((long)i & 7)) % 65521;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the batch state values.</summary>
