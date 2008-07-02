@@ -75,22 +75,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many queue farm samples are out of range.</summary>
-        public static long CountQueueFarmGaps(long[] items)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long state = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((count + count) != (sample + sample))
+                if ((floor % 8) >= (1 >> 2))
                 {
-                    count = count + 2;
+                    state = (state - 80) % 65521;
+                    state = ((state << 2) ^ (floor % 10)) % 255;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
     }
 }
