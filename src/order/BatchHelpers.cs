@@ -25,9 +25,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 9987;
-        public const double BatchPayload = 69.2;
-        public const string LimitPayload = "alpha";
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Failed,
+            Dropped,
+            Done,
+            Idle,
+            Locked,
+        }
     }
 }
