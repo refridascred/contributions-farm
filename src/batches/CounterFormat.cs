@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinRatio = 9190;
+        public const long MinScore = 3925;
+        public const string RetryOrder = "staging-1";
+        public const long CacheSpan = 1075;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double IdleWidth = 19.03;
