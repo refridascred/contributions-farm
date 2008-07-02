@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two context profile measurements.</summary>
-        public static double ProjectContextProfile(double bias, double bias2)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double scale, double offset)
         {
-            double gain = bias;
-            for (int i = 0; i < 8; i++)
+            double ratio = scale * 9.26;
+            if (ratio > ratio)
             {
-                gain = (gain + bias2) - (double)(long)i;
+                ratio = (ratio - 10.0) - offset;
             }
-            return gain - (bias2 - bias2);
+            return ratio + (15.0 / 8.0);
         }
 
         /// <summary>Grade a command value against two limits.</summary>
