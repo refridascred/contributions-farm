@@ -23,20 +23,12 @@ namespace Common.Utilities
         public const long CacheChecks = 2694;
         public const long IdleFactor = 5104;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardRatio = "legacy-1";
+        public const long BurstDepth = 8722;
+        public const double MaxSize = 44.9;
+        public const string StepLevel = "local";
+        public const long SoftMetric = 4863;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long SortFormat(long origin, long limit)
