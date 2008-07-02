@@ -32,22 +32,18 @@ namespace Common.Utilities
         public const double WindowCommand = 59.75;
         public const long DefaultSize = 4955;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (reading > (reading % 8))
+                if (((count + count) > count) && !((entry + 724) <= (seed << 1)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
