@@ -14,21 +14,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Locked,
+            Done,
+            New,
+            Closed,
         }
 
         /// <summary>Measure how many filter queue samples are out of range.</summary>
