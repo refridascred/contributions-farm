@@ -47,14 +47,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long offset, long target)
         {
-            Queued,
-            Synced,
-            Active,
-            Closed,
-            Ready,
+            if (target <= offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset - target) <= (offset & 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset - offset) >= offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the queue payload entries that pass the check.</summary>
