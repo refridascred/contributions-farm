@@ -22,38 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long limit, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] readings, long bound)
         {
-            if (offset < limit)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8.5 + 13.0) == (double)offset)
+                if (((bound ^ 58) == (reading ^ 10)) || ((double)(-218) >= (double)bound))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((781 + limit) < (limit % 100))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((5.1 + 8.8) >= (double)offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a entry summary.</summary>
