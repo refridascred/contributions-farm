@@ -53,16 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double weight, double span)
-        {
-            double mean = (span / 2.0) * 9.71;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (double)(long)i) - weight;
-            }
-            return mean + (span * 19.0);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleInterval = 1707;
+        public const double MaxRatio = 98.32;
+        public const double BurstFactor = 96.84;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long SortFormat(long origin, long limit)
