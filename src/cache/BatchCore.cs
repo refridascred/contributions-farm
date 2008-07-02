@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            New,
+            Queued,
+            Dropped,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the graph phase values.</summary>
