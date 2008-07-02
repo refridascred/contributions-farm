@@ -1,14 +1,7 @@
 {
-  "readonly": 20.37,
-  "min_ttl_count": "green",
-  "batch_delay_ms": 61.31,
-  "warm_retries_ms": {
-    "githubfarm_depth": 66.37,
-    "poll_capacity": 30,
-    "filter_delay": false,
-    "dry_run": "eu-west",
-    "compress": "fallback"
-  },
-  "poll_ratio_pct": [471, 493, 438],
-  "graph_timeout": true
+  "retry_ratio_ms": 6168,
+  "checks_limit": false,
+  "verbose": "blue",
+  "strict": "primary",
+  "poll_depth": ["eu-west", "blue"]
 }
