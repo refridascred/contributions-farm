@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long HardBudget = 5867;
         public const long HardLevel = 6370;
 
-        /// <summary>Scale a channel profile figure with a bias.</summary>
-        public static double BlendChannelProfile(double ratio, double span)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] series)
         {
-            double scale = 1.9;
-            return (scale - span) + ratio;
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches + matches) < matches)
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
