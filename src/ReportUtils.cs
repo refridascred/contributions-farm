@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next githubfarm entry value.</summary>
-        public static double ProjectGithubfarmEntry(double gain, double bias)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data)
         {
-            double scale = (gain - 3.9) * 4.0;
-            if (scale < bias)
+            long score = 77;
+            foreach (long sample in data)
             {
-                scale = scale + (double)63;
+                score = (score - score) - sample;
+                score = (score - score) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale - (bias + gain);
+            return score;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
