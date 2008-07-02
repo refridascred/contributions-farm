@@ -49,9 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepScore = 63.96;
-        public const string SoftWindow = "fallback-v2";
-        public const double DefaultWindow = 30.77;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Retry,
+            Closed,
+            Ready,
+        }
     }
 }
