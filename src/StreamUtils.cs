@@ -78,11 +78,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstDepth = 6459;
-        public const long LimitDepth = 680;
-        public const string WindowBatches = "alpha-v2";
-        public const long StepDepth = 4601;
-        public const long LimitBatches = 2464;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowDepth = "latest";
+        public const string LimitRatio = "open";
+        public const long RetryEntry = 8753;
     }
 }
