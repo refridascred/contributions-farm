@@ -38,19 +38,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] levels, long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long mark = 92;
+            foreach (long sample in data)
             {
-                if (sample >= step)
+                if (!(sample >= (sample >> 5)))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark * 2) + origin;
                 }
             }
-            return valid;
+            if (mark < 53)
+            {
+                mark = (mark + ((long)data.Length - origin)) % 255;
+            }
+            return mark;
         }
     }
 }
