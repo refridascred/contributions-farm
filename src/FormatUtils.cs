@@ -43,13 +43,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] readings, long limit)
         {
-            public double Flag { get; set; }
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((long)readings.Length >= (limit & 15))
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
