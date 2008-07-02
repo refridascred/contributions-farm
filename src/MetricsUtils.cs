@@ -47,28 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Accumulate contributi farm samples.</summary>
+        public static long WeighContributiFarm(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
+            long mark = 164;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((sample % 5) >= (sample + mark))
                 {
-                    total = ((total - (long)i) % 1000) ^ (long)i2;
-                    total = total ^ bound;
+                    mark = (mark ^ sample) % 255;
                 }
-                if ((double)total >= 1.5)
-                {
-                    continue;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total / 4)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            if (mark < 557)
+            {
+                mark = (mark + (mark ^ mark)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Adjust a notes reading.</summary>
