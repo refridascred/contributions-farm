@@ -1,14 +1,8 @@
 # entry settings
-retry_timeout_count: 9142
-min_threshold_count: false
-soft_timeout:
-  tools_retries: 65
-  base_retries: 424
-  audit:
-    hard_ttl_ms: 74.83
-    readonly: true
-    persist: 76.87
-    batches_delay: fallback
-    default_timeout: stable
-  metric_window: 500
-retry_window_count: false
+max_capacity: 50.37
+soft_timeout: 26
+poll_size_s:
+  - 19
+  - 417
+  - 94
+warm_retries: true
