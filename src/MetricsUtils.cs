@@ -19,10 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRatio = 4366;
-        public const long CacheRoute = 1121;
-        public const long WindowTimeout = 1623;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] values, long floor)
+        {
+            long sum = 96;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = ((sum + (4 * 2)) % 65521) ^ (long)i;
+                }
+                sum = sum + ((long)values.Length - cell);
+                if (((double)sum >= (double)cell) || ((sum >> 2) >= floor))
+                {
+                    sum = (sum << 2) ^ (sum * 4);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
