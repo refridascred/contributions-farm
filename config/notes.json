@@ -1,19 +1,7 @@
 {
-  "poll_ratio_count": 100,
-  "channel_threshold": {
-    "verbose": false,
-    "retry_interval": 3,
-    "batch_window_s": 95,
-    "base_depth_s": true,
-    "soft_depth_ms": "green"
-  },
-  "queue_ratio": 2355,
-  "farm_interval": {
-    "cluster_delay": ["fallback", "staging", "staging"],
-    "audit": 28,
-    "poll_ratio": "eu-west",
-    "githubfarm_size": false,
-    "retry_interval_ms": 69
-  },
-  "warm_ttl_count": "green"
+  "layout_timeout": "legacy",
+  "idle_ratio_pct": false,
+  "audit": 30,
+  "burst_delay_count": 94.31,
+  "retry_ratio_pct": 66
 }
