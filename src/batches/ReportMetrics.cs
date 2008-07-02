@@ -27,38 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long bound, long target)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long origin)
         {
-            if ((bound & 15) > bound)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (target < (8 - bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound > (22 * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)target >= (double)0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
