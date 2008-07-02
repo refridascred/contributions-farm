@@ -50,9 +50,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 249;
-        public const long SoftCounter = 4364;
-        public const double MinCounter = 59.49;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)state != (3.99 / 5.0))
+                {
+                    state = (state * 2) + (190 - 378);
+                }
+                state = state - 938;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
