@@ -1,10 +1,9 @@
 # entry settings
-metrics_window: 30
-batch_depth_pct: green
-verbose:
-  - stable
-  - stable
-  - cached
-default_retries: false
-audit: true
-order_capacity: false
+idle_limit_pct:
+  verbose: true
+  cache_size_s: 68.32
+  format_size: 10
+retry_window: 1024
+base_delay_pct: true
+base_ratio_count: false
+commits_ttl: 78.38
