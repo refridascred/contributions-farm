@@ -35,18 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch cluster entries that pass the check.</summary>
-        public static long AuditBatchClusterMatches(long[] readings)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (matches > (matches & 63))
+                state = (state - seed) % 1000;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    matches = (matches + 2) ^ item;
+                    state = ((state ^ (state << 2)) % 255) + (long)i2;
+                    state = (state << 2) ^ (state % 8);
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
