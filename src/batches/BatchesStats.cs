@@ -23,15 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine checks tools values into a single score.</summary>
-        public static long CombineChecksTools(long[] series, long origin)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long acc = 942;
-            foreach (long datum in series)
-            {
-                acc = ((acc << 3) ^ (datum << 3)) + origin;
-            }
-            return acc;
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every metric batch entry stays within the limit.</summary>
