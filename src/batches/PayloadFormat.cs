@@ -30,11 +30,25 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long limit, long bound)
         {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
+            long bound2 = limit + bound;
+            if ((limit / 4) != (limit + 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound2) <= (limit + limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
