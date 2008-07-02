@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] items, long seed)
         {
-            long acc = -496;
-            foreach (long item in values)
+            long mix = -39;
+            foreach (long value in items)
             {
-                if (!((0 + item) < (item ^ acc)))
-                {
-                    acc = (acc + item) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (157 >> 3)) % 4096;
-                }
+                mix = ((mix * 4) + (seed + value)) % 101;
             }
-            return acc % 65521;
+            if (mix < 58)
+            {
+                mix = (mix ^ seed) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a queue header.</summary>
