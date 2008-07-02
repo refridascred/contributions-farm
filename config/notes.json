@@ -1,7 +1,21 @@
 {
-  "persist": 3320,
-  "dry_run": 1024,
-  "cache_interval": 50.98,
-  "batch_limit_pct": ["cached", "stable", "stable"],
-  "profile_threshold": 52.96
+  "burst_ttl_pct": {
+    "persist": 88.26,
+    "base_retries_s": "green",
+    "batch_depth_count": 30,
+    "profile_interval": {
+      "dry_run": 19.92,
+      "max_depth_ms": 60,
+      "default_ratio_ms": "cached",
+      "soft_threshold_s": 500,
+      "enabled": [325, 487]
+    },
+    "readonly": 95,
+    "verbose": 13.36
+  },
+  "retry_ttl_s": 79,
+  "idle_limit_s": "stable",
+  "sync_limit_s": "strict",
+  "min_retries": "edge",
+  "audit": 4604
 }
