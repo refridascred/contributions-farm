@@ -53,12 +53,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] items)
         {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches * 3) < datum)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the notes level values.</summary>
