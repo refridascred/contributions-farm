@@ -1,15 +1,11 @@
 {
-  "audit": {
-    "dry_run": 1024,
-    "support_timeout": ["latest", "latest", "primary"],
-    "warm_size_ms": 500
+  "min_retries": {
+    "account_interval": "edge",
+    "default_capacity_pct": 63,
+    "retry_window_s": "staging"
   },
-  "channel_depth": "legacy",
-  "compress": 18.56,
-  "batch_capacity": 9363,
-  "soft_threshold": {
-    "hard_threshold_s": 100,
-    "min_threshold": 89.09,
-    "already_limit": [397, 303, 202]
-  }
+  "batch_capacity_s": true,
+  "metrics_retries": 80,
+  "batch_window_ms": "primary",
+  "min_depth_pct": ["blue", "strict", "staging", "strict"]
 }
