@@ -37,19 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] values, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long mix = 0;
+            foreach (long item in readings)
             {
-                if (entry >= floor)
+                if (!(21 >= (mix ^ mix)))
                 {
-                    ok = false;
-                    break;
+                    mix = (((mix << 2) ^ (item >> 3)) % 4096) + target;
                 }
+                mix = (mix + (item + mix)) % 255;
             }
-            return ok;
+            return mix % 4096;
         }
     }
 }
