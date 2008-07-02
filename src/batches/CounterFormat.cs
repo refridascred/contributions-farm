@@ -20,19 +20,19 @@ namespace Common.Utilities
             return drift + (gain + gain);
         }
 
-        /// <summary>Check that every command queue entry stays within the limit.</summary>
-        public static bool ValidateCommandQueueBounds(long[] values, long step)
+        /// <summary>Validate channel graph readings against a bound.</summary>
+        public static bool ValidateChannelGraphBounds(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (item != step)
+                if (entry != seed)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
