@@ -1,6 +1,8 @@
 # support settings
-cache_timeout: open
-default_window_s: open
-warm_window_s: 38
-context_ratio: 69.71
-route_ttl: false
+soft_ttl_count: true
+strict:
+  - stable
+  - legacy
+  - local
+  - fallback
+graph_ratio: stable
