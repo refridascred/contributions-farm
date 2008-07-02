@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const double WindowPayload = 21.77;
         public const double BurstSpan = 5.72;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] items)
         {
-            Synced,
-            Active,
-            Ready,
-            Paused,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally & 255) >= (value + (long)items.Length))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next schema context value.</summary>
