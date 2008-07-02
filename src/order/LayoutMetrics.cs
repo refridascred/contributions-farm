@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] values, long seed)
+        /// <summary>Grade a profile channel value against two limits.</summary>
+        public static long SortProfileChannel(long limit, long step)
         {
-            bool found = true;
-            foreach (long item in values)
+            if ((double)step < (0.9 * 0.9))
             {
-                if (item > seed)
+                return 6;
+            }
+            else
+            {
+                if ((limit % 7) == (3 & 1))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (step >= (limit - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a session record.</summary>
