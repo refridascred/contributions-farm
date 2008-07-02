@@ -25,10 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinRatio = 2960;
-        public const long RetryWindow = 2280;
-        public const long LimitWindow = 7856;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Dropped,
+            New,
+            Retry,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long FoldAccount(long[] series, long limit)
