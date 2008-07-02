@@ -68,17 +68,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] data, long bound)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = ratio;
+            if (scale < (6.0 - span))
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                scale = scale - 8.53;
             }
-            return -1;
+            return scale - scale;
         }
     }
 }
