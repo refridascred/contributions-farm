@@ -1,11 +1,7 @@
 {
-  "soft_timeout_s": "latest",
-  "soft_depth_ms": {
-    "cache_retries_s": "primary",
-    "burst_ttl_pct": 32,
-    "hard_limit_s": true,
-    "flush_retries_pct": "latest"
-  },
-  "soft_retries_s": "local",
-  "hard_threshold_pct": 500
+  "payload_size": 500,
+  "burst_limit_count": "local",
+  "persist": 92.48,
+  "counter_ratio": 86,
+  "hard_delay_s": 250
 }
