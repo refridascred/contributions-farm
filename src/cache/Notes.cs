@@ -60,11 +60,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseDepth = "primary-1";
-        public const long LimitSpan = 2623;
-        public const double MinScore = 81.7;
-        public const long WindowFormat = 6574;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstDepth = 7517;
