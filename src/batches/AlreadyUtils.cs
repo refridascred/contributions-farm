@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry <= (entry + entry))
                 {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
