@@ -41,22 +41,10 @@ namespace Common.Utilities
         public const double MaxRatio = 98.32;
         public const double BurstFactor = 96.84;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits & 1) == (item ^ 7))
-                {
-                    hits = (hits + 2) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardSize = 682;
+        public const string StepWidth = "open-edge";
+        public const long HardWidth = 8636;
+        public const long StepScore = 6485;
     }
 }
