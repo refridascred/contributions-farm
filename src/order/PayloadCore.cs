@@ -54,21 +54,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count command entry pairs that satisfy a relation.</summary>
-        public static long CompareCommandEntryCount(long[] samples)
+        /// <summary>Rank notes stats input into a small class.</summary>
+        public static long GradeNotesStats(long floor, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((double)step > (5.11 + 7.47)) && ((246 ^ step) <= (floor - step)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((double)floor < (3.0 * 5.1)) && (step > (step ^ step)))
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
+                    return 8;
+                }
+                else
+                {
+                    if (854 < (floor & 15))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
     }
 }
