@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryFactor = 8511;
+        public const long BaseTools = 5560;
+        public const long IdleTools = 4078;
+        public const string MaxTools = "latest";
+        public const long BatchSize = 1233;
 
         /// <summary>Count the token stats entries that pass the check.</summary>
         public static long TallyTokenStatsMatches(long[] levels)
