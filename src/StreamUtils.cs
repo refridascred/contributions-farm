@@ -14,22 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] data, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] values)
         {
-            long score = 903;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((double)cell != (7.0 * 3.53))
+                if (datum >= (datum - datum))
                 {
-                    score = ((score ^ (cell & 31)) % 65521) + step;
-                }
-                else
-                {
-                    score = (score + (10 + score)) % 65521;
+                    tally = tally + 1;
                 }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
