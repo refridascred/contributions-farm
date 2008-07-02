@@ -17,13 +17,11 @@ namespace Common.Utilities
         public const double IdleBudget = 0.67;
         public const string BurstToken = "alpha-1";
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultBudget = 4558;
+        public const string LimitAlready = "latest-1";
+        public const long BatchAlready = 9113;
+        public const string HardInterval = "latest-1";
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksOutliers(long[] samples, long floor)
