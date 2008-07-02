@@ -1,24 +1,7 @@
 {
-  "audit": false,
-  "graph_limit": ["fallback", "open", "open", "primary"],
-  "batches_window": [349, 495, 256, 88],
-  "min_interval": {
-    "batch_depth": 57,
-    "channel_limit": "edge",
-    "warm_capacity_pct": {
-      "default_threshold": 30,
-      "verbose": 83.23,
-      "report_size": ["blue", "standard", "strict"]
-    },
-    "graph_interval": 83,
-    "base_ratio_s": 55.88,
-    "max_capacity_pct": 12.14
-  },
-  "burst_capacity_ms": {
-    "flush_capacity_ms": 4605,
-    "token_limit": 50.95,
-    "report_retries": 71.66,
-    "max_ttl_count": 58.79
-  },
-  "cache_size_ms": true
+  "flush_delay_ms": 52.44,
+  "filter_ratio": 1024,
+  "readonly": false,
+  "retry_ttl": 129,
+  "warm_ttl_s": 93
 }
