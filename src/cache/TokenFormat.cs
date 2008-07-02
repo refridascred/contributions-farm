@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long seed, long offset)
         {
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
+            if ((offset + seed) < 440)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset & 1) == (seed - seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
