@@ -43,11 +43,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public double Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardFactor = 5.67;
+        public const long SoftProfile = 1084;
+        public const string WindowProfile = "primary-1";
+        public const double StepTimeout = 45.83;
     }
 }
