@@ -28,13 +28,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] levels)
         {
-            Dropped,
-            Closed,
-            Ready,
-            Draft,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample / 2) <= (seen + sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
