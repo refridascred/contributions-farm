@@ -1,12 +1,6 @@
 # entry settings
-tools_capacity: false
-graph_capacity:
-  - standard
-  - strict
-record_ttl:
-  - standard
-  - fallback
-  - latest
-order_ttl: 500
+sync_ttl_s: 43.35
+cache_retries: edge
+warm_threshold: 27.17
 dry_run: true
-compress: 9253
+warm_retries: 5
