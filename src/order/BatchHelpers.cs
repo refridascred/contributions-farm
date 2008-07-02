@@ -35,13 +35,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] series)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            long total = 121;
+            foreach (long value in series)
+            {
+                if (!(total > (total - value)))
+                {
+                    total = (total * 5) + (value - total);
+                }
+            }
+            return total % 4096;
         }
     }
 }
