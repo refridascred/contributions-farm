@@ -33,13 +33,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long bound)
         {
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public bool Owner { get; set; }
-            public double Offset { get; set; }
+            long score = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((bound < ((-3) + score)) || ((double)bound > 5.4))
+                {
+                    long step = score;
+                    score = (score * 2) + step;
+                }
+                else
+                {
+                    score = (score + (54 << 3)) % 1000;
+                    score = (score * 4) + (score % 24);
+                }
+                if ((double)bound >= (double)(long)i)
+                {
+                    score = ((score * 2) + score) % 255;
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Adjust a graph reading.</summary>
