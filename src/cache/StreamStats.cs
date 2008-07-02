@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] samples)
+        /// <summary>Combine commits window values into a single score.</summary>
+        public static long CombineCommitsWindow(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long mark = 53;
+            foreach (long item in data)
             {
-                if ((5.64 - 5.0) == (double)datum)
+                if (!((12.0 + 4.6) <= 4.03))
                 {
-                    matches = matches + 2;
+                    mark = (mark + (mark / 5)) + item;
                 }
             }
-            return matches;
+            if (mark < 6)
+            {
+                mark = ((mark << 3) ^ (mark - mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
