@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double scale, double span)
         {
-            Synced,
-            Ready,
-            Paused,
+            double load = (double)(304 + 19);
+            if (load > scale)
+            {
+                load = load + span;
+            }
+            return load - (4.01 + span);
         }
 
         /// <summary>Accumulate contributi samples.</summary>
