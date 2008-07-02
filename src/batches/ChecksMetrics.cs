@@ -19,20 +19,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] readings)
-        {
-            long mix = 2;
-            foreach (long datum in readings)
-            {
-                mix = (mix - (234 >> 4)) % 97;
-                if ((datum / 5) > datum)
-                {
-                    mix = (mix ^ (long)readings.Length) % 255;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "primary-v2";
+        public const string LimitSize = "stable-v2";
+        public const long CacheFilter = 7057;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long WeighCommits(long[] values, long offset)
