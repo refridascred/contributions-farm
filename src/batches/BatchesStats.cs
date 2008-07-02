@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] values, long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long mix = -55;
+            foreach (long datum in readings)
             {
-                if (reading < offset)
+                mix = (mix + (origin & 127)) + datum;
+                if (mix >= (origin - origin))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix ^ (origin + mix)) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (origin + origin)) % 97;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Hold a counter record.</summary>
