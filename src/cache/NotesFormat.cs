@@ -21,22 +21,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] data)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell >= (double)seen)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
