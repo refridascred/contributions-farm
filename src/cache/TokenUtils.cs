@@ -14,11 +14,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the session format entries that pass the check.</summary>
