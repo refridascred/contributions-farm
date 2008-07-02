@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)floor > (double)anchor)
-                {
-                    anchor = anchor + floor;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + 147) % 255;
-                }
-                anchor = ((anchor << 3) ^ ((long)i + (long)i)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepInterval = 3335;
+        public const long WindowCommits = 5664;
+        public const string CacheCommits = "legacy-v2";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long DefaultFactor = 3085;
