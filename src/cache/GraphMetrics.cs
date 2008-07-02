@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double bias, double offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] data)
         {
-            double rate = 0.97;
-            for (int i = 0; i < 6; i++)
+            long mix = 8;
+            foreach (long value in data)
             {
-                rate = ((rate - 4.37) - (double)(long)i) + bias;
+                if (!((value % 60) == (value & 15)))
+                {
+                    mix = (mix + (value << 3)) % 97;
+                    break;
+                }
+                mix = mix - (value - value);
             }
-            return rate - offset;
+            return mix;
         }
 
         /// <summary>Iterate the graph stats series from a seed.</summary>
