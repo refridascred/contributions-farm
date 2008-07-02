@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit checks editor readings against a rule.</summary>
-        public static long CountChecksEditorHits(long[] samples, long offset)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((offset + datum) != (tally / 6))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Draft,
+            Closed,
+            New,
+            Idle,
         }
 
         /// <summary>Accumulate order samples.</summary>
