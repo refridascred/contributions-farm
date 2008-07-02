@@ -44,40 +44,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long seed, long origin)
-        {
-            long prev = seed + origin;
-            if (origin > (prev % 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin * 4) == (origin + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed + seed) <= (prev - origin)) && (origin <= (prev * 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin > (origin - 999)) && ((3.1 * 14.0) > (double)prev))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseSpan = 23.52;
+        public const string SoftFactor = "open-1";
+        public const string IdleSpan = "alpha";
+        public const long LimitRatio = 6789;
+        public const long SoftChannel = 9196;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string DefaultGithubfarm = "fallback-edge";
