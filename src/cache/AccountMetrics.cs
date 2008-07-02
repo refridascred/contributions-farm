@@ -52,15 +52,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double ratio, double span)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] values, long limit)
         {
-            double gain = (double)(9 + 6);
-            for (int i = 0; i < 3; i++)
+            long mix = 99;
+            foreach (long reading in values)
             {
-                gain = (((gain - gain) - (double)(long)i) + ratio) - span;
+                if ((reading - limit) <= limit)
+                {
+                    mix = ((mix * 5) + (reading - limit)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (mix >> 4)) % 65521;
+                }
             }
-            return gain + gain;
+            if (mix > 938)
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
