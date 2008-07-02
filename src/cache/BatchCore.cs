@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long step, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
+            long lane = step - bound;
+            if ((80 - (-6)) <= lane)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (lane < (9 ^ 50))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((lane >> 2) >= (1 + lane))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((730 << 1) <= (lane + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order phase values.</summary>
