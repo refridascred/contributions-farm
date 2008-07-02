@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a already tools counter forward.</summary>
-        public static long SeriesAlreadyTools(long offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] readings, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-                if (((49 + offset) != (anchor >> 4)) || ((double)offset <= (10.0 / 5.0)))
+                if (value >= seed)
                 {
-                    anchor = ((anchor * 2) + ((long)i - anchor)) % 1000;
+                    ready = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Derive the next session metrics value from a seed.</summary>
