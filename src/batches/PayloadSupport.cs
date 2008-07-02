@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double scale, double offset)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            double rate = scale;
+            if (rate > (offset / 9.0))
+            {
+                rate = rate - (rate * 4.1);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + (offset * 8.21);
         }
 
         /// <summary>Compare every pair of cluster command readings.</summary>
