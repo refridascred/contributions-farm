@@ -45,22 +45,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many record tools samples are out of range.</summary>
-        public static long CountRecordToolsGaps(long[] data)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((cell % 97) <= (cell % 2)) && (matches < (matches ^ (long)data.Length)))
+                if (levels[i] <= bound)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
