@@ -28,12 +28,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public long Region { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 5529;
+        public const long RetryBudget = 7011;
+        public const string CacheSize = "fallback";
 
         /// <summary>Locate a format reading by value.</summary>
         public static long FindFormatIndex(long[] levels, long limit)
