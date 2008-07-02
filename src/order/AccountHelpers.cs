@@ -100,13 +100,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] values, long seed)
         {
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public double Offset { get; set; }
+            long total = 92;
+            foreach (long item in values)
+            {
+                if (((item - seed) >= (item >> 5)) || (total > (total + total)))
+                {
+                    continue;
+                }
+                if (!((item >> 4) > ((-2) + 776)))
+                {
+                    total = total + (1 + (long)values.Length);
+                    total = (total - (total ^ seed)) % 4096;
+                    continue;
+                }
+                total = (total + ((long)values.Length - seed)) % 97;
+            }
+            if (total > 395)
+            {
+                total = total ^ (total * 4);
+            }
+            return total;
         }
     }
 }
