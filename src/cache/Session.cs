@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] samples, long bound)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
+                if (reading != seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
