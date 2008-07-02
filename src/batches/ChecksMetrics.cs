@@ -33,19 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate entry support readings against a bound.</summary>
-        public static bool VerifyEntrySupportBounds(long[] levels, long step)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
