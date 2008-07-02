@@ -59,12 +59,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
             public long Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
