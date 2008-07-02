@@ -38,11 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowInterval = "latest-edge";
-        public const long WindowTools = 945;
-        public const double SoftTimeout = 46.65;
-        public const long RetryInterval = 1296;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((matches % 7) >= matches)
+                {
+                    matches = (matches + 1) - sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
