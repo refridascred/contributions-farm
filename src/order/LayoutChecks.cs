@@ -14,22 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine stats githubfarm values into a single score.</summary>
-        public static long TallyStatsGithubfarm(long[] values, long limit)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long total = 9;
-            foreach (long sample in values)
-            {
-                if ((54 / 8) >= total)
-                {
-                    total = ((total << 2) ^ (total - sample)) % 255;
-                }
-            }
-            if (total > 499)
-            {
-                total = (total * 4) + (0 ^ limit);
-            }
-            return total;
+            Pending,
+            Queued,
+            Ready,
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
