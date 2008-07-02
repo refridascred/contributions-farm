@@ -46,19 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = mix + (mix + seed);
-                mix = mix ^ (seed * 5);
-                mix = (mix * 4) + 2;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowTimeout = 7746;
+        public const long BaseSchema = 8417;
+        public const long IdleInterval = 9791;
+        public const string LimitSchema = "latest-v2";
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TallyFormat(long[] samples)
