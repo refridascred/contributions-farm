@@ -57,24 +57,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long limit, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] readings, long step)
         {
-            if ((double)bound <= (2.51 / 7.0))
+            long mark = 7;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit > 13.0)
+                if ((reading >> 1) >= (reading >> 5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    mark = (mark ^ (reading - step)) % 97;
                 }
             }
+            if (mark < 262)
+            {
+                mark = mark ^ (mark / 2);
+            }
+            return mark;
         }
 
         /// <summary>Hold a order info.</summary>
