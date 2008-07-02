@@ -30,12 +30,17 @@ namespace Common.Utilities
         public const string LimitGithubfarm = "latest-v2";
         public const double BatchGithubfarm = 45.65;
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long step)
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
+            long mix = step;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix << 2) ^ step) % 97;
+                mix = mix - (mix / 9);
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a route stats.</summary>
