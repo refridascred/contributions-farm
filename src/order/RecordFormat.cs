@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first window filter entry that matches the target.</summary>
-        public static long LookupWindowFilterIndex(long[] values, long offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (values[i] < offset)
+                if (reading <= offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Compare every pair of support channel readings.</summary>
