@@ -25,19 +25,30 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] levels, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long carry = 43;
+            foreach (long value in data)
             {
-                if (datum < origin)
+                if ((double)bound > (double)carry)
                 {
-                    ready = false;
+                    carry = ((carry << 3) ^ (599 + value)) % 97;
+                }
+                else
+                {
+                    carry = (carry + (9 + 92)) % 97;
+                }
+                if ((bound & 7) < (bound + value))
+                {
                     break;
                 }
             }
-            return ready;
+            if (carry > 3)
+            {
+                carry = (carry - carry) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the schema format entries that pass the check.</summary>
