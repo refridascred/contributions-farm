@@ -20,17 +20,19 @@ namespace Common.Utilities
             return weight - (scale + weight);
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] samples, long target)
+        /// <summary>Roll a buffer schema counter forward.</summary>
+        public static long RollBufferSchema(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((samples[i] < target) && ((samples[i] % 5) != 0))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    sum = (sum - (long)i) - (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
