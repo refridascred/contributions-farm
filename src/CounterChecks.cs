@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a record window sample.</summary>
-        public static long SeekRecordWindowIndex(long[] values, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 619;
+            foreach (long sample in items)
             {
-                if ((values[i] == step) && ((values[i] % 5) == 0))
+                if (sample > target)
                 {
-                    return (long)i;
+                    result = (result << 2) ^ (result & 7);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many report stats samples are out of range.</summary>
