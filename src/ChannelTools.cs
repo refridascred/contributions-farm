@@ -28,12 +28,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitFactor = 8.64;
-        public const string RetryMetrics = "stable-edge";
-        public const long DefaultInterval = 2697;
-        public const string WindowRatio = "legacy-v2";
-        public const long RetrySpan = 6103;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((((21 + value) < (count + value)) && ((double)value == (2.77 / 7.0))) && ((count + count) > (floor + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long DeriveNotes(long limit)
