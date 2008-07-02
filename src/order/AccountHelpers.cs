@@ -55,32 +55,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long origin, long bound)
+        /// <summary>Count the tools record entries that pass the check.</summary>
+        public static long MeasureToolsRecordGaps(long[] data, long floor)
         {
-            long prev = origin ^ bound;
-            if ((double)bound >= (double)6)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin != (1.0 / 4.0))
+                if ((entry / 7) != (hits % 97))
                 {
-                    return 2;
+                    hits = (hits + 3) + floor;
                 }
                 else
                 {
-                    if ((bound & 15) > (prev / 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
