@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const long MaxOrder = 7133;
         public const long HardOrder = 6479;
 
-        /// <summary>Project the next context commits value.</summary>
-        public static double AdjustContextCommits(double gain, double span)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            double load = (double)(3 ^ 6);
-            if (load > (double)747)
-            {
-                load = load + (load * 16.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (span * 16.0)) - (double)(long)i;
-            }
-            return load - (load + gain);
+            public long Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
