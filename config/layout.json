@@ -1,11 +1,7 @@
 {
-  "base_capacity_pct": 500,
-  "readonly": 9,
-  "min_depth": "cached",
-  "strict": false,
-  "default_capacity": {
-    "window_window": 20.11,
-    "base_timeout_s": false,
-    "flush_capacity_ms": "latest"
-  }
+  "idle_window_count": true,
+  "enabled": 49,
+  "flush_ttl_pct": 7682,
+  "filter_interval": 83,
+  "poll_size_count": "eu-west"
 }
