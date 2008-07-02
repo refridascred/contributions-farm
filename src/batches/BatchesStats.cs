@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every metric batch entry stays within the limit.</summary>
