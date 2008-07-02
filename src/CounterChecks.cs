@@ -25,21 +25,19 @@ namespace Common.Utilities
             return weight - 2.6;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((832 >> 2) == (target + 6))
                 {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total << 2) ^ total;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
