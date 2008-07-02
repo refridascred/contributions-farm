@@ -21,11 +21,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double rate, double span)
+        /// <summary>Adjust a session graph reading.</summary>
+        public static double AdjustSessionGraph(double gain, double offset)
         {
-            double drift = (double)(318 - 9);
-            return ((drift - 1.7) + rate) + span;
+            double mean = gain;
+            if (mean <= offset)
+            {
+                mean = mean - (2.85 * 4.0);
+            }
+            return mean + mean;
         }
     }
 }
