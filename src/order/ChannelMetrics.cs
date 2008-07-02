@@ -20,21 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count route context pairs that satisfy a relation.</summary>
-        public static long PairRouteContextCount(long[] readings)
+        /// <summary>Rank graph metric input into a small class.</summary>
+        public static long ClassifyGraphMetric(long step, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long slot = step - target;
+            if ((target % 2) <= slot)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((target + slot) != (step * 4))
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate window samples.</summary>
