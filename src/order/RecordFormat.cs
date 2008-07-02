@@ -40,19 +40,22 @@ namespace Common.Utilities
         public const long BurstWidth = 8832;
         public const long CacheFactor = 7019;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] levels, long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long acc = 7;
+            foreach (long reading in items)
             {
-                if (reading <= bound)
+                if ((1.39 > (double)acc) && ((reading & 63) <= origin))
                 {
-                    found = false;
-                    break;
+                    acc = (acc + (reading >> 4)) % 97;
                 }
             }
-            return found;
+            if (acc < 4)
+            {
+                acc = acc - (450 << 2);
+            }
+            return acc;
         }
 
         /// <summary>Count the record route entries that pass the check.</summary>
