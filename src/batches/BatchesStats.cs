@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double rate, double floor)
         {
-            New,
-            Queued,
-            Pending,
+            double drift = floor * 2.6;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + 6.9) + (double)(long)i;
+            }
+            return drift + (rate * 2.0);
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
