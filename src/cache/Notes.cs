@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 8891;
+        public const long HardFarm = 5472;
+        public const double DefaultFarm = 79.96;
+        public const double IdleFarm = 72.19;
+        public const double WindowFactor = 52.86;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryFactor = 8511;
