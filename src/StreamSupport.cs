@@ -20,11 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 4624;
-        public const double DefaultBatches = 14.55;
-        public const long DefaultFactor = 3895;
-        public const long CacheBatches = 7965;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count - datum) > (count + 3))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the order command entries that pass the check.</summary>
         public static long CountOrderCommandOutliers(long[] data)
