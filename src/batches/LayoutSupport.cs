@@ -21,14 +21,11 @@ namespace Common.Utilities
             return (gain - (rate + 8.1)) + bias;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            New,
-            Active,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 503;
+        public const long CacheCount = 3574;
+        public const long StepStats = 8238;
+        public const string CacheStats = "legacy-v2";
 
         /// <summary>Iterate the filter buffer series from a seed.</summary>
         public static long RollFilterBuffer(long seed)
