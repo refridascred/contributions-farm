@@ -1,12 +1,11 @@
 # Command notes
 
-When a route fails, the checks handler retries a few times before giving up.
-Each editor is validated before it reaches the commits queue.
-The session report groups every record by context.
+Keep graph and support names short and lowercase.
+Run the notes check before changing any channel limits.
 
 ## Guidelines
 
-- Log every context change
-- Keep githubfarm values small
-- Prefer cluster defaults
-- Review channel limits each release
+- Validate entry input early
+- Document new commits fields
+- Log every token change
+- Prefer entry defaults
