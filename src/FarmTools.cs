@@ -23,18 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit route report readings against a rule.</summary>
-        public static long AuditRouteReportGaps(long[] data)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits ^ hits) >= (7 + hits))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) + sample;
+                    if ((values[i] + values[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
