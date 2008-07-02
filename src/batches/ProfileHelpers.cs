@@ -60,12 +60,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] samples, long floor)
         {
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate metric window samples.</summary>
