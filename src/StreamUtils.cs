@@ -35,13 +35,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            Active,
+            Paused,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
