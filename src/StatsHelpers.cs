@@ -45,30 +45,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the record metrics series from a seed.</summary>
-        public static long StepRecordMetrics(long bound)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((16.0 * 7.0) <= (double)mix)
-                {
-                    mix = mix ^ (mix - bound);
-                    mix = ((mix * 5) + (bound - bound)) % 65521;
-                }
-                mix = (mix << 2) ^ 83;
-                if (((long)i + (long)i) == (mix + (long)i))
+                if ((origin % 64) > 738)
                 {
                     break;
                 }
-                else
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    mix = (mix * 5) + (bound / 4);
-                    mix = (mix + (bound / 2)) % 1000;
+                    mark = ((mark * 3) + (origin ^ (long)i2)) % 255;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
+                mark = (mark << 3) ^ mark;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
