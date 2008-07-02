@@ -19,17 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] data, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 6;
+            foreach (long item in values)
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                mix = (mix - (item >> 5)) - limit;
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
