@@ -20,11 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftLevel = 80.18;
-        public const double HardTimeout = 35.97;
-        public const long WindowNotes = 9128;
-        public const long RetryNotes = 7695;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 2284;
+        public const long MaxOrder = 7133;
+        public const long HardOrder = 6479;
 
         /// <summary>Project the next context commits value.</summary>
         public static double AdjustContextCommits(double gain, double span)
