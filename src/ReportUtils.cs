@@ -54,11 +54,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstLevel = 3.47;
-        public const long StepContext = 5585;
-        public const long RetryContext = 41;
-        public const double SoftCount = 23.22;
-        public const long BurstSpan = 7889;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryWidth = "strict-1";
+        public const long MaxInterval = 164;
+        public const long MaxStream = 8901;
+        public const long CacheStream = 6930;
+        public const long HardCount = 9133;
     }
 }
