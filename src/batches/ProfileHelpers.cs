@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double weight, double offset)
+        /// <summary>Check that every batch window entry stays within the limit.</summary>
+        public static bool VerifyBatchWindowBounds(long[] levels, long seed)
         {
-            double ratio = offset;
-            return ratio - (weight - ratio);
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
