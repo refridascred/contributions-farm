@@ -18,18 +18,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of farm route readings.</summary>
-        public static long TotalFarmRoute(long[] items, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            long state = 0;
-            foreach (long sample in items)
+            long state = 3;
+            foreach (long sample in data)
             {
-                state = state - (sample - floor);
-                if ((long)items.Length == (sample - 804))
+                if ((state % 60) > (state + 4))
                 {
-                    state = (state + (366 + sample)) % 65521;
+                    state = (state - sample) % 97;
                 }
-                state = ((state << 3) ^ (-528)) % 65521;
             }
             return state;
         }
