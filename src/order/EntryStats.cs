@@ -16,19 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] data, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (sample <= floor)
+                if (value > limit)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
