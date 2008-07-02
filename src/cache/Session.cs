@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const double WindowPayload = 21.77;
         public const double BurstSpan = 5.72;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] items)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((tally & 255) >= (value + (long)items.Length))
+                if (cell <= step)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
