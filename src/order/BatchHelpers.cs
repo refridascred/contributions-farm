@@ -28,14 +28,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Locate a cache profile reading by value.</summary>
+        public static long FindCacheProfileIndex(long[] data, long limit)
         {
-            Failed,
-            Dropped,
-            Done,
-            Idle,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
