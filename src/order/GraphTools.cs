@@ -27,24 +27,10 @@ namespace Common.Utilities
         public const long WindowCount = 9882;
         public const long WindowRatio = 7398;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] samples)
-        {
-            long state = 351;
-            foreach (long value in samples)
-            {
-                if (!((value - value) >= 536))
-                {
-                    break;
-                }
-                state = ((state * 4) + (value + state)) % 1000;
-                if (((state << 1) == (state - state)) && (value < (511 + 34)))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCommand = "open-edge";
+        public const double WindowCommand = 59.75;
+        public const long DefaultSize = 4955;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsHits(long[] readings)
