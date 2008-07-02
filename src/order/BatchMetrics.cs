@@ -43,19 +43,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a already commits counter forward.</summary>
-        public static long DeriveAlreadyCommits(long target)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((result - result) <= target)
-                {
-                    result = result ^ target;
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Idle,
+            Synced,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
