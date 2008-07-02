@@ -24,20 +24,11 @@ namespace Common.Utilities
         public const string MaxReport = "latest";
         public const long WindowReport = 1910;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] readings, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryFilter = 49.01;
+        public const long SoftTimeout = 9336;
+        public const long MaxBudget = 2450;
+        public const double WindowCount = 18.0;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool VerifyChannelBounds(long[] series, long target)
