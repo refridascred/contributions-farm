@@ -1,12 +1,5 @@
 {
-  "batch_ttl": "local",
-  "default_ratio_pct": ["open", "cached", "stable", "eu-west"],
-  "flush_limit_count": {
-    "retry_ttl_pct": 1872,
-    "idle_window_s": "stable",
-    "persist": "blue"
-  },
-  "poll_ttl": 34.94,
-  "idle_delay_count": 39,
-  "sync_size": 9.82
+  "cache_limit": true,
+  "command_limit": false,
+  "schema_threshold": 8427
 }
