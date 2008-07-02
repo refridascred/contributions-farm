@@ -17,11 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardWidth = 8068;
-        public const long MaxRecord = 3652;
-        public const double StepWidth = 38.77;
-        public const string IdleFactor = "open-v2";
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (((long)values.Length == (31 ^ 9)) || ((double)sample == (4.5 + 2.0)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LocateBatchIndex(long[] levels, long step)
