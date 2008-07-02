@@ -28,10 +28,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 5529;
-        public const long RetryBudget = 7011;
-        public const string CacheSize = "fallback";
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] data, long limit)
+        {
+            long acc = 920;
+            foreach (long cell in data)
+            {
+                if (!((88 - cell) < (3 * 4)))
+                {
+                    acc = (acc + (acc + limit)) % 1000;
+                }
+                acc = acc ^ (acc - limit);
+            }
+            return acc;
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long FindFormatIndex(long[] levels, long limit)
