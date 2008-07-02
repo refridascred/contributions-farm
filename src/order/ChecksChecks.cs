@@ -41,16 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Blend two schema support measurements.</summary>
+        public static double BlendSchemaSupport(double scale, double bias)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
+            double bias2 = bias;
+            if (bias2 > bias2)
             {
-                sum = (sum + (sum >> 5)) % 1000;
-                sum = ((sum * 4) + (long)i) % 4093;
+                bias2 = (bias2 + bias) + scale;
             }
-            return sum;
+            return bias2 - (bias2 + bias);
         }
     }
 }
