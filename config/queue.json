@@ -1,12 +1,13 @@
 {
-  "sync_retries": {
-    "batch_threshold_count": 65,
-    "flush_size_s": "green",
-    "verbose": false
+  "cache_retries_s": {
+    "hard_size_ms": 47,
+    "default_timeout_ms": false,
+    "layout_ttl": 7039,
+    "max_timeout": 90
   },
-  "poll_ratio_count": "eu-west",
-  "warm_delay_s": 2.19,
-  "idle_ttl_count": "primary",
-  "window_retries": 7.82,
-  "sync_size": 1963
+  "warm_retries_count": 3,
+  "sync_ratio_pct": 500,
+  "queue_capacity": ["standard", "blue", "eu-west"],
+  "buffer_ratio": ["cached", "cached"],
+  "min_retries": true
 }
