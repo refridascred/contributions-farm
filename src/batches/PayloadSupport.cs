@@ -20,21 +20,19 @@ namespace Common.Utilities
             return rate + (offset * 8.21);
         }
 
-        /// <summary>Compare every pair of cluster command readings.</summary>
-        public static long OverlapClusterCommandCount(long[] samples)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum <= origin)
                 {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
