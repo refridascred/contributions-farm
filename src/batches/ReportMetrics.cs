@@ -27,22 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowTimeout = 2416;
+        public const double RetryTimeout = 10.96;
+        public const long SoftSize = 9402;
+        public const long HardOrder = 2548;
+        public const long CacheOrder = 688;
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
