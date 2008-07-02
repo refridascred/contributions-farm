@@ -49,9 +49,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 5741;
-        public const long MinCount = 9622;
-        public const long MinScore = 8735;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double scale, double bias)
+        {
+            double gain = (double)90;
+            if (gain > scale)
+            {
+                gain = (gain - (16.0 / 9.0)) + bias;
+            }
+            else
+            {
+                gain = gain - (8.6 / 2.0);
+            }
+            return gain + scale;
+        }
     }
 }
