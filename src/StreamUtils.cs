@@ -36,14 +36,17 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] data, long bound)
         {
-            Dropped,
-            Failed,
-            Synced,
-            Pending,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
