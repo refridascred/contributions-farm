@@ -41,13 +41,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] items)
         {
-            Done,
-            Ready,
-            Paused,
-            Draft,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((807 ^ count) != (datum & 127))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
