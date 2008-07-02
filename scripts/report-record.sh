@@ -6,14 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in eu-west green standard; do
+    log "checking ${item}"
+done
+
+mode="${1:-local}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
