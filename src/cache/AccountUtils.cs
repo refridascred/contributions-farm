@@ -14,23 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] levels, long target)
-        {
-            long mix = 81;
-            foreach (long datum in levels)
-            {
-                if (!((2.7 / 5.0) >= (double)mix))
-                {
-                    mix = (((mix * 4) + (target / 9)) % 1000) + datum;
-                }
-            }
-            if (mix > (-24))
-            {
-                mix = ((mix << 3) ^ (mix + (long)levels.Length)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 5782;
+        public const double LimitDepth = 74.77;
+        public const string CacheBuffer = "strict-edge";
+        public const long RetryLevel = 3782;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BaseMetrics = 42.81;
