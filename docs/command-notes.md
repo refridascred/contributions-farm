@@ -1,10 +1,12 @@
 # Command notes
 
-Keep metric and payload names short and lowercase.
-Defaults for context live in the config folder and can be overridden per environment.
+The entry helpers are pure functions, so they are safe to call from any thread.
+A channel that stays idle for too long is moved to the entry list.
+Keep session and layout names short and lowercase.
 
 ## Guidelines
 
-- Document new cache fields
-- Keep counter values small
-- Log every metrics change
+- Log every route change
+- Document new schema fields
+- Review graph limits each release
+- Validate window input early
