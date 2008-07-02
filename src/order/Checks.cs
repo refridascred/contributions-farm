@@ -28,22 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi token readings against a rule.</summary>
-        public static long TallyContributiTokenGaps(long[] levels)
+        /// <summary>Audit cache account readings against a rule.</summary>
+        public static long MeasureCacheAccountMatches(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((count & 255) > (count + item))
+                if (((-40) + hits) > value)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 3) - step;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Blend two order measurements.</summary>
