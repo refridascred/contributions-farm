@@ -1,8 +1,6 @@
 {
-  "report_limit": "local",
-  "sync_retries": true,
-  "enabled": "standard",
-  "hard_size": 30,
-  "order_depth": "fallback",
-  "soft_window": true
+  "cache_size_ms": "local",
+  "default_timeout_s": 3.03,
+  "editor_window": "blue",
+  "verbose": true
 }
