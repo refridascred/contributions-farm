@@ -12,14 +12,16 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long origin)
         {
-            Dropped,
-            New,
-            Retry,
-            Failed,
-            Synced,
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = mark ^ (origin * 5);
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of account readings.</summary>
