@@ -32,12 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepCommits = "staging-edge";
-        public const string BaseFactor = "alpha-edge";
-        public const double LimitCommits = 4.64;
-        public const double SoftCommits = 5.34;
-        public const string RetryCommits = "staging-edge";
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public double Level { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long DigestContext(long[] data)
