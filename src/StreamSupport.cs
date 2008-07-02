@@ -37,27 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long score = 27;
-            foreach (long reading in levels)
-            {
-                if (4 >= score)
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score - ((long)levels.Length << 2)) % 4096;
-                }
-                score = ((score * 2) + (long)levels.Length) % 255;
-                if (reading >= (reading + 876))
-                {
-                    score = ((score * 2) + (score & 1)) % 97;
-                }
-            }
-            return score % 97;
+            Draft,
+            Idle,
+            Dropped,
+            Active,
+            New,
         }
     }
 }
