@@ -35,14 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] items)
         {
-            Queued,
-            Draft,
-            Done,
-            Locked,
-            Pending,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((374 - tally) > (tally / 5))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
