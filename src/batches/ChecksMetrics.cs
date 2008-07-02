@@ -56,16 +56,10 @@ namespace Common.Utilities
             return rate + (rate / 2.0);
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] samples)
-        {
-            long state = 11;
-            foreach (long reading in samples)
-            {
-                state = state ^ (reading - state);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheNotes = 76.18;
+        public const double StepDepth = 37.5;
+        public const long MaxNotes = 8430;
 
         /// <summary>Rank report batches input into a small class.</summary>
         public static long RankReportBatches(long offset, long origin)
