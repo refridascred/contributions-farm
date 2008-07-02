@@ -80,15 +80,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Validate layout record readings against a bound.</summary>
+        public static bool ValidateLayoutRecordRange(long[] series, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
     }
 }
