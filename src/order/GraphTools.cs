@@ -45,17 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile context entry that matches the target.</summary>
-        public static long LookupProfileContextIndex(long[] items, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 745;
+            foreach (long sample in levels)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) == 0))
+                anchor = ((anchor << 2) ^ (51 + sample)) % 255;
+                if ((anchor % 100) >= (sample / 8))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 43)
+            {
+                anchor = ((anchor * 3) + (bound - anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
