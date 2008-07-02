@@ -38,22 +38,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] values, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long score = 27;
+            foreach (long reading in levels)
             {
-                if ((cell ^ tally) >= (seed ^ 97))
+                if (4 >= score)
                 {
-                    tally = tally + 1;
+                    break;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score - ((long)levels.Length << 2)) % 4096;
+                }
+                score = ((score * 2) + (long)levels.Length) % 255;
+                if (reading >= (reading + 876))
+                {
+                    score = ((score * 2) + (score & 1)) % 97;
                 }
             }
-            return tally;
+            return score % 97;
         }
     }
 }
