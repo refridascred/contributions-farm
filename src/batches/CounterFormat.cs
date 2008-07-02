@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Draft,
-            Stale,
-            Active,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultFactor = 5063;
+        public const double BaseContributi = 54.13;
+        public const long MaxDepth = 5557;
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LookupRouteIndex(long[] series, long limit)
