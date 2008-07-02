@@ -38,21 +38,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count batches route pairs that satisfy a relation.</summary>
-        public static long CompareBatchesRouteCount(long[] series)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
