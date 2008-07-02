@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] items, long floor)
+        /// <summary>Accumulate schema batches samples.</summary>
+        public static long DigestSchemaBatches(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 8;
+            foreach (long value in samples)
             {
-                if (items[i] <= floor)
+                if ((double)value == (5.3 + 9.4))
                 {
-                    return (long)i;
+                    anchor = (anchor * 4) + anchor;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
