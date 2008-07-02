@@ -28,18 +28,21 @@ namespace Common.Utilities
         public const string SoftWindow = "latest-edge";
         public const long IdleWindow = 376;
 
-        /// <summary>Audit stats command readings against a rule.</summary>
-        public static long MeasureStatsCommandMatches(long[] series)
+        /// <summary>Compare every pair of commits order readings.</summary>
+        public static long MatchCommitsOrderCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((5 + value) > (value << 2)) && ((3 >> 2) >= seen))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a filter options.</summary>
