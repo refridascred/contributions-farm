@@ -48,11 +48,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseMetrics = 42.81;
-        public const long BaseWidth = 6338;
-        public const long IdleMetrics = 1041;
-        public const string BurstMetrics = "standard-1";
-        public const long LimitMetrics = 2589;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
