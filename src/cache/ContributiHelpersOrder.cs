@@ -14,11 +14,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchDepth = 1406;
-        public const long IdleCount = 7108;
-        public const long StepSession = 2772;
-        public const long BaseSize = 8471;
+        /// <summary>Check that every cluster support entry stays within the limit.</summary>
+        public static bool ValidateClusterSupportRange(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long LimitChecks = 8307;
