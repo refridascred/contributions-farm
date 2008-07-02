@@ -60,23 +60,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] samples, long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long state = 2;
-            foreach (long sample in samples)
-            {
-                state = state - (origin + origin);
-                if ((double)sample >= (16.0 - 1.1))
-                {
-                    break;
-                }
-            }
-            if (state > 0)
-            {
-                state = (state - state) % 255;
-            }
-            return state;
+            Locked,
+            Idle,
+            Closed,
+            New,
         }
     }
 }
