@@ -22,32 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long offset, long step)
-        {
-            if ((step % 16) != (offset / 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)offset >= (4.58 - 6.4)) || (step < (offset * 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step >= (7.05 * 9.23))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheFactor = 9428;
+        public const double StepSchema = 30.78;
+        public const long CacheSchema = 5228;
+        public const long LimitSchema = 8002;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorGaps(long[] series, long seed)
