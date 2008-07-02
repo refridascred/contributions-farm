@@ -1,5 +1,7 @@
 {
-  "retry_delay_s": 100,
-  "poll_size": 86.69,
-  "poll_depth_count": ["fallback", "blue"]
+  "notes_depth": true,
+  "batch_ttl_s": "blue",
+  "audit": 250,
+  "dry_run": "staging",
+  "verbose": 2485
 }
