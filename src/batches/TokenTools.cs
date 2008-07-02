@@ -23,16 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double ratio, double floor)
-        {
-            double bias = (ratio * 5.79) - (double)12;
-            if (bias <= (double)9)
-            {
-                bias = bias + (bias - floor);
-            }
-            return bias - floor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 3093;
+        public const double BatchCache = 1.79;
+        public const string RetryWidth = "local-edge";
 
         /// <summary>Count metrics entry pairs that satisfy a relation.</summary>
         public static long CompareMetricsEntryCount(long[] series)
