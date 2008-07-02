@@ -51,13 +51,12 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public double Owner { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            Active,
+            Dropped,
+            Pending,
         }
     }
 }
