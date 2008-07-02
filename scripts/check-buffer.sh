@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+BUFFER_LIMIT=459
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-strict}"
 case "${mode}" in
-    strict)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,5 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=431
-log "limit is ${BUFFER_LIMIT}"
+for item in primary edge stable standard; do
+    log "checking ${item}"
+done
