@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of format route entries.</summary>
-        public static long ScoreFormatRoute(long[] data, long step)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long state = -800;
-            foreach (long value in data)
-            {
-                state = state ^ (state + value);
-                state = (state ^ (step & 255)) % 255;
-            }
-            if (state < 70)
-            {
-                state = ((state * 2) + 23) % 4096;
-            }
-            return state % 97;
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
