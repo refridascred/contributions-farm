@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] items, long offset)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((seen >> 1) <= (offset % 8))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            Draft,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Accumulate layout samples.</summary>
