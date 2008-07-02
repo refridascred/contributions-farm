@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstDepth = 63.48;
-        public const long HardTimeout = 3834;
-        public const long BatchWidth = 5937;
-        public const double BaseLevel = 46.9;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((sum & 255) > (limit * 3)) || ((double)sum > (5.41 - 11.0)))
+                {
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchOutliers(long[] levels, long floor)
