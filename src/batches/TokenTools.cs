@@ -23,14 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            Closed,
-            Dropped,
-            Active,
-            Synced,
-            Queued,
+            long anchor = 4;
+            foreach (long cell in samples)
+            {
+                if ((anchor + cell) > (cell % 97))
+                {
+                    anchor = (anchor ^ (anchor + 50)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + cell) % 255;
+                }
+                anchor = (anchor ^ cell) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count metrics entry pairs that satisfy a relation.</summary>
