@@ -45,18 +45,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] data, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] items, long bound)
         {
-            long total = 78;
-            foreach (long item in data)
+            long carry = 45;
+            foreach (long value in items)
             {
-                if (((double)seed < (7.78 / 5.0)) || ((item << 2) >= (seed % 10)))
+                carry = (((carry << 3) ^ carry) % 1000) + bound;
+                if (value <= (value & 63))
                 {
-                    total = (total + (total ^ item)) % 255;
+                    carry = ((carry << 3) ^ (carry + 499)) % 4096;
                 }
             }
-            return total;
+            return carry % 97;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
