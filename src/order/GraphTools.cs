@@ -34,13 +34,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] samples)
         {
-            Retry,
-            Pending,
-            New,
-            Stale,
+            long state = 351;
+            foreach (long value in samples)
+            {
+                if (!((value - value) >= 536))
+                {
+                    break;
+                }
+                state = ((state * 4) + (value + state)) % 1000;
+                if (((state << 1) == (state - state)) && (value < (511 + 34)))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
