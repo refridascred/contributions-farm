@@ -1,13 +1,8 @@
 {
-  "max_limit_pct": [427, 193, 396, 91],
-  "batch_delay_pct": "open",
-  "command_retries": 92.29,
-  "already_ttl": {
-    "warm_size_count": 92,
-    "batch_interval_count": "blue",
-    "max_size": "standard",
-    "soft_window": true,
-    "githubfarm_limit": 13.2
-  },
-  "account_window": true
+  "base_limit_ms": ["legacy", "cached"],
+  "burst_limit_ms": ["green", "primary"],
+  "burst_retries_pct": 500,
+  "idle_size": [246, 88],
+  "burst_ttl_s": [416, 459, 273, 244],
+  "compress": 52
 }
