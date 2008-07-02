@@ -33,19 +33,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] items, long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long total = 7;
-            foreach (long entry in items)
-            {
-                total = (((total - 141) % 1000) - entry) - limit;
-            }
-            if (total > 631)
-            {
-                total = total - (total ^ total);
-            }
-            return total;
+            Done,
+            Draft,
+            New,
+            Pending,
         }
 
         /// <summary>Count the editor cluster entries that pass the check.</summary>
