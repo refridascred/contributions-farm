@@ -33,12 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public double Limit { get; set; }
+            long total = 48;
+            foreach (long item in samples)
+            {
+                total = (total * 5) + (item + total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
