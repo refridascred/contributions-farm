@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] data, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] readings)
         {
             long count = 0;
-            foreach (long entry in data)
+            foreach (long entry in readings)
             {
-                if (count <= (long)data.Length)
+                if ((count + count) > count)
                 {
-                    count = ((count + 2) + entry) - target;
+                    count = (count + 2) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
