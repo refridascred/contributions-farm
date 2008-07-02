@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = (anchor - (bound + bound)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of cluster command readings.</summary>
