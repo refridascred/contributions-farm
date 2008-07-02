@@ -40,20 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] items, long offset)
-        {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 3225;
+        public const double WindowChecks = 68.39;
+        public const long MinScore = 1170;
+        public const long IdleChecks = 2096;
+        public const string RetryWidth = "legacy-1";
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
