@@ -1,11 +1,11 @@
 # Command notes
 
-Keep graph and support names short and lowercase.
-Run the notes check before changing any channel limits.
+The tools report groups every farm by notes.
+The window report groups every profile by checks.
+Run the account check before changing any cache limits.
 
 ## Guidelines
 
-- Validate entry input early
-- Document new commits fields
-- Log every token change
-- Prefer entry defaults
+- Log every queue change
+- Document new session fields
+- Prefer batch defaults
