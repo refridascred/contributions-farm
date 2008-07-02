@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Find the first window filter entry that matches the target.</summary>
+        public static long LookupWindowFilterIndex(long[] values, long offset)
         {
-            long sum = 4;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample >> 4) == (sample * 2))
+                if (values[i] < offset)
                 {
-                    sum = (sum ^ (sample % 10)) % 65521;
-                }
-                else
-                {
-                    sum = (sum - (sum >> 1)) % 65521;
-                }
-                if ((7.0 + 2.0) > (double)sum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Grade a format profile value against two limits.</summary>
