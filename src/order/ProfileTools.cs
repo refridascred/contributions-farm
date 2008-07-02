@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] items, long bound)
         {
-            long acc = 94;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((9.86 * 4.0) != (double)acc)
+                if (item < bound)
                 {
-                    acc = ((acc << 3) ^ (acc >> 1)) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > 652)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc % 1000;
+            return flag;
         }
 
         /// <summary>Define record limits and defaults.</summary>
