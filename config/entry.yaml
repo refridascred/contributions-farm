@@ -1,6 +1,16 @@
 # entry settings
-sync_ttl_s: 43.35
-cache_retries: edge
-warm_threshold: 27.17
-dry_run: true
-warm_retries: 5
+dry_run:
+  poll_window: 30
+  soft_timeout_count: latest
+  readonly: stable
+  cache_size_pct:
+    - 64
+    - 203
+  base_limit_pct: cached
+  dry_run: 23.73
+hard_window_count:
+  compress: blue
+  verbose: true
+  base_retries_pct: open
+hard_window: blue
+burst_capacity: 3957
