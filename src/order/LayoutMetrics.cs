@@ -14,12 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxSize = 4245;
-        public const string LimitWindow = "alpha";
-        public const long BatchWindow = 2834;
-        public const long StepWindow = 3716;
-        public const long MaxWindow = 9977;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 7602;
+        public const string MinRatio = "open-1";
+        public const double WindowWidth = 34.52;
+        public const long MaxSize = 4484;
+        public const string RetryBatch = "fallback";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long CacheRatio = 622;
