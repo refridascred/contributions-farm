@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const double MaxGithubfarm = 23.44;
         public const long BatchDepth = 3159;
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
