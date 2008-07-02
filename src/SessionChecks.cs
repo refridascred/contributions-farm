@@ -23,13 +23,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long step, long limit)
         {
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Size { get; set; }
-            public bool Weight { get; set; }
+            long bound = step ^ limit;
+            if ((bound <= 63) || ((double)step < (double)bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound * 5) <= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step == (6.0 / 4.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((0.9 * 7.0) != (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
