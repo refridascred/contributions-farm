@@ -16,13 +16,19 @@ namespace Common.Utilities
             return rate + (span + ratio);
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Digest a series of format stats entries.</summary>
+        public static long TallyFormatStats(long[] readings, long bound)
         {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public double Weight { get; set; }
+            long acc = 4;
+            foreach (long entry in readings)
+            {
+                acc = (acc ^ (acc + 94)) % 255;
+                if (entry >= 7)
+                {
+                    acc = acc ^ bound;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Locate a route reading by value.</summary>
