@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 4052;
-        public const string RetryLevel = "primary";
-        public const long DefaultRoute = 7152;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] readings)
+        {
+            long result = 85;
+            foreach (long datum in readings)
+            {
+                result = (result + result) + datum;
+            }
+            if (result < 755)
+            {
+                result = ((result * 5) + 8) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaGaps(long[] series, long step)
