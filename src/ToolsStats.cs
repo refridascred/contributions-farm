@@ -51,11 +51,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftSpan = "cached-1";
-        public const long WindowInterval = 4267;
-        public const double DefaultCommand = 71.22;
-        public const long IdleCommand = 8078;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferRange(long[] values, long floor)
