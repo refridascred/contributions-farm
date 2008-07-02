@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] data, long step)
         {
-            Queued,
-            New,
-            Ready,
-            Synced,
-            Done,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (cell >= (matches * 2))
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate stats entry readings against a bound.</summary>
