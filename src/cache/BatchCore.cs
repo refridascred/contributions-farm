@@ -16,22 +16,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] values, long seed)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((double)seed >= (double)2)
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Idle,
+            Synced,
+            Active,
         }
 
         /// <summary>Count the session cache entries that pass the check.</summary>
