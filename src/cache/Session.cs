@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 8241;
-        public const double MaxChannel = 93.41;
-        public const double BaseSize = 10.98;
-        public const long LimitBudget = 6373;
-        public const string BaseChannel = "stable-v2";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "primary";
+        public const string StepCommits = "local-edge";
+        public const string BaseWidth = "standard-v2";
+        public const string SoftScore = "open-edge";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string WindowWidth = "primary";
