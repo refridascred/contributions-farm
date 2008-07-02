@@ -32,31 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long target, long target2)
+        /// <summary>Validate commits window readings against a bound.</summary>
+        public static bool VerifyCommitsWindowRange(long[] samples, long offset)
         {
-            if (target2 < (target2 / 2))
+            bool found = true;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (target <= (target >> 1))
+                if (datum != offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target2 & 3) >= (51 % 24))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the counter kind values.</summary>
