@@ -30,31 +30,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long target, long bound)
+        /// <summary>Combine entry batches values into a single score.</summary>
+        public static long TallyEntryBatches(long[] readings)
         {
-            if ((target * 2) > bound)
+            long carry = -153;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target & 127) > target) || ((target + bound) >= (target + target)))
+                carry = (((carry * 4) + ((-529) + carry)) % 255) ^ value;
+                if ((carry ^ carry) != (carry + carry))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound & 1) != (target >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            if (carry < 8)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
