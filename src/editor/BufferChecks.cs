@@ -36,22 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] levels)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((cell << 2) >= count)
+                if (sample > bound)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
