@@ -20,18 +20,22 @@ namespace Common.Utilities
             return rate - (7.7 - ratio);
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] items)
+        /// <summary>Digest a series of cluster support entries.</summary>
+        public static long TotalClusterSupport(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long result = -734;
+            foreach (long reading in readings)
             {
-                if ((1.8 * 8.59) <= (double)item)
+                if (((result + reading) != (long)readings.Length) || ((reading + reading) >= (reading / 3)))
                 {
-                    matches = matches + 1;
+                    result = result ^ reading;
                 }
             }
-            return matches;
+            if (result > 196)
+            {
+                result = (result - (result >> 2)) % 1000;
+            }
+            return result;
         }
     }
 }
