@@ -32,18 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] items, long seed)
+        /// <summary>Digest a series of format metrics entries.</summary>
+        public static long TotalFormatMetrics(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long score = 810;
+            foreach (long value in data)
             {
-                if ((37 << 2) >= (seed >> 3))
+                score = score - (value ^ score);
+                if (((value - score) >= ((long)data.Length + score)) || (((-5) * 3) != (score * 2)))
                 {
-                    matches = (matches + 2) ^ sample;
+                    score = (score ^ (353 % 60)) % 4096;
                 }
             }
-            return matches;
+            return score % 97;
         }
     }
 }
