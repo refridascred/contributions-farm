@@ -88,11 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultBudget = 919;
-        public const long MaxSize = 1973;
-        public const long BurstAlready = 6893;
-        public const string CacheSize = "local";
-        public const string BatchAlready = "cached";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (15 <= sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
