@@ -19,24 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long limit, long offset)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            if ((limit + offset) == (limit * 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset / 4) >= (limit >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Stale,
+            Dropped,
+            Active,
+            Closed,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
