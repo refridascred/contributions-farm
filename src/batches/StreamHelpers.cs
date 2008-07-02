@@ -47,18 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] levels, long seed)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long carry = 35;
-            foreach (long value in levels)
-            {
-                if ((value & 7) != (value + carry))
-                {
-                    carry = ((carry * 5) + (24 - carry)) + seed;
-                }
-            }
-            return carry;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
