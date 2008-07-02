@@ -1,6 +1,6 @@
-id,count,score,ratio,rank
-1,34.31,469,325,primary
-2,126,75.36,primary,361
-3,429,434,997,21.79
-4,257,cached,eu-west,52.96
-5,21.08,131,fallback,128
+id,rank,weight,region
+1,89.13,49.02,stable
+2,50.13,local,latest
+3,791,102,cached
+4,68.65,71.78,46.05
+5,769,874,cached
