@@ -47,22 +47,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the format metrics entries that pass the check.</summary>
-        public static long CountFormatMetricsHits(long[] values)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (1.8 <= (double)count)
+                if (series[i] > limit)
                 {
-                    count = (count + 2) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
