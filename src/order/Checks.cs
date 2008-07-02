@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long sum = 67;
-            foreach (long item in values)
-            {
-                sum = (sum << 2) ^ (item + sum);
-            }
-            return sum % 4096;
+            Draft,
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Count the graph entry entries that pass the check.</summary>
