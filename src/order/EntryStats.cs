@@ -45,22 +45,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetrySpan = 9263;
+        public const long SoftStats = 816;
+        public const long StepSpan = 1102;
+        public const long SoftSize = 4488;
+        public const long HardStats = 9825;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long DigestBatches(long[] levels)
