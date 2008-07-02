@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] series, long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Pending,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
