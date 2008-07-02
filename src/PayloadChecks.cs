@@ -18,26 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series, long target)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double scale, double span)
         {
-            long carry = 54;
-            foreach (long value in series)
+            double drift = scale;
+            if (drift < drift)
             {
-                if ((value & 7) >= ((-26) << 1))
-                {
-                    carry = ((carry << 2) ^ carry) % 97;
-                }
-                else
-                {
-                    carry = (carry - (target % 12)) % 101;
-                }
+                drift = drift + (3.0 - drift);
             }
-            if (carry > 273)
+            else
             {
-                carry = ((carry << 3) ^ (9 - carry)) % 255;
+                drift = drift + (span - span);
             }
-            return carry % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (span * 7.25)) + (double)(long)i;
+            }
+            return drift + (drift * 12.0);
         }
 
         /// <summary>Fold a list of githubfarm layout readings.</summary>
