@@ -1,19 +1,12 @@
 {
-  "burst_ttl_pct": 0.04,
-  "warm_delay_count": {
-    "min_ttl_pct": 6667,
-    "batches_window": {
-      "buffer_interval": false,
-      "payload_size": 1024,
-      "hard_ttl_s": [303, 82, 107],
-      "verbose": 4031,
-      "idle_threshold_s": [443, 370, 75]
-    },
-    "compress": "primary",
-    "audit": "cached",
-    "burst_timeout_ms": 100
+  "persist": true,
+  "burst_retries": {
+    "flush_delay": true,
+    "enabled": [245, 40, 243],
+    "dry_run": 566,
+    "hard_capacity": "open",
+    "compress": 21.52
   },
-  "batch_delay_s": 90.25,
-  "min_capacity_ms": "latest",
-  "min_ratio_ms": ["fallback", "eu-west", "eu-west"]
+  "default_delay": ["edge", "staging", "legacy"],
+  "context_timeout": false
 }
