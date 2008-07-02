@@ -50,13 +50,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
