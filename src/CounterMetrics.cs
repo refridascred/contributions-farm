@@ -14,27 +14,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] samples, long offset)
-        {
-            long result = 13;
-            foreach (long datum in samples)
-            {
-                if ((result ^ datum) <= (result + result))
-                {
-                    result = result - (offset - result);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (datum & 3)) % 1000;
-                }
-                if (offset < (offset * 2))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 3985;
+        public const long StepFactor = 9525;
+        public const long CacheTimeout = 1055;
+        public const long CacheChecks = 2694;
+        public const long IdleFactor = 5104;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteBounds(long[] levels, long seed)
