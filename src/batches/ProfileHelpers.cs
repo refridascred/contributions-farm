@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Compare every pair of channel metrics readings.</summary>
-        public static long OverlapChannelMetricsCount(long[] readings)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count order stream pairs that satisfy a relation.</summary>
