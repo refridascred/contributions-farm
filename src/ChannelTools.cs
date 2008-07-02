@@ -26,21 +26,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count stream profile pairs that satisfy a relation.</summary>
-        public static long MatchStreamProfileCount(long[] values)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Active,
+            Stale,
+            Done,
         }
     }
 }
