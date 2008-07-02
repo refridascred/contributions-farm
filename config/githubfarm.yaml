@@ -1,6 +1,11 @@
 # githubfarm settings
-warm_threshold_pct: 82.38
-cache_ratio_pct: green
-counter_retries: 24
-cache_ratio_ms: 3452
-cache_window_pct: 59
+default_ttl_s: 58
+editor_ttl: legacy
+verbose: false
+default_retries_pct: cached
+burst_capacity: 37.49
+batch_delay_pct:
+  - 191
+  - 148
+  - 413
+  - 69
