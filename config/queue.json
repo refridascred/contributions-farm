@@ -1,22 +1,5 @@
 {
-  "idle_window": 60,
-  "default_depth_s": [139, 491, 470, 329],
-  "support_window": {
-    "schema_depth": "blue",
-    "poll_depth_s": {
-      "session_retries": "local",
-      "notes_interval": true,
-      "burst_window": 68,
-      "verbose": "standard"
-    },
-    "min_window_s": "cached",
-    "base_limit": {
-      "readonly": 83.97,
-      "cache_size_s": "cached",
-      "report_retries": false,
-      "verbose": 100,
-      "retry_delay_count": 80,
-      "min_threshold": true
-    }
-  }
+  "verbose": 349,
+  "soft_ttl": 39,
+  "account_delay": "open"
 }
