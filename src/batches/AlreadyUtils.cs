@@ -36,17 +36,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] levels, long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)66;
+            if (gain <= (gain - gain))
             {
-                if ((levels[i] == limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + (ratio + gain)) + floor;
             }
-            return -1;
+            else
+            {
+                gain = gain - ratio;
+            }
+            return gain + ratio;
         }
 
         /// <summary>Hold a command info.</summary>
