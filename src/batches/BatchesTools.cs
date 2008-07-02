@@ -42,18 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token batch entries that pass the check.</summary>
-        public static long CountTokenBatchOutliers(long[] levels)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((((0.3 / 9.0) > (double)hits) && ((cell - hits) < (cell + hits))) && ((double)cell <= (9.0 / 7.0)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            New,
+            Retry,
         }
     }
 }
