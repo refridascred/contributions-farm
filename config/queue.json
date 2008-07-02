@@ -1,18 +1,6 @@
 {
-  "base_timeout": {
-    "poll_limit": {
-      "layout_size": ["latest", "primary", "strict"],
-      "base_window_pct": 95.23,
-      "strict": ["green", "primary", "primary", "primary"],
-      "notes_interval": "blue",
-      "command_threshold": 22.6
-    },
-    "min_retries": ["eu-west", "local", "edge"],
-    "payload_depth": "standard"
-  },
-  "dry_run": true,
-  "base_capacity": 29,
-  "max_size_pct": 57,
-  "cache_capacity_s": 92,
-  "default_ttl": 499
+  "route_delay": 84.67,
+  "batches_retries": ["cached", "cached", "strict", "edge"],
+  "command_retries": "cached",
+  "batches_delay": ["cached", "open", "edge", "strict"]
 }
