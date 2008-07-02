@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long total = 88;
-            foreach (long item in samples)
-            {
-                if ((item + (long)samples.Length) > total)
-                {
-                    total = (total * 2) + total;
-                }
-            }
-            return total;
+            Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
