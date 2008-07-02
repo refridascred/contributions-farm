@@ -1,25 +1,5 @@
 {
-  "verbose": {
-    "strict": 75,
-    "metric_depth": [326, 489, 119],
-    "persist": false,
-    "min_limit_pct": ["edge", "staging", "primary"],
-    "soft_depth_pct": false,
-    "audit": 26
-  },
-  "entry_limit": 8284,
-  "hard_interval_ms": {
-    "min_capacity_s": [252, 381, 328],
-    "account_size": {
-      "burst_ratio_count": [47, 357, 485, 309],
-      "poll_interval_ms": 2968,
-      "min_ratio_s": ["open", "eu-west"],
-      "batch_limit": ["standard", "standard"],
-      "dry_run": 100,
-      "min_threshold": 60
-    },
-    "hard_limit_count": ["stable", "open"]
-  },
-  "queue_interval": false,
-  "strict": ["stable", "legacy", "fallback"]
+  "sync_threshold_pct": "fallback",
+  "flush_threshold_count": 500,
+  "default_size": "legacy"
 }
