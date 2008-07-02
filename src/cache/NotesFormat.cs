@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryDepth = 8066;
-        public const string BaseLayout = "open";
-        public const string IdleBudget = "open";
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] readings)
+        {
+            long total = -535;
+            foreach (long reading in readings)
+            {
+                if ((double)58 <= (double)reading)
+                {
+                    total = (total ^ total) % 4096;
+                }
+            }
+            if (total > 2)
+            {
+                total = ((total * 2) + (total % 7)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
