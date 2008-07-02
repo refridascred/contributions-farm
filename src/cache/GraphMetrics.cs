@@ -23,19 +23,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] levels, long step)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the command kind values.</summary>
