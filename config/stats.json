@@ -1,5 +1,16 @@
 {
-  "default_delay_ms": "primary",
-  "idle_ratio_s": 250,
-  "flush_delay_s": [80, 290, 88]
+  "flush_ratio_pct": 36.28,
+  "githubfarm_delay": "green",
+  "session_ratio": 30,
+  "warm_window_count": "staging",
+  "idle_retries_pct": {
+    "flush_capacity": {
+      "max_timeout_ms": false,
+      "warm_capacity_s": 1024,
+      "verbose": 2226
+    },
+    "warm_threshold_s": false,
+    "soft_capacity": "green"
+  },
+  "burst_window_s": ["stable", "cached"]
 }
