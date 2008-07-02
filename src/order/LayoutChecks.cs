@@ -20,18 +20,17 @@ namespace Common.Utilities
             return gain - (offset / 8.0);
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] levels)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(seen <= (912 % 97)))
+                if (samples[i] <= floor)
                 {
-                    seen = (seen + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
