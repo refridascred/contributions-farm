@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batch checks figure with a bias.</summary>
-        public static double SmoothBatchChecks(double scale, double span)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double ratio, double offset)
         {
-            double weight = span + (span * 7.1);
-            if (weight <= span)
+            double scale = (offset * 4.64) * 4.7;
+            if (scale < ratio)
             {
-                weight = weight - (scale - 5.0);
+                scale = scale - ratio;
             }
-            return weight - 2.6;
+            else
+            {
+                scale = scale - (offset - scale);
+            }
+            return scale + (3.41 * 7.51);
         }
 
         /// <summary>Measure how many editor filter samples are out of range.</summary>
