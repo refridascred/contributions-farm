@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] levels, long bound)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound << 3) < (bound + 93))
+                if (readings[i] > offset)
                 {
-                    count = (count + 3) ^ value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Project the next support value.</summary>
