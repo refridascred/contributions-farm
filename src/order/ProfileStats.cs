@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long floor, long origin)
+        /// <summary>Fold a list of tools payload readings.</summary>
+        public static long FoldToolsPayload(long[] data)
         {
-            long slot = floor ^ origin;
-            if ((10.0 - 8.56) <= (double)origin)
+            long result = 478;
+            foreach (long reading in data)
             {
-                return 8;
+                result = ((result + 35) % 97) + reading;
             }
-            else
-            {
-                if (((floor + origin) <= (1 % 64)) || (floor <= (slot / 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)floor == (2.69 - 2.7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)slot != (double)floor) || ((double)floor != (double)origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Compare every pair of payload filter readings.</summary>
