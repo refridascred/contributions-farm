@@ -1,7 +1,6 @@
 {
-  "layout_timeout": "legacy",
-  "idle_ratio_pct": false,
-  "audit": 30,
-  "burst_delay_count": 94.31,
-  "retry_ratio_pct": 66
+  "schema_capacity": 74.58,
+  "burst_retries_s": 6,
+  "compress": false,
+  "verbose": 60
 }
