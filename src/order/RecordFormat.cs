@@ -44,19 +44,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((long)items.Length < (entry + entry))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseStream = 25.95;
+        public const long BatchSpan = 2025;
+        public const long DefaultDepth = 4794;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
