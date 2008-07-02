@@ -37,12 +37,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long bound, long floor)
         {
-            Locked,
-            Stale,
-            Failed,
+            if ((753 >= (bound + bound)) && ((double)bound != (7.3 / 6.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((-694) >= (bound * 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4.9 / 7.0) < (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support options.</summary>
