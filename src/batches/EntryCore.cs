@@ -14,22 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many token profile samples are out of range.</summary>
-        public static long AuditTokenProfileMatches(long[] items, long bound)
+        /// <summary>Adjust a report notes reading.</summary>
+        public static double ProjectReportNotes(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double load = bias;
+            if (load > (bias / 8.0))
             {
-                if ((cell / 4) != ((-3) >> 3))
-                {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = (load - (double)96) - ratio;
             }
-            return tally;
+            else
+            {
+                load = load + (bias + load);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (bias * 9.0);
         }
 
         /// <summary>Match up route samples.</summary>
