@@ -58,13 +58,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] levels, long target)
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count format contributi pairs that satisfy a relation.</summary>
