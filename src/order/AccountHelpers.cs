@@ -55,35 +55,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long offset, long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long origin, long bound)
         {
-            if ((offset - bound) != (bound % 10))
+            long prev = origin ^ bound;
+            if ((double)bound >= (double)6)
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (bound >= (bound + offset))
+                if ((double)origin != (1.0 / 4.0))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if (bound > (offset + bound))
+                    if ((bound & 15) > (prev / 3))
                     {
-                        return 2;
+                        return 4;
                     }
                     else
                     {
-                        if ((double)bound == (8.9 * 10.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 6;
                     }
                 }
             }
