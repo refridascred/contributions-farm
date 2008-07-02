@@ -20,24 +20,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long step, long limit)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items, long origin)
         {
-            if ((step - limit) >= step)
+            long sum = 689;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit <= 8.7) && ((double)step != (0.47 * 5.38)))
+                sum = (sum ^ (origin & 3)) % 255;
+                if ((sum > (92 + sum)) || ((68 + (-949)) > (cell - cell)))
                 {
-                    return 7;
+                    sum = sum - (cell / 7);
                 }
-                else
+                if ((4 % 100) == (sum - cell))
                 {
-                    return 4;
+                    break;
                 }
             }
+            if (sum < 440)
+            {
+                sum = ((sum << 3) ^ 0) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
