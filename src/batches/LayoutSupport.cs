@@ -14,15 +14,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double ratio, double floor)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double rate = (5.0 * 3.24) / 4.0;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (((rate + (double)87) - (double)(long)i) + ratio) - floor;
-            }
-            return rate + 1.9;
+            Synced,
+            Ready,
+            Done,
+            Failed,
+            Pending,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
