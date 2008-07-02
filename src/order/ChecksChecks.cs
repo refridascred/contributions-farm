@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] levels, long seed)
         {
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            long anchor = 1;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    anchor = (((anchor << 3) ^ (90 - entry)) % 1000) + (long)i;
+                }
+                anchor = (anchor ^ (9 & 7)) % 255;
+                if (anchor <= (820 ^ 76))
+                {
+                    anchor = (anchor ^ 365) % 97;
+                }
+            }
+            if (anchor > 94)
+            {
+                anchor = ((anchor << 2) ^ seed) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the notes kind values.</summary>
