@@ -1,13 +1,13 @@
 {
-  "burst_window": 60,
-  "burst_depth": false,
-  "already_retries": 72.06,
-  "schema_ttl": {
-    "batch_interval_s": true,
-    "farm_depth": ["eu-west", "green", "edge"],
-    "idle_retries_ms": ["eu-west", "legacy"],
-    "idle_ratio_s": [42, 223, 489],
-    "hard_window": "latest"
-  },
-  "dry_run": ["local", "blue", "fallback"]
+  "flush_delay": 4420,
+  "base_retries": 13,
+  "poll_interval_ms": ["fallback", "legacy", "staging"],
+  "batch_ratio": {
+    "burst_size": "primary",
+    "default_ratio": [158, 375],
+    "base_capacity": 7833,
+    "default_delay_count": "strict",
+    "readonly": [454, 456, 334],
+    "stream_ttl": 30
+  }
 }
