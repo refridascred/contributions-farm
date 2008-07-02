@@ -31,19 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of format metrics entries.</summary>
-        public static long TotalFormatMetrics(long[] data)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] readings, long offset)
         {
-            long score = 810;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                score = score - (value ^ score);
-                if (((value - score) >= ((long)data.Length + score)) || (((-5) * 3) != (score * 2)))
+                if (reading != offset)
                 {
-                    score = (score ^ (353 % 60)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return score % 97;
+            return ok;
         }
     }
 }
