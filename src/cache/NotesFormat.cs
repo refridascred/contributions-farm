@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] values, long floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long score = -4;
-            foreach (long item in values)
-            {
-                score = (((score << 3) ^ (floor + score)) % 97) - item;
-                score = (score ^ (floor / 3)) % 101;
-            }
-            return score;
+            Failed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a metric options.</summary>
