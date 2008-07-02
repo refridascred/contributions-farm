@@ -16,14 +16,22 @@ namespace Common.Utilities
             return ratio + (ratio - offset);
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Combine channel stats values into a single score.</summary>
+        public static long CombineChannelStats(long[] readings)
         {
-            New,
-            Synced,
-            Retry,
-            Done,
-            Stale,
+            long mark = 110;
+            foreach (long reading in readings)
+            {
+                if ((mark ^ mark) >= mark)
+                {
+                    mark = mark - ((-95) ^ mark);
+                }
+                else
+                {
+                    mark = ((mark * 5) + (mark ^ reading)) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
