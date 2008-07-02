@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] items, long bound)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long target, long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            if (((target >> 4) >= (bound ^ 47)) && ((451 >> 4) >= (target - bound)))
             {
-                if (matches < (cell * 3))
+                return 7;
+            }
+            else
+            {
+                if ((723 - target) < target)
                 {
-                    matches = (matches + 3) - bound;
+                    return 3;
+                }
+                else
+                {
+                    if ((target + 793) > bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target != (2.89 * 4.4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the checks class values.</summary>
