@@ -14,19 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (datum >= (datum - datum))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 82.67;
+        public const string MinOrder = "standard";
+        public const long DefaultOrder = 6357;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double BatchCommand = 55.9;
