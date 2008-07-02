@@ -40,10 +40,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchFactor = 26.48;
-        public const long BatchChannel = 5006;
-        public const string LimitRatio = "open-edge";
+        /// <summary>Roll a already commits counter forward.</summary>
+        public static long DeriveAlreadyCommits(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((result - result) <= target)
+                {
+                    result = result ^ target;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheBuffer = 6912;
