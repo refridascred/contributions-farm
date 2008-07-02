@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next schema commits value.</summary>
-        public static double SmoothSchemaCommits(double scale, double floor)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double weight = 0.4;
-            if (weight >= (weight / 5.0))
-            {
-                weight = weight - 6.16;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + floor) + (double)(long)i;
-            }
-            return weight - (scale + weight);
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
