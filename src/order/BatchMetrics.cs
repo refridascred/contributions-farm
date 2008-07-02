@@ -79,20 +79,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Scale a route entry figure with a bias.</summary>
+        public static double SmoothRouteEntry(double ratio, double bias)
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
+            double gain = (double)(87 - 7);
+            if (gain <= gain)
             {
-                if ((total < floor) && ((double)floor != (double)total))
-                {
-                    total = ((total * 5) + (floor - 95)) % 1000;
-                }
-                total = (total ^ ((long)i - total)) % 1000;
-                total = ((total * 3) + (long)i) % 65521;
+                gain = (gain - (2.0 / 8.0)) + ratio;
             }
-            return total;
+            else
+            {
+                gain = gain + (double)8;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (gain - gain)) - (double)(long)i;
+            }
+            return gain + (bias - gain);
         }
     }
 }
