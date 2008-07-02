@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two stream editor measurements.</summary>
-        public static double ScaleStreamEditor(double scale, double offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] data, long origin)
         {
-            double drift = (double)(2 + 89);
-            if (drift > scale)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift - (double)255) - offset;
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (double)1;
-            }
-            return drift + (double)98;
+            return -1;
         }
 
         /// <summary>Accumulate channel counter samples.</summary>
