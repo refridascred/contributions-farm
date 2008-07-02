@@ -1,9 +1,7 @@
 # support settings
-checks_limit: false
-hard_ttl: true
-sync_capacity: primary
-poll_limit_ms: 2899
-verbose: staging
-strict:
-  - 401
-  - 186
+sync_capacity_s: false
+base_limit:
+  - 422
+  - 431
+  - 455
+hard_capacity_ms: stable
