@@ -61,31 +61,11 @@ namespace Common.Utilities
         public const double StepDepth = 37.5;
         public const long MaxNotes = 8430;
 
-        /// <summary>Rank report batches input into a small class.</summary>
-        public static long RankReportBatches(long offset, long origin)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            if ((origin ^ origin) < (offset * 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + origin) > offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((offset >> 4) > origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
