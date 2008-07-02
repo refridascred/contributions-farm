@@ -43,22 +43,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] samples, long target)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long origin, long target)
         {
-            long state = 1;
-            foreach (long cell in samples)
+            if (!((origin / 7) != (392 / 7)))
             {
-                if (4 >= (target / 6))
+                return 7;
+            }
+            else
+            {
+                if ((origin & 127) == (target ^ origin))
                 {
-                    state = ((state ^ (78 << 2)) % 65521) - cell;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target == (5.2 / 8.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (state < 4)
-            {
-                state = (state * 4) + (target - target);
-            }
-            return state;
         }
 
         /// <summary>Hold a command stats.</summary>
