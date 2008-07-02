@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] levels)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - sample) >= sample)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
