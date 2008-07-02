@@ -1,10 +1,7 @@
-id,owner,region,score
-1,83.05,eu-west,335
-2,latest,544,27.21
-3,978,fallback,772
-4,905,blue,0
-5,395,326,primary
-6,221,green,128
-7,81.9,776,662
-8,656,edge,stable
-9,staging,241,50.07
+id,ratio,label,region,state
+1,eu-west,948,278,40.06
+2,210,cached,993,369
+3,325,standard,12.28,21.1
+4,blue,86.82,77.15,928
+5,open,latest,989,507
+6,821,41.63,989,primary
