@@ -35,12 +35,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
             Ready,
-            Draft,
-            Idle,
+            Queued,
+            Stale,
+            Done,
+            Paused,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
