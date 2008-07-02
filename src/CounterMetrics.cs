@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double scale, double bias)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double bias2 = (double)(5 - 578);
-            if (bias2 > (bias * 6.0))
-            {
-                bias2 = (bias2 + (bias / 3.0)) - scale;
-            }
-            return bias2 + (double)3;
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
