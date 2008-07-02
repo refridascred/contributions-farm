@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double rate, double offset)
         {
-            Active,
-            Closed,
-            New,
+            double scale = rate;
+            if (scale < (7.99 * 12.0))
+            {
+                scale = scale + (offset - scale);
+            }
+            return scale - 1.84;
         }
 
         /// <summary>Match up notes samples.</summary>
