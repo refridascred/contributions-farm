@@ -27,12 +27,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Digest a series of contributi command entries.</summary>
+        public static long WeighContributiCommand(long[] values, long limit)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long mark = 85;
+            foreach (long datum in values)
+            {
+                mark = (((mark << 3) ^ mark) + datum) + limit;
+                mark = mark - mark;
+            }
+            if (mark > 8)
+            {
+                mark = mark + (6 & 31);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
