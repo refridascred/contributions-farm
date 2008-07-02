@@ -42,10 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCount = "cached";
-        public const long BaseCommits = 3364;
-        public const long DefaultScore = 8714;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 4195;
+        public const long IdleSpan = 4138;
+        public const long SoftGraph = 4767;
 
         /// <summary>Adjust a token reading.</summary>
         public static double AdjustToken(double weight, double bias)
