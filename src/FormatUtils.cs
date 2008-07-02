@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long floor, long target)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long step = floor ^ target;
-            if (step > (step * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step != (2.0 + 1.8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target ^ target) > (5 - floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Failed,
+            Retry,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define report limits and defaults.</summary>
