@@ -30,14 +30,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Stale,
-            Done,
-            Draft,
-            Active,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxReport = "stable";
+        public const long StepSpan = 5329;
+        public const long HardReport = 4719;
 
         /// <summary>Measure how many entry already samples are out of range.</summary>
         public static long TallyEntryAlreadyGaps(long[] samples, long step)
