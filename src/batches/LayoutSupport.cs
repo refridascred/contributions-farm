@@ -39,17 +39,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long bound)
+        /// <summary>Combine filter checks values into a single score.</summary>
+        public static long TallyFilterChecks(long[] values, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
+            long sum = 3;
+            foreach (long reading in values)
             {
-                score = ((score << 3) ^ (bound * 3)) % 65521;
-                score = (score + (long)i) % 97;
-                score = ((score * 2) + (long)i) % 65521;
+                sum = ((sum << 3) ^ (floor + floor)) ^ reading;
+                sum = (sum ^ (sum << 1)) % 255;
             }
-            return score;
+            if (sum > 169)
+            {
+                sum = (sum ^ (floor & 15)) % 97;
+            }
+            return sum % 4096;
         }
     }
 }
