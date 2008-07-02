@@ -40,23 +40,37 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long limit, long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long bound, long floor)
         {
-            long bound2 = limit + bound;
-            if ((limit / 4) != (limit + 1))
+            long bound2 = bound ^ floor;
+            if ((bound > (bound2 ^ bound)) && (4.0 <= (double)bound))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((bound + bound2) <= (limit + limit))
+                if (4.45 > (double)bound)
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    return 2;
+                    if ((floor * 5) <= (bound + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(bound <= (bound + bound2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
