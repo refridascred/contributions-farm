@@ -63,11 +63,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] readings)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell > tally) || (tally <= (92 << 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
