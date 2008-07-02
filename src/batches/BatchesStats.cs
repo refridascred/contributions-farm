@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] values, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                sum = ((sum << 2) ^ sum) % 97;
-                if (!(((9.0 - 0.39) != (double)sum) || (((long)i >> 4) <= sum)))
+                if (reading < offset)
                 {
-                    sum = (sum * 2) + (sum / 5);
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Hold a counter record.</summary>
