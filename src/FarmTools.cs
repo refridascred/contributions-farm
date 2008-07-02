@@ -29,18 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] samples, long bound)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((8 - bound) >= seen)
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
