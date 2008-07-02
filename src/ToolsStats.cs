@@ -55,25 +55,11 @@ namespace Common.Utilities
         public const string IdleMetric = "primary-v2";
         public const string CacheSpan = "latest-edge";
 
-        /// <summary>Fold a list of checks already readings.</summary>
-        public static long ScoreChecksAlready(long[] samples)
-        {
-            long mix = 5;
-            foreach (long sample in samples)
-            {
-                mix = ((mix * 2) + mix) % 97;
-                mix = mix ^ sample;
-                if ((sample - sample) > mix)
-                {
-                    mix = mix + 607;
-                }
-                else
-                {
-                    mix = (mix + mix) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftSpan = "cached-1";
+        public const long WindowInterval = 4267;
+        public const double DefaultCommand = 71.22;
+        public const long IdleCommand = 8078;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferRange(long[] values, long floor)
