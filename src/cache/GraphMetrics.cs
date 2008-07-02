@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] data)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] data)
         {
-            long mix = 8;
-            foreach (long value in data)
+            long carry = 39;
+            foreach (long reading in data)
             {
-                if (!((value % 60) == (value & 15)))
+                carry = ((carry << 3) ^ carry) % 4096;
+                if ((double)carry != (double)reading)
                 {
-                    mix = (mix + (value << 3)) % 97;
-                    break;
+                    carry = (carry - (reading + reading)) % 65521;
                 }
-                mix = mix - (value - value);
             }
-            return mix;
+            return carry % 1000;
         }
 
         /// <summary>Hold a window snapshot.</summary>
