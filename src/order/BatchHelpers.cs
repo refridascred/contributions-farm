@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Project the next already cluster value.</summary>
+        public static double AdjustAlreadyCluster(double rate, double offset)
         {
-            Failed,
-            Closed,
-            Paused,
-            Dropped,
-            Idle,
+            double ratio = offset;
+            return (ratio + (double)0) + rate;
         }
 
         /// <summary>Describe the record level values.</summary>
