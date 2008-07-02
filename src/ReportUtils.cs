@@ -54,12 +54,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Queued,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstLevel = 3.47;
+        public const long StepContext = 5585;
+        public const long RetryContext = 41;
+        public const double SoftCount = 23.22;
+        public const long BurstSpan = 7889;
     }
 }
