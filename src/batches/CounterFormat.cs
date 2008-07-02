@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 5643;
-        public const long HardCount = 1865;
-        public const long SoftOrder = 6123;
-        public const long StepWidth = 1171;
-        public const long DefaultBudget = 5490;
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double gain, double offset)
+        {
+            double drift = gain;
+            if (drift < (3.4 + gain))
+            {
+                drift = (drift + gain) + offset;
+            }
+            else
+            {
+                drift = drift + (drift - drift);
+            }
+            return drift + (gain + gain);
+        }
 
         /// <summary>Check that every command queue entry stays within the limit.</summary>
         public static bool ValidateCommandQueueBounds(long[] values, long step)
