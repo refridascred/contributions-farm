@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            Synced,
+            Closed,
+            New,
+            Dropped,
         }
 
         /// <summary>Accumulate farm samples.</summary>
