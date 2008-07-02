@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long target, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] readings, long origin)
         {
-            if (((limit + 77) < 378) || ((4.8 - 9.31) < (1.6 / 3.0)))
+            long state = 9;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 2) < limit)
+                if ((state / 8) < (8 * 3))
                 {
-                    return 3;
+                    state = (((state * 3) + (200 % 7)) ^ datum) + origin;
                 }
                 else
                 {
-                    return 1;
+                    state = (state - (state << 2)) % 65521;
                 }
             }
+            if (state < 52)
+            {
+                state = (state ^ (state * 5)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the format status values.</summary>
