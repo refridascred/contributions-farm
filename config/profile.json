@@ -1,12 +1,7 @@
 {
-  "flush_threshold_pct": 1420,
-  "base_limit_ms": "latest",
-  "burst_ratio_count": ["fallback", "latest"],
-  "audit": {
-    "dry_run": 41.48,
-    "warm_delay_ms": 11.44,
-    "token_limit": [63, 142, 143, 50],
-    "flush_window": false,
-    "enabled": 2470
-  }
+  "default_window_pct": "latest",
+  "warm_size_s": 73.97,
+  "soft_capacity": 2611,
+  "strict": 2.38,
+  "checks_threshold": false
 }
