@@ -25,19 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double gain, double span)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] series, long limit)
         {
-            double gain2 = gain;
-            if (gain2 < (4.7 * 3.0))
+            long count = 0;
+            foreach (long item in series)
             {
-                gain2 = gain2 - gain;
+                if (count < (count - count))
+                {
+                    count = ((count + 3) + item) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + span) + (double)(long)i;
-            }
-            return gain2 - gain2;
+            return count;
         }
 
         /// <summary>Fold a list of account readings.</summary>
