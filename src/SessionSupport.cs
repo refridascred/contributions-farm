@@ -35,32 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long step, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long gap = step - limit;
-            if ((step << 3) <= gap)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step * 5) < (948 + gap))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit % 7) != (step - limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Stale,
+            Synced,
+            Retry,
+            Active,
         }
     }
 }
