@@ -60,13 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] data, long seed)
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long total = 78;
+            foreach (long item in data)
+            {
+                if (((double)seed < (7.78 / 5.0)) || ((item << 2) >= (seed % 10)))
+                {
+                    total = (total + (total ^ item)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
