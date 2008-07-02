@@ -18,12 +18,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Project the next metrics notes value.</summary>
+        public static double ProjectMetricsNotes(double ratio, double floor)
         {
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
+            double drift = (floor - floor) + (double)525;
+            if (drift <= (drift + 19.0))
+            {
+                drift = (drift + 8.2) - ratio;
+            }
+            else
+            {
+                drift = drift - 9.48;
+            }
+            return drift - (drift * 5.0);
         }
     }
 }
