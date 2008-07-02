@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] levels, long floor)
-        {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardLevel = 337;
+        public const string StepFilter = "cached-edge";
+        public const long MaxFactor = 7080;
 
         /// <summary>Look up the position of a token metrics sample.</summary>
         public static long LocateTokenMetricsIndex(long[] items, long offset)
