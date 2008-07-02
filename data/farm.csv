@@ -1,9 +1,7 @@
-id,token,weight,state
-1,764,564,403
-2,977,754,93.25
-3,standard,52.41,32.62
-4,2.98,legacy,50.5
-5,78.31,206,891
-6,44.55,877,676
-7,941,907,17.36
-8,83.19,67.47,standard
+id,weight,label,count
+1,edge,open,659
+2,cached,714,49.97
+3,strict,28.93,942
+4,726,blue,93
+5,legacy,fallback,388
+6,94.97,edge,49.81
