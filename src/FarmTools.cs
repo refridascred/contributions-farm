@@ -21,14 +21,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Stale,
-            Ready,
-            New,
-            Dropped,
-            Idle,
+            Queued,
+            Failed,
+            Closed,
         }
     }
 }
