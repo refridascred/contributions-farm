@@ -28,18 +28,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the metric queue entries that pass the check.</summary>
-        public static long TallyMetricQueueOutliers(long[] items)
+        /// <summary>Derive the next githubfarm already value from a seed.</summary>
+        public static long StepGithubfarmAlready(long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((tally - (-75)) >= tally)
+                anchor = (anchor ^ anchor) % 101;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    tally = (tally + 1) - item;
+                    anchor = (((anchor << 3) ^ (72 >> 4)) % 255) ^ (long)i2;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
     }
 }
