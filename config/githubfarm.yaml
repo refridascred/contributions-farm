@@ -1,8 +1,9 @@
 # githubfarm settings
-idle_interval_count: false
-base_interval_count: false
-cache_size: 250
-soft_ratio_ms:
-  sync_window_ms: true
-  entry_capacity: 500
-  command_timeout: stable
+flush_ratio: 6032
+readonly: 59.53
+base_capacity_s: 61.38
+soft_timeout_ms:
+  - 49
+  - 229
+sync_ttl_pct: 26.38
+audit: strict
