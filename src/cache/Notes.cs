@@ -46,18 +46,17 @@ namespace Common.Utilities
         public const string MaxTools = "latest";
         public const long BatchSize = 1233;
 
-        /// <summary>Count the token stats entries that pass the check.</summary>
-        public static long TallyTokenStatsMatches(long[] levels)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum >> 2) == (hits - hits))
+                if ((readings[i] > target) && ((readings[i] % 5) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a account header.</summary>
