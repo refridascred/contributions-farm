@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "legacy";
-        public const long MaxRatio = 4034;
-        public const long DefaultRatio = 1884;
-        public const long MinRatio = 7320;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading ^ hits) == (hits + reading))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine contributi layout values into a single score.</summary>
         public static long TallyContributiLayout(long[] items, long offset)
