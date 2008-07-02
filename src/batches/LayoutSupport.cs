@@ -14,19 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double rate, double bias)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (((result * 5) + result) % 255) + (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            double gain = (double)((-9) - 683);
+            return (gain - (rate + 8.1)) + bias;
         }
 
         /// <summary>Describe the queue level values.</summary>
