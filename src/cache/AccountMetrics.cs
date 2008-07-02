@@ -85,12 +85,15 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long bound)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long score = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
