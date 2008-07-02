@@ -36,15 +36,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double bias, double bias2)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long limit, long bound)
         {
-            double scale = (bias2 * 20.0) * 2.2;
-            for (int i = 0; i < 4; i++)
+            long next = limit + bound;
+            if ((bound ^ limit) <= 213)
             {
-                scale = ((scale - bias2) - (double)(long)i) - bias;
+                return 8;
             }
-            return scale + (double)89;
+            else
+            {
+                if ((14.0 / 6.0) == (double)next)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
