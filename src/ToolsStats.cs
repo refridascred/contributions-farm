@@ -67,13 +67,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Stale,
-            Done,
-            Active,
-            Ready,
+            public double Label { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
