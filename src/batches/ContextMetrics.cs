@@ -44,19 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] levels, long origin)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the account status values.</summary>
