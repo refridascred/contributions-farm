@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long MinCluster = 9064;
         public const long MaxRatio = 7832;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] readings, long origin)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate commits token readings against a bound.</summary>
