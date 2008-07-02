@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] samples, long bound)
         {
-            Draft,
-            Dropped,
-            Synced,
+            long sum = 191;
+            foreach (long reading in samples)
+            {
+                sum = (((sum - (sum % 8)) % 255) + reading) + bound;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate layout samples.</summary>
