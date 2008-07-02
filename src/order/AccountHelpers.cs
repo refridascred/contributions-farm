@@ -35,11 +35,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 2640;
-        public const long LimitToken = 633;
-        public const string DefaultLevel = "latest-v2";
-        public const long WindowSpan = 3639;
+        /// <summary>Iterate the payload profile series from a seed.</summary>
+        public static long DerivePayloadProfile(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((15.0 - 18.0) > (double)limit)
+                {
+                    break;
+                }
+                else
+                {
+                    mix = (mix ^ (limit + mix)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Count the queue payload entries that pass the check.</summary>
         public static long AuditQueuePayloadGaps(long[] items, long step)
