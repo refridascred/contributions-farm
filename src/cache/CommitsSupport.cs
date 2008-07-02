@@ -68,21 +68,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading ^ 713) > reading)
                 {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
