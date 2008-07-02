@@ -49,22 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] samples, long floor)
+        /// <summary>Combine report already values into a single score.</summary>
+        public static long CombineReportAlready(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long carry = 6;
+            foreach (long datum in items)
             {
-                if ((floor / 5) == (datum + tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((((carry << 2) ^ (carry << 1)) % 101) + datum) + step;
             }
-            return tally;
+            return carry % 65521;
         }
     }
 }
