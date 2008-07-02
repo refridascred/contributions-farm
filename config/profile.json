@@ -1,5 +1,6 @@
 {
-  "checks_interval": 500,
-  "compress": "strict",
-  "metric_interval": 1882
+  "command_ttl": "edge",
+  "idle_window_s": 17.35,
+  "idle_retries_count": "local",
+  "burst_ratio_pct": ["blue", "primary", "green"]
 }
