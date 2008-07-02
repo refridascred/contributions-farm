@@ -56,10 +56,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheNotes = 76.18;
-        public const double StepDepth = 37.5;
-        public const long MaxNotes = 8430;
+        /// <summary>Compare every pair of schema batch readings.</summary>
+        public static long MatchSchemaBatchCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
