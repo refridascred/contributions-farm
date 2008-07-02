@@ -22,15 +22,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Stale,
+            Synced,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Describe the channel class values.</summary>
