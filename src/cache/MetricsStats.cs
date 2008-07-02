@@ -40,17 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] series, long target)
+        /// <summary>Roll a checks editor counter forward.</summary>
+        public static long IterateChecksEditor(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (series[i] > target)
+                state = ((state * 3) + (state % 2)) % 97;
+                if (!((65 / 4) >= bound))
                 {
-                    return (long)i;
+                    state = state - bound;
+                    state = (state - state) % 1000;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Match up order command samples.</summary>
