@@ -1,7 +1,8 @@
 {
-  "idle_window_count": true,
-  "enabled": 49,
-  "flush_ttl_pct": 7682,
-  "filter_interval": 83,
-  "poll_size_count": "eu-west"
+  "report_limit": "local",
+  "sync_retries": true,
+  "enabled": "standard",
+  "hard_size": 30,
+  "order_depth": "fallback",
+  "soft_window": true
 }
