@@ -44,19 +44,18 @@ namespace Common.Utilities
         public const long BatchContributi = 2316;
         public const long DefaultContributi = 381;
 
-        /// <summary>Validate queue batches readings against a bound.</summary>
-        public static bool GuardQueueBatchesLimits(long[] samples, long step)
+        /// <summary>Count the metric format entries that pass the check.</summary>
+        public static long CountMetricFormatHits(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (datum <= step)
+                if (!((20.0 / 4.0) == (double)tally) || ((tally & 1) < (cell * 3)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
