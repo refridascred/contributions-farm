@@ -16,20 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of contributi command entries.</summary>
-        public static long WeighContributiCommand(long[] values, long limit)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long step)
         {
-            long mark = 85;
-            foreach (long datum in values)
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                mark = (((mark << 3) ^ mark) + datum) + limit;
-                mark = mark - mark;
+                if ((step & 7) > mark)
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            if (mark > 8)
-            {
-                mark = mark + (6 & 31);
-            }
-            return mark % 1000;
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
