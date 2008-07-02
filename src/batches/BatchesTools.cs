@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 296;
+        public const string StepSupport = "cached-1";
+        public const long SoftFactor = 2095;
+        public const string SoftInterval = "local";
+        public const long IdleSupport = 9125;
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long PairChannelCount(long[] values)
