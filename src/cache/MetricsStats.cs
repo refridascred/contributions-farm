@@ -40,12 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] series, long target)
         {
-            Synced,
-            Closed,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the record order entries that pass the check.</summary>
