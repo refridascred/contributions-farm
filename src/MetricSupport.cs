@@ -30,15 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] data, long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            long result = 5;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result ^ value) % 4096) - origin;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
