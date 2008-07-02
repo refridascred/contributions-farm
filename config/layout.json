@@ -1,16 +1,13 @@
 {
-  "default_capacity": 7703,
-  "cache_retries_ms": 12.35,
-  "audit": {
-    "retry_interval_count": 88.2,
-    "default_retries_s": 100,
-    "entry_timeout": false
+  "max_limit_pct": [427, 193, 396, 91],
+  "batch_delay_pct": "open",
+  "command_retries": 92.29,
+  "already_ttl": {
+    "warm_size_count": 92,
+    "batch_interval_count": "blue",
+    "max_size": "standard",
+    "soft_window": true,
+    "githubfarm_limit": 13.2
   },
-  "batch_timeout": [338, 486, 53],
-  "sync_retries_count": "cached",
-  "retry_window": {
-    "soft_capacity": 100,
-    "stats_retries": 64.95,
-    "flush_depth": 1.64
-  }
+  "account_window": true
 }
