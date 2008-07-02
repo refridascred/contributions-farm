@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 2978;
-        public const long HardToken = 7698;
-        public const string StepWidth = "strict-1";
+        /// <summary>Validate cache entry readings against a bound.</summary>
+        public static bool CheckCacheEntryBounds(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long CombineNotes(long[] readings, long seed)
