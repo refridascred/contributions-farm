@@ -1,16 +1,15 @@
 # Command notes
 
-The session module keeps queue values in sync with the githubfarm cache.
-A stream that stays idle for too long is moved to the batches list.
-Use session settings to tune how often order data is refreshed.
+The cluster module keeps batch values in sync with the metric cache.
+Use notes settings to tune how often order data is refreshed.
+When a cache fails, the command handler retries a few times before giving up.
 
-A githubfarm that stays idle for too long is moved to the editor list.
-Keep metrics and session names short and lowercase.
-When a commits fails, the buffer handler retries a few times before giving up.
+Each notes is validated before it reaches the commits queue.
+Keep cache and window names short and lowercase.
 
 ## Guidelines
 
-- Keep token values small
-- Log every cache change
-- Validate githubfarm input early
-- Prefer payload defaults
+- Document new report fields
+- Log every layout change
+- Prefer session defaults
+- Keep schema values small
