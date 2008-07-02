@@ -37,19 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a record tools figure with a bias.</summary>
-        public static double BlendRecordTools(double bias, double span)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] values, long floor)
         {
-            double load = (double)((-95) + 264);
-            if (load <= span)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                load = load + bias;
+                if (entry >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (bias / 8.0)) + (double)(long)i;
-            }
-            return load - (5.3 + load);
+            return ok;
         }
     }
 }
