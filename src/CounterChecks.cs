@@ -70,15 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Idle,
-            Active,
-            Locked,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 8469;
+        public const double IdleCache = 47.03;
+        public const long HardRatio = 8241;
+        public const long MaxCache = 4308;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
