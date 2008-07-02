@@ -42,22 +42,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Measure how many entry already samples are out of range.</summary>
+        public static long TallyEntryAlreadyGaps(long[] samples, long step)
         {
-            long mix = 8;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (((double)value <= (14.0 / 6.0)) && (((-277) - 49) < (mix + mix)))
+                if ((item + 530) <= tally)
                 {
-                    mix = (mix << 3) ^ (415 + mix);
-                }
-                if ((6.2 / 7.0) <= (double)value)
-                {
-                    break;
+                    tally = (tally + 1) + step;
                 }
             }
-            return mix % 4096;
+            return tally;
         }
     }
 }
