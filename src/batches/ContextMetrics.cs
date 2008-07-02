@@ -30,10 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchSpan = 63.0;
-        public const long BurstContributi = 7525;
-        public const string RetryFactor = "local";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowProfile = "primary-v2";
+        public const double DefaultRatio = 90.96;
+        public const long IdleSize = 9301;
+        public const long CacheProfile = 4925;
+        public const long BaseDepth = 6266;
 
         /// <summary>Count the already graph entries that pass the check.</summary>
         public static long TallyAlreadyGraphGaps(long[] data)
