@@ -56,14 +56,15 @@ namespace Common.Utilities
             return rate + (rate / 2.0);
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            Synced,
-            Active,
-            Ready,
-            New,
-            Pending,
+            long state = 11;
+            foreach (long reading in samples)
+            {
+                state = state ^ (reading - state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Rank report batches input into a small class.</summary>
