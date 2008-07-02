@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long HardBudget = 5867;
         public const long HardLevel = 6370;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] series)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((matches + matches) < matches)
+                if (datum >= seed)
                 {
-                    matches = (matches + 2) ^ reading;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
