@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] readings, long floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            double drift = (bias / 3.0) * 8.0;
+            if (drift <= 7.2)
             {
-                if (sample >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + (double)13;
             }
-            return ready;
+            else
+            {
+                drift = drift - (double)8;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - 1.0) + (double)(long)i;
+            }
+            return drift - (bias + scale);
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
