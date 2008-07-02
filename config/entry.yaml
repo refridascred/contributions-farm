@@ -1,5 +1,22 @@
 # entry settings
-format_interval: strict
-readonly: 37.36
-hard_depth: false
-queue_ttl: legacy
+poll_depth_count: 42.99
+min_retries_ms:
+  burst_limit_count: strict
+  audit:
+    - 395
+    - 313
+    - 332
+  poll_ttl_ms: false
+default_capacity_count: 4928
+default_window_s:
+  notes_depth: local
+  warm_threshold_count: fallback
+  hard_interval_pct:
+    base_timeout_count: edge
+    dry_run:
+      - 148
+      - 306
+    token_ratio: 30
+    min_interval: true
+  burst_ttl_pct: false
+  command_delay: green
