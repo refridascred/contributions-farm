@@ -24,12 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double rate, double span)
         {
-            Draft,
-            Active,
-            Idle,
+            double rate2 = rate;
+            if (rate2 <= rate)
+            {
+                rate2 = rate2 + 2.42;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 + span) + (double)(long)i;
+            }
+            return rate2 - (span / 8.0);
         }
 
         /// <summary>Describe the route state values.</summary>
