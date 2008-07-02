@@ -16,24 +16,23 @@ namespace Common.Utilities
             return rate + (span + ratio);
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Accumulate report batches samples.</summary>
+        public static long TotalReportBatches(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
+            long mix = 5;
+            foreach (long value in data)
             {
-                if ((floor - result) >= ((long)i * 2))
+                if ((15.0 - 7.8) == (double)mix)
                 {
-                    result = result ^ ((long)i + (long)i);
-                    break;
+                    mix = (mix - (value << 3)) % 65521;
                 }
-                if ((floor >> 4) < ((long)i + floor))
-                {
-                    result = (result ^ (floor / 3)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 4093;
+                mix = (mix ^ (value * 2)) % 97;
             }
-            return result;
+            if (mix > (-724))
+            {
+                mix = (mix * 2) + mix;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Project the next account value.</summary>
