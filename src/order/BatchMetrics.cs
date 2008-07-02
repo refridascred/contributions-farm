@@ -54,12 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double gain, double span)
         {
-            Pending,
-            Queued,
-            Paused,
+            double mean = (span / 3.0) / 7.0;
+            if (mean >= mean)
+            {
+                mean = mean - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (gain * 5.1)) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Match up stream samples.</summary>
