@@ -22,11 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public long Score { get; set; }
-            public bool Owner { get; set; }
+            Closed,
+            Pending,
+            Failed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a tools entry.</summary>
