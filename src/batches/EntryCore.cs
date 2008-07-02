@@ -14,17 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a stream queue reading by value.</summary>
-        public static long LookupStreamQueueIndex(long[] series, long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
