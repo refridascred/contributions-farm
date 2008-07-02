@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const long IdleSession = 7128;
         public const long BatchFactor = 6533;
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double ratio, double offset)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            double ratio2 = (double)(0 ^ 77);
-            return (ratio2 - (ratio2 - offset)) + ratio;
+            double bias = weight + offset;
+            if (bias > bias)
+            {
+                bias = bias + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + (offset + 9.0);
         }
     }
 }
