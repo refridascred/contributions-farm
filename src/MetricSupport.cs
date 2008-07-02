@@ -17,14 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] values, long limit)
         {
-            Dropped,
-            Locked,
-            Done,
-            New,
-            Closed,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((limit + seen) >= (seen + 2))
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many filter queue samples are out of range.</summary>
