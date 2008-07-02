@@ -1,5 +1,6 @@
 {
-  "cache_threshold": 50,
-  "account_ratio": 68.63,
-  "readonly": ["legacy", "stable", "standard"]
+  "cache_capacity": true,
+  "min_ttl_count": 3282,
+  "audit": true,
+  "poll_size_s": 16
 }
