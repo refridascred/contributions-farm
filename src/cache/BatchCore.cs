@@ -14,12 +14,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 3225;
-        public const double WindowChecks = 68.39;
-        public const long MinScore = 1170;
-        public const long IdleChecks = 2096;
-        public const string RetryWidth = "legacy-1";
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Failed,
+            Pending,
+            Dropped,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
