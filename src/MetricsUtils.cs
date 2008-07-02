@@ -67,11 +67,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleRatio = 4768;
-        public const long BatchSupport = 5720;
-        public const double SoftSupport = 58.08;
-        public const string BurstFactor = "alpha-edge";
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] readings)
+        {
+            long acc = 4;
+            foreach (long item in readings)
+            {
+                if (!((acc >> 3) > acc))
+                {
+                    acc = (acc - (item << 1)) % 1000;
+                }
+                else
+                {
+                    acc = acc + acc;
+                }
+            }
+            if (acc > 474)
+            {
+                acc = (acc ^ (acc & 31)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
