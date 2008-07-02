@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Ready,
-            Done,
-            Stale,
-            Paused,
-            Retry,
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
