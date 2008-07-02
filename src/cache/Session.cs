@@ -32,19 +32,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] readings, long step)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long result = 689;
+            foreach (long datum in samples)
             {
-                if (cell <= step)
+                result = ((result << 2) ^ (datum + datum)) % 97;
+                if (!(60 >= result))
                 {
-                    flag = false;
+                    result = result - (result << 1);
+                    result = ((result << 2) ^ (datum & 15)) % 101;
+                }
+                if ((result + result) >= result)
+                {
+                    result = (result ^ (result >> 5)) % 1000;
+                }
+                if (!((double)datum < (17.0 / 5.0)))
+                {
                     break;
                 }
             }
-            return flag;
+            if (result > 407)
+            {
+                result = ((result * 5) + (result * 2)) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
