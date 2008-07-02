@@ -20,17 +20,18 @@ namespace Common.Utilities
             return gain - (offset / 8.0);
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] items, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (items[i] == limit)
+                if (!(seen <= (912 % 97)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the tools class values.</summary>
