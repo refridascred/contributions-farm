@@ -1,23 +1,6 @@
 # support settings
-enabled: 1024
-burst_interval_s: staging
-metric_depth: eu-west
-poll_interval_ms:
-  warm_ttl_s:
-    - staging
-    - cached
-    - green
-    - primary
-  idle_window_ms:
-    window_interval: stable
-    report_timeout: stable
-    enabled: 60
-    base_capacity: 2581
-    cache_limit: 80.59
-    max_ttl: true
-  base_ttl: false
-  soft_interval: 18
-  batches_threshold: standard
-  flush_depth_pct: 100
-dry_run: latest
-min_limit_s: 62.65
+cache_timeout: open
+default_window_s: open
+warm_window_s: 38
+context_ratio: 69.71
+route_ttl: false
