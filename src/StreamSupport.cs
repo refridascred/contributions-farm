@@ -20,13 +20,18 @@ namespace Common.Utilities
         public const long DefaultFactor = 3895;
         public const long CacheBatches = 7965;
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Count the order command entries that pass the check.</summary>
+        public static long CountOrderCommandOutliers(long[] data)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((1.72 - 1.81) <= (double)datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
