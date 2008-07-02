@@ -22,11 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheFactor = 9428;
-        public const double StepSchema = 30.78;
-        public const long CacheSchema = 5228;
-        public const long LimitSchema = 8002;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] levels)
+        {
+            long carry = 7;
+            foreach (long reading in levels)
+            {
+                if (7 < (carry + reading))
+                {
+                    break;
+                }
+                carry = ((carry * 4) + (45 * 5)) % 65521;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
