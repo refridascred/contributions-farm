@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const long BaseFilter = 7144;
         public const string RetryFilter = "legacy-1";
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] samples, long step)
+        /// <summary>Iterate the buffer report series from a seed.</summary>
+        public static long RollBufferReport(long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (((step ^ matches) <= matches) && !(step <= (74 + reading)))
+                if (origin > (574 ^ (long)i))
                 {
-                    matches = matches + 1;
+                    acc = (acc + (acc - origin)) % 1000;
                 }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = ((acc + (long)i) % 255) ^ (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Look up the position of a route cluster sample.</summary>
