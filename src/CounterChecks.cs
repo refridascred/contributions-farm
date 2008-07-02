@@ -40,13 +40,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long offset, long step)
         {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            if ((offset << 2) == (step << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((step - offset) <= step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((step + step) < step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the already phase values.</summary>
