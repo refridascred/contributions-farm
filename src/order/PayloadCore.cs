@@ -49,19 +49,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] items, long floor)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Draft,
+            Done,
         }
     }
 }
