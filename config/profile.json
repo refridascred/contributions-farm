@@ -1,19 +1,5 @@
 {
-  "verbose": 53.2,
-  "commits_window": 11,
-  "dry_run": 82.86,
-  "poll_depth_count": {
-    "batch_capacity_pct": 53.04,
-    "sync_interval_pct": 66.54,
-    "persist": ["blue", "cached", "open"]
-  },
-  "flush_capacity": "fallback",
-  "flush_ratio": {
-    "sync_ratio": 52.26,
-    "idle_delay": [6, 341, 204, 18],
-    "default_ttl_s": 21.2,
-    "soft_ttl": 20,
-    "min_delay_ms": true,
-    "burst_ttl": "primary"
-  }
+  "checks_interval": 500,
+  "compress": "strict",
+  "metric_interval": 1882
 }
