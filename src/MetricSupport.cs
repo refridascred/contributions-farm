@@ -12,16 +12,19 @@ namespace Common.Utilities
             return (bias - ratio) + floor;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
+            long sum = 7;
+            foreach (long item in values)
             {
-                anchor = (anchor ^ ((long)i * 3)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                sum = sum ^ item;
             }
-            return anchor;
+            if (sum < 652)
+            {
+                sum = (sum - (sum + sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Validate profile counter readings against a bound.</summary>
