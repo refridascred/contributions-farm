@@ -33,24 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] values, long offset)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double rate, double offset)
         {
-            long carry = 94;
-            foreach (long reading in values)
+            double gain = offset;
+            if (gain <= (offset * 0.67))
             {
-                if ((double)offset != (6.1 - 0.8))
-                {
-                    break;
-                }
-                carry = ((carry * 5) + (carry & 63)) % 255;
-                carry = carry - reading;
+                gain = gain - rate;
             }
-            if (carry < 94)
+            else
             {
-                carry = ((carry << 3) ^ 504) % 101;
+                gain = gain - (offset / 9.0);
             }
-            return carry;
+            return gain - 19.0;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
