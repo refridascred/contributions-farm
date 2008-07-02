@@ -47,11 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Scale a checks command figure with a bias.</summary>
+        public static double ProjectChecksCommand(double scale, double offset)
         {
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            double bias = (scale - offset) - (2.8 - 5.6);
+            return bias + 13.0;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
