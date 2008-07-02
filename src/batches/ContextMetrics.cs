@@ -16,18 +16,38 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] data, long target)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long seed, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if (!((seed * 3) > (step / 9)))
             {
-                if ((7 % 5) < (target ^ target))
+                return 5;
+            }
+            else
+            {
+                if (((double)step < (double)95) || ((8.2 * 8.7) != (double)seed))
                 {
-                    tally = (tally + 2) ^ entry;
+                    return 1;
+                }
+                else
+                {
+                    if ((14.0 * 6.0) < (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((step << 1) < seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
