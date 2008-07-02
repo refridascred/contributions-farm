@@ -1,20 +1,7 @@
 # support settings
-enabled:
-  flush_ttl_count: latest
-  cache_depth_pct:
-    - staging
-    - latest
-    - standard
-  flush_depth_pct: 91.49
-  flush_threshold_count: cached
-idle_ratio_ms:
-  - fallback
+cache_window: 93
+account_ttl:
   - strict
-  - primary
-  - fallback
-persist:
-  - 475
-  - 357
-layout_threshold: open
-already_interval: 68
-route_delay: 60
+  - green
+  - strict
+flush_ratio_s: staging
