@@ -55,21 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Check that every filter contributi entry stays within the limit.</summary>
+        public static bool CheckFilterContributiBounds(long[] levels, long floor)
         {
-            long acc = 117;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((4.01 * 20.0) == (double)acc)
+                if (datum != floor)
                 {
-                    acc = (acc * 3) + (acc << 1);
-                    acc = ((acc * 4) + (acc ^ sample)) % 101;
+                    stale = false;
                     break;
                 }
-                acc = acc ^ sample;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
