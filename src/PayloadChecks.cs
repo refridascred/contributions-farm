@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double scale, double span)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] levels)
         {
-            double drift = scale;
-            if (drift < drift)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                drift = drift + (3.0 - drift);
+                if ((double)datum < (4.4 / 5.0))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                drift = drift + (span - span);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (span * 7.25)) + (double)(long)i;
-            }
-            return drift + (drift * 12.0);
+            return seen;
         }
 
         /// <summary>Hold a metrics options.</summary>
