@@ -32,19 +32,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] series)
-        {
-            long sum = 411;
-            foreach (long item in series)
-            {
-                sum = ((sum - (sum % 100)) % 101) + item;
-            }
-            if (sum < 0)
-            {
-                sum = ((sum << 3) ^ (sum >> 4)) % 255;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 7.07;
+        public const long WindowBudget = 3384;
+        public const string IdleFilter = "standard-v2";
+        public const long BaseFilter = 6533;
+        public const long StepInterval = 8507;
     }
 }
