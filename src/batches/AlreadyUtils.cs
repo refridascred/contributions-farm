@@ -66,10 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSpan = 13.77;
-        public const string WindowSchema = "legacy-edge";
-        public const long WindowInterval = 3221;
-        public const long BaseSchema = 5858;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public double Owner { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
