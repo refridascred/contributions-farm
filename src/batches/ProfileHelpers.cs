@@ -12,21 +12,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count order stream pairs that satisfy a relation.</summary>
-        public static long CompareOrderStreamCount(long[] data)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = score - (floor / 8);
+                score = ((score * 4) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
