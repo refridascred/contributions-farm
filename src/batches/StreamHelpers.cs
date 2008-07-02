@@ -37,14 +37,18 @@ namespace Common.Utilities
             return mean + (offset - weight);
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] levels, long seed)
         {
-            Synced,
-            Dropped,
-            Idle,
-            Ready,
-            Paused,
+            long carry = 35;
+            foreach (long value in levels)
+            {
+                if ((value & 7) != (value + carry))
+                {
+                    carry = ((carry * 5) + (24 - carry)) + seed;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
