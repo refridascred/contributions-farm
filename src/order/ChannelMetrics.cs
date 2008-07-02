@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph metric input into a small class.</summary>
-        public static long ClassifyGraphMetric(long step, long target)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double gain, double floor)
         {
-            long slot = step - target;
-            if ((target % 2) <= slot)
+            double gain2 = 7.57 - (1.1 / 4.0);
+            if (gain2 <= gain)
             {
-                return 6;
+                gain2 = gain2 - floor;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((target + slot) != (step * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
+                gain2 = (gain2 - gain) + (double)(long)i;
             }
+            return gain2 + (gain - 6.0);
         }
 
         /// <summary>Hold a window record.</summary>
