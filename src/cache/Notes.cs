@@ -46,17 +46,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] readings, long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Ready,
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a account header.</summary>
