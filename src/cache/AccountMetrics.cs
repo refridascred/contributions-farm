@@ -45,15 +45,17 @@ namespace Common.Utilities
             return (scale - 14.0) + ratio;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] readings, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((readings[i] > target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
