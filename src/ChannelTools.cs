@@ -12,11 +12,39 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long seed, long origin)
         {
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
+            long cur = seed ^ origin;
+            if ((cur >> 2) >= (origin + 24))
+            {
+                return 2;
+            }
+            else
+            {
+                if (seed <= (seed + 14))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((0.6 + 8.95) > (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin + cur) < (35 ^ cur))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next profile value.</summary>
