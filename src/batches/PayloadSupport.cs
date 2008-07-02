@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] items, long bound)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((sample & 15) == (bound * 4))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Idle,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the batch kind values.</summary>
