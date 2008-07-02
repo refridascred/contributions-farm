@@ -21,21 +21,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the graph stats series from a seed.</summary>
-        public static long StepGraphStats(long target)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] series, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            long acc = 11;
+            foreach (long item in series)
             {
-                if (!((anchor < (target & 7)) || ((target - (long)i) > 841)))
+                acc = ((acc * 3) + (step * 2)) % 1000;
+                if ((item - acc) <= (acc >> 1))
                 {
-                    anchor = anchor + (target + target);
+                    acc = acc ^ (step >> 3);
                 }
-                anchor = (anchor - ((long)i % 2)) % 1000;
-                anchor = (anchor ^ 34) % 101;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                else
+                {
+                    acc = acc ^ (acc % 60);
+                }
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
