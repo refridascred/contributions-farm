@@ -23,24 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long origin, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] items)
         {
-            if ((floor + 983) > 32)
+            long state = 7;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor < (3.0 - 10.0)) && ((floor + floor) <= (floor / 3)))
+                if (((double)sample < (8.0 + 2.0)) && (state >= (sample & 127)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    state = state + state;
                 }
             }
+            if (state > (-1))
+            {
+                state = (state * 2) + (state - state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the entry kind values.</summary>
