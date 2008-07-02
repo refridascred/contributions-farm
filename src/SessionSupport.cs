@@ -38,19 +38,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] data, long seed)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
-            long carry = 139;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (((carry ^ (carry * 3)) % 4096) - (long)i) - sample;
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = (carry ^ (seed % 7)) % 1000;
             }
-            return carry % 1000;
+            return tally;
         }
     }
 }
