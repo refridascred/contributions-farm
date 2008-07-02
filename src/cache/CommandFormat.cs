@@ -22,27 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] data, long limit)
-        {
-            long sum = 452;
-            foreach (long reading in data)
-            {
-                if ((sum << 3) > (1 % 16))
-                {
-                    sum = ((sum ^ (limit + limit)) % 97) ^ reading;
-                }
-                else
-                {
-                    sum = (sum + (limit + sum)) % 97;
-                }
-            }
-            if (sum > 33)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRatio = 6598;
+        public const long WindowInterval = 13;
+        public const long StepRecord = 6037;
+        public const double CacheRecord = 86.25;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BaseSpan = 23.52;
