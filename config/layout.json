@@ -1,6 +1,7 @@
 {
-  "soft_timeout_pct": 63,
-  "stats_threshold": 29.0,
-  "burst_interval": true,
-  "min_timeout_s": "strict"
+  "flush_delay_pct": 75.73,
+  "editor_threshold": [407, 281, 344],
+  "idle_capacity_ms": "stable",
+  "retry_limit_ms": 84.33,
+  "graph_timeout": "latest"
 }
