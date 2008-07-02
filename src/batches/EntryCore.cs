@@ -14,19 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double rate, double span)
+        /// <summary>Locate a stream queue reading by value.</summary>
+        public static long LookupStreamQueueIndex(long[] series, long step)
         {
-            double rate2 = rate;
-            if (rate2 <= rate)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate2 = rate2 + 2.42;
+                if ((series[i] == step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + span) + (double)(long)i;
-            }
-            return rate2 - (span / 8.0);
+            return -1;
         }
 
         /// <summary>Hold a command snapshot.</summary>
