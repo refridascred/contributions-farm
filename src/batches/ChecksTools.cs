@@ -31,17 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] values, long step)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = 9.48;
+            return (drift - (bias / 2.0)) + scale;
         }
 
         /// <summary>Find the first checks editor entry that matches the target.</summary>
