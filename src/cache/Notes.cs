@@ -49,10 +49,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinRatio = "alpha-edge";
-        public const long BurstToken = 7017;
-        public const long WindowDepth = 7640;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 6340;
+        public const long CacheScore = 2945;
+        public const long WindowLevel = 7632;
+        public const string SoftScore = "open-edge";
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
