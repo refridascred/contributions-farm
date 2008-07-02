@@ -1,7 +1,7 @@
 {
-  "flush_delay_pct": 75.73,
-  "editor_threshold": [407, 281, 344],
-  "idle_capacity_ms": "stable",
-  "retry_limit_ms": 84.33,
-  "graph_timeout": "latest"
+  "verbose": 15,
+  "sync_timeout_s": "blue",
+  "notes_limit": 3467,
+  "token_capacity": 60,
+  "warm_ttl_count": 36
 }
