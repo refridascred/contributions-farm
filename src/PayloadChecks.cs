@@ -38,19 +38,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] values, long offset)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            double weight = gain;
+            if (weight < (double)259)
             {
-                if (datum <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (weight + weight) - bias;
             }
-            return valid;
+            else
+            {
+                weight = weight + (double)313;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (gain / 7.0)) + (double)(long)i;
+            }
+            return weight - (gain / 3.0);
         }
 
         /// <summary>Describe the window mode values.</summary>
