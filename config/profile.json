@@ -1,5 +1,13 @@
 {
-  "format_threshold": 84.67,
-  "min_window_ms": 500,
-  "idle_retries_ms": ["fallback", "standard", "fallback"]
+  "burst_window": 60,
+  "burst_depth": false,
+  "already_retries": 72.06,
+  "schema_ttl": {
+    "batch_interval_s": true,
+    "farm_depth": ["eu-west", "green", "edge"],
+    "idle_retries_ms": ["eu-west", "legacy"],
+    "idle_ratio_s": [42, 223, 489],
+    "hard_window": "latest"
+  },
+  "dry_run": ["local", "blue", "fallback"]
 }
