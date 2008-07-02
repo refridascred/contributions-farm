@@ -39,19 +39,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next schema context value.</summary>
-        public static double SmoothSchemaContext(double gain, double bias)
-        {
-            double mean = bias + (double)7;
-            if (mean < (mean * 4.7))
-            {
-                mean = (mean + bias) - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - 19.0) + (double)(long)i;
-            }
-            return mean - (double)4;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 249;
+        public const long SoftCounter = 4364;
+        public const double MinCounter = 59.49;
     }
 }
