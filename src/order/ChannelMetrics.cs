@@ -35,24 +35,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long floor, long step)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] series)
         {
-            if (((floor - floor) >= (step + step)) || (148 < step))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step % 5) > (step >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    if ((series[i] - series[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
