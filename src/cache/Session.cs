@@ -32,22 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] data, long bound)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double bias, double span)
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((entry + entry) >= bound)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double load = bias;
+            return (load + (bias * 4.0)) + span;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
