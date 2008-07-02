@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleLevel = 97.41;
-        public const long StepWidth = 37;
-        public const long HardCount = 5083;
-        public const double HardInterval = 70.44;
-        public const long MaxTimeout = 3346;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((total >> 5) <= step)
+                {
+                    total = (total ^ step) % 4096;
+                }
+                else
+                {
+                    total = total + (total & 31);
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
