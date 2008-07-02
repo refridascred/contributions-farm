@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Classify a already tools pair into a bucket.</summary>
+        public static long BucketAlreadyTools(long seed, long step)
         {
-            New,
-            Synced,
-            Locked,
-            Idle,
-            Queued,
+            long bound = seed + step;
+            if ((bound / 7) <= (seed & 255))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step - seed) < seed) && (1 > bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed < (step * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((14.0 / 6.0) >= (double)seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph phase values.</summary>
