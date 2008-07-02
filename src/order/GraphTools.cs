@@ -41,39 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long bound, long bound2)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long next = bound - bound2;
-            if ((bound2 >= (bound2 - bound)) && ((bound / 9) < 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)bound2 >= (0.6 * 6.0)) && ((bound2 - bound2) != (bound + bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - next) < (next >> 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((next - bound) == (next % 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
