@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a channel filter figure with a bias.</summary>
-        public static double ScaleChannelFilter(double gain, double offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double ratio = gain;
-            if (ratio < 13.0)
-            {
-                ratio = ratio - (double)2;
-            }
-            return ratio + (ratio - offset);
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
