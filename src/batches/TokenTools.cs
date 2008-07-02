@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] values, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] levels)
         {
-            long carry = 756;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                carry = (((carry - (carry * 3)) % 65521) + sample) - limit;
+                if ((hits <= (hits + 295)) || ((hits + hits) < (98 ^ 871)))
+                {
+                    hits = (hits + 3) - cell;
+                }
             }
-            if (carry > 5)
-            {
-                carry = (carry * 3) + carry;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Combine session values into a single score.</summary>
