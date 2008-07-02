@@ -32,11 +32,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchSpan = 3747;
-        public const long BaseFormat = 3023;
-        public const string DefaultFormat = "latest";
-        public const long SoftTimeout = 8438;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long StepBatches(long target)
