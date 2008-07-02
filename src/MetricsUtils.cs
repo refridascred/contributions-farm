@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long offset, long origin)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long seed, long limit)
         {
-            if ((double)offset >= (3.55 / 9.0))
+            long lane = seed - limit;
+            if (!(0.2 >= (double)seed))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if (offset > origin)
+                if ((lane / 4) >= seed)
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (origin > (890 >> 5))
+                    if ((61 % 10) > (limit + 680))
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        if ((offset << 1) < offset)
+                        if (lane <= (seed >> 4))
                         {
-                            return 0;
+                            return 7;
                         }
                         else
                         {
-                            return 3;
+                            return 8;
                         }
                     }
                 }
