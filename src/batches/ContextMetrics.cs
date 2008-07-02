@@ -52,39 +52,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long seed, long seed2)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double gain, double offset)
         {
-            long diff = seed ^ seed2;
-            if (1.0 > (double)seed)
+            double drift = 4.0 * 1.0;
+            if (drift <= gain)
             {
-                return 3;
+                drift = (drift + (gain / 6.0)) - offset;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((seed2 * 4) < (seed2 - diff))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((916 - diff) != (seed + seed2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed > (double)63)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                drift = (drift - 6.13) + (double)(long)i;
             }
+            return drift + (3.0 * 1.3);
         }
     }
 }
