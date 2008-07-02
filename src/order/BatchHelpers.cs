@@ -20,13 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] levels)
         {
-            Pending,
-            Closed,
-            Synced,
-            Stale,
+            long result = -996;
+            foreach (long item in levels)
+            {
+                result = (result + result) % 255;
+                if ((double)item > (6.5 - 9.0))
+                {
+                    result = (result - item) % 101;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a session snapshot.</summary>
