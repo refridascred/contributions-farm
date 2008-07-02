@@ -45,25 +45,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((origin % 64) > 738)
-                {
-                    break;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = ((mark * 3) + (origin ^ (long)i2)) % 255;
-                }
-                mark = (mark << 3) ^ mark;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 8603;
+        public const long BaseInterval = 9535;
+        public const long DefaultChannel = 4506;
+        public const long BurstChannel = 1531;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long FoldGraph(long[] series)
