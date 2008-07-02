@@ -47,12 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchSize = 91.98;
-        public const string RetryAlready = "cached-1";
-        public const long SoftAlready = 2791;
-        public const string BatchAlready = "latest-v2";
-        public const double MinAlready = 71.22;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public long Flag { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryHits(long[] data)
