@@ -22,22 +22,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] readings, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double ratio = 1.0;
+            if (ratio <= weight)
             {
-                if ((((hits / 3) <= hits) || ((85 - 689) >= hits)) && (step <= (hits - hits)))
-                {
-                    hits = (hits + 1) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = (ratio - (1.38 / 4.0)) + floor;
             }
-            return hits;
+            return ratio - weight;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
