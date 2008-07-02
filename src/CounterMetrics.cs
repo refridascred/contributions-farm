@@ -41,31 +41,22 @@ namespace Common.Utilities
         public const double MaxRatio = 98.32;
         public const double BurstFactor = 96.84;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long origin, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] levels, long offset)
         {
-            if (((limit & 1) >= (limit & 15)) || ((double)limit <= (double)4))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit <= (origin + origin)) && ((limit << 2) >= origin))
+                if ((hits & 1) == (item ^ 7))
                 {
-                    return 2;
+                    hits = (hits + 2) + offset;
                 }
                 else
                 {
-                    if ((limit - limit) > (391 ^ 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
