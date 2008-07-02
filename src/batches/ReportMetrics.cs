@@ -18,20 +18,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long target)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((target - (long)i) >= (target + (long)i))
-                {
-                    mix = mix + (mix << 2);
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
