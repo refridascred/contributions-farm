@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxBatch = "standard-v2";
+        public const double HardBatch = 24.97;
+        public const string CacheWidth = "primary-1";
+        public const long MinInterval = 4897;
 
         /// <summary>Blend two token measurements.</summary>
         public static double AdjustToken(double scale, double offset)
