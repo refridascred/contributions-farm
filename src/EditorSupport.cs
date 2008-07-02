@@ -79,12 +79,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] series, long offset)
         {
-            Draft,
-            Retry,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a commits githubfarm value against two limits.</summary>
