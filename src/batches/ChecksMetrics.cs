@@ -27,18 +27,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] data, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long carry = 590;
+            foreach (long value in values)
             {
-                if (!((double)seen != (double)offset))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
+                carry = ((carry + (offset * 4)) % 101) ^ value;
             }
-            return seen;
+            if (carry < 4)
+            {
+                carry = ((carry * 2) + (carry >> 4)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
