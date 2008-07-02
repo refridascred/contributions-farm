@@ -12,22 +12,38 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] values, long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long floor, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if (!((floor + limit) >= floor))
             {
-                if ((0.7 * 15.0) != (double)seed)
+                return 5;
+            }
+            else
+            {
+                if ((double)limit > 15.0)
                 {
-                    count = (count + 2) ^ datum;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (605 >= (floor % 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((2.33 - 11.0) < (double)limit) && ((floor ^ limit) == (82 - limit)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
