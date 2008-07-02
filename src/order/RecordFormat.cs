@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] series)
         {
-            Ready,
-            Retry,
-            Queued,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!((value ^ 89) < (seen - value)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
