@@ -1,8 +1,21 @@
 {
-  "hard_capacity_pct": "blue",
-  "sync_window_count": ["primary", "open", "green", "stable"],
-  "compress": true,
-  "metrics_size": 30,
-  "persist": "stable",
-  "support_capacity": 1024
+  "schema_delay": "edge",
+  "dry_run": ["open", "green", "blue", "open"],
+  "order_threshold": true,
+  "hard_ttl_count": "local",
+  "warm_interval_pct": {
+    "metric_size": 2423,
+    "order_size": 60,
+    "compress": {
+      "retry_capacity_pct": false,
+      "persist": 100,
+      "max_delay_s": 9564,
+      "soft_delay": 62,
+      "default_retries_pct": 26.54,
+      "command_limit": "primary"
+    },
+    "layout_threshold": "fallback",
+    "max_ratio_pct": "local",
+    "burst_capacity_pct": "open"
+  }
 }
