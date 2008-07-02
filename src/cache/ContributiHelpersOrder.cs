@@ -27,11 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "stable-v2";
-        public const long CacheStats = 6701;
-        public const long MaxStats = 4777;
-        public const string HardFactor = "latest-edge";
-        public const double LimitWidth = 40.15;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] samples, long bound)
+        {
+            long anchor = 9;
+            foreach (long item in samples)
+            {
+                if (!((double)bound < 3.02))
+                {
+                    anchor = ((anchor + (anchor << 2)) % 65521) ^ item;
+                }
+            }
+            return anchor % 97;
+        }
     }
 }
