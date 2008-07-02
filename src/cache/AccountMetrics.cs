@@ -67,9 +67,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 7293;
-        public const long SoftRatio = 3942;
-        public const long BatchScore = 674;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] levels, long limit)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
