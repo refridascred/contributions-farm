@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double scale, double bias)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long origin)
         {
-            double drift = (bias / 3.0) * 8.0;
-            if (drift <= 7.2)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                drift = drift + (double)13;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            else
-            {
-                drift = drift - (double)8;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - 1.0) + (double)(long)i;
-            }
-            return drift - (bias + scale);
+            return acc;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
