@@ -1,4 +1,6 @@
 # githubfarm settings
-window_threshold: local
-strict: local
-batch_ttl: cached
+warm_threshold_pct: 82.38
+cache_ratio_pct: green
+counter_retries: 24
+cache_ratio_ms: 3452
+cache_window_pct: 59
