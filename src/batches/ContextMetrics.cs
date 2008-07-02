@@ -41,18 +41,23 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] readings)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long acc = -67;
+            foreach (long datum in levels)
             {
-                if ((cell > tally) || (tally <= (92 << 3)))
+                acc = (acc ^ 563) % 97;
+                if (7 > (acc + datum))
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            if (acc > 45)
+            {
+                acc = (acc - acc) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a notes header.</summary>
