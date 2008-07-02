@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 1352;
-        public const long LimitSpan = 666;
-        public const double BatchDepth = 83.52;
-        public const long BaseRatio = 3527;
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long SortRoute(long origin, long limit)
