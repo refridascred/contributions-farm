@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] readings, long bound)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long mix = 4;
-            foreach (long reading in readings)
-            {
-                mix = (((mix << 3) ^ ((-40) * 2)) % 65521) ^ reading;
-                mix = mix ^ 681;
-                if ((bound << 1) <= (bound & 7))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            public double Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the farm status values.</summary>
