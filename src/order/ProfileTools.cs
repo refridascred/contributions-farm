@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const string SoftWindow = "latest-edge";
         public const long IdleWindow = 376;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] levels, long target)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
