@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinCommits = "primary";
-        public const string StepCommits = "local-edge";
-        public const string BaseWidth = "standard-v2";
-        public const string SoftScore = "open-edge";
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string WindowWidth = "primary";
