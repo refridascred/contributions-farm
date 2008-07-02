@@ -34,13 +34,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] readings)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
+            long result = 8;
+            foreach (long cell in readings)
+            {
+                if ((result & 255) > (result + (-36)))
+                {
+                    result = ((result + (result << 2)) % 65521) ^ cell;
+                }
+            }
+            if (result < (-33))
+            {
+                result = result - (7 + 22);
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a batch summary.</summary>
