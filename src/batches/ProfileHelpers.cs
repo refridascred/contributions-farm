@@ -37,11 +37,24 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] values)
         {
-            public double Weight { get; set; }
-            public long Rank { get; set; }
+            long anchor = -68;
+            foreach (long cell in values)
+            {
+                anchor = anchor ^ anchor;
+                anchor = (anchor ^ (8 % 16)) % 4096;
+                if (cell > (998 - anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor > 2)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
