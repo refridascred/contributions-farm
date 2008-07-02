@@ -60,13 +60,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            Retry,
-            Done,
-            New,
-            Idle,
+            long anchor = 967;
+            foreach (long entry in samples)
+            {
+                if (((entry * 4) > entry) && ((double)anchor > (14.0 / 9.0)))
+                {
+                    anchor = anchor + (anchor % 5);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ entry;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a token reading.</summary>
