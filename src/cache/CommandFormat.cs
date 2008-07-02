@@ -43,19 +43,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] series, long origin)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultGithubfarm = "fallback-edge";
+        public const long DefaultTimeout = 529;
+        public const long RetryGithubfarm = 6545;
+        public const long BurstGithubfarm = 9265;
     }
 }
