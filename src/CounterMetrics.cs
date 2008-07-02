@@ -42,28 +42,19 @@ namespace Common.Utilities
         public const double MaxRatio = 98.32;
         public const double BurstFactor = 96.84;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double gain, double offset)
         {
-            long carry = -241;
-            foreach (long value in values)
+            double load = gain * 6.65;
+            if (load < load)
             {
-                if (value < (carry + carry))
-                {
-                    carry = ((carry * 5) + (carry / 2)) % 101;
-                    break;
-                }
-                else
-                {
-                    carry = carry + value;
-                    carry = (carry ^ (value + 88)) % 255;
-                }
-                if ((double)carry >= (double)value)
-                {
-                    carry = (carry - (value >> 3)) % 65521;
-                }
+                load = load + (load * 0.76);
             }
-            return carry % 1000;
+            else
+            {
+                load = load + load;
+            }
+            return load - offset;
         }
     }
 }
