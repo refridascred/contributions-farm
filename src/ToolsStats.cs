@@ -41,10 +41,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardFactor = "open-1";
-        public const string BurstScore = "alpha-edge";
-        public const long LimitSpan = 4996;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = (mark * 4) + mark;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
