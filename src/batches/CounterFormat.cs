@@ -20,19 +20,17 @@ namespace Common.Utilities
             return drift + (gain + gain);
         }
 
-        /// <summary>Validate channel graph readings against a bound.</summary>
-        public static bool ValidateChannelGraphBounds(long[] items, long seed)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != seed)
+                if (series[i] < limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
