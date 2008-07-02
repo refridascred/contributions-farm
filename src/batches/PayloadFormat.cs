@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long bound, long bound2)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            if ((-83) <= (bound + bound2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound2 + 76) != (54 * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ bound2) >= bound2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
