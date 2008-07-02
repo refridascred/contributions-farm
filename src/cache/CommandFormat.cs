@@ -21,22 +21,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] series, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] readings)
         {
-            long mark = 7;
-            foreach (long sample in series)
+            long carry = 8;
+            foreach (long reading in readings)
             {
-                if ((sample >> 3) <= seed)
+                if ((carry & 1) > (reading / 7))
                 {
-                    continue;
-                }
-                if ((mark - (-997)) < mark)
-                {
-                    mark = mark ^ sample;
+                    carry = ((carry << 3) ^ (703 & 31)) % 101;
                 }
             }
-            return mark;
+            if (carry < 450)
+            {
+                carry = (carry << 2) ^ (carry * 4);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
