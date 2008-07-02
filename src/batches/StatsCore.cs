@@ -41,15 +41,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double weight, double floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] series, long bound)
         {
-            double gain = (weight / 2.0) * 3.58;
-            if (gain >= weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain - (3.71 * 8.0)) - floor;
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (12.0 + weight);
+            return -1;
         }
 
         /// <summary>Hold a payload info.</summary>
