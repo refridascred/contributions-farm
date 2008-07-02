@@ -23,26 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long seed, long floor)
-        {
-            long span = seed - floor;
-            if ((double)seed > (double)span)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((5.6 / 9.0) != (double)span)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftDepth = 49.83;
+        public const double LimitLevel = 60.81;
+        public const double IdleBudget = 0.67;
+        public const string BurstToken = "alpha-1";
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
