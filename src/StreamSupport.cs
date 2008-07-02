@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many order route samples are out of range.</summary>
-        public static long TallyOrderRouteOutliers(long[] data)
+        /// <summary>Project the next layout token value.</summary>
+        public static double ScaleLayoutToken(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double weight = 8.44 - bias;
+            if (weight <= (rate + bias))
             {
-                if (((double)hits >= (double)reading) && ((5.21 * 2.0) <= (double)hits))
-                {
-                    hits = hits + 2;
-                }
+                weight = weight - (double)186;
             }
-            return hits;
+            return weight - rate;
         }
 
         /// <summary>Digest a series of order commits entries.</summary>
