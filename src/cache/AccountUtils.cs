@@ -14,19 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long acc = 6;
-            foreach (long datum in readings)
-            {
-                acc = acc ^ acc;
-                if (!((acc & 3) < (datum ^ acc)))
-                {
-                    acc = (acc ^ (datum - acc)) % 255;
-                }
-            }
-            return acc;
+            Idle,
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Accumulate payload samples.</summary>
