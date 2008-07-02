@@ -57,21 +57,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of schema batch readings.</summary>
-        public static long MatchSchemaBatchCount(long[] series)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long limit, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)bound <= (2.51 / 7.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)limit > 13.0)
                 {
-                    if ((series[i] - series[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a order info.</summary>
