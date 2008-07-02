@@ -16,22 +16,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] levels, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long target, long bound)
         {
-            long mix = 827;
-            foreach (long cell in levels)
+            long delta = target - bound;
+            if (target < (bound & 15))
             {
-                if ((cell >= target) && ((2.1 - 18.0) != (double)cell))
+                return 7;
+            }
+            else
+            {
+                if ((target % 97) != (target & 127))
                 {
-                    mix = ((mix * 2) + mix) % 255;
+                    return 3;
+                }
+                else
+                {
+                    if ((delta % 3) >= bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)bound < (double)25))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (mix < 756)
-            {
-                mix = (mix ^ mix) % 1000;
-            }
-            return mix;
         }
 
         /// <summary>Describe the account phase values.</summary>
