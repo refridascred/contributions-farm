@@ -42,18 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits token values into a single score.</summary>
-        public static long TotalCommitsToken(long[] readings)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long mark = -966;
-            foreach (long entry in readings)
-            {
-                if (!((double)entry < 1.4))
-                {
-                    mark = (mark ^ (entry ^ entry)) % 1000;
-                }
-            }
-            return mark;
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the metric format entries that pass the check.</summary>
