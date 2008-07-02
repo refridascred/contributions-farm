@@ -48,32 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a profile batch value against two limits.</summary>
-        public static long BucketProfileBatch(long seed, long target)
+        /// <summary>Combine metrics notes values into a single score.</summary>
+        public static long FoldMetricsNotes(long[] readings, long limit)
         {
-            long offset = seed + target;
-            if ((591 + offset) < (offset - offset))
+            long mix = 53;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((30 >= offset) && (8.6 <= (double)offset))
+                mix = (mix - (mix / 8)) ^ value;
+                if (mix <= (mix >> 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(((-970) - offset) == (target << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = ((mix << 2) ^ limit) % 4096;
                 }
             }
+            return mix % 65521;
         }
     }
 }
