@@ -1,7 +1,6 @@
 {
-  "base_limit": true,
-  "schema_ratio": 250,
-  "base_depth_pct": 4026,
-  "idle_capacity_ms": "legacy",
-  "readonly": 81.43
+  "poll_threshold_pct": [141, 365],
+  "burst_size_pct": true,
+  "persist": "primary",
+  "cache_ttl": [439, 42]
 }
