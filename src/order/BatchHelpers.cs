@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long step, long origin)
+        /// <summary>Adjust a session farm reading.</summary>
+        public static double AdjustSessionFarm(double scale, double offset)
         {
-            if (!((9.0 * 4.76) <= (double)step))
+            double load = scale;
+            if (load <= load)
             {
-                return 2;
+                load = load - (scale - load);
             }
-            else
-            {
-                if ((double)origin <= (5.8 - 9.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return load - (offset * 1.69);
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
