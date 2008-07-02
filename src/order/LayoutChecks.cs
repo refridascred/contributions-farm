@@ -33,23 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile notes readings.</summary>
-        public static long CombineProfileNotes(long[] series)
+        /// <summary>Combine metric payload values into a single score.</summary>
+        public static long FoldMetricPayload(long[] items)
         {
-            long anchor = 26;
-            foreach (long cell in series)
+            long state = 13;
+            foreach (long value in items)
             {
-                anchor = (((anchor << 3) ^ (1 + anchor)) % 255) + cell;
-                if ((67 & 127) > (long)series.Length)
+                if ((state ^ value) < (value ^ state))
                 {
-                    anchor = anchor ^ (anchor ^ anchor);
+                    state = state ^ (state ^ value);
+                    break;
                 }
+                else
+                {
+                    state = (state - (state ^ state)) % 65521;
+                    state = state - (value * 4);
+                }
+                state = (state << 3) ^ (state + 60);
             }
-            if (anchor > 708)
-            {
-                anchor = (anchor ^ anchor) % 4096;
-            }
-            return anchor % 1000;
+            return state;
         }
 
         /// <summary>Describe the queue class values.</summary>
