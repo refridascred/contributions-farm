@@ -38,18 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order command entries that pass the check.</summary>
-        public static long CountOrderCommandOutliers(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((1.72 - 1.81) <= (double)datum)
+                if ((cell ^ tally) >= (seed ^ 97))
                 {
-                    count = count + 3;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
