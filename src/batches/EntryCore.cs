@@ -33,10 +33,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultScore = "legacy-edge";
-        public const long DefaultDepth = 5570;
-        public const long StepInterval = 9982;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Paused,
+            Stale,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ScaleFilter(double scale, double bias)
