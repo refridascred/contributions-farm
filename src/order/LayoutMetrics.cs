@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] series)
         {
-            Closed,
-            Idle,
-            Failed,
-            Dropped,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((long)series.Length << 3) != (seen - seen))
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metric entry.</summary>
