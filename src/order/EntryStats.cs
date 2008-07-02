@@ -30,17 +30,13 @@ namespace Common.Utilities
             return ratio - (scale + floor);
         }
 
-        /// <summary>Derive the next checks already value from a seed.</summary>
-        public static long SeriesChecksAlready(long offset)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum << 2) ^ (offset / 6)) % 255;
-                sum = sum ^ (477 - offset);
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Closed,
+            Synced,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
