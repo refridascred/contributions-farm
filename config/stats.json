@@ -1,15 +1,8 @@
 {
-  "batch_size": 32.81,
-  "verbose": "open",
-  "session_window": 83.41,
-  "flush_delay_count": "standard",
-  "commits_retries": {
-    "audit": 41.06,
-    "verbose": 7790,
-    "account_threshold": {
-      "strict": 250,
-      "route_size": "blue",
-      "burst_interval": "latest"
-    }
-  }
+  "base_depth_s": ["green", "blue", "legacy", "blue"],
+  "base_capacity_count": 9.71,
+  "sync_ratio_count": 60,
+  "record_limit": 4160,
+  "persist": "cached",
+  "poll_capacity_count": 91
 }
