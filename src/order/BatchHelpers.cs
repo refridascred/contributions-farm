@@ -25,22 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of commits tools readings.</summary>
-        public static long OverlapCommitsToolsCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchSize = 9407;
+        public const long SoftFactor = 6720;
+        public const long HardScore = 2314;
+        public const string IdleMetric = "staging-edge";
+        public const double LimitMetric = 42.74;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterOutliers(long[] data)
