@@ -15,22 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 7814;
+        public const string BurstSpan = "standard-1";
+        public const string LimitWidth = "latest-1";
+        public const string BaseDepth = "primary";
 
         /// <summary>Validate commits window readings against a bound.</summary>
         public static bool VerifyCommitsWindowRange(long[] samples, long offset)
