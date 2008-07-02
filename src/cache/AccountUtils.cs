@@ -12,22 +12,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] series)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long acc = 6;
+            foreach (long datum in readings)
             {
-                if ((double)seen >= (3.8 - 5.62))
+                acc = acc ^ acc;
+                if (!((acc & 3) < (datum ^ acc)))
                 {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = (acc ^ (datum - acc)) % 255;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a cache summary.</summary>
