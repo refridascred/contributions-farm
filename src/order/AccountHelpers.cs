@@ -44,15 +44,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Count the queue payload entries that pass the check.</summary>
+        public static long AuditQueuePayloadGaps(long[] items, long step)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if ((value - value) != (step / 6))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Count the tools record entries that pass the check.</summary>
