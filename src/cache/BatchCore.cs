@@ -49,19 +49,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] values, long offset)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long seed)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Measure how many record tools samples are out of range.</summary>
