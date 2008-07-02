@@ -48,18 +48,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long state = 6;
-            foreach (long item in samples)
-            {
-                if (((67 >> 1) < item) || ((state >> 2) < (item + item)))
-                {
-                    state = (state + state) % 4096;
-                }
-            }
-            return state;
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of checks already readings.</summary>
