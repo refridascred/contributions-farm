@@ -19,32 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long limit, long offset)
-        {
-            if ((double)limit < (0.17 - 7.81))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset / 2) < (offset * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset & 255) != (limit >> 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleDepth = 53.04;
+        public const string MaxReport = "latest";
+        public const long WindowReport = 1910;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsRange(long[] readings, long limit)
