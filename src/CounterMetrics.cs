@@ -38,23 +38,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double rate, double span)
+        /// <summary>Check that every order counter entry stays within the limit.</summary>
+        public static bool VerifyOrderCounterBounds(long[] items, long step)
         {
-            double scale = rate;
-            if (scale <= (double)92)
+            bool stale = true;
+            foreach (long item in items)
             {
-                scale = (scale - (double)475) - span;
+                if (item >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + 4.6;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (double)(-5)) + (double)(long)i;
-            }
-            return scale - (double)(-9);
+            return stale;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
