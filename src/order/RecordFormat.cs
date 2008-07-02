@@ -34,19 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry < 6.0)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryFactor = "local-1";
+        public const long IdleCount = 6703;
+        public const long BurstWidth = 8832;
+        public const long CacheFactor = 7019;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool ValidateCommitsBounds(long[] levels, long bound)
