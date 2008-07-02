@@ -1,24 +1,19 @@
 # entry settings
-poll_ratio:
-  warm_capacity_count: 30
-  idle_limit_ms:
-    readonly: stable
-    poll_size_count: 60
-    farm_depth: 69.01
-    editor_size: 60
-    poll_threshold_count: fallback
-    farm_threshold: 2198
-  graph_limit: 28
-verbose:
-  persist: 8959
-  compress: 23.55
-  verbose: true
-min_threshold:
-  default_size_ms:
-    - staging
-    - eu-west
-    - blue
-  schema_threshold: 95.61
-  hard_delay: 11.5
-cache_delay: 765
-max_delay: primary
+readonly: staging
+persist: 6889
+enabled:
+  retry_depth_s: true
+  base_interval_s: 2.66
+  poll_timeout_ms: true
+  dry_run: latest
+  sync_ratio_ms:
+    audit: eu-west
+    hard_limit:
+      - staging
+      - open
+      - cached
+      - staging
+    idle_interval: 96
+    hard_limit_s: 59.2
+    compress: standard
+  batch_retries: blue
