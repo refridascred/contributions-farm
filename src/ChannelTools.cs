@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double ratio, double span)
         {
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
+            double drift = ratio;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (9.4 - ratio)) + (double)(long)i;
+            }
+            return drift + (span / 5.0);
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
