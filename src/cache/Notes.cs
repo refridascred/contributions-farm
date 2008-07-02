@@ -49,15 +49,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Pending,
-            Ready,
-            Active,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinRatio = "alpha-edge";
+        public const long BurstToken = 7017;
+        public const long WindowDepth = 7640;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
