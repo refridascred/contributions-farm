@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] data, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 283;
+            foreach (long cell in data)
             {
-                if (data[i] > floor)
+                if ((double)cell == (1.9 / 2.0))
                 {
-                    return (long)i;
+                    total = (total - (165 - total)) - limit;
                 }
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Iterate the window tools series from a seed.</summary>
