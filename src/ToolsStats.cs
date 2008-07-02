@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit stats metric readings against a rule.</summary>
-        public static long CountStatsMetricHits(long[] samples)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum == (10.0 * 8.0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
