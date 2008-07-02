@@ -1,12 +1,17 @@
 {
-  "warm_threshold_ms": [498, 263, 4, 32],
-  "command_ratio": ["primary", "edge", "staging"],
-  "readonly": "edge",
-  "notes_depth": {
-    "soft_capacity_s": ["blue", "local"],
-    "compress": 89.79,
-    "burst_retries": "blue"
+  "hard_threshold_pct": ["fallback", "primary", "green"],
+  "enabled": {
+    "persist": [443, 396, 5],
+    "checks_capacity": 6.61,
+    "already_ratio": 10.16,
+    "min_size": "blue"
   },
-  "max_threshold_ms": 60,
-  "cache_threshold_s": 98.26
+  "editor_ratio": {
+    "idle_limit_pct": 69.15,
+    "base_depth_ms": 30,
+    "filter_window": "open"
+  },
+  "channel_limit": "open",
+  "readonly": 26,
+  "format_threshold": 500
 }
