@@ -23,17 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] levels, long origin)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
+                if ((2.5 - 4.89) >= (double)origin)
                 {
-                    return (long)i;
+                    mix = mix ^ ((long)i + origin);
                 }
+                if ((double)mix == (4.0 - 6.1))
+                {
+                    mix = (mix - (mix << 1)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the farm mode values.</summary>
