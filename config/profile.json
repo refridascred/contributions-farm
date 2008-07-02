@@ -1,17 +1,8 @@
 {
-  "buffer_delay": [96, 418, 401],
-  "channel_depth": 4380,
-  "default_delay": "edge",
-  "poll_depth": {
-    "channel_retries": {
-      "notes_window": 55,
-      "format_ttl": true,
-      "warm_threshold_count": true,
-      "base_depth": "cached",
-      "batch_limit_s": false
-    },
-    "retry_ttl_count": 6938,
-    "dry_run": 63.24,
-    "cache_capacity": false
-  }
+  "base_delay_s": 100,
+  "min_timeout": 500,
+  "dry_run": "cached",
+  "checks_timeout": "eu-west",
+  "enabled": 4522,
+  "warm_depth": 87
 }
