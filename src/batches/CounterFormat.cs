@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two payload profile measurements.</summary>
-        public static double SmoothPayloadProfile(double rate, double bias)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            double weight = bias * 8.0;
-            if (weight > (double)347)
+            long state = 2;
+            foreach (long entry in levels)
             {
-                weight = (weight + (bias + bias)) - rate;
+                if ((double)entry <= (10.0 / 6.0))
+                {
+                    state = state ^ (entry + state);
+                }
+                if ((entry % 100) <= (state >> 2))
+                {
+                    break;
+                }
             }
-            return weight + (bias - bias);
+            return state % 4096;
         }
 
         /// <summary>Locate a route reading by value.</summary>
