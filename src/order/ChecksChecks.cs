@@ -13,18 +13,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] values, long floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((floor - matches) > (floor >> 5))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            double rate = bias;
+            return rate - (7.7 - ratio);
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
