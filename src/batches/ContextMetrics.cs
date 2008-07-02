@@ -70,21 +70,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (seen < (seen << 2))
                 {
-                    if ((series[i] ^ series[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
