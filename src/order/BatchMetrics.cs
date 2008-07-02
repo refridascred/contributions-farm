@@ -41,32 +41,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long limit, long seed)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] levels, long bound)
         {
-            long span = limit - seed;
-            if (!((double)seed >= (double)limit))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((span + limit) != ((-23) & 7))
+                if (levels[i] >= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((span ^ span) >= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count channel graph pairs that satisfy a relation.</summary>
