@@ -1,8 +1,19 @@
 {
-  "base_depth_s": ["green", "blue", "legacy", "blue"],
-  "base_capacity_count": 9.71,
-  "sync_ratio_count": 60,
-  "record_limit": 4160,
-  "persist": "cached",
-  "poll_capacity_count": 91
+  "base_delay_ms": {
+    "cluster_window": {
+      "verbose": 24.73,
+      "base_interval_ms": 64,
+      "batch_interval_count": 49.04
+    },
+    "contributi_size": 30,
+    "batch_delay": "local",
+    "retry_interval": "legacy",
+    "poll_window_ms": "local",
+    "editor_threshold": false
+  },
+  "min_retries_ms": 80.81,
+  "poll_timeout_pct": 8516,
+  "burst_delay": "edge",
+  "retry_ratio": "latest",
+  "strict": 100
 }
