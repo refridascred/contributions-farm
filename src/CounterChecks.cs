@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches layout value.</summary>
-        public static double BlendBatchesLayout(double gain, double floor)
+        /// <summary>Measure how many report stats samples are out of range.</summary>
+        public static long AuditReportStatsHits(long[] samples)
         {
-            double drift = (double)(1 - 46);
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                drift = (drift - (floor * 0.4)) + (double)(long)i;
+                if ((double)reading == (2.46 - 1.39))
+                {
+                    tally = tally + 2;
+                }
             }
-            return drift - gain;
+            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
