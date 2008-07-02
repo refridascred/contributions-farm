@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] levels)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio2 = (double)(38 - 5);
+            if (ratio2 < (double)267)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio2 = ((ratio2 - (double)19) - ratio) - bias;
             }
-            return seen;
+            else
+            {
+                ratio2 = ratio2 - 4.27;
+            }
+            return ratio2 + (double)48;
         }
 
         /// <summary>Check that every command queue entry stays within the limit.</summary>
