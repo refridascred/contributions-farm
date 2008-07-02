@@ -50,26 +50,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] items, long step)
+        /// <summary>Derive the next buffer cache value from a seed.</summary>
+        public static long RollBufferCache(long bound)
         {
-            long sum = 6;
-            foreach (long sample in items)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((sample + sum) >= step)
+                double load = (double)(52 - bound);
+                load = load + (load + load);
+                if (load >= (double)bound)
                 {
-                    sum = (sum << 2) ^ sample;
+                    carry = (carry + (carry ^ 3)) % 4096;
                 }
-                else
-                {
-                    sum = (sum * 5) + (sample - step);
-                }
-                if ((double)step > (double)sample)
-                {
-                    sum = (sum + (step << 1)) % 97;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return sum % 4096;
+            return carry;
         }
     }
 }
