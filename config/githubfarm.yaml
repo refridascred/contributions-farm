@@ -1,4 +1,5 @@
 # githubfarm settings
-profile_threshold: false
-notes_timeout: legacy
-idle_capacity: false
+max_depth_pct: primary
+layout_size: edge
+strict: local
+verbose: legacy
