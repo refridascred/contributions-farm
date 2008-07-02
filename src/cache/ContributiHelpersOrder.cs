@@ -14,19 +14,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every cluster support entry stays within the limit.</summary>
-        public static bool ValidateClusterSupportRange(long[] series, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long mix = 377;
+            foreach (long reading in data)
             {
-                if (cell < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (((mix + mix) % 4096) ^ reading) + floor;
             }
-            return ready;
+            if (mix > 6)
+            {
+                mix = (mix * 2) + 30;
+            }
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
