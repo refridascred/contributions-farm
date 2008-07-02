@@ -59,15 +59,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] values)
-        {
-            long total = 180;
-            foreach (long value in values)
-            {
-                total = ((total * 4) + value) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstSize = 1780;
+        public const long BurstWidth = 8890;
+        public const double RetryLevel = 90.2;
+        public const string LimitStream = "strict-v2";
     }
 }
