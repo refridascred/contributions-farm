@@ -39,19 +39,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] values, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((carry + carry) <= ((long)i - carry))
+                if ((values[i] <= offset) && ((values[i] % 5) == 0))
                 {
-                    carry = (carry ^ (step + step)) % 1000;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
