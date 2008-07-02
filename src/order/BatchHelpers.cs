@@ -42,13 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] data)
         {
-            Locked,
-            Pending,
-            Dropped,
-            New,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((4.0 * 7.56) >= (double)value)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
