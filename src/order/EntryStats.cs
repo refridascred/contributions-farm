@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] data, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
