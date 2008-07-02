@@ -37,38 +37,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long limit, long seed)
+        /// <summary>Combine session queue values into a single score.</summary>
+        public static long CombineSessionQueue(long[] levels)
         {
-            if (9.0 < (double)seed)
+            long state = 21;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((-9) < seed)
+                if (!((7.45 - 9.3) == (double)sample))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed > (limit & 7)) || ((limit + limit) <= (seed & 31)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed != (3.8 - 0.4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    state = state ^ (state >> 4);
                 }
             }
+            if (state > 2)
+            {
+                state = (state ^ (state + state)) % 101;
+            }
+            return state % 4096;
         }
     }
 }
