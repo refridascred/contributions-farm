@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] samples, long limit)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] series)
         {
-            long acc = -51;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc << 2) ^ (acc - item)) % 4096;
-                if ((limit & 255) < (limit ^ limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc ^ acc) % 101;
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = (acc << 2) ^ (0 >> 1);
             }
-            if (acc > 5)
-            {
-                acc = (acc * 4) + (limit / 5);
-            }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
