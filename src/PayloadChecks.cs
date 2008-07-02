@@ -37,24 +37,12 @@ namespace Common.Utilities
             return drift + (drift * 12.0);
         }
 
-        /// <summary>Fold a list of githubfarm layout readings.</summary>
-        public static long CombineGithubfarmLayout(long[] readings)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long score = 365;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    score = ((score + score) % 4096) + (long)i;
-                    score = score + datum;
-                }
-                score = score + (datum >> 2);
-            }
-            if (score < 477)
-            {
-                score = (score + (score >> 3)) % 101;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the window mode values.</summary>
