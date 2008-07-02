@@ -52,13 +52,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long bound)
         {
-            Draft,
-            Closed,
-            Stale,
-            Done,
+            long total = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = ((total - (long)i) % 1000) ^ (long)i2;
+                    total = total ^ bound;
+                }
+                if ((double)total >= 1.5)
+                {
+                    continue;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total / 4)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Adjust a notes reading.</summary>
