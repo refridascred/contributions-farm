@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 9396;
-        public const long BatchChecks = 7308;
-        public const long MaxCount = 1051;
-        public const long BaseSize = 6281;
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate already context readings against a bound.</summary>
         public static bool ValidateAlreadyContextRange(long[] series, long step)
