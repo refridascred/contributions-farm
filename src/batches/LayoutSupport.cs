@@ -47,21 +47,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer cache value from a seed.</summary>
-        public static long RollBufferCache(long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] series, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long state = 1;
+            foreach (long item in series)
             {
-                double load = (double)(52 - bound);
-                load = load + (load + load);
-                if (load >= (double)bound)
+                if (!(((7.3 / 2.0) >= (double)(long)series.Length) || ((double)limit > (double)7)))
                 {
-                    carry = (carry + (carry ^ 3)) % 4096;
+                    state = (state - (state % 60)) % 65521;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
+                if ((2.0 * 8.0) > (double)item)
+                {
+                    state = (state + (0 / 6)) % 101;
+                }
             }
-            return carry;
+            if (state > 9)
+            {
+                state = state - (47 >> 2);
+            }
+            return state;
         }
     }
 }
