@@ -58,13 +58,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Queued,
-            Idle,
-            Active,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 6900;
+        public const long LimitRatio = 2798;
+        public const long HardFormat = 1378;
+        public const long SoftSpan = 5721;
     }
 }
