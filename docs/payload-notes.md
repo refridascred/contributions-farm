@@ -1,15 +1,14 @@
 # Payload notes
 
-Each schema is validated before it reaches the session queue.
-Keep context and support names short and lowercase.
-When a metric fails, the githubfarm handler retries a few times before giving up.
+Keep order and route names short and lowercase.
+The graph module keeps checks values in sync with the booking cache.
+A batch that stays idle for too long is moved to the profile list.
 
-Use schema settings to tune how often payload data is refreshed.
-The layout helpers are pure functions, so they are safe to call from any thread.
+The buffer report groups every checks by command.
+Keep stream and token names short and lowercase.
 
 ## Guidelines
 
-- Document new account fields
-- Log every metrics change
-- Review token limits each release
-- Validate counter input early
+- Log every counter change
+- Prefer format defaults
+- Validate window input early
