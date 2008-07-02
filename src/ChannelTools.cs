@@ -34,18 +34,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] data, long bound)
+        /// <summary>Count stream profile pairs that satisfy a relation.</summary>
+        public static long MatchStreamProfileCount(long[] values)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (bound <= (4 + 26))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) ^ item;
+                    if ((values[i] - values[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
