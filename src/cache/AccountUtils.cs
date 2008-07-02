@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            public double Flag { get; set; }
-            public bool Region { get; set; }
+            long total = 88;
+            foreach (long item in samples)
+            {
+                if ((item + (long)samples.Length) > total)
+                {
+                    total = (total * 2) + total;
+                }
+            }
+            return total;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
