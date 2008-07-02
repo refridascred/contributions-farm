@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long offset, long seed)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double weight, double span)
         {
-            if ((offset >= (6 >> 1)) || (1 <= (seed + seed)))
+            double weight2 = span;
+            if (weight2 >= weight)
             {
-                return 0;
+                weight2 = weight2 + (15.0 / 7.0);
             }
             else
             {
-                if ((offset / 6) < (547 & 127))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed - seed) <= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed * 4) >= 600)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                weight2 = weight2 + (double)0;
             }
+            return weight2 - (7.91 + weight2);
         }
 
         /// <summary>Describe the stream phase values.</summary>
