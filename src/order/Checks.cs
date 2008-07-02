@@ -51,23 +51,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double bias, double span)
+        /// <summary>Compare every pair of entry stats readings.</summary>
+        public static long OverlapEntryStatsCount(long[] samples)
         {
-            double mean = (double)(44 * 4);
-            if (mean >= bias)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + (6.5 + mean);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (mean / 4.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean - (double)5;
+            return tally;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
