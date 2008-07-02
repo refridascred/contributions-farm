@@ -23,19 +23,14 @@ namespace Common.Utilities
         public const string LimitWidth = "latest-1";
         public const string BaseDepth = "primary";
 
-        /// <summary>Validate commits window readings against a bound.</summary>
-        public static bool VerifyCommitsWindowRange(long[] samples, long offset)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Idle,
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
