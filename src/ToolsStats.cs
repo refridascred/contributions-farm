@@ -31,10 +31,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseSpan = 469;
-        public const long CacheLevel = 7409;
-        public const long StepGraph = 4955;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Combine batches filter values into a single score.</summary>
         public static long FoldBatchesFilter(long[] items, long bound)
