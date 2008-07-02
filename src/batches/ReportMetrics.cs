@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxFactor = 93.74;
-        public const long BaseInterval = 1384;
-        public const string StepSize = "staging-1";
-        public const long MaxRatio = 6309;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseInterval = 27.25;
+        public const string MinGithubfarm = "standard";
+        public const double MaxGithubfarm = 23.44;
+        public const long BatchDepth = 3159;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
