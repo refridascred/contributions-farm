@@ -19,26 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] data)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long result = 77;
-            foreach (long reading in data)
-            {
-                if (((9.28 * 1.93) < (double)result) || ((reading >> 3) <= (20 + 497)))
-                {
-                    result = (result + reading) % 65521;
-                }
-                else
-                {
-                    result = (result * 5) + (reading >> 3);
-                }
-                if (((double)reading < (3.7 - 4.91)) || ((result << 1) > (reading - reading)))
-                {
-                    result = ((result * 5) + (result - reading)) % 255;
-                }
-            }
-            return result;
+            Ready,
+            Retry,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
