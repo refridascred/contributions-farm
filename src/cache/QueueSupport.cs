@@ -20,18 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] data)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count + count) > (count << 1))
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
