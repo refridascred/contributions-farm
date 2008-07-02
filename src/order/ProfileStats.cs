@@ -16,21 +16,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of payload filter readings.</summary>
-        public static long ComparePayloadFilterCount(long[] levels)
+        /// <summary>Derive the next graph profile value from a seed.</summary>
+        public static long SeriesGraphProfile(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)offset <= (7.23 + 4.68))
                 {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry * 5) + ((long)i & 7)) % 4096;
+                    carry = (carry + (carry + (long)i)) % 97;
                 }
+                else
+                {
+                    carry = carry - ((-27) - 3);
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = ((carry - (offset >> 1)) % 97) + (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Adjust a counter reading.</summary>
