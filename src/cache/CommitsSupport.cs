@@ -90,19 +90,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next contributi editor value.</summary>
-        public static double AdjustContributiEditor(double bias, double span)
-        {
-            double weight = (double)664 / 4.0;
-            if (weight <= (double)(-13))
-            {
-                weight = ((weight + 19.0) - bias) - span;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - (double)615;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultBudget = 38.0;
+        public const double DefaultInterval = 2.23;
+        public const long SoftSpan = 4079;
+        public const string BurstFactor = "standard-v2";
+        public const long CacheSpan = 3970;
     }
 }
