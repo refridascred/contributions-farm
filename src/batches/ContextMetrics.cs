@@ -44,16 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long floor)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] levels, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                mix = (mix - mix) % 65521;
-                mix = ((mix * 2) + (long)i) % 101;
+                if (entry > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Describe the account status values.</summary>
