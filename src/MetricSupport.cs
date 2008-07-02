@@ -14,21 +14,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (series[i] <= target)
                 {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
