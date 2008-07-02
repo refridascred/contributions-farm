@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] items, long limit)
+        /// <summary>Match up filter contributi samples.</summary>
+        public static long MatchFilterContributiCount(long[] levels)
         {
-            long mix = 42;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix ^ (mix + mix)) % 97;
-                if ((4.8 / 6.0) == (double)mix)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix - ((-5) + 0)) % 4096;
-                }
-                if ((562 - limit) != (limit % 7))
-                {
-                    mix = ((mix * 4) + datum) % 101;
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Blend two farm measurements.</summary>
