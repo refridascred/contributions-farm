@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Closed,
-            Dropped,
-            Queued,
-            Paused,
-            Retry,
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the counter mode values.</summary>
