@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Roll a format counter forward.</summary>
