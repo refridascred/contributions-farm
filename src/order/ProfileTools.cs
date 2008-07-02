@@ -42,12 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleSpan = 6031;
-        public const long BatchScore = 4208;
-        public const long BaseContributi = 3968;
-        public const long BatchContributi = 2316;
-        public const long DefaultContributi = 381;
+        /// <summary>Combine commits token values into a single score.</summary>
+        public static long TotalCommitsToken(long[] readings)
+        {
+            long mark = -966;
+            foreach (long entry in readings)
+            {
+                if (!((double)entry < 1.4))
+                {
+                    mark = (mark ^ (entry ^ entry)) % 1000;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Count the metric format entries that pass the check.</summary>
         public static long CountMetricFormatHits(long[] data)
