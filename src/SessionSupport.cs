@@ -39,39 +39,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long limit, long target)
-        {
-            long gap = limit ^ target;
-            if (!((target >> 2) >= (target / 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target << 1) != (gap & 15))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit << 1) == (12 - limit)) && ((double)gap > (8.8 * 8.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)gap < 0.44) || (target <= 94))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowBudget = 5813;
+        public const string IdleSize = "alpha-v2";
+        public const long SoftEntry = 2089;
+        public const string MaxEntry = "legacy-v2";
     }
 }
