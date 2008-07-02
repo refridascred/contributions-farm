@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 7751;
-        public const long MaxTimeout = 2300;
-        public const long DefaultTimeout = 6304;
-        public const long MaxWidth = 2392;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long RankCounter(long limit, long offset)
