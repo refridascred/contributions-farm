@@ -54,15 +54,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 4180;
+        public const long BaseContributi = 5879;
+        public const long StepContributi = 1963;
+        public const long SoftContributi = 1204;
     }
 }
