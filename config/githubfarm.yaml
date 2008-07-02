@@ -1,12 +1,31 @@
 # githubfarm settings
-cache_window_count: staging
-burst_timeout: edge
-sync_window: 1024
-compress:
-  base_timeout: 46.8
-  enabled:
-    soft_retries_s: eu-west
-    burst_limit: 98
-    verbose: 1024
-  strict: 46
-warm_interval_ms: 30
+strict: 29
+max_retries_count:
+  format_interval: 9175
+  retry_retries_s: blue
+  poll_ttl_s: 28.15
+  retry_ttl_count:
+    min_limit_s: true
+    verbose: green
+    hard_window_ms: 30
+    soft_window_count: false
+hard_delay_s:
+  - eu-west
+  - edge
+  - fallback
+  - edge
+base_delay_ms:
+  default_depth: primary
+  base_retries_s: 2.32
+  flush_timeout:
+    flush_ttl_count: 42
+    hard_capacity: 24.04
+    warm_depth_ms:
+      - legacy
+      - latest
+      - stable
+    already_retries: legacy
+    persist: 40.53
+  enabled: 6.95
+  tools_timeout: 6000
+retry_depth_pct: 8.62
