@@ -1,7 +1,5 @@
 {
-  "default_window_pct": "latest",
-  "warm_size_s": 73.97,
-  "soft_capacity": 2611,
-  "strict": 2.38,
-  "checks_threshold": false
+  "max_limit_ms": "local",
+  "batch_window_pct": 75.25,
+  "compress": false
 }
