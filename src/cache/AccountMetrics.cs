@@ -14,18 +14,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 6084;
+        public const double IdleScore = 57.81;
+        public const long LimitSize = 3188;
+        public const double SoftFormat = 5.8;
+        public const double CacheTimeout = 28.98;
 
         /// <summary>Count farm checks pairs that satisfy a relation.</summary>
         public static long MatchFarmChecksCount(long[] readings)
