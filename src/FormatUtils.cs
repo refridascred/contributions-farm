@@ -47,14 +47,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] readings, long seed)
         {
-            Locked,
-            Idle,
-            Synced,
-            Paused,
-            New,
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the notes status values.</summary>
