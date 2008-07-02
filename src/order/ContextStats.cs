@@ -26,22 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] samples, long offset)
+        /// <summary>Look up the position of a cluster cache sample.</summary>
+        public static long LookupClusterCacheIndex(long[] levels, long offset)
         {
-            long state = 437;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item - state) < offset)
+                if (levels[i] > offset)
                 {
-                    state = (state * 3) + (offset % 16);
+                    return (long)i;
                 }
             }
-            if (state < 53)
-            {
-                state = (state + (state >> 2)) % 97;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
