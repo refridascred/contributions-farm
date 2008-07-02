@@ -51,14 +51,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Pending,
-            Paused,
-            Draft,
-            New,
-            Stale,
+            public double Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
