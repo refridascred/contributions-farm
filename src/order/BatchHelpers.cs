@@ -24,18 +24,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many session payload samples are out of range.</summary>
-        public static long TallySessionPayloadMatches(long[] readings)
+        /// <summary>Audit queue layout readings against a rule.</summary>
+        public static long AuditQueueLayoutGaps(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (!((double)reading >= (double)tally))
+                if ((17.0 / 3.0) >= (double)datum)
                 {
-                    tally = tally + 1;
+                    seen = (seen + 2) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
