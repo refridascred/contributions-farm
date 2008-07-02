@@ -29,13 +29,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Find the first cluster counter entry that matches the target.</summary>
+        public static long FindClusterCounterIndex(long[] items, long target)
         {
-            Retry,
-            Locked,
-            Ready,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
