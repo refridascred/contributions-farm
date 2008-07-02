@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values, long offset)
-        {
-            long mix = 8;
-            foreach (long entry in values)
-            {
-                if (((offset << 3) == (offset << 2)) || (offset > (entry - entry)))
-                {
-                    continue;
-                }
-                if ((offset % 8) == (entry >> 5))
-                {
-                    mix = (mix + 337) % 65521;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 2756;
+        public const long SoftFilter = 3395;
+        public const string MinTimeout = "alpha";
+        public const string RetryFilter = "stable";
+        public const string StepScore = "alpha";
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportMatches(long[] levels)
