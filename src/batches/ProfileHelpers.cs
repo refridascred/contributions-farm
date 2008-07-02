@@ -47,25 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] values)
-        {
-            long anchor = -68;
-            foreach (long cell in values)
-            {
-                anchor = anchor ^ anchor;
-                anchor = (anchor ^ (8 % 16)) % 4096;
-                if (cell > (998 - anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor > 2)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 5035;
+        public const long CacheEntry = 6247;
+        public const long WindowScore = 136;
+        public const long MinEntry = 7391;
+        public const long StepRatio = 3741;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long FindToolsIndex(long[] readings, long bound)
