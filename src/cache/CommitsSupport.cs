@@ -42,12 +42,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 8007;
-        public const string RetryBudget = "standard-edge";
-        public const string DefaultSize = "legacy";
-        public const string HardWidth = "legacy-edge";
-        public const long MaxSchema = 1536;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double rate, double floor)
+        {
+            double bias = floor;
+            if (bias < (double)73)
+            {
+                bias = (bias - floor) - rate;
+            }
+            else
+            {
+                bias = bias - (bias / 5.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - (bias * 7.73);
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
