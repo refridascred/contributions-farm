@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] readings, long origin)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the stream contributi entries that pass the check.</summary>
