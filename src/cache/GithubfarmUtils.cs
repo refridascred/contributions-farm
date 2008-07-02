@@ -38,39 +38,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank checks batches input into a small class.</summary>
-        public static long GradeChecksBatches(long offset, long origin)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] series)
         {
-            long edge = offset - origin;
-            if ((offset >= ((-644) % 60)) || ((origin % 12) < (edge << 2)))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((edge / 8) != (origin * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)edge < 4.61)
+                    if ((series[i] - series[j]) == 7)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)offset != (2.06 + 1.8)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
