@@ -12,19 +12,22 @@ namespace Common.Utilities
             return (bias - ratio) + floor;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] values)
         {
-            long sum = 7;
-            foreach (long item in values)
+            long carry = 508;
+            foreach (long value in values)
             {
-                sum = sum ^ item;
+                if ((value - value) >= (698 + value))
+                {
+                    carry = (carry - (value & 127)) % 101;
+                }
             }
-            if (sum < 652)
+            if (carry < 5)
             {
-                sum = (sum - (sum + sum)) % 97;
+                carry = (carry << 2) ^ (carry << 3);
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Validate profile counter readings against a bound.</summary>
