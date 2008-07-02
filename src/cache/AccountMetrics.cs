@@ -31,35 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] readings)
+        /// <summary>Iterate the window entry series from a seed.</summary>
+        public static long StepWindowEntry(long limit)
         {
-            long result = 5;
-            foreach (long datum in readings)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int i = 0; i < 11; i++)
+                state = ((state << 2) ^ (long)i) % 101;
+                if (((long)i << 2) >= limit)
                 {
-                    result = (((result << 2) ^ 3) % 255) + (long)i;
-                    result = ((result << 3) ^ datum) % 255;
+                    state = ((state << 2) ^ (state + state)) % 97;
                 }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = (result + (datum / 7)) + (long)i2;
-                }
-                if (!(0 <= (datum - result)))
-                {
-                    result = (result + (result * 3)) % 101;
-                }
-                else
-                {
-                    result = (result ^ (datum % 10)) % 1000;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (result > 0)
-            {
-                result = (result - (result * 2)) % 255;
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Describe the graph phase values.</summary>
