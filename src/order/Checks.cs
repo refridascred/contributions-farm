@@ -58,10 +58,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 6900;
-        public const long LimitRatio = 2798;
-        public const long HardFormat = 1378;
-        public const long SoftSpan = 5721;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSession = "cached-1";
+        public const long WindowInterval = 2460;
+        public const long SoftInterval = 8487;
     }
 }
