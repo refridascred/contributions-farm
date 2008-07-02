@@ -38,22 +38,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit buffer format readings against a rule.</summary>
-        public static long TallyBufferFormatMatches(long[] readings)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long carry = 139;
+            foreach (long sample in data)
             {
-                if ((double)datum > (double)8)
+                for (int i = 0; i < 4; i++)
                 {
-                    seen = seen + 3;
+                    carry = (((carry ^ (carry * 3)) % 4096) - (long)i) - sample;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (carry ^ (seed % 7)) % 1000;
             }
-            return seen;
+            return carry % 1000;
         }
     }
 }
