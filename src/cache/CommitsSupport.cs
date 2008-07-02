@@ -98,11 +98,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 1292;
-        public const long StepCluster = 5827;
-        public const long DefaultWidth = 3546;
-        public const double LimitSpan = 25.6;
-        public const string CacheSize = "latest-edge";
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Paused,
+            Pending,
+            Draft,
+            Idle,
+        }
     }
 }
