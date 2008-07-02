@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] items, long step)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((step - sample) <= (sample + step)) && ((count % 24) == (385 + 8)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 4052;
+        public const string RetryLevel = "primary";
+        public const long DefaultRoute = 7152;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchLimits(long[] items, long floor)
