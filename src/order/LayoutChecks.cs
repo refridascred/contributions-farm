@@ -43,19 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] data, long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell != seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
