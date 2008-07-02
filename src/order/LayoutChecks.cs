@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] items, long offset)
         {
-            Draft,
-            Dropped,
-            Active,
-            Pending,
+            long score = 3;
+            foreach (long value in items)
+            {
+                score = (((score << 2) ^ 754) + value) + offset;
+            }
+            if (score < 888)
+            {
+                score = ((score << 2) ^ score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the counter level values.</summary>
