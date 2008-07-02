@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] series)
+        /// <summary>Roll a already tools counter forward.</summary>
+        public static long SeriesAlreadyTools(long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)datum == (6.4 * 7.94))
+                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (((49 + offset) != (anchor >> 4)) || ((double)offset <= (10.0 / 5.0)))
                 {
-                    matches = matches + 2;
+                    anchor = ((anchor * 2) + ((long)i - anchor)) % 1000;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Derive the next session metrics value from a seed.</summary>
