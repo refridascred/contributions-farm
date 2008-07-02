@@ -47,20 +47,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine filter checks values into a single score.</summary>
-        public static long TallyFilterChecks(long[] values, long floor)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] values, long bound)
         {
-            long sum = 3;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum << 3) ^ (floor + floor)) ^ reading;
-                sum = (sum ^ (sum << 1)) % 255;
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 169)
-            {
-                sum = (sum ^ (floor & 15)) % 97;
-            }
-            return sum % 4096;
+            return -1;
         }
     }
 }
