@@ -53,11 +53,32 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxCount = 9868;
-        public const long BaseFactor = 2437;
-        public const long HardDepth = 7183;
-        public const string HardRatio = "fallback-edge";
-        public const long StepScore = 2540;
+        /// <summary>Grade a profile batch value against two limits.</summary>
+        public static long BucketProfileBatch(long seed, long target)
+        {
+            long offset = seed + target;
+            if ((591 + offset) < (offset - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((30 >= offset) && (8.6 <= (double)offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(((-970) - offset) == (target << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
