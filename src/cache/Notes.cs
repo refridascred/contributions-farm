@@ -74,22 +74,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream commits entries.</summary>
-        public static long FoldStreamCommits(long[] readings)
-        {
-            long carry = 375;
-            foreach (long reading in readings)
-            {
-                if ((reading & 15) >= carry)
-                {
-                    carry = (carry * 3) + reading;
-                }
-            }
-            if (carry > (-410))
-            {
-                carry = ((carry << 2) ^ (3 % 64)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstDepth = 7517;
+        public const long LimitTools = 7300;
+        public const long BaseRatio = 4580;
+        public const long DefaultTools = 9439;
+        public const string MaxLevel = "staging-v2";
     }
 }
