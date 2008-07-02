@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long limit)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 15; i++)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (((sum & 255) > (limit * 3)) || ((double)sum > (5.41 - 11.0)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    continue;
+                    mix = (mix - ((long)i * 5)) ^ (long)i2;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
