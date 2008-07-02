@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long origin, long bound)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            if ((bound << 2) < (origin + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin ^ (-430)) >= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((59 * 5) <= (bound + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
