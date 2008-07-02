@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchScore = 62.76;
-        public const long IdleMetric = 9264;
-        public const long SoftMetric = 1244;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepCount = 1371;
+        public const double SoftContext = 57.04;
+        public const long MaxContext = 7468;
 
         /// <summary>Combine contributi layout values into a single score.</summary>
         public static long TallyContributiLayout(long[] items, long offset)
