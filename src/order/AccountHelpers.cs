@@ -47,28 +47,36 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long offset, long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long target, long origin)
         {
-            if (target <= offset)
+            long edge = target - origin;
+            if ((double)11 != (double)edge)
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if ((offset - target) <= (offset & 7))
+                if (((target & 7) != (target - edge)) || (target >= (target - 83)))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if ((offset - offset) >= offset)
+                    if (!(edge >= (edge - edge)))
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        return 1;
+                        if (((double)edge >= (15.0 / 5.0)) || ((edge - edge) <= edge))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
