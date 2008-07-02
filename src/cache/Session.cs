@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] items, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] == offset)
+                if (!((double)matches <= (17.0 * 6.0)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
