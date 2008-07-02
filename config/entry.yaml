@@ -1,16 +1,7 @@
 # entry settings
-dry_run:
-  poll_window: 30
-  soft_timeout_count: latest
-  readonly: stable
-  cache_size_pct:
-    - 64
-    - 203
-  base_limit_pct: cached
-  dry_run: 23.73
-hard_window_count:
-  compress: blue
-  verbose: true
-  base_retries_pct: open
-hard_window: blue
-burst_capacity: 3957
+poll_window: true
+sync_retries: eu-west
+cache_depth_pct: true
+hard_retries_pct: strict
+burst_ratio_ms: 48
+audit: 3303
