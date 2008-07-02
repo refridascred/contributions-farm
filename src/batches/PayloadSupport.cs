@@ -37,10 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftLevel = 3492;
-        public const long RetryWidth = 4714;
-        public const long LimitBudget = 6244;
-        public const double BatchRatio = 51.03;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = (mix ^ (long)i2) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
