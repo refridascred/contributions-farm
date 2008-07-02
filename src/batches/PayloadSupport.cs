@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long bound)
         {
-            New,
-            Draft,
-            Closed,
-            Active,
-            Locked,
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = (anchor - (bound + bound)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of cluster command readings.</summary>
