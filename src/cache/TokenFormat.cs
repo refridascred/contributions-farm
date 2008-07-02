@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] readings, long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] readings, long seed)
         {
-            long state = 51;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((entry / 8) < 6)
+                if (((datum ^ count) == (count >> 3)) && ((seed + seed) >= (66 << 1)))
                 {
-                    state = ((state * 4) + (665 % 64)) % 101;
-                }
-                if ((entry << 3) >= origin)
-                {
-                    state = (state << 2) ^ (state >> 5);
+                    count = count + 2;
                 }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Accumulate graph samples.</summary>
