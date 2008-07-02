@@ -16,21 +16,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 15;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (2 <= (cell & 7))
                 {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    total = total + (cell - cell);
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
