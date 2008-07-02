@@ -40,15 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Active,
-            Ready,
-            Closed,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "open";
+        public const string LimitBatch = "cached";
+        public const long LimitCount = 4601;
+        public const long RetryBatch = 1337;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MaxFactor = 44.31;
