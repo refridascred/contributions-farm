@@ -34,24 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long offset, long seed)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            if (!((offset >> 1) < (offset & 63)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed * 2) > seed) && ((seed * 5) != (95 - 219)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Retry,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
