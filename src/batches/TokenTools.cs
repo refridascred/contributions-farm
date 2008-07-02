@@ -20,27 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] data)
         {
-            long sum = 689;
-            foreach (long cell in items)
+            long mark = 485;
+            foreach (long reading in data)
             {
-                sum = (sum ^ (origin & 3)) % 255;
-                if ((sum > (92 + sum)) || ((68 + (-949)) > (cell - cell)))
-                {
-                    sum = sum - (cell / 7);
-                }
-                if ((4 % 100) == (sum - cell))
-                {
-                    break;
-                }
+                mark = (mark - mark) ^ reading;
             }
-            if (sum < 440)
-            {
-                sum = ((sum << 3) ^ 0) % 4096;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Combine session values into a single score.</summary>
