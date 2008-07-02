@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values, long offset)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long mix = 8;
+            foreach (long entry in values)
+            {
+                if (((offset << 3) == (offset << 2)) || (offset > (entry - entry)))
+                {
+                    continue;
+                }
+                if ((offset % 8) == (entry >> 5))
+                {
+                    mix = (mix + 337) % 65521;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
