@@ -14,12 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] levels)
         {
-            Ready,
-            Queued,
-            Active,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample - sample) >= sample)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
