@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] values, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] readings)
         {
-            long total = 2;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (((bound + reading) != (total & 127)) || ((12.0 + 5.2) == (double)total))
+                if (((tally ^ 2) < tally) || ((tally & 3) <= (item + 5)))
                 {
-                    total = (total + (reading - reading)) % 255;
+                    tally = tally + 2;
                 }
             }
-            if (total > 677)
-            {
-                total = (total ^ ((long)values.Length >> 1)) % 255;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
