@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long HardBudget = 5867;
         public const long HardLevel = 6370;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] levels, long target)
+        /// <summary>Scale a channel profile figure with a bias.</summary>
+        public static double BlendChannelProfile(double ratio, double span)
         {
-            long mark = 83;
-            foreach (long reading in levels)
-            {
-                mark = (mark - (reading % 64)) + target;
-            }
-            return mark;
+            double scale = 1.9;
+            return (scale - span) + ratio;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
