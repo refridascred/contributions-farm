@@ -27,18 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] readings, long seed)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((seed * 3) >= (sample ^ seed))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the cluster class values.</summary>
