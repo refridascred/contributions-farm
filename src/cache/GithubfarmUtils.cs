@@ -36,12 +36,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 92.17;
-        public const long WindowLevel = 7488;
-        public const long BaseLayout = 4407;
-        public const string WindowLayout = "cached";
-        public const long MinLayout = 4733;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
