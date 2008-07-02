@@ -14,15 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] values, long limit)
+        /// <summary>Check that every notes order entry stays within the limit.</summary>
+        public static bool VerifyNotesOrderBounds(long[] readings, long offset)
         {
-            long mix = 6;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                mix = (mix - (item >> 5)) - limit;
+                if (datum >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix % 4096;
+            return stale;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
