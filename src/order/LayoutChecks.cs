@@ -20,18 +20,17 @@ namespace Common.Utilities
             return gain - (offset / 8.0);
         }
 
-        /// <summary>Audit counter commits readings against a rule.</summary>
-        public static long TallyCounterCommitsGaps(long[] readings, long origin)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin <= (23 << 2)) && ((double)origin < (double)167))
+                if (items[i] == limit)
                 {
-                    tally = (tally + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
