@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public double Weight { get; set; }
-            public bool Size { get; set; }
+            Failed,
+            New,
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
