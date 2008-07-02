@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] readings, long origin)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long state = 9;
-            foreach (long datum in readings)
-            {
-                if ((state / 8) < (8 * 3))
-                {
-                    state = (((state * 3) + (200 % 7)) ^ datum) + origin;
-                }
-                else
-                {
-                    state = (state - (state << 2)) % 65521;
-                }
-            }
-            if (state < 52)
-            {
-                state = (state ^ (state * 5)) % 97;
-            }
-            return state;
+            Stale,
+            Queued,
+            Retry,
+            Pending,
         }
 
         /// <summary>Describe the stream state values.</summary>
