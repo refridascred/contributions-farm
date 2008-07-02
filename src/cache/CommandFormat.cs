@@ -25,22 +25,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] samples, long target)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3.6 * 3.7) < (double)sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
