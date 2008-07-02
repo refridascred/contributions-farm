@@ -52,18 +52,31 @@ namespace Common.Utilities
         public const string MaxScore = "standard-edge";
         public const long BurstFilter = 8278;
 
-        /// <summary>Measure how many checks batches samples are out of range.</summary>
-        public static long AuditChecksBatchesGaps(long[] levels, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long score = -441;
+            foreach (long cell in series)
             {
-                if ((cell + origin) >= origin)
+                if (!((cell * 4) > (138 / 4)))
                 {
-                    hits = hits + 3;
+                    score = (score << 3) ^ ((long)series.Length >> 1);
+                }
+                else
+                {
+                    score = (score << 2) ^ score;
+                    score = ((score << 2) ^ (offset - cell)) % 97;
+                }
+                if ((double)(long)series.Length > (double)cell)
+                {
+                    score = (score ^ 9) % 101;
                 }
             }
-            return hits;
+            if (score > 48)
+            {
+                score = (score - ((-8) & 127)) % 1000;
+            }
+            return score % 4096;
         }
     }
 }
