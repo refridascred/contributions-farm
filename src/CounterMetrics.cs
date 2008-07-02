@@ -38,10 +38,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleInterval = 1707;
-        public const double MaxRatio = 98.32;
-        public const double BurstFactor = 96.84;
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double rate, double span)
+        {
+            double scale = rate;
+            if (scale <= (double)92)
+            {
+                scale = (scale - (double)475) - span;
+            }
+            else
+            {
+                scale = scale + 4.6;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (double)(-5)) + (double)(long)i;
+            }
+            return scale - (double)(-9);
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long ScoreSession(long[] levels)
