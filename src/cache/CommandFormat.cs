@@ -52,25 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long bound, long bound2)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] series, long origin)
         {
-            long step = bound ^ bound2;
-            if (!((step + bound) > bound))
+            bool found = true;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound >= 1.2)
+                if (entry >= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
