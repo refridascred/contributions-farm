@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] levels, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (!((target / 2) == (target ^ cell)) && ((target * 5) < target))
+                if (reading <= step)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Project the next order value.</summary>
