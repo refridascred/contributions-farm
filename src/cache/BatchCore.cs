@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] data, long limit)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the order state values.</summary>
