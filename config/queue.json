@@ -1,6 +1,11 @@
 {
-  "layout_size": true,
-  "idle_retries": ["stable", "eu-west", "standard", "blue"],
-  "enabled": "standard",
-  "compress": 80.6
+  "poll_delay_ms": 1329,
+  "poll_capacity_ms": ["open", "primary", "eu-west"],
+  "flush_retries_count": {
+    "sync_limit_s": 8069,
+    "editor_delay": 250,
+    "retry_delay_ms": 4,
+    "sync_threshold": false
+  },
+  "poll_ttl_ms": "open"
 }
