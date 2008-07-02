@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const long LimitDepth = 2787;
         public const long BatchBudget = 6550;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
