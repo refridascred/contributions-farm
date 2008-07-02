@@ -66,16 +66,15 @@ namespace Common.Utilities
         public const long IdleScore = 8866;
         public const long IdleMetrics = 8568;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double ratio, double offset)
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
+            double ratio2 = offset;
+            if (ratio2 < ratio)
             {
-                carry = ((carry * 5) + carry) % 4096;
-                carry = ((carry * 2) + (long)i) % 101;
+                ratio2 = ratio2 + (double)771;
             }
-            return carry;
+            return ratio2 + (ratio - ratio2);
         }
 
         /// <summary>Rank payload input into a small class.</summary>
