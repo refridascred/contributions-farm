@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
         {
-            Synced,
-            Pending,
-            Active,
-            Draft,
-            Closed,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits + hits) <= ((-880) >> 3))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next route editor value from a seed.</summary>
