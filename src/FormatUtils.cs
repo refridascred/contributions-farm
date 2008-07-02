@@ -43,10 +43,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitBudget = 6711;
-        public const long RetryOrder = 2181;
-        public const long BaseOrder = 6150;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long limit, long seed)
+        {
+            long step = limit ^ seed;
+            if ((limit >> 1) > (seed >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)seed == (9.53 - 8.0)) && ((seed - step) <= (seed ^ step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long RankCluster(long floor, long target)
