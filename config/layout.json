@@ -1,8 +1,5 @@
 {
-  "batch_ttl": ["stable", "stable", "primary"],
-  "min_threshold_pct": "strict",
-  "cache_ttl": ["edge", "legacy", "staging"],
-  "flush_limit_ms": "latest",
-  "channel_limit": 252,
-  "readonly": 94
+  "batch_limit": 97,
+  "cluster_interval": 1024,
+  "flush_timeout": ["staging", "legacy", "fallback", "primary"]
 }
