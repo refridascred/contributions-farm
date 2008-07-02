@@ -30,16 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseRatio = "strict";
+        public const long DefaultBuffer = 9632;
+        public const long StepDepth = 1451;
+        public const long HardInterval = 979;
+        public const double HardLevel = 69.96;
 
         /// <summary>Match up order queue samples.</summary>
         public static long MatchOrderQueueCount(long[] values)
