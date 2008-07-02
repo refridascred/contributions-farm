@@ -21,15 +21,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double weight, double offset)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double bias = (double)(27 + 73);
-            if (bias > (offset - weight))
-            {
-                bias = bias + bias;
-            }
-            return bias - (bias - bias);
+            Idle,
+            Retry,
+            Locked,
         }
 
         /// <summary>Validate commits token readings against a bound.</summary>
