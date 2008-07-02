@@ -38,11 +38,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
