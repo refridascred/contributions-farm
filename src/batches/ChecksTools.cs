@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 9707;
-        public const long MinScore = 2185;
-        public const long BaseFilter = 7144;
-        public const string RetryFilter = "legacy-1";
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
