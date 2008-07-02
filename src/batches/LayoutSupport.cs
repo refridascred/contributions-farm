@@ -14,15 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double rate, double span)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double ratio, double floor)
         {
-            double bias = span;
-            if (bias >= bias)
+            double rate = (5.0 * 3.24) / 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                bias = bias + (rate / 8.0);
+                rate = (((rate + (double)87) - (double)(long)i) + ratio) - floor;
             }
-            return bias - rate;
+            return rate + 1.9;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
