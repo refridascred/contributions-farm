@@ -53,18 +53,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] items)
+        /// <summary>Fold a list of checks already readings.</summary>
+        public static long ScoreChecksAlready(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long mix = 5;
+            foreach (long sample in samples)
             {
-                if ((matches * 3) < datum)
+                mix = ((mix * 2) + mix) % 97;
+                mix = mix ^ sample;
+                if ((sample - sample) > mix)
                 {
-                    matches = matches + 1;
+                    mix = mix + 607;
+                }
+                else
+                {
+                    mix = (mix + mix) % 65521;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Measure how many queue farm samples are out of range.</summary>
