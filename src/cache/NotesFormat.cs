@@ -28,19 +28,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] data, long target)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Done,
+            New,
+            Draft,
         }
     }
 }
