@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double gain, double floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double gain2 = 7.57 - (1.1 / 4.0);
-            if (gain2 <= gain)
-            {
-                gain2 = gain2 - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 - gain) + (double)(long)i;
-            }
-            return gain2 + (gain - 6.0);
+            Idle,
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a window record.</summary>
