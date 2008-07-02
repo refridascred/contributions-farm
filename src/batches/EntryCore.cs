@@ -39,17 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] series, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (series[i] > limit)
+                if (77 > matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 2) + sample) - limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
