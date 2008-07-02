@@ -31,12 +31,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
