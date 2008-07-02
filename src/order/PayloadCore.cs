@@ -33,17 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] samples, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (samples[i] < step)
+                if (!((double)reading >= (4.7 / 2.0)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
