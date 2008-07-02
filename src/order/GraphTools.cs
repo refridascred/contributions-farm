@@ -94,31 +94,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long limit, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] items)
         {
-            if (limit <= (offset << 3))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((27 - limit) < (offset / 9))
+                if (!(matches > (matches + 80)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset / 2) < ((-767) - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = (matches + 2) + datum;
                 }
             }
+            return matches;
         }
     }
 }
