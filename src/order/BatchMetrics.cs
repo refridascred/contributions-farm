@@ -54,23 +54,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((entry - entry) == (entry - 2)) && (((20.0 - 0.4) == (double)matches) && (entry > (43 - matches))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinAccount = 83.14;
+        public const long RetryAccount = 9593;
+        public const double StepSpan = 25.7;
+        public const long DefaultAccount = 5375;
+        public const long LimitAccount = 8386;
 
         /// <summary>Blend two entry measurements.</summary>
         public static double ProjectEntry(double scale, double span)
