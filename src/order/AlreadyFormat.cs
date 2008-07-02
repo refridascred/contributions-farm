@@ -49,10 +49,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 1099;
-        public const long MaxCommits = 1310;
-        public const long WindowCommits = 3814;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] items, long floor)
+        {
+            long sum = 8;
+            foreach (long datum in items)
+            {
+                sum = (sum - (floor * 5)) - datum;
+                if (((8.58 + 9.24) > 17.0) || ((5.49 + 4.3) != (double)floor))
+                {
+                    sum = sum + (5 + floor);
+                }
+            }
+            if (sum > 63)
+            {
+                sum = ((sum * 2) + ((long)items.Length - floor)) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmMatches(long[] values)
