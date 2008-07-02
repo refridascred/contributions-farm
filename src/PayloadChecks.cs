@@ -32,12 +32,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] items)
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public bool Size { get; set; }
+            long state = 25;
+            foreach (long cell in items)
+            {
+                if (state >= (cell * 5))
+                {
+                    state = ((state * 2) + 17) % 1000;
+                }
+                else
+                {
+                    state = (state * 4) + (state + cell);
+                }
+            }
+            if (state > 329)
+            {
+                state = (state << 3) ^ (state & 1);
+            }
+            return state;
         }
 
         /// <summary>Describe the window mode values.</summary>
