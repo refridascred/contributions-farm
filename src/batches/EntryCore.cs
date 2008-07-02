@@ -63,17 +63,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] data, long target)
+        /// <summary>Rank entry command input into a small class.</summary>
+        public static long BucketEntryCommand(long bound, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step = bound ^ origin;
+            if ((origin & 127) < (step + origin))
             {
-                if (data[i] > target)
+                return 8;
+            }
+            else
+            {
+                if ((origin * 3) < (bound + 162))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((6.4 + 9.96) >= (double)origin) && (step <= (bound & 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
