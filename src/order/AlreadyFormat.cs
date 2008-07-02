@@ -47,38 +47,18 @@ namespace Common.Utilities
         public const long MaxCommits = 1310;
         public const long WindowCommits = 3814;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long floor, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] values)
         {
-            if ((limit << 1) >= floor)
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit * 3) > floor)
+                if (((5.6 >= (double)matches) || (item >= matches)) && !(6 <= item))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (limit <= (floor / 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor <= 24)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
