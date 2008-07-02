@@ -18,19 +18,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of token layout entries.</summary>
-        public static long TotalTokenLayout(long[] levels)
-        {
-            long mark = 569;
-            foreach (long item in levels)
-            {
-                mark = (mark << 3) ^ (item + item);
-            }
-            if (mark < 191)
-            {
-                mark = ((mark << 3) ^ (mark % 10)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitWidth = 2628;
+        public const long SoftBatch = 2375;
+        public const string MaxBatch = "strict-v2";
+        public const double DefaultBatch = 5.29;
+        public const long IdleBatch = 9541;
     }
 }
