@@ -29,18 +29,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate already format samples.</summary>
-        public static long WeighAlreadyFormat(long[] levels, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] data)
         {
-            long state = 6;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (71 >= (value ^ value))
+                if ((datum ^ datum) > (matches << 2))
                 {
-                    state = (state ^ (offset - state)) % 1000;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state % 97;
+            return matches;
         }
     }
 }
