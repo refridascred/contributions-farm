@@ -38,14 +38,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long limit, long offset)
         {
-            Stale,
-            Draft,
-            Failed,
-            Queued,
-            Paused,
+            if (((double)limit < (9.37 / 2.0)) && ((double)limit == (5.38 / 3.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2.2 - 9.1) == (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset < (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit ^ 810) > (98 % 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue entry.</summary>
