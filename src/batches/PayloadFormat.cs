@@ -46,13 +46,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Count contributi graph pairs that satisfy a relation.</summary>
+        public static long MatchContributiGraphCount(long[] data)
         {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
