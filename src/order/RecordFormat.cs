@@ -61,17 +61,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 1667;
+        public const long DefaultMetrics = 725;
+        public const string WindowSize = "strict-edge";
+        public const string StepScore = "stable-v2";
     }
 }
