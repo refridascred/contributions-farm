@@ -29,13 +29,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] series)
         {
-            New,
-            Pending,
-            Failed,
-            Paused,
+            long sum = 411;
+            foreach (long item in series)
+            {
+                sum = ((sum - (sum % 100)) % 101) + item;
+            }
+            if (sum < 0)
+            {
+                sum = ((sum << 3) ^ (sum >> 4)) % 255;
+            }
+            return sum % 65521;
         }
     }
 }
