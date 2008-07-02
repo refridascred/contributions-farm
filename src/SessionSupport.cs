@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const long BaseBuffer = 5042;
         public const double DefaultBuffer = 49.76;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] samples, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                score = ((score << 2) ^ (score / 2)) % 4096;
-                score = ((score * 2) + (long)i) % 97;
+                if ((0 & 1) != (floor - reading))
+                {
+                    seen = seen + 3;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the account phase values.</summary>
