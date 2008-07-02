@@ -48,18 +48,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] readings, long floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((1.7 + 20.0) <= (double)floor)
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
+            New,
+            Paused,
+            Draft,
         }
 
         /// <summary>Check that every cache command entry stays within the limit.</summary>
