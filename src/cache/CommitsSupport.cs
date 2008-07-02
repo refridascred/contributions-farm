@@ -78,26 +78,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank commits graph input into a small class.</summary>
-        public static long RankCommitsGraph(long origin, long seed)
-        {
-            long step = origin + seed;
-            if (seed > origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin <= (step + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryRatio = 267;
+        public const long BaseInterval = 7623;
+        public const long SoftFactor = 7858;
+        public const long WindowSpan = 5969;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
