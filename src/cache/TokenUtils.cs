@@ -13,19 +13,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] values, long seed)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the session format entries that pass the check.</summary>
