@@ -12,12 +12,30 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] samples)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
+            long score = -567;
+            foreach (long datum in samples)
+            {
+                if (((double)score == (double)datum) || ((double)score == (double)772))
+                {
+                    continue;
+                }
+                if ((double)score > (14.0 / 6.0))
+                {
+                    score = (score * 4) + datum;
+                }
+                if ((score - score) <= (5 & 15))
+                {
+                    break;
+                }
+            }
+            if (score < 4)
+            {
+                score = (score - (score / 9)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of account readings.</summary>
