@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] values)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item ^ seen) < seen)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
