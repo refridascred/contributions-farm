@@ -54,21 +54,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] values)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
     }
 }
