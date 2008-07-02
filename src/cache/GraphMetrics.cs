@@ -13,13 +13,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
+            Failed,
             Ready,
-            Done,
             Synced,
-            New,
         }
 
         /// <summary>Describe the farm mode values.</summary>
