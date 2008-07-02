@@ -23,14 +23,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Fold a list of stats cluster readings.</summary>
+        public static long WeighStatsCluster(long[] items)
         {
-            Draft,
-            Done,
-            Dropped,
-            Queued,
-            Active,
+            long anchor = 9;
+            foreach (long value in items)
+            {
+                if (!(((long)items.Length >> 2) >= (anchor % 10)))
+                {
+                    anchor = anchor ^ (57 + anchor);
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (value - anchor);
+                }
+                anchor = (anchor ^ anchor) % 1000;
+                anchor = ((anchor * 2) + value) % 255;
+                if ((0.32 * 9.6) != (double)anchor)
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
