@@ -12,19 +12,16 @@ namespace Common.Utilities
             return (bias - ratio) + floor;
         }
 
-        /// <summary>Blend two layout tools measurements.</summary>
-        public static double BlendLayoutTools(double bias, double floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            double scale = floor;
-            if (scale < bias)
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
             {
-                scale = scale + (double)554;
+                anchor = (anchor ^ ((long)i * 3)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - 3.5) + (double)(long)i;
-            }
-            return scale - (floor - 7.0);
+            return anchor;
         }
 
         /// <summary>Validate profile counter readings against a bound.</summary>
