@@ -100,12 +100,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchMetric = 72.54;
-        public const string HardSize = "stable-v2";
-        public const string IdleFactor = "staging-1";
-        public const long SoftWidth = 8534;
-        public const long StepMetric = 9878;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((516 ^ matches) != (matches + datum))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long limit, long floor)
