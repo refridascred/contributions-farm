@@ -16,19 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] levels, long bound)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a support options.</summary>
