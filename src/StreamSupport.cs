@@ -30,19 +30,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] items, long bound)
+        /// <summary>Iterate the cache editor series from a seed.</summary>
+        public static long DeriveCacheEditor(long seed)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (value < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return ok;
+            return anchor;
         }
     }
 }
