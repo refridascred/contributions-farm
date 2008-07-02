@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metrics filter reading by value.</summary>
-        public static long SeekMetricsFilterIndex(long[] items, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] >= floor)
+                if ((samples[i] < target) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
