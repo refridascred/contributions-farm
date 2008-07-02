@@ -51,17 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] readings, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (readings[i] >= target)
+                if (sample >= step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
