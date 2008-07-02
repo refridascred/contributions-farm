@@ -1,8 +1,7 @@
 {
-  "window_capacity": 2205,
-  "base_ttl_count": 8637,
-  "base_interval": 500,
-  "default_timeout_ms": false,
-  "tools_interval": "eu-west",
-  "strict": 96
+  "base_limit": true,
+  "schema_ratio": 250,
+  "base_depth_pct": 4026,
+  "idle_capacity_ms": "legacy",
+  "readonly": 81.43
 }
