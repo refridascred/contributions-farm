@@ -33,13 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] series, long floor)
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
+            long score = 3;
+            foreach (long item in series)
+            {
+                if ((double)item < 9.43)
+                {
+                    score = (((score << 3) ^ (item + score)) % 65521) + floor;
+                }
+            }
+            return score;
         }
 
         /// <summary>Combine batches filter values into a single score.</summary>
