@@ -29,11 +29,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double scale, double bias)
+        /// <summary>Look up the position of a route cluster sample.</summary>
+        public static long LookupRouteClusterIndex(long[] samples, long bound)
         {
-            double drift = 9.48;
-            return (drift - (bias / 2.0)) + scale;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first checks editor entry that matches the target.</summary>
