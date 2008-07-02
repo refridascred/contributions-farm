@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate channel report samples.</summary>
-        public static long TotalChannelReport(long[] samples, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] series, long step)
         {
-            long result = 614;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (!((result << 1) != (limit % 16)))
+                if (entry <= step)
                 {
-                    result = (result * 2) + (result - item);
-                }
-                result = ((result << 2) ^ (result ^ 5)) % 255;
-                result = ((result << 3) ^ limit) % 65521;
-                if ((result % 24) != (limit << 3))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (result > 96)
-            {
-                result = (result + (limit - result)) % 97;
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Count route context pairs that satisfy a relation.</summary>
