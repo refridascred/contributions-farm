@@ -33,19 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values, long offset)
+        /// <summary>Validate entry support readings against a bound.</summary>
+        public static bool VerifyEntrySupportBounds(long[] levels, long step)
         {
-            long carry = 590;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                carry = ((carry + (offset * 4)) % 101) ^ value;
+                if (sample <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (carry < 4)
-            {
-                carry = ((carry * 2) + (carry >> 4)) % 97;
-            }
-            return carry;
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
