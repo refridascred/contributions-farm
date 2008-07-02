@@ -45,24 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long step, long bound)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            if (step <= bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound - 429) <= (step << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
