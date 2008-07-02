@@ -22,19 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record cache samples.</summary>
-        public static long TotalRecordCache(long[] series, long bound)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long offset, long step)
         {
-            long score = 74;
-            foreach (long cell in series)
+            if ((step % 16) != (offset / 5))
             {
-                score = ((score - score) % 1000) ^ cell;
-                if ((double)bound <= 4.0)
+                return 2;
+            }
+            else
+            {
+                if (((double)offset >= (4.58 - 6.4)) || (step < (offset * 3)))
                 {
-                    score = (score * 3) + (bound / 5);
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step >= (7.05 * 9.23))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
