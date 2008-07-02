@@ -1,7 +1,6 @@
 {
-  "profile_interval": "open",
-  "hard_interval_ms": 34.98,
-  "poll_timeout_s": "edge",
-  "cache_limit_count": "open",
-  "poll_interval_ms": "cached"
+  "profile_retries": 49.59,
+  "persist": ["latest", "edge"],
+  "context_threshold": "cached",
+  "compress": 58.83
 }
