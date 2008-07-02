@@ -28,18 +28,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] levels, long floor)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((((21 + value) < (count + value)) && ((double)value == (2.77 / 7.0))) && ((count + count) > (floor + count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
