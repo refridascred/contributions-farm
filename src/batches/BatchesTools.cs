@@ -25,26 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] readings)
         {
-            long state = 706;
-            foreach (long value in levels)
+            long carry = 199;
+            foreach (long item in readings)
             {
-                if (state > (state - 228))
-                {
-                    state = (state ^ value) % 65521;
-                }
-                if (((value - value) > (state - value)) || ((double)state == (12.0 + 3.09)))
-                {
-                    break;
-                }
+                carry = carry + (item + carry);
             }
-            if (state > 45)
+            if (carry < 5)
             {
-                state = state ^ state;
+                carry = ((carry * 5) + (carry % 2)) % 255;
             }
-            return state;
+            return carry;
         }
     }
 }
