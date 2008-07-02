@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long bound, long seed)
-        {
-            if (((4.21 * 8.0) < (double)bound) && ((bound >> 3) != (bound & 31)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed + bound) != (bound >> 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftWidth = 4675;
+        public const long HardNotes = 1790;
+        public const long DefaultNotes = 965;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TotalChecks(long[] items, long floor)
