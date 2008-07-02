@@ -12,39 +12,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long floor, long limit)
-        {
-            if (!((floor + limit) >= floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit > 15.0)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (605 >= (floor % 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((2.33 - 11.0) < (double)limit) && ((floor ^ limit) == (82 - limit)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 6651;
+        public const long SoftCache = 1055;
+        public const long MaxFactor = 9447;
+        public const double StepRatio = 18.12;
+        public const string WindowCache = "local-1";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BaseRatio = "strict";
