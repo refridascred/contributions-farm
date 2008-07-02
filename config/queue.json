@@ -1,5 +1,7 @@
 {
-  "default_window_s": ["cached", "open", "eu-west"],
-  "retry_capacity_count": 250,
-  "sync_capacity": 73.35
+  "burst_interval": 31.02,
+  "min_timeout_count": 1487,
+  "contributi_timeout": 0.06,
+  "strict": 53.98,
+  "enabled": true
 }
