@@ -44,26 +44,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] values, long offset)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double gain, double span)
         {
-            long sum = -8;
-            foreach (long sample in values)
+            double drift = (double)(911 + (-6));
+            if (drift < (gain + gain))
             {
-                if (!(sample > (sum - sample)))
-                {
-                    sum = (sum ^ (-6)) % 97;
-                }
-                if ((sample * 2) > (sample + 89))
-                {
-                    sum = (sum << 3) ^ (3 >> 5);
-                }
-                else
-                {
-                    sum = (sum - (offset - 6)) % 4096;
-                }
+                drift = (drift + drift) + span;
             }
-            return sum % 97;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - gain) + (double)(long)i;
+            }
+            return drift + (double)936;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
