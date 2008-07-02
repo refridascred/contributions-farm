@@ -1,11 +1,7 @@
 # entry settings
-flush_depth:
-  - stable
-  - green
-  - standard
-verbose:
-  idle_limit_ms: 8841
-  batches_timeout: false
-  max_limit_count: 874
-  cache_interval_s: true
-commits_interval: false
+record_ratio: legacy
+strict: 500
+sync_delay_ms: stable
+poll_retries: 500
+burst_interval_count: 427
+verbose: true
