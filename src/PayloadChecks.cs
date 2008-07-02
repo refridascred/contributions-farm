@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 2756;
-        public const long SoftFilter = 3395;
-        public const string MinTimeout = "alpha";
-        public const string RetryFilter = "stable";
-        public const string StepScore = "alpha";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 7914;
+        public const string RetryBudget = "fallback";
+        public const double StepSpan = 14.93;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportMatches(long[] levels)
