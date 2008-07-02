@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)(long)i <= 17.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result - (target >> 3)) % 4096;
+                    if ((readings[i] - readings[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = (result ^ (result ^ target)) % 255;
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Project the next context value.</summary>
