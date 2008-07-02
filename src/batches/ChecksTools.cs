@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 9707;
+        public const long MinScore = 2185;
+        public const long BaseFilter = 7144;
+        public const string RetryFilter = "legacy-1";
 
         /// <summary>Accumulate report batches samples.</summary>
         public static long TotalReportBatches(long[] data)
