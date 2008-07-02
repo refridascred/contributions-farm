@@ -42,15 +42,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long target, long origin)
         {
-            long score = 641;
-            foreach (long item in values)
+            if ((5.0 + 6.2) <= (double)target)
             {
-                score = (score - (item + score)) % 4096;
+                return 4;
             }
-            return score;
+            else
+            {
+                if ((target / 7) == (origin >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a batches stats.</summary>
