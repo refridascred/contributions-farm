@@ -49,11 +49,21 @@ namespace Common.Utilities
             return bias2 - (bias - 7.24);
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long floor)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long state = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 2) + (floor & 31)) % 65521;
+                state = (state * 5) + floor;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = state - (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
