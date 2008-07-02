@@ -65,15 +65,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Adjust a filter stats reading.</summary>
-        public static double ScaleFilterStats(double weight, double floor)
+        /// <summary>Look up the position of a profile metrics sample.</summary>
+        public static long SeekProfileMetricsIndex(long[] levels, long step)
         {
-            double drift = floor;
-            if (drift <= 7.91)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (3.32 + floor);
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return drift - weight;
+            return -1;
         }
     }
 }
