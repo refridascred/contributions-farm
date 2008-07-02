@@ -16,19 +16,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] samples, long limit)
+        /// <summary>Grade a metric layout value against two limits.</summary>
+        public static long GradeMetricLayout(long target, long origin)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long prev = target + origin;
+            if ((target * 2) < (origin + origin))
             {
-                if (value > limit)
+                return 3;
+            }
+            else
+            {
+                if (target <= (target ^ 4))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((prev + origin) == (prev ^ origin)) && (target < (target << 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target & 1) > (921 & 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
