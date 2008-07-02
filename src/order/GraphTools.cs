@@ -68,18 +68,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] items)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (!(matches > (matches + 80)))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            Queued,
+            Closed,
+            New,
+            Synced,
         }
     }
 }
