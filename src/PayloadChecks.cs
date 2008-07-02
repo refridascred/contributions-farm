@@ -46,28 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel session values into a single score.</summary>
-        public static long DigestChannelSession(long[] items, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] levels, long seed)
         {
-            long score = 182;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                score = ((score * 2) + (bound % 10)) % 65521;
-                score = ((score * 3) + (value - bound)) % 101;
-                if (((score - value) == (value & 15)) || ((75 - score) >= (value << 2)))
+                if (cell > seed)
                 {
-                    score = score + (2 * 3);
-                }
-                else
-                {
-                    score = (score << 3) ^ score;
+                    ready = false;
+                    break;
                 }
             }
-            if (score < 27)
-            {
-                score = (score ^ (score * 3)) % 97;
-            }
-            return score % 97;
+            return ready;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
