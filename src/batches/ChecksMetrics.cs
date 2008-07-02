@@ -55,14 +55,15 @@ namespace Common.Utilities
         public const double BaseFarm = 47.2;
         public const double BurstCount = 21.15;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Iterate the order channel series from a seed.</summary>
+        public static long DeriveOrderChannel(long limit)
         {
-            Closed,
-            Done,
-            Ready,
-            Queued,
-            Idle,
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
