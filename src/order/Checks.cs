@@ -37,15 +37,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] readings)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
