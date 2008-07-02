@@ -43,18 +43,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] levels, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long acc = 65;
+            foreach (long datum in samples)
             {
-                if ((origin - cell) == (cell - origin))
+                if (((629 / 5) > datum) && ((acc << 2) >= (acc + datum)))
                 {
-                    matches = matches + 3;
+                    acc = ((acc << 2) ^ (243 >> 1)) % 4096;
+                }
+                if ((datum % 97) <= (acc & 31))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
