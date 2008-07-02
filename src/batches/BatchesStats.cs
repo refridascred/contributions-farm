@@ -24,12 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public bool Label { get; set; }
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
