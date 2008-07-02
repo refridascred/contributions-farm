@@ -45,13 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Find the first profile context entry that matches the target.</summary>
+        public static long LookupProfileContextIndex(long[] items, long limit)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
