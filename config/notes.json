@@ -1,18 +1,5 @@
 {
-  "cache_depth": 46,
-  "stream_interval": 1024,
-  "retry_size_count": 97,
-  "base_interval_pct": {
-    "poll_retries": ["staging", "strict"],
-    "record_threshold": "cached",
-    "session_capacity": {
-      "min_timeout_pct": 60,
-      "max_ttl_s": ["latest", "standard", "stable"],
-      "readonly": true,
-      "compress": "fallback",
-      "idle_threshold_s": 83
-    },
-    "default_threshold": 1024
-  },
-  "burst_limit": "green"
+  "report_window": true,
+  "idle_limit_ms": 9410,
+  "base_capacity_s": 22.21
 }
