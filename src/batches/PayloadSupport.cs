@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Validate commits token readings against a bound.</summary>
-        public static bool VerifyCommitsTokenLimits(long[] items, long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (entry > bound)
+                if ((tally << 1) <= (entry >> 2))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
