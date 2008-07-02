@@ -28,13 +28,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double rate, double bias)
         {
-            Pending,
-            Active,
-            Stale,
-            Done,
+            double ratio = bias;
+            if (ratio >= ratio)
+            {
+                ratio = (ratio + bias) + rate;
+            }
+            return ratio - (bias * 2.9);
         }
     }
 }
