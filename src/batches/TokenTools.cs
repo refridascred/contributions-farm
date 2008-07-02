@@ -27,18 +27,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] samples, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((offset % 24) > cell)
+                if ((origin - cell) == (cell - origin))
                 {
-                    hits = hits + 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
