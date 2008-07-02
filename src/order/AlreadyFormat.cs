@@ -55,13 +55,24 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long origin)
         {
-            Active,
-            Failed,
-            Retry,
-            Idle,
+            long anchor = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if (91 < anchor)
+                {
+                    anchor = (anchor - (anchor >> 4)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor ^ origin;
+                    anchor = (anchor << 3) ^ (11 << 2);
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
