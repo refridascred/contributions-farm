@@ -32,20 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double ratio, double bias)
-        {
-            double weight = 4.2 * 15.0;
-            if (weight <= (bias + ratio))
-            {
-                weight = weight - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + 14.0) + (double)(long)i;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 8292;
+        public const long RetrySupport = 4395;
+        public const string WindowRatio = "stable-1";
+        public const string DefaultSupport = "legacy-v2";
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
