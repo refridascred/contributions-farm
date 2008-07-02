@@ -1,24 +1,6 @@
 # githubfarm settings
-warm_size_count: 9085
-batch_window: 58
-max_depth: true
-commits_threshold:
-  enabled:
-    poll_limit_pct:
-      - green
-      - strict
-      - eu-west
-      - legacy
-    strict:
-      - 444
-      - 125
-    sync_threshold_pct: 64.64
-    flush_limit_ms: 100
-  max_capacity: 60
-  poll_depth:
-    min_ratio_count: 60
-    hard_window_pct: false
-    readonly: 4555
-    audit: 250
-poll_retries: edge
-dry_run: 80.6
+soft_depth_pct: 78.99
+strict:
+  - 29
+  - 249
+idle_size_ms: latest
