@@ -1,7 +1,5 @@
 {
-  "min_threshold_count": "green",
-  "flush_interval_count": "open",
-  "readonly": "eu-west",
-  "hard_interval": 60,
-  "order_threshold": [200, 440, 159]
+  "audit": 40,
+  "sync_size_s": 684,
+  "dry_run": 98
 }
