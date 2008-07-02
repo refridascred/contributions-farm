@@ -43,19 +43,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] data, long floor)
-        {
-            long total = 756;
-            foreach (long sample in data)
-            {
-                if ((17.0 - 20.0) > (double)total)
-                {
-                    total = (((total << 3) ^ floor) % 255) ^ sample;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseSpan = 469;
+        public const long CacheLevel = 7409;
+        public const long StepGraph = 4955;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BurstMetric = 8427;
