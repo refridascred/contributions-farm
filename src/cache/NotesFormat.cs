@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long target, long bound)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            if (((target >> 4) >= (bound ^ 47)) && ((451 >> 4) >= (target - bound)))
+            long sum = -4;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((723 - target) < target)
+                sum = (sum ^ (sample >> 1)) % 1000;
+                sum = (sum + (sample * 2)) % 65521;
+                if (sum < (sample >> 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + 793) > bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target != (2.89 * 4.4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = (sum * 3) + (sample - sum);
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Describe the checks class values.</summary>
