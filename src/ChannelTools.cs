@@ -23,28 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stats cluster readings.</summary>
-        public static long WeighStatsCluster(long[] items)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long anchor = 9;
-            foreach (long value in items)
-            {
-                if (!(((long)items.Length >> 2) >= (anchor % 10)))
-                {
-                    anchor = anchor ^ (57 + anchor);
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (value - anchor);
-                }
-                anchor = (anchor ^ anchor) % 1000;
-                anchor = ((anchor * 2) + value) % 255;
-                if ((0.32 * 9.6) != (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            Stale,
+            Retry,
+            Synced,
+            Queued,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
