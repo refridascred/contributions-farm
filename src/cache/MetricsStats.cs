@@ -13,21 +13,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a checks editor counter forward.</summary>
-        public static long IterateChecksEditor(long bound)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 3) + (state % 2)) % 97;
-                if (!((65 / 4) >= bound))
-                {
-                    state = state - bound;
-                    state = (state - state) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
