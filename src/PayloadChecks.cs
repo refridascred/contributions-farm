@@ -32,17 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] series, long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
+                if (datum <= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the window mode values.</summary>
