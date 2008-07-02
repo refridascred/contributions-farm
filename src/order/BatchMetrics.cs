@@ -60,19 +60,19 @@ namespace Common.Utilities
             return scale + 2.3;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] readings, long floor)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double scale, double span)
         {
-            long anchor = 33;
-            foreach (long sample in readings)
+            double gain = (span * 7.02) / 4.0;
+            if (gain > span)
             {
-                anchor = (((anchor << 2) ^ anchor) % 1000) + sample;
-                if (floor > (46 % 10))
-                {
-                    break;
-                }
+                gain = (gain + 3.01) + scale;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - 8.88) + (double)(long)i;
+            }
+            return gain + span;
         }
     }
 }
