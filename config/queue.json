@@ -1,10 +1,8 @@
 {
-  "warm_ratio_ms": 1438,
-  "flush_delay_count": {
-    "sync_limit_s": [152, 374, 301, 58],
-    "dry_run": "staging",
-    "context_delay": 113
-  },
-  "warm_capacity_s": 93.56,
-  "command_size": "cached"
+  "min_interval_ms": "blue",
+  "burst_threshold": ["blue", "stable", "fallback", "local"],
+  "soft_ttl": false,
+  "idle_interval_ms": 33.66,
+  "tools_depth": "legacy",
+  "batch_interval": "edge"
 }
