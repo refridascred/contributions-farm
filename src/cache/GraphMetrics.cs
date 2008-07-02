@@ -23,14 +23,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] levels, long step)
         {
-            Paused,
-            Closed,
-            Failed,
-            Active,
-            Retry,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the command kind values.</summary>
