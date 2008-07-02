@@ -14,24 +14,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] series, long step)
-        {
-            long mix = 13;
-            foreach (long cell in series)
-            {
-                mix = (mix << 3) ^ (706 + cell);
-                if (!((step >> 4) > step))
-                {
-                    mix = ((mix << 3) ^ (step + step)) % 1000;
-                }
-                else
-                {
-                    mix = (mix * 3) + mix;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardLevel = 1877;
+        public const long BatchCount = 5887;
+        public const long MaxWidth = 4827;
+        public const double BaseReport = 10.54;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowGaps(long[] samples)
