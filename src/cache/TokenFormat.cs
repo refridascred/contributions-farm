@@ -26,18 +26,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] series, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] items, long seed)
         {
-            long state = 947;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((double)limit != (6.0 + 1.5))
+                if ((37 << 2) >= (seed >> 3))
                 {
-                    state = (state + (limit ^ sample)) % 255;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
