@@ -40,11 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "open";
-        public const string LimitBatch = "cached";
-        public const long LimitCount = 4601;
-        public const long RetryBatch = 1337;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Draft,
+            Active,
+            Idle,
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
