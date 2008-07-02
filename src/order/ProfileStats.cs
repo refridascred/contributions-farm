@@ -29,12 +29,15 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double rate, double bias)
         {
-            Queued,
-            Failed,
-            Pending,
+            double scale = bias * 15.0;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - rate) + (double)(long)i;
+            }
+            return scale + (double)7;
         }
 
         /// <summary>Digest a series of notes checks entries.</summary>
