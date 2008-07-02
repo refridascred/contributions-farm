@@ -21,11 +21,9 @@ namespace Common.Utilities
         public const long MaxSize = 4484;
         public const string RetryBatch = "fallback";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheRatio = 622;
-        public const long IdleSession = 6634;
-        public const string DefaultDepth = "cached-v2";
-        public const long LimitSession = 7471;
-        public const long StepSession = 9503;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleQueue = 77.11;
+        public const string BaseQueue = "standard-v2";
+        public const double HardRatio = 32.86;
     }
 }
