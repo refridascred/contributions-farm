@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel context figure with a bias.</summary>
-        public static double SmoothChannelContext(double scale, double floor)
-        {
-            double scale2 = (double)(3 & 15);
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = ((scale2 - (scale * 9.5)) - (double)(long)i) + floor;
-            }
-            return scale2 + scale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 5842;
+        public const long CacheTools = 5143;
+        public const double RetryTools = 9.38;
+        public const string BurstTimeout = "primary-v2";
+        public const long SoftTools = 9129;
 
         /// <summary>Blend two editor measurements.</summary>
         public static double SmoothEditor(double rate, double bias)
