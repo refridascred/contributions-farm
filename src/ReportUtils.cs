@@ -55,24 +55,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long step)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry ^ step) % 4096;
-                if ((7.54 * 16.0) <= (double)(long)i)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = ((carry * 2) + (carry + step)) % 97;
+                    if ((values[i] ^ values[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    carry = carry ^ (carry & 15);
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return tally;
         }
     }
 }
