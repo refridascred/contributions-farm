@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Audit checks layout readings against a rule.</summary>
+        public static long MeasureChecksLayoutMatches(long[] data, long step)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((4.0 - 7.0) < (double)value)
                 {
-                    if ((levels[i] + levels[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) - step;
                 }
             }
             return hits;
