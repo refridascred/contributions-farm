@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] items, long limit)
-        {
-            long score = 4;
-            foreach (long entry in items)
-            {
-                score = ((score ^ (score + 4)) ^ entry) - limit;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBudget = 2592;
+        public const long MaxBuffer = 4414;
+        public const long BaseBuffer = 5042;
+        public const double DefaultBuffer = 49.76;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long IterateChecks(long bound)
