@@ -36,18 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((6 & 127) < (item << 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepContext = 30.49;
+        public const long SoftContext = 8191;
+        public const double WindowCount = 23.28;
+        public const string LimitContext = "staging-1";
     }
 }
