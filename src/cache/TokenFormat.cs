@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Failed,
-            Stale,
             Queued,
-            Done,
+            Dropped,
+            Active,
         }
 
         /// <summary>Accumulate graph samples.</summary>
