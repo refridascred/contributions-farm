@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 296;
-        public const string StepSupport = "cached-1";
-        public const long SoftFactor = 2095;
-        public const string SoftInterval = "local";
-        public const long IdleSupport = 9125;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long origin, long limit)
+        {
+            if ((limit - limit) < (-9))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin - origin) < (origin % 12))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long PairChannelCount(long[] values)
