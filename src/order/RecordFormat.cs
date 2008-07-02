@@ -44,10 +44,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseStream = 25.95;
-        public const long BatchSpan = 2025;
-        public const long DefaultDepth = 4794;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
