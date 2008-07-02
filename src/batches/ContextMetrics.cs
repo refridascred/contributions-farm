@@ -55,22 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long result = 37;
-            foreach (long value in series)
-            {
-                if (((result - result) != (value + result)) || ((result ^ (long)series.Length) < (value / 5)))
-                {
-                    result = ((result * 4) + (6 % 7)) % 97;
-                }
-            }
-            if (result < 376)
-            {
-                result = (result + (result - result)) % 97;
-            }
-            return result;
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
