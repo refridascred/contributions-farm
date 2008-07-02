@@ -69,17 +69,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] samples, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Pending,
+            Done,
         }
 
         /// <summary>Project the next contributi editor value.</summary>
