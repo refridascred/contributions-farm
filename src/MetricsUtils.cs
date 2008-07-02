@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepCount = 1371;
-        public const double SoftContext = 57.04;
-        public const long MaxContext = 7468;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long DigestCluster(long[] data, long offset)
