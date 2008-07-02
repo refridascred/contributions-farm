@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long origin)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
