@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
