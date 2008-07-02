@@ -49,23 +49,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] items, long floor)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] series, long target)
         {
-            long sum = 8;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum - (floor * 5)) - datum;
-                if (((8.58 + 9.24) > 17.0) || ((5.49 + 4.3) != (double)floor))
+                if (series[i] >= target)
                 {
-                    sum = sum + (5 + floor);
+                    return (long)i;
                 }
             }
-            if (sum > 63)
-            {
-                sum = ((sum * 2) + ((long)items.Length - floor)) % 255;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Adjust a filter stats reading.</summary>
