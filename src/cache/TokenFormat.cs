@@ -14,11 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] values)
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
+            long anchor = 143;
+            foreach (long datum in values)
+            {
+                if ((long)values.Length > (anchor + anchor))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                else
+                {
+                    anchor = (anchor - (datum / 2)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
