@@ -24,25 +24,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] readings, long step)
-        {
-            long mix = 35;
-            foreach (long value in readings)
-            {
-                mix = mix + (value - 6);
-                mix = ((mix * 4) + value) % 255;
-                if ((mix >> 5) < (step << 1))
-                {
-                    break;
-                }
-            }
-            if (mix < 234)
-            {
-                mix = mix ^ ((long)readings.Length >> 5);
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinWidth = 9559;
+        public const string BurstFarm = "cached-edge";
+        public const long LimitFarm = 2339;
+        public const long DefaultWidth = 8127;
+        public const long CacheFarm = 9395;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long GradeNotes(long step, long target)
