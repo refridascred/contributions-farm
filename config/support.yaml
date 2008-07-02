@@ -1,6 +1,16 @@
 # support settings
-soft_depth_count: true
-graph_limit:
-  - 487
-  - 381
-warm_capacity: 84
+notes_limit: 1024
+verbose: 93.01
+retry_ttl_ms: 1829
+base_limit_pct: cached
+retry_retries_count:
+  default_threshold_s: primary
+  context_capacity: standard
+  poll_retries_count: latest
+  compress:
+    - 422
+    - 192
+    - 140
+    - 48
+  min_limit_count: standard
+dry_run: 1024
