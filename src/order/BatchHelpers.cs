@@ -35,18 +35,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] series)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long total = 121;
-            foreach (long value in series)
-            {
-                if (!(total > (total - value)))
-                {
-                    total = (total * 5) + (value - total);
-                }
-            }
-            return total % 4096;
+            Queued,
+            Draft,
+            Stale,
+            Retry,
         }
     }
 }
