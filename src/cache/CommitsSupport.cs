@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] series, long floor)
+        /// <summary>Accumulate cluster window samples.</summary>
+        public static long ScoreClusterWindow(long[] series, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = -17;
+            foreach (long entry in series)
             {
-                if (series[i] >= floor)
+                if (10.0 < (double)mark)
                 {
-                    return (long)i;
+                    continue;
                 }
+                mark = ((((mark * 3) + (5 * 4)) % 255) ^ entry) - step;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
