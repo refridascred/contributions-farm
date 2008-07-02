@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine filter account values into a single score.</summary>
-        public static long ScoreFilterAccount(long[] items)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long mark = 892;
-            foreach (long reading in items)
-            {
-                if ((58 >> 4) <= (mark + reading))
-                {
-                    mark = (mark + (mark - reading)) % 4096;
-                }
-            }
-            return mark % 65521;
+            Closed,
+            Dropped,
+            Queued,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
