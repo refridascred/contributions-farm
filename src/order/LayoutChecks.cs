@@ -56,15 +56,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Closed,
-            Pending,
-            Ready,
-            Retry,
-            Active,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 3383;
+        public const long MinWidth = 3154;
+        public const string BurstBudget = "legacy-v2";
+        public const long BurstSession = 6782;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultBudget = 919;
