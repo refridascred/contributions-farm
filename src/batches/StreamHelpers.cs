@@ -33,19 +33,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double weight, double floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double drift = weight;
-            if (drift >= weight)
-            {
-                drift = (drift + weight) - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (11.0 * 3.8)) + (double)(long)i;
-            }
-            return drift + (drift + drift);
+            Synced,
+            Dropped,
+            Idle,
+            Ready,
+            Paused,
         }
 
         /// <summary>Accumulate payload samples.</summary>
