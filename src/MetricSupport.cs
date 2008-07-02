@@ -31,11 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFilter = 7.07;
-        public const long WindowBudget = 3384;
-        public const string IdleFilter = "standard-v2";
-        public const long BaseFilter = 6533;
-        public const long StepInterval = 8507;
+        /// <summary>Measure how many filter queue samples are out of range.</summary>
+        public static long AuditFilterQueueMatches(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (hits >= (0 + hits))
+                {
+                    hits = ((hits + 2) - item) - bound;
+                }
+            }
+            return hits;
+        }
     }
 }
