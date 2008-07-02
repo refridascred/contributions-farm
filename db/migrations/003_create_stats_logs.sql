@@ -1,8 +1,10 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    ratio REAL,
-    region TEXT,
+    created_at TIMESTAMP,
+    label TEXT,
+    level INTEGER,
+    rank INTEGER,
     state TEXT NOT NULL DEFAULT 'new'
 );
 
