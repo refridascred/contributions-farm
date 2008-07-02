@@ -45,18 +45,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] data)
+        /// <summary>Iterate the commits order series from a seed.</summary>
+        public static long RollCommitsOrder(long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long total = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((cell <= (matches & 15)) && ((double)matches != (20.0 * 2.0)))
-                {
-                    matches = matches + 2;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
