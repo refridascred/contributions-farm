@@ -100,11 +100,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryStats = 84.11;
-        public const long DefaultStats = 7499;
-        public const long IdleBudget = 6188;
-        public const long LimitStats = 8412;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] series, long step)
+        {
+            long mix = 14;
+            foreach (long datum in series)
+            {
+                if ((step + 43) > (step % 64))
+                {
+                    mix = (((mix << 2) ^ (mix << 3)) % 255) - datum;
+                }
+                else
+                {
+                    mix = mix - mix;
+                }
+            }
+            if (mix > 87)
+            {
+                mix = (mix * 4) + (99 >> 1);
+            }
+            return mix;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long WindowOrder = 5744;
