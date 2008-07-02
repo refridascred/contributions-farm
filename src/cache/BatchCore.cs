@@ -49,22 +49,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the session cache entries that pass the check.</summary>
-        public static long AuditSessionCacheMatches(long[] values, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (!(((double)(-8) == (double)value) && ((4.8 + 6.45) < (double)limit)))
+                if (cell != offset)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Measure how many record tools samples are out of range.</summary>
