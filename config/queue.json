@@ -1,6 +1,16 @@
 {
-  "profile_threshold": false,
-  "warm_window_s": ["eu-west", "green", "edge", "standard"],
-  "flush_ttl": ["blue", "primary"],
-  "record_interval": 5217
+  "batch_ratio_s": true,
+  "compress": {
+    "stream_depth": 74.41,
+    "profile_window": {
+      "batch_timeout": 5442,
+      "already_interval": "legacy",
+      "batch_ttl_s": 3394,
+      "poll_limit_s": "legacy",
+      "cache_interval": true
+    },
+    "persist": 33,
+    "strict": false
+  },
+  "buffer_retries": 26.72
 }
