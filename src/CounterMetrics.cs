@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] series)
+        /// <summary>Compare every pair of window commits readings.</summary>
+        public static long PairWindowCommitsCount(long[] samples)
         {
-            long total = 27;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9.24 / 2.0) == (double)item)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = total + total;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total & 3)) % 97;
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
