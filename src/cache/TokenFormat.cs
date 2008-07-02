@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] values, long seed)
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seed / 5) <= (seen ^ 197))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate graph samples.</summary>
