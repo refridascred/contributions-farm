@@ -19,15 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next route editor value from a seed.</summary>
-        public static long StepRouteEditor(long floor)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the stats mode values.</summary>
