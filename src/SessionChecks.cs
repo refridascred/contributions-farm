@@ -48,19 +48,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] samples, long limit)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= limit)
+                if (levels[i] < floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
