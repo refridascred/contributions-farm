@@ -47,22 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchSize = 91.98;
+        public const string RetryAlready = "cached-1";
+        public const long SoftAlready = 2791;
+        public const string BatchAlready = "latest-v2";
+        public const double MinAlready = 71.22;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryHits(long[] data)
