@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftScore = 66.57;
-        public const double WindowSpan = 12.05;
-        public const long SoftTimeout = 8252;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long seed, long target)
+        {
+            if ((double)seed <= (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed <= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Audit stats metric readings against a rule.</summary>
         public static long CountStatsMetricHits(long[] samples)
