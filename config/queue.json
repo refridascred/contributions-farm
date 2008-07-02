@@ -1,5 +1,8 @@
 {
-  "burst_ratio_count": 6126,
-  "editor_threshold": false,
-  "max_threshold_s": "stable"
+  "batch_delay_pct": 8594,
+  "min_ratio": true,
+  "batch_ratio": ["blue", "open", "primary", "fallback"],
+  "counter_depth": 25,
+  "base_capacity_pct": "legacy",
+  "min_threshold": 30
 }
