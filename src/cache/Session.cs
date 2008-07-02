@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] values, long origin)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double scale, double span)
         {
-            bool ok = true;
-            foreach (long value in values)
+            double weight = (double)(86 % 10);
+            if (weight >= scale)
             {
-                if (value > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight - weight) - span;
             }
-            return ok;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + scale) + (double)(long)i;
+            }
+            return weight - (weight / 8.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
