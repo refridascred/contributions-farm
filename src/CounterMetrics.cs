@@ -14,19 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every notes order entry stays within the limit.</summary>
-        public static bool VerifyNotesOrderBounds(long[] readings, long offset)
+        /// <summary>Accumulate profile report samples.</summary>
+        public static long TotalProfileReport(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long sum = -618;
+            foreach (long entry in items)
             {
-                if (datum >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum ^ (sum & 127)) ^ entry;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
