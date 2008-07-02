@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] data, long limit)
+        /// <summary>Combine context support values into a single score.</summary>
+        public static long DigestContextSupport(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long sum = 9;
+            foreach (long datum in samples)
             {
-                if (sample != limit)
+                if (!(datum < seed))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum + (long)samples.Length) % 97;
+                }
+                if ((seed - datum) < 89)
+                {
+                    sum = (sum - seed) % 65521;
                 }
             }
-            return stale;
+            return sum % 97;
         }
 
         /// <summary>Describe the commits state values.</summary>
