@@ -27,23 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double gain, double floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] items)
         {
-            double gain2 = 7.5 - (double)423;
-            if (gain2 > gain)
+            long matches = 0;
+            foreach (long item in items)
             {
-                gain2 = gain2 + floor;
+                if ((1.8 * 8.59) <= (double)item)
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (gain2 * 2.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = gain2 + (double)(long)i;
-            }
-            return gain2 - floor;
+            return matches;
         }
     }
 }
