@@ -1,7 +1,16 @@
 {
-  "notes_depth": true,
-  "batch_ttl_s": "blue",
-  "audit": 250,
-  "dry_run": "staging",
-  "verbose": 2485
+  "default_capacity": 7703,
+  "cache_retries_ms": 12.35,
+  "audit": {
+    "retry_interval_count": 88.2,
+    "default_retries_s": 100,
+    "entry_timeout": false
+  },
+  "batch_timeout": [338, 486, 53],
+  "sync_retries_count": "cached",
+  "retry_window": {
+    "soft_capacity": 100,
+    "stats_retries": 64.95,
+    "flush_depth": 1.64
+  }
 }
