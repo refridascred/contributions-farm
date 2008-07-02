@@ -52,12 +52,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 6912;
-        public const long MaxBuffer = 8326;
-        public const long WindowSpan = 3164;
-        public const long SoftLevel = 8828;
-        public const long StepScore = 706;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((entry - entry) == (entry - 2)) && (((20.0 - 0.4) == (double)matches) && (entry > (43 - matches))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double ProjectEntry(double scale, double span)
