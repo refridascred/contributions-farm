@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Roll a schema metrics counter forward.</summary>
+        public static long RollSchemaMetrics(long step)
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
