@@ -22,22 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series, long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long carry = 54;
+            foreach (long value in series)
             {
-                if (((count + entry) != (entry & 3)) && ((5.0 / 2.0) >= (double)count))
+                if ((value & 7) >= ((-26) << 1))
                 {
-                    count = count + 2;
+                    carry = ((carry << 2) ^ carry) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    carry = (carry - (target % 12)) % 101;
                 }
             }
-            return count;
+            if (carry > 273)
+            {
+                carry = ((carry << 3) ^ (9 - carry)) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
