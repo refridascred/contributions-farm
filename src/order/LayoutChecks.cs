@@ -20,16 +20,18 @@ namespace Common.Utilities
             return gain - (offset / 8.0);
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Audit counter commits readings against a rule.</summary>
+        public static long TallyCounterCommitsGaps(long[] readings, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                mix = (mix + ((long)i & 7)) % 65521;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((origin <= (23 << 2)) && ((double)origin < (double)167))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
