@@ -29,19 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] readings)
+        /// <summary>Count the token batch entries that pass the check.</summary>
+        public static long CountTokenBatchOutliers(long[] levels)
         {
-            long carry = 199;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                carry = carry + (item + carry);
+                if ((((0.3 / 9.0) > (double)hits) && ((cell - hits) < (cell + hits))) && ((double)cell <= (9.0 / 7.0)))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (carry < 5)
-            {
-                carry = ((carry * 5) + (carry % 2)) % 255;
-            }
-            return carry;
+            return hits;
         }
     }
 }
