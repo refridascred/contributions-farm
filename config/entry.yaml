@@ -1,18 +1,18 @@
 # entry settings
-min_interval: 8656
-max_delay: 78.01
-burst_size_ms: false
-soft_delay_pct:
-  idle_window:
-    soft_capacity: 74.67
-    warm_depth: legacy
-    cache_size: 55.51
-    default_ratio_count: 250
-  idle_timeout_count:
-    metrics_threshold: eu-west
-    tools_size: false
-    sync_limit_count: stable
-    persist: 44
-    flush_ttl_ms: true
-    min_interval: 2291
-  enabled: open
+strict: 51.34
+counter_limit:
+  account_timeout: edge
+  record_ratio: latest
+  max_ttl: legacy
+  poll_depth: false
+  poll_depth_ms: 2.6
+verbose:
+  - fallback
+  - blue
+  - legacy
+  - blue
+base_retries_ms:
+  - 253
+  - 246
+  - 13
+poll_limit_ms: 1024
