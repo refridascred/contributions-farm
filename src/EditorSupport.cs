@@ -31,39 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank filter command input into a small class.</summary>
-        public static long GradeFilterCommand(long limit, long step)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double ratio, double offset)
         {
-            long edge = limit + step;
-            if (!((limit + edge) > (step - limit)))
+            double rate = offset;
+            if (rate <= (offset / 7.0))
             {
-                return 2;
+                rate = rate - ratio;
             }
             else
             {
-                if (edge <= (edge + step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit > edge)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)edge == (3.0 / 5.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                rate = rate - (9.0 * 6.01);
             }
+            return rate - (7.01 - rate);
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
