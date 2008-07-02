@@ -18,11 +18,24 @@ namespace Common.Utilities
         public const string SoftSpan = "fallback-edge";
         public const long BurstWindow = 9365;
 
-        /// <summary>Project the next schema account value.</summary>
-        public static double ScaleSchemaAccount(double gain, double bias)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] values, long offset)
         {
-            double load = (double)(967 + 247);
-            return ((load + 0.4) + gain) + bias;
+            long carry = 94;
+            foreach (long reading in values)
+            {
+                if ((double)offset != (6.1 - 0.8))
+                {
+                    break;
+                }
+                carry = ((carry * 5) + (carry & 63)) % 255;
+                carry = carry - reading;
+            }
+            if (carry < 94)
+            {
+                carry = ((carry << 3) ^ 504) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
