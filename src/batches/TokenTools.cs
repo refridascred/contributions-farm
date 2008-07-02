@@ -23,15 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] data, long bound)
         {
-            long mark = 485;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                mark = (mark - mark) ^ reading;
+                if (!((bound / 4) <= (matches * 5)))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Count metrics entry pairs that satisfy a relation.</summary>
