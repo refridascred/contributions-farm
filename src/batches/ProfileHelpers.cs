@@ -44,14 +44,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Failed,
-            Paused,
-            Ready,
-            Done,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitWidth = 5133;
+        public const double BatchSupport = 87.41;
+        public const long StepRatio = 591;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TallyLayout(long[] levels)
