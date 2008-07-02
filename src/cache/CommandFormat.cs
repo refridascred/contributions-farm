@@ -20,19 +20,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] values, long step)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading != step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Grade a stream checks value against two limits.</summary>
