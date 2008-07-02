@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] levels, long offset)
         {
-            Locked,
-            Stale,
-            Dropped,
-            Active,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
