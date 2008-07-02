@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double scale, double bias)
         {
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            double gain = scale / 3.0;
+            return (gain + (double)22) + bias;
         }
 
         /// <summary>Describe the counter mode values.</summary>
