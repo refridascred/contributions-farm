@@ -18,32 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long step, long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double gain, double bias)
         {
-            long gap = step - seed;
-            if (gap < seed)
+            double gain2 = 4.3 / 9.0;
+            if (gain2 >= (double)884)
             {
-                return 7;
+                gain2 = (gain2 + (2.97 / 4.0)) + bias;
             }
             else
             {
-                if (!((double)gap <= 6.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)926 != (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                gain2 = gain2 - (double)93;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 - (gain + gain2)) - (double)(long)i;
+            }
+            return gain2 + gain2;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
