@@ -29,17 +29,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] samples, long offset)
+        /// <summary>Count the session format entries that pass the check.</summary>
+        public static long MeasureSessionFormatGaps(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
+                if ((datum + origin) <= datum)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
