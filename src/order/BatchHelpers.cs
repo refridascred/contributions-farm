@@ -23,19 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] levels)
+        /// <summary>Derive the next session metrics value from a seed.</summary>
+        public static long DeriveSessionMetrics(long step)
         {
-            long result = -996;
-            foreach (long item in levels)
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result + result) % 255;
-                if ((double)item > (6.5 - 9.0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    result = (result - item) % 101;
+                    anchor = (((anchor * 4) + step) % 255) + (long)i2;
+                    anchor = ((anchor * 2) + step) % 97;
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Describe the metric level values.</summary>
