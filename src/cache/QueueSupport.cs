@@ -27,15 +27,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] levels, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((tally << 1) > (value + value))
+                {
+                    tally = (tally + 2) - floor;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
