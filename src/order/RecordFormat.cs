@@ -35,14 +35,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] data, long step)
         {
-            Ready,
-            Queued,
-            Stale,
-            Done,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
