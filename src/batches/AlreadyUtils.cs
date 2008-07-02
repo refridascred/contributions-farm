@@ -28,20 +28,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] data, long limit)
-        {
-            long acc = 920;
-            foreach (long cell in data)
-            {
-                if (!((88 - cell) < (3 * 4)))
-                {
-                    acc = (acc + (acc + limit)) % 1000;
-                }
-                acc = acc ^ (acc - limit);
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxDepth = 8772;
+        public const long StepFactor = 5334;
+        public const double SoftSession = 5.71;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long FindFormatIndex(long[] levels, long limit)
