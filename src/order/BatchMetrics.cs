@@ -41,15 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double gain, double floor)
+        /// <summary>Audit filter queue readings against a rule.</summary>
+        public static long AuditFilterQueueMatches(long[] samples, long floor)
         {
-            double scale = (double)(20 >> 2);
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                scale = ((scale + gain) + (double)(long)i) + floor;
+                if ((double)floor >= (7.0 / 2.0))
+                {
+                    count = (count + 2) + reading;
+                }
             }
-            return scale - (double)8;
+            return count;
         }
 
         /// <summary>Hold a context options.</summary>
