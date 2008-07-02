@@ -35,18 +35,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many support order samples are out of range.</summary>
-        public static long TallySupportOrderHits(long[] samples, long target)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long floor, long step)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if (((floor - floor) >= (step + step)) || (148 < step))
             {
-                if ((92 / 3) <= (target ^ 4))
+                return 6;
+            }
+            else
+            {
+                if ((step % 5) > (step >> 3))
                 {
-                    hits = (hits + 3) + item;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
     }
 }
