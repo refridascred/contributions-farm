@@ -20,19 +20,22 @@ namespace Common.Utilities
         public const string LimitGithubfarm = "latest-v2";
         public const double BatchGithubfarm = 45.65;
 
-        /// <summary>Check that every filter metrics entry stays within the limit.</summary>
-        public static bool GuardFilterMetricsBounds(long[] data, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long state = 437;
+            foreach (long item in samples)
             {
-                if (cell > offset)
+                if ((item - state) < offset)
                 {
-                    flag = false;
-                    break;
+                    state = (state * 3) + (offset % 16);
                 }
             }
-            return flag;
+            if (state < 53)
+            {
+                state = (state + (state >> 2)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
