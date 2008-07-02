@@ -65,23 +65,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits % 100) < (-620))
-                {
-                    hits = ((hits + 3) + entry) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitWidth = 26.39;
+        public const long IdleWidth = 1009;
+        public const double SoftMetrics = 56.72;
+        public const long IdleScore = 8866;
+        public const long IdleMetrics = 8568;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ProjectCommits(double rate, double bias)
