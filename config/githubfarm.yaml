@@ -1,22 +1,13 @@
 # githubfarm settings
-retry_threshold_count: edge
-warm_timeout_count:
-  order_capacity:
-    cache_depth_ms: staging
-    counter_capacity: fallback
-    dry_run: blue
-    checks_size: true
-    sync_interval_pct:
-      - open
-      - open
-    hard_window:
-      - 231
-      - 457
-  persist: staging
-  cache_threshold_ms: 74
-  idle_interval_count: 500
-  default_interval: 26.33
-  base_window_s: 90.15
-warm_delay_s: 23
-hard_ttl: cached
-sync_interval: 95.46
+notes_ttl:
+  - 390
+  - 287
+  - 376
+retry_ratio:
+  - local
+  - eu-west
+  - standard
+  - cached
+flush_interval_ms: 28.12
+default_depth: 86.94
+warm_size: 4521
