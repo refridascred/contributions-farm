@@ -22,13 +22,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Count the command account entries that pass the check.</summary>
+        public static long AuditCommandAccountHits(long[] readings)
         {
-            Active,
-            Closed,
-            Retry,
-            Paused,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + count) < count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stats record.</summary>
