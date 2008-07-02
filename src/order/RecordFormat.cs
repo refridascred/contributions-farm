@@ -58,10 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 1667;
-        public const long DefaultMetrics = 725;
-        public const string WindowSize = "strict-edge";
-        public const string StepScore = "stable-v2";
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
