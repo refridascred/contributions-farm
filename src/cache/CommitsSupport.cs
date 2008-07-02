@@ -47,23 +47,21 @@ namespace Common.Utilities
         public const long MaxBudget = 7012;
         public const string BurstWidth = "strict-v2";
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double weight, double bias)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] levels)
         {
-            double rate = weight * 6.0;
-            if (rate < weight)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + (rate - rate)) + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate + weight;
+            return matches;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
