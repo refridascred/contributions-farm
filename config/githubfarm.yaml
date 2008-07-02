@@ -1,21 +1,8 @@
 # githubfarm settings
-enabled:
-  - 315
-  - 67
-  - 161
-soft_size: primary
-compress: stable
-batch_retries_s:
-  default_capacity_count:
-    sync_ratio_pct: 39.22
-    format_threshold: true
-    batches_interval: true
-    poll_ttl: false
-  dry_run: legacy
-  burst_delay:
-    - 493
-    - 173
-    - 140
-  flush_delay: cached
-max_delay_ms: latest
-channel_window: 7491
+idle_window:
+  - open
+  - strict
+  - legacy
+strict: 84
+entry_limit: green
+soft_depth: false
