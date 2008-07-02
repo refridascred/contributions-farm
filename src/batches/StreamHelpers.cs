@@ -71,12 +71,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CachePayload = "alpha-edge";
-        public const long BaseScore = 8054;
-        public const string BasePayload = "alpha";
-        public const long IdlePayload = 1604;
-        public const string BaseBudget = "fallback-1";
+        /// <summary>Match up layout cluster samples.</summary>
+        public static long MatchLayoutClusterCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
