@@ -38,11 +38,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
+            public double Weight { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
