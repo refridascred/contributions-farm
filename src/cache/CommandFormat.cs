@@ -39,22 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] samples, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long step)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((((matches - 20) >= (step * 4)) && ((cell + (-188)) <= (cell - step))) && ((matches > (cell % 7)) || ((double)step == (double)matches)))
+                if ((carry + carry) <= ((long)i - carry))
                 {
-                    matches = matches + 2;
+                    carry = (carry ^ (step + step)) % 1000;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
