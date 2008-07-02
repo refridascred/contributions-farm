@@ -1,11 +1,11 @@
 # Layout notes
 
-The cluster module keeps profile values in sync with the graph cache.
-A farm that stays idle for too long is moved to the editor list.
+A command that stays idle for too long is moved to the command list.
+A tools that stays idle for too long is moved to the record list.
+A graph that stays idle for too long is moved to the commits list.
 
 ## Guidelines
 
-- Log every schema change
-- Document new record fields
-- Keep tools values small
-- Validate checks input early
+- Prefer context defaults
+- Validate window input early
+- Review cluster limits each release
