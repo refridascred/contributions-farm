@@ -1,5 +1,12 @@
 {
-  "sync_threshold_pct": "fallback",
-  "flush_threshold_count": 500,
-  "default_size": "legacy"
+  "warm_threshold_ms": [498, 263, 4, 32],
+  "command_ratio": ["primary", "edge", "staging"],
+  "readonly": "edge",
+  "notes_depth": {
+    "soft_capacity_s": ["blue", "local"],
+    "compress": 89.79,
+    "burst_retries": "blue"
+  },
+  "max_threshold_ms": 60,
+  "cache_threshold_s": 98.26
 }
