@@ -28,18 +28,14 @@ namespace Common.Utilities
         public const long CacheSchema = 5228;
         public const long LimitSchema = 8002;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] series, long seed)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((7 & 1) == (seed + reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Stale,
+            Active,
+            Done,
+            Paused,
         }
     }
 }
