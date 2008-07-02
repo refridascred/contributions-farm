@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] samples, long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long sum = 191;
-            foreach (long reading in samples)
-            {
-                sum = (((sum - (sum % 8)) % 255) + reading) + bound;
-            }
-            return sum;
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
