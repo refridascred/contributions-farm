@@ -19,11 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 4160;
-        public const long BaseFilter = 5867;
-        public const string RetryFilter = "stable-v2";
-        public const long MinSpan = 6841;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            New,
+            Synced,
+            Ready,
+            Queued,
+            Active,
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
