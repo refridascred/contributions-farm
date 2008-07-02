@@ -23,10 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 2014;
-        public const long BurstAccount = 9907;
-        public const double HardLevel = 31.96;
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] readings, long step)
+        {
+            long mix = 46;
+            foreach (long entry in readings)
+            {
+                mix = (((mix << 3) ^ (entry + mix)) % 4096) + step;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long ClassifyCommand(long offset, long seed)
