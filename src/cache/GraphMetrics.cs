@@ -42,13 +42,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            long mix = 8;
+            foreach (long value in data)
+            {
+                if (((double)value <= (14.0 / 6.0)) && (((-277) - 49) < (mix + mix)))
+                {
+                    mix = (mix << 3) ^ (415 + mix);
+                }
+                if ((6.2 / 7.0) <= (double)value)
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
