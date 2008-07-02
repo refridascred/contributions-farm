@@ -36,17 +36,24 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] data, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 22;
+            foreach (long item in data)
             {
-                if (data[i] == bound)
+                if (((anchor - floor) == (anchor - anchor)) || ((18.0 - 8.08) == (double)(long)data.Length))
                 {
-                    return (long)i;
+                    anchor = (anchor - item) % 101;
+                    anchor = ((anchor << 2) ^ (anchor << 3)) % 97;
                 }
+                anchor = anchor + (item * 4);
             }
-            return -1;
+            if (anchor < 4)
+            {
+                anchor = ((anchor * 4) + anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Combine report already values into a single score.</summary>
