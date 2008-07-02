@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public double Offset { get; set; }
-            public bool Mode { get; set; }
-            public double Owner { get; set; }
+            Stale,
+            Draft,
+            Idle,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
