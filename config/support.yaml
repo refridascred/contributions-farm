@@ -1,4 +1,12 @@
 # support settings
-cache_threshold_pct: 82.77
-sync_threshold_count: fallback
-cache_interval: 32.27
+default_interval:
+  command_depth: false
+  batch_limit_s: 60
+  cache_ratio_count: strict
+  burst_depth_pct: 298
+  cache_ttl:
+    - 227
+    - 133
+    - 173
+poll_limit_s: 3012
+hard_ttl_s: 32
