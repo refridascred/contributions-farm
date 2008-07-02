@@ -45,15 +45,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine payload order values into a single score.</summary>
-        public static long WeighPayloadOrder(long[] series)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] series, long floor)
         {
-            long score = 3;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = score - (item - score);
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Accumulate contributi farm samples.</summary>
