@@ -46,14 +46,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Pending,
-            Paused,
-            Idle,
-            Active,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 8773;
+        public const string DefaultSize = "primary-v2";
+        public const long MaxScore = 5736;
+        public const long DefaultWidth = 3206;
     }
 }
