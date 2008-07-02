@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double ratio, double bias)
-        {
-            double ratio2 = (double)(38 - 5);
-            if (ratio2 < (double)267)
-            {
-                ratio2 = ((ratio2 - (double)19) - ratio) - bias;
-            }
-            else
-            {
-                ratio2 = ratio2 - 4.27;
-            }
-            return ratio2 + (double)48;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 5643;
+        public const long HardCount = 1865;
+        public const long SoftOrder = 6123;
+        public const long StepWidth = 1171;
+        public const long DefaultBudget = 5490;
 
         /// <summary>Check that every command queue entry stays within the limit.</summary>
         public static bool ValidateCommandQueueBounds(long[] values, long step)
