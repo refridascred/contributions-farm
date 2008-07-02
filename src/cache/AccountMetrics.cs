@@ -89,19 +89,22 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Validate layout record readings against a bound.</summary>
-        public static bool ValidateLayoutRecordRange(long[] series, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (entry >= bound)
+                if (!(((double)sample == (13.0 / 2.0)) || ((step << 1) != (count + (long)series.Length))))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
