@@ -38,12 +38,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitWidth = 49.5;
-        public const long SoftPayload = 6102;
-        public const long CacheInterval = 6014;
-        public const string RetryLevel = "alpha-edge";
-        public const double IdleSpan = 30.52;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowInterval = "latest-edge";
+        public const long WindowTools = 945;
+        public const double SoftTimeout = 46.65;
+        public const long RetryInterval = 1296;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
