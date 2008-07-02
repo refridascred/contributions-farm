@@ -30,19 +30,12 @@ namespace Common.Utilities
         public const long MaxBudget = 2450;
         public const double WindowCount = 18.0;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] series, long target)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
