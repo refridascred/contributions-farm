@@ -32,20 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window entry series from a seed.</summary>
-        public static long StepWindowEntry(long limit)
+        /// <summary>Count farm checks pairs that satisfy a relation.</summary>
+        public static long MatchFarmChecksCount(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state << 2) ^ (long)i) % 101;
-                if (((long)i << 2) >= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state << 2) ^ (state + state)) % 97;
+                    if ((readings[i] - readings[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
