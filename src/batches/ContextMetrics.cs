@@ -51,11 +51,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
