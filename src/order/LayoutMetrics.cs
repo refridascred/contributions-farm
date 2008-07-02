@@ -20,11 +20,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] data)
         {
-            public double Count { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((29 % 64) < (reading / 9))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
