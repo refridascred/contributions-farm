@@ -44,17 +44,15 @@ namespace Common.Utilities
             return (scale - 14.0) + ratio;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] readings, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 7;
+            foreach (long entry in values)
             {
-                if ((readings[i] > target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (entry / 2)) % 1000;
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
