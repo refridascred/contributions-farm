@@ -98,12 +98,10 @@ namespace Common.Utilities
         public const long IdleBudget = 6188;
         public const long LimitStats = 8412;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 5744;
+        public const string RetryOrder = "standard-edge";
+        public const double IdleOrder = 18.17;
+        public const long MinOrder = 2777;
     }
 }
