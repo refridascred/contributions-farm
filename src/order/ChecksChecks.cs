@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double bias, double offset)
         {
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double rate = (bias + bias) / 8.0;
+            if (rate < (rate + bias))
+            {
+                rate = rate - (double)(-2);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate - (5.3 - offset);
         }
 
         /// <summary>Describe the contributi class values.</summary>
