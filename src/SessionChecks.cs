@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardLevel = 337;
-        public const string StepFilter = "cached-edge";
-        public const long MaxFactor = 7080;
+        /// <summary>Iterate the account cache series from a seed.</summary>
+        public static long SeriesAccountCache(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a token metrics sample.</summary>
         public static long LocateTokenMetricsIndex(long[] items, long offset)
