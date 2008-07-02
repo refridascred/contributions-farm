@@ -31,15 +31,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two stats notes measurements.</summary>
-        public static double SmoothStatsNotes(double rate, double bias)
+        /// <summary>Rank filter command input into a small class.</summary>
+        public static long GradeFilterCommand(long limit, long step)
         {
-            double bias2 = (bias + bias) / 8.0;
-            for (int i = 0; i < 8; i++)
+            long edge = limit + step;
+            if (!((limit + edge) > (step - limit)))
             {
-                bias2 = (bias2 - (double)(long)i) + rate;
+                return 2;
             }
-            return bias2 - (bias - 7.24);
+            else
+            {
+                if (edge <= (edge + step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit > edge)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)edge == (3.0 / 5.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
