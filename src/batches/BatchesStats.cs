@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] readings, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the already level values.</summary>
