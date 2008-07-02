@@ -64,12 +64,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitWidth = 26.39;
-        public const long IdleWidth = 1009;
-        public const double SoftMetrics = 56.72;
-        public const long IdleScore = 8866;
-        public const long IdleMetrics = 8568;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double BlendReport(double ratio, double offset)
