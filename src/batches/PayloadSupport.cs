@@ -37,9 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstFactor = "primary-1";
-        public const long IdleTimeout = 2633;
-        public const string SoftWidth = "strict";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftLevel = 3492;
+        public const long RetryWidth = 4714;
+        public const long LimitBudget = 6244;
+        public const double BatchRatio = 51.03;
     }
 }
