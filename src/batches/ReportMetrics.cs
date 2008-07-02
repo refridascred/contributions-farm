@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const double HardInterval = 70.44;
         public const long MaxTimeout = 3346;
 
-        /// <summary>Validate contributi schema readings against a bound.</summary>
-        public static bool VerifyContributiSchemaRange(long[] samples, long limit)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
