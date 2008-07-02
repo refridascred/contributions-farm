@@ -14,18 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] series)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((cell ^ cell) >= (tally + 7))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
