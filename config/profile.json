@@ -1,6 +1,6 @@
 {
-  "format_window": "staging",
-  "dry_run": "stable",
-  "format_size": 48,
-  "cache_size_s": 18.38
+  "contributi_retries": true,
+  "verbose": [357, 257],
+  "compress": 95,
+  "max_window_count": 6502
 }
