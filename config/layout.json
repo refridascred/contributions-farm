@@ -1,7 +1,8 @@
 {
-  "verbose": 15,
-  "sync_timeout_s": "blue",
-  "notes_limit": 3467,
-  "token_capacity": 60,
-  "warm_ttl_count": 36
+  "batch_ttl": ["stable", "stable", "primary"],
+  "min_threshold_pct": "strict",
+  "cache_ttl": ["edge", "legacy", "staging"],
+  "flush_limit_ms": "latest",
+  "channel_limit": 252,
+  "readonly": 94
 }
