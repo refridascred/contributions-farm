@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a profile channel value against two limits.</summary>
-        public static long SortProfileChannel(long limit, long step)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long target, long limit)
         {
-            if ((double)step < (0.9 * 0.9))
+            if (((limit + 77) < 378) || ((4.8 - 9.31) < (1.6 / 3.0)))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((limit % 7) == (3 & 1))
+                if ((limit << 2) < limit)
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if (step >= (limit - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 1;
                 }
             }
         }
