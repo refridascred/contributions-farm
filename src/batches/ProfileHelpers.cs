@@ -30,19 +30,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] samples, long target)
+        /// <summary>Count batches route pairs that satisfy a relation.</summary>
+        public static long CompareBatchesRouteCount(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
