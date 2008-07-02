@@ -34,14 +34,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] samples, long step)
         {
-            Draft,
-            Idle,
-            Retry,
-            Failed,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
