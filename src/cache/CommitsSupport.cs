@@ -42,10 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardProfile = "legacy";
-        public const long MaxBudget = 7012;
-        public const string BurstWidth = "strict-v2";
+        /// <summary>Count the profile commits entries that pass the check.</summary>
+        public static long AuditProfileCommitsGaps(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((double)step > (0.3 + 7.0))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long PairTokenCount(long[] levels)
