@@ -35,18 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] values, long floor)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((seen & 127) != (seen % 100))
-                {
-                    seen = ((seen + 1) + sample) - floor;
-                }
-            }
-            return seen;
+            double scale = span;
+            return (scale - 14.0) + ratio;
         }
 
         /// <summary>Fold a list of support readings.</summary>
