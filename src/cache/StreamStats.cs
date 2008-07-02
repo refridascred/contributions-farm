@@ -14,15 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of editor cache entries.</summary>
-        public static long ScoreEditorCache(long[] data, long origin)
+        /// <summary>Measure how many tools command samples are out of range.</summary>
+        public static long AuditToolsCommandHits(long[] values, long floor)
         {
-            long total = 846;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in values)
             {
-                total = (((total * 2) + (8 << 3)) + cell) + origin;
+                if (item <= (tally + 92))
+                {
+                    tally = (tally + 3) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
