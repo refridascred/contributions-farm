@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultScore = 8762;
-        public const long BurstCount = 4919;
-        public const long MaxFactor = 6259;
+        /// <summary>Audit editor metrics readings against a rule.</summary>
+        public static long AuditEditorMetricsOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((tally + tally) == (tally & 15)) && !((tally * 3) <= (cell * 5)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long RankMetrics(long limit, long offset)
