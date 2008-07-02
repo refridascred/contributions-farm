@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] items, long bound)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long mix = -842;
-            foreach (long item in items)
-            {
-                if (((5 + mix) != (item + 162)) || (mix > (bound * 2)))
-                {
-                    mix = mix ^ item;
-                }
-            }
-            return mix;
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
