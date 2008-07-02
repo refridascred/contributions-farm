@@ -1,7 +1,9 @@
-id,label,count,owner
-1,primary,83.36,36.1
-2,cached,primary,211
-3,845,631,899
-4,583,624,39.95
-5,fallback,68.97,627
-6,561,923,662
+id,state,region,score
+1,legacy,322,244
+2,952,415,cached
+3,staging,567,60.56
+4,433,448,primary
+5,59.72,976,5.12
+6,primary,293,536
+7,blue,primary,20.2
+8,20.04,84.23,staging
