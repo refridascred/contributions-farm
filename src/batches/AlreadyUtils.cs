@@ -28,10 +28,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxDepth = 8772;
-        public const long StepFactor = 5334;
-        public const double SoftSession = 5.71;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public bool Region { get; set; }
+            public double Limit { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long FindFormatIndex(long[] levels, long limit)
