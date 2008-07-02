@@ -43,25 +43,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long limit, long seed)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long step = limit ^ seed;
-            if ((limit >> 1) > (seed >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)seed == (9.53 - 8.0)) && ((seed - step) <= (seed ^ step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Flag { get; set; }
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
