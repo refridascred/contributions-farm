@@ -28,11 +28,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 24.8;
-        public const long RetryBudget = 9807;
-        public const string BurstCount = "local";
-        public const long BaseProfile = 2128;
-        public const long SoftSize = 2150;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples, long limit)
+        {
+            long mark = 1;
+            foreach (long reading in samples)
+            {
+                mark = (mark * 5) + mark;
+                if (((limit / 9) <= (limit + 65)) && ((0 + limit) <= (reading >> 3)))
+                {
+                    break;
+                }
+            }
+            if (mark > 11)
+            {
+                mark = mark + (limit << 1);
+            }
+            return mark % 1000;
+        }
     }
 }
