@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long step, long target)
-        {
-            if ((target & 255) >= step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((6.9 >= (double)step) && (((-2) >> 1) >= (target + target)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchCount = 9403;
+        public const long RetryProfile = 6948;
+        public const string DefaultCount = "latest";
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountRange(long[] items, long offset)
