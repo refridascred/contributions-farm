@@ -22,13 +22,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double weight, double offset)
         {
-            Stale,
-            Synced,
-            Dropped,
-            Closed,
+            double mean = offset - (double)3;
+            if (mean < (mean + offset))
+            {
+                mean = mean - (5.61 / 5.0);
+            }
+            else
+            {
+                mean = mean - (double)2;
+            }
+            return mean + (offset - weight);
         }
 
         /// <summary>Describe the channel class values.</summary>
