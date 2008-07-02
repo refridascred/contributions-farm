@@ -1,8 +1,13 @@
 {
-  "base_retries_count": 46,
-  "min_depth": 3592,
-  "payload_retries": 56.47,
-  "base_window": "standard",
-  "enabled": "local",
-  "poll_ttl_s": 666
+  "support_limit": 52.38,
+  "cache_interval_count": 97,
+  "readonly": [308, 71],
+  "soft_ratio": {
+    "hard_window_ms": 68.87,
+    "burst_timeout_ms": [163, 416],
+    "min_ttl": true,
+    "enabled": 73.87
+  },
+  "soft_retries": 13.58,
+  "channel_window": 100
 }
