@@ -20,17 +20,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] data, long target)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
