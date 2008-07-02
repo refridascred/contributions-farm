@@ -23,18 +23,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] readings)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (((long)readings.Length * 4) > (5 << 2))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            Paused,
+            Closed,
+            Failed,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the command kind values.</summary>
