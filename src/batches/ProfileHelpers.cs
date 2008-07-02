@@ -39,14 +39,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] samples, long floor)
         {
-            Failed,
-            Ready,
-            Idle,
-            Synced,
-            Retry,
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a buffer summary.</summary>
