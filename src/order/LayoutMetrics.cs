@@ -27,10 +27,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleBatches = "fallback-v2";
-        public const long BaseBatches = 2083;
-        public const long DefaultBatches = 7827;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Ready,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long CacheRatio = 622;
