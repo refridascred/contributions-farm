@@ -33,12 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSupport = 89.56;
-        public const double SoftFactor = 86.9;
-        public const long MaxLevel = 1547;
-        public const double WindowInterval = 92.74;
-        public const double MaxSupport = 18.63;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Adjust a graph reading.</summary>
         public static double AdjustGraph(double weight, double floor)
