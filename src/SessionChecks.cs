@@ -35,39 +35,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long step, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] samples, long bound)
         {
-            long bound = step ^ limit;
-            if ((bound <= 63) || ((double)step < (double)bound))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound * 5) <= limit)
+                if (!((bound / 2) != (bound * 4)) || (((tally + (-46)) <= (bound / 3)) && (tally >= (value % 10))))
                 {
-                    return 5;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((double)step == (6.0 / 4.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((0.9 * 7.0) != (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
