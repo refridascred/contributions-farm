@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the buffer githubfarm entries that pass the check.</summary>
-        public static long TallyBufferGithubfarmMatches(long[] data)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] samples)
         {
             long matches = 0;
-            foreach (long reading in data)
+            foreach (long datum in samples)
             {
-                if (3.05 >= (double)reading)
+                if ((5.64 - 5.0) == (double)datum)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 2;
                 }
             }
             return matches;
