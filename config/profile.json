@@ -1,10 +1,17 @@
 {
-  "cache_threshold_ms": {
-    "warm_delay_ms": 62.85,
-    "retry_threshold_count": "cached",
-    "soft_timeout": 6558
-  },
-  "cache_limit": 92.12,
-  "persist": "cached",
-  "max_limit_ms": 1024
+  "buffer_delay": [96, 418, 401],
+  "channel_depth": 4380,
+  "default_delay": "edge",
+  "poll_depth": {
+    "channel_retries": {
+      "notes_window": 55,
+      "format_ttl": true,
+      "warm_threshold_count": true,
+      "base_depth": "cached",
+      "batch_limit_s": false
+    },
+    "retry_ttl_count": 6938,
+    "dry_run": 63.24,
+    "cache_capacity": false
+  }
 }
