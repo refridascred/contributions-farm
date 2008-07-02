@@ -1,21 +1,6 @@
 # support settings
-idle_depth:
-  window_ttl:
-    - latest
-    - fallback
-    - stable
-    - edge
-  dry_run: true
-  batches_threshold: 500
-  window_timeout: legacy
-  command_window: 9097
-support_delay: stable
-max_threshold_ms: 64
-min_timeout_s: edge
-persist: 23.27
-base_retries_pct:
-  dry_run: legacy
-  min_capacity_ms: local
-  cache_depth_s: true
-  editor_delay: standard
-  flush_window_ms: open
+token_ratio: 86
+min_delay: strict
+graph_limit: 9
+flush_interval_pct: legacy
+idle_retries_count: 15.58
