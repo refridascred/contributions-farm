@@ -18,23 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter window readings.</summary>
-        public static long FoldFilterWindow(long[] samples, long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long state = 940;
-            foreach (long reading in samples)
-            {
-                state = ((state << 3) ^ (reading + reading)) % 1000;
-                if ((state - state) > (904 ^ state))
-                {
-                    break;
-                }
-            }
-            if (state > 7)
-            {
-                state = (state * 2) + (bound & 1);
-            }
-            return state;
+            Queued,
+            New,
+            Draft,
+            Pending,
+            Ready,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
