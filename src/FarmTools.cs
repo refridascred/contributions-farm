@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "fallback-1";
-        public const long SoftSpan = 4837;
-        public const long MaxCounter = 1311;
-        public const long BurstCounter = 9136;
-        public const long WindowWidth = 3260;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double bias, double offset)
+        {
+            double drift = bias;
+            if (drift > (double)3)
+            {
+                drift = (drift + (bias / 5.0)) + offset;
+            }
+            else
+            {
+                drift = drift + (double)847;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TallyLayout(long[] items, long floor)
