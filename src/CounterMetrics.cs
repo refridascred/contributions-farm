@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile report samples.</summary>
-        public static long TotalProfileReport(long[] items)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] values, long step)
         {
-            long sum = -618;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                sum = (sum ^ (sum & 127)) ^ entry;
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
