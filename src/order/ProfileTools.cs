@@ -14,13 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Active,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "cached-edge";
+        public const long SoftRatio = 2963;
+        public const string SoftWindow = "latest-edge";
+        public const long IdleWindow = 376;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool GuardProfileLimits(long[] levels, long target)
