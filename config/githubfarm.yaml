@@ -1,9 +1,9 @@
 # githubfarm settings
-warm_delay: standard
-readonly: 30.61
-hard_size_pct:
-  - 282
-  - 471
-  - 123
-schema_threshold: 54.3
-flush_ratio_s: 250
+format_depth: true
+min_size_pct:
+  readonly: 88.11
+  soft_window: 23
+  flush_interval_ms: 89.03
+commits_retries:
+  - open
+  - eu-west
