@@ -1,11 +1,4 @@
 # githubfarm settings
-cache_limit: true
-checks_capacity: eu-west
-hard_depth_count:
-  - standard
-  - cached
-  - legacy
-  - strict
-retry_limit_count: 5461
-audit: standard
-dry_run: 2
+batch_depth_ms: 250
+soft_size_count: true
+batch_ratio: false
