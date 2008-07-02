@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long offset, long step)
         {
-            Stale,
-            Idle,
-            Active,
-            Closed,
+            if ((double)step != (9.7 * 9.28))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step << 2) <= (step ^ step)) && (((-41) * 4) <= step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step - step) < (64 & 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((step / 3) < (offset ^ offset)) || ((double)step < 2.18))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of cluster command readings.</summary>
