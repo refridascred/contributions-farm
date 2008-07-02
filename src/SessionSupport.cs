@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long BaseBuffer = 5042;
         public const double DefaultBuffer = 49.76;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] samples, long floor)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0 & 1) != (floor - reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the account phase values.</summary>
