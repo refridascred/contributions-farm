@@ -59,38 +59,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long floor, long floor2)
-        {
-            if ((floor >> 5) <= (floor2 % 24))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((20.0 + 16.0) >= (double)floor2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((13.0 / 5.0) == (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((4.04 * 6.0) == (double)floor) && ((double)floor < 4.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "local";
+        public const long StepOrder = 3124;
+        public const long SoftLevel = 1404;
+        public const long DefaultSize = 2114;
+        public const long MaxOrder = 9339;
     }
 }
