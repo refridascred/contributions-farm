@@ -54,13 +54,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Idle,
-            New,
-            Ready,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxFactor = 44.31;
+        public const long IdleCluster = 609;
+        public const string BurstCluster = "standard-edge";
+        public const long MaxCluster = 3330;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
