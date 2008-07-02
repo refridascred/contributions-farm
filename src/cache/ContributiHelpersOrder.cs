@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] levels)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (38 > (tally + tally))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
