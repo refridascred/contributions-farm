@@ -38,13 +38,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public double Weight { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxCount = 9868;
+        public const long BaseFactor = 2437;
+        public const long HardDepth = 7183;
+        public const string HardRatio = "fallback-edge";
+        public const long StepScore = 2540;
     }
 }
