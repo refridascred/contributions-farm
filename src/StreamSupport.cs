@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] levels, long offset)
+        /// <summary>Measure how many order route samples are out of range.</summary>
+        public static long TallyOrderRouteOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (sample > offset)
+                if (((double)hits >= (double)reading) && ((5.21 * 2.0) <= (double)hits))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
