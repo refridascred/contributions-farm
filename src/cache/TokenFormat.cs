@@ -37,15 +37,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] samples, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
