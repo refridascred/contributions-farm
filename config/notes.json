@@ -1,8 +1,19 @@
 {
-  "compress": 53.21,
-  "audit": "staging",
-  "editor_retries": 98,
-  "flush_interval": "standard",
-  "verbose": 0.69,
-  "default_size": [343, 75]
+  "poll_ratio_count": 100,
+  "channel_threshold": {
+    "verbose": false,
+    "retry_interval": 3,
+    "batch_window_s": 95,
+    "base_depth_s": true,
+    "soft_depth_ms": "green"
+  },
+  "queue_ratio": 2355,
+  "farm_interval": {
+    "cluster_delay": ["fallback", "staging", "staging"],
+    "audit": 28,
+    "poll_ratio": "eu-west",
+    "githubfarm_size": false,
+    "retry_interval_ms": 69
+  },
+  "warm_ttl_count": "green"
 }
