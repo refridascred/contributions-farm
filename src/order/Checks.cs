@@ -40,19 +40,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] readings, long offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
