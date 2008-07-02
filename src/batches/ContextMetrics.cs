@@ -31,23 +31,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of layout already readings.</summary>
-        public static long TallyLayoutAlready(long[] samples)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long result = 4;
-            foreach (long reading in samples)
-            {
-                result = (result * 2) + result;
-                if ((double)reading > (4.0 * 4.04))
-                {
-                    result = (result << 2) ^ (result / 5);
-                }
-                else
-                {
-                    result = (result << 3) ^ (result - result);
-                }
-            }
-            return result % 4096;
+            Pending,
+            Paused,
+            Draft,
+            New,
+            Stale,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
