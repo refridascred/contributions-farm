@@ -20,21 +20,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 452;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sum << 3) > (1 % 16))
                 {
-                    if ((values[i] - values[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum ^ (limit + limit)) % 97) ^ reading;
+                }
+                else
+                {
+                    sum = (sum + (limit + sum)) % 97;
                 }
             }
-            return hits;
+            if (sum > 33)
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Grade a stream checks value against two limits.</summary>
