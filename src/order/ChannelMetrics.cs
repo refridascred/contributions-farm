@@ -16,15 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long step)
+        /// <summary>Compare every pair of payload commits readings.</summary>
+        public static long MatchPayloadCommitsCount(long[] series)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Grade a record checks value against two limits.</summary>
