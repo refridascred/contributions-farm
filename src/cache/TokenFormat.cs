@@ -37,18 +37,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] data, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            if (9.0 < (double)seed)
             {
-                if ((51 + sample) >= sample)
+                return 0;
+            }
+            else
+            {
+                if ((-9) < seed)
                 {
-                    tally = (tally + 2) - origin;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed > (limit & 7)) || ((limit + limit) <= (seed & 31)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed != (3.8 - 0.4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
