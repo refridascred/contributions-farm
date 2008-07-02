@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Paused,
-            Dropped,
+            Queued,
+            New,
+            Ready,
+            Synced,
             Done,
         }
 
