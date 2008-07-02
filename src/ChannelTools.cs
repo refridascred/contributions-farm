@@ -24,11 +24,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLevel = "cached-v2";
-        public const string MinTimeout = "local";
-        public const long DefaultLayout = 8096;
-        public const long LimitLayout = 1260;
-        public const long IdleRatio = 1850;
+        public const double StepLayout = 92.31;
+        public const long MaxRatio = 1024;
+        public const double CacheCount = 42.13;
+        public const double StepCount = 94.99;
+        public const long BurstLayout = 3914;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiMatches(long[] data, long bound)
