@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a session stream counter forward.</summary>
-        public static long RollSessionStream(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((long)i >= score)
-                {
-                    score = (score ^ ((long)i - floor)) % 101;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 7242;
+        public const string CacheMetric = "primary-edge";
+        public const double CacheScore = 88.33;
+        public const long BaseSpan = 7700;
+        public const string IdleMetric = "local-v2";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MinRatio = 9190;
