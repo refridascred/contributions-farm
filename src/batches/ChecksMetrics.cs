@@ -71,11 +71,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] readings, long floor)
         {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
