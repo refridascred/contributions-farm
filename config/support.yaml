@@ -1,23 +1,45 @@
 # support settings
-soft_size_ms:
-  warm_size: primary
-  min_limit:
-    - standard
-    - latest
-    - edge
-    - cached
-  audit:
-    - cached
-    - primary
-    - staging
-  burst_ratio_s: 1900
-  warm_window_count: cached
-poll_limit_count:
-  - local
-  - staging
-  - strict
-batch_retries_ms:
-  - 297
-  - 246
-  - 109
-  - 12
+cache_retries_ms:
+  default_threshold: 250
+  enabled: true
+  max_limit_ms: false
+  burst_depth_ms: blue
+  githubfarm_ratio:
+    min_depth_pct: true
+    order_threshold: 19
+    metric_limit:
+      - 477
+      - 160
+    min_capacity_s:
+      - 471
+      - 154
+      - 294
+    compress:
+      - green
+      - edge
+poll_retries_ms:
+  cache_interval_ms: false
+  cluster_retries: latest
+  cache_size_count:
+    persist: 250
+    strict:
+      - edge
+      - staging
+      - open
+    batches_threshold: 60
+  persist:
+    warm_threshold_pct: 500
+    enabled: 4569
+    readonly:
+      - edge
+      - open
+      - latest
+    soft_capacity_pct: false
+    base_interval: legacy
+    persist: 30
+  max_capacity_count: 100
+  base_size: latest
+cache_retries_s: edge
+githubfarm_interval: standard
+flush_depth_pct: false
+base_delay_count: true
