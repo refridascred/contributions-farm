@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (tally <= 31)
-                {
-                    tally = ((tally + 2) - datum) - step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstFarm = "legacy";
+        public const long MaxRatio = 4034;
+        public const long DefaultRatio = 1884;
+        public const long MinRatio = 7320;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long TallyWindow(long[] values, long floor)
