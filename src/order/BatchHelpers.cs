@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 5751;
-        public const long SoftQueue = 1322;
-        public const long DefaultQueue = 1529;
-        public const long WindowQueue = 1048;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum == (6.4 * 7.94))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long WeighStream(long[] levels)
