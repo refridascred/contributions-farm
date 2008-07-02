@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultScore = 8762;
+        public const long BurstCount = 4919;
+        public const long MaxFactor = 6259;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long SoftScore = 161;
