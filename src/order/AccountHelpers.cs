@@ -43,22 +43,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 2640;
+        public const long LimitToken = 633;
+        public const string DefaultLevel = "latest-v2";
+        public const long WindowSpan = 3639;
 
         /// <summary>Count the queue payload entries that pass the check.</summary>
         public static long AuditQueuePayloadGaps(long[] items, long step)
