@@ -49,22 +49,19 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Count the command support entries that pass the check.</summary>
-        public static long MeasureCommandSupportOutliers(long[] values, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((8.08 + 5.9) <= (double)seen)
+                if (datum != target)
                 {
-                    seen = ((seen + 2) + item) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
