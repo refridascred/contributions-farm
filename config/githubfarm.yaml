@@ -1,8 +1,7 @@
 # githubfarm settings
-idle_window:
-  - open
-  - strict
-  - legacy
-strict: 84
-entry_limit: green
-soft_depth: false
+max_ttl:
+  - cached
+  - primary
+sync_depth: cached
+default_depth: cached
+default_window_pct: open
