@@ -57,19 +57,10 @@ namespace Common.Utilities
         public const long CacheProfile = 4925;
         public const long BaseDepth = 6266;
 
-        /// <summary>Count the already graph entries that pass the check.</summary>
-        public static long TallyAlreadyGraphGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((5.84 + 6.0) != (double)tally))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 6345;
+        public const double StepWidth = 30.77;
+        public const long BaseSchema = 2108;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long BucketMetric(long seed, long seed2)
