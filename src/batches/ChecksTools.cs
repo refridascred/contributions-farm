@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const long BaseFilter = 7144;
         public const string RetryFilter = "legacy-1";
 
-        /// <summary>Accumulate report batches samples.</summary>
-        public static long TotalReportBatches(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] samples, long step)
         {
-            long mix = 5;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((15.0 - 7.8) == (double)mix)
+                if (((step ^ matches) <= matches) && !(step <= (74 + reading)))
                 {
-                    mix = (mix - (value << 3)) % 65521;
+                    matches = matches + 1;
                 }
-                mix = (mix ^ (value * 2)) % 97;
             }
-            if (mix > (-724))
-            {
-                mix = (mix * 2) + mix;
-            }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Look up the position of a route cluster sample.</summary>
