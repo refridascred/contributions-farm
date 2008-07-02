@@ -49,12 +49,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double bias, double bias2)
         {
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Score { get; set; }
+            double scale = (double)59 * 9.0;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (((scale + (scale + 18.0)) + (double)(long)i) - bias) - bias2;
+            }
+            return scale + 2.3;
         }
 
         /// <summary>Fold a list of account readings.</summary>
