@@ -23,13 +23,12 @@ namespace Common.Utilities
         public const string HardLevel = "open-edge";
         public const long RetryRatio = 9259;
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSupport = 89.56;
+        public const double SoftFactor = 86.9;
+        public const long MaxLevel = 1547;
+        public const double WindowInterval = 92.74;
+        public const double MaxSupport = 18.63;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 3304;
