@@ -64,11 +64,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstDepth = 7517;
-        public const long LimitTools = 7300;
-        public const long BaseRatio = 4580;
-        public const long DefaultTools = 9439;
-        public const string MaxLevel = "staging-v2";
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] levels)
+        {
+            long carry = 86;
+            foreach (long cell in levels)
+            {
+                carry = ((carry - 3) % 97) ^ cell;
+            }
+            return carry % 97;
+        }
     }
 }
