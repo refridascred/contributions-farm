@@ -54,12 +54,12 @@ namespace Common.Utilities
         public const long BurstToken = 7017;
         public const long WindowDepth = 7640;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Digest a series of route entries.</summary>
