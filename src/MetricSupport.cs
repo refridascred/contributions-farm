@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double ratio, double floor)
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = (mix + ((long)i + (long)i)) + (long)i2;
-                }
-                mix = mix - target;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            double bias = ratio - (double)13;
+            return (bias - ratio) + floor;
         }
 
         /// <summary>Blend two layout tools measurements.</summary>
