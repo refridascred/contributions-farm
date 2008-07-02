@@ -16,12 +16,19 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double bias, double span)
         {
-            Failed,
-            Ready,
-            Synced,
+            double ratio = bias + 6.9;
+            if (ratio > span)
+            {
+                ratio = ratio - 7.4;
+            }
+            else
+            {
+                ratio = ratio + 8.0;
+            }
+            return ratio - (bias + span);
         }
 
         /// <summary>Fold a list of stats readings.</summary>
