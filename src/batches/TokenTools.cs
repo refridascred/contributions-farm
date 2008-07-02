@@ -15,12 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 9604;
-        public const string SoftSession = "open-1";
-        public const double BaseSize = 54.85;
-        public const double DefaultInterval = 20.47;
-        public const string MaxSession = "latest-edge";
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = carry ^ (carry + bound);
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long IdleWidth = 1804;
