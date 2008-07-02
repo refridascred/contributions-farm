@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] items, long target)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate2 = (double)(15 + 93);
+            if (rate2 >= (6.6 * 5.0))
             {
-                if ((items[i] == target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 - 19.0) - rate;
             }
-            return -1;
+            else
+            {
+                rate2 = rate2 + 2.7;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + (7.7 + rate2)) + (double)(long)i;
+            }
+            return rate2 - span;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
