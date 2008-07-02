@@ -27,18 +27,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many session support samples are out of range.</summary>
-        public static long CountSessionSupportGaps(long[] data, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (floor >= (value + value))
+                if ((offset % 24) > cell)
                 {
-                    matches = matches + 3;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
