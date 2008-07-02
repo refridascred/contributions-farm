@@ -14,12 +14,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepSize = 60;
+        public const double WindowRatio = 9.75;
+        public const long MinDepth = 6910;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmGaps(long[] levels, long floor)
