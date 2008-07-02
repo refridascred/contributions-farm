@@ -41,16 +41,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            long state = 6;
+            foreach (long item in samples)
             {
-                mark = (mark * 4) + mark;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (((67 >> 1) < item) || ((state >> 2) < (item + item)))
+                {
+                    state = (state + state) % 4096;
+                }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Fold a list of checks already readings.</summary>
