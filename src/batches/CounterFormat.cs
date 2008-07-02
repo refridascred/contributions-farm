@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long state = 2;
-            foreach (long entry in levels)
-            {
-                if ((double)entry <= (10.0 / 6.0))
-                {
-                    state = state ^ (entry + state);
-                }
-                if ((entry % 100) <= (state >> 2))
-                {
-                    break;
-                }
-            }
-            return state % 4096;
+            Draft,
+            Stale,
+            Active,
         }
 
         /// <summary>Locate a route reading by value.</summary>
