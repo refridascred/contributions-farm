@@ -22,20 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseWidth = 1839;
+        public const long RetryScore = 3460;
+        public const long CacheScore = 1990;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double RetryWindow = 1.53;
