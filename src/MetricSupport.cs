@@ -14,21 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 5)
+                    if ((series[i] + series[j]) != 18)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
