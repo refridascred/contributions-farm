@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long RetryChecks = 697;
         public const long StepChecks = 9657;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Audit route already readings against a rule.</summary>
+        public static long AuditRouteAlreadyHits(long[] samples, long step)
         {
-            Dropped,
-            Draft,
-            Active,
-            Queued,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading - reading) >= (408 % 100))
+                {
+                    count = (count + 3) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a record options.</summary>
