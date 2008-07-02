@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            Done,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
