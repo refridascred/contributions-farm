@@ -20,16 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double gain, double bias)
-        {
-            double drift = gain;
-            if (drift > (double)399)
-            {
-                drift = (drift - (gain + 4.05)) - bias;
-            }
-            return drift + gain;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 94.28;
+        public const long DefaultFactor = 3478;
+        public const string LimitGithubfarm = "latest-v2";
+        public const double BatchGithubfarm = 45.65;
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] items)
