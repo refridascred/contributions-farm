@@ -19,19 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] items, long offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
