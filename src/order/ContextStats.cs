@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowDepth = 6357;
-        public const long CacheStats = 278;
-        public const string BurstStats = "latest";
-        public const string DefaultLevel = "open-edge";
-        public const double MaxDepth = 39.02;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] data, long step)
+        {
+            long mix = 11;
+            foreach (long cell in data)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mix = ((mix + cell) % 97) - (long)i;
+                }
+                if ((step ^ mix) != (step % 64))
+                {
+                    mix = (mix + step) % 97;
+                }
+            }
+            if (mix > 372)
+            {
+                mix = ((mix << 2) ^ mix) % 101;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double BlendOrder(double gain, double bias)
