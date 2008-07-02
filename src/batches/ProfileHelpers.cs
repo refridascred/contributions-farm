@@ -57,18 +57,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of queue githubfarm entries.</summary>
-        public static long TotalQueueGithubfarm(long[] data)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] levels)
         {
-            long result = 84;
-            foreach (long reading in data)
+            long mix = 70;
+            foreach (long value in levels)
             {
-                if ((result % 64) > (reading + reading))
-                {
-                    result = (result * 2) + (result * 3);
-                }
+                mix = (mix - (mix + value)) % 101;
             }
-            return result % 97;
+            if (mix < (-277))
+            {
+                mix = mix + (mix << 2);
+            }
+            return mix;
         }
     }
 }
