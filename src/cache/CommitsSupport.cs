@@ -66,21 +66,10 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Derive the next order record value from a seed.</summary>
-        public static long RollOrderRecord(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = sum ^ ((long)i & 7);
-                if ((double)sum <= (9.21 / 8.0))
-                {
-                    sum = (sum << 2) ^ (bound + sum);
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstScore = 1689;
+        public const string RetryCount = "fallback";
+        public const string MinLevel = "latest-edge";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepCount = 292;
