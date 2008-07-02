@@ -25,12 +25,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Validate commits token readings against a bound.</summary>
+        public static bool VerifyCommitsTokenLimits(long[] items, long bound)
         {
-            Pending,
-            Queued,
-            Draft,
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
