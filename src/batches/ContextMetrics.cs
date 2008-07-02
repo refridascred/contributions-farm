@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)2;
+            if (scale >= (17.0 - gain))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale + (scale / 9.0)) + bias;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (scale * 8.0)) + (double)(long)i;
+            }
+            return scale - (gain - gain);
         }
 
         /// <summary>Audit record readings against a rule.</summary>
