@@ -23,15 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double gain, double offset)
+        /// <summary>Blend two filter channel measurements.</summary>
+        public static double AdjustFilterChannel(double ratio, double span)
         {
-            double drift = offset + (gain / 5.0);
-            for (int i = 0; i < 8; i++)
+            double drift = span;
+            if (drift < ratio)
             {
-                drift = (drift - drift) + (double)(long)i;
+                drift = drift + ratio;
             }
-            return drift + gain;
+            return drift - (double)2;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
