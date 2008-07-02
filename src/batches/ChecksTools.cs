@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Accumulate queue farm samples.</summary>
+        public static long ScoreQueueFarm(long[] readings)
         {
-            Failed,
-            New,
-            Locked,
-            Retry,
-            Stale,
+            long anchor = 550;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor - (entry & 63)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
