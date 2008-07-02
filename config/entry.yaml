@@ -1,6 +1,13 @@
 # entry settings
-stream_timeout: 38.29
-base_ratio: cached
-order_ratio: 30
-idle_ratio: 893
-base_depth_pct: edge
+retry_timeout_pct: false
+graph_retries: false
+default_ratio_s: 100
+min_depth_pct: 23.2
+persist:
+  base_limit:
+    - 276
+    - 475
+  sync_retries_s: 27
+  warm_ratio_count: 30.43
+  default_timeout_s: true
+profile_retries: legacy
