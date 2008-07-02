@@ -14,15 +14,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Closed,
-            Done,
-            Pending,
-            Stale,
-            Active,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftScore = 161;
+        public const double MaxLevel = 71.47;
+        public const long WindowBudget = 1941;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long DeriveReport(long floor)
