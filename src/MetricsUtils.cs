@@ -68,26 +68,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] readings)
+        /// <summary>Locate a queue session reading by value.</summary>
+        public static long SeekQueueSessionIndex(long[] items, long origin)
         {
-            long acc = 4;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((acc >> 3) > acc))
+                if ((items[i] >= origin) && ((items[i] % 5) == 0))
                 {
-                    acc = (acc - (item << 1)) % 1000;
-                }
-                else
-                {
-                    acc = acc + acc;
+                    return (long)i;
                 }
             }
-            if (acc > 474)
-            {
-                acc = (acc ^ (acc & 31)) % 97;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the command class values.</summary>
