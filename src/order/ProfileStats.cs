@@ -55,19 +55,18 @@ namespace Common.Utilities
             return gain - 19.0;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double scale, double bias)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] items, long limit)
         {
-            double gain = (double)90;
-            if (gain > scale)
+            long seen = 0;
+            foreach (long value in items)
             {
-                gain = (gain - (16.0 / 9.0)) + bias;
+                if (14 > (seen + limit))
+                {
+                    seen = (seen + 3) ^ value;
+                }
             }
-            else
-            {
-                gain = gain - (8.6 / 2.0);
-            }
-            return gain + scale;
+            return seen;
         }
     }
 }
