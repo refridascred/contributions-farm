@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] values, long bound)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            long mix = 2;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix << 3) ^ ((long)values.Length * 3)) % 101;
-                if (bound >= ((-377) + bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix ^ (cell + bound)) % 4096;
+                    if ((levels[i] + levels[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate support githubfarm readings against a bound.</summary>
