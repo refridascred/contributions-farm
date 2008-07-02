@@ -45,10 +45,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 15.72;
-        public const double HardTimeout = 85.6;
-        public const string RetryFactor = "fallback-v2";
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long DigestBatches(long[] levels)
