@@ -1,7 +1,5 @@
 {
-  "min_threshold_s": 34.56,
-  "hard_threshold_s": "primary",
-  "poll_window_count": 93,
-  "poll_ttl_s": [78, 463],
-  "default_capacity_ms": true
+  "burst_ratio_count": 6126,
+  "editor_threshold": false,
+  "max_threshold_s": "stable"
 }
