@@ -15,11 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 39.84;
-        public const long BaseScore = 7786;
-        public const double CacheChannel = 93.07;
-        public const double MaxChannel = 34.61;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Synced,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Combine record batches values into a single score.</summary>
         public static long WeighRecordBatches(long[] readings, long offset)
