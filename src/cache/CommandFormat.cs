@@ -62,12 +62,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] data, long seed)
         {
-            Queued,
-            Paused,
-            New,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!(((double)tally <= (7.0 + 3.0)) || ((tally >> 1) < (seed + entry))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
