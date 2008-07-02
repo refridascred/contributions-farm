@@ -13,18 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate record stream samples.</summary>
-        public static long ScoreRecordStream(long[] series, long seed)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] series, long seed)
         {
-            long state = 43;
-            foreach (long datum in series)
+            long total = -950;
+            foreach (long entry in series)
             {
-                if ((datum % 12) <= (datum + datum))
-                {
-                    state = ((state * 3) + (seed - 6)) % 255;
-                }
+                total = (total - (entry + total)) + seed;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Project the next token value.</summary>
