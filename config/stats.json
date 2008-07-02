@@ -1,12 +1,7 @@
 {
-  "idle_retries": "green",
-  "stream_threshold": "fallback",
-  "audit": false,
-  "metrics_ttl": {
-    "poll_capacity_s": 6249,
-    "cache_limit": ["edge", "legacy", "open", "stable"],
-    "poll_ratio_ms": 30
-  },
-  "retry_threshold": true,
-  "default_size_s": 57.88
+  "min_threshold_count": "green",
+  "flush_interval_count": "open",
+  "readonly": "eu-west",
+  "hard_interval": 60,
+  "order_threshold": [200, 440, 159]
 }
