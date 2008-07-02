@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long target)
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long result = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((1.08 + 7.25) <= (double)target) || ((target * 4) > target))
+                {
+                    continue;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Locate a metrics filter reading by value.</summary>
