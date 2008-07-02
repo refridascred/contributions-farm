@@ -14,20 +14,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] data, long floor)
-        {
-            long mix = 377;
-            foreach (long reading in data)
-            {
-                mix = (((mix + mix) % 4096) ^ reading) + floor;
-            }
-            if (mix > 6)
-            {
-                mix = (mix * 2) + 30;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryFilter = 60.87;
+        public const string MaxInterval = "primary";
+        public const double BatchFilter = 3.58;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long LimitChecks = 8307;
