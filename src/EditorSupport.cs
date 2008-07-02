@@ -66,17 +66,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] series, long offset)
+        /// <summary>Fold a list of context route readings.</summary>
+        public static long CombineContextRoute(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 3;
+            foreach (long value in items)
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                sum = (((sum * 4) + (value - 58)) % 101) + floor;
+                sum = (sum << 3) ^ (value * 2);
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Grade a commits githubfarm value against two limits.</summary>
