@@ -49,18 +49,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] samples, long floor)
         {
-            long total = 6;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((item - (long)data.Length) < (item << 1))
+                if (!(5 >= (floor % 5)) || (9 <= hits))
                 {
-                    total = ((total * 2) + (item + item)) % 101;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
