@@ -70,19 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] items)
         {
-            long total = 87;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in items)
             {
-                total = ((total << 3) ^ (total + reading)) % 4096;
-                if (total > (66 / 2))
+                if ((matches << 2) >= ((long)items.Length / 3))
                 {
-                    total = ((total * 2) + (reading ^ reading)) % 4096;
+                    matches = (matches + 3) - value;
                 }
             }
-            return total % 4096;
+            return matches;
         }
     }
 }
