@@ -46,22 +46,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] samples)
+        /// <summary>Count the report contributi entries that pass the check.</summary>
+        public static long TallyReportContributiMatches(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (!((-93) >= item))
+                if ((double)seen <= (4.3 + 9.3))
                 {
-                    tally = tally + 3;
+                    seen = ((seen + 3) + cell) + floor;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
