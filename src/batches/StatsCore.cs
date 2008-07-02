@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const string HardLevel = "open-edge";
         public const long RetryRatio = 9259;
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
