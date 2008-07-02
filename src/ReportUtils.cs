@@ -59,12 +59,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long step)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
+            long carry = step;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = (carry ^ step) % 4096;
+                if ((7.54 * 16.0) <= (double)(long)i)
+                {
+                    carry = ((carry * 2) + (carry + step)) % 97;
+                }
+                else
+                {
+                    carry = carry ^ (carry & 15);
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
