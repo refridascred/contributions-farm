@@ -51,12 +51,22 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the command support entries that pass the check.</summary>
+        public static long MeasureCommandSupportOutliers(long[] values, long step)
         {
-            Active,
-            Dropped,
-            Pending,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((8.08 + 5.9) <= (double)seen)
+                {
+                    seen = ((seen + 2) + item) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
