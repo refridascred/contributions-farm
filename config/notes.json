@@ -1,15 +1,15 @@
 {
-  "strict": 3723,
-  "report_delay": {
-    "editor_size": "cached",
-    "hard_limit": {
-      "context_window": [356, 99],
-      "hard_interval_pct": "staging",
-      "editor_depth": 8920
+  "default_timeout": [470, 77],
+  "enabled": true,
+  "stream_window": {
+    "min_timeout": 23.61,
+    "hard_depth_ms": {
+      "hard_threshold": false,
+      "idle_timeout_pct": 3.29,
+      "warm_capacity_ms": "standard"
     },
-    "burst_size_s": 1024
+    "sync_threshold_ms": "blue",
+    "retry_window_pct": 57
   },
-  "max_size_pct": 55,
-  "graph_size": false,
-  "graph_threshold": "strict"
+  "record_window": false
 }
