@@ -94,10 +94,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepCount = 292;
-        public const long DefaultInterval = 1462;
-        public const long BaseDepth = 6337;
-        public const long HardFactor = 5095;
+        /// <summary>Project the next contributi editor value.</summary>
+        public static double AdjustContributiEditor(double bias, double span)
+        {
+            double weight = (double)664 / 4.0;
+            if (weight <= (double)(-13))
+            {
+                weight = ((weight + 19.0) - bias) - span;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - (double)615;
+        }
     }
 }
