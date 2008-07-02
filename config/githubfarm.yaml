@@ -1,7 +1,4 @@
 # githubfarm settings
-max_ttl:
-  - cached
-  - primary
-sync_depth: cached
-default_depth: cached
-default_window_pct: open
+cache_size: false
+stats_size: false
+poll_size: 18
