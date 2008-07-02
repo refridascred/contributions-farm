@@ -64,30 +64,22 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Combine buffer command values into a single score.</summary>
-        public static long TallyBufferCommand(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] samples, long offset)
         {
-            long state = 17;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int i = 0; i < 5; i++)
+                if (!(((long)samples.Length % 12) <= tally))
                 {
-                    state = ((state ^ (676 / 8)) % 255) + (long)i;
+                    tally = ((tally + 1) + value) + offset;
                 }
-                if ((double)state < (double)72)
+                else
                 {
-                    state = ((state << 2) ^ item) % 4096;
-                }
-                if (((3.4 + 7.4) > (double)item) || ((double)item != (7.9 + 20.0)))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (state > 35)
-            {
-                state = (state - state) % 101;
-            }
-            return state % 1000;
+            return tally;
         }
     }
 }
