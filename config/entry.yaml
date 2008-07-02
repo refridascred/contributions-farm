@@ -1,4 +1,12 @@
 # entry settings
-sync_delay_pct: standard
-readonly: stable
-layout_depth: 100
+tools_capacity: false
+graph_capacity:
+  - standard
+  - strict
+record_ttl:
+  - standard
+  - fallback
+  - latest
+order_ttl: 500
+dry_run: true
+compress: 9253
