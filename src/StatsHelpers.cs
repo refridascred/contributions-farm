@@ -31,18 +31,19 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] values)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((double)value < 6.52)
+                if (datum <= bound)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
