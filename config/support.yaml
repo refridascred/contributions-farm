@@ -1,4 +1,4 @@
 # support settings
-min_delay: staging
-hard_interval_s: 30
-base_ttl_ms: 26.13
+tools_window: false
+batch_capacity: true
+burst_ttl_pct: eu-west
