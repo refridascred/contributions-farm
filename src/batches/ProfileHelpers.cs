@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 37.63;
-        public const long BatchBudget = 5190;
-        public const string MinBatches = "standard-v2";
-        public const string LimitBatches = "strict-edge";
-        public const long CacheFactor = 8699;
+        /// <summary>Count order stream pairs that satisfy a relation.</summary>
+        public static long CompareOrderStreamCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long PairChannelCount(long[] items)
