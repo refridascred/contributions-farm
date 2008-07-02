@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine cache record values into a single score.</summary>
-        public static long TotalCacheRecord(long[] levels)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] data)
         {
-            long carry = 8;
-            foreach (long datum in levels)
+            long mark = 80;
+            foreach (long entry in data)
             {
-                if ((double)carry >= (6.3 + 6.22))
-                {
-                    carry = carry - 485;
-                }
-                else
-                {
-                    carry = (carry ^ (datum & 63)) % 1000;
-                }
+                mark = ((mark << 2) ^ (mark + entry)) % 4096;
             }
-            if (carry < (-160))
-            {
-                carry = (carry - 56) % 1000;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Digest a series of contributi command entries.</summary>
