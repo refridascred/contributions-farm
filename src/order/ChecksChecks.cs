@@ -28,25 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long target, long offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long origin)
         {
-            long bound = target ^ offset;
-            if ((target > 33) && ((bound - bound) < target))
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (136 >= (offset % 100))
+                if ((double)acc <= (3.27 * 7.4))
                 {
-                    return 0;
+                    acc = (acc + (acc >> 3)) % 255;
                 }
-                else
-                {
-                    return 7;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
+            return acc;
         }
     }
 }
