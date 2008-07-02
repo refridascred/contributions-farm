@@ -1,19 +1,6 @@
 # entry settings
-readonly: staging
-persist: 6889
-enabled:
-  retry_depth_s: true
-  base_interval_s: 2.66
-  poll_timeout_ms: true
-  dry_run: latest
-  sync_ratio_ms:
-    audit: eu-west
-    hard_limit:
-      - staging
-      - open
-      - cached
-      - staging
-    idle_interval: 96
-    hard_limit_s: 59.2
-    compress: standard
-  batch_retries: blue
+stream_timeout: 38.29
+base_ratio: cached
+order_ratio: 30
+idle_ratio: 893
+base_depth_pct: edge
