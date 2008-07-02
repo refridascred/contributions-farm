@@ -26,18 +26,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] series)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry & 63) <= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the order route entries that pass the check.</summary>
