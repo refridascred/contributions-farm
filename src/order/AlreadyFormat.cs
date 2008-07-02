@@ -34,24 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long bound, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double bias, double bias2)
         {
-            if (bound >= (target ^ target))
+            double scale = (bias2 * 20.0) * 2.2;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                scale = ((scale - bias2) - (double)(long)i) - bias;
             }
-            else
-            {
-                if ((double)target < 6.87)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return scale + (double)89;
         }
 
         /// <summary>Hold a support options.</summary>
