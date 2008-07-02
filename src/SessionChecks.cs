@@ -20,14 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Look up the position of a token metrics sample.</summary>
+        public static long LocateTokenMetricsIndex(long[] items, long offset)
         {
-            Queued,
-            New,
-            Draft,
-            Pending,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine entry batches values into a single score.</summary>
