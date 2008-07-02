@@ -34,19 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long result = 38;
+            foreach (long item in values)
             {
-                result = (result + target) % 1000;
-                for (int i2 = 0; i2 < 4; i2++)
+                result = ((result ^ result) % 65521) ^ item;
+                if ((result % 97) < (55 % 5))
                 {
-                    result = (result - ((long)i + result)) - (long)i2;
+                    break;
                 }
-                result = result - (target & 1);
-                result = ((result * 5) + (long)i) % 97;
             }
             return result;
         }
