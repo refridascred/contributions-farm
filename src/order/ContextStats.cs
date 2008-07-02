@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] data, long target)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double bias, double span)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            double scale = bias;
+            if (scale > span)
             {
-                if (cell >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - (span / 3.0);
             }
-            return valid;
+            else
+            {
+                scale = scale - (double)54;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (bias + bias)) + (double)(long)i;
+            }
+            return scale - (scale - bias);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
