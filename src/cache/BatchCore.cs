@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] levels, long origin)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long floor)
         {
-            long result = 129;
-            foreach (long datum in levels)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                result = (result ^ (origin << 1)) + datum;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Describe the order phase values.</summary>
