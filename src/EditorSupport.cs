@@ -24,18 +24,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] readings, long step)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long origin)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long score = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (step < (9 / 2))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    tally = (tally + 1) ^ entry;
+                    score = (score + ((long)i & 255)) + (long)i2;
+                    score = score ^ (score % 3);
                 }
+                if (((long)i / 4) != (score - score))
+                {
+                    score = score ^ origin;
+                }
+                else
+                {
+                    score = ((score << 2) ^ score) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Blend two stats notes measurements.</summary>
