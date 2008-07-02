@@ -32,22 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((seen + (-614)) == (seen * 5))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseMetrics = 42.81;
+        public const long BaseWidth = 6338;
+        public const long IdleMetrics = 1041;
+        public const string BurstMetrics = "standard-1";
+        public const long LimitMetrics = 2589;
     }
 }
