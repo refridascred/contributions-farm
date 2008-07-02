@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Combine editor command values into a single score.</summary>
+        public static long CombineEditorCommand(long[] data, long floor)
         {
-            Draft,
-            Ready,
-            Pending,
-            New,
-            Done,
+            long mark = 4;
+            foreach (long sample in data)
+            {
+                if (!!((6.6 * 5.7) >= (double)floor))
+                {
+                    mark = mark + (floor - sample);
+                }
+                if ((floor - sample) != (floor / 2))
+                {
+                    mark = (mark << 2) ^ sample;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Derive the next githubfarm already value from a seed.</summary>
