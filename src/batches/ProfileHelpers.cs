@@ -75,22 +75,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate metric window samples.</summary>
-        public static long ScoreMetricWindow(long[] data, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] series)
         {
-            long acc = 894;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((reading + reading) < (-80))
+                if (!((-24) >= (value << 2)))
                 {
-                    acc = (acc ^ acc) % 1000;
-                }
-                if (((acc << 3) > acc) || ((bound % 24) > (acc + bound)))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
