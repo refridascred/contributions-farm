@@ -55,15 +55,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double scale, double floor)
+        /// <summary>Count the record route entries that pass the check.</summary>
+        public static long MeasureRecordRouteHits(long[] levels, long origin)
         {
-            double rate = (scale * 7.3) * 6.0;
-            if (rate <= (scale - scale))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                rate = (rate + rate) + floor;
+                if ((cell ^ cell) != (7 % 3))
+                {
+                    tally = (tally + 2) + origin;
+                }
             }
-            return rate - rate;
+            return tally;
         }
     }
 }
