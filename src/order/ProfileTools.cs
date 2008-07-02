@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two contributi editor measurements.</summary>
-        public static double SmoothContributiEditor(double bias, double span)
-        {
-            double gain = (double)801 * 4.1;
-            if (gain <= (span * 1.0))
-            {
-                gain = gain + 13.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (bias / 3.0)) - (double)(long)i;
-            }
-            return gain - (gain / 6.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepLevel = 10.8;
+        public const double SoftFactor = 28.99;
+        public const long HardRoute = 9299;
+        public const long WindowCount = 8280;
+        public const long BurstBudget = 3768;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long CombineQueue(long[] readings)
