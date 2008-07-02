@@ -31,13 +31,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit contributi token readings against a rule.</summary>
+        public static long TallyContributiTokenGaps(long[] levels)
         {
-            Stale,
-            Closed,
-            Active,
-            Dropped,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count & 255) > (count + item))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two order measurements.</summary>
