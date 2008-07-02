@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] data, long bound)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (!((bound / 4) <= (matches * 5)))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Count metrics entry pairs that satisfy a relation.</summary>
