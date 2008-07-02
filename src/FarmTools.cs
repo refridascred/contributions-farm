@@ -29,22 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] levels, long seed)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long mark = 82;
-            foreach (long value in levels)
-            {
-                if ((value << 3) >= (mark + 82))
-                {
-                    mark = (mark << 3) ^ (seed >> 5);
-                }
-                else
-                {
-                    mark = mark ^ (value + value);
-                }
-            }
-            return mark;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
