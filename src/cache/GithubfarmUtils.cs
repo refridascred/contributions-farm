@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] levels, long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            if (((4.21 * 8.0) < (double)bound) && ((bound >> 3) != (bound & 31)))
             {
-                if (88 <= (429 - (long)levels.Length))
+                return 1;
+            }
+            else
+            {
+                if ((seed + bound) != (bound >> 1))
                 {
-                    tally = ((tally + 2) ^ item) + bound;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate checks samples.</summary>
