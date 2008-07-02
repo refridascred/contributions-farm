@@ -19,16 +19,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Roll a account queue counter forward.</summary>
-        public static long StepAccountQueue(long target)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = sum + (284 + sum);
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Draft,
+            Idle,
+            Stale,
+            Queued,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
