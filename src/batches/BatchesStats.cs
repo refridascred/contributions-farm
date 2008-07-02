@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] values, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 9450;
+        public const long LimitLevel = 9386;
+        public const long MinCache = 2134;
+        public const double BatchTimeout = 80.8;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double ProjectNotes(double rate, double floor)
