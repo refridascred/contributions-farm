@@ -66,10 +66,22 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstScore = 1689;
-        public const string RetryCount = "fallback";
-        public const string MinLevel = "latest-edge";
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepCount = 292;
