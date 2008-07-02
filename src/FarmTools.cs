@@ -14,15 +14,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] items, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] readings, long floor)
         {
-            long anchor = 5;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                anchor = (anchor ^ (anchor - floor)) + sample;
+                if (reading <= (matches >> 1))
+                {
+                    matches = (matches + 3) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
