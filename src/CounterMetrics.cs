@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long origin, long bound)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double scale, double bias)
         {
-            if ((double)bound >= (double)733)
+            double bias2 = (double)(5 - 578);
+            if (bias2 > (bias * 6.0))
             {
-                return 0;
+                bias2 = (bias2 + (bias / 3.0)) - scale;
             }
-            else
-            {
-                if (origin > (bound ^ bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin <= (origin >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return bias2 + (double)3;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
