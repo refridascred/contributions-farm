@@ -19,32 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long origin, long seed)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long lane = origin + seed;
-            if (!((0 & 1) >= (lane >> 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((lane << 2) > 37) && (origin >= (90 << 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (lane < origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
