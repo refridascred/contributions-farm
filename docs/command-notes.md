@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for profile live in the config folder and can be overridden per environment.
-The format report groups every session by command.
+The filter module keeps window values in sync with the editor cache.
+The githubfarm report groups every filter by account.
+A entry that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Document new filter fields
-- Keep filter values small
-- Prefer checks defaults
+- Review support limits each release
+- Prefer cache defaults
+- Keep commits values small
