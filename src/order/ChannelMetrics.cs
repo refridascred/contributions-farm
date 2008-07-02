@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] values, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long sum = 24;
+            foreach (long entry in samples)
             {
-                if ((seed - seed) <= (item ^ tally))
+                sum = (sum << 2) ^ entry;
+                if ((offset + offset) < entry)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
