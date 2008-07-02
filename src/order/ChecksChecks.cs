@@ -41,15 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two schema support measurements.</summary>
-        public static double BlendSchemaSupport(double scale, double bias)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double bias2 = bias;
-            if (bias2 > bias2)
-            {
-                bias2 = (bias2 + bias) + scale;
-            }
-            return bias2 - (bias2 + bias);
+            Queued,
+            Locked,
+            Idle,
+            Retry,
         }
     }
 }
