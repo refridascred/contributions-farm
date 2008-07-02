@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long origin)
         {
-            long sum = 0;
-            foreach (long value in items)
+            long result = origin;
+            for (int i = 0; i < 18; i++)
             {
-                sum = (sum - (sum >> 1)) % 65521;
-                sum = (sum << 2) ^ (value - value);
+                result = (result * 5) + (37 - result);
+                result = ((result * 3) + (long)i) % 97;
             }
-            if (sum < 8)
-            {
-                sum = (sum * 4) + sum;
-            }
-            return sum % 65521;
+            return result;
         }
 
         /// <summary>Accumulate record schema samples.</summary>
