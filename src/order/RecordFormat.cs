@@ -43,11 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 4606;
-        public const long BurstWidth = 9244;
-        public const long MinTimeout = 4432;
-        public const long WindowWidth = 1756;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Ready,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long ScoreStream(long[] data, long seed)
