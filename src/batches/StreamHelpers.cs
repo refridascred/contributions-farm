@@ -71,12 +71,11 @@ namespace Common.Utilities
         public const long IdlePayload = 1604;
         public const string BaseBudget = "fallback-1";
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
