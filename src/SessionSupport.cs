@@ -38,14 +38,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
+            Dropped,
+            Closed,
             Pending,
-            Stale,
-            Active,
-            Done,
-            Paused,
         }
     }
 }
