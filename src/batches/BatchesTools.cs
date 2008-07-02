@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Locate a already report reading by value.</summary>
+        public static long SeekAlreadyReportIndex(long[] levels, long offset)
         {
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a window checks sample.</summary>
