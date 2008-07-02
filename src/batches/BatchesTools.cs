@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a batch entry counter forward.</summary>
-        public static long IterateBatchEntry(long target)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Look up the position of a window checks sample.</summary>
