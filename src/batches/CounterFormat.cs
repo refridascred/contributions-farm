@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] items, long bound)
         {
-            Ready,
-            Failed,
-            Synced,
-            Paused,
-            Locked,
+            long mix = 22;
+            foreach (long item in items)
+            {
+                mix = ((mix << 3) ^ (item + item)) % 1000;
+            }
+            if (mix > 26)
+            {
+                mix = mix - bound;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Check that every command queue entry stays within the limit.</summary>
