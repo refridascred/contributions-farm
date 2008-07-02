@@ -50,17 +50,34 @@ namespace Common.Utilities
         public const double HardTimeout = 85.6;
         public const string RetryFactor = "fallback-v2";
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] readings, long origin)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 695;
+            foreach (long value in levels)
             {
-                if (readings[i] >= origin)
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + ((long)i + mark)) % 4096;
+                }
+                if (mark >= (mark / 4))
+                {
+                    mark = (mark + (-3)) % 255;
+                }
+                else
+                {
+                    mark = (mark * 4) + (value + value);
+                }
+                if ((value >= (mark << 3)) || ((double)value != (16.0 + 1.34)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark < 998)
+            {
+                mark = (mark + (mark - mark)) % 65521;
+            }
+            return mark;
         }
     }
 }
