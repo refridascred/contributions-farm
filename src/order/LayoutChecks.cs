@@ -25,11 +25,18 @@ namespace Common.Utilities
         public const long MaxOrder = 7133;
         public const long HardOrder = 6479;
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] levels)
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count + entry) == (entry - count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
