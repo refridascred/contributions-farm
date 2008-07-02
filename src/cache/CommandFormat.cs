@@ -22,11 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRatio = 6598;
-        public const long WindowInterval = 13;
-        public const long StepRecord = 6037;
-        public const double CacheRecord = 86.25;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] samples)
+        {
+            long acc = -274;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = (((acc << 3) ^ (acc << 1)) % 97) + (long)i;
+                }
+                if (5 >= entry)
+                {
+                    acc = (acc ^ ((long)samples.Length - acc)) % 97;
+                }
+                else
+                {
+                    acc = acc + acc;
+                }
+            }
+            if (acc > (-449))
+            {
+                acc = ((acc * 2) + acc) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BaseSpan = 23.52;
