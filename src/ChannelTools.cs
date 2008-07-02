@@ -28,15 +28,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double rate, double bias)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            double ratio = bias;
-            if (ratio >= ratio)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                ratio = (ratio + bias) + rate;
+                result = result - (limit - limit);
+                result = ((result * 2) + (long)i) % 101;
             }
-            return ratio - (bias * 2.9);
+            return result;
         }
     }
 }
