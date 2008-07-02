@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public long Total { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
