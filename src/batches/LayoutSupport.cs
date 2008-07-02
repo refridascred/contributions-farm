@@ -27,17 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] readings, long offset)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Describe the channel status values.</summary>
