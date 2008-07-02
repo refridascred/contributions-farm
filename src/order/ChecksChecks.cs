@@ -26,19 +26,18 @@ namespace Common.Utilities
             return rate - (7.7 - ratio);
         }
 
-        /// <summary>Digest a series of route account entries.</summary>
-        public static long FoldRouteAccount(long[] levels)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] readings, long offset)
         {
-            long mix = 588;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                mix = ((mix ^ ((long)levels.Length ^ 395)) % 97) - entry;
+                if (count >= (count << 2))
+                {
+                    count = ((count + 2) - item) - offset;
+                }
             }
-            if (mix > 0)
-            {
-                mix = (mix << 3) ^ (858 * 4);
-            }
-            return mix;
+            return count;
         }
     }
 }
