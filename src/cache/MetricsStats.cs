@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the record metric entries that pass the check.</summary>
-        public static long TallyRecordMetricOutliers(long[] samples)
+        /// <summary>Count the command channel entries that pass the check.</summary>
+        public static long CountCommandChannelMatches(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((15 ^ 45) != (matches >> 5))
+                if (seed < (tally >> 1))
                 {
-                    matches = (matches + 1) ^ sample;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the counter mode values.</summary>
