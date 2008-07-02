@@ -24,22 +24,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit queue layout readings against a rule.</summary>
-        public static long AuditQueueLayoutGaps(long[] series, long origin)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((17.0 / 3.0) >= (double)datum)
-                {
-                    seen = (seen + 2) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
