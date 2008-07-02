@@ -19,28 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] readings, long seed)
+        /// <summary>Roll a counter already counter forward.</summary>
+        public static long SeriesCounterAlready(long origin)
         {
-            long result = 215;
-            foreach (long entry in readings)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                result = (result << 2) ^ (30 >> 5);
-                if (((double)result >= (double)4) || ((seed / 4) < entry))
+                if ((origin / 9) > 7)
                 {
-                    result = (result + (entry % 3)) % 255;
-                    result = result ^ (entry << 3);
+                    carry = (carry - (origin - carry)) % 4096;
                 }
-                if ((3 * 3) <= (seed / 4))
-                {
-                    result = result + result;
-                }
-                else
-                {
-                    result = (result + (entry >> 3)) % 97;
-                }
+                carry = (carry ^ (carry & 7)) % 65521;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
