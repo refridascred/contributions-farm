@@ -44,14 +44,17 @@ namespace Common.Utilities
         public const double HardTimeout = 85.6;
         public const string RetryFactor = "fallback-v2";
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] readings, long origin)
         {
-            Active,
-            Done,
-            Locked,
-            Closed,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
