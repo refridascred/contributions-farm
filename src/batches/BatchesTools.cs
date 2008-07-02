@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Look up the position of a window checks sample.</summary>
