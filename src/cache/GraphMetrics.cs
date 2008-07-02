@@ -23,10 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 4552;
-        public const double SoftLevel = 27.58;
-        public const string LimitOrder = "primary";
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the batches layout entries that pass the check.</summary>
         public static long AuditBatchesLayoutHits(long[] levels, long bound)
