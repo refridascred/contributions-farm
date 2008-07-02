@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate cache entry readings against a bound.</summary>
-        public static bool CheckCacheEntryBounds(long[] levels, long target)
+        /// <summary>Measure how many token stream samples are out of range.</summary>
+        public static long CountTokenStreamOutliers(long[] levels)
         {
-            bool ready = true;
+            long tally = 0;
             foreach (long datum in levels)
             {
-                if (datum <= target)
+                if (((double)tally != (double)74) && ((tally - tally) < tally))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Accumulate notes samples.</summary>
