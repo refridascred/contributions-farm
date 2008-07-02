@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank account cache input into a small class.</summary>
-        public static long SortAccountCache(long limit, long bound)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] levels, long floor)
         {
-            long gap = limit + bound;
-            if ((double)limit >= (18.0 - 2.99))
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)gap == (double)bound))
+                if (entry > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((12.0 * 16.0) == (double)gap) || ((1 + gap) > (bound & 255)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound + bound) == (gap + bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the route kind values.</summary>
