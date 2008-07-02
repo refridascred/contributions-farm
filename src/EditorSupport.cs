@@ -31,19 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double ratio, double offset)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double weight, double bias)
         {
-            double rate = offset;
-            if (rate <= (offset / 7.0))
+            double gain = (double)(379 + (-91));
+            if (gain <= (gain - bias))
             {
-                rate = rate - ratio;
+                gain = gain - weight;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                rate = rate - (9.0 * 6.01);
+                gain = (gain - bias) + (double)(long)i;
             }
-            return rate - (7.01 - rate);
+            return gain - (gain * 7.4);
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
