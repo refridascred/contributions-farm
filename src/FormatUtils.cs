@@ -15,22 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] series)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (5.97 <= (double)matches)
+                if ((value + seen) <= (value - value))
                 {
-                    matches = (matches + 2) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the metric status values.</summary>
