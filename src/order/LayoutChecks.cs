@@ -85,18 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] items)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] series)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long mark = 8;
+            foreach (long entry in series)
             {
-                if (15 <= sample)
+                mark = mark + mark;
+                if ((5 + entry) > 98)
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            return mark % 4096;
         }
     }
 }
