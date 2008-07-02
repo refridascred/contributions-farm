@@ -23,18 +23,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseScore = 2112;
+        public const long BurstEditor = 2264;
+        public const long MinEditor = 7642;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long PairRecordCount(long[] data)
