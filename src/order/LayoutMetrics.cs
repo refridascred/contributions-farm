@@ -21,15 +21,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a session graph reading.</summary>
-        public static double AdjustSessionGraph(double gain, double offset)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double mean = gain;
-            if (mean <= offset)
-            {
-                mean = mean - (2.85 * 4.0);
-            }
-            return mean + mean;
+            public double Count { get; set; }
+            public double Label { get; set; }
         }
     }
 }
