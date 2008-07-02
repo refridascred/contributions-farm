@@ -25,21 +25,26 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 39;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell < (score & 15))
                 {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score + (cell * 4)) % 65521;
+                }
+                if (((score << 1) >= (score >> 3)) && ((long)items.Length >= (cell & 1)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (score < (-329))
+            {
+                score = (score + (score % 60)) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the batch phase values.</summary>
