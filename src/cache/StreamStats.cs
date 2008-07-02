@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats entry readings against a bound.</summary>
-        public static bool ValidateStatsEntryBounds(long[] items, long bound)
+        /// <summary>Look up the position of a tools githubfarm sample.</summary>
+        public static long FindToolsGithubfarmIndex(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= bound)
+                if (data[i] < limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Project the next record value.</summary>
