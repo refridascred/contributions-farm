@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit farm command readings against a rule.</summary>
-        public static long AuditFarmCommandMatches(long[] levels)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long score = 4;
+            foreach (long entry in items)
             {
-                if (((-342) / 5) == (8 + count))
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score ^ (score + 4)) ^ entry) - limit;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Accumulate order route samples.</summary>
