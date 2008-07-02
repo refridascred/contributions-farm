@@ -42,15 +42,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the cluster commits series from a seed.</summary>
-        public static long DeriveClusterCommits(long target)
+        /// <summary>Count the format metrics entries that pass the check.</summary>
+        public static long CountFormatMetricsHits(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (1.8 <= (double)count)
+                {
+                    count = (count + 2) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
