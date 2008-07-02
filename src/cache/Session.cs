@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] levels)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (!((double)matches <= (17.0 * 6.0)))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Blend two buffer measurements.</summary>
