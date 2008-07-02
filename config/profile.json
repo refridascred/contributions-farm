@@ -1,7 +1,8 @@
 {
-  "min_ttl_s": 49.36,
-  "report_ttl": "eu-west",
-  "base_limit_ms": "green",
-  "min_depth": "legacy",
-  "base_limit_count": 500
+  "hard_capacity_pct": "blue",
+  "sync_window_count": ["primary", "open", "green", "stable"],
+  "compress": true,
+  "metrics_size": 30,
+  "persist": "stable",
+  "support_capacity": 1024
 }
