@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double bias, double offset)
         {
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            double rate = 0.97;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = ((rate - 4.37) - (double)(long)i) + bias;
+            }
+            return rate - offset;
         }
 
         /// <summary>Describe the editor status values.</summary>
