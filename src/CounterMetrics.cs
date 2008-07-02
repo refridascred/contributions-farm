@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many order metrics samples are out of range.</summary>
-        public static long MeasureOrderMetricsHits(long[] readings, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (((long)readings.Length << 3) >= value)
+                if (reading > seed)
                 {
-                    hits = (hits + 2) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Measure how many buffer entry samples are out of range.</summary>
