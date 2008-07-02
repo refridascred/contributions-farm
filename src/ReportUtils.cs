@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Project the next githubfarm entry value.</summary>
+        public static double ProjectGithubfarmEntry(double gain, double bias)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            double scale = (gain - 3.9) * 4.0;
+            if (scale < bias)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                scale = scale + (double)63;
             }
-            return acc;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale - (bias + gain);
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
