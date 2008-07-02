@@ -16,23 +16,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next window profile value from a seed.</summary>
-        public static long StepWindowProfile(long floor)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long seed, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
+            long next = seed - floor;
+            if (((double)next != (double)floor) && ((next * 2) != (floor % 64)))
             {
-                if (!((mix % 3) < (mix - mix)))
-                {
-                    mix = ((mix * 3) + (floor + floor)) % 4096;
-                }
-                if (!((floor * 3) == (long)i))
-                {
-                    mix = (mix * 3) + (floor + 689);
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (seed < (next << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
