@@ -1,11 +1,12 @@
 # Command notes
 
-Keep report and filter names short and lowercase.
-Run the batch check before changing any buffer limits.
-The already helpers are pure functions, so they are safe to call from any thread.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The context report groups every contributi by githubfarm.
+A format that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Prefer account defaults
-- Document new support fields
-- Validate report input early
+- Keep already values small
+- Log every graph change
+- Prefer editor defaults
+- Validate order input early
