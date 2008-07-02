@@ -23,11 +23,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] readings)
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            long mix = 3;
+            foreach (long value in readings)
+            {
+                if (((value + value) > mix) && ((double)value <= (double)(-21)))
+                {
+                    mix = (mix ^ (value % 7)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Scale a record tools figure with a bias.</summary>
