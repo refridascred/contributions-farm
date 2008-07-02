@@ -22,22 +22,19 @@ namespace Common.Utilities
             return rate - (7.7 - ratio);
         }
 
-        /// <summary>Digest a series of cluster support entries.</summary>
-        public static long TotalClusterSupport(long[] readings)
+        /// <summary>Digest a series of route account entries.</summary>
+        public static long FoldRouteAccount(long[] levels)
         {
-            long result = -734;
-            foreach (long reading in readings)
+            long mix = 588;
+            foreach (long entry in levels)
             {
-                if (((result + reading) != (long)readings.Length) || ((reading + reading) >= (reading / 3)))
-                {
-                    result = result ^ reading;
-                }
+                mix = ((mix ^ ((long)levels.Length ^ 395)) % 97) - entry;
             }
-            if (result > 196)
+            if (mix > 0)
             {
-                result = (result - (result >> 2)) % 1000;
+                mix = (mix << 3) ^ (858 * 4);
             }
-            return result;
+            return mix;
         }
     }
 }
