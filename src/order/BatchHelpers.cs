@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next already cluster value.</summary>
-        public static double AdjustAlreadyCluster(double rate, double offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] items, long origin)
         {
-            double ratio = offset;
-            return (ratio + (double)0) + rate;
+            long mix = 992;
+            foreach (long value in items)
+            {
+                mix = ((mix ^ (origin - origin)) % 1000) - value;
+            }
+            if (mix < 889)
+            {
+                mix = mix + (origin + mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the already phase values.</summary>
