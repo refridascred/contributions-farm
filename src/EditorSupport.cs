@@ -64,15 +64,21 @@ namespace Common.Utilities
         public const long CacheCount = 9292;
         public const string RetryCount = "stable";
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double bias, double span)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            double gain = (span + bias) - (5.5 + 1.74);
-            if (gain < (double)80)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain + (9.0 / 6.0);
+            return seen;
         }
     }
 }
