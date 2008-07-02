@@ -38,16 +38,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine channel batches values into a single score.</summary>
-        public static long WeighChannelBatches(long[] samples)
-        {
-            long acc = -92;
-            foreach (long item in samples)
-            {
-                acc = ((acc - acc) % 101) ^ item;
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardFactor = "open-1";
+        public const string BurstScore = "alpha-edge";
+        public const long LimitSpan = 4996;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
