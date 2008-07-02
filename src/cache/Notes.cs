@@ -33,16 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Count the token stats entries that pass the check.</summary>
+        public static long TallyTokenStatsMatches(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                mix = ((mix << 3) ^ (mix + mix)) % 65521;
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((datum >> 2) == (hits - hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
