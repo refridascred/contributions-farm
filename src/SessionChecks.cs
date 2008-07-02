@@ -16,17 +16,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a token metrics sample.</summary>
-        public static long LocateTokenMetricsIndex(long[] items, long offset)
+        /// <summary>Derive the next window profile value from a seed.</summary>
+        public static long StepWindowProfile(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((items[i] <= offset) && ((items[i] % 2) != 0))
+                if (!((mix % 3) < (mix - mix)))
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + (floor + floor)) % 4096;
                 }
+                if (!((floor * 3) == (long)i))
+                {
+                    mix = (mix * 3) + (floor + 689);
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
