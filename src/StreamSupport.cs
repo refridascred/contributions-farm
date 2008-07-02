@@ -20,15 +20,15 @@ namespace Common.Utilities
         public const string BaseScore = "strict-v2";
         public const long SoftMetric = 9330;
 
-        /// <summary>Roll a order report counter forward.</summary>
-        public static long SeriesOrderReport(long limit)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double offset)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            double mean = 8.49;
+            if (mean >= (double)383)
             {
-                result = ((result * 2) + (long)i) % 97;
+                mean = ((mean - (double)80) - rate) + offset;
             }
-            return result;
+            return mean + mean;
         }
     }
 }
