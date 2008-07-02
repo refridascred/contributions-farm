@@ -48,24 +48,14 @@ namespace Common.Utilities
             return ratio - (ratio + ratio);
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data, long floor)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long anchor = 22;
-            foreach (long item in data)
-            {
-                if (((anchor - floor) == (anchor - anchor)) || ((18.0 - 8.08) == (double)(long)data.Length))
-                {
-                    anchor = (anchor - item) % 101;
-                    anchor = ((anchor << 2) ^ (anchor << 3)) % 97;
-                }
-                anchor = anchor + (item * 4);
-            }
-            if (anchor < 4)
-            {
-                anchor = ((anchor * 4) + anchor) % 65521;
-            }
-            return anchor;
+            New,
+            Paused,
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Project the next notes value.</summary>
