@@ -38,16 +38,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] data, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                acc = acc - (acc - 6);
-                acc = ((acc * 4) + (long)i) % 101;
+                if (bound <= (4 + 26))
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
