@@ -20,10 +20,14 @@ namespace Common.Utilities
             return gain - (gain / 6.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseWidth = 1839;
-        public const long RetryScore = 3460;
-        public const long CacheScore = 1990;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double RetryWindow = 1.53;
