@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Validate format record readings against a bound.</summary>
+        public static bool GuardFormatRecordBounds(long[] series, long offset)
         {
-            Ready,
-            Closed,
-            Dropped,
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit stats metric readings against a rule.</summary>
