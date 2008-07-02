@@ -22,11 +22,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 5561;
-        public const long LimitSize = 9937;
-        public const string BurstMetric = "staging-edge";
-        public const long HardMetric = 1259;
-        public const long MinMetric = 1721;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long floor, long bound)
+        {
+            long prev = floor - bound;
+            if (((prev - prev) < (prev >> 3)) && (1 < (bound + bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + bound) == (53 ^ 27))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
