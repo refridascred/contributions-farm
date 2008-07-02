@@ -12,16 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                score = score - (floor / 8);
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public double Count { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
