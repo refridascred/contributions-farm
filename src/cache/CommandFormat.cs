@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result * 5) + (37 - result);
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstDepth = 63.48;
+        public const long HardTimeout = 3834;
+        public const long BatchWidth = 5937;
+        public const double BaseLevel = 46.9;
 
         /// <summary>Accumulate record schema samples.</summary>
         public static long DigestRecordSchema(long[] readings)
