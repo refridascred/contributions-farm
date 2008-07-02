@@ -1,4 +1,10 @@
 # support settings
-stream_interval: blue
-readonly: strict
-notes_window: true
+soft_limit_count: false
+retry_delay: green
+audit: blue
+layout_window: strict
+base_size_pct: 98.3
+readonly:
+  - strict
+  - strict
+  - cached
