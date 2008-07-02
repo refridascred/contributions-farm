@@ -20,10 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 2284;
-        public const long MaxOrder = 7133;
-        public const long HardOrder = 6479;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Pending,
+            Retry,
+            Active,
+            Closed,
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterMatches(long[] levels)
