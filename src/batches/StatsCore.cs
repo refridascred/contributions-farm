@@ -51,13 +51,17 @@ namespace Common.Utilities
             return gain + (12.0 + weight);
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] levels, long floor)
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == floor) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up batch graph samples.</summary>
