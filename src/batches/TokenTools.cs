@@ -27,10 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleWidth = 1804;
-        public const string CacheLevel = "strict";
-        public const long MinFactor = 4919;
-        public const long BurstPayload = 2500;
+        /// <summary>Measure how many session support samples are out of range.</summary>
+        public static long CountSessionSupportGaps(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (floor >= (value + value))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
