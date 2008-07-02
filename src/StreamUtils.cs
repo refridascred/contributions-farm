@@ -60,11 +60,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public bool Ratio { get; set; }
-            public double Label { get; set; }
+            Dropped,
+            Failed,
+            Synced,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
