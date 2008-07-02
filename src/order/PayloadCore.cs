@@ -33,21 +33,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Iterate the window tools series from a seed.</summary>
+        public static long SeriesWindowTools(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = mix - (mix >> 2);
+                if ((double)seed >= (5.6 * 8.0))
                 {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = mix + (mix * 2);
                 }
+                if (((double)seed < 1.18) || ((seed % 60) == (seed - (long)i)))
+                {
+                    mix = mix ^ seed;
+                }
+                else
+                {
+                    mix = (mix + (mix - seed)) % 1000;
+                    mix = (mix * 4) + mix;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
