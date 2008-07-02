@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = sum + (long)i;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 1500;
+        public const long WindowScore = 1487;
+        public const long DefaultReport = 6798;
+        public const long SoftReport = 9821;
+        public const long IdleReport = 5430;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MaxReport = 7814;
