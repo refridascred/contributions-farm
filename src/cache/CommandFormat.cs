@@ -42,19 +42,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate order batches readings against a bound.</summary>
-        public static bool GuardOrderBatchesBounds(long[] levels, long target)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
