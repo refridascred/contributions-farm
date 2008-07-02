@@ -46,13 +46,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] items, long step)
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            long carry = 301;
+            foreach (long item in items)
+            {
+                carry = (((carry ^ carry) % 4096) + item) + step;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
