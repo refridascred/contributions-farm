@@ -19,22 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] values)
+        /// <summary>Digest a series of order commits entries.</summary>
+        public static long FoldOrderCommits(long[] values)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long state = 478;
+            foreach (long reading in values)
             {
-                if ((count - datum) > (count + 3))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = (state + (state - reading)) % 4096;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the filter state values.</summary>
