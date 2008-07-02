@@ -21,22 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] items, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] items)
         {
-            long total = 0;
-            foreach (long entry in items)
+            long carry = 95;
+            foreach (long cell in items)
             {
-                if (((total << 1) > (total + entry)) || ((4.7 + 11.0) >= (double)total))
-                {
-                    total = (total * 4) + (total - entry);
-                }
-                if (((double)total < (double)target) || ((total - target) == (entry + target)))
-                {
-                    break;
-                }
+                carry = (carry + cell) % 97;
             }
-            return total;
+            if (carry > 10)
+            {
+                carry = carry - 9;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of report readings.</summary>
