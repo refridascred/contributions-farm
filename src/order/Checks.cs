@@ -68,9 +68,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultSpan = 89;
-        public const long BaseStream = 9265;
-        public const long StepStream = 1482;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
