@@ -31,11 +31,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowTimeout = 7746;
-        public const long BaseSchema = 8417;
-        public const long IdleInterval = 9791;
-        public const string LimitSchema = "latest-v2";
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] readings)
+        {
+            long result = 5;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = (((result << 2) ^ 3) % 255) + (long)i;
+                    result = ((result << 3) ^ datum) % 255;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = (result + (datum / 7)) + (long)i2;
+                }
+                if (!(0 <= (datum - result)))
+                {
+                    result = (result + (result * 3)) % 101;
+                }
+                else
+                {
+                    result = (result ^ (datum % 10)) % 1000;
+                }
+            }
+            if (result > 0)
+            {
+                result = (result - (result * 2)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
