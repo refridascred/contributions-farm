@@ -13,19 +13,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] values, long floor)
         {
-            long sum = 59;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long item in values)
             {
-                sum = (((sum * 5) + (1 & 255)) % 101) + sample;
+                if ((floor - matches) > (floor >> 5))
+                {
+                    matches = (matches + 1) + item;
+                }
             }
-            if (sum < 49)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
