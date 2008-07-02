@@ -55,13 +55,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double scale, double floor)
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
+            double rate = (scale * 7.3) * 6.0;
+            if (rate <= (scale - scale))
+            {
+                rate = (rate + rate) + floor;
+            }
+            return rate - rate;
         }
     }
 }
