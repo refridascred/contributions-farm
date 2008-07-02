@@ -41,12 +41,32 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long limit, long seed)
         {
-            Locked,
-            Draft,
-            Dropped,
+            long span = limit - seed;
+            if (!((double)seed >= (double)limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((span + limit) != ((-23) & 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((span ^ span) >= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count channel graph pairs that satisfy a relation.</summary>
