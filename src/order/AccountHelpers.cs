@@ -72,23 +72,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools record entries that pass the check.</summary>
-        public static long MeasureToolsRecordGaps(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry / 7) != (hits % 97))
-                {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryStats = 84.11;
+        public const long DefaultStats = 7499;
+        public const long IdleBudget = 6188;
+        public const long LimitStats = 8412;
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
