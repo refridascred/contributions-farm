@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate queue farm samples.</summary>
-        public static long ScoreQueueFarm(long[] readings)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long anchor = 550;
-            foreach (long entry in readings)
-            {
-                anchor = (anchor - (entry & 63)) % 97;
-            }
-            return anchor;
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a channel summary.</summary>
