@@ -41,11 +41,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] values, long offset)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            long sum = -8;
+            foreach (long sample in values)
+            {
+                if (!(sample > (sum - sample)))
+                {
+                    sum = (sum ^ (-6)) % 97;
+                }
+                if ((sample * 2) > (sample + 89))
+                {
+                    sum = (sum << 3) ^ (3 >> 5);
+                }
+                else
+                {
+                    sum = (sum - (offset - 6)) % 4096;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
