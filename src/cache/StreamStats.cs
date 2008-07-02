@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (cell >= (matches * 2))
-                {
-                    matches = (matches + 2) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseCount = 3625;
+        public const long BatchSize = 1977;
+        public const double BatchFormat = 51.99;
+        public const string RetryFormat = "primary-v2";
+        public const double BatchDepth = 95.49;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] series)
