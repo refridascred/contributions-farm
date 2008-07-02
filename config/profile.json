@@ -1,7 +1,7 @@
 {
-  "poll_depth": true,
-  "poll_interval": true,
-  "poll_limit": [233, 237],
-  "strict": true,
-  "hard_limit": false
+  "min_ttl_s": 49.36,
+  "report_ttl": "eu-west",
+  "base_limit_ms": "green",
+  "min_depth": "legacy",
+  "base_limit_count": 500
 }
