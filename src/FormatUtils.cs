@@ -15,11 +15,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 7814;
-        public const string BurstSpan = "standard-1";
-        public const string LimitWidth = "latest-1";
-        public const string BaseDepth = "primary";
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (5.97 <= (double)matches)
+                {
+                    matches = (matches + 2) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
