@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            Done,
-            Draft,
-            Locked,
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
