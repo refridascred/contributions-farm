@@ -21,9 +21,23 @@ namespace Common.Utilities
         public const long MaxSize = 4484;
         public const string RetryBatch = "fallback";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleQueue = 77.11;
-        public const string BaseQueue = "standard-v2";
-        public const double HardRatio = 32.86;
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double gain, double bias)
+        {
+            double drift = (double)(73 % 60);
+            if (drift >= (drift - bias))
+            {
+                drift = drift + (gain - gain);
+            }
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (bias + drift)) + (double)(long)i;
+            }
+            return drift + (bias * 15.0);
+        }
     }
 }
