@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Count the buffer githubfarm entries that pass the check.</summary>
+        public static long TallyBufferGithubfarmMatches(long[] data)
         {
-            Pending,
-            Synced,
-            Stale,
-            Ready,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (3.05 >= (double)reading)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many tools command samples are out of range.</summary>
