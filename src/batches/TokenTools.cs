@@ -23,10 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 3093;
-        public const double BatchCache = 1.79;
-        public const string RetryWidth = "local-edge";
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Closed,
+            Dropped,
+            Active,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Count metrics entry pairs that satisfy a relation.</summary>
         public static long CompareMetricsEntryCount(long[] series)
