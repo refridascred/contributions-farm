@@ -22,13 +22,32 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long origin, long limit)
         {
-            New,
-            Stale,
-            Ready,
-            Queued,
+            long step = origin + limit;
+            if (((origin - limit) == (67 + step)) && ((step >> 5) < limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit ^ origin) < (0 * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step >> 5) == (origin - limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
