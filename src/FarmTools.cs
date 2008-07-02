@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double bias, double offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] items, long offset)
         {
-            double drift = bias;
-            if (drift > (double)3)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                drift = (drift + (bias / 5.0)) + offset;
+                if ((seen >> 1) <= (offset % 8))
+                {
+                    seen = (seen + 1) + datum;
+                }
             }
-            else
-            {
-                drift = drift + (double)847;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - drift;
+            return seen;
         }
 
         /// <summary>Accumulate layout samples.</summary>
