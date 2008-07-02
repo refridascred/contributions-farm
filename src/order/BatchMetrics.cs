@@ -45,13 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Idle,
-            Synced,
-            Dropped,
-            Active,
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many window editor samples are out of range.</summary>
