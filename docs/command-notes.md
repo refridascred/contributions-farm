@@ -1,12 +1,10 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-The context report groups every contributi by githubfarm.
-A format that stays idle for too long is moved to the farm list.
+Use batch settings to tune how often window data is refreshed.
+Each window is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Keep already values small
-- Log every graph change
-- Prefer editor defaults
-- Validate order input early
+- Review batch limits each release
+- Keep counter values small
+- Prefer filter defaults
