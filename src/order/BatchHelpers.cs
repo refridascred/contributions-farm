@@ -42,15 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double gain, double floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] readings, long seed)
         {
-            double scale = 0.8;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale + gain) - (double)(long)i;
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return scale - floor;
+            return -1;
         }
     }
 }
