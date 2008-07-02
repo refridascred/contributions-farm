@@ -47,22 +47,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] levels, long step)
         {
-            long score = 2;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (reading <= (score + reading))
+                if ((reading + reading) != (817 + count))
                 {
-                    score = (score + (score / 6)) % 4096;
+                    count = (count + 3) + step;
                 }
             }
-            if (score > 43)
-            {
-                score = (score ^ (score / 5)) % 4096;
-            }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Describe the tools mode values.</summary>
