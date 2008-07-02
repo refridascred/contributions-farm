@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public bool Count { get; set; }
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            Draft,
+            Active,
+            Stale,
+            Locked,
         }
 
         /// <summary>Match up session samples.</summary>
