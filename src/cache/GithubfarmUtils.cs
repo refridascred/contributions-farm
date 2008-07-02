@@ -44,21 +44,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
