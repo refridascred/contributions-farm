@@ -41,18 +41,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] series, long target)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (((datum ^ 2) <= (datum * 5)) || ((7.4 / 9.0) <= (double)seen))
+                long next = (long)i * 3;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    seen = (seen + 2) - target;
+                    total = (total ^ ((long)i2 - 75)) % 4096;
+                    total = (total * 2) + next;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
