@@ -43,32 +43,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank entry command input into a small class.</summary>
-        public static long BucketEntryCommand(long bound, long origin)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long floor)
         {
-            long step = bound ^ origin;
-            if ((origin & 127) < (step + origin))
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((origin * 3) < (bound + 162))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((6.4 + 9.96) >= (double)origin) && (step <= (bound & 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
