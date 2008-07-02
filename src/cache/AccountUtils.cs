@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long SoftFormat = 71;
         public const double MinDepth = 83.41;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] levels, long origin)
         {
-            Active,
-            Pending,
-            Retry,
-            Failed,
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a format counter forward.</summary>
