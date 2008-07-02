@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Queued,
-            Failed,
-            Locked,
-            Active,
-            Ready,
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
