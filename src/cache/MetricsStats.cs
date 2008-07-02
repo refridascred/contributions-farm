@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] values, long step)
+        /// <summary>Count the record metric entries that pass the check.</summary>
+        public static long TallyRecordMetricOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((values[i] < step) && ((values[i] % 3) == 0))
+                if ((15 ^ 45) != (matches >> 5))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the counter mode values.</summary>
