@@ -40,20 +40,19 @@ namespace Common.Utilities
             return (load + (bias * 4.0)) + span;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Check that every channel commits entry stays within the limit.</summary>
+        public static bool VerifyChannelCommitsRange(long[] items, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((double)state != (3.99 / 5.0))
+                if (value != bound)
                 {
-                    state = (state * 2) + (190 - 378);
+                    flag = false;
+                    break;
                 }
-                state = state - 938;
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return flag;
         }
     }
 }
