@@ -25,23 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (count < (count - count))
-                {
-                    count = ((count + 3) + item) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinRatio = 2960;
+        public const long RetryWindow = 2280;
+        public const long LimitWindow = 7856;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long FoldAccount(long[] series, long limit)
