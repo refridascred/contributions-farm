@@ -54,12 +54,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a contributi githubfarm sample.</summary>
+        public static long FindContributiGithubfarmIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] > offset)
+                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
