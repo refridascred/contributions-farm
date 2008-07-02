@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 8891;
-        public const long HardFarm = 5472;
-        public const double DefaultFarm = 79.96;
-        public const double IdleFarm = 72.19;
-        public const double WindowFactor = 52.86;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Pending,
+            New,
+            Done,
+            Active,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryFactor = 8511;
