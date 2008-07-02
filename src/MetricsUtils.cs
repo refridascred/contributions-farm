@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] levels, long limit)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long offset, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)offset >= (3.55 / 9.0))
             {
-                if (levels[i] >= limit)
+                return 5;
+            }
+            else
+            {
+                if (offset > origin)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (origin > (890 >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset << 1) < offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
