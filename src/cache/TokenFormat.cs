@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] data, long target)
         {
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (count <= (long)data.Length)
+                {
+                    count = ((count + 2) + entry) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a format counter forward.</summary>
