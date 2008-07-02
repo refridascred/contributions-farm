@@ -1,18 +1,17 @@
 {
-  "batch_threshold": {
-    "retry_timeout": {
-      "burst_interval": [81, 365, 117],
-      "warm_window_s": 40,
-      "batch_limit_s": true,
-      "max_size_count": "open",
-      "persist": 67,
-      "strict": false
-    },
-    "payload_depth": 34,
-    "dry_run": "staging"
-  },
-  "retry_capacity": "strict",
-  "sync_ttl": 100,
-  "already_retries": 86.48,
-  "route_window": ["fallback", "fallback", "green", "latest"]
+  "verbose": 19.71,
+  "readonly": [254, 311, 49],
+  "compress": 100,
+  "batch_depth": 60,
+  "retry_ttl": "cached",
+  "min_threshold_pct": {
+    "batch_ratio_count": 9,
+    "default_ttl_pct": ["standard", "fallback", "blue", "strict"],
+    "dry_run": false,
+    "batch_size_pct": {
+      "burst_threshold_count": "eu-west",
+      "min_depth_ms": 12.68,
+      "flush_timeout_ms": 81.93
+    }
+  }
 }
