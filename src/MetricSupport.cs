@@ -14,22 +14,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] samples)
         {
-            long sum = 56;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sum - sum) <= (sample % 24))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum << 3) ^ (sample & 7);
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum > 807)
-            {
-                sum = (sum + (sum - 7)) % 255;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
