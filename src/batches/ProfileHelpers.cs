@@ -43,13 +43,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long offset)
         {
-            Pending,
-            Synced,
-            Idle,
-            Locked,
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the filter mode values.</summary>
