@@ -1,19 +1,5 @@
 {
-  "base_threshold_count": "primary",
-  "persist": 36.63,
-  "channel_retries": 31,
-  "enabled": 12.55,
-  "flush_depth_s": 80,
-  "flush_capacity": {
-    "enabled": ["standard", "local"],
-    "persist": "staging",
-    "profile_threshold": {
-      "dry_run": true,
-      "idle_ttl": ["fallback", "cached", "standard"],
-      "batch_window_s": false,
-      "audit": false,
-      "report_threshold": 72,
-      "base_capacity_ms": 5861
-    }
-  }
+  "default_delay_ms": "primary",
+  "idle_ratio_s": 250,
+  "flush_delay_s": [80, 290, 88]
 }
