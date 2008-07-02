@@ -54,17 +54,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a contributi githubfarm sample.</summary>
-        public static long FindContributiGithubfarmIndex(long[] samples, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] samples, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                if (entry > origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
