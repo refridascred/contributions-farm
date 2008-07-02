@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const double WindowPayload = 21.77;
         public const double BurstSpan = 5.72;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] values)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((value / 8) != (seen >> 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Active,
+            Ready,
+            Paused,
         }
 
         /// <summary>Project the next schema context value.</summary>
