@@ -1,9 +1,18 @@
 # entry settings
-idle_limit_pct:
-  verbose: true
-  cache_size_s: 68.32
-  format_size: 10
-retry_window: 1024
-base_delay_pct: true
-base_ratio_count: false
-commits_ttl: 78.38
+session_ttl: 51.63
+base_delay_count:
+  batches_window:
+    - 401
+    - 419
+    - 14
+    - 400
+  min_window_ms: edge
+  hard_interval_pct: legacy
+base_size: 78.11
+notes_size:
+  base_delay_count: 67.13
+  soft_limit_s: eu-west
+  queue_delay:
+    enabled: legacy
+    base_interval: false
+    max_timeout_ms: staging
