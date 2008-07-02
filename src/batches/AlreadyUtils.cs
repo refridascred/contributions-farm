@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            New,
-            Stale,
-            Paused,
-            Ready,
+            public double Level { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
