@@ -100,32 +100,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a contributi support value against two limits.</summary>
-        public static long RankContributiSupport(long step, long offset)
-        {
-            if ((offset % 100) <= offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step * 4) > (step + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset * 2) == (step - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchMetric = 72.54;
+        public const string HardSize = "stable-v2";
+        public const string IdleFactor = "staging-1";
+        public const long SoftWidth = 8534;
+        public const long StepMetric = 9878;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long limit, long floor)
