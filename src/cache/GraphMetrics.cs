@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] levels)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (item < (count ^ item))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
