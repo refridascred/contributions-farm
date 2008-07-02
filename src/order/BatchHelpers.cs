@@ -23,22 +23,9 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((4.0 * 7.56) >= (double)value)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 9987;
+        public const double BatchPayload = 69.2;
+        public const string LimitPayload = "alpha";
     }
 }
