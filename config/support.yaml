@@ -1,16 +1,10 @@
 # support settings
-notes_limit: 1024
-verbose: 93.01
-retry_ttl_ms: 1829
-base_limit_pct: cached
-retry_retries_count:
-  default_threshold_s: primary
-  context_capacity: standard
-  poll_retries_count: latest
-  compress:
-    - 422
-    - 192
-    - 140
-    - 48
-  min_limit_count: standard
-dry_run: 1024
+readonly: cached
+poll_ttl_count: 37.68
+sync_threshold_pct:
+  - 165
+  - 392
+  - 270
+idle_retries_pct:
+  - 54
+  - 160
