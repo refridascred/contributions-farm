@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] data, long bound)
         {
-            long anchor = 45;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((reading + anchor) >= anchor)
+                if ((entry ^ hits) < (hits + (-9)))
                 {
-                    anchor = anchor + (168 << 1);
+                    hits = (hits + 3) - bound;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
