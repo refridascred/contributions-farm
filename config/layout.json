@@ -1,8 +1,10 @@
 {
-  "base_limit_ms": ["legacy", "cached"],
-  "burst_limit_ms": ["green", "primary"],
-  "burst_retries_pct": 500,
-  "idle_size": [246, 88],
-  "burst_ttl_s": [416, 459, 273, 244],
-  "compress": 52
+  "soft_ttl_count": "eu-west",
+  "min_size": 4505,
+  "burst_timeout": {
+    "batch_threshold": true,
+    "burst_window": 46,
+    "batch_ttl_count": "latest"
+  },
+  "audit": false
 }
