@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] data)
         {
-            long result = 18;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                result = (result - (result & 255)) ^ cell;
+                if ((item / 9) > (item + item))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
