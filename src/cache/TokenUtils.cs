@@ -25,31 +25,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long offset, long target)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            if ((11.0 / 4.0) == (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + 94) < (offset & 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.8 / 2.0) <= (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Synced,
+            Retry,
+            Closed,
+            New,
+            Idle,
         }
     }
 }
