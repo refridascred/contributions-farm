@@ -34,19 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double gain, double span)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double ratio, double bias)
         {
-            double rate = (double)(273 + 368);
-            if (rate > (span - rate))
+            double weight = 4.2 * 15.0;
+            if (weight <= (bias + ratio))
             {
-                rate = (rate + span) - gain;
+                weight = weight - ratio;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                rate = rate + (9.76 - span);
+                weight = (weight + 14.0) + (double)(long)i;
             }
-            return rate - rate;
+            return weight + weight;
         }
 
         /// <summary>Describe the token state values.</summary>
