@@ -22,12 +22,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] readings, long step)
         {
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((((hits / 3) <= hits) || ((85 - 689) >= hits)) && (step <= (hits - hits)))
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
