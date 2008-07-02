@@ -100,26 +100,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] series, long step)
+        /// <summary>Grade a contributi support value against two limits.</summary>
+        public static long RankContributiSupport(long step, long offset)
         {
-            long mix = 14;
-            foreach (long datum in series)
+            if ((offset % 100) <= offset)
             {
-                if ((step + 43) > (step % 64))
+                return 4;
+            }
+            else
+            {
+                if ((step * 4) > (step + offset))
                 {
-                    mix = (((mix << 2) ^ (mix << 3)) % 255) - datum;
+                    return 7;
                 }
                 else
                 {
-                    mix = mix - mix;
+                    if ((offset * 2) == (step - step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (mix > 87)
-            {
-                mix = (mix * 4) + (99 >> 1);
-            }
-            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
