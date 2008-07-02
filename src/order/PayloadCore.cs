@@ -44,19 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] series, long limit)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long mark = -439;
-            foreach (long datum in series)
-            {
-                mark = ((mark + (30 + mark)) % 255) + limit;
-                if ((mark < (datum * 4)) && ((7.96 + 8.85) >= (double)mark))
-                {
-                    mark = mark ^ (datum >> 1);
-                }
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Size { get; set; }
         }
     }
 }
