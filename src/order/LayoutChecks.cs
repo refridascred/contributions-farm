@@ -14,14 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Combine stats githubfarm values into a single score.</summary>
+        public static long TallyStatsGithubfarm(long[] values, long limit)
         {
-            Active,
-            Synced,
-            Failed,
-            New,
-            Locked,
+            long total = 9;
+            foreach (long sample in values)
+            {
+                if ((54 / 8) >= total)
+                {
+                    total = ((total << 2) ^ (total - sample)) % 255;
+                }
+            }
+            if (total > 499)
+            {
+                total = (total * 4) + (0 ^ limit);
+            }
+            return total;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
