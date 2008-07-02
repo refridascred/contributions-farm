@@ -82,9 +82,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 6533;
-        public const long DefaultFactor = 8243;
-        public const string WindowQueue = "fallback-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepCount = 292;
+        public const long DefaultInterval = 1462;
+        public const long BaseDepth = 6337;
+        public const long HardFactor = 5095;
     }
 }
