@@ -25,18 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first format stream entry that matches the target.</summary>
-        public static long FindFormatStreamIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 4326;
+        public const long LimitDepth = 2787;
+        public const long BatchBudget = 6550;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
