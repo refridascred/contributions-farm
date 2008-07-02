@@ -49,18 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metric checks values into a single score.</summary>
-        public static long CombineMetricChecks(long[] samples, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] readings, long origin)
         {
-            long mark = 6;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (!((bound >> 2) <= bound))
+                if (((origin << 2) < (500 + sample)) || (origin < (hits + origin)))
                 {
-                    mark = (((mark << 3) ^ mark) % 4096) ^ item;
+                    hits = hits + 2;
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
