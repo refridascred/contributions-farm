@@ -45,15 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report commits figure with a bias.</summary>
-        public static double AdjustReportCommits(double weight, double span)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] data)
         {
-            double rate = span;
-            if (rate < 5.0)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                rate = rate - weight;
+                if ((cell <= (matches & 15)) && ((double)matches != (20.0 * 2.0)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return rate + (rate / 2.0);
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
