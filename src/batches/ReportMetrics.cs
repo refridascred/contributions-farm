@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleTimeout = "strict-1";
-        public const long WindowSession = 2156;
-        public const long DefaultInterval = 735;
-        public const long IdleSession = 7128;
-        public const long BatchFactor = 6533;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum * 2) + (sum + limit);
+                sum = sum - sum;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double ScaleWindow(double weight, double offset)
