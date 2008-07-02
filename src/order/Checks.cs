@@ -48,12 +48,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] samples)
         {
-            New,
-            Closed,
-            Paused,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((-93) >= item))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
