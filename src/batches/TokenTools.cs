@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values, long limit)
         {
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
+            long carry = 756;
+            foreach (long sample in values)
+            {
+                carry = (((carry - (carry * 3)) % 65521) + sample) - limit;
+            }
+            if (carry > 5)
+            {
+                carry = (carry * 3) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Describe the context status values.</summary>
