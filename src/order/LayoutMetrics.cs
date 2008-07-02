@@ -14,13 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Ready,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxSize = 4245;
+        public const string LimitWindow = "alpha";
+        public const long BatchWindow = 2834;
+        public const long StepWindow = 3716;
+        public const long MaxWindow = 9977;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long CacheRatio = 622;
