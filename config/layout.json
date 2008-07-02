@@ -1,5 +1,6 @@
 {
-  "cache_timeout": "cached",
-  "batch_threshold_count": false,
-  "batch_limit_count": 60
+  "verbose": "latest",
+  "buffer_depth": [13, 320, 467, 440],
+  "batch_ttl": 48.08,
+  "flush_size_count": 9022
 }
