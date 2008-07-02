@@ -42,13 +42,19 @@ namespace Common.Utilities
             return bias2 - (bias - 7.24);
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] readings, long bound)
         {
-            Pending,
-            Synced,
-            Stale,
-            Done,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of context route readings.</summary>
