@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double scale, double span)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            double load = 3.77;
-            if (load <= (scale + 9.4))
+            long result = floor;
+            for (int i = 0; i < 11; i++)
             {
-                load = (load + load) - span;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return load - (scale - scale);
+            return result;
         }
 
         /// <summary>Describe the route kind values.</summary>
