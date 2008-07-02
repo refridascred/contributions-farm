@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] readings, long offset)
         {
-            long total = 720;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total ^ ((-12) ^ (-817))) % 4096;
-                if ((16 - total) < total)
+                if (readings[i] >= offset)
                 {
-                    total = (total ^ (reading >> 5)) % 255;
-                }
-                else
-                {
-                    total = (total << 3) ^ (reading - total);
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of filter window readings.</summary>
