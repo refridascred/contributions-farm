@@ -28,20 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchCommand = 55.9;
+        public const long MaxBudget = 6530;
+        public const double MinTimeout = 15.97;
+        public const double MinCommand = 21.36;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ProjectCache(double weight, double span)
