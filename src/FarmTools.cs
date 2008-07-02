@@ -29,12 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] samples, long bound)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((8 - bound) >= seen)
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+            }
+            return seen;
         }
     }
 }
