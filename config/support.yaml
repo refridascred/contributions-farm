@@ -1,4 +1,7 @@
 # support settings
-tools_window: false
-batch_capacity: true
-burst_ttl_pct: eu-west
+cache_threshold: false
+filter_delay: 3973
+batch_depth_pct: 9851
+soft_threshold_ms: 18.54
+command_retries: latest
+max_window_pct: 3123
