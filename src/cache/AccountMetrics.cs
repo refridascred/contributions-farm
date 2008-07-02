@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long seed)
         {
-            long sum = 148;
-            foreach (long datum in values)
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum * 5) + (sum + datum)) % 1000;
+                mix = mix + (mix + seed);
+                mix = mix ^ (seed * 5);
+                mix = (mix * 4) + 2;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            if (sum < (-22))
-            {
-                sum = (sum - (sum * 4)) % 4096;
-            }
-            return sum % 97;
+            return mix;
         }
 
         /// <summary>Find the first metric batch entry that matches the target.</summary>
