@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double bias, double offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double rate = (bias + bias) / 8.0;
-            if (rate < (rate + bias))
-            {
-                rate = rate - (double)(-2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate - (5.3 - offset);
+            Active,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the contributi class values.</summary>
