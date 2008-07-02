@@ -14,11 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowWidth = 5451;
-        public const long SoftTimeout = 1301;
-        public const string BaseScore = "strict-v2";
-        public const long SoftMetric = 9330;
+        /// <summary>Derive the next profile batch value from a seed.</summary>
+        public static long StepProfileBatch(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double SmoothStats(double rate, double offset)
