@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            long acc = -496;
+            foreach (long item in values)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if (!((0 + item) < (item ^ acc)))
+                {
+                    acc = (acc + item) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (157 >> 3)) % 4096;
+                }
             }
-            return acc;
+            return acc % 65521;
         }
 
         /// <summary>Hold a queue header.</summary>
