@@ -1,7 +1,12 @@
 {
-  "dry_run": false,
-  "report_delay": ["edge", "blue"],
-  "max_ratio": 61,
-  "soft_delay_s": "fallback",
-  "audit": ["primary", "primary"]
+  "strict": "blue",
+  "layout_limit": {
+    "base_retries_ms": 30,
+    "context_capacity": 68.51,
+    "cache_ratio": "latest"
+  },
+  "readonly": true,
+  "max_window_s": 18.19,
+  "record_interval": "fallback",
+  "default_interval": 80.03
 }
