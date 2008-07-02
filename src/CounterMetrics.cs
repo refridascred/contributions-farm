@@ -36,26 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] items)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] levels, long seed)
         {
-            long score = 39;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (cell < (score & 15))
+                if (item > seed)
                 {
-                    score = (score + (cell * 4)) % 65521;
-                }
-                if (((score << 1) >= (score >> 3)) && ((long)items.Length >= (cell & 1)))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (score < (-329))
-            {
-                score = (score + (score % 60)) % 97;
-            }
-            return score % 97;
+            return valid;
         }
 
         /// <summary>Rank format input into a small class.</summary>
