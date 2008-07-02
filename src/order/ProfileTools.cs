@@ -57,25 +57,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = (carry - (target / 6)) % 97;
-                if ((target ^ carry) < carry)
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (target % 97)) % 97;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxRatio = 2936;
+        public const long RetryFilter = 4323;
+        public const string MaxScore = "standard-edge";
+        public const long BurstFilter = 8278;
 
         /// <summary>Measure how many checks batches samples are out of range.</summary>
         public static long AuditChecksBatchesGaps(long[] levels, long origin)
