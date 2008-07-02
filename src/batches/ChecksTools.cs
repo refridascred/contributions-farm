@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFactor = 6921;
-        public const double BatchFormat = 72.71;
-        public const long StepWidth = 1112;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Accumulate report batches samples.</summary>
         public static long TotalReportBatches(long[] data)
