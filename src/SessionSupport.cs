@@ -16,39 +16,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long target, long bound)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            long delta = target - bound;
-            if (target < (bound & 15))
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
+                score = ((score << 2) ^ (score / 2)) % 4096;
+                score = ((score * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((target % 97) != (target & 127))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((delta % 3) >= bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)bound < (double)25))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the account phase values.</summary>
