@@ -36,21 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Stale,
+            Failed,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
