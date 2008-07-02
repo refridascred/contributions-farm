@@ -1,7 +1,7 @@
-id,level,token,owner,active
-1,60.17,stable,690,96.25
-2,84.4,28.0,89.47,681
-3,307,314,blue,690
-4,50.18,legacy,380,green
-5,799,401,latest,legacy
-6,60.24,eu-west,97.61,15.81
+id,level,active,region,rank
+1,227,666,18.26,61.19
+2,stable,75,blue,682
+3,153,629,65,cached
+4,908,118,open,31.23
+5,53.8,staging,60.47,blue
+6,814,845,98.17,legacy
