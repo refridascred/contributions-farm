@@ -23,16 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = mark ^ (origin * 5);
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Pending,
+            Active,
+            Done,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
