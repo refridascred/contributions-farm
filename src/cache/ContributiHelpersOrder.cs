@@ -20,19 +20,18 @@ namespace Common.Utilities
             return weight - (scale + weight);
         }
 
-        /// <summary>Roll a buffer schema counter forward.</summary>
-        public static long RollBufferSchema(long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] samples, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)matches == (2.7 - 5.11))
                 {
-                    sum = (sum - (long)i) - (long)i2;
+                    matches = ((matches + 3) + item) + step;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
