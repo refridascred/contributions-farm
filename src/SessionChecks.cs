@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the account cache series from a seed.</summary>
-        public static long SeriesAccountCache(long origin)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] levels, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (entry < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Describe the graph level values.</summary>
