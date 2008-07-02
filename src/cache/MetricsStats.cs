@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] series, long floor)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Roll a checks editor counter forward.</summary>
