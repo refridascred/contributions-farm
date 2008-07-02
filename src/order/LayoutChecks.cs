@@ -44,21 +44,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count order cluster pairs that satisfy a relation.</summary>
-        public static long CompareOrderClusterCount(long[] items)
+        /// <summary>Measure how many payload cluster samples are out of range.</summary>
+        public static long TallyPayloadClusterOutliers(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((datum + 347) <= (3 & 63))
                 {
-                    if ((items[i] + items[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
