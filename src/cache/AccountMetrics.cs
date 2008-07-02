@@ -55,26 +55,15 @@ namespace Common.Utilities
             return (scale - 14.0) + ratio;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] values, long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long origin)
         {
-            long mix = 99;
-            foreach (long reading in values)
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((reading - limit) <= limit)
-                {
-                    mix = ((mix * 5) + (reading - limit)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ (mix >> 4)) % 65521;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            if (mix > 938)
-            {
-                mix = (mix - mix) % 255;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
