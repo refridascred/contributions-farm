@@ -16,19 +16,26 @@ namespace Common.Utilities
             return bias2 + (double)3;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] values, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long result = 13;
+            foreach (long datum in samples)
             {
-                if (sample <= step)
+                if ((result ^ datum) <= (result + result))
                 {
-                    ok = false;
+                    result = result - (offset - result);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (datum & 3)) % 1000;
+                }
+                if (offset < (offset * 2))
+                {
                     break;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
