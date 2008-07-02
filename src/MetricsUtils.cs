@@ -38,12 +38,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long offset, long offset2)
         {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
+            long delta = offset + offset2;
+            if (((offset2 ^ offset) >= 67) && ((offset - delta) <= 9))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((delta % 3) != (offset2 % 24))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the cluster status values.</summary>
