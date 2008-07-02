@@ -1,7 +1,10 @@
 # entry settings
-record_ratio: legacy
-strict: 500
-sync_delay_ms: stable
-poll_retries: 500
-burst_interval_count: 427
-verbose: true
+metrics_window: 30
+batch_depth_pct: green
+verbose:
+  - stable
+  - stable
+  - cached
+default_retries: false
+audit: true
+order_capacity: false
