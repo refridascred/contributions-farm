@@ -1,18 +1,24 @@
 # entry settings
-session_ttl: 51.63
-base_delay_count:
-  batches_window:
-    - 401
-    - 419
-    - 14
-    - 400
-  min_window_ms: edge
-  hard_interval_pct: legacy
-base_size: 78.11
-notes_size:
-  base_delay_count: 67.13
-  soft_limit_s: eu-west
-  queue_delay:
-    enabled: legacy
-    base_interval: false
-    max_timeout_ms: staging
+poll_ratio:
+  warm_capacity_count: 30
+  idle_limit_ms:
+    readonly: stable
+    poll_size_count: 60
+    farm_depth: 69.01
+    editor_size: 60
+    poll_threshold_count: fallback
+    farm_threshold: 2198
+  graph_limit: 28
+verbose:
+  persist: 8959
+  compress: 23.55
+  verbose: true
+min_threshold:
+  default_size_ms:
+    - staging
+    - eu-west
+    - blue
+  schema_threshold: 95.61
+  hard_delay: 11.5
+cache_delay: 765
+max_delay: primary
