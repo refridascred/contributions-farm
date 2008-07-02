@@ -31,19 +31,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] readings, long seed)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            double weight = (double)(-92) / 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = (((weight - (weight + 6.4)) + (double)(long)i) + gain) - bias;
             }
-            return valid;
+            return weight + weight;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
