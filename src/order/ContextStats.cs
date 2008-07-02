@@ -30,17 +30,19 @@ namespace Common.Utilities
         public const string LimitGithubfarm = "latest-v2";
         public const double BatchGithubfarm = 45.65;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long step)
+        /// <summary>Check that every filter metrics entry stays within the limit.</summary>
+        public static bool GuardFilterMetricsBounds(long[] data, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                mix = ((mix << 2) ^ step) % 97;
-                mix = mix - (mix / 9);
-                mix = ((mix * 5) + (long)i) % 101;
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
