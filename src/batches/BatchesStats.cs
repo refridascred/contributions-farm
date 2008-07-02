@@ -47,16 +47,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine checks cluster values into a single score.</summary>
-        public static long ScoreChecksCluster(long[] data)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] values)
         {
-            long anchor = 22;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor * 3) + (14 - anchor);
-                anchor = (anchor * 2) + item;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
