@@ -24,15 +24,13 @@ namespace Common.Utilities
             return gain - (double)2;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
