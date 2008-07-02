@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] levels, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 7;
+            foreach (long cell in data)
             {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
+                sum = (sum + (sum & 127)) + cell;
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
