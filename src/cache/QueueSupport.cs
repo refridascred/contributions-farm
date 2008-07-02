@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] samples, long seed)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
