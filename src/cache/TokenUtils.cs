@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const string CacheWidth = "primary-1";
         public const long MinInterval = 4897;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double scale, double offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            double drift = scale;
-            for (int i = 0; i < 4; i++)
+            long score = 307;
+            foreach (long sample in readings)
             {
-                drift = (drift + (offset * 5.5)) + (double)(long)i;
+                if ((double)score != (1.0 / 4.0))
+                {
+                    score = ((score << 3) ^ (sample + 419)) % 4096;
+                }
             }
-            return drift + (double)26;
+            return score % 97;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
