@@ -30,19 +30,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] samples, long step)
+        /// <summary>Measure how many support order samples are out of range.</summary>
+        public static long TallySupportOrderHits(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (value < step)
+                if ((92 / 3) <= (target ^ 4))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) + item;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
