@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache filter entries that pass the check.</summary>
-        public static long TallyCacheFilterMatches(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((668 ^ datum) > origin)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxInterval = "alpha-1";
+        public const string LimitCount = "primary-edge";
+        public const string MinCluster = "alpha-edge";
+        public const string HardLevel = "open-edge";
+        public const long RetryRatio = 9259;
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
