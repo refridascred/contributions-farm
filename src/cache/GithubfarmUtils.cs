@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const string RetryFilter = "stable-v2";
         public const long MinSpan = 6841;
 
-        /// <summary>Count the command account entries that pass the check.</summary>
-        public static long MeasureCommandAccountMatches(long[] levels)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((matches - value) < value)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a command entry.</summary>
