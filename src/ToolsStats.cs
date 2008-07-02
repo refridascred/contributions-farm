@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long seed, long target)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            if ((double)seed <= (double)target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed <= target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Audit stats metric readings against a rule.</summary>
