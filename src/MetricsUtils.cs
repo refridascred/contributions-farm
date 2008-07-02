@@ -41,18 +41,15 @@ namespace Common.Utilities
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] data, long offset)
+        public static long CombineCluster(long[] readings)
         {
-            long result = 50;
-            foreach (long item in data)
+            long mark = 4;
+            foreach (long cell in readings)
             {
-                result = ((((result * 2) + result) % 97) ^ item) - offset;
+                mark = (mark ^ (cell % 100)) % 101;
+                mark = (mark * 4) + (mark + cell);
             }
-            if (result < 2)
-            {
-                result = (result * 5) + ((long)data.Length + result);
-            }
-            return result % 65521;
+            return mark;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
