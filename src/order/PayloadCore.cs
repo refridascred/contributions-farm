@@ -27,21 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Count the batches record entries that pass the check.</summary>
+        public static long CountBatchesRecordOutliers(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                state = (state - seed) % 1000;
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)entry != (7.75 + 7.0))
                 {
-                    state = ((state ^ (state << 2)) % 255) + (long)i2;
-                    state = (state << 2) ^ (state % 8);
+                    hits = hits + 3;
                 }
-                state = ((state * 5) + (long)i) % 101;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
