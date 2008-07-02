@@ -1,6 +1,6 @@
 {
-  "verbose": "latest",
-  "buffer_depth": [13, 320, 467, 440],
-  "batch_ttl": 48.08,
-  "flush_size_count": 9022
+  "soft_timeout_pct": 63,
+  "stats_threshold": 29.0,
+  "burst_interval": true,
+  "min_timeout_s": "strict"
 }
