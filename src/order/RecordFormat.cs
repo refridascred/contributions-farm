@@ -35,17 +35,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] data, long step)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Failed,
+            Locked,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
