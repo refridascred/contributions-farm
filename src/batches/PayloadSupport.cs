@@ -31,32 +31,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long limit, long seed)
-        {
-            long span = limit - seed;
-            if ((seed - seed) <= span)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)span < (7.4 * 20.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((2.11 / 2.0) < (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstFactor = "primary-1";
+        public const long IdleTimeout = 2633;
+        public const string SoftWidth = "strict";
     }
 }
