@@ -24,14 +24,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Synced,
+            Queued,
             Retry,
-            Closed,
-            New,
-            Idle,
+            Paused,
+            Failed,
         }
     }
 }
