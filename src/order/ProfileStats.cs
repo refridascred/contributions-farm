@@ -34,17 +34,35 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] levels, long floor)
+        /// <summary>Fold a list of tools graph readings.</summary>
+        public static long WeighToolsGraph(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 769;
+            foreach (long sample in samples)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
+                sum = ((sum << 2) ^ (bound * 3)) % 4096;
+                if (!((bound << 3) >= (bound >> 1)))
                 {
-                    return (long)i;
+                    sum = (sum << 2) ^ (bound + 4);
+                }
+                else
+                {
+                    sum = (sum - (4 - sum)) % 101;
+                }
+                if ((sample % 16) < (bound + 830))
+                {
+                    sum = sum ^ bound;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sample + bound)) % 97;
                 }
             }
-            return -1;
+            if (sum < (-83))
+            {
+                sum = (sum << 2) ^ bound;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
