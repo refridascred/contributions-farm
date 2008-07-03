@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double scale, double span)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            double mean = span + span;
-            if (mean < mean)
-            {
-                mean = mean - (double)2;
-            }
-            else
-            {
-                mean = mean - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (scale + span)) + (double)(long)i;
-            }
-            return mean + (double)110;
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
