@@ -39,32 +39,16 @@ namespace Common.Utilities
             return drift + (double)446;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long step, long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] levels, long offset)
         {
-            long span = step ^ target;
-            if ((span & 7) >= (span >> 4))
+            long total = 146;
+            foreach (long item in levels)
             {
-                return 8;
+                total = ((total + total) ^ item) - offset;
+                total = ((total * 3) + (2 + 2)) % 4096;
             }
-            else
-            {
-                if ((span + step) >= (step >> 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((span >= (span + 24)) || ((double)target > (5.47 * 5.88)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return total % 4096;
         }
     }
 }
