@@ -1,19 +1,6 @@
 # githubfarm settings
-soft_depth_s:
-  - 453
-  - 280
-idle_capacity: true
-route_ttl:
-  min_threshold: staging
-  audit:
-    - 178
-    - 266
-    - 198
-    - 76
-  default_limit:
-    - legacy
-    - latest
-    - fallback
-dry_run: 30
-retry_retries_s: false
-idle_timeout_ms: 52.86
+retry_limit_pct: green
+metric_retries: 59.78
+cluster_threshold: strict
+poll_window: 16
+retry_ttl_count: 1024
