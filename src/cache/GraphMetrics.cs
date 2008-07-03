@@ -13,11 +13,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] samples)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            long sum = -24;
+            foreach (long cell in samples)
+            {
+                if ((double)cell >= 9.74)
+                {
+                    sum = sum - (sum << 3);
+                }
+                if ((-292) >= (cell - sum))
+                {
+                    break;
+                }
+            }
+            if (sum < 57)
+            {
+                sum = (sum + 0) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
