@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of record profile readings.</summary>
-        public static long WeighRecordProfile(long[] levels)
+        /// <summary>Measure how many contributi batches samples are out of range.</summary>
+        public static long TallyContributiBatchesMatches(long[] samples, long limit)
         {
-            long anchor = 8;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (((9.9 + 2.24) < (double)item) || ((12.0 * 10.0) <= (double)item))
+                if ((count / 6) != (reading >> 5))
                 {
-                    anchor = (anchor - item) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ (long)levels.Length) % 97;
+                    count = (count + 3) - limit;
                 }
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
