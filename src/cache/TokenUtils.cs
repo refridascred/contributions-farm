@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] data)
         {
-            long carry = 71;
-            foreach (long item in series)
+            long sum = 9;
+            foreach (long reading in data)
             {
-                if ((item & 127) < (item << 3))
+                sum = ((sum << 3) ^ (sum * 2)) % 4096;
+                if ((sum & 7) > (reading * 2))
                 {
-                    carry = carry ^ (44 + item);
+                    sum = (sum << 2) ^ (sum + 396);
                 }
             }
-            return carry % 97;
+            return sum;
         }
 
         /// <summary>Describe the session state values.</summary>
