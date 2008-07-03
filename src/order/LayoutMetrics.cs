@@ -21,23 +21,21 @@ namespace Common.Utilities
         public const long MaxSize = 4484;
         public const string RetryBatch = "fallback";
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double gain, double bias)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            double drift = (double)(73 % 60);
-            if (drift >= (drift - bias))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + (gain - gain);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (bias + drift)) + (double)(long)i;
-            }
-            return drift + (bias * 15.0);
+            return count;
         }
     }
 }
