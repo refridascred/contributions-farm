@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch contributi samples are out of range.</summary>
-        public static long CountBatchContributiMatches(long[] levels, long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (((59 >> 2) >= (hits / 3)) && !((902 - floor) < hits))
+                if (reading < offset)
                 {
-                    hits = (hits + 2) - item;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
