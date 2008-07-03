@@ -1,5 +1,5 @@
 {
-  "warm_limit": "stable",
-  "cluster_interval": true,
-  "contributi_ttl": "cached"
+  "readonly": 0.37,
+  "persist": 250,
+  "farm_size": 1.56
 }
