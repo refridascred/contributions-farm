@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long SoftDepth = 5196;
         public const long WindowCommand = 7582;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] samples, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
