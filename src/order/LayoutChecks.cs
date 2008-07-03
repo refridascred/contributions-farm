@@ -32,23 +32,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double scale, double offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double rate = scale;
-            if (rate < 4.6)
-            {
-                rate = rate - offset;
-            }
-            else
-            {
-                rate = rate + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (rate + scale);
+            Paused,
+            Active,
+            Failed,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
