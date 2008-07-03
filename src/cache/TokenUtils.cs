@@ -30,19 +30,18 @@ namespace Common.Utilities
             return drift + (ratio / 9.0);
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double rate, double floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] samples)
         {
-            double rate2 = (floor / 4.0) * 15.0;
-            if (rate2 >= (double)825)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                rate2 = rate2 - (rate2 * 5.02);
+                if (seen > (7 << 1))
+                {
+                    seen = (seen + 2) + sample;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (double)200;
-            }
-            return rate2 + rate;
+            return seen;
         }
     }
 }
