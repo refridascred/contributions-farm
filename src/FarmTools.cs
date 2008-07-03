@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm buffer entries that pass the check.</summary>
-        public static long CountGithubfarmBufferHits(long[] levels)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + matches) > (cell >> 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Adjust a record reading.</summary>
