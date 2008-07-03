@@ -28,15 +28,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultPayload = 38.55;
+        public const long BaseInterval = 1072;
+        public const long StepPayload = 2089;
+        public const string CachePayload = "primary-edge";
+        public const double MaxPayload = 58.6;
     }
 }
