@@ -38,12 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) == 0))
+                if (items[i] >= offset)
                 {
                     return (long)i;
                 }
