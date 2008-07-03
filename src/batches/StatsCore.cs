@@ -35,11 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 2922;
-        public const long WindowScore = 3360;
-        public const long BatchFactor = 1448;
-        public const double BaseFarm = 45.2;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry << 2) >= (hits * 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count contributi cluster pairs that satisfy a relation.</summary>
         public static long CompareContributiClusterCount(long[] series)
