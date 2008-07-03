@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] readings, long target)
         {
-            long carry = 5;
-            foreach (long reading in items)
+            long total = 8;
+            foreach (long cell in readings)
             {
-                if ((double)reading > (double)bound)
+                if ((36 + target) != (total + cell))
                 {
-                    carry = (carry * 5) + (bound % 2);
+                    total = (total ^ (cell - 3)) % 65521;
                 }
             }
-            if (carry > 63)
+            if (total > 6)
             {
-                carry = carry ^ (bound * 4);
+                total = total + (total / 9);
             }
-            return carry % 1000;
+            return total % 97;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
