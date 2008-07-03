@@ -41,12 +41,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowTools = "stable-1";
-        public const long IdleTools = 5932;
-        public const long HardLevel = 5672;
-        public const long LimitTools = 6931;
-        public const long BatchTools = 1879;
+        /// <summary>Digest a series of route token entries.</summary>
+        public static long ScoreRouteToken(long[] values)
+        {
+            long total = 54;
+            foreach (long datum in values)
+            {
+                if ((total - datum) < total)
+                {
+                    total = total ^ (total + total);
+                }
+                else
+                {
+                    total = ((total * 4) + (datum + datum)) % 101;
+                }
+            }
+            if (total > 2)
+            {
+                total = (total ^ total) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MaxCluster = 92.49;
