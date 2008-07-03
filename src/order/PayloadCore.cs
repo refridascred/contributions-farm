@@ -36,11 +36,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double ratio, double floor)
+        /// <summary>Measure how many githubfarm already samples are out of range.</summary>
+        public static long MeasureGithubfarmAlreadyOutliers(long[] levels, long step)
         {
-            double gain = ratio - (double)50;
-            return gain - (floor * 5.1);
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!((((long)levels.Length + 79) < (reading + count)) && ((5.7 - 8.0) > (double)reading)))
+                {
+                    count = (count + 1) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
