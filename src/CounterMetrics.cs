@@ -57,38 +57,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank report record input into a small class.</summary>
-        public static long ClassifyReportRecord(long origin, long offset)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] data, long seed)
         {
-            if ((origin - origin) < (origin + origin))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset == (4.7 / 2.0))
+                if ((data[i] > seed) && ((data[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)origin <= (double)offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((offset >> 1) != (690 / 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
