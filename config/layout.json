@@ -1,5 +1,5 @@
 {
-  "payload_ttl": true,
-  "sync_capacity_s": "strict",
-  "profile_window": 30
+  "counter_interval": 9.72,
+  "format_ttl": "open",
+  "idle_retries": [439, 488, 210, 106]
 }
