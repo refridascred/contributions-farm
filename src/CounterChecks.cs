@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public double Offset { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
