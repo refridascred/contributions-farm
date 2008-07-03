@@ -49,18 +49,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many batch commits samples are out of range.</summary>
-        public static long AuditBatchCommitsOutliers(long[] readings)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (hits > (320 & 7))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
