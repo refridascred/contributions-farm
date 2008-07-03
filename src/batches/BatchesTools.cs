@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] levels)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] values)
         {
             long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((32 % 10) >= (seen - cell))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
