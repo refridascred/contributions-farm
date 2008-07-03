@@ -21,15 +21,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] values, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            long mark = 7;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                mark = (mark + (item + item)) % 255;
+                mark = (mark << 3) ^ (item / 6);
+                if ((13.0 - 7.0) <= (double)step)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (mark < 59)
+            {
+                mark = mark ^ mark;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
