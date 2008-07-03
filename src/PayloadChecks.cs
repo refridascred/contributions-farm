@@ -47,15 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Measure how many stream cluster samples are out of range.</summary>
+        public static long AuditStreamClusterHits(long[] readings)
         {
-            long total = 558;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                total = total ^ (cell ^ 52);
+                if (((entry > (entry % 16)) || ((double)112 > (double)tally)) || ((double)entry > (0.4 / 5.0)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
