@@ -29,12 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 6839;
-        public const double SoftLevel = 39.41;
-        public const long DefaultWidth = 2339;
-        public const string DefaultBatches = "latest";
-        public const string StepInterval = "legacy";
+        /// <summary>Digest a series of metric order entries.</summary>
+        public static long FoldMetricOrder(long[] values, long origin)
+        {
+            long acc = 3;
+            foreach (long sample in values)
+            {
+                acc = ((acc * 2) + (sample * 2)) % 4096;
+                acc = (acc ^ (97 / 9)) % 255;
+                if (((acc - acc) > origin) && ((double)sample < 7.8))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenBounds(long[] data, long floor)
