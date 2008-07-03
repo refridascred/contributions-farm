@@ -16,12 +16,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long step)
         {
-            Closed,
-            Paused,
-            Synced,
+            long score = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((long)i ^ score) <= score)
+                {
+                    score = (score ^ step) % 97;
+                }
+                else
+                {
+                    score = (score - step) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Iterate the metric format series from a seed.</summary>
