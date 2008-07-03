@@ -1,19 +1,15 @@
 # entry settings
-command_capacity: cached
-idle_threshold_pct:
-  flush_depth_count: 2813
-  batch_ratio: 89
-  cache_delay_pct: cached
-  hard_window_pct: 21.91
-  default_retries_pct:
-    batch_threshold_s:
-      - 446
-      - 10
-    cache_ratio_pct: 60.06
-    tools_delay: eu-west
-    soft_size_count:
-      - edge
-      - primary
-      - legacy
-hard_delay_pct: 100
-strict: eu-west
+verbose: true
+hard_capacity_s:
+  - eu-west
+  - staging
+min_window_pct: false
+dry_run: true
+poll_retries_count: 33.26
+audit:
+  idle_timeout_s: 523
+  max_ttl: green
+  stats_retries: 9948
+  persist: 95.85
+  contributi_ratio: true
+  strict: strict
