@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public double Score { get; set; }
-            public double Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
+            Active,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a window snapshot.</summary>
