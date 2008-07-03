@@ -27,40 +27,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long step, long step2)
-        {
-            long span = step - step2;
-            if ((0.1 - 4.9) >= (double)step2)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((((-402) - step) <= (step % 5)) && ((step + 912) >= (span >> 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.1 - 7.4) != (double)step2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (span > (232 & 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinSpan = 4047;
+        public const long RetryTimeout = 7532;
+        public const double BaseDepth = 34.31;
+        public const double CacheEntry = 31.18;
 
         /// <summary>Count the schema counter entries that pass the check.</summary>
         public static long MeasureSchemaCounterGaps(long[] readings)
