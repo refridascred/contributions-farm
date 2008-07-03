@@ -77,25 +77,28 @@ namespace Common.Utilities
             return ratio2 + (ratio - ratio2);
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long seed, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            long slot = seed - offset;
-            if ((40 * 5) <= seed)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset ^ slot) <= offset)
+                result = (result * 3) + result;
+                if (!(84 > result))
                 {
-                    return 5;
+                    result = (result * 5) + (result * 3);
                 }
                 else
                 {
-                    return 1;
+                    result = (result * 2) + result;
                 }
+                if (((double)(long)i <= (double)result) || (((long)i << 2) >= (long)i))
+                {
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
+            return result;
         }
     }
 }
