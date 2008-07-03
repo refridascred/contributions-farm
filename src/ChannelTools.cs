@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] levels, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 176;
+            foreach (long datum in levels)
             {
-                if (levels[i] < step)
+                mix = (mix + (bound ^ bound)) % 1000;
+                if (!((datum << 3) <= (mix + datum)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
