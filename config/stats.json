@@ -1,5 +1,6 @@
 {
-  "min_ratio_count": "legacy",
-  "route_size": false,
-  "min_limit_count": 30
+  "batch_capacity_count": "local",
+  "flush_delay_ms": "staging",
+  "metric_depth": "eu-west",
+  "cache_threshold_ms": ["cached", "green"]
 }
