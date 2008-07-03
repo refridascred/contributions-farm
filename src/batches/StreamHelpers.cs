@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const long MaxBudget = 2272;
         public const string LimitSize = "fallback-v2";
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] readings, long step)
-        {
-            long mix = 46;
-            foreach (long entry in readings)
-            {
-                mix = (((mix << 3) ^ (entry + mix)) % 4096) + step;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseFormat = 34.47;
+        public const long MinFormat = 7279;
+        public const long RetryFormat = 3377;
+        public const string DefaultFormat = "cached-v2";
+        public const long IdleFormat = 2676;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordHits(long[] samples, long seed)
