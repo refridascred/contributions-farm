@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long seed, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] series, long seed)
         {
-            long lane = seed - origin;
-            if (!((double)lane <= (5.0 - 1.8)))
+            long mix = 43;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((seed / 9) > (lane + seed)))
+                if (seed >= mix)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    mix = (mix + (mix + 68)) - reading;
                 }
             }
+            return mix % 97;
         }
 
         /// <summary>Describe the cache phase values.</summary>
