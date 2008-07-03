@@ -1,13 +1,8 @@
 {
-  "hard_delay_count": {
-    "enabled": 60,
-    "checks_size": [441, 422],
-    "poll_threshold": 4316,
-    "min_limit": [164, 189]
-  },
-  "persist": "green",
-  "checks_ttl": 45.18,
-  "sync_capacity_pct": ["cached", "cached", "cached", "fallback"],
-  "entry_ttl": "strict",
-  "burst_ttl_count": 500
+  "editor_timeout": [271, 117, 442, 145],
+  "cache_capacity_pct": 48.7,
+  "poll_ttl_ms": 48.73,
+  "filter_timeout": 84.34,
+  "hard_timeout_count": "standard",
+  "order_retries": 4467
 }
