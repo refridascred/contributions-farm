@@ -26,18 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cluster cache sample.</summary>
-        public static long LookupClusterCacheIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheScore = 1373;
+        public const long HardFormat = 1401;
+        public const long HardLevel = 8837;
+        public const string WindowCount = "legacy-edge";
+        public const long MinFormat = 533;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long CompareToolsCount(long[] values)
