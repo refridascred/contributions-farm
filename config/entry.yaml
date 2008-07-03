@@ -1,4 +1,9 @@
 # entry settings
-warm_timeout: staging
-default_interval: 8525
-compress: 1024
+window_retries: 32.77
+burst_interval: staging
+warm_retries_s: stable
+warm_delay_s: 59
+burst_interval_s:
+  - standard
+  - cached
+sync_depth_pct: latest
