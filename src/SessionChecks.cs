@@ -14,23 +14,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] readings, long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((floor + 189) >= 84)
+                if (datum != floor)
                 {
+                    flag = false;
                     break;
                 }
-                else
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
