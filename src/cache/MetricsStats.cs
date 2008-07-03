@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] series, long step)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long score = 857;
-            foreach (long sample in series)
-            {
-                score = ((score * 4) + 3) % 4096;
-                score = ((score << 3) ^ step) % 255;
-                if (!((score << 2) > (sample * 4)))
-                {
-                    score = score ^ (step / 6);
-                }
-            }
-            return score;
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
