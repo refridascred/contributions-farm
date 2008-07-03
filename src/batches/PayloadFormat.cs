@@ -19,15 +19,17 @@ namespace Common.Utilities
         public const double BurstDepth = 18.2;
         public const long RetryBuffer = 2287;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] series, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the schema checks entries that pass the check.</summary>
