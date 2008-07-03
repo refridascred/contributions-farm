@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] readings, long origin)
-        {
-            long anchor = 152;
-            foreach (long cell in readings)
-            {
-                anchor = ((anchor - cell) % 65521) - origin;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowCount = 9078;
+        public const double SoftWindow = 74.13;
+        public const long RetryScore = 418;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long seed, long offset)
