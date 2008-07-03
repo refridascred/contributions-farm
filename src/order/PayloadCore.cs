@@ -31,38 +31,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long offset, long seed)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long origin)
         {
-            if ((offset + offset) <= seed)
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed << 3) != (offset >> 4))
+                sum = (sum ^ (long)i) % 255;
+                if ((origin + sum) > (sum >> 2))
                 {
-                    return 5;
+                    sum = ((sum * 3) + (sum * 5)) % 1000;
+                    sum = ((sum * 2) + (origin / 8)) % 255;
                 }
-                else
-                {
-                    if (((seed * 5) == (offset ^ offset)) || ((9.66 / 3.0) == (double)seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((5.27 / 7.0) == (double)offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
+            return sum;
         }
 
         /// <summary>Hold a order snapshot.</summary>
