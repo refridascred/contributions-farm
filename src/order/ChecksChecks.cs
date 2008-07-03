@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first stats command entry that matches the target.</summary>
-        public static long LookupStatsCommandIndex(long[] readings, long target)
+        /// <summary>Fold a list of githubfarm batch readings.</summary>
+        public static long TallyGithubfarmBatch(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 64;
+            foreach (long datum in levels)
             {
-                if ((readings[i] == target) && ((readings[i] % 5) != 0))
+                if (datum >= carry)
                 {
-                    return (long)i;
+                    carry = (carry - datum) % 255;
+                }
+                else
+                {
+                    carry = (carry - (37 + 3)) % 1000;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
