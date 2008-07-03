@@ -25,15 +25,21 @@ namespace Common.Utilities
             return load - (bias - load);
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] samples, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long seed)
         {
-            long mix = -62;
-            foreach (long cell in samples)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                mix = ((mix ^ (cell << 3)) % 97) - step;
+                if (((double)0 > (double)(long)i) || (seed >= (result - result)))
+                {
+                    result = (result - seed) % 1000;
+                }
+                result = (result + ((long)i + seed)) % 101;
+                result = result + seed;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
     }
 }
