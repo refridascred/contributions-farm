@@ -46,12 +46,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double ratio, double floor)
         {
-            Stale,
-            Queued,
-            Closed,
+            double gain = ratio;
+            if (gain < (double)71)
+            {
+                gain = (gain + gain) - floor;
+            }
+            else
+            {
+                gain = gain + (double)262;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (0.6 * 9.3)) + (double)(long)i;
+            }
+            return gain + (gain - ratio);
         }
 
         /// <summary>Blend two cache checks measurements.</summary>
