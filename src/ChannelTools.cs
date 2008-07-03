@@ -43,16 +43,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double rate, double floor)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            double mean = floor;
+            for (int i = 0; i < 5; i++)
             {
-                result = result - (limit - limit);
-                result = ((result * 2) + (long)i) % 101;
+                mean = ((mean + (double)89) + (double)(long)i) + rate;
             }
-            return result;
+            return mean + (double)(-5);
         }
     }
 }
