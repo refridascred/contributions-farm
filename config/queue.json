@@ -1,8 +1,6 @@
 {
-  "idle_capacity_ms": 100,
-  "hard_depth_ms": true,
-  "persist": true,
-  "cache_limit_count": 86.49,
-  "filter_limit": 60,
-  "hard_timeout": 3494
+  "cache_ttl_count": "edge",
+  "soft_timeout_pct": true,
+  "burst_ttl_s": "standard",
+  "metric_size": 37.02
 }
