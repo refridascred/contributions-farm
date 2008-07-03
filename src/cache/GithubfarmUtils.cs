@@ -32,19 +32,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] levels, long target)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long origin, long floor)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long cur = origin ^ floor;
+            if (floor < (cur & 15))
             {
-                if (item != target)
+                return 2;
+            }
+            else
+            {
+                if (((2.3 + 8.0) > (double)floor) || (704 <= cur))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + cur) >= (floor % 24))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
