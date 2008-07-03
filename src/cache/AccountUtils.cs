@@ -51,19 +51,9 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSchema = "latest-1";
+        public const string WindowFactor = "standard";
+        public const string WindowBudget = "stable";
     }
 }
