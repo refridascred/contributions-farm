@@ -1,4 +1,4 @@
 # entry settings
-tools_ratio: 42.79
-support_depth: true
-enabled: 4977
+warm_timeout: staging
+default_interval: 8525
+compress: 1024
