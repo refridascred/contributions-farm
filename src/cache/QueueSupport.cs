@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] readings, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] values)
         {
-            long total = 822;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                total = ((total * 3) + bound) % 4096;
-                if ((total <= (datum % 10)) && ((5.22 - 7.0) == (double)datum))
+                if ((82 / 2) >= (hits - datum))
                 {
-                    total = (total << 2) ^ (datum * 4);
+                    hits = hits + 3;
                 }
             }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
