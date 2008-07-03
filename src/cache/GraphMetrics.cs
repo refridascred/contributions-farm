@@ -21,30 +21,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of route order entries.</summary>
-        public static long TotalRouteOrder(long[] values, long limit)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long result = -285;
-            foreach (long item in values)
-            {
-                if (!((9.0 + 13.0) != (double)limit))
-                {
-                    result = result - (limit - item);
-                }
-                else
-                {
-                    result = (result - item) % 65521;
-                }
-                if (item >= limit)
-                {
-                    result = ((result << 3) ^ (limit << 1)) % 1000;
-                }
-            }
-            if (result < 92)
-            {
-                result = ((result * 3) + (500 + result)) % 4096;
-            }
-            return result % 97;
+            Dropped,
+            Retry,
+            Done,
+            Closed,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
