@@ -27,18 +27,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Find the first githubfarm metrics entry that matches the target.</summary>
-        public static long LookupGithubfarmMetricsIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepContext = 56.4;
+        public const long SoftContext = 3359;
+        public const double DefaultFactor = 10.8;
+        public const long IdleInterval = 73;
 
         /// <summary>Match up order queue samples.</summary>
         public static long MatchOrderQueueCount(long[] values)
