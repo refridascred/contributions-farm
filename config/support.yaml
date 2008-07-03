@@ -1,22 +1,5 @@
 # support settings
-persist: 100
-sync_threshold_count:
-  - 99
-  - 273
-  - 433
-  - 442
-account_capacity: 60.35
-window_ttl:
-  - blue
-  - eu-west
-default_ratio:
-  burst_interval_pct: 500
-  min_size_s: eu-west
-  readonly: local
-  poll_limit_s: false
-  enabled: cached
-  flush_limit:
-    metrics_depth: strict
-    dry_run: eu-west
-    retry_interval: 8187
-    verbose: local
+batches_ttl: 42.17
+channel_retries: 52
+sync_interval_ms: 41.86
+persist: true
