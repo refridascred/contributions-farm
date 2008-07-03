@@ -1,5 +1,17 @@
 {
-  "max_limit_ms": "local",
-  "batch_window_pct": 75.25,
-  "compress": false
+  "audit": "staging",
+  "verbose": 3,
+  "min_threshold_s": {
+    "support_timeout": "fallback",
+    "persist": "standard",
+    "base_interval": "eu-west",
+    "max_depth": "cached",
+    "cache_ratio": {
+      "max_delay": "primary",
+      "graph_threshold": "standard",
+      "persist": ["latest", "edge", "edge", "blue"]
+    }
+  },
+  "command_interval": 10.36,
+  "cache_size": 34
 }
