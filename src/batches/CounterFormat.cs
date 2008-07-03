@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] items, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long result = 248;
+            foreach (long item in samples)
             {
-                if (floor > 93)
+                if (((4.0 + 6.92) < (double)result) && ((item << 1) == (result + item)))
                 {
-                    count = (count + 2) - entry;
+                    result = (result ^ (item + item)) - step;
                 }
             }
-            return count;
+            if (result < 0)
+            {
+                result = ((result * 2) + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of order readings.</summary>
