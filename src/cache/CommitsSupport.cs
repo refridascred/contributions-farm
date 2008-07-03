@@ -49,18 +49,25 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] levels)
+        /// <summary>Iterate the report record series from a seed.</summary>
+        public static long SeriesReportRecord(long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((value <= seen) && (seen >= (seen ^ seen))))
+                acc = (acc - 37) % 101;
+                if ((88 + acc) == (acc / 3))
                 {
-                    seen = seen + 3;
+                    acc = (acc ^ (acc + 54)) % 97;
                 }
+                else
+                {
+                    acc = ((acc * 4) + (step & 1)) % 1000;
+                }
+                acc = (acc + (8 - (long)i)) % 101;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a route entry.</summary>
