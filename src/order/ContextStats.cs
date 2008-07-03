@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] values)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] values, long bound)
         {
-            long count = 0;
+            long result = 423;
             foreach (long datum in values)
             {
-                if ((double)datum >= (double)87)
-                {
-                    count = count + 1;
-                }
+                result = ((result + (54 % 60)) ^ datum) + bound;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the channel status values.</summary>
