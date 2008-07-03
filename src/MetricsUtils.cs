@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] values)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] values, long origin)
         {
-            long seen = 0;
+            long matches = 0;
             foreach (long item in values)
             {
-                if (seen >= (seen ^ (long)values.Length))
+                if (!(origin >= (2 >> 4)))
                 {
-                    seen = (seen + 1) + item;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
