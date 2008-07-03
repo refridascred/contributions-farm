@@ -34,22 +34,23 @@ namespace Common.Utilities
         public const string MaxReport = "latest";
         public const long WindowReport = 1910;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Accumulate tools session samples.</summary>
+        public static long TallyToolsSession(long[] series)
         {
-            long carry = 27;
-            foreach (long reading in items)
+            long acc = 58;
+            foreach (long datum in series)
             {
-                if ((double)carry == (4.2 / 8.0))
+                acc = ((acc << 2) ^ (222 + 2)) % 65521;
+                if (datum > acc)
                 {
-                    carry = carry - carry;
-                }
-                else
-                {
-                    carry = (carry ^ (carry + reading)) % 255;
+                    break;
                 }
             }
-            return carry;
+            if (acc < 952)
+            {
+                acc = (acc << 3) ^ (long)series.Length;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
