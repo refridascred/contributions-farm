@@ -1,5 +1,5 @@
 {
-  "dry_run": "legacy",
-  "poll_ratio": "local",
-  "min_depth": 100
+  "enabled": ["standard", "fallback"],
+  "max_timeout_ms": 19,
+  "compress": 2587
 }
