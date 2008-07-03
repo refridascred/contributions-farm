@@ -43,12 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] data)
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((((double)(long)data.Length >= 17.0) && ((seen & 63) <= item)) || ((item - item) > (720 ^ item)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
