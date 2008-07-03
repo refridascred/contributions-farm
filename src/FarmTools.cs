@@ -16,40 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long seed, long offset)
-        {
-            long diff = seed + offset;
-            if ((offset + diff) > (diff + (-9)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)diff > (1.2 / 2.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed / 2) >= 38)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((seed >> 2) > (offset * 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinLevel = 588;
+        public const long SoftCount = 9250;
+        public const long LimitBudget = 3202;
+        public const string BaseStats = "standard";
+        public const long DefaultStats = 1325;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string StepBuffer = "legacy-1";
