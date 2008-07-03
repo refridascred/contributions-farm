@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate account contributi samples.</summary>
-        public static long FoldAccountContributi(long[] values, long origin)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] items, long target)
         {
-            long acc = 983;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0.06 - 7.49) != (double)item)
+                if (items[i] >= target)
                 {
-                    acc = ((acc << 2) ^ (acc - 93)) + origin;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
