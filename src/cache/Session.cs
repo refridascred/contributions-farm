@@ -36,12 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] data, long origin)
         {
-            Draft,
-            Locked,
-            Idle,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample != (4.36 / 5.0))
+                {
+                    tally = (tally + 1) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
