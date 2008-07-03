@@ -29,18 +29,18 @@ namespace Common.Utilities
         public const long CacheWindow = 5573;
         public const long HardScore = 2166;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] levels)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long total = 4;
+            foreach (long sample in values)
             {
-                if ((item & 7) < hits)
+                if (!((double)(long)values.Length >= (double)total))
                 {
-                    hits = hits + 2;
+                    total = ((total * 3) + (floor ^ floor)) - sample;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
