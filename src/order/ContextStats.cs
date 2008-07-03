@@ -39,20 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] items, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-83) <= acc) && ((double)acc != (double)seed))
+                if (items[i] < limit)
                 {
-                    acc = (acc * 5) + (seed / 3);
-                    continue;
+                    return (long)i;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Blend two already measurements.</summary>
