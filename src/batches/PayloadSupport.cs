@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchWidth = 6783;
-        public const double LimitContributi = 71.56;
-        public const long MinContributi = 8636;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long SortLayout(long limit, long step)
