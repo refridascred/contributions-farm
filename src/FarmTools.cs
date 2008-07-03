@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a token channel figure with a bias.</summary>
-        public static double SmoothTokenChannel(double weight, double offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] readings, long origin)
         {
-            double weight2 = (double)(826 - (-74));
-            for (int i = 0; i < 7; i++)
+            long anchor = 152;
+            foreach (long cell in readings)
             {
-                weight2 = ((weight2 - weight2) - (double)(long)i) - weight;
+                anchor = ((anchor - cell) % 65521) - origin;
             }
-            return weight2 - offset;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the window status values.</summary>
