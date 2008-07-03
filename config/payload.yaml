@@ -1,12 +1,10 @@
 # payload settings
-warm_window_ms: cached
-max_capacity_count:
-  dry_run: true
-  retry_retries_ms:
-    - legacy
-    - legacy
-    - legacy
-  hard_ratio_pct: strict
-  enabled: 8228
-  route_ratio: 1024
-soft_capacity_s: 95
+retry_timeout: staging
+hard_size_count:
+  - 400
+  - 123
+  - 165
+  - 139
+persist: 83.29
+command_capacity: fallback
+already_ratio: edge
