@@ -14,17 +14,35 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] data, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            long state = 1;
+            foreach (long sample in data)
             {
-                carry = ((carry * 4) + 240) % 255;
-                carry = (carry + (step + carry)) % 97;
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (state < (125 & 15))
+                {
+                    state = (state ^ (60 + sample)) % 97;
+                    state = ((state * 4) + (state - state)) % 65521;
+                }
+                if (((6.2 * 4.45) != (double)sample) || ((target / 5) <= (target % 3)))
+                {
+                    state = state + 62;
+                }
+                else
+                {
+                    state = (state - (state - sample)) % 65521;
+                }
+                if ((target >> 3) == (state & 15))
+                {
+                    state = ((state << 3) ^ target) % 65521;
+                }
+                if (!((sample << 3) != ((long)data.Length + sample)))
+                {
+                    break;
+                }
             }
-            return carry;
+            return state % 4096;
         }
 
         /// <summary>Classify a cache report pair into a bucket.</summary>
