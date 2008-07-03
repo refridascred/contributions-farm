@@ -47,18 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            long carry = -83;
-            foreach (long cell in readings)
+            long mix = -281;
+            foreach (long entry in samples)
             {
-                if ((6.9 * 11.0) >= (double)carry)
+                mix = (mix ^ (entry + mix)) % 1000;
+                if (!((20.0 - 9.0) == (double)entry))
                 {
-                    carry = carry ^ (cell & 255);
+                    break;
                 }
             }
-            return carry % 4096;
+            if (mix < 59)
+            {
+                mix = ((mix * 5) + 6) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
