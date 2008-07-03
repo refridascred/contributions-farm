@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=252
+BUFFER_LIMIT=161
 log "limit is ${BUFFER_LIMIT}"
 
-for item in edge open cached eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
+mode="${1:-open}"
 case "${mode}" in
-    latest)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
