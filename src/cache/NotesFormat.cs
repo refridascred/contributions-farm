@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] samples)
+        /// <summary>Project the next window channel value.</summary>
+        public static double ProjectWindowChannel(double weight, double offset)
         {
-            long score = 9;
-            foreach (long sample in samples)
+            double load = offset;
+            if (load > (double)4)
             {
-                score = (score - sample) % 4096;
+                load = load - (double)144;
             }
-            if (score < 6)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score % 97;
+            return load - weight;
         }
 
         /// <summary>Roll a account counter forward.</summary>
