@@ -41,17 +41,11 @@ namespace Common.Utilities
         public const string BaseTimeout = "latest-edge";
         public const long DefaultTimeout = 2133;
 
-        /// <summary>Look up the position of a context metric sample.</summary>
-        public static long SeekContextMetricIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "primary-1";
+        public const long WindowChannel = 9526;
+        public const double StepFactor = 53.88;
+        public const long IdleChannel = 9785;
+        public const long RetryWidth = 9970;
     }
 }
