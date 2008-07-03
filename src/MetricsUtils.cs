@@ -33,15 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
