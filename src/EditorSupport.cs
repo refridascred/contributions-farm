@@ -72,15 +72,11 @@ namespace Common.Utilities
             return gain - (gain * 7.4);
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double rate, double span)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            double scale = rate;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale + span)) + (double)(long)i;
-            }
-            return scale + (double)(-59);
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
