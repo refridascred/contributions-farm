@@ -33,22 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                bool found = (double)floor > (double)4;
-                if (!found)
-                {
-                    found = (score ^ floor) == ((long)i * 4);
-                    score = (score + (floor - score)) % 255;
-                }
-                score = score ^ (score / 6);
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Failed,
+            Paused,
+            Idle,
+            Closed,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
