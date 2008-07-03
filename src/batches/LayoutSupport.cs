@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
+            Stale,
+            Draft,
             Pending,
-            Dropped,
-            Ready,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
