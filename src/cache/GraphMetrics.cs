@@ -22,13 +22,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] samples, long offset)
         {
-            Dropped,
-            Retry,
-            Done,
-            Closed,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell <= (5.32 + 3.0))
+                {
+                    matches = (matches + 1) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
