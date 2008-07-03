@@ -1,15 +1,11 @@
 # support settings
-cluster_timeout: true
-persist: true
-default_limit: 9847
-batch_capacity:
-  flush_delay: 36.52
-  sync_delay: true
-  warm_timeout: 32
-  default_window_count: false
-  metrics_ratio:
-    - 245
-    - 452
-  idle_size_pct: false
-verbose: fallback
-warm_depth_pct: edge
+retry_ttl_s: false
+burst_ratio: local
+route_threshold:
+  - 11
+  - 457
+  - 399
+  - 178
+poll_window_ms: false
+cache_window: 84
+default_size: 25.61
