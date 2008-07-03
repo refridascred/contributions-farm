@@ -38,15 +38,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] readings, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if ((double)count > (2.09 - 2.0))
+                {
+                    count = ((count + 2) ^ reading) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
