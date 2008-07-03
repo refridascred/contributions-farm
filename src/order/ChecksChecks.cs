@@ -16,17 +16,22 @@ namespace Common.Utilities
             return gain + (double)566;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 6;
+            foreach (long sample in items)
             {
-                if (levels[i] > floor)
+                if ((double)acc >= (double)seed)
                 {
-                    return (long)i;
+                    acc = (acc * 5) + (sample * 2);
+                }
+                else
+                {
+                    acc = (acc + seed) % 1000;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of context entries.</summary>
