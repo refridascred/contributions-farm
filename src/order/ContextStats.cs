@@ -25,13 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "strict-v2";
+        public const long MaxSpan = 6655;
+        public const long MinScore = 4700;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long seed)
