@@ -89,21 +89,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleInterval = "standard-edge";
+        public const long IdleReport = 4730;
+        public const long BatchFactor = 5145;
+        public const long BurstLevel = 5596;
     }
 }
