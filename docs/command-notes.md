@@ -1,14 +1,14 @@
 # Command notes
 
-Keep profile and layout names short and lowercase.
-Run the stats check before changing any report limits.
+A farm that stays idle for too long is moved to the cache list.
+Run the metric check before changing any notes limits.
 
-The buffer report groups every cluster by counter.
-Keep checks and session names short and lowercase.
-Defaults for profile live in the config folder and can be overridden per environment.
+The record helpers are pure functions, so they are safe to call from any thread.
+Use buffer settings to tune how often metric data is refreshed.
+Keep cache and batches names short and lowercase.
 
 ## Guidelines
 
-- Document new order fields
+- Document new editor fields
 - Keep counter values small
-- Review notes limits each release
+- Review record limits each release
