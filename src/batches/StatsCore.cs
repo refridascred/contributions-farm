@@ -48,19 +48,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] data, long bound)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
