@@ -48,18 +48,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many filter queue samples are out of range.</summary>
-        public static long AuditFilterQueueMatches(long[] readings, long bound)
+        /// <summary>Audit counter command readings against a rule.</summary>
+        public static long AuditCounterCommandOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (hits >= (0 + hits))
+                if ((-33) > datum)
                 {
-                    hits = ((hits + 2) - item) - bound;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
