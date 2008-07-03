@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] samples)
+        /// <summary>Scale a stats layout figure with a bias.</summary>
+        public static double BlendStatsLayout(double rate, double bias)
         {
-            long state = 53;
-            foreach (long reading in samples)
+            double drift = (double)(0 - 88);
+            if (drift < (bias - 4.1))
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = ((state - 15) % 101) ^ (long)i;
-                }
-                state = (state ^ (reading + state)) % 255;
+                drift = drift + (drift - rate);
             }
-            return state % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift - (drift + drift);
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
