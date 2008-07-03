@@ -66,27 +66,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] values, long step)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] series)
         {
-            long carry = 3;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 2) + (carry - 822)) % 1000;
-                if ((55 > (step - step)) && ((cell / 5) > (step & 63)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry - (13 - cell)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry - carry)) % 4096;
-                }
-                if ((carry % 5) != (carry << 1))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return tally;
         }
     }
 }
