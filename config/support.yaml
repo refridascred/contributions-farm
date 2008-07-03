@@ -1,4 +1,11 @@
 # support settings
-default_ttl: 60
-farm_size: 1024
-context_limit: true
+strict: eu-west
+max_delay: green
+poll_size_count: staging
+base_retries_pct: 7855
+batch_timeout: 3108
+account_capacity:
+  - 441
+  - 92
+  - 126
+  - 439
