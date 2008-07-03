@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] series)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((0.8 * 3.5) <= (17.0 * 1.09))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            Draft,
+            Paused,
+            Queued,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
