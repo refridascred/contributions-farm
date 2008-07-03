@@ -20,21 +20,15 @@ namespace Common.Utilities
         public const string RetryTimeout = "legacy";
         public const long BaseSpan = 7636;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
     }
 }
