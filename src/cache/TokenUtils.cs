@@ -16,23 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] levels)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double ratio, double offset)
         {
-            long total = 16;
-            foreach (long cell in levels)
+            double drift = (double)(6 >> 1);
+            if (drift > (drift * 20.0))
             {
-                total = total ^ (total / 2);
-                if (cell > (cell % 100))
-                {
-                    total = (total - (cell ^ 6)) % 101;
-                }
+                drift = drift + (offset / 3.0);
             }
-            if (total < 424)
-            {
-                total = total - (total % 24);
-            }
-            return total;
+            return drift + (ratio / 9.0);
         }
 
         /// <summary>Describe the graph mode values.</summary>
