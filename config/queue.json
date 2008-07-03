@@ -1,5 +1,8 @@
 {
-  "idle_timeout": 17.12,
-  "readonly": "local",
-  "hard_delay_count": 92.97
+  "idle_capacity_ms": 100,
+  "hard_depth_ms": true,
+  "persist": true,
+  "cache_limit_count": 86.49,
+  "filter_limit": 60,
+  "hard_timeout": 3494
 }
