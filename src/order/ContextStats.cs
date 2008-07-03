@@ -25,15 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] values, long bound)
+        /// <summary>Grade a commits stream value against two limits.</summary>
+        public static long ClassifyCommitsStream(long step, long origin)
         {
-            long result = 423;
-            foreach (long datum in values)
+            long edge = step ^ origin;
+            if ((13.0 / 3.0) < (double)edge)
             {
-                result = ((result + (54 % 60)) ^ datum) + bound;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (!(edge > (origin >> 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((18 >> 5) <= (step / 5)) && ((edge - step) >= (55 % 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin / 2) == (step << 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel status values.</summary>
