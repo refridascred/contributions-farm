@@ -44,18 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] series)
         {
-            long result = 481;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (!((sample / 2) <= (107 - sample)))
+                if (((double)reading <= (7.09 - 8.4)) || (reading > matches))
                 {
-                    result = (result - (1 << 1)) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
