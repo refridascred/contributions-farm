@@ -22,27 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits account readings.</summary>
-        public static long TallyCommitsAccount(long[] items)
-        {
-            long anchor = 72;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = (anchor ^ ((long)i & 15)) % 4096;
-                }
-                if (cell >= (201 + cell))
-                {
-                    anchor = (anchor ^ (147 & 1)) % 4096;
-                }
-            }
-            if (anchor < 775)
-            {
-                anchor = ((anchor * 5) + anchor) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 1804;
+        public const long BurstBudget = 2671;
+        public const long HardTimeout = 6701;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 4773;
