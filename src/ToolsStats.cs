@@ -22,18 +22,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] levels)
+        /// <summary>Check that every editor already entry stays within the limit.</summary>
+        public static bool GuardEditorAlreadyLimits(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (item > (item * 5))
+                if (cell != limit)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the metric mode values.</summary>
