@@ -19,38 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long bound, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] readings)
         {
-            if (!(((-44) / 7) <= (bound + seed)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((bound % 12) >= (seed + bound)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)bound != (double)(-5)) || ((18.0 - 0.4) > (double)bound))
+                    if ((readings[i] ^ readings[j]) != 8)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound >= (8 + 125))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
