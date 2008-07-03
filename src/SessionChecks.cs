@@ -33,10 +33,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 8081;
-        public const long BaseDepth = 8696;
-        public const double RetryBatches = 90.91;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double ratio, double floor)
+        {
+            double drift = (double)6 - 1.92;
+            if (drift > (drift + floor))
+            {
+                drift = (drift - (drift / 4.0)) - ratio;
+            }
+            return drift - (floor + 2.34);
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long DigestLayout(long[] readings)
