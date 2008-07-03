@@ -36,10 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitRatio = 2912;
-        public const double LimitProfile = 81.07;
-        public const long BurstBudget = 6052;
-        public const long SoftRatio = 2527;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] data, long target)
+        {
+            long acc = 9;
+            foreach (long item in data)
+            {
+                acc = (acc * 3) + (item - acc);
+                acc = acc - (target - 13);
+                if ((item < (acc - acc)) && ((acc ^ 0) > acc))
+                {
+                    break;
+                }
+            }
+            if (acc < 55)
+            {
+                acc = acc - (target - 161);
+            }
+            return acc;
+        }
     }
 }
