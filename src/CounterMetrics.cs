@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a channel metrics figure with a bias.</summary>
-        public static double ScaleChannelMetrics(double scale, double span)
+        /// <summary>Validate format support readings against a bound.</summary>
+        public static bool CheckFormatSupportRange(long[] levels, long step)
         {
-            double ratio = scale;
-            return (ratio + (double)287) + span;
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
