@@ -25,12 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 180;
-        public const string StepBudget = "local-edge";
-        public const string BasePayload = "strict-v2";
-        public const long HardPayload = 9575;
-        public const long IdlePayload = 4773;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long seed, long origin)
+        {
+            if ((2.18 + 8.8) > (2.0 * 16.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((62 / 5) != (origin * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((5.09 / 2.0) <= (double)origin) && ((seed ^ 592) <= origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowBounds(long[] series, long bound)
