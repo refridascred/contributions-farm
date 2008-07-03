@@ -14,25 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long origin, long bound)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double weight, double span)
         {
-            long offset = origin - bound;
-            if (((bound - origin) <= (899 + offset)) || ((3.63 / 8.0) == (double)bound))
+            double drift = (span / 4.0) + (double)31;
+            if (drift >= (double)607)
             {
-                return 4;
+                drift = drift - (weight + weight);
             }
             else
             {
-                if ((double)bound >= (9.0 - 3.96))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
+                drift = drift - span;
             }
+            return drift + span;
         }
 
         /// <summary>Rank command input into a small class.</summary>
