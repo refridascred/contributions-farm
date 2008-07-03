@@ -48,12 +48,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            public double Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
