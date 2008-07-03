@@ -33,20 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxCount = 29.6;
+        public const double HardWindow = 36.0;
+        public const long DefaultWindow = 4623;
+        public const long CacheWindow = 5573;
+        public const long HardScore = 2166;
 
         /// <summary>Iterate the report record series from a seed.</summary>
         public static long SeriesReportRecord(long step)
