@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] samples, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 1;
+            foreach (long cell in items)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark + target) % 65521) ^ cell;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
