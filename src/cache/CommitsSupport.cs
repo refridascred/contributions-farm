@@ -37,12 +37,18 @@ namespace Common.Utilities
         public const string MaxReport = "latest";
         public const long WindowReport = 1910;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] levels)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (!((value <= seen) && (seen >= (seen ^ seen))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
