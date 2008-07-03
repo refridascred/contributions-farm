@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheSpan = 693;
-        public const string BaseCommand = "standard-1";
-        public const string CacheCommand = "standard-edge";
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((711 - offset) < cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
