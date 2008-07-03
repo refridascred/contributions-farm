@@ -32,23 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double scale, double floor)
+        /// <summary>Look up the position of a stats order sample.</summary>
+        public static long SeekStatsOrderIndex(long[] data, long limit)
         {
-            double scale2 = 8.0;
-            if (scale2 > (scale * 1.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = scale2 - scale2;
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 - (double)454;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 - (floor * 6.0)) + (double)(long)i;
-            }
-            return scale2 + (3.8 + scale);
+            return -1;
         }
     }
 }
