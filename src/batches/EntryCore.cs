@@ -56,9 +56,11 @@ namespace Common.Utilities
         public const string CacheGithubfarm = "fallback-1";
         public const long BurstInterval = 504;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepScore = 1288;
-        public const string StepCount = "latest-v2";
-        public const long SoftStats = 9800;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public long Owner { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
