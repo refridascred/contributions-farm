@@ -41,10 +41,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepWidth = 3384;
-        public const long IdleCache = 1106;
-        public const double SoftCache = 94.28;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] values, long target)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double SmoothPayload(double bias, double span)
