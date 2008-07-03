@@ -24,14 +24,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Done,
+            Synced,
+            Failed,
             Ready,
-            Closed,
-            Pending,
-            Stale,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define token limits and defaults.</summary>
