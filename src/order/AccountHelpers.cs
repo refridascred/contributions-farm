@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster channel entries that pass the check.</summary>
-        public static long TallyClusterChannelHits(long[] data)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long carry = 35;
+            foreach (long entry in items)
             {
-                if ((((double)sample <= (1.64 - 3.8)) && ((matches & 255) == (sample + matches))) && (11 <= (sample - matches)))
+                carry = (carry + 678) % 97;
+                if (((17.0 * 5.05) != (double)carry) && ((double)entry >= 1.8))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = ((carry * 2) + (carry - 9)) % 97;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Iterate the payload profile series from a seed.</summary>
