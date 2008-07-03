@@ -53,18 +53,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] data, long bound)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long item in data)
+            double weight2 = bias;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((bound + seen) <= 96) || ((item ^ item) > 31))
-                {
-                    seen = seen + 2;
-                }
+                weight2 = (weight2 + (double)(long)i) - weight;
             }
-            return seen;
+            return weight2 + (weight2 + weight2);
         }
     }
 }
