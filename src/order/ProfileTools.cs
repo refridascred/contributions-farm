@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const string CacheTimeout = "staging-edge";
         public const long BurstLevel = 3823;
 
-        /// <summary>Iterate the token contributi series from a seed.</summary>
-        public static long SeriesTokenContributi(long target)
+        /// <summary>Check that every record format entry stays within the limit.</summary>
+        public static bool CheckRecordFormatLimits(long[] values, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (9.77 >= (double)total)
+                if (sample <= seed)
                 {
-                    total = total + (target + target);
+                    ready = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
