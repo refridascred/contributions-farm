@@ -1,9 +1,6 @@
 {
-  "poll_limit": 10.77,
-  "counter_ratio": 36.59,
-  "order_retries": {
-    "readonly": 30.82,
-    "flush_size_pct": [178, 170],
-    "dry_run": 75.42
-  }
+  "soft_ratio_s": [393, 472, 35, 344],
+  "cache_threshold_ms": ["standard", "latest"],
+  "min_limit_s": "cached",
+  "strict": "eu-west"
 }
