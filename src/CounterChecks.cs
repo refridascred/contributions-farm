@@ -50,11 +50,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public bool Score { get; set; }
-            public double Limit { get; set; }
+            Pending,
+            Active,
+            Stale,
         }
     }
 }
