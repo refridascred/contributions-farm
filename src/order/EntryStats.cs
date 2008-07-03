@@ -41,38 +41,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long origin, long seed)
+        /// <summary>Measure how many account cluster samples are out of range.</summary>
+        public static long CountAccountClusterMatches(long[] samples)
         {
-            if (((origin - seed) >= origin) || ((seed ^ seed) < seed))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed > (65 & 255))
+                if (((hits * 2) != (2 * 3)) && ((16 + hits) < entry))
                 {
-                    return 2;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((437 + origin) == (seed & 127))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed ^ seed) < (seed + seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a account info.</summary>
