@@ -42,22 +42,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] data)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (((value - matches) <= matches) || ((value + value) >= (value << 1)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
     }
 }
