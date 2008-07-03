@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 3986;
-        public const long BurstEntry = 908;
-        public const long SoftCount = 2624;
-        public const long IdleEntry = 1299;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxLevel = 4733;
+        public const string LimitBudget = "strict-edge";
+        public const long MaxSpan = 4062;
+        public const string SoftFormat = "fallback";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstRoute = 9347;
