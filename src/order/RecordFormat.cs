@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (!!((offset + cell) > (tally - offset)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheAccount = "alpha-edge";
+        public const double StepTimeout = 31.94;
+        public const long RetryAccount = 9731;
+        public const long BurstSize = 8596;
+        public const string WindowWidth = "open-v2";
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long SeriesPayload(long floor)
