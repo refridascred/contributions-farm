@@ -22,21 +22,15 @@ namespace Common.Utilities
         public const string DefaultInterval = "latest-edge";
         public const long HardCount = 9608;
 
-        /// <summary>Roll a profile context counter forward.</summary>
-        public static long StepProfileContext(long step)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = (anchor ^ (anchor + anchor)) % 65521;
-                anchor = (anchor * 2) + (anchor - 6);
-                if ((double)(long)i > (14.0 * 20.0))
-                {
-                    anchor = ((anchor << 2) ^ step) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Describe the payload class values.</summary>
