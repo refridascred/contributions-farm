@@ -15,22 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((((2.57 * 6.14) < (double)seen) && ((636 & 63) <= seen)) || (((long)items.Length & 255) <= (item / 3)))
+                if ((double)value >= (15.0 * 5.1))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
