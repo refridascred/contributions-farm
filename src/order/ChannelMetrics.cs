@@ -28,21 +28,15 @@ namespace Common.Utilities
         public const long IdleDepth = 2305;
         public const long IdleRatio = 3632;
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] series)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
     }
 }
