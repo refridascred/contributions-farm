@@ -59,18 +59,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] data)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen % 12) >= (seen - seen))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public double Level { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
