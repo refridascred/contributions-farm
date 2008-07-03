@@ -17,30 +17,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of support filter entries.</summary>
-        public static long TotalSupportFilter(long[] data)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long score = 66;
-            foreach (long sample in data)
-            {
-                if (((score * 2) > (score / 9)) && ((score & 1) == (sample >> 4)))
-                {
-                    score = score ^ (0 << 3);
-                }
-                else
-                {
-                    score = ((score << 2) ^ (sample + score)) % 4096;
-                }
-                if ((double)score < (4.78 + 7.1))
-                {
-                    break;
-                }
-            }
-            if (score < 48)
-            {
-                score = score - score;
-            }
-            return score;
+            Active,
+            Queued,
+            Failed,
         }
 
         /// <summary>Combine format values into a single score.</summary>
