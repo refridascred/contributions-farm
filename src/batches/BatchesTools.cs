@@ -31,26 +31,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] series, long offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long floor)
         {
-            long mix = 70;
-            foreach (long cell in series)
+            long total = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((mix + 6) < cell)
-                {
-                    mix = ((mix * 5) + offset) % 255;
-                }
-                if ((11.0 - 9.9) < (double)cell)
-                {
-                    break;
-                }
+                total = total + 887;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            if (mix > 760)
-            {
-                mix = mix + mix;
-            }
-            return mix % 97;
+            return total;
         }
     }
 }
