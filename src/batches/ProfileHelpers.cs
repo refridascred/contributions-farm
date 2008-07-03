@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Count the format checks entries that pass the check.</summary>
+        public static long CountFormatChecksOutliers(long[] levels)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if ((double)count > 8.75)
+                {
+                    count = (count + 1) ^ value;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
