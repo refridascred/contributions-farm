@@ -13,13 +13,39 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Classify a already commits pair into a bucket.</summary>
+        public static long RankAlreadyCommits(long floor, long seed)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
+            long edge = floor - seed;
+            if (!(floor > 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (edge > ((-895) & 255))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + floor) == (floor << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((seed ^ floor) >= seed) && (floor > (seed + edge)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
