@@ -32,9 +32,16 @@ namespace Common.Utilities
         public const long IdleBuffer = 7782;
         public const string HardBuffer = "staging-v2";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSchema = "latest-1";
-        public const string WindowFactor = "standard";
-        public const string WindowBudget = "stable";
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 3) + bound) % 255;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
