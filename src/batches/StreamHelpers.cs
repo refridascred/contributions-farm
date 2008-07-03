@@ -46,19 +46,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many layout entry samples are out of range.</summary>
-        public static long CountLayoutEntryHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((18 + reading) != (long)readings.Length)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 9006;
+        public const long MinBatches = 4268;
+        public const long DefaultBatches = 6064;
+        public const double StepTimeout = 19.88;
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
