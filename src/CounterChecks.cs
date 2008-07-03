@@ -16,10 +16,23 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseRatio = 6013;
-        public const long BatchQueue = 9815;
-        public const double MinWidth = 38.87;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] levels, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((long)levels.Length <= (828 - origin))
+                {
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long FoldContributi(long[] items)
