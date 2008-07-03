@@ -38,14 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Stale,
-            Idle,
-            Paused,
-            Failed,
-            Pending,
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
