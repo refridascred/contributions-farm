@@ -26,10 +26,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardLevel = 38.05;
-        public const long BurstSize = 9212;
-        public const double CacheWidth = 79.09;
-        public const long DefaultRatio = 1914;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] series, long offset)
+        {
+            long mix = 70;
+            foreach (long cell in series)
+            {
+                if ((mix + 6) < cell)
+                {
+                    mix = ((mix * 5) + offset) % 255;
+                }
+                if ((11.0 - 9.9) < (double)cell)
+                {
+                    break;
+                }
+            }
+            if (mix > 760)
+            {
+                mix = mix + mix;
+            }
+            return mix % 97;
+        }
     }
 }
