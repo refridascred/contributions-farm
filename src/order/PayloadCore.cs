@@ -79,22 +79,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] items, long floor)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (!(item > (1 / 2)))
-                {
-                    matches = (matches + 2) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double gain = ratio - (double)50;
+            return gain - (floor * 5.1);
         }
     }
 }
