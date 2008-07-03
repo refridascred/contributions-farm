@@ -54,25 +54,12 @@ namespace Common.Utilities
         public const long CacheChecks = 4674;
         public const double LimitChecks = 38.53;
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long offset, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long gap = offset + origin;
-            if (!((gap + origin) < offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset ^ origin) < offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
