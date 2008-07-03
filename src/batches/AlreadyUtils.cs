@@ -58,19 +58,18 @@ namespace Common.Utilities
             return (gain + 8.6) + ratio;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] values, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (sample > seed)
+                if ((double)count != (double)(-9))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + cell;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
