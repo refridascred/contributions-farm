@@ -36,19 +36,18 @@ namespace Common.Utilities
         public const long CacheWindow = 2271;
         public const string BatchWindow = "local-v2";
 
-        /// <summary>Accumulate notes support samples.</summary>
-        public static long TotalNotesSupport(long[] readings, long origin)
+        /// <summary>Audit cache entry readings against a rule.</summary>
+        public static long AuditCacheEntryHits(long[] items)
         {
-            long score = 93;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in items)
             {
-                score = ((score * 3) + (230 % 64)) % 97;
-                if ((double)origin <= (double)473)
+                if (((count <= value) || (count >= (count & 1))) && ((long)items.Length < value))
                 {
-                    score = (score ^ (item << 2)) % 255;
+                    count = count + 3;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
