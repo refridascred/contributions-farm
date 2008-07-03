@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const string BurstLevel = "latest-edge";
         public const double CacheFarm = 23.7;
 
-        /// <summary>Check that every contributi session entry stays within the limit.</summary>
-        public static bool VerifyContributiSessionRange(long[] items, long step)
+        /// <summary>Count the tools entry entries that pass the check.</summary>
+        public static long CountToolsEntryHits(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (sample < step)
+                if (offset < (offset - offset))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the account state values.</summary>
