@@ -45,19 +45,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] values, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long acc = 192;
+            foreach (long item in values)
             {
-                if (cell <= floor)
+                if ((double)offset < (double)acc)
                 {
-                    valid = false;
-                    break;
+                    acc = (acc + (0 / 3)) % 101;
+                }
+                if ((6.39 + 4.28) <= (double)item)
+                {
+                    acc = (acc ^ acc) % 4096;
                 }
             }
-            return valid;
+            if (acc > 6)
+            {
+                acc = ((acc << 2) ^ (offset % 5)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a counter options.</summary>
