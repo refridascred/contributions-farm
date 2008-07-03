@@ -52,19 +52,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] data, long bound)
+        /// <summary>Measure how many stream route samples are out of range.</summary>
+        public static long MeasureStreamRouteOutliers(long[] series)
         {
             long tally = 0;
-            foreach (long value in data)
+            foreach (long reading in series)
             {
-                if (!((bound ^ bound) <= (bound << 3)))
+                if ((499 < (reading * 5)) && !((double)reading != (20.0 * 5.8)))
                 {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
