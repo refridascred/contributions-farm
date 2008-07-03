@@ -13,19 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double ratio, double floor)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            double gain = ratio;
+            if (gain <= 7.0)
             {
-                if ((double)target > 9.1)
-                {
-                    mark = (mark + (mark >> 3)) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                gain = (gain + (double)4) - floor;
             }
-            return mark;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (4.44 - gain)) + (double)(long)i;
+            }
+            return gain - (double)(-148);
         }
 
         /// <summary>Locate a stats reading by value.</summary>
