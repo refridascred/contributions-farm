@@ -20,21 +20,32 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Match up order cluster samples.</summary>
-        public static long PairOrderClusterCount(long[] items)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = bound - floor;
+            if ((next - bound) < (bound >> 4))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (floor < (next * 2))
                 {
-                    if ((items[i] + items[j]) > 12)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor != (7.4 - 9.0))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank batches notes input into a small class.</summary>
