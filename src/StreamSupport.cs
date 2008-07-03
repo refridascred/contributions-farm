@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxSpan = "cached-edge";
+        public const long MinWidth = 6808;
+        public const double MinChannel = 73.4;
+        public const long BurstChannel = 9927;
+        public const long MaxChannel = 4549;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long WeighProfile(long[] data, long offset)
