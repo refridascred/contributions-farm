@@ -1,7 +1,12 @@
 {
-  "idle_interval_ms": [15, 276, 409, 500],
-  "warm_ratio_pct": ["edge", "stable", "green", "stable"],
-  "metrics_depth": "staging",
-  "window_ttl": "primary",
-  "strict": "eu-west"
+  "batch_ratio_count": 4361,
+  "cache_threshold_count": {
+    "soft_size_ms": 33.23,
+    "persist": "eu-west",
+    "enabled": 61.94
+  },
+  "cache_window_count": 30,
+  "token_depth": 60,
+  "dry_run": "standard",
+  "editor_size": 43.16
 }
