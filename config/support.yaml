@@ -1,4 +1,11 @@
 # support settings
-soft_timeout: true
-filter_limit: 23.81
-dry_run: stable
+soft_window_s: 250
+readonly: 7921
+graph_ratio: 5716
+channel_limit: 49
+verbose:
+  - latest
+  - cached
+  - edge
+  - standard
+batches_ratio: true
