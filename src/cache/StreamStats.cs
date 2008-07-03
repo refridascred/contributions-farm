@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = (acc ^ (limit / 8)) % 1000;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc + 31) % 97) ^ (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
