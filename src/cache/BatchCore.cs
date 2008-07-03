@@ -18,22 +18,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] levels, long step)
+        /// <summary>Check that every contributi session entry stays within the limit.</summary>
+        public static bool VerifyContributiSessionRange(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if ((8.0 / 5.0) > (double)step)
+                if (sample < step)
                 {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the account state values.</summary>
