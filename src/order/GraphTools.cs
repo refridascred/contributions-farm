@@ -19,16 +19,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] readings, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                acc = ((acc * 2) + (acc % 60)) % 101;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (datum <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Define route limits and defaults.</summary>
