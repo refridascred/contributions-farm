@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every token graph entry stays within the limit.</summary>
-        public static bool VerifyTokenGraphLimits(long[] items, long offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a farm summary.</summary>
