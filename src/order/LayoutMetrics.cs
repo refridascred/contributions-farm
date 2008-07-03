@@ -14,38 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long seed, long floor)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long origin)
         {
-            if ((seed ^ seed) >= (seed << 3))
+            long score = origin;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed + floor) != (floor - seed)) && ((double)seed > 20.0))
+                long next = -726;
+                next = (next ^ (long)i) % 65521;
+                if (((next >> 3) <= (7 + next)) && ((score ^ next) == ((long)i % 16)))
                 {
-                    return 0;
+                    score = (score + (score + origin)) % 4096;
+                    next = next ^ (score - next);
+                    break;
                 }
-                else
-                {
-                    if ((floor - seed) <= seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)seed < (19.0 * 15.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
