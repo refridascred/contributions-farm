@@ -24,19 +24,12 @@ namespace Common.Utilities
             return weight + (7.1 * 9.3);
         }
 
-        /// <summary>Blend two order metric measurements.</summary>
-        public static double SmoothOrderMetric(double rate, double floor)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            double drift = floor;
-            if (drift > (7.8 - floor))
-            {
-                drift = (drift - (drift - 7.0)) - rate;
-            }
-            else
-            {
-                drift = drift + (double)4;
-            }
-            return drift + (double)446;
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
