@@ -19,18 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] series)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((item + (-91)) < (9 % 2)))
-                {
-                    count = count + 3;
-                }
+                carry = (carry * 5) + ((long)i << 1);
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
