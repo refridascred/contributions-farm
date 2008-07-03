@@ -1,8 +1,30 @@
 {
-  "already_delay": "fallback",
-  "burst_capacity_count": "primary",
-  "soft_timeout_pct": "fallback",
-  "strict": 30,
-  "cache_interval_count": 6679,
-  "warm_ttl_pct": "standard"
+  "retry_limit_ms": 7714,
+  "burst_capacity": {
+    "burst_threshold": {
+      "cache_ttl": ["legacy", "green"],
+      "burst_capacity": 4176,
+      "order_ttl": "edge",
+      "enabled": 8065,
+      "retry_interval_count": 1024,
+      "default_timeout_s": [133, 9, 351]
+    },
+    "flush_ttl_count": 8906,
+    "min_window_ms": {
+      "readonly": 72,
+      "batches_window": 62.41,
+      "schema_capacity": 82.88,
+      "buffer_timeout": true
+    },
+    "window_size": {
+      "graph_limit": "green",
+      "channel_depth": [430, 78, 417, 189],
+      "base_window": "staging",
+      "min_timeout_ms": ["edge", "staging", "edge", "open"],
+      "retry_ratio": false,
+      "base_size": 5
+    }
+  },
+  "warm_size": [491, 76, 297, 397],
+  "strict": 30
 }
