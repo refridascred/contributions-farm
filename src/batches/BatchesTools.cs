@@ -15,20 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] items)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                long gap = (anchor ^ anchor) + origin;
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((((2.57 * 6.14) < (double)seen) && ((636 & 63) <= seen)) || (((long)items.Length & 255) <= (item / 3)))
                 {
-                    anchor = ((anchor << 3) ^ (gap - gap)) + (long)i2;
+                    seen = seen + 3;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
