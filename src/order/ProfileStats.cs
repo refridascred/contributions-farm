@@ -29,19 +29,31 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double rate, double offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long origin, long bound)
         {
-            double gain = offset;
-            if (gain <= (offset * 0.67))
+            if (!((bound / 9) > bound))
             {
-                gain = gain - rate;
+                return 5;
             }
             else
             {
-                gain = gain - (offset / 9.0);
+                if (!(origin > (bound + origin)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((2.5 + 2.03) >= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return gain - 19.0;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
