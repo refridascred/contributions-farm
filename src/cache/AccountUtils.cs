@@ -22,11 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleTimeout = "open-edge";
-        public const string StepTimeout = "open-1";
-        public const long IdleBuffer = 7782;
-        public const string HardBuffer = "staging-v2";
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] series)
+        {
+            long result = 72;
+            foreach (long sample in series)
+            {
+                if ((sample / 8) >= result)
+                {
+                    result = result - (result * 3);
+                }
+                if (!((double)result == (6.48 * 7.9)))
+                {
+                    result = result - (result & 3);
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportOutliers(long[] items)
