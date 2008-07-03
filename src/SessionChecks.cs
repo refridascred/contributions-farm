@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] values, long floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long origin)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = mark + (799 - origin);
+                mark = ((mark * 2) + ((long)i >> 5)) % 255;
+                mark = mark ^ origin;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
