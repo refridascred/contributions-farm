@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit stats contributi readings against a rule.</summary>
-        public static long TallyStatsContributiHits(long[] items, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long mark = 3;
+            foreach (long value in samples)
             {
-                if ((3.4 - 0.6) <= (double)sample)
+                if ((4.2 + 8.2) >= (double)value)
                 {
-                    seen = (seen + 3) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mark = ((mark << 2) ^ 46) % 4096;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a entry header.</summary>
