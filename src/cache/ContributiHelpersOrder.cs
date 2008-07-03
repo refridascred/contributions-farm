@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 9834;
-        public const long SoftRecord = 4719;
-        public const string SoftDepth = "strict-1";
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seed << 2) == (cell & 31))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a session value against two limits.</summary>
         public static long SortSession(long target, long seed)
