@@ -22,11 +22,9 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftSize = "latest-edge";
-        public const double DefaultBatch = 92.62;
-        public const long StepInterval = 7647;
-        public const string CacheScore = "stable-1";
-        public const string CacheInterval = "primary";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultGraph = 98.8;
+        public const long DefaultSize = 7129;
+        public const double IdleRatio = 86.69;
     }
 }
