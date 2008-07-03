@@ -27,38 +27,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long seed, long limit)
+        /// <summary>Find the first githubfarm metrics entry that matches the target.</summary>
+        public static long LookupGithubfarmMetricsIndex(long[] items, long origin)
         {
-            if ((seed + seed) <= (limit & 31))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((9.17 / 8.0) < (double)seed) || ((3 * 3) <= limit))
+                if (items[i] < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed < 3.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit <= seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up order queue samples.</summary>
