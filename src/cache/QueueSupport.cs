@@ -34,22 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (((seen - 1) > (entry + entry)) && (((-178) - seen) > (entry - seen)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "strict-1";
+        public const long BatchSpan = 8228;
+        public const long BatchFactor = 4649;
+        public const string IdleInterval = "alpha";
     }
 }
