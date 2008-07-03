@@ -50,18 +50,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] items)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits / 2) > 433)
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            Ready,
+            Stale,
+            Retry,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the support mode values.</summary>
