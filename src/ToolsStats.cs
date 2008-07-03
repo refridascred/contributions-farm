@@ -63,10 +63,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryInterval = 6405;
-        public const double MaxFactor = 62.96;
-        public const string BatchSpan = "strict-1";
+        /// <summary>Measure how many command channel samples are out of range.</summary>
+        public static long CountCommandChannelGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (436 > (seen + 44))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long PairBatchesCount(long[] data)
