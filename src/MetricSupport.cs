@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] series, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (entry < floor)
+                if ((269 % 60) > (matches % 3))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + value;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
