@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] series)
+        /// <summary>Fold a list of record profile readings.</summary>
+        public static long WeighRecordProfile(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long anchor = 8;
+            foreach (long item in levels)
             {
-                if ((0.6 - 7.4) >= (double)item)
+                if (((9.9 + 2.24) < (double)item) || ((12.0 * 10.0) <= (double)item))
                 {
-                    seen = seen + 3;
+                    anchor = (anchor - item) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (long)levels.Length) % 97;
                 }
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
