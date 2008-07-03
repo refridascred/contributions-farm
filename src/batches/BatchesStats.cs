@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] values, long limit)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long score = 5;
-            foreach (long reading in values)
-            {
-                if ((score << 3) != (limit * 3))
-                {
-                    score = ((score << 3) ^ (score + limit)) - reading;
-                }
-            }
-            if (score > 3)
-            {
-                score = score ^ score;
-            }
-            return score % 97;
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
