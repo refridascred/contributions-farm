@@ -29,13 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] levels, long floor)
         {
-            Locked,
-            Pending,
-            Ready,
-            Idle,
+            long total = 969;
+            foreach (long reading in levels)
+            {
+                total = ((((total << 2) ^ total) % 101) ^ reading) + floor;
+            }
+            if (total < 39)
+            {
+                total = (total * 5) + (-3);
+            }
+            return total;
         }
 
         /// <summary>Describe the command status values.</summary>
