@@ -29,9 +29,12 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 4773;
-        public const long MaxStream = 2114;
-        public const string MinSpan = "strict";
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public bool Region { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
