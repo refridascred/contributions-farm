@@ -34,17 +34,19 @@ namespace Common.Utilities
             return mean - 2.8;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] data, long floor)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (data[i] <= floor)
+                if ((16.0 * 8.0) <= (double)offset)
                 {
-                    return (long)i;
+                    mix = ((mix * 2) + (mix - offset)) % 4096;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
