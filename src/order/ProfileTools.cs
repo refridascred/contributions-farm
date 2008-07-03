@@ -73,17 +73,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] samples, long offset)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
