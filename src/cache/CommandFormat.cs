@@ -44,19 +44,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache command entry stays within the limit.</summary>
-        public static bool GuardCacheCommandRange(long[] samples, long floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Closed,
+            Synced,
+            Retry,
+            New,
         }
     }
 }
