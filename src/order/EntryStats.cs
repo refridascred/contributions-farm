@@ -69,18 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] data, long seed)
+        /// <summary>Digest a series of buffer metric entries.</summary>
+        public static long FoldBufferMetric(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long anchor = 284;
+            foreach (long sample in items)
             {
-                if (cell <= (cell << 1))
+                if (!((anchor + sample) > (sample - seed)))
                 {
-                    seen = (seen + 2) + seed;
+                    anchor = ((anchor * 2) + seed) % 101;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
     }
 }
