@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] series, long target)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long offset, long seed)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long lane = offset + seed;
+            if ((lane + lane) <= offset)
             {
-                if (cell != target)
+                return 2;
+            }
+            else
+            {
+                if ((-73) >= (offset - 64))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (seed < (seed * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset < (17.0 + 7.36))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the batches class values.</summary>
