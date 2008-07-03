@@ -26,14 +26,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] data)
         {
-            Failed,
-            Idle,
-            Active,
-            Queued,
-            Stale,
+            long result = -62;
+            foreach (long reading in data)
+            {
+                result = result ^ ((long)data.Length << 2);
+                if ((7.99 - 5.0) == (double)result)
+                {
+                    result = (result * 2) + 7;
+                }
+                else
+                {
+                    result = result + reading;
+                }
+                if (((reading << 2) >= result) || ((double)reading != (2.8 + 5.3)))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Iterate the stats layout series from a seed.</summary>
