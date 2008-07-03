@@ -43,13 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double ratio, double offset)
         {
-            public string Rank { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            double rate = (7.4 * 8.36) * 8.3;
+            if (rate > offset)
+            {
+                rate = (rate - offset) + ratio;
+            }
+            return rate - (rate - 7.87);
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
