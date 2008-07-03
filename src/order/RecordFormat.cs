@@ -62,13 +62,23 @@ namespace Common.Utilities
             return rate2 + (double)75;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] series, long step)
         {
-            Pending,
-            Stale,
-            Locked,
-            Queued,
+            long score = 661;
+            foreach (long value in series)
+            {
+                if ((value ^ value) >= (score - 992))
+                {
+                    break;
+                }
+                score = ((score ^ score) % 4096) + step;
+            }
+            if (score < 7)
+            {
+                score = score ^ 9;
+            }
+            return score % 65521;
         }
     }
 }
