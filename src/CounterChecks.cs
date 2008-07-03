@@ -16,22 +16,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] levels, long origin)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)levels.Length <= (828 - origin))
+                if ((series[i] < bound) && ((series[i] % 3) == 0))
                 {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
