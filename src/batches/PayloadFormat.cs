@@ -38,12 +38,14 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Synced,
+            Failed,
+            Active,
             Ready,
-            Locked,
+            Queued,
+            Stale,
         }
     }
 }
