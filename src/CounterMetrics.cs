@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] values, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long score = 4;
+            foreach (long value in series)
             {
-                if ((limit + tally) != (item - tally))
+                if (!((10.0 * 4.71) >= (double)target))
                 {
-                    tally = tally + 3;
+                    score = (((score * 5) + (target + 1)) % 97) - value;
                 }
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
