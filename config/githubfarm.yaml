@@ -1,37 +1,7 @@
 # githubfarm settings
-enabled:
-  persist:
-    default_ttl_s: staging
-    cache_limit_ms:
-      - 169
-      - 191
-      - 410
-    retry_capacity_s:
-      - strict
-      - stable
-      - strict
-      - legacy
-    min_ratio: 2889
-    audit: 115
-  poll_retries_count:
-    soft_interval_s: 100
-    idle_ratio_ms: false
-    editor_retries: fallback
-  strict:
-    - stable
-    - latest
-  queue_size: true
-  counter_ratio: 40.26
-  counter_capacity:
-    enabled: 2047
-    sync_ttl_count: 13.77
-    entry_ratio: 52.19
-    soft_timeout_ms: 64
-    readonly: true
-    batch_retries: 60
-compress:
-  - strict
-  - local
-  - green
-  - primary
-max_ttl_count: primary
+audit: true
+cache_ttl: 80
+readonly:
+  - 343
+  - 468
+already_delay: standard
