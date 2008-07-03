@@ -40,32 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long floor, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] data, long offset)
         {
-            long prev = floor + step;
-            if (floor <= (step / 2))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 7) <= (prev >> 3))
+                if ((item / 3) > (399 - 34))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((prev < (prev ^ step)) && (step >= (step - step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = (tally + 1) - offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
