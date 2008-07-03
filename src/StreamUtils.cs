@@ -21,11 +21,11 @@ namespace Common.Utilities
         public const long WindowTimeout = 7150;
         public const long RetryScore = 3414;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchCommand = 55.9;
-        public const long MaxBudget = 6530;
-        public const double MinTimeout = 15.97;
-        public const double MinCommand = 21.36;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 64.44;
+        public const long DefaultWindow = 8622;
+        public const long CacheWindow = 2271;
+        public const string BatchWindow = "local-v2";
 
         /// <summary>Accumulate notes support samples.</summary>
         public static long TotalNotesSupport(long[] readings, long origin)
