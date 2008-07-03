@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of cache checks readings.</summary>
-        public static long WeighCacheChecks(long[] data)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] series, long step)
         {
-            long anchor = 0;
-            foreach (long sample in data)
+            long score = 857;
+            foreach (long sample in series)
             {
-                anchor = anchor + (sample + anchor);
+                score = ((score * 4) + 3) % 4096;
+                score = ((score << 3) ^ step) % 255;
+                if (!((score << 2) > (sample * 4)))
+                {
+                    score = score ^ (step / 6);
+                }
             }
-            return anchor % 4096;
+            return score;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
