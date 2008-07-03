@@ -14,11 +14,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseScore = 5117;
-        public const string BurstSchema = "staging-1";
-        public const long MinSchema = 3919;
-        public const string SoftTimeout = "staging-edge";
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] samples)
+        {
+            long sum = 0;
+            foreach (long cell in samples)
+            {
+                if (sum >= (sum / 5))
+                {
+                    sum = (sum * 2) + 211;
+                }
+                else
+                {
+                    sum = (sum + (cell % 12)) % 97;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
