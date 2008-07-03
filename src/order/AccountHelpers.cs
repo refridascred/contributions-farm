@@ -19,20 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter already counter forward.</summary>
-        public static long SeriesCounterAlready(long origin)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long step, long step2)
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
+            if (((7.8 + 2.19) <= (double)step2) || ((step >> 2) > step))
             {
-                if ((origin / 9) > 7)
-                {
-                    carry = (carry - (origin - carry)) % 4096;
-                }
-                carry = (carry ^ (carry & 7)) % 65521;
-                carry = ((carry * 5) + (long)i) % 97;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if (step < (step / 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Iterate the payload profile series from a seed.</summary>
