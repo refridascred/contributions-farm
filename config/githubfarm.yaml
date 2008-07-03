@@ -1,4 +1,4 @@
 # githubfarm settings
-graph_retries: fallback
-contributi_delay: 50
-readonly: 583
+retry_timeout_pct: strict
+enabled: true
+persist: 92.05
