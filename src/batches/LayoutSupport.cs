@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long DefaultBudget = 4906;
         public const double RetryBuffer = 81.0;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] data, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (data[i] > bound)
+                if ((entry >= (count * 4)) && (count >= (count << 2)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the record state values.</summary>
