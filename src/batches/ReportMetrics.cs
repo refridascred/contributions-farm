@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] levels)
-        {
-            long result = 962;
-            foreach (long reading in levels)
-            {
-                if ((result <= ((-547) + result)) && ((result << 2) <= reading))
-                {
-                    result = result - (reading - result);
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepScore = "latest-1";
+        public const long BaseInterval = 963;
+        public const long StepCache = 3376;
+        public const long MinCache = 1450;
 
         /// <summary>Blend two stats measurements.</summary>
         public static double BlendStats(double ratio, double span)
