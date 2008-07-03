@@ -19,16 +19,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Fold a list of editor queue readings.</summary>
+        public static long TallyEditorQueue(long[] levels, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long acc = 276;
+            foreach (long sample in levels)
             {
-                score = ((score << 2) ^ (score >> 3)) % 65521;
-                score = ((score * 5) + (long)i) % 1000;
+                acc = ((acc << 2) ^ (sample % 12)) - floor;
             }
-            return score;
+            return acc % 65521;
         }
     }
 }
