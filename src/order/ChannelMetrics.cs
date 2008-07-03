@@ -12,27 +12,12 @@ namespace Common.Utilities
         public const double StepCounter = 66.75;
         public const double BaseInterval = 74.11;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] readings, long bound)
-        {
-            long result = 7;
-            foreach (long reading in readings)
-            {
-                if ((reading - (-95)) != (4 + bound))
-                {
-                    result = result + (result + result);
-                }
-                else
-                {
-                    result = (result + (bound + reading)) % 255;
-                }
-            }
-            if (result > 5)
-            {
-                result = (result - (25 / 8)) % 101;
-            }
-            return result % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 6712;
+        public const double LimitTimeout = 84.99;
+        public const long BurstWidth = 9331;
+        public const long CacheWindow = 7255;
+        public const long BatchWindow = 4413;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferMatches(long[] readings, long seed)
