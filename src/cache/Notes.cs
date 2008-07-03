@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] series)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long total = 21;
-            foreach (long value in series)
-            {
-                if (((double)value <= (double)(-3)) || ((total / 3) > value))
-                {
-                    total = ((total * 4) + (7 / 2)) % 97;
-                }
-            }
-            return total % 4096;
+            Draft,
+            New,
+            Stale,
+            Ready,
         }
 
         /// <summary>Find the first context session entry that matches the target.</summary>
