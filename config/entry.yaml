@@ -1,22 +1,17 @@
 # entry settings
-context_window: 30
-max_size_count: 2858
-route_threshold:
-  warm_threshold_count: 18
-  editor_window: blue
-  audit: 100
-burst_size_count:
-  compress:
-    cache_ratio_pct: true
-    max_ttl_ms:
-      - 13
-      - 487
-      - 489
-      - 189
-    idle_size_ms: 54.4
-    flush_timeout_pct: 20.93
-  persist: false
-  audit: false
-  default_size_s: cached
-burst_retries_s: 1024
-retry_timeout_pct: 74
+batch_ttl_pct:
+  soft_window:
+    default_size_count: false
+    report_depth: true
+    readonly: true
+    farm_depth:
+      - edge
+      - staging
+    commits_interval: 68
+    flush_ratio: 500
+  farm_threshold: 1669
+  readonly:
+    - staging
+    - strict
+soft_threshold: true
+flush_limit: 66
