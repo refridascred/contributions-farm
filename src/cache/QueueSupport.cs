@@ -23,19 +23,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] data, long bound)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Flag { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
