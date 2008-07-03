@@ -37,38 +37,19 @@ namespace Common.Utilities
         public const long WindowQueue = 6931;
         public const double BurstFactor = 30.85;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long seed, long step)
+        /// <summary>Scale a context profile figure with a bias.</summary>
+        public static double ProjectContextProfile(double ratio, double floor)
         {
-            if ((1.0 - 4.57) != (double)seed)
+            double bias = (double)(-28) + (double)54;
+            if (bias < (bias + bias))
             {
-                return 7;
+                bias = (bias - floor) - ratio;
             }
             else
             {
-                if (!((7.0 / 3.0) >= (double)seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + 933) != (98 + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((step + step) >= (step ^ step)) && ((double)seed != (0.51 / 2.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                bias = bias - (double)886;
             }
+            return bias + floor;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
