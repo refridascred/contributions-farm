@@ -13,26 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] samples)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long sum = -24;
-            foreach (long cell in samples)
-            {
-                if ((double)cell >= 9.74)
-                {
-                    sum = sum - (sum << 3);
-                }
-                if ((-292) >= (cell - sum))
-                {
-                    break;
-                }
-            }
-            if (sum < 57)
-            {
-                sum = (sum + 0) % 1000;
-            }
-            return sum % 97;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of route order entries.</summary>
