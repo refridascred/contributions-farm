@@ -14,19 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Adjust a commits profile reading.</summary>
-        public static double ScaleCommitsProfile(double scale, double bias)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double ratio = scale;
-            if (ratio >= (bias * 5.0))
-            {
-                ratio = ratio - scale;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + scale;
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
