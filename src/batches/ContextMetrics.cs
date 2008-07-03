@@ -16,11 +16,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 2423;
-        public const long RetrySession = 1757;
-        public const long StepSize = 412;
-        public const long StepSession = 2204;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit buffer session readings against a rule.</summary>
         public static long CountBufferSessionMatches(long[] readings)
