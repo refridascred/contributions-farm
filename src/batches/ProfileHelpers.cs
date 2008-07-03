@@ -60,19 +60,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double scale, double offset)
+        /// <summary>Classify a record report pair into a bucket.</summary>
+        public static long RankRecordReport(long floor, long step)
         {
-            double rate = 9.0;
-            if (rate < (double)(-49))
+            if ((double)floor > (6.93 / 3.0))
             {
-                rate = (rate + (scale - scale)) - offset;
+                return 6;
             }
             else
             {
-                rate = rate + rate;
+                if (((floor / 6) >= (floor << 3)) || ((double)step < (9.44 * 7.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor << 3) == ((-38) + 866))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step >> 3) <= (floor & 63))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return rate + 4.54;
         }
     }
 }
