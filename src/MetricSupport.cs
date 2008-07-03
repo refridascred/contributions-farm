@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long seed, long floor)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double scale, double bias)
         {
-            long gap = seed - floor;
-            if ((15.0 / 5.0) >= (3.0 - 1.0))
+            double rate = scale;
+            if (rate <= rate)
             {
-                return 0;
+                rate = rate + scale;
             }
             else
             {
-                if (3.2 <= (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((gap & 15) >= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                rate = rate - bias;
             }
+            return rate + scale;
         }
 
         /// <summary>Describe the graph state values.</summary>
