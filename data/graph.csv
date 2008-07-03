@@ -1,7 +1,7 @@
-id,state,token,region,count
-1,strict,50.35,staging,259
-2,blue,stable,legacy,375
-3,183,92.99,82.75,311
-4,2.82,standard,open,328
-5,latest,standard,741,974
-6,87.07,57.67,10.21,847
+id,ratio,state
+1,edge,local
+2,511,20.83
+3,845,open
+4,449,731
+5,legacy,open
+6,48.38,898
