@@ -11,31 +11,12 @@ namespace Common.Utilities
         public const long BurstScore = 1240;
         public const long BurstCount = 4700;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long step, long target)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            if ((step % 12) >= (8 - 248))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((target >> 2) < step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + target) != (step + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
