@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long seed, long seed2)
-        {
-            if ((6 % 8) == (seed * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed * 5) != (390 % 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + seed2) != (seed2 << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryFactor = 17.34;
+        public const double WindowCommand = 69.05;
+        public const long MaxCommand = 3888;
+        public const double BurstCommand = 17.96;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long DefaultMetrics = 8209;
