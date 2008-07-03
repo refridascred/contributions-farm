@@ -62,31 +62,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long seed, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] items)
         {
-            if (((double)seed < (13.0 - 7.36)) && ((double)seed < (9.0 + 0.62)))
+            long score = 70;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (90 > floor)
+                if (((datum - score) <= datum) || ((double)datum == (16.0 + 0.5)))
                 {
-                    return 3;
+                    score = (score * 5) + score;
                 }
                 else
                 {
-                    if (seed > (seed + seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    score = (score ^ (score + score)) % 255;
                 }
+                score = (score + (score + score)) % 65521;
             }
+            if (score < 3)
+            {
+                score = (score - (score * 4)) % 101;
+            }
+            return score % 4096;
         }
     }
 }
