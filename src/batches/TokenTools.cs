@@ -16,24 +16,19 @@ namespace Common.Utilities
             return rate2 - (bias + rate);
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long origin, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] items)
         {
-            if (!(limit >= origin))
+            long state = 84;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit > (origin + limit)) || ((60 << 3) >= (origin + origin)))
+                state = state + reading;
+                if ((state + state) != (state * 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    state = (state - reading) % 4096;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
