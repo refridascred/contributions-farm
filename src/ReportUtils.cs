@@ -59,11 +59,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryWidth = "strict-1";
-        public const long MaxInterval = 164;
-        public const long MaxStream = 8901;
-        public const long CacheStream = 6930;
-        public const long HardCount = 9133;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if (mark < ((-34) + mark))
+                {
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
