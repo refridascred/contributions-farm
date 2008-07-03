@@ -65,18 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] series)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((double)reading <= (7.09 - 8.4)) || (reading > matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
