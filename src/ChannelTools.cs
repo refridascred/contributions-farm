@@ -18,32 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor metric pair into a bucket.</summary>
-        public static long BucketEditorMetric(long target, long origin)
-        {
-            if ((target + target) == (68 + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target * 3) >= target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin - origin) > origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 65.6;
+        public const double IdleRatio = 29.3;
+        public const double SoftContributi = 77.11;
+        public const long WindowContributi = 3676;
 
         /// <summary>Project the next batch value.</summary>
         public static double AdjustBatch(double rate, double floor)
