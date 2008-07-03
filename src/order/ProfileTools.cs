@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long origin)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor - 728) == (long)i)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor + (anchor >> 5)) % 65521;
+                    if ((series[i] + series[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
