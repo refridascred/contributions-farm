@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleLevel = 97.28;
+        public const string DefaultContext = "strict-1";
+        public const string BurstFactor = "primary";
+        public const long MinInterval = 4641;
+        public const long WindowContext = 6434;
 
         /// <summary>Classify a already commits pair into a bucket.</summary>
         public static long RankAlreadyCommits(long floor, long seed)
