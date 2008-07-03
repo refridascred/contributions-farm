@@ -56,23 +56,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double bias, double span)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double mean = (13.0 * 17.0) / 4.0;
-            if (mean >= (mean / 8.0))
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (mean - mean)) + (double)(long)i;
-            }
-            return mean + span;
+            Idle,
+            Done,
+            New,
         }
     }
 }
