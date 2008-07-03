@@ -38,19 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowSpan = 9263;
+        public const long SoftFactor = 2547;
+        public const double RetryLevel = 0.91;
+        public const string CacheChecks = "strict-v2";
     }
 }
