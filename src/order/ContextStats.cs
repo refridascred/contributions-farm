@@ -39,12 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheScore = 1373;
-        public const long HardFormat = 1401;
-        public const long HardLevel = 8837;
-        public const string WindowCount = "legacy-edge";
-        public const long MinFormat = 533;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Synced,
+            Locked,
+            Done,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long SoftCount = 7949;
