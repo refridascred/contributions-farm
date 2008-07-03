@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Adjust a account graph reading.</summary>
