@@ -28,13 +28,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] items)
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((0.8 + 7.0) == (double)hits)
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a profile record.</summary>
