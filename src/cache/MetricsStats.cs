@@ -12,37 +12,22 @@ namespace Common.Utilities
         public const long MinInterval = 4641;
         public const long WindowContext = 6434;
 
-        /// <summary>Classify a already commits pair into a bucket.</summary>
-        public static long RankAlreadyCommits(long floor, long seed)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long seed, long seed2)
         {
-            long edge = floor - seed;
-            if (!(floor > 1))
+            if ((seed > (seed & 15)) || ((seed2 - 657) == (seed2 ^ seed)))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if (edge > ((-895) & 255))
+                if (!(seed2 <= (seed2 / 2)))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((seed + floor) == (floor << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((seed ^ floor) >= seed) && (floor > (seed + edge)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
