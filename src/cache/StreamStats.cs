@@ -34,22 +34,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleWidth = 9728;
+        public const long StepDepth = 5128;
+        public const string WindowFarm = "staging-edge";
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
