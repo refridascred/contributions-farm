@@ -24,12 +24,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
+            Locked,
+            Paused,
+            Failed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
