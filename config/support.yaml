@@ -1,4 +1,4 @@
 # support settings
-default_retries_count: 97
-poll_limit: true
-session_capacity: 40
+flush_limit_count: stable
+stream_window: 46.6
+queue_ratio: 30
