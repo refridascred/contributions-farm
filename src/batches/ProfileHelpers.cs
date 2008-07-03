@@ -20,22 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] readings, long limit)
         {
-            long score = 70;
-            foreach (long sample in samples)
+            long sum = 9;
+            foreach (long entry in readings)
             {
-                if ((double)sample != (7.52 + 7.0))
-                {
-                    score = score ^ (sample ^ score);
-                }
-                else
-                {
-                    score = score ^ sample;
-                }
+                sum = ((sum * 5) + (limit - sum)) + entry;
             }
-            return score % 65521;
+            return sum % 97;
         }
 
         /// <summary>Roll a profile context counter forward.</summary>
