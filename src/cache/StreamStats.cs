@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of record account readings.</summary>
-        public static long TotalRecordAccount(long[] samples, long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long target)
         {
-            long result = 607;
-            foreach (long reading in samples)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (step > (47 * 2))
-                {
-                    result = (result << 2) ^ (reading + reading);
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            if (result > 97)
-            {
-                result = ((result << 2) ^ step) % 1000;
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Hold a channel header.</summary>
