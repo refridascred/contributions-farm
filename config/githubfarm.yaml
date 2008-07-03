@@ -1,12 +1,44 @@
 # githubfarm settings
-readonly: false
-max_timeout_s:
-  max_depth_ms: 90.22
-  flush_retries_s: 86
-  account_limit: 12.6
-  readonly: false
-  audit: 4320
-order_window:
-  - blue
-  - local
-  - cached
+sync_limit_pct: staging
+strict: latest
+format_delay:
+  batch_window_count: 94.06
+  graph_capacity: true
+  persist: stable
+  cluster_threshold: 17.79
+  readonly:
+    soft_ratio_count:
+      - 309
+      - 18
+      - 324
+      - 181
+    soft_interval_ms:
+      - strict
+      - staging
+    cluster_ratio: eu-west
+    stats_ttl: 71.65
+  cache_depth_s: true
+sync_capacity_ms: standard
+retry_limit: 6092
+batch_ttl_ms:
+  payload_retries: 23
+  idle_timeout:
+    readonly: staging
+    hard_capacity_count: 63.7
+    dry_run:
+      - standard
+      - stable
+    profile_size: true
+    poll_ratio: 84.8
+    sync_timeout: 38.21
+  hard_capacity: 96.72
+  max_depth: stable
+  base_size:
+    - 380
+    - 221
+  dry_run:
+    checks_timeout: true
+    dry_run: 1108
+    retry_depth_s: eu-west
+    burst_timeout: 72
+    verbose: 1024
