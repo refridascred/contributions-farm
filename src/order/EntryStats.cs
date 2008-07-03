@@ -19,39 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long bound, long step)
-        {
-            if ((double)step > (19.0 - 15.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step * 5) <= (4 & 63))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound < (7.0 / 2.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound - bound) >= bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseScore = 5117;
+        public const string BurstSchema = "staging-1";
+        public const long MinSchema = 3919;
+        public const string SoftTimeout = "staging-edge";
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long RollGraph(long target)
