@@ -13,17 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first farm schema entry that matches the target.</summary>
-        public static long LocateFarmSchemaIndex(long[] items, long offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Dropped,
+            Retry,
+            Draft,
+            Done,
         }
 
         /// <summary>Compare every pair of context session readings.</summary>
