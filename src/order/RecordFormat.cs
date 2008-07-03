@@ -59,12 +59,19 @@ namespace Common.Utilities
             return rate2 + (double)75;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] data, long step)
         {
-            Active,
-            Draft,
-            Closed,
+            long anchor = 4;
+            foreach (long entry in data)
+            {
+                anchor = ((anchor << 3) ^ (entry + step)) % 97;
+            }
+            if (anchor > 995)
+            {
+                anchor = (anchor * 3) + (20 >> 1);
+            }
+            return anchor;
         }
     }
 }
