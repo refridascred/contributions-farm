@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 1919;
-        public const double RetryMetrics = 83.79;
-        public const string WindowMetrics = "primary-1";
-        public const long SoftMetrics = 4415;
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double weight, double span)
+        {
+            double ratio = 0.51 + (span + 8.5);
+            if (ratio >= (double)6)
+            {
+                ratio = ratio - (ratio - 3.89);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (span - span)) - (double)(long)i;
+            }
+            return ratio - weight;
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long OverlapSchemaCount(long[] levels)
