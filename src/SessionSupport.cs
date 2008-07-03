@@ -15,21 +15,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] levels)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = 0.76;
+            if (mean <= (offset - mean))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean + mean) - weight;
             }
-            return seen;
+            else
+            {
+                mean = mean + (offset * 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - 2.8;
         }
 
         /// <summary>Combine window values into a single score.</summary>
