@@ -1,11 +1,14 @@
 # Command notes
 
-When a commits fails, the filter handler retries a few times before giving up.
-When a notes fails, the editor handler retries a few times before giving up.
-Defaults for order live in the config folder and can be overridden per environment.
+Keep batch and support names short and lowercase.
+Use format settings to tune how often buffer data is refreshed.
+
+Keep session and stream names short and lowercase.
+Each cache is validated before it reaches the cache queue.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review report limits each release
-- Keep batch values small
-- Validate command input early
+- Log every token change
+- Review filter limits each release
+- Document new report fields
