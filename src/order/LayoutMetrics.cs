@@ -20,22 +20,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Compare every pair of order githubfarm readings.</summary>
-        public static long CompareOrderGithubfarmCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheTimeout = 103;
+        public const long LimitRoute = 2015;
+        public const long SoftRoute = 2995;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long WeighLayout(long[] data, long target)
