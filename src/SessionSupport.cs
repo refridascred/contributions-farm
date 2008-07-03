@@ -32,16 +32,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] levels, long offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long total = 146;
-            foreach (long item in levels)
-            {
-                total = ((total + total) ^ item) - offset;
-                total = ((total * 3) + (2 + 2)) % 4096;
-            }
-            return total % 4096;
+            Idle,
+            Dropped,
+            Pending,
+            New,
+            Failed,
         }
     }
 }
