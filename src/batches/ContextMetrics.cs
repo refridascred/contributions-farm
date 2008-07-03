@@ -52,12 +52,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long seed, long limit)
         {
-            Draft,
-            Stale,
-            Pending,
+            long offset = seed + limit;
+            if (((15.0 + 0.6) >= (double)offset) && ((double)limit >= (double)limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((1.9 / 7.0) == (double)offset) && (seed <= (limit ^ offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit / 3) < offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token mode values.</summary>
