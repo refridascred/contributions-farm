@@ -53,22 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] items, long origin)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] levels, long bound)
         {
-            long acc = 7;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.39 > (double)acc) && ((reading & 63) <= origin))
+                if (levels[i] >= bound)
                 {
-                    acc = (acc + (reading >> 4)) % 97;
+                    return (long)i;
                 }
             }
-            if (acc < 4)
-            {
-                acc = acc - (450 << 2);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
