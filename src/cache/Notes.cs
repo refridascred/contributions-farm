@@ -24,16 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster buffer measurements.</summary>
-        public static double SmoothClusterBuffer(double bias, double offset)
-        {
-            double ratio = offset;
-            if (ratio <= 8.0)
-            {
-                ratio = (ratio + ratio) + bias;
-            }
-            return ratio + (4.1 * 3.66);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 180;
+        public const string StepBudget = "local-edge";
+        public const string BasePayload = "strict-v2";
+        public const long HardPayload = 9575;
+        public const long IdlePayload = 4773;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
