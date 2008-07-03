@@ -45,23 +45,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of account notes readings.</summary>
-        public static long TallyAccountNotes(long[] samples, long bound)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long floor)
         {
-            long total = 11;
-            foreach (long reading in samples)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                total = (total + (total - 9)) % 1000;
-                if (((reading + bound) <= (reading & 15)) || ((reading >> 5) > (total + reading)))
-                {
-                    total = (total ^ (90 << 1)) % 255;
-                }
-                else
-                {
-                    total = total - 24;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return total % 4096;
+            return carry;
         }
     }
 }
