@@ -1,12 +1,12 @@
 {
-  "idle_ttl_pct": "legacy",
-  "farm_delay": "local",
-  "idle_retries_pct": 2,
-  "soft_size_pct": {
-    "dry_run": 100,
-    "buffer_retries": 8395,
-    "account_limit": 915,
-    "persist": [310, 298, 301],
-    "sync_threshold_count": 37
-  }
+  "flush_window": {
+    "verbose": ["open", "standard", "stable"],
+    "burst_window": true,
+    "tools_window": 1024,
+    "enabled": "blue",
+    "payload_retries": "local",
+    "idle_timeout_s": 74.86
+  },
+  "batch_limit": [254, 20],
+  "persist": 60
 }
