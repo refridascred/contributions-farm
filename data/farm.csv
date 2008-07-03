@@ -1,6 +1,9 @@
-id,level,count,state
-1,901,617,26.36
-2,77.29,172,green
-3,249,primary,staging
-4,legacy,341,291
-5,23,strict,eu-west
+id,count
+1,89.03
+2,edge
+3,690
+4,legacy
+5,14.52
+6,71.95
+7,green
+8,staging
