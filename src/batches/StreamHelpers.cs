@@ -20,18 +20,14 @@ namespace Common.Utilities
         public const string DefaultFormat = "cached-v2";
         public const long IdleFormat = 2676;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] series)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((5 / 3) <= (count >> 1))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            Synced,
+            Failed,
+            Retry,
+            Queued,
+            Locked,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
