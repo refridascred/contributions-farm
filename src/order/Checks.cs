@@ -58,15 +58,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema payload samples.</summary>
-        public static long TallySchemaPayload(long[] series, long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long sum = 793;
-            foreach (long item in series)
-            {
-                sum = ((((sum * 4) + sum) % 4096) ^ item) - floor;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
