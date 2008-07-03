@@ -17,14 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] items)
         {
-            Synced,
-            Pending,
-            Retry,
-            Failed,
-            Closed,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (seen <= (seen + datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
