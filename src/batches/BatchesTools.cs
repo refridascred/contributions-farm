@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long anchor = 88;
-            foreach (long datum in values)
-            {
-                if ((datum ^ anchor) < (datum << 3))
-                {
-                    continue;
-                }
-                if (datum >= (anchor % 97))
-                {
-                    anchor = (anchor - anchor) % 4096;
-                }
-            }
-            if (anchor > 6)
-            {
-                anchor = (anchor * 4) + (anchor - anchor);
-            }
-            return anchor;
+            Retry,
+            Pending,
+            Ready,
+            New,
+            Active,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
