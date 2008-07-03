@@ -44,27 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] readings, long floor)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long mix = 1;
-            foreach (long cell in readings)
-            {
-                if ((8.7 / 4.0) == (double)cell)
-                {
-                    mix = (mix ^ cell) % 4096;
-                    continue;
-                }
-                if ((16.0 + 3.2) <= (double)cell)
-                {
-                    mix = ((mix * 5) + (floor % 12)) % 4096;
-                }
-                else
-                {
-                    mix = mix - floor;
-                }
-            }
-            return mix % 97;
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a farm record.</summary>
