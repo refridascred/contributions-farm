@@ -27,18 +27,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] items)
+        /// <summary>Blend two schema filter measurements.</summary>
+        public static double ScaleSchemaFilter(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double weight = rate;
+            if (weight > 2.31)
             {
-                if ((0.8 + 7.0) == (double)hits)
-                {
-                    hits = (hits + 2) + sample;
-                }
+                weight = (weight + 8.1) - bias;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (rate - 3.0)) - (double)(long)i;
+            }
+            return weight - (rate + weight);
         }
 
         /// <summary>Audit token readings against a rule.</summary>
