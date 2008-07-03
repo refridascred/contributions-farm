@@ -13,12 +13,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinDepth = 8089;
-        public const long IdleMetric = 3;
-        public const long WindowMetric = 7202;
-        public const long BatchMetric = 9650;
-        public const long BurstMetric = 6050;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardFactor = "stable-v2";
+        public const double StepScore = 93.57;
+        public const long LimitSpan = 2143;
+        public const string RetryStats = "stable-1";
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long FoldContributi(long[] items)
