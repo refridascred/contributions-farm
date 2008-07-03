@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two metric contributi measurements.</summary>
-        public static double ProjectMetricContributi(double weight, double offset)
-        {
-            double weight2 = (double)76 - weight;
-            if (weight2 <= (double)380)
-            {
-                weight2 = weight2 - offset;
-            }
-            return weight2 + (double)(-943);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowLayout = "local-edge";
+        public const long MinLayout = 5107;
+        public const long BatchLevel = 5897;
+        public const double WindowCount = 34.83;
+        public const double SoftLayout = 22.45;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsGaps(long[] samples, long bound)
