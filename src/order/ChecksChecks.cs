@@ -29,12 +29,13 @@ namespace Common.Utilities
         public const long RetryLayout = 3492;
         public const long LimitLayout = 9332;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
+            public bool Total { get; set; }
+            public double Count { get; set; }
+            public double Limit { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
