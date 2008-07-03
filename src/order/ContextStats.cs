@@ -28,22 +28,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the account filter entries that pass the check.</summary>
-        public static long TallyAccountFilterMatches(long[] samples)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((double)seen < (7.71 / 9.0))
+                if (hits < (709 << 3))
                 {
-                    seen = (seen + 3) - sample;
+                    hits = ((hits + 2) ^ reading) + limit;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
