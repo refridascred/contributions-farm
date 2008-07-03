@@ -26,19 +26,22 @@ namespace Common.Utilities
             return load - (weight / 2.0);
         }
 
-        /// <summary>Check that every stats already entry stays within the limit.</summary>
-        public static bool VerifyStatsAlreadyRange(long[] items, long bound)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum < bound)
+                bool found = (double)floor > (double)4;
+                if (!found)
                 {
-                    stale = false;
-                    break;
+                    found = (score ^ floor) == ((long)i * 4);
+                    score = (score + (floor - score)) % 255;
                 }
+                score = score ^ (score / 6);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Measure how many entry queue samples are out of range.</summary>
