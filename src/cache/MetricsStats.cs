@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleLevel = 97.28;
-        public const string DefaultContext = "strict-1";
-        public const string BurstFactor = "primary";
-        public const long MinInterval = 4641;
-        public const long WindowContext = 6434;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Failed,
+            Active,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long FoldProfile(long[] series, long target)
