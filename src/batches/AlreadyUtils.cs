@@ -32,26 +32,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] items, long floor)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long total = 611;
-            foreach (long cell in items)
-            {
-                if (((total << 2) > floor) && ((double)floor > (9.6 / 5.0)))
-                {
-                    total = (total - (cell - floor)) % 101;
-                }
-                if ((double)cell >= (double)floor)
-                {
-                    total = ((total * 4) + (45 % 97)) % 4096;
-                }
-                else
-                {
-                    total = ((total * 2) + ((long)items.Length + total)) % 255;
-                }
-            }
-            return total;
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
