@@ -40,32 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long step, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] values)
         {
-            long slot = step + floor;
-            if ((step * 5) < (step ^ step))
+            long result = 9;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (218 > (slot / 8))
+                result = ((result * 2) + (value << 1)) % 101;
+                if (((result << 1) <= value) || ((double)(long)values.Length != (double)value))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (slot > (slot % 10))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = (result << 2) ^ 2;
                 }
             }
+            return result;
         }
     }
 }
