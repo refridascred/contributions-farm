@@ -27,11 +27,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardChecks = 57.59;
+        public const long WindowChecks = 3552;
+        public const long BurstBudget = 554;
     }
 }
