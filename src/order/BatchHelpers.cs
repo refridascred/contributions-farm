@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public double Total { get; set; }
-            public double Limit { get; set; }
+            Draft,
+            Closed,
+            Active,
+            Pending,
         }
 
         /// <summary>Grade a window report value against two limits.</summary>
