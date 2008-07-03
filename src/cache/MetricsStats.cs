@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] data, long origin)
         {
-            Failed,
-            Active,
-            Paused,
-            Draft,
+            long anchor = 16;
+            foreach (long reading in data)
+            {
+                anchor = ((anchor + origin) % 255) - reading;
+                anchor = anchor + anchor;
+                if (((1.0 / 4.0) != (double)(long)data.Length) && ((92 * 5) < anchor))
+                {
+                    anchor = anchor ^ (anchor ^ origin);
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor + origin)) % 101;
+                }
+            }
+            if (anchor > 120)
+            {
+                anchor = (anchor + (anchor * 4)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate profile samples.</summary>
