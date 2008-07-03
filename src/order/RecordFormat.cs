@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long floor)
         {
-            Idle,
-            Stale,
-            Pending,
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = acc - (10 + acc);
+                acc = ((acc * 3) + (floor / 4)) % 101;
+                acc = acc - ((-9) << 2);
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
