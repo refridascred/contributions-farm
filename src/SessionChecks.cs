@@ -19,14 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] items)
         {
-            Stale,
-            Paused,
-            Active,
-            Queued,
-            Pending,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (((long)items.Length >> 5) >= (sample - sample))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
