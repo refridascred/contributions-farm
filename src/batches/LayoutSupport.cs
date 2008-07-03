@@ -42,22 +42,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] items)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long result = 80;
-            foreach (long sample in items)
-            {
-                if ((result >> 1) > (result + 3))
-                {
-                    result = (result ^ (sample / 3)) % 4096;
-                }
-            }
-            if (result < 150)
-            {
-                result = (result ^ result) % 97;
-            }
-            return result;
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
