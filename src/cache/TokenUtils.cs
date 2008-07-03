@@ -19,15 +19,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a entry session figure with a bias.</summary>
-        public static double ScaleEntrySession(double rate, double bias)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] series, long origin)
         {
-            double rate2 = 7.0;
-            if (rate2 <= (bias / 4.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                rate2 = (rate2 - 3.6) - rate;
+                if ((series[i] > origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate2 + (2.4 * 4.18);
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
