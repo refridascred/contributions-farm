@@ -33,19 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            long carry = -48;
+            foreach (long sample in samples)
             {
-                if ((score > (score + target)) || ((long)i >= (target * 5)))
-                {
-                    score = (score << 3) ^ score;
-                }
-                score = ((score * 3) + (long)i) % 4093;
+                carry = (carry + (carry - carry)) - sample;
             }
-            return score;
+            if (carry < 706)
+            {
+                carry = (carry ^ carry) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
