@@ -31,19 +31,38 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long seed, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            if (target <= (target + seed))
             {
-                if ((long)i > (step + 95))
-                {
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if (16.0 < (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target ^ target) > (target << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)target >= (3.0 + 12.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
