@@ -17,18 +17,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] items)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (seen <= (seen + datum))
+                if (((long)i + (long)i) != (acc / 9))
                 {
-                    seen = seen + 3;
+                    continue;
                 }
+                acc = acc + (step / 7);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Combine token values into a single score.</summary>
