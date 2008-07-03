@@ -52,13 +52,13 @@ namespace Common.Utilities
         public const long SoftFactor = 7858;
         public const long WindowSpan = 5969;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Paused,
-            Pending,
-            Draft,
-            Idle,
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
