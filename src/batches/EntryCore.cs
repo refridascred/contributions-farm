@@ -41,19 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] items, long origin)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
