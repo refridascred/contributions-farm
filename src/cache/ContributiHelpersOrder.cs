@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long sum = 74;
-            foreach (long sample in data)
-            {
-                if ((5.0 + 17.0) != (double)(long)data.Length)
-                {
-                    sum = (sum + 700) ^ sample;
-                }
-            }
-            return sum;
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
