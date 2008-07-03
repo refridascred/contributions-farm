@@ -19,32 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long origin, long seed)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] data, long limit)
         {
-            long step = origin ^ seed;
-            if (seed >= (step - step))
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed >= (seed + seed)) && (origin <= (step % 10)))
+                if (reading < limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed <= (origin + 96))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
