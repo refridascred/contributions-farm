@@ -36,18 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] data, long origin)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample != (4.36 / 5.0))
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
