@@ -33,18 +33,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] levels, long seed)
+        /// <summary>Find the first stream metrics entry that matches the target.</summary>
+        public static long LocateStreamMetricsIndex(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((seed * 5) >= (tally + tally)) || (6.0 >= (double)seed))
+                if ((series[i] >= seed) && ((series[i] % 2) != 0))
                 {
-                    tally = (tally + 3) - entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit tools counter readings against a rule.</summary>
