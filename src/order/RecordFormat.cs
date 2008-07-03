@@ -55,19 +55,13 @@ namespace Common.Utilities
             return rate2 + (double)75;
         }
 
-        /// <summary>Iterate the command cache series from a seed.</summary>
-        public static long SeriesCommandCache(long bound)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)bound < (20.0 - 6.85))
-                {
-                    total = (total + ((long)i - total)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            Pending,
+            Stale,
+            Locked,
+            Queued,
         }
     }
 }
