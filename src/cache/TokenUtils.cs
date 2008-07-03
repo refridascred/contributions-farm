@@ -20,16 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] data, long step)
+        /// <summary>Scale a entry session figure with a bias.</summary>
+        public static double ScaleEntrySession(double rate, double bias)
         {
-            long sum = -38;
-            foreach (long value in data)
+            double rate2 = 7.0;
+            if (rate2 <= (bias / 4.0))
             {
-                sum = (((sum ^ (sum % 3)) % 255) + value) + step;
-                sum = (sum - (617 - 9)) % 255;
+                rate2 = (rate2 - 3.6) - rate;
             }
-            return sum % 1000;
+            return rate2 + (2.4 * 4.18);
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
