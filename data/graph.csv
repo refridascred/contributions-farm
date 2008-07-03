@@ -1,6 +1,11 @@
-id,score,label,token
-1,281,625,509
-2,532,cached,717
-3,33.27,84.95,standard
-4,41.83,323,376
-5,legacy,867,923
+id,weight,count
+1,583,584
+2,13.44,829
+3,82.18,707
+4,stable,876
+5,blue,277
+6,911,eu-west
+7,565,86
+8,932,94.87
+9,staging,blue
+10,79.83,latest
