@@ -31,32 +31,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long step, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] series, long step)
         {
-            long step2 = step ^ target;
-            if ((step2 << 2) > step2)
+            long state = -4;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target <= step) || ((step2 / 5) <= (step & 127)))
+                state = state ^ (step % 16);
+                state = state + (entry + (long)series.Length);
+                if ((step + step) <= step)
                 {
-                    return 4;
+                    state = ((state << 3) ^ ((long)series.Length >> 2)) % 101;
                 }
                 else
                 {
-                    if ((step << 3) == (step2 - step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = state ^ (9 ^ state);
                 }
             }
+            if (state < 624)
+            {
+                state = (state ^ (855 << 3)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
