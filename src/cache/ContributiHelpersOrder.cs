@@ -42,26 +42,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] values, long seed)
+        /// <summary>Find the first tools channel entry that matches the target.</summary>
+        public static long LocateToolsChannelIndex(long[] readings, long offset)
         {
-            long mark = 936;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (readings[i] < offset)
                 {
-                    mark = ((mark ^ mark) % 1000) ^ (long)i;
-                }
-                if (((7 - value) < (mark + seed)) && ((double)seed <= 18.0))
-                {
-                    mark = (mark + (seed + value)) % 65521;
-                }
-                if ((seed & 7) == (2 + mark))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
