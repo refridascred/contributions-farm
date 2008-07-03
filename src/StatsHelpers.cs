@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitInterval = 9175;
+        public const long BurstMetric = 9233;
+        public const double LimitMetric = 45.94;
+        public const double IdleCount = 12.82;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
