@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepLevel = 10.8;
-        public const double SoftFactor = 28.99;
-        public const long HardRoute = 9299;
-        public const long WindowCount = 8280;
-        public const long BurstBudget = 3768;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((anchor - 728) == (long)i)
+                {
+                    anchor = (anchor + (anchor >> 5)) % 65521;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long CombineQueue(long[] readings)
