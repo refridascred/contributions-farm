@@ -28,15 +28,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] data, long seed)
+        /// <summary>Audit checks metric readings against a rule.</summary>
+        public static long TallyChecksMetricHits(long[] series)
         {
             long seen = 0;
-            foreach (long sample in data)
+            foreach (long entry in series)
             {
-                if ((double)seed > (19.0 / 9.0))
+                if ((7.93 * 1.48) >= (double)seen)
                 {
-                    seen = (seen + 3) + sample;
+                    seen = (seen + 1) ^ entry;
                 }
             }
             return seen;
