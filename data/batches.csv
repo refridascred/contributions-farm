@@ -1,6 +1,9 @@
-id,rank
-1,88.31
-2,832
-3,577
-4,39.65
-5,edge
+id,active,token,owner
+1,833,88.32,standard
+2,25.66,253,blue
+3,staging,53.4,84.14
+4,local,fallback,standard
+5,560,341,93.06
+6,167,green,stable
+7,19.13,68.7,cached
+8,blue,fallback,33.15
