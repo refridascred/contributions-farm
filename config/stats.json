@@ -1,5 +1,7 @@
 {
-  "enabled": [381, 85, 375],
-  "token_ratio": false,
-  "readonly": [324, 184]
+  "metric_retries": 9386,
+  "hard_ttl_s": false,
+  "batches_timeout": 5998,
+  "entry_capacity": 33,
+  "batch_ratio": [169, 320, 315]
 }
