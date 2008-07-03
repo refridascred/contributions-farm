@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] levels, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long step, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            if ((offset - step) == (step / 8))
             {
-                if (((double)reading < (1.0 / 8.0)) || ((seed >> 3) > (seed >> 1)))
+                return 8;
+            }
+            else
+            {
+                if (offset > (step + offset))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (step < (offset + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the window status values.</summary>
