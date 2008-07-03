@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the order commits entries that pass the check.</summary>
-        public static long TallyOrderCommitsMatches(long[] readings)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((tally & 7) > cell)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Digest a series of entry channel entries.</summary>
