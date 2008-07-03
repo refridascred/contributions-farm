@@ -34,36 +34,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of tools graph readings.</summary>
-        public static long WeighToolsGraph(long[] samples, long bound)
-        {
-            long sum = 769;
-            foreach (long sample in samples)
-            {
-                sum = ((sum << 2) ^ (bound * 3)) % 4096;
-                if (!((bound << 3) >= (bound >> 1)))
-                {
-                    sum = (sum << 2) ^ (bound + 4);
-                }
-                else
-                {
-                    sum = (sum - (4 - sum)) % 101;
-                }
-                if ((sample % 16) < (bound + 830))
-                {
-                    sum = sum ^ bound;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sample + bound)) % 97;
-                }
-            }
-            if (sum < (-83))
-            {
-                sum = (sum << 2) ^ bound;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 3845;
+        public const long MinBudget = 9155;
+        public const long MaxScore = 2649;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long OverlapStatsCount(long[] samples)
