@@ -28,17 +28,17 @@ namespace Common.Utilities
         public const long IdleFormat = 2676;
 
         /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] samples, long seed)
+        public static long AuditRecordMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((seed - sample) < (2 / 2))
+                if ((5 / 3) <= (count >> 1))
                 {
-                    seen = seen + 2;
+                    count = (count + 2) ^ value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
