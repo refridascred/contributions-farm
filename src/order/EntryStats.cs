@@ -49,26 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] values, long limit)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long anchor = 79;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) == (anchor + anchor))
-                {
-                    anchor = (((anchor << 2) ^ 3) % 255) - limit;
-                }
-                else
-                {
-                    anchor = (anchor ^ ((-944) + anchor)) % 4096;
-                }
-            }
-            if (anchor > 49)
-            {
-                anchor = (anchor + (26 % 64)) % 97;
-            }
-            return anchor;
+            Active,
+            Ready,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
