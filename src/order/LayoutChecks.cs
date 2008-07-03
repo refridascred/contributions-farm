@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double ratio, double offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] data, long step)
         {
-            double gain = (double)942 - (offset / 7.0);
-            if (gain < ratio)
+            bool valid = true;
+            foreach (long value in data)
             {
-                gain = gain - (offset * 9.0);
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (2.0 + offset)) + (double)(long)i;
-            }
-            return gain - (offset / 8.0);
+            return valid;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
