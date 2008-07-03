@@ -19,31 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a window report value against two limits.</summary>
-        public static long RankWindowReport(long limit, long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            if ((limit <= (limit + limit)) && ((double)limit == (2.5 * 14.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((7.2 + 2.24) > (double)bound) || (bound >= (limit / 6)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound * 5) > (bound % 64))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
