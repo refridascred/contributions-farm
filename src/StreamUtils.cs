@@ -74,11 +74,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double rate, double floor)
+        /// <summary>Measure how many route report samples are out of range.</summary>
+        public static long MeasureRouteReportOutliers(long[] values, long offset)
         {
-            double bias = rate - (floor - rate);
-            return bias + rate;
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits / 2) <= (89 ^ value))
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
