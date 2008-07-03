@@ -36,19 +36,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] readings, long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long target, long target2)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            if (((target2 - (-336)) != (target - 97)) || ((double)target < (7.71 / 7.0)))
             {
-                if (datum != floor)
+                return 1;
+            }
+            else
+            {
+                if ((double)target2 >= 2.0)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
