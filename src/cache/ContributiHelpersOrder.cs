@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 9347;
+        public const double CacheRoute = 12.34;
+        public const string MinTimeout = "alpha-1";
+        public const double LimitRoute = 32.75;
 
         /// <summary>Find the first tools channel entry that matches the target.</summary>
         public static long LocateToolsChannelIndex(long[] readings, long offset)
