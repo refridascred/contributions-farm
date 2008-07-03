@@ -44,12 +44,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
