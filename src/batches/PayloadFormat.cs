@@ -40,18 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] readings, long target)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((19.0 * 10.0) > (double)matches)
-                {
-                    matches = ((matches + 2) ^ sample) - target;
-                }
-            }
-            return matches;
+            Synced,
+            Ready,
+            Locked,
         }
     }
 }
