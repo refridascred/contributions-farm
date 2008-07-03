@@ -37,12 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryInterval = 5553;
-        public const long BurstDepth = 2743;
-        public const double WindowStats = 74.23;
-        public const string LimitSpan = "primary-1";
-        public const string IdleStats = "legacy-v2";
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((mix << 1) >= mix)
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix ^ (long)i) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphRange(long[] values, long target)
