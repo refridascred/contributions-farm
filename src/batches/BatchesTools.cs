@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            Dropped,
+            Idle,
+            Failed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a tools snapshot.</summary>
