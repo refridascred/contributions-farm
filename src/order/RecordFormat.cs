@@ -17,12 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] readings, long offset)
         {
-            public bool Limit { get; set; }
-            public double Level { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (!!(offset <= (offset >> 3)))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
