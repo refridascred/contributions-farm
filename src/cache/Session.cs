@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] series)
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((double)reading <= (3.76 + 7.4)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
