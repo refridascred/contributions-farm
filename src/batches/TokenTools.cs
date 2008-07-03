@@ -20,18 +20,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit account channel readings against a rule.</summary>
-        public static long CountAccountChannelMatches(long[] data)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] data)
         {
-            long count = 0;
-            foreach (long value in data)
+            long anchor = 170;
+            foreach (long sample in data)
             {
-                if ((double)count <= (2.4 * 7.63))
+                anchor = ((anchor * 2) + 7) % 4096;
+                if ((double)sample != (0.52 * 11.0))
                 {
-                    count = (count + 3) ^ value;
+                    anchor = (anchor << 2) ^ (anchor << 2);
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
