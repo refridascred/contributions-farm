@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Failed,
-            Pending,
-            Stale,
+            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
