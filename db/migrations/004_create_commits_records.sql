@@ -1,14 +1,14 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    label TEXT,
-    created_at TIMESTAMP,
+    ratio REAL,
+    score REAL NOT NULL DEFAULT 0,
     weight REAL,
-    state TEXT NOT NULL DEFAULT 'new'
+    label TEXT,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
+CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
 
-INSERT INTO commits_records (label, weight, state) VALUES ('latest', 0.31, 'strict');
-INSERT INTO commits_records (label, weight, state) VALUES ('green', 22.7, 'eu-west');
-INSERT INTO commits_records (label, weight, state) VALUES ('legacy', 65.18, 'stable');
+INSERT INTO commits_records (ratio, score, weight, label, rank) VALUES (79.61, 96.99, 84.25, 'cached', 1);
+INSERT INTO commits_records (ratio, score, weight, label, rank) VALUES (43.52, 11.04, 91.8, 'standard', 56);
