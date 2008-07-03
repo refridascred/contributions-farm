@@ -1,12 +1,14 @@
 # Command notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-Keep queue and profile names short and lowercase.
-A githubfarm that stays idle for too long is moved to the layout list.
+When a githubfarm fails, the buffer handler retries a few times before giving up.
+When a checks fails, the entry handler retries a few times before giving up.
+
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Keep schema and githubfarm names short and lowercase.
+The batch report groups every order by filter.
 
 ## Guidelines
 
-- Validate farm input early
-- Log every filter change
-- Prefer token defaults
-- Review graph limits each release
+- Review buffer limits each release
+- Keep route values small
+- Log every batches change
