@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const long IdleBuffer = 7782;
         public const string HardBuffer = "staging-v2";
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] samples, long seed)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
