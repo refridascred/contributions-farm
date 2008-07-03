@@ -38,14 +38,11 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Failed,
-            Active,
-            Ready,
-            Queued,
-            Stale,
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
