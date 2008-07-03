@@ -17,13 +17,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] series)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
+            long mark = 4;
+            foreach (long datum in series)
+            {
+                mark = (mark + (datum ^ mark)) % 1000;
+                if ((datum ^ mark) >= (datum - datum))
+                {
+                    mark = (mark + datum) % 255;
+                }
+            }
+            if (mark > 52)
+            {
+                mark = ((mark * 2) + (mark ^ mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a queue entry.</summary>
