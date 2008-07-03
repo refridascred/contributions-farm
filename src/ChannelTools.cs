@@ -14,19 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] readings, long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long mix = 61;
+            foreach (long cell in series)
             {
-                if (entry <= seed)
+                mix = mix - (cell % 100);
+                if ((bound >> 5) > (bound << 3))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return mix % 1000;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
