@@ -5,31 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long target, long seed)
         {
-            long sum = 1;
-            foreach (long sample in values)
+            long prev = target - seed;
+            if ((((-71) % 60) != (prev / 6)) && ((target & 3) >= 85))
             {
-                sum = (sum + sample) % 1000;
-                for (int i = 0; i < 7; i++)
+                return 6;
+            }
+            else
+            {
+                if ((target + target) > (prev + seed))
                 {
-                    sum = ((sum ^ (519 ^ sum)) % 1000) + (long)i;
-                }
-                if ((sample % 3) >= (sample << 1))
-                {
-                    sum = (sum + (sum - sum)) % 97;
+                    return 4;
                 }
                 else
                 {
-                    sum = ((sum * 5) + (330 ^ sum)) % 101;
+                    if (((prev / 3) == (target + 20)) && ((target - target) < (prev + prev)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (sum < 332)
-            {
-                sum = (sum << 3) ^ (919 - 71);
-            }
-            return sum % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
