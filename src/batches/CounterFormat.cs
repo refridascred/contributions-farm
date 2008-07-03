@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Validate account stats readings against a bound.</summary>
+        public static bool VerifyAccountStatsBounds(long[] items, long target)
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
