@@ -70,18 +70,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] series, long seed)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            long count = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed - seed) < (seed << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 1) ^ value;
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
