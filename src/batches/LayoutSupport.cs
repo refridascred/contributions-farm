@@ -35,19 +35,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] readings, long seed)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long limit, long seed)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            if ((double)limit < 3.0)
             {
-                if (datum < seed)
+                return 1;
+            }
+            else
+            {
+                if ((limit + limit) > (seed + limit))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
