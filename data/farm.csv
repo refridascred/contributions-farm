@@ -1,6 +1,6 @@
-id,ratio,weight,score,state
-1,969,92.12,95.51,8.73
-2,40.76,48.55,21.77,22.24
-3,green,884,33.11,84
-4,staging,600,4.94,85.27
-5,51.48,standard,543,75
+id,count,score
+1,legacy,107
+2,891,2
+3,eu-west,local
+4,cached,31.25
+5,40.17,55.77
