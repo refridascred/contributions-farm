@@ -53,18 +53,12 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] values)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)hits <= (9.79 + 5.3))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Draft,
+            Locked,
+            Closed,
         }
     }
 }
