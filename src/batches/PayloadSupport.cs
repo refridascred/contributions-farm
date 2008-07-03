@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((9.0 - 0.2) >= (double)entry)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
