@@ -38,14 +38,25 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long limit, long bound)
         {
-            Ready,
-            Pending,
-            Done,
-            Paused,
-            Failed,
+            long diff = limit ^ bound;
+            if (diff < (diff + bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)diff > (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
