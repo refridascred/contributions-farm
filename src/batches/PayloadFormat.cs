@@ -29,16 +29,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] levels, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            long sum = 758;
+            foreach (long sample in levels)
             {
-                mix = ((mix << 3) ^ (mix << 3)) % 65521;
-                mix = ((mix * 4) + (long)i) % 101;
+                if ((bound + 65) <= (sample >> 5))
+                {
+                    sum = ((sum << 3) ^ 323) % 255;
+                }
             }
-            return mix;
+            return sum % 65521;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
