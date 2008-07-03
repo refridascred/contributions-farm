@@ -20,16 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] readings, long limit)
-        {
-            long sum = 9;
-            foreach (long entry in readings)
-            {
-                sum = ((sum * 5) + (limit - sum)) + entry;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleRecord = 53.49;
+        public const long LimitRecord = 2118;
+        public const string DefaultInterval = "latest-edge";
+        public const long HardCount = 9608;
 
         /// <summary>Roll a profile context counter forward.</summary>
         public static long StepProfileContext(long step)
