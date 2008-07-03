@@ -28,19 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate entry route readings against a bound.</summary>
-        public static bool CheckEntryRouteBounds(long[] values, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (sample < step)
+                if (value <= (74 + value))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
