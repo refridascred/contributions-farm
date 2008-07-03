@@ -22,16 +22,22 @@ namespace Common.Utilities
         public const long StepSize = 412;
         public const long StepSession = 2204;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Audit buffer session readings against a rule.</summary>
+        public static long CountBufferSessionMatches(long[] readings)
         {
-            long mark = 32;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                mark = mark - sample;
-                mark = ((mark * 3) + sample) % 4096;
+                if ((21 + 9) <= (matches << 3))
+                {
+                    matches = (matches + 3) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
