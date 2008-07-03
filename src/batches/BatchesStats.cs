@@ -20,10 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 1676;
-        public const long DefaultFarm = 1959;
-        public const long HardDepth = 8436;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Failed,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LookupChecksIndex(long[] data, long origin)
