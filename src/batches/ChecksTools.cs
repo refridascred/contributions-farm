@@ -44,17 +44,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Measure how many entry queue samples are out of range.</summary>
+        public static long MeasureEntryQueueGaps(long[] readings, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                mark = (mark + mark) % 65521;
-                mark = (mark << 3) ^ ((long)i * 2);
-                mark = ((mark * 5) + (long)i) % 101;
+                if (((-613) % 60) != (matches - seed))
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
