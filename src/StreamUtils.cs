@@ -57,21 +57,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count editor channel pairs that satisfy a relation.</summary>
-        public static long MatchEditorChannelCount(long[] values)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the stats level values.</summary>
