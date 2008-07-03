@@ -53,21 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((samples[i] + samples[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 2) ^ (result ^ result)) - (long)i2;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the notes phase values.</summary>
