@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] series, long target)
+        /// <summary>Locate a already batch reading by value.</summary>
+        public static long LookupAlreadyBatchIndex(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > target)
+                if (values[i] <= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the token level values.</summary>
