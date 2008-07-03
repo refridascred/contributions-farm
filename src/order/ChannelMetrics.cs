@@ -22,20 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] levels, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] series, long offset)
         {
-            long sum = 23;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long entry in series)
             {
-                sum = sum ^ (cell >> 1);
-                sum = sum ^ (cell / 7);
+                if (entry > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (sum < 6)
-            {
-                sum = ((sum * 3) + (sum + limit)) % 65521;
-            }
-            return sum % 65521;
+            return found;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
