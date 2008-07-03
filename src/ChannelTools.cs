@@ -14,24 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long seed, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] readings, long seed)
         {
-            if (bound >= (bound + seed))
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((21 << 3) >= bound)
+                if (entry <= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Fold a list of cache route readings.</summary>
