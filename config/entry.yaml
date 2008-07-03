@@ -1,17 +1,8 @@
 # entry settings
-batch_ttl_pct:
-  soft_window:
-    default_size_count: false
-    report_depth: true
-    readonly: true
-    farm_depth:
-      - edge
-      - staging
-    commits_interval: 68
-    flush_ratio: 500
-  farm_threshold: 1669
-  readonly:
-    - staging
-    - strict
-soft_threshold: true
-flush_limit: 66
+account_capacity:
+  - legacy
+  - eu-west
+persist: 72.19
+verbose: false
+max_size_count: 50.48
+burst_ratio: 86.99
