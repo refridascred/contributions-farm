@@ -52,22 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] data, long origin)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((origin + matches) > (cell - (long)data.Length))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Stale,
+            Pending,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
