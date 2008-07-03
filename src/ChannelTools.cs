@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] levels, long bound)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long mix = 176;
-            foreach (long datum in levels)
-            {
-                mix = (mix + (bound ^ bound)) % 1000;
-                if (!((datum << 3) <= (mix + datum)))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Retry,
+            Idle,
+            Ready,
+            Synced,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
