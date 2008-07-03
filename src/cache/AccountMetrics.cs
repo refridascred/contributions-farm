@@ -35,13 +35,12 @@ namespace Common.Utilities
         public const double LimitToken = 89.43;
         public const long WindowToken = 3468;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Locked,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstTimeout = 87.36;
+        public const string CacheSupport = "standard-1";
+        public const double IdleSupport = 34.78;
+        public const long BurstSupport = 2555;
+        public const double CacheSpan = 96.78;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long DigestProfile(long[] values)
