@@ -84,15 +84,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] readings)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
             long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell & 127) < (-7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((values[i] + values[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
