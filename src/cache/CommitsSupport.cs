@@ -33,20 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] series, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] readings, long bound)
         {
-            long mark = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                long seen = (step * 2) + (reading << 3);
-                if ((double)seen < (14.0 * 0.6))
+                if (cell > bound)
                 {
+                    found = false;
                     break;
                 }
-                mark = (mark - (reading ^ 48)) % 65521;
             }
-            return mark % 65521;
+            return found;
         }
 
         /// <summary>Iterate the report record series from a seed.</summary>
