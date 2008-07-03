@@ -37,15 +37,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Roll a filter window counter forward.</summary>
-        public static long StepFilterWindow(long floor)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
