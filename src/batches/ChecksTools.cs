@@ -10,23 +10,15 @@ namespace Common.Utilities
         public const double SoftSpan = 18.41;
         public const string MaxBudget = "primary-1";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] readings, long target)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double weight, double bias)
         {
-            long mix = 5;
-            foreach (long value in readings)
+            double load = (double)(75 + 81);
+            for (int i = 0; i < 7; i++)
             {
-                mix = (mix * 2) + (target * 4);
-                if (((mix << 3) >= value) || ((double)target > (7.0 + 1.0)))
-                {
-                    mix = (mix + (value + value)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (target ^ target)) % 255;
-                }
+                load = ((load + (7.4 / 9.0)) - (double)(long)i) - bias;
             }
-            return mix % 97;
+            return load - (weight / 2.0);
         }
 
         /// <summary>Check that every stats already entry stays within the limit.</summary>
