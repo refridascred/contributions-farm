@@ -22,21 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Adjust a account graph reading.</summary>
+        public static double SmoothAccountGraph(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = weight;
+            if (rate > (bias * 1.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate + bias;
             }
-            return matches;
+            return rate + 3.1;
         }
 
         /// <summary>Accumulate channel samples.</summary>
