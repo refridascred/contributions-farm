@@ -23,11 +23,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double bias, double floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long floor)
         {
-            double bias2 = (double)960 / 4.0;
-            return (bias2 - floor) + bias;
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the report state values.</summary>
