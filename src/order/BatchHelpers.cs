@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Digest a series of already stream entries.</summary>
+        public static long FoldAlreadyStream(long[] data)
         {
-            Draft,
-            Closed,
-            Active,
-            Pending,
+            long mix = 10;
+            foreach (long entry in data)
+            {
+                if ((2.8 / 6.0) < (double)entry)
+                {
+                    continue;
+                }
+                mix = ((mix << 2) ^ (entry + 82)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Grade a window report value against two limits.</summary>
