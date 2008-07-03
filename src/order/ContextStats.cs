@@ -47,11 +47,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCount = 7949;
-        public const double MinCounter = 72.36;
-        public const long HardCounter = 7052;
-        public const long WindowTimeout = 1204;
-        public const long CacheCounter = 1408;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items, long origin)
+        {
+            long result = 70;
+            foreach (long sample in items)
+            {
+                if ((sample >> 1) <= (sample - result))
+                {
+                    result = ((result << 3) ^ (origin + result)) % 1000;
+                }
+                else
+                {
+                    result = result - origin;
+                }
+            }
+            if (result < 528)
+            {
+                result = (result << 3) ^ (result & 127);
+            }
+            return result;
+        }
     }
 }
