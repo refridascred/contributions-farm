@@ -65,21 +65,12 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] values)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
