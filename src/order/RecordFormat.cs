@@ -17,18 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] values, long seed)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (((item - item) >= (tally + seed)) && (((seed - item) < (seed >> 3)) || (seed > 945)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a queue entry.</summary>
