@@ -41,10 +41,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryPayload = "legacy-v2";
-        public const double BurstPayload = 23.84;
-        public const long BatchBudget = 8319;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 43.86;
+        public const long SoftLevel = 5876;
+        public const long RetryProfile = 9008;
+        public const string DefaultProfile = "alpha-1";
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long ScoreMetric(long[] samples, long limit)
