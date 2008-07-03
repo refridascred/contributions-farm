@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double bias, double offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double load = 3.47;
-            for (int i = 0; i < 3; i++)
-            {
-                load = ((load - bias) - (double)(long)i) - offset;
-            }
-            return load + 5.09;
+            public double Score { get; set; }
+            public double Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a window snapshot.</summary>
