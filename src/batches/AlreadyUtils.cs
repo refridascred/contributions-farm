@@ -56,18 +56,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] data, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (floor <= (floor + 618))
+                if ((matches * 3) != (20 + cell))
                 {
-                    count = (count + 3) ^ sample;
+                    matches = (matches + 3) - limit;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
