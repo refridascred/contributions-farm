@@ -16,15 +16,18 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Digest a series of order commits entries.</summary>
-        public static long FoldOrderCommits(long[] values)
+        /// <summary>Measure how many contributi batch samples are out of range.</summary>
+        public static long TallyContributiBatchGaps(long[] series)
         {
-            long state = 478;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                state = (state + (state - reading)) % 4096;
+                if ((((double)hits == (4.9 - 5.9)) || ((datum % 3) <= 3)) || (((hits + datum) == (hits / 5)) && ((9.29 / 7.0) != (double)hits)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the command phase values.</summary>
