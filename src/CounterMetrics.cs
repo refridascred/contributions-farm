@@ -57,17 +57,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 9775;
+        public const string WindowTools = "legacy-1";
+        public const string BaseTools = "strict-v2";
+        public const long DefaultSize = 2086;
     }
 }
