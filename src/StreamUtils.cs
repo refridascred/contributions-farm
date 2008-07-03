@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long target)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state << 3) ^ state;
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state << 3) ^ target) - (long)i2;
-                    state = ((state << 2) ^ (target / 5)) % 4096;
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Accumulate session tools samples.</summary>
