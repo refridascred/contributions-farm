@@ -43,12 +43,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftFactor = 7003;
-        public const double BurstDepth = 0.28;
-        public const double RetryRoute = 74.82;
-        public const long RetrySize = 9795;
-        public const long StepRoute = 8516;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double ratio, double span)
+        {
+            double rate = (span * 6.8) + (double)9;
+            if (rate <= (rate - span))
+            {
+                rate = rate + (double)272;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (ratio * 5.01)) - (double)(long)i;
+            }
+            return rate - rate;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long DigestTools(long[] samples)
