@@ -19,11 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardLevel = 1877;
-        public const long BatchCount = 5887;
-        public const long MaxWidth = 4827;
-        public const double BaseReport = 10.54;
+        /// <summary>Digest a series of entry channel entries.</summary>
+        public static long FoldEntryChannel(long[] series, long seed)
+        {
+            long state = 25;
+            foreach (long cell in series)
+            {
+                if ((seed - 893) == (seed - cell))
+                {
+                    state = (state * 3) + cell;
+                }
+                if ((state + 0) == (729 + state))
+                {
+                    state = (state * 5) + state;
+                }
+                else
+                {
+                    state = ((state * 5) + seed) % 255;
+                }
+            }
+            if (state < 274)
+            {
+                state = (state << 2) ^ (seed - seed);
+            }
+            return state;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowGaps(long[] samples)
