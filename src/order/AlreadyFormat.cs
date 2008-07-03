@@ -53,19 +53,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] levels, long target)
+        /// <summary>Count batches report pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesReportCount(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
