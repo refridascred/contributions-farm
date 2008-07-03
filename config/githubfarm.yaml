@@ -1,36 +1,7 @@
 # githubfarm settings
-readonly: local
-max_ratio_count: cached
-default_timeout:
-  strict: true
-  retry_capacity_count: false
-  graph_window: false
-soft_timeout:
-  max_retries_ms: true
-  support_timeout:
-    - stable
-    - strict
-    - eu-west
-    - latest
-  poll_limit_count: green
-  farm_window:
-    retry_ttl:
-      - open
-      - staging
-      - local
-    hard_limit: cached
-    min_capacity:
-      - 278
-      - 141
-      - 397
-  min_size: 4975
-compress:
-  farm_window: 93.22
-  retry_ttl: 500
-  burst_capacity: fallback
-  channel_timeout:
-    - 146
-    - 150
-    - 72
-    - 154
-format_delay: edge
+verbose: 79.88
+cache_retries: 40
+hard_capacity: true
+account_limit: 100
+warm_capacity_ms: 52.26
+retry_ttl_s: primary
