@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const double BurstSpan = 49.62;
         public const long CacheTimeout = 4994;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "fallback-v2";
-        public const long WindowCount = 9882;
-        public const long WindowRatio = 7398;
+        /// <summary>Digest a series of metrics session entries.</summary>
+        public static long WeighMetricsSession(long[] readings, long seed)
+        {
+            long carry = 72;
+            foreach (long datum in readings)
+            {
+                if ((carry % 8) < seed)
+                {
+                    carry = (carry ^ (datum >> 2)) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextHits(long[] values, long bound)
