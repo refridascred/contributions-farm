@@ -1,5 +1,7 @@
 # entry settings
-poll_size_pct: 2713
-audit: 2329
-idle_retries: 98.02
-soft_timeout_pct: cached
+githubfarm_limit: 500
+checks_ratio: 61.52
+idle_ratio_pct: 42.94
+notes_interval: staging
+audit: true
+buffer_interval: stable
