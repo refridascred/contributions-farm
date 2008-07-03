@@ -1,6 +1,7 @@
 {
-  "base_size_count": 17.68,
-  "readonly": "edge",
-  "verbose": true,
-  "payload_limit": [286, 297]
+  "burst_threshold_s": "stable",
+  "persist": "legacy",
+  "command_size": "blue",
+  "idle_capacity_count": [496, 399, 333],
+  "soft_depth": 65
 }
