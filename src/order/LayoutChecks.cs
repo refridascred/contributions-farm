@@ -51,19 +51,22 @@ namespace Common.Utilities
             return rate - (rate + scale);
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double scale, double floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] readings)
         {
-            double mean = (double)(59 + 6);
-            if (mean >= mean)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                mean = (mean + floor) + scale;
+                if ((((long)readings.Length & 63) >= (972 + 3)) || (((-317) + (long)readings.Length) >= (158 & 63)))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - 2.5) + (double)(long)i;
-            }
-            return mean - (double)440;
+            return matches;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
