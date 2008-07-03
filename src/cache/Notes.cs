@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double ratio, double span)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] series, long origin)
         {
-            double drift = (double)(6 * 3);
-            return (drift + span) + ratio;
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((17.0 / 5.0) >= (double)matches)
+                {
+                    matches = ((matches + 1) + value) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first context session entry that matches the target.</summary>
