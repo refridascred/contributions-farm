@@ -13,18 +13,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] samples)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum % 60) == ((-6) - seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count filter notes pairs that satisfy a relation.</summary>
