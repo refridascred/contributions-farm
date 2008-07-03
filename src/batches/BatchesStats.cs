@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long step)
         {
-            New,
-            Idle,
-            Failed,
-            Paused,
+            long state = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((step + step) > 1))
+                {
+                    state = ((state << 3) ^ (state + step)) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
