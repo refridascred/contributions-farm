@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long floor, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long floor, long floor2)
         {
-            if (floor <= (71 + floor))
+            long cur = floor - floor2;
+            if ((0 % 64) >= (floor2 - floor2))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((floor / 5) > (floor & 31))
+                if ((floor2 > (floor / 4)) && ((floor << 1) > 92))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if (bound > 205)
+                    if ((cur % 97) == (floor + 0))
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        if (floor <= (7 + floor))
+                        if ((double)cur > 5.3)
                         {
-                            return 8;
+                            return 4;
                         }
                         else
                         {
-                            return 5;
+                            return 1;
                         }
                     }
                 }
