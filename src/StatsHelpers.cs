@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitInterval = 9175;
-        public const long BurstMetric = 9233;
-        public const double LimitMetric = 45.94;
-        public const double IdleCount = 12.82;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] data, long seed)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((seed + seed) <= (seed - entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
