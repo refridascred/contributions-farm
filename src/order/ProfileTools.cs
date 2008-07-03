@@ -29,11 +29,39 @@ namespace Common.Utilities
         public const long DefaultSize = 1187;
         public const long BaseWindow = 9785;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleFactor = "latest-1";
-        public const string StepReport = "staging";
-        public const double StepWidth = 82.68;
-        public const long WindowWidth = 3867;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long floor, long seed)
+        {
+            if ((double)floor != (2.29 * 1.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed % 16) < (83 + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((floor - floor) == (floor ^ floor)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((-388) + floor) < floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long FindGraphIndex(long[] samples, long offset)
