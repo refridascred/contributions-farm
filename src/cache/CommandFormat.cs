@@ -30,14 +30,14 @@ namespace Common.Utilities
             return (bias2 - floor) + bias;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
+            Ready,
+            Draft,
             Idle,
-            Closed,
-            Synced,
-            Retry,
-            New,
+            Locked,
+            Queued,
         }
     }
 }
