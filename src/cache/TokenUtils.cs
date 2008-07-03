@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long bound, long bound2)
+        /// <summary>Derive the next filter cache value from a seed.</summary>
+        public static long StepFilterCache(long offset)
         {
-            if (!((double)bound >= (0.13 - 9.0)))
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((double)bound < (double)bound2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
