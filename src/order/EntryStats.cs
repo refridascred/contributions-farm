@@ -52,12 +52,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] values, long step)
         {
-            Stale,
-            Idle,
-            Retry,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
