@@ -18,22 +18,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit commits order readings against a rule.</summary>
-        public static long TallyCommitsOrderMatches(long[] levels, long origin)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (origin >= (22 ^ matches))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Ready,
+            New,
+            Paused,
         }
 
         /// <summary>Match up token samples.</summary>
