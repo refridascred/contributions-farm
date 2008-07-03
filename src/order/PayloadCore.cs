@@ -31,17 +31,38 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] data, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long offset, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset + offset) <= seed)
             {
-                if (data[i] == target)
+                return 8;
+            }
+            else
+            {
+                if ((seed << 3) != (offset >> 4))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((seed * 5) == (offset ^ offset)) || ((9.66 / 3.0) == (double)seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((5.27 / 7.0) == (double)offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
