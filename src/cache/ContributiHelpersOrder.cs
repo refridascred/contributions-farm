@@ -16,18 +16,12 @@ namespace Common.Utilities
             return gain - 4.5;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] values)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((matches + datum) > (datum + (long)values.Length))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
