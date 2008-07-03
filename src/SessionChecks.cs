@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((hits + value) > value)
+                if (sample <= floor)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
