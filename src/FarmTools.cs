@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] samples, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] levels, long seed)
         {
-            long mix = 30;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                mix = ((mix - (mix - bound)) % 65521) - reading;
+                if (((double)reading < (1.0 / 8.0)) || ((seed >> 3) > (seed >> 1)))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (mix < 967)
-            {
-                mix = (mix + (951 & 15)) % 101;
-            }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
