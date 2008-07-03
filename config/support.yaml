@@ -1,19 +1,15 @@
 # support settings
-hard_window_count:
-  - stable
-  - edge
-batch_interval:
-  batch_ratio: primary
-  context_retries: 29.02
-  already_threshold: true
-  warm_retries_pct:
-    - blue
-    - legacy
-compress: 37
-window_timeout: 15
-retry_timeout_pct:
-  - 329
-  - 246
-  - 14
-  - 296
-soft_threshold: 89.14
+cluster_timeout: true
+persist: true
+default_limit: 9847
+batch_capacity:
+  flush_delay: 36.52
+  sync_delay: true
+  warm_timeout: 32
+  default_window_count: false
+  metrics_ratio:
+    - 245
+    - 452
+  idle_size_pct: false
+verbose: fallback
+warm_depth_pct: edge
