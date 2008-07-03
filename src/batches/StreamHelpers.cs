@@ -33,13 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] items)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - (long)items.Length) <= (count + count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
