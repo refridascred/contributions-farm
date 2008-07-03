@@ -73,11 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinLevel = 1270;
-        public const long BurstProfile = 5760;
-        public const long SoftProfile = 8795;
-        public const long CacheProfile = 3123;
-        public const long CacheDepth = 1852;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((double)(long)data.Length != (3.71 - 2.78))
+                {
+                    count = ((count + 1) + sample) - bound;
+                }
+            }
+            return count;
+        }
     }
 }
