@@ -1,6 +1,8 @@
-id,ratio,token
-1,latest,938
-2,staging,79.91
-3,39.52,26.55
-4,48.23,fallback
-5,770,local
+id,label,score
+1,64.62,451
+2,1.76,973
+3,447,367
+4,legacy,76.61
+5,cached,stable
+6,497,71.22
+7,eu-west,fallback
