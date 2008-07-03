@@ -46,13 +46,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long bound, long step)
         {
-            Paused,
-            Retry,
-            Closed,
-            Queued,
+            if ((bound - 7) < bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step & 15) < bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step ^ step) == (bound / 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((bound ^ (-253)) > 5) && ((step ^ bound) != (bound ^ bound)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
