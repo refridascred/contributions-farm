@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long offset, long step)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            if ((offset + step) > (offset / 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step << 2) != (69 * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of layout channel readings.</summary>
