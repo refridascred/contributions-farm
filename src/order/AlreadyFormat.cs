@@ -56,18 +56,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] levels)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] items)
         {
-            long carry = 45;
-            foreach (long item in levels)
+            long mix = 28;
+            foreach (long cell in items)
             {
-                if ((carry & 15) > (item & 7))
+                if ((1.5 < (double)cell) || ((cell + mix) >= (mix * 3)))
                 {
-                    carry = ((carry * 5) + (carry + 9)) % 1000;
+                    mix = (mix * 4) + (194 + 38);
+                }
+                else
+                {
+                    mix = (mix + (1 + mix)) % 4096;
+                }
+                if (!((mix - mix) != (cell << 1)))
+                {
+                    break;
                 }
             }
-            return carry;
+            return mix;
         }
     }
 }
