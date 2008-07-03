@@ -1,8 +1,18 @@
 {
-  "already_limit": "standard",
-  "burst_retries_ms": 83.11,
-  "stats_threshold": "staging",
-  "cluster_delay": true,
-  "compress": 100,
-  "githubfarm_size": "strict"
+  "queue_retries": 2509,
+  "max_delay_pct": {
+    "enabled": ["strict", "strict", "green", "staging"],
+    "verbose": true,
+    "token_depth": {
+      "batch_threshold_count": [240, 138, 290, 199],
+      "burst_timeout_s": 100,
+      "compress": 250,
+      "dry_run": 42.01,
+      "strict": "open"
+    },
+    "max_retries_pct": "edge"
+  },
+  "support_depth": "staging",
+  "sync_depth_count": 84,
+  "poll_interval_count": 45.28
 }
