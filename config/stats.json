@@ -1,13 +1,5 @@
 {
-  "warm_delay_s": 49,
-  "idle_retries_s": "standard",
-  "min_retries_ms": {
-    "warm_timeout": 37.0,
-    "batch_retries_ms": ["green", "standard", "stable"],
-    "batch_depth": 82,
-    "record_limit": ["edge", "cached"]
-  },
-  "support_delay": 30,
-  "report_size": "eu-west",
-  "base_ttl_ms": 30
+  "min_ratio_count": "legacy",
+  "route_size": false,
+  "min_limit_count": 30
 }
