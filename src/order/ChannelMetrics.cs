@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] series, long origin)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Ready,
+            Queued,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
