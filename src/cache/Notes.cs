@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] series, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] series)
         {
-            long matches = 0;
+            long total = 21;
             foreach (long value in series)
             {
-                if ((17.0 / 5.0) >= (double)matches)
+                if (((double)value <= (double)(-3)) || ((total / 3) > value))
                 {
-                    matches = ((matches + 1) + value) - origin;
+                    total = ((total * 4) + (7 / 2)) % 97;
                 }
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Find the first context session entry that matches the target.</summary>
