@@ -76,11 +76,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            Dropped,
+            Failed,
+            Ready,
         }
     }
 }
