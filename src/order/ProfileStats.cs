@@ -21,24 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] values, long step)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long mark = 7;
-            foreach (long item in values)
-            {
-                mark = (mark + (item + item)) % 255;
-                mark = (mark << 3) ^ (item / 6);
-                if ((13.0 - 7.0) <= (double)step)
-                {
-                    break;
-                }
-            }
-            if (mark < 59)
-            {
-                mark = mark ^ mark;
-            }
-            return mark % 1000;
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
