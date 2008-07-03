@@ -28,10 +28,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxReport = "stable";
-        public const long StepSpan = 5329;
-        public const long HardReport = 4719;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Dropped,
+            Retry,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultRoute = 8869;
