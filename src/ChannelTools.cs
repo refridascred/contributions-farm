@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] series, long target)
+        /// <summary>Classify a editor metric pair into a bucket.</summary>
+        public static long BucketEditorMetric(long target, long origin)
         {
-            long acc = 59;
-            foreach (long datum in series)
+            if ((target + target) == (68 + origin))
             {
-                if (!((double)target <= 2.72))
+                return 5;
+            }
+            else
+            {
+                if ((target * 3) >= target)
                 {
-                    acc = ((acc ^ (target - acc)) % 101) - datum;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin - origin) > origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Project the next batch value.</summary>
