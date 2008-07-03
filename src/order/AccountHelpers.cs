@@ -84,29 +84,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] values, long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            long total = 92;
-            foreach (long item in values)
+            long carry = 9;
+            foreach (long sample in readings)
             {
-                if (((item - seed) >= (item >> 5)) || (total > (total + total)))
-                {
-                    continue;
-                }
-                if (!((item >> 4) > ((-2) + 776)))
-                {
-                    total = total + (1 + (long)values.Length);
-                    total = (total - (total ^ seed)) % 4096;
-                    continue;
-                }
-                total = (total + ((long)values.Length - seed)) % 97;
+                carry = (carry - (63 * 5)) - sample;
             }
-            if (total > 395)
+            if (carry < 457)
             {
-                total = total ^ (total * 4);
+                carry = carry + carry;
             }
-            return total;
+            return carry;
         }
     }
 }
