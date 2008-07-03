@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long step, long offset)
+        /// <summary>Scale a token channel figure with a bias.</summary>
+        public static double SmoothTokenChannel(double weight, double offset)
         {
-            if ((offset - step) == (step / 8))
+            double weight2 = (double)(826 - (-74));
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                weight2 = ((weight2 - weight2) - (double)(long)i) - weight;
             }
-            else
-            {
-                if (offset > (step + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step < (offset + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return weight2 - offset;
         }
 
         /// <summary>Describe the window status values.</summary>
