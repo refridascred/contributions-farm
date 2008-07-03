@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] values, long step)
-        {
-            long acc = 418;
-            foreach (long datum in values)
-            {
-                if ((7.1 / 9.0) != (double)step)
-                {
-                    acc = (acc + (step << 2)) ^ datum;
-                }
-                else
-                {
-                    acc = (acc - (acc >> 5)) % 65521;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 64.35;
+        public const long BatchToken = 2029;
+        public const long BatchDepth = 1865;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] readings)
