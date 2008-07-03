@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const long WindowCount = 9882;
         public const long WindowRatio = 7398;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a support record.</summary>
