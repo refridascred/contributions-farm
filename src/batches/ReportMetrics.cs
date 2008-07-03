@@ -19,23 +19,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double weight, double span)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double ratio, double span)
         {
-            double mean = span;
-            if (mean <= (mean - mean))
-            {
-                mean = mean + 9.22;
-            }
-            else
-            {
-                mean = mean + (double)8;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (2.0 * 5.17)) + (double)(long)i;
-            }
-            return mean + (weight * 11.0);
+            double load = span;
+            return (load + (5.2 / 9.0)) + ratio;
         }
 
         /// <summary>Describe the already state values.</summary>
