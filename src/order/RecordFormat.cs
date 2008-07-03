@@ -25,11 +25,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] samples)
         {
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
+            long score = 26;
+            foreach (long value in samples)
+            {
+                if ((238 ^ score) < (score << 3))
+                {
+                    score = (score * 4) + (50 & 7);
+                }
+                if ((value - score) < (score + 4))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Project the next filter value.</summary>
