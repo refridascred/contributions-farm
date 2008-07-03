@@ -1,18 +1,10 @@
 # entry settings
-strict: 51.34
-counter_limit:
-  account_timeout: edge
-  record_ratio: latest
-  max_ttl: legacy
-  poll_depth: false
-  poll_depth_ms: 2.6
-verbose:
-  - fallback
-  - blue
+persist: edge
+farm_size: 35.56
+window_ttl: 8492
+hard_window_ms:
   - legacy
-  - blue
-base_retries_ms:
-  - 253
-  - 246
-  - 13
-poll_limit_ms: 1024
+  - latest
+  - stable
+max_threshold: 913
+max_ratio: primary
