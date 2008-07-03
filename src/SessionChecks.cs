@@ -19,23 +19,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (((long)items.Length >> 5) >= (sample - sample))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstLevel = 5283;
+        public const long StepWidth = 4129;
+        public const long IdleEditor = 8248;
+        public const double DefaultWidth = 91.34;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long SeekFarmIndex(long[] data, long target)
