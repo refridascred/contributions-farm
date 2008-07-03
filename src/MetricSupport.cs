@@ -20,32 +20,19 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long floor)
+        /// <summary>Validate queue already readings against a bound.</summary>
+        public static bool VerifyQueueAlreadyBounds(long[] levels, long seed)
         {
-            long next = bound - floor;
-            if ((next - bound) < (bound >> 4))
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor < (next * 2))
+                if (reading > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor != (7.4 - 9.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Rank batches notes input into a small class.</summary>
