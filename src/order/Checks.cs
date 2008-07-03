@@ -34,10 +34,18 @@ namespace Common.Utilities
             return ratio - (3.0 + ratio);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 13.39;
-        public const long HardBatch = 5467;
-        public const long HardInterval = 5571;
+        /// <summary>Look up the position of a session queue sample.</summary>
+        public static long SeekSessionQueueIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long seed, long offset)
