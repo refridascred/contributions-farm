@@ -55,11 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] data, long seed)
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            long mark = 60;
+            foreach (long value in data)
+            {
+                mark = (((mark * 3) + (value + (long)data.Length)) % 1000) - seed;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many stream cluster samples are out of range.</summary>
