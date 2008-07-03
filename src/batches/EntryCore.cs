@@ -41,23 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double ratio, double floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double load = (double)(14 + 700);
-            if (load > (double)(-86))
-            {
-                load = load + load;
-            }
-            else
-            {
-                load = load - (ratio / 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load + (double)94;
+            Locked,
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
