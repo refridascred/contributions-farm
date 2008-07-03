@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheScore = 15.97;
-        public const double SoftLevel = 41.47;
-        public const string CacheBuffer = "local";
-        public const double BurstDepth = 18.2;
-        public const long RetryBuffer = 2287;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Failed,
+            Synced,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long SeriesAlready(long limit)
