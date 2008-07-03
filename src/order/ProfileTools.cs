@@ -15,11 +15,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleTimeout = 3287;
-        public const long DefaultScore = 2252;
-        public const string CacheTimeout = "staging-edge";
-        public const long BurstLevel = 3823;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (hits <= (428 + 60))
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
