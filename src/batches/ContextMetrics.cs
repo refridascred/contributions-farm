@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] items, long target)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] == target) && ((items[i] % 5) != 0))
+                if (samples[i] < step)
                 {
                     return (long)i;
                 }
