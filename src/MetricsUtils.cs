@@ -49,22 +49,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheSpan = "open-edge";
+        public const long BaseMetrics = 5745;
+        public const long SoftMetrics = 6761;
+        public const long MinLevel = 4128;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
