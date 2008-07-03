@@ -28,22 +28,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] levels)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long limit)
         {
-            long score = -11;
-            foreach (long value in levels)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((score - score) <= value)
-                {
-                    score = (score + (score & 15)) % 255;
-                }
+                carry = (carry - limit) % 65521;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            if (score > 258)
-            {
-                score = (score ^ (score & 3)) % 65521;
-            }
-            return score;
+            return carry;
         }
     }
 }
