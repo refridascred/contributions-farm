@@ -23,12 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
+            New,
+            Dropped,
+            Synced,
+            Failed,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
