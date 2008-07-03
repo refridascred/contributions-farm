@@ -1,7 +1,6 @@
-id,token
-1,29.69
-2,746
-3,primary
-4,23.22
-5,545
-6,238
+id,ratio,token
+1,latest,edge
+2,75.32,674
+3,standard,70.99
+4,primary,8.97
+5,4.01,187
