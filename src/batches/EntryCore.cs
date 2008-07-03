@@ -39,19 +39,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] values, long limit)
-        {
-            long score = 686;
-            foreach (long value in values)
-            {
-                if (((value & 255) > (limit << 1)) && ((value >> 2) >= (4 + limit)))
-                {
-                    score = (score + (score ^ 3)) % 255;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardSize = 938;
+        public const long StepLevel = 3741;
+        public const string CacheGithubfarm = "fallback-1";
+        public const long BurstInterval = 504;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string HardFilter = "local-1";
