@@ -12,15 +12,5 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=234
+CHANNEL_LIMIT=228
 log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-staging}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
