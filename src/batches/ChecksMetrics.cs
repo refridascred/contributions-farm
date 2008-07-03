@@ -37,12 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] values, long step)
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a buffer report value against two limits.</summary>
