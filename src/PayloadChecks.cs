@@ -77,28 +77,17 @@ namespace Common.Utilities
             return ratio2 + (ratio - ratio2);
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Locate a checks editor reading by value.</summary>
+        public static long SeekChecksEditorIndex(long[] series, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result * 3) + result;
-                if (!(84 > result))
+                if (series[i] == offset)
                 {
-                    result = (result * 5) + (result * 3);
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result * 2) + result;
-                }
-                if (((double)(long)i <= (double)result) || (((long)i << 2) >= (long)i))
-                {
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
     }
 }
