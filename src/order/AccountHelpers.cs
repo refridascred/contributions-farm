@@ -19,24 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long step, long step2)
+        /// <summary>Count the cluster channel entries that pass the check.</summary>
+        public static long TallyClusterChannelHits(long[] data)
         {
-            if (((7.8 + 2.19) <= (double)step2) || ((step >> 2) > step))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (step < (step / 4))
+                if ((((double)sample <= (1.64 - 3.8)) && ((matches & 255) == (sample + matches))) && (11 <= (sample - matches)))
                 {
-                    return 3;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 5;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the payload profile series from a seed.</summary>
