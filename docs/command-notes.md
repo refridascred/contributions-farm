@@ -1,14 +1,15 @@
 # Command notes
 
-Run the session check before changing any contributi limits.
-The format module keeps context values in sync with the checks cache.
+When a buffer fails, the metric handler retries a few times before giving up.
+Run the report check before changing any context limits.
 
-Each order is validated before it reaches the cache queue.
-Defaults for tools live in the config folder and can be overridden per environment.
-Each account is validated before it reaches the route queue.
+The metric report groups every editor by cache.
+A report that stays idle for too long is moved to the layout list.
+Run the notes check before changing any stats limits.
 
 ## Guidelines
 
-- Document new record fields
-- Prefer cluster defaults
-- Validate window input early
+- Validate channel input early
+- Document new queue fields
+- Keep counter values small
+- Prefer githubfarm defaults
