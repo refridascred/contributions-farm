@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] data)
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if ((hits >> 3) > 118)
+                {
+                    hits = (hits + 3) + datum;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
