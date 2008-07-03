@@ -46,18 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] values)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long result = 6;
-            foreach (long value in values)
-            {
-                if ((result * 4) < 6)
-                {
-                    result = (((result << 3) ^ (445 % 12)) % 101) - value;
-                }
-            }
-            return result;
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many stream cluster samples are out of range.</summary>
