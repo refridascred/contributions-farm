@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowCount = 9078;
-        public const double SoftWindow = 74.13;
-        public const long RetryScore = 418;
+        /// <summary>Accumulate notes batch samples.</summary>
+        public static long CombineNotesBatch(long[] readings)
+        {
+            long anchor = 979;
+            foreach (long reading in readings)
+            {
+                if ((reading >= ((-1) - reading)) && ((3.45 / 7.0) == (double)reading))
+                {
+                    anchor = (anchor << 2) ^ reading;
+                }
+            }
+            if (anchor < 1)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long seed, long offset)
