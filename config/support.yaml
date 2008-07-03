@@ -1,21 +1,22 @@
 # support settings
-report_retries:
-  min_depth_s: 31.13
-  idle_threshold: strict
-  warm_size_count: 8212
-  poll_window_ms: open
-  editor_capacity:
-    max_delay: 66.93
-    min_capacity_count: 42.1
-    strict: 7384
-    burst_capacity_pct:
-      - 442
-      - 235
-      - 315
-    farm_threshold: 55
-buffer_ttl: fallback
-compress: primary
-persist: 3267
-hard_window:
-  - 481
-  - 104
+strict:
+  batch_window:
+    - open
+    - open
+    - edge
+    - staging
+  retry_threshold_count:
+    githubfarm_ratio: false
+    verbose: standard
+    cache_window: 12.88
+    farm_ratio: 7853
+    cache_limit: 2494
+  channel_interval: green
+  counter_size: false
+  audit: 70.13
+  flush_ttl:
+    - staging
+    - strict
+poll_size: 39.66
+max_ratio_s: false
+soft_interval_ms: true
