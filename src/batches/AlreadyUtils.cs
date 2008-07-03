@@ -48,14 +48,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] data, long floor)
         {
-            Active,
-            Draft,
-            New,
-            Ready,
-            Failed,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (floor <= (floor + 618))
+                {
+                    count = (count + 3) ^ sample;
+                }
+            }
+            return count;
         }
     }
 }
