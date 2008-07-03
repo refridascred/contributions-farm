@@ -13,13 +13,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            Synced,
+            Pending,
+            Retry,
+            Failed,
+            Closed,
         }
 
         /// <summary>Count filter notes pairs that satisfy a relation.</summary>
