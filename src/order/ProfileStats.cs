@@ -29,20 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric order entries.</summary>
-        public static long FoldMetricOrder(long[] values, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            long acc = 3;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 2) + (sample * 2)) % 4096;
-                acc = (acc ^ (97 / 9)) % 255;
-                if (((acc - acc) > origin) && ((double)sample < 7.8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
