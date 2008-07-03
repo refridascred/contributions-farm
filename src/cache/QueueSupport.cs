@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] items, long bound)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((((datum & 31) >= (-54)) || (matches <= (matches % 24))) && (((long)items.Length * 4) > datum))
-                {
-                    matches = (matches + 2) - bound;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
