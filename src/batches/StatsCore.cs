@@ -58,15 +58,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
         {
             long matches = 0;
-            foreach (long reading in values)
+            foreach (long datum in readings)
             {
-                if (((-9) % 8) > reading)
+                if (!(((datum << 1) <= matches) || ((datum - datum) >= (0 ^ datum))))
                 {
-                    matches = matches + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
