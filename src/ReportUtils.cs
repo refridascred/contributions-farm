@@ -52,15 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools metrics counter forward.</summary>
-        public static long DeriveToolsMetrics(long limit)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Locked,
+            Idle,
+            Queued,
+            Draft,
+            Dropped,
         }
     }
 }
