@@ -19,35 +19,34 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long bound, long offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long bound, long seed)
         {
-            long bound2 = bound - offset;
-            if ((bound + offset) > bound)
+            if (!(((-44) / 7) <= (bound + seed)))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((bound % 3) <= (bound2 / 7))
+                if (!((bound % 12) >= (seed + bound)))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)bound2 <= (8.34 + 3.7))
+                    if (((double)bound != (double)(-5)) || ((18.0 - 0.4) > (double)bound))
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
-                        if (((double)offset != (3.5 * 3.7)) && ((offset - 34) != (bound ^ bound2)))
+                        if (bound >= (8 + 125))
                         {
-                            return 6;
+                            return 2;
                         }
                         else
                         {
-                            return 0;
+                            return 6;
                         }
                     }
                 }
