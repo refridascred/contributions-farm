@@ -75,23 +75,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double gain, double offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long floor, long step)
         {
-            double gain2 = (double)(30 ^ 73);
-            if (gain2 <= gain2)
+            if (((double)(-523) < (double)step) || ((floor << 1) <= (1 >> 3)))
             {
-                gain2 = gain2 + (gain - 14.0);
+                return 6;
             }
             else
             {
-                gain2 = gain2 - (gain / 5.0);
+                if ((3.1 + 4.39) >= (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - offset) + (double)(long)i;
-            }
-            return gain2 + gain;
         }
 
         /// <summary>Define already limits and defaults.</summary>
