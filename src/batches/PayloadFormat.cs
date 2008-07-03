@@ -29,20 +29,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((limit + state) >= state)
-                {
-                    state = ((state * 5) + (limit / 9)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 1246;
+        public const double BaseLevel = 1.45;
+        public const long LimitInterval = 3362;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
