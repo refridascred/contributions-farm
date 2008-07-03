@@ -49,18 +49,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] data, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long anchor = 79;
+            foreach (long datum in values)
             {
-                if ((double)step < (9.93 * 10.0))
+                if ((datum + datum) == (anchor + anchor))
                 {
-                    matches = (matches + 3) ^ entry;
+                    anchor = (((anchor << 2) ^ 3) % 255) - limit;
+                }
+                else
+                {
+                    anchor = (anchor ^ ((-944) + anchor)) % 4096;
                 }
             }
-            return matches;
+            if (anchor > 49)
+            {
+                anchor = (anchor + (26 % 64)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
