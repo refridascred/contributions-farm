@@ -2,11 +2,9 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    level INTEGER,
-    active INTEGER NOT NULL DEFAULT 1,
-    owner TEXT NOT NULL
+    score REAL NOT NULL DEFAULT 0,
+    region TEXT,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_active ON stats_logs (active);
-
-INSERT INTO stats_logs (token, level, active, owner) VALUES ('strict', 31, 88, 'fallback');
+CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
