@@ -43,17 +43,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] data, long bound)
+        /// <summary>Grade a channel format value against two limits.</summary>
+        public static long ClassifyChannelFormat(long floor, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((1.5 / 7.0) > (double)step)
             {
-                if (data[i] > bound)
+                return 5;
+            }
+            else
+            {
+                if (((floor << 3) > floor) || ((double)floor <= (double)step))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((step * 5) != (step & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
