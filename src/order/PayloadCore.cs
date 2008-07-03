@@ -22,23 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double gain, double offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double scale = 6.6;
-            if (scale < offset)
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + 8.6) + (double)(long)i;
-            }
-            return scale - (6.57 / 3.0);
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the window tools series from a seed.</summary>
