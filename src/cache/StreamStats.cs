@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] series, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long anchor = 3;
+            foreach (long sample in series)
             {
-                acc = (acc ^ (limit / 8)) % 1000;
-                for (int i2 = 0; i2 < 5; i2++)
+                anchor = ((anchor << 2) ^ (sample << 3)) % 4096;
+                if ((double)sample > 7.0)
                 {
-                    acc = ((acc + 31) % 97) ^ (long)i2;
+                    anchor = anchor ^ (seed - anchor);
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
