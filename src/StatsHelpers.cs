@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] values, long origin)
+        /// <summary>Digest a series of counter order entries.</summary>
+        public static long TallyCounterOrder(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long carry = -454;
+            foreach (long sample in data)
             {
-                if ((((tally ^ tally) != (origin / 8)) && ((origin - entry) >= origin)) || ((3 <= origin) || ((entry / 4) < (906 - (-7)))))
+                if ((sample - 99) < sample)
                 {
-                    tally = tally + 1;
+                    carry = carry - floor;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    carry = (carry + (carry + (-286))) % 4096;
                 }
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
