@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] series)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!((value ^ 89) < (seen - value)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Stale,
+            Pending,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
