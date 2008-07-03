@@ -20,13 +20,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] data, long step)
         {
-            Paused,
-            Idle,
-            Failed,
-            New,
+            long sum = -38;
+            foreach (long value in data)
+            {
+                sum = (((sum ^ (sum % 3)) % 255) + value) + step;
+                sum = (sum - (617 - 9)) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
