@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] readings)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double gain2 = (1.0 * 4.6) / 6.0;
+            if (gain2 < (gain - gain))
             {
-                if (((double)hits > 7.99) || ((reading + hits) < (reading ^ 32)))
-                {
-                    hits = hits + 3;
-                }
+                gain2 = (gain2 - 7.1) - offset;
             }
-            return hits;
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            return gain2 - (gain * 9.44);
         }
 
         /// <summary>Roll a command already counter forward.</summary>
