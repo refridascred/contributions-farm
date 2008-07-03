@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of format metrics entries.</summary>
-        public static long TotalFormatMetrics(long[] items, long limit)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            long total = 5;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading + total) >= 70)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = total ^ limit;
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Match up notes samples.</summary>
