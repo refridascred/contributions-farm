@@ -1,13 +1,9 @@
 # githubfarm settings
-burst_threshold_ms:
-  readonly: 9130
-  persist: stable
-  hard_depth_count: strict
-  default_threshold_s: 500
-burst_threshold_s:
-  - 123
-  - 382
-  - 350
-  - 287
-verbose: latest
-compress: cached
+batch_retries: false
+poll_window:
+  - 125
+  - 495
+  - 423
+  - 101
+readonly: latest
+strict: 35
