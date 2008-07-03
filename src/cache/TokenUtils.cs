@@ -23,15 +23,12 @@ namespace Common.Utilities
         public const string RetryTimeout = "legacy";
         public const long BaseSpan = 7636;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long floor)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Paused,
+            Idle,
+            Failed,
         }
     }
 }
