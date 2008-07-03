@@ -41,22 +41,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many account cluster samples are out of range.</summary>
-        public static long CountAccountClusterMatches(long[] samples)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((hits * 2) != (2 * 3)) && ((16 + hits) < entry))
+                if (items[i] > bound)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a account info.</summary>
