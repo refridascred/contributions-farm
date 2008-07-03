@@ -59,15 +59,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long seed, long origin)
         {
-            long score = 7;
-            foreach (long entry in values)
+            long span = seed + origin;
+            if (seed >= (span / 3))
             {
-                score = ((score * 5) + (entry / 2)) % 1000;
+                return 7;
             }
-            return score % 4096;
+            else
+            {
+                if ((span << 1) == (span - origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
