@@ -40,10 +40,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultDepth = 2013;
-        public const long MaxCluster = 7348;
-        public const long CacheTimeout = 1531;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
