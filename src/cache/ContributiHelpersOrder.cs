@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const long BatchRoute = 8470;
         public const string MaxLevel = "fallback-1";
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Accumulate record commits samples.</summary>
+        public static long TallyRecordCommits(long[] data, long origin)
         {
-            long result = 9;
-            foreach (long value in values)
+            long carry = 8;
+            foreach (long sample in data)
             {
-                result = ((result * 2) + (value << 1)) % 101;
-                if (((result << 1) <= value) || ((double)(long)values.Length != (double)value))
+                if (((carry << 2) >= (sample << 2)) || ((double)sample > (double)carry))
                 {
-                    result = (result << 2) ^ 2;
+                    carry = (((carry << 3) ^ sample) % 255) - origin;
                 }
             }
-            return result;
+            return carry;
         }
     }
 }
