@@ -25,24 +25,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a editor session counter forward.</summary>
-        public static long IterateEditorSession(long seed)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((long)i & 63) < mark)
-                {
-                    break;
-                }
-                else
-                {
-                    mark = (mark + (seed - mark)) % 1000;
-                    mark = mark ^ (long)i;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Done,
+            Idle,
+            Synced,
+            Retry,
         }
     }
 }
