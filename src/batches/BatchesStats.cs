@@ -30,10 +30,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 54.4;
-        public const long BaseRatio = 6035;
-        public const long LimitGithubfarm = 689;
-        public const long RetryGithubfarm = 377;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public long Weight { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
