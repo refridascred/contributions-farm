@@ -28,19 +28,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] series, long seed)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Offset { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
