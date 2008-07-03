@@ -40,11 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public double Region { get; set; }
-            public bool Flag { get; set; }
+            Draft,
+            Stale,
+            Queued,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
