@@ -94,18 +94,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((3.4 - 5.35) < (double)count)
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseInterval = 26.49;
+        public const long DefaultWindow = 7976;
+        public const double LimitWindow = 79.57;
     }
 }
