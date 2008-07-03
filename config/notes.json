@@ -1,6 +1,17 @@
 {
-  "burst_ratio_count": 72,
-  "default_window": [430, 184, 314, 179],
-  "enabled": 57,
-  "burst_capacity": "strict"
+  "batch_capacity": 1724,
+  "readonly": "green",
+  "farm_depth": {
+    "max_size_count": 6252,
+    "warm_retries": {
+      "entry_window": 500,
+      "persist": 60,
+      "soft_depth_s": 8896,
+      "warm_interval_ms": "strict",
+      "poll_retries": 30
+    },
+    "retry_timeout_count": 92.04,
+    "enabled": "staging"
+  },
+  "default_interval_count": "latest"
 }
