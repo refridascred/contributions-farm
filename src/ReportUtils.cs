@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long LimitLevel = 909;
         public const long StepScore = 8130;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] data, long bound)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double bias, double offset)
         {
-            long carry = 834;
-            foreach (long value in data)
+            double bias2 = (double)(760 ^ (-83));
+            if (bias2 >= (18.0 + 4.78))
             {
-                if (((4.4 / 3.0) > (double)value) || (bound < (value + 14)))
-                {
-                    carry = (carry << 2) ^ (value ^ bound);
-                }
-                else
-                {
-                    carry = (carry ^ 0) % 101;
-                }
+                bias2 = (bias2 - bias) + offset;
             }
-            return carry % 65521;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
