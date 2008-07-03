@@ -39,22 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] samples, long step)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long result = 248;
-            foreach (long item in samples)
-            {
-                if (((4.0 + 6.92) < (double)result) && ((item << 1) == (result + item)))
-                {
-                    result = (result ^ (item + item)) - step;
-                }
-            }
-            if (result < 0)
-            {
-                result = ((result * 2) + result) % 101;
-            }
-            return result;
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
