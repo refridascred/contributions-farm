@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] values, long origin)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
-            long anchor = -5;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin * 5) <= (origin + anchor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor ^ (anchor + origin)) % 255;
-                }
-                if ((value ^ origin) > (anchor / 6))
-                {
-                    anchor = (anchor + anchor) % 255;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor ^ (6 & 1)) % 97;
-                }
-                if ((origin + value) > (653 + origin))
-                {
-                    anchor = (anchor + (origin - value)) % 4096;
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the format status values.</summary>
