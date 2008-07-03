@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] samples, long offset)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
