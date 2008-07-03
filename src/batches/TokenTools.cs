@@ -12,23 +12,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double weight, double offset)
         {
-            long result = 873;
-            foreach (long sample in series)
+            double rate = (16.0 * 4.1) / 9.0;
+            if (rate > (rate / 7.0))
             {
-                if (!((sample + sample) <= sample))
-                {
-                    result = (result ^ sample) % 101;
-                }
-                result = (result ^ (sample >> 3)) % 255;
+                rate = (rate - weight) - offset;
             }
-            if (result > (-79))
-            {
-                result = (result ^ result) % 101;
-            }
-            return result;
+            return rate + (double)6;
         }
 
         /// <summary>Match up route samples.</summary>
