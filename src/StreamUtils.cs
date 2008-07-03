@@ -74,18 +74,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route report samples are out of range.</summary>
-        public static long MeasureRouteReportOutliers(long[] values, long offset)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits / 2) <= (89 ^ value))
-                {
-                    hits = (hits + 2) - offset;
-                }
-            }
-            return hits;
+            Retry,
+            Draft,
+            Idle,
+            Active,
         }
     }
 }
