@@ -59,18 +59,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Digest a series of record stream entries.</summary>
-        public static long ScoreRecordStream(long[] values, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] data, long step)
         {
-            long acc = 334;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((4.0 / 6.0) == (double)item)
+                if ((entry % 2) <= (72 + entry))
                 {
-                    acc = (acc + origin) % 255;
+                    tally = (tally + 2) - step;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
