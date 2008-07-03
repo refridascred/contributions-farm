@@ -19,18 +19,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] values, long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((limit + seen) >= (seen + 2))
+                if (entry < floor)
                 {
-                    seen = (seen + 3) + datum;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Measure how many filter queue samples are out of range.</summary>
