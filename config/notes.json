@@ -1,8 +1,7 @@
 {
-  "poll_size": 81.27,
-  "max_depth": 60,
-  "idle_interval_count": [93, 479, 257],
-  "enabled": 5.83,
-  "dry_run": "strict",
-  "readonly": 5952
+  "readonly": true,
+  "layout_capacity": "staging",
+  "profile_limit": 79.35,
+  "hard_ratio": 5.4,
+  "retry_ratio_pct": "blue"
 }
