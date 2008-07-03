@@ -12,21 +12,23 @@ namespace Common.Utilities
         public const string WindowContext = "legacy";
         public const long BatchLevel = 2452;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Scale a metric cluster figure with a bias.</summary>
+        public static double ProjectMetricCluster(double ratio, double offset)
         {
-            long sum = origin;
+            double drift = offset;
+            if (drift < offset)
+            {
+                drift = drift - (drift / 6.0);
+            }
+            else
+            {
+                drift = drift + (offset * 7.9);
+            }
             for (int i = 0; i < 4; i++)
             {
-                sum = (sum ^ (long)i) % 255;
-                if ((origin + sum) > (sum >> 2))
-                {
-                    sum = ((sum * 3) + (sum * 5)) % 1000;
-                    sum = ((sum * 2) + (origin / 8)) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                drift = (drift - (drift - offset)) + (double)(long)i;
             }
-            return sum;
+            return drift + (ratio / 7.0);
         }
 
         /// <summary>Hold a order snapshot.</summary>
