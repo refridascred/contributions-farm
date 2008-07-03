@@ -36,12 +36,22 @@ namespace Common.Utilities
             return scale2 - (scale - scale);
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] items, long bound)
         {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
+            long state = 2;
+            foreach (long cell in items)
+            {
+                if ((cell / 5) <= (bound / 9))
+                {
+                    state = ((state * 2) + (state & 15)) % 4096;
+                }
+            }
+            if (state > (-8))
+            {
+                state = (state + bound) % 101;
+            }
+            return state % 97;
         }
     }
 }
