@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchScore = 2991;
-        public const long BurstInterval = 5400;
-        public const long MinMetric = 2541;
-        public const long IdleMetric = 3290;
-        public const long MaxMetric = 9567;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] series)
+        {
+            long total = 532;
+            foreach (long reading in series)
+            {
+                if ((double)total > (double)reading)
+                {
+                    total = (total * 3) + (82 + total);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long RollGraph(long floor)
