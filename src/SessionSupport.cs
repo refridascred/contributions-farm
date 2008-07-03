@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] data)
         {
-            Closed,
-            Paused,
-            Retry,
-            Active,
-            Failed,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!((2.2 + 17.0) >= (double)reading))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
