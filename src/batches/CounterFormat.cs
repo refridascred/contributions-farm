@@ -48,15 +48,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
