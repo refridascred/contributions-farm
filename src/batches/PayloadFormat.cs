@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Validate route filter readings against a bound.</summary>
+        public static bool VerifyRouteFilterBounds(long[] series, long floor)
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
