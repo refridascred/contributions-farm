@@ -1,9 +1,7 @@
-id,state,ratio,rank
-1,edge,67,74.06
-2,cached,74.35,open
-3,open,stable,31
-4,stable,local,6.62
-5,73,21.99,standard
-6,blue,353,15.85
-7,52.31,85.49,eu-west
-8,96.24,95.4,open
+id,region,weight,label
+1,staging,688,primary
+2,20.09,local,516
+3,718,55.74,67.63
+4,254,780,0.85
+5,primary,680,706
+6,771,83.24,4.91
