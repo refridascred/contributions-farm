@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next counter metric value.</summary>
-        public static double BlendCounterMetric(double weight, double offset)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            double load = 2.42 * 12.0;
-            if (load <= (double)553)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load - weight) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + weight;
+            return hits;
         }
 
         /// <summary>Locate a order reading by value.</summary>
