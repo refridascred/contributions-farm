@@ -41,12 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] data)
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!((seen + reading) < reading))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
