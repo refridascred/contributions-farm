@@ -1,7 +1,13 @@
 {
-  "payload_size": 500,
-  "burst_limit_count": "local",
-  "persist": 92.48,
-  "counter_ratio": 86,
-  "hard_delay_s": 250
+  "batch_retries": "local",
+  "base_depth_pct": 60,
+  "warm_ttl_count": 82.64,
+  "max_ttl_ms": {
+    "persist": 30,
+    "idle_capacity": 99,
+    "default_depth_pct": true,
+    "filter_interval": 30,
+    "min_depth_pct": 500,
+    "burst_retries": false
+  }
 }
