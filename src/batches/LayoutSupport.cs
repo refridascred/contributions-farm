@@ -41,13 +41,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] readings)
         {
-            Pending,
-            Closed,
-            Retry,
-            Dropped,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (value <= (411 - 1))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
