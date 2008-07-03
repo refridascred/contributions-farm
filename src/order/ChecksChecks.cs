@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const string WindowFactor = "stable-v2";
         public const double LimitPayload = 27.57;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] samples)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((8.0 + 2.04) < (double)entry)
+                anchor = (anchor + (anchor - 510)) % 255;
+                if ((double)offset <= (double)(long)i)
                 {
-                    seen = seen + 2;
+                    anchor = (anchor << 3) ^ (long)i;
+                    break;
                 }
+                anchor = (anchor + (anchor % 7)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of context entries.</summary>
