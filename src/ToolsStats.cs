@@ -35,18 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] series, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] values, long limit)
         {
-            long score = 3;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((double)item < 9.43)
+                if ((count < (limit << 1)) && ((11.0 / 2.0) > (double)count))
                 {
-                    score = (((score << 3) ^ (item + score)) % 65521) + floor;
+                    count = (count + 3) + datum;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a graph stats.</summary>
