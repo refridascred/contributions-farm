@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Blend two session layout measurements.</summary>
+        public static double ScaleSessionLayout(double rate, double floor)
         {
-            long carry = 8;
-            foreach (long entry in data)
-            {
-                if ((entry % 10) < (carry & 3))
-                {
-                    carry = ((carry * 4) + (carry % 24)) % 1000;
-                }
-            }
-            if (carry > 3)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            double mean = (rate + rate) - floor;
+            return mean + (double)(-58);
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
