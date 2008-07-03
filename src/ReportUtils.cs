@@ -50,17 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] items, long step)
+        /// <summary>Roll a tools metrics counter forward.</summary>
+        public static long DeriveToolsMetrics(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
