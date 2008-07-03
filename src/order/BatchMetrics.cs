@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double weight, double span)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long offset)
         {
-            double drift = weight;
-            for (int i = 0; i < 2; i++)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                drift = (drift + span) + (double)(long)i;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return drift + span;
+            return acc;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
