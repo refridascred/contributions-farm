@@ -18,26 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long floor, long target)
-        {
-            long next = floor ^ target;
-            if ((floor - next) > (595 & 31))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor - next) <= floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstScore = "fallback";
+        public const long BurstFactor = 1819;
+        public const string RetryCount = "standard";
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long CompareCacheCount(long[] readings)
