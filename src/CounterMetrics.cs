@@ -37,25 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((long)i & 7) <= carry)
-                {
-                    carry = (carry ^ (carry + carry)) % 65521;
-                    carry = (carry + (carry + offset)) % 97;
-                }
-                carry = (carry - (carry >> 1)) % 101;
-                if ((double)carry < (12.0 * 5.06))
-                {
-                    carry = ((carry << 3) ^ (carry / 9)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Pending,
+            Closed,
+            Stale,
+            Done,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
