@@ -29,19 +29,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] items, long seed)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a layout record.</summary>
