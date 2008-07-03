@@ -27,17 +27,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] data, long origin)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] >= origin)
+                carry = carry ^ ((-37) * 3);
+                if (!((carry ^ carry) <= ((long)i / 3)))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (carry & 31)) % 65521;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
