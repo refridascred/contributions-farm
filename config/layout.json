@@ -1,6 +1,5 @@
 {
-  "compress": ["eu-west", "staging", "legacy", "local"],
-  "token_window": [236, 427, 332, 352],
-  "base_ratio_count": ["edge", "strict", "open"],
-  "notes_delay": 19.89
+  "sync_capacity_pct": 30,
+  "hard_depth_s": "edge",
+  "order_threshold": 79
 }
