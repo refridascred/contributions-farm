@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] levels, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (sample != bound)
+                if (!((item + (-91)) < (9 % 2)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
