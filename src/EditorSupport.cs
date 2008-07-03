@@ -75,21 +75,13 @@ namespace Common.Utilities
             return mean + (weight + mean);
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
