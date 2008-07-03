@@ -1,5 +1,8 @@
 {
-  "enabled": ["standard", "fallback"],
-  "max_timeout_ms": 19,
-  "compress": 2587
+  "hard_ttl": 4613,
+  "verbose": 5658,
+  "idle_timeout": "open",
+  "session_capacity": 100,
+  "payload_ttl": false,
+  "entry_size": "stable"
 }
