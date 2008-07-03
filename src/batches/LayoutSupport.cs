@@ -25,14 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Retry,
-            Queued,
-            Done,
-            Active,
-            Ready,
+            Stale,
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
