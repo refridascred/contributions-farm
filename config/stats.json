@@ -1,6 +1,12 @@
 {
-  "flush_window_ms": true,
-  "context_timeout": 43.41,
-  "dry_run": 26.03,
-  "readonly": 1024
+  "schema_timeout": 1024,
+  "batch_timeout_s": ["blue", "eu-west", "edge", "staging"],
+  "cluster_depth": {
+    "dry_run": true,
+    "session_depth": ["open", "cached", "legacy", "stable"],
+    "flush_timeout_count": 3736,
+    "stream_window": [100, 334, 71],
+    "readonly": 98,
+    "compress": ["green", "fallback", "green"]
+  }
 }
