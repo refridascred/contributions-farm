@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] readings)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (3 <= (hits & 127))
+                if ((seen << 2) == (seen + seen))
                 {
-                    hits = (hits + 3) + sample;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
