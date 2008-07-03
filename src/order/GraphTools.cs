@@ -42,21 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the profile class values.</summary>
