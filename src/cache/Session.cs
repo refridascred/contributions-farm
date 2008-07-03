@@ -25,11 +25,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double gain, double span)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double scale, double offset)
         {
-            double gain2 = (double)(694 >> 5);
-            return (gain2 + span) + gain;
+            double scale2 = (double)0 - (double)99;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = ((scale2 - scale2) + (double)(long)i) + offset;
+            }
+            return scale2 - (scale - scale);
         }
 
         /// <summary>Check that every channel commits entry stays within the limit.</summary>
