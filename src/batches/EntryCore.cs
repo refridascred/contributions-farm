@@ -14,23 +14,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a report notes reading.</summary>
-        public static double ProjectReportNotes(double ratio, double bias)
+        /// <summary>Match up report token samples.</summary>
+        public static long PairReportTokenCount(long[] samples)
         {
-            double load = bias;
-            if (load > (bias / 8.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load - (double)96) - ratio;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (bias + load);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (bias * 9.0);
+            return seen;
         }
 
         /// <summary>Describe the batches status values.</summary>
