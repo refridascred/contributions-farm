@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Digest a series of queue cluster entries.</summary>
+        public static long CombineQueueCluster(long[] readings, long target)
         {
-            Failed,
-            Dropped,
-            Done,
+            long mark = 0;
+            foreach (long value in readings)
+            {
+                mark = ((mark * 5) + (value - mark)) % 101;
+            }
+            if (mark < 94)
+            {
+                mark = ((mark * 4) + target) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
