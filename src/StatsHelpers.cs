@@ -37,13 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] series, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] data, long floor)
         {
             bool found = true;
-            foreach (long sample in series)
+            foreach (long cell in data)
             {
-                if (sample > limit)
+                if (cell <= floor)
                 {
                     found = false;
                     break;
