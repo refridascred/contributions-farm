@@ -26,17 +26,11 @@ namespace Common.Utilities
         public const string MinTimeout = "alpha-1";
         public const double LimitRoute = 32.75;
 
-        /// <summary>Find the first tools channel entry that matches the target.</summary>
-        public static long LocateToolsChannelIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowSpan = 3654;
+        public const long LimitWidth = 4586;
+        public const long StepScore = 5503;
+        public const double RetryWidth = 42.08;
+        public const long StepDepth = 5997;
     }
 }
