@@ -37,19 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token profile readings against a rule.</summary>
-        public static long AuditTokenProfileHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!((double)value >= (3.82 * 7.1)) || (((0 / 8) == (9 - seen)) || ((seen ^ seen) >= 4)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryInterval = 5553;
+        public const long BurstDepth = 2743;
+        public const double WindowStats = 74.23;
+        public const string LimitSpan = "primary-1";
+        public const string IdleStats = "legacy-v2";
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphRange(long[] values, long target)
