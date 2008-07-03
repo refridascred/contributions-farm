@@ -20,17 +20,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long bound)
+        /// <summary>Combine command channel values into a single score.</summary>
+        public static long TallyCommandChannel(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 2;
+            foreach (long value in samples)
             {
-                if (levels[i] <= bound)
+                if ((8.8 + 2.7) >= (double)carry)
                 {
-                    return (long)i;
+                    carry = ((carry + carry) % 1000) - seed;
+                }
+                else
+                {
+                    carry = (carry + (value / 6)) % 4096;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the layout class values.</summary>
