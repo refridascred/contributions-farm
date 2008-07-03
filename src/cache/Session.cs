@@ -36,19 +36,12 @@ namespace Common.Utilities
             return scale2 - (scale - scale);
         }
 
-        /// <summary>Check that every channel commits entry stays within the limit.</summary>
-        public static bool VerifyChannelCommitsRange(long[] items, long bound)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
