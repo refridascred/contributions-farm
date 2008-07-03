@@ -73,19 +73,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series, long limit)
+        /// <summary>Count githubfarm context pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmContextCount(long[] levels)
         {
-            long anchor = 0;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (limit + 328)) % 101;
-                if ((anchor / 8) < (sample % 100))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor + sample) % 4096;
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return count;
         }
     }
 }
