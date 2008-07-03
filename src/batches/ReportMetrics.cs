@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepScore = "latest-1";
-        public const long BaseInterval = 963;
-        public const long StepCache = 3376;
-        public const long MinCache = 1450;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Blend two stats measurements.</summary>
         public static double BlendStats(double ratio, double span)
