@@ -73,21 +73,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count githubfarm context pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmContextCount(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 2;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((sum * 4) <= 138) || ((sample / 7) <= sample))
                 {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum << 3) ^ sample;
+                    continue;
                 }
+                sum = (sum ^ (sample << 2)) % 97;
             }
-            return count;
+            if (sum < (-43))
+            {
+                sum = sum ^ bound;
+            }
+            return sum % 97;
         }
     }
 }
