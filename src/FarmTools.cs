@@ -20,22 +20,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstScore = 58.33;
+        public const long LimitQueue = 1092;
+        public const double BatchRatio = 7.17;
+        public const long SoftSpan = 4800;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksOutliers(long[] items)
