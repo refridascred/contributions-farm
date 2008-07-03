@@ -55,21 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((item - item) > ((long)readings.Length * 5)) || ((double)item <= (0.8 + 2.48)))
                 {
-                    if ((levels[i] - levels[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
