@@ -37,13 +37,11 @@ namespace Common.Utilities
         public const long IdleFilter = 5500;
         public const long RetryFilter = 2290;
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
