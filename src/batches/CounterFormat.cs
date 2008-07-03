@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] items)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long anchor = 2;
-            foreach (long value in items)
-            {
-                if ((anchor > (11 + value)) && ((anchor + anchor) < value))
-                {
-                    anchor = (anchor ^ (anchor + anchor)) % 1000;
-                }
-                anchor = (anchor + anchor) % 1000;
-            }
-            return anchor;
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate profile samples.</summary>
