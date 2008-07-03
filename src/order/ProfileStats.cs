@@ -15,13 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] values)
         {
-            Retry,
-            Stale,
-            Pending,
-            Failed,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (2.0 <= (double)reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a account summary.</summary>
