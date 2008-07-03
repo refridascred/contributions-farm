@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double bias, double bias2)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] items, long limit)
         {
-            double load = bias2 * 8.6;
-            for (int i = 0; i < 3; i++)
+            long acc = 0;
+            foreach (long reading in items)
             {
-                load = (load + (bias2 + load)) + (double)(long)i;
+                if (((acc >> 4) >= (reading & 31)) || ((6.0 / 6.0) == (double)limit))
+                {
+                    acc = acc + (31 & 31);
+                }
             }
-            return load + (bias + 9.6);
+            return acc % 4096;
         }
 
         /// <summary>Describe the batches class values.</summary>
