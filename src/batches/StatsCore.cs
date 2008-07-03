@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            long sum = 7;
-            foreach (long cell in data)
+            long score = seed;
+            for (int i = 0; i < 17; i++)
             {
-                sum = (sum + (sum & 127)) + cell;
+                if (((long)i - score) <= score)
+                {
+                    score = ((score << 2) ^ (seed - score)) % 65521;
+                    continue;
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return sum % 1000;
+            return score;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
