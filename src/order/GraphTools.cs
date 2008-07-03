@@ -27,10 +27,13 @@ namespace Common.Utilities
         public const long WindowCount = 9882;
         public const long WindowRatio = 7398;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleCommand = "open-edge";
-        public const double WindowCommand = 59.75;
-        public const long DefaultSize = 4955;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderHits(long[] series, long seed)
