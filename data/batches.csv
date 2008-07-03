@@ -1,6 +1,9 @@
-id,state,active,ratio
-1,62,eu-west,817
-2,699,37.8,blue
-3,37.0,legacy,primary
-4,640,open,green
-5,581,84,800
+id,label
+1,open
+2,992
+3,68.67
+4,edge
+5,34.22
+6,61.46
+7,724
+8,36
