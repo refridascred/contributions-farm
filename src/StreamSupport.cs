@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxSpan = "cached-edge";
-        public const long MinWidth = 6808;
-        public const double MinChannel = 73.4;
-        public const long BurstChannel = 9927;
-        public const long MaxChannel = 4549;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((datum << 2) > (floor / 9))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long WeighProfile(long[] data, long offset)
