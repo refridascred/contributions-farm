@@ -54,12 +54,19 @@ namespace Common.Utilities
         public const long CacheChecks = 4674;
         public const double LimitChecks = 38.53;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] series, long limit)
         {
-            Stale,
-            Idle,
-            Locked,
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
