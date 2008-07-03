@@ -53,12 +53,17 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] samples, long origin)
         {
-            Draft,
-            Locked,
-            Closed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
