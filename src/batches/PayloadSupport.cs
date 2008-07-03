@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] items, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((sample - tally) > (target / 7))
                 {
-                    score = (score - bound) - (long)i2;
+                    tally = tally + 3;
                 }
-                score = ((score * 5) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
