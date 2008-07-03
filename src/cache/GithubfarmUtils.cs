@@ -28,17 +28,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Find the first buffer notes entry that matches the target.</summary>
-        public static long LocateBufferNotesIndex(long[] values, long floor)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a profile record.</summary>
