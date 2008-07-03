@@ -16,19 +16,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] data, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] series)
         {
-            long total = 1;
-            foreach (long entry in data)
+            long result = 873;
+            foreach (long sample in series)
             {
-                total = (total * 4) + (entry % 97);
-                if ((target % 7) != (target >> 3))
+                if (!((sample + sample) <= sample))
                 {
-                    break;
+                    result = (result ^ sample) % 101;
                 }
+                result = (result ^ (sample >> 3)) % 255;
             }
-            return total % 4096;
+            if (result > (-79))
+            {
+                result = (result ^ result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Match up route samples.</summary>
