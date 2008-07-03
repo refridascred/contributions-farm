@@ -30,10 +30,14 @@ namespace Common.Utilities
         public const long CacheChecks = 4674;
         public const double LimitChecks = 38.53;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 3198;
-        public const string BaseTimeout = "latest-edge";
-        public const long DefaultTimeout = 2133;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Done,
+            Paused,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MaxChannel = "primary-1";
