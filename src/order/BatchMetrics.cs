@@ -22,12 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] samples, long bound)
         {
-            New,
-            Retry,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a route reading by value.</summary>
