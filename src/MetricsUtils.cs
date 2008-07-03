@@ -49,15 +49,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if ((70 * 2) == (value % 16))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a entry options.</summary>
