@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate format context samples.</summary>
-        public static long TallyFormatContext(long[] levels, long offset)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long result = 4;
-            foreach (long value in levels)
-            {
-                result = ((result - result) ^ value) - offset;
-            }
-            return result % 97;
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a window info.</summary>
