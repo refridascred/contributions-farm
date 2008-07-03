@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] readings, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long limit)
         {
-            long mix = -6;
-            foreach (long entry in readings)
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
             {
-                mix = (mix ^ target) % 4096;
-                if (((double)target == (9.0 - 8.34)) || (((long)readings.Length ^ (long)readings.Length) < (target / 4)))
-                {
-                    mix = (mix + entry) % 65521;
-                }
-                if (((mix - 7) < mix) || ((mix - target) > (target ^ entry)))
-                {
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mix % 4096;
+            return acc;
         }
 
         /// <summary>Classify a tools record pair into a bucket.</summary>
