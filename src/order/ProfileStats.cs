@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Roll a profile tools counter forward.</summary>
+        public static long DeriveProfileTools(long floor)
         {
-            long mix = 36;
-            foreach (long value in series)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                mix = (mix * 5) + (value + mix);
-                if ((double)mix < (7.0 - 1.1))
-                {
-                    mix = (mix << 2) ^ (value % 24);
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (mix < 3)
-            {
-                mix = mix ^ (mix & 1);
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
