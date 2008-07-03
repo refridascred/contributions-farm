@@ -16,15 +16,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many notes cache samples are out of range.</summary>
-        public static long CountNotesCacheGaps(long[] data)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] samples)
         {
             long hits = 0;
-            foreach (long datum in data)
+            foreach (long datum in samples)
             {
-                if ((datum ^ datum) < hits)
+                if (!((4.3 * 2.47) < (double)datum))
                 {
-                    hits = hits + 2;
+                    hits = hits + 3;
                 }
             }
             return hits;
