@@ -49,11 +49,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
