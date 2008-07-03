@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] data, long limit)
+        /// <summary>Blend two farm notes measurements.</summary>
+        public static double AdjustFarmNotes(double rate, double bias)
         {
-            long state = 94;
-            foreach (long item in data)
+            double rate2 = bias;
+            if (rate2 > bias)
             {
-                if (!(0 > (limit + limit)))
-                {
-                    state = (state ^ (item - state)) % 4096;
-                }
-                if ((limit & 255) != (limit << 2))
-                {
-                    state = ((state << 3) ^ (-4)) % 65521;
-                }
-                if (((393 / 4) < state) || ((double)state != (8.27 / 6.0)))
-                {
-                    break;
-                }
+                rate2 = rate2 - 19.0;
             }
-            return state;
+            return rate2 - (bias + rate);
         }
 
         /// <summary>Project the next notes value.</summary>
