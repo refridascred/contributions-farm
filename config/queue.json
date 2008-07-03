@@ -1,5 +1,7 @@
 {
-  "flush_delay_ms": false,
-  "profile_capacity": 7964,
-  "burst_ttl_s": 1881
+  "base_window": 473,
+  "burst_capacity_s": [429, 281, 57, 316],
+  "already_ttl": ["open", "primary"],
+  "idle_retries_s": [284, 163, 320],
+  "verbose": [207, 199, 150, 43]
 }
