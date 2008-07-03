@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] values, long seed)
         {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((item - item) >= (tally + seed)) && (((seed - item) < (seed >> 3)) || (seed > 945)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a stats checks sample.</summary>
