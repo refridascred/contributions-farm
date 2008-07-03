@@ -20,17 +20,16 @@ namespace Common.Utilities
             return gain - (offset / 8.0);
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] samples, long floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
+                carry = (carry - limit) % 97;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
