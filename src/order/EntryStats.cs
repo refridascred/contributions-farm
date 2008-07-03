@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] series, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 42;
+            foreach (long datum in levels)
             {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
+                mix = ((mix - 477) % 4096) - datum;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
