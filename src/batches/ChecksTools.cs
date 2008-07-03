@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Pending,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 8659;
+        public const double SoftSpan = 18.41;
+        public const string MaxBudget = "primary-1";
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
