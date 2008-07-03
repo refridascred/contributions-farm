@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] data, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long acc = 245;
-            foreach (long reading in data)
-            {
-                acc = (((acc * 3) + (floor & 1)) % 4096) ^ reading;
-                acc = (acc * 3) + (acc + floor);
-            }
-            return acc % 4096;
+            Stale,
+            Ready,
+            Queued,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the token phase values.</summary>
