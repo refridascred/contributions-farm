@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] data)
+        /// <summary>Scale a format contributi figure with a bias.</summary>
+        public static double ScaleFormatContributi(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double weight = (double)6 / 3.0;
+            if (weight >= rate)
             {
-                if (!((2.2 + 17.0) >= (double)reading))
-                {
-                    matches = matches + 2;
-                }
+                weight = weight - rate;
             }
-            return matches;
+            else
+            {
+                weight = weight + (double)36;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight + (7.1 * 9.3);
         }
 
         /// <summary>Describe the format status values.</summary>
