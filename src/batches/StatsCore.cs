@@ -42,13 +42,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] data, long bound)
         {
-            public double Ratio { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
