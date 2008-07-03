@@ -1,11 +1,22 @@
 # support settings
-retry_ttl_s: false
-burst_ratio: local
-route_threshold:
-  - 11
-  - 457
-  - 399
-  - 178
-poll_window_ms: false
-cache_window: 84
-default_size: 25.61
+default_delay_count: 25
+hard_interval: 90
+max_capacity_count:
+  - open
+  - legacy
+cache_limit_count:
+  idle_ttl: open
+  min_ttl_ms: primary
+  account_size:
+    - cached
+    - open
+    - edge
+  stats_limit:
+    persist: true
+    strict: 10.02
+    readonly: 10.37
+    warm_interval_ms: 67.96
+batch_window_ms:
+  - local
+  - cached
+  - fallback
