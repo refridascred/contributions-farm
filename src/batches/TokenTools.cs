@@ -23,23 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long anchor = 4;
-            foreach (long cell in samples)
-            {
-                if ((anchor + cell) > (cell % 97))
-                {
-                    anchor = (anchor ^ (anchor + 50)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + cell) % 255;
-                }
-                anchor = (anchor ^ cell) % 1000;
-            }
-            return anchor;
+            Ready,
+            New,
+            Failed,
+            Active,
         }
 
         /// <summary>Match up route samples.</summary>
