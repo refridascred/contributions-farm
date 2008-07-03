@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Grade a record payload value against two limits.</summary>
+        public static long RankRecordPayload(long bound, long offset)
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            if ((0 % 60) != (90 + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)bound < (18.0 - 9.0)) && (3.1 < (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + offset) >= offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((offset % 64) < bound) && ((offset + 505) <= bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate profile samples.</summary>
