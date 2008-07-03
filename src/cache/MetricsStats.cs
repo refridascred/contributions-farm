@@ -41,14 +41,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Match up profile window samples.</summary>
+        public static long PairProfileWindowCount(long[] series)
         {
-            Idle,
-            Locked,
-            Pending,
-            Draft,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
