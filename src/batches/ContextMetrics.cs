@@ -30,20 +30,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] items, long origin)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] readings, long origin)
         {
-            long mix = -3;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix ^ (14 + origin)) % 4096;
-                mix = (mix ^ (cell & 7)) % 97;
-                if (mix < origin)
+                if ((readings[i] == origin) && ((readings[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
