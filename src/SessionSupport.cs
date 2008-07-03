@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double weight, double span)
+        /// <summary>Check that every token entry entry stays within the limit.</summary>
+        public static bool VerifyTokenEntryLimits(long[] data, long step)
         {
-            double ratio = 0.51 + (span + 8.5);
-            if (ratio >= (double)6)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                ratio = ratio - (ratio - 3.89);
+                if (entry <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (span - span)) - (double)(long)i;
-            }
-            return ratio - weight;
+            return ok;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
