@@ -16,18 +16,17 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Measure how many contributi batch samples are out of range.</summary>
-        public static long TallyContributiBatchGaps(long[] series)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((double)hits == (4.9 - 5.9)) || ((datum % 3) <= 3)) || (((hits + datum) == (hits / 5)) && ((9.29 / 7.0) != (double)hits)))
+                if (levels[i] > limit)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the command phase values.</summary>
