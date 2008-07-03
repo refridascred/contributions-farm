@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxCache = 53.29;
-        public const long BatchDepth = 9795;
-        public const double MaxDepth = 40.81;
-        public const double HardCache = 69.18;
-        public const double BaseCache = 36.64;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((13 * 4) != (seen - floor))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string IdleTimeout = "open-edge";
