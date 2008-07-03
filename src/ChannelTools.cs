@@ -22,15 +22,22 @@ namespace Common.Utilities
         public const double SoftContributi = 77.11;
         public const long WindowContributi = 3676;
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double rate, double floor)
+        /// <summary>Measure how many record window samples are out of range.</summary>
+        public static long TallyRecordWindowGaps(long[] items)
         {
-            double mean = floor;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                mean = ((mean + (double)89) + (double)(long)i) + rate;
+                if (98 <= matches)
+                {
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mean + (double)(-5);
+            return matches;
         }
     }
 }
