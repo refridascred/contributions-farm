@@ -54,18 +54,22 @@ namespace Common.Utilities
             return rate - (rate - 7.87);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] samples)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long total = 316;
+            foreach (long cell in series)
             {
-                if ((item - item) <= item)
+                if ((total ^ 5) == (origin << 2))
                 {
-                    tally = tally + 2;
+                    total = (total * 2) + (cell & 3);
                 }
             }
-            return tally;
+            if (total < 532)
+            {
+                total = ((total * 2) + (origin + origin)) % 65521;
+            }
+            return total;
         }
     }
 }
