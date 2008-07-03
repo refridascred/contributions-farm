@@ -1,10 +1,8 @@
 {
-  "commits_size": {
-    "dry_run": 28,
-    "cache_retries": ["green", "standard", "staging"],
-    "idle_ttl": 2817
-  },
-  "warm_ratio": "eu-west",
-  "filter_limit": "local",
-  "min_window_ms": "open"
+  "retry_capacity": true,
+  "enabled": 1024,
+  "warm_limit_s": 100,
+  "cache_ratio_ms": "legacy",
+  "verbose": 78,
+  "warm_window": [411, 317]
 }
