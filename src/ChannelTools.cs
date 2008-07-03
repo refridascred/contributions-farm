@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Idle,
-            Queued,
+            Locked,
             Ready,
-            Pending,
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
