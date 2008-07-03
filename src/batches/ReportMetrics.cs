@@ -18,14 +18,19 @@ namespace Common.Utilities
             return (load + (5.2 / 9.0)) + ratio;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double gain, double span)
         {
-            Retry,
-            New,
-            Synced,
-            Closed,
-            Dropped,
+            double mean = span * 5.8;
+            if (mean >= (double)727)
+            {
+                mean = (mean + (double)4) + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (double)86) + (double)(long)i;
+            }
+            return mean + (2.27 / 9.0);
         }
     }
 }
