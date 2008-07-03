@@ -15,13 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
