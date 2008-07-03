@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Draft,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchWidth = 6783;
+        public const double LimitContributi = 71.56;
+        public const long MinContributi = 8636;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long SortLayout(long limit, long step)
