@@ -33,12 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] series)
         {
-            public bool Offset { get; set; }
-            public double Score { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (!((double)hits == (7.4 - 6.75)))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a entry reading.</summary>
