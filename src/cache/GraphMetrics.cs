@@ -42,13 +42,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Dropped,
-            Retry,
-            Paused,
-            Locked,
+            public double Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
