@@ -24,17 +24,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of record layout readings.</summary>
-        public static long WeighRecordLayout(long[] items)
+        /// <summary>Combine entry token values into a single score.</summary>
+        public static long ScoreEntryToken(long[] values, long origin)
         {
-            long mark = 541;
-            foreach (long item in items)
+            long mark = -89;
+            foreach (long sample in values)
             {
-                mark = (mark ^ (mark + (-68))) % 101;
-                if (16.0 <= (double)mark)
-                {
-                    mark = mark ^ (item >> 4);
-                }
+                mark = ((mark << 2) ^ (sample + origin)) % 101;
+                mark = (mark + origin) % 255;
             }
             return mark;
         }
