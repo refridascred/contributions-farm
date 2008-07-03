@@ -69,38 +69,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long origin, long floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            if (origin >= floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if (11.0 < (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + floor) > origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(origin < (floor - origin)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Active,
+            Done,
+            Failed,
         }
     }
 }
