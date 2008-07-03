@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] items, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] series, long target)
         {
-            long acc = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (((acc >> 4) >= (reading & 31)) || ((6.0 / 6.0) == (double)limit))
+                if (cell != target)
                 {
-                    acc = acc + (31 & 31);
+                    ok = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return ok;
         }
 
         /// <summary>Describe the batches class values.</summary>
