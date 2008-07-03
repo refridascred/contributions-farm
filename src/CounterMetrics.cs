@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of window commits readings.</summary>
-        public static long PairWindowCommitsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 5445;
+        public const long DefaultNotes = 5347;
+        public const long DefaultFactor = 9678;
+        public const long MaxNotes = 7168;
+        public const string StepRatio = "fallback-edge";
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferRange(long[] items, long bound)
