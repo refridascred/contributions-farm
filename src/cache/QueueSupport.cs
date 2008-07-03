@@ -19,30 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] values)
         {
-            long acc = 9;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (!((sample - 540) > sample))
+                if ((6.7 * 1.06) > (5.3 * 6.27))
                 {
-                    acc = (acc * 3) + sample;
-                }
-                if (!(((acc % 10) != (sample & 3)) && (acc <= ((-2) + acc))))
-                {
-                    acc = (acc + (acc >> 1)) % 97;
-                }
-                if ((acc - 22) > (acc + acc))
-                {
-                    acc = (acc ^ (sample & 15)) % 97;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            if (acc < 234)
-            {
-                acc = ((acc << 2) ^ (7 + acc)) % 65521;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
