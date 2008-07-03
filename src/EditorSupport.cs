@@ -57,15 +57,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double weight, double bias)
+        /// <summary>Find the first route notes entry that matches the target.</summary>
+        public static long FindRouteNotesIndex(long[] series, long floor)
         {
-            double mean = weight / 2.0;
-            if (mean >= mean)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean - (mean / 2.0)) - bias;
+                if ((series[i] > floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (weight + mean);
+            return -1;
         }
 
         /// <summary>Hold a notes header.</summary>
