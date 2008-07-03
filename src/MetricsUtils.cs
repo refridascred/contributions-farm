@@ -34,15 +34,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Stale,
-            Idle,
-            Ready,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 261;
+        public const double MaxFactor = 7.33;
+        public const double MaxEditor = 72.73;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseCount = 2029;
