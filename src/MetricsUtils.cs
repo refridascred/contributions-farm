@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] readings, long floor)
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate metric contributi readings against a bound.</summary>
