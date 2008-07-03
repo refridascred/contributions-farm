@@ -39,25 +39,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor + anchor) % 101) ^ (long)i2;
-                }
-                anchor = anchor ^ ((long)i % 16);
-                if (((long)i / 9) >= 9)
-                {
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryScore = 4628;
+        public const double SoftEditor = 96.61;
+        public const long WindowRatio = 7418;
+        public const long DefaultEditor = 486;
+        public const long HardRatio = 9569;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
