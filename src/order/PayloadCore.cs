@@ -21,12 +21,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLevel = 9484;
-        public const long MaxSize = 6673;
-        public const string StepLayout = "strict-1";
-        public const string BaseLayout = "strict-1";
-        public const long BurstBudget = 3513;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSupport = 58.93;
+        public const string StepSize = "stable";
+        public const string BurstScore = "primary-edge";
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long SeekContributiIndex(long[] levels, long seed)
