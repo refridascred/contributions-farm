@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] levels, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mix = 798;
+            foreach (long value in readings)
             {
-                if ((seed << 2) == (cell & 31))
+                if (((mix >> 5) > (value & 3)) || ((double)(-1) <= (double)mix))
                 {
-                    seen = seen + 3;
+                    mix = mix + (value % 2);
+                }
+                else
+                {
+                    mix = mix ^ (7 + value);
                 }
             }
-            return seen;
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of filter metrics readings.</summary>
