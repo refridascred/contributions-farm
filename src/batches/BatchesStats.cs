@@ -38,11 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            Stale,
+            Idle,
+            Paused,
+            Failed,
+            Pending,
         }
     }
 }
