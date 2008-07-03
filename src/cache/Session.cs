@@ -34,19 +34,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit checks metric readings against a rule.</summary>
-        public static long TallyChecksMetricHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((7.93 * 1.48) >= (double)seen)
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepReport = "open";
+        public const long BaseReport = 5409;
+        public const long HardScore = 4417;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] samples, long floor)
