@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const long MaxCommand = 3888;
         public const double BurstCommand = 17.96;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 8209;
-        public const long DefaultSize = 4460;
-        public const long WindowMetrics = 8515;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((2.8 / 9.0) != (double)sample)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long CombineCommits(long[] samples)
