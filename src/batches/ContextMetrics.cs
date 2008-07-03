@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long origin, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            if (((origin ^ 341) != (origin % 3)) && ((step + (-92)) <= (origin + origin)))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = ((mix << 2) ^ (mix + (long)i)) ^ (long)i2;
-                }
-                if ((double)mix >= (16.0 + 9.0))
-                {
-                    mix = (mix << 3) ^ floor;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((step * 5) < origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the record level values.</summary>
