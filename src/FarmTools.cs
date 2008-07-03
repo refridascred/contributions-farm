@@ -25,18 +25,15 @@ namespace Common.Utilities
         public const double BatchRatio = 7.17;
         public const long SoftSpan = 4800;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] items)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            double mean = bias2;
+            if (mean >= mean)
             {
-                if ((cell - 43) == (hits + cell))
-                {
-                    hits = hits + 2;
-                }
+                mean = (mean - (mean * 19.0)) + bias;
             }
-            return hits;
+            return mean - (18.0 * 4.5);
         }
     }
 }
