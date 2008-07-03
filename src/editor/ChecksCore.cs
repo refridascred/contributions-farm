@@ -55,20 +55,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Iterate the report schema series from a seed.</summary>
-        public static long SeriesReportSchema(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                state = state + limit;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state ^ (limit - state)) % 4096) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseLevel = 5318;
+        public const double IdleSpan = 58.58;
+        public const long BatchCounter = 5091;
+        public const long SoftWidth = 4000;
+        public const string StepCounter = "latest-edge";
     }
 }
