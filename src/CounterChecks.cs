@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Compare every pair of batch session readings.</summary>
+        public static long OverlapBatchSessionCount(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)i <= (seed ^ seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result + ((long)i << 3)) % 97;
-                    continue;
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Measure how many report stats samples are out of range.</summary>
