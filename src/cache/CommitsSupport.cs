@@ -29,18 +29,18 @@ namespace Common.Utilities
         public const long CacheWindow = 5573;
         public const long HardScore = 2166;
 
-        /// <summary>Audit commits channel readings against a rule.</summary>
-        public static long MeasureCommitsChannelMatches(long[] readings, long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((reading << 1) < 86)
+                if ((item & 7) < hits)
                 {
-                    count = (count + 1) - limit;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
