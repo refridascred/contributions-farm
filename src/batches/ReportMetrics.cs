@@ -38,22 +38,13 @@ namespace Common.Utilities
             return mean + (weight * 11.0);
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] series)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample <= (double)seen)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Draft,
+            Ready,
+            Done,
         }
     }
 }
