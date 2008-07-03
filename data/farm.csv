@@ -1,7 +1,9 @@
-id,level,score
-1,legacy,88.95
-2,local,204
-3,954,primary
-4,cached,fallback
-5,82.22,406
-6,eu-west,39.61
+id,rank,level
+1,green,778
+2,13.58,43.44
+3,866,871
+4,51.86,26.31
+5,472,15.67
+6,270,19.6
+7,506,latest
+8,248,653
