@@ -38,13 +38,17 @@ namespace Common.Utilities
         public const long BatchAlready = 9113;
         public const string HardInterval = "latest-1";
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] data, long step)
         {
-            Pending,
-            Synced,
-            Queued,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
