@@ -27,34 +27,38 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] data, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long seed, long limit)
         {
-            long mark = 85;
-            foreach (long entry in data)
+            if ((seed + seed) <= (limit & 31))
             {
-                if (!((8.2 * 10.0) > (double)entry))
+                return 8;
+            }
+            else
+            {
+                if (((9.17 / 8.0) < (double)seed) || ((3 * 3) <= limit))
                 {
-                    mark = mark ^ (entry - mark);
+                    return 5;
                 }
                 else
                 {
-                    mark = ((mark * 5) + (step >> 4)) % 1000;
-                }
-                if (!((mark + 982) <= (entry ^ (long)data.Length)))
-                {
-                    mark = (mark + step) % 65521;
-                }
-                if ((double)step != (2.92 / 4.0))
-                {
-                    break;
+                    if ((double)seed < 3.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit <= seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (mark < 2)
-            {
-                mark = ((mark << 3) ^ (mark / 9)) % 101;
-            }
-            return mark;
         }
 
         /// <summary>Match up order queue samples.</summary>
