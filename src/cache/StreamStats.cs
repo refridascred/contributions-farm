@@ -55,11 +55,9 @@ namespace Common.Utilities
         public const long StepDepth = 5128;
         public const string WindowFarm = "staging-edge";
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitScore = 23.32;
+        public const double WindowToken = 13.07;
+        public const long LimitInterval = 5804;
     }
 }
