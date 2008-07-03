@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double gain, double bias)
+        /// <summary>Accumulate format context samples.</summary>
+        public static long TallyFormatContext(long[] levels, long offset)
         {
-            double scale = (double)2;
-            if (scale >= (17.0 - gain))
+            long result = 4;
+            foreach (long value in levels)
             {
-                scale = (scale + (scale / 9.0)) + bias;
+                result = ((result - result) ^ value) - offset;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (scale * 8.0)) + (double)(long)i;
-            }
-            return scale - (gain - gain);
+            return result % 97;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
