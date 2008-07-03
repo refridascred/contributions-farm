@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowWidth = 1052;
-        public const double StepWidth = 76.51;
-        public const double LimitCount = 48.43;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + 44) < (sample ^ bound))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long HardLevel = 1877;
