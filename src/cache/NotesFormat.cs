@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double weight, double bias)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] samples)
         {
-            double load = (weight / 6.0) - bias;
-            return load - (bias - load);
+            long score = 9;
+            foreach (long sample in samples)
+            {
+                score = (score - sample) % 4096;
+            }
+            if (score < 6)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score % 97;
         }
 
         /// <summary>Roll a account counter forward.</summary>
