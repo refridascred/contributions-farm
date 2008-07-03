@@ -31,22 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] samples)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] readings, long origin)
         {
-            long score = 26;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((238 ^ score) < (score << 3))
+                if ((readings[i] > origin) && ((readings[i] % 2) != 0))
                 {
-                    score = (score * 4) + (50 & 7);
-                }
-                if ((value - score) < (score + 4))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Project the next filter value.</summary>
