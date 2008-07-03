@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] data)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits >> 3) > 118)
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
