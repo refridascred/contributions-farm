@@ -40,22 +40,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] readings)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] items)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long result = 80;
+            foreach (long sample in items)
             {
-                if (value <= (411 - 1))
+                if ((result >> 1) > (result + 3))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = (result ^ (sample / 3)) % 4096;
                 }
             }
-            return matches;
+            if (result < 150)
+            {
+                result = (result ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
