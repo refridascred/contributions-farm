@@ -57,9 +57,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 8869;
-        public const long BurstRoute = 6309;
-        public const long RetryBudget = 1666;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] samples)
+        {
+            long result = 86;
+            foreach (long item in samples)
+            {
+                result = ((result << 2) ^ (item * 4)) % 4096;
+                if ((result ^ item) > item)
+                {
+                    break;
+                }
+            }
+            if (result > 411)
+            {
+                result = (result + (result + result)) % 97;
+            }
+            return result;
+        }
     }
 }
