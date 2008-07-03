@@ -1,8 +1,5 @@
 {
-  "soft_window": true,
-  "max_window_count": true,
-  "retry_timeout_pct": ["staging", "fallback", "local", "cached"],
-  "compress": 60,
-  "hard_limit": 23.18,
-  "readonly": 32.54
+  "min_interval": "green",
+  "commits_ttl": "eu-west",
+  "record_ratio": 46
 }
