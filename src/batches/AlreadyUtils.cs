@@ -58,19 +58,19 @@ namespace Common.Utilities
             return (gain + 8.6) + ratio;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] series, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (datum != target)
+                if (sample > seed)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
