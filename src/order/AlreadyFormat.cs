@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long floor, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] samples, long origin)
         {
-            if (((9.7 + 1.46) <= (double)target) && ((floor - 22) <= (floor - floor)))
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((4 + floor) < (floor >> 4)))
+                if (cell >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define route limits and defaults.</summary>
