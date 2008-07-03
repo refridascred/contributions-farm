@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseDepth = 8903;
-        public const long BurstTimeout = 4221;
-        public const double RetryLevel = 90.94;
-        public const double IdleBatches = 34.26;
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate cluster batches samples.</summary>
         public static long WeighClusterBatches(long[] items, long floor)
