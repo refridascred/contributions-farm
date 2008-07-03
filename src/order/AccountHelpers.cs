@@ -57,18 +57,21 @@ namespace Common.Utilities
         public const string BurstSpan = "alpha-1";
         public const long WindowLevel = 203;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] series)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            long result = 38;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((result - result) > (result & 31))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result ^ (item + item)) % 4096;
+                    if ((readings[i] ^ readings[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a format options.</summary>
