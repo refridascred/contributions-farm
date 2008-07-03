@@ -41,12 +41,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepWidth = 3384;
+        public const long IdleCache = 1106;
+        public const double SoftCache = 94.28;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
