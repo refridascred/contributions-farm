@@ -1,7 +1,13 @@
 {
-  "already_window": true,
-  "enabled": false,
-  "poll_interval_count": 39.84,
-  "idle_ttl_s": "staging",
-  "batch_limit": true
+  "hard_delay_count": {
+    "enabled": 60,
+    "checks_size": [441, 422],
+    "poll_threshold": 4316,
+    "min_limit": [164, 189]
+  },
+  "persist": "green",
+  "checks_ttl": 45.18,
+  "sync_capacity_pct": ["cached", "cached", "cached", "fallback"],
+  "entry_ttl": "strict",
+  "burst_ttl_count": 500
 }
