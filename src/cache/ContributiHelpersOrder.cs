@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] data)
         {
-            long mix = 798;
-            foreach (long value in readings)
+            long carry = 8;
+            foreach (long entry in data)
             {
-                if (((mix >> 5) > (value & 3)) || ((double)(-1) <= (double)mix))
+                if ((entry % 10) < (carry & 3))
                 {
-                    mix = mix + (value % 2);
-                }
-                else
-                {
-                    mix = mix ^ (7 + value);
+                    carry = ((carry * 4) + (carry % 24)) % 1000;
                 }
             }
-            return mix % 4096;
+            if (carry > 3)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
