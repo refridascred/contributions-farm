@@ -46,38 +46,10 @@ namespace Common.Utilities
         public const long SoftCommand = 3072;
         public const long SoftCount = 3546;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long seed, long target)
-        {
-            if (target <= (target + seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if (16.0 < (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target ^ target) > (target << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)target >= (3.0 + 12.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 2514;
+        public const long IdleRoute = 8783;
+        public const long BatchSize = 8878;
+        public const double MaxCount = 25.7;
     }
 }
