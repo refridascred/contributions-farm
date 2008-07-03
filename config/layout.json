@@ -1,7 +1,6 @@
 {
-  "dry_run": 34,
-  "retry_retries_pct": 3597,
-  "burst_size": false,
-  "readonly": true,
-  "warm_window_pct": ["latest", "cached"]
+  "compress": ["eu-west", "staging", "legacy", "local"],
+  "token_window": [236, 427, 332, 352],
+  "base_ratio_count": ["edge", "strict", "open"],
+  "notes_delay": 19.89
 }
