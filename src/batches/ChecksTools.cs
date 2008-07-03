@@ -48,10 +48,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleSpan = "primary-v2";
-        public const long SoftNotes = 447;
-        public const string HardNotes = "primary";
-        public const double LimitNotes = 35.55;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Done,
+            Pending,
+            Paused,
+        }
     }
 }
