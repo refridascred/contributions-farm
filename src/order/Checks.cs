@@ -45,26 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] values, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] items)
         {
-            long acc = 192;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((double)offset < (double)acc)
+                if ((hits / 2) > 433)
                 {
-                    acc = (acc + (0 / 3)) % 101;
-                }
-                if ((6.39 + 4.28) <= (double)item)
-                {
-                    acc = (acc ^ acc) % 4096;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            if (acc > 6)
-            {
-                acc = ((acc << 2) ^ (offset % 5)) % 1000;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the support mode values.</summary>
