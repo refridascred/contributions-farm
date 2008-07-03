@@ -18,22 +18,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry filter value against two limits.</summary>
-        public static long RankEntryFilter(long bound, long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long bound, long offset)
         {
-            if ((double)seed >= (1.35 + 2.9))
+            if (((offset + bound) > (8 + offset)) && (77 >= bound))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((double)bound == (0.19 / 4.0))
+                if (((bound - bound) > offset) || ((offset + offset) < 4))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 3;
+                    if ((bound + 477) <= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset / 2) > (offset >> 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
