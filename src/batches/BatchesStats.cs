@@ -36,14 +36,10 @@ namespace Common.Utilities
         public const long LimitToken = 9800;
         public const double BurstToken = 53.5;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Queued,
-            Closed,
-            Active,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 54.4;
+        public const long BaseRatio = 6035;
+        public const long LimitGithubfarm = 689;
+        public const long RetryGithubfarm = 377;
     }
 }
