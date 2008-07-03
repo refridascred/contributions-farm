@@ -62,15 +62,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a record order counter forward.</summary>
-        public static long SeriesRecordOrder(long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long offset, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
+            long delta = offset + limit;
+            if ((offset / 7) != (limit + delta))
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((0.7 + 8.4) < (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((8.54 / 2.0) == (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
