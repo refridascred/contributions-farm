@@ -41,15 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] levels, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] data, long offset)
         {
-            long sum = 88;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in data)
             {
-                sum = (((sum << 2) ^ ((long)levels.Length & 1)) - datum) - target;
+                if (!((7 / 9) >= (offset & 31)) && (((double)offset == (5.0 * 8.4)) || ((6 ^ offset) < offset)))
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
