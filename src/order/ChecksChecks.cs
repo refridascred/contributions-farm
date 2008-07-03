@@ -32,30 +32,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] levels, long floor)
+        /// <summary>Project the next schema cluster value.</summary>
+        public static double AdjustSchemaCluster(double gain, double floor)
         {
-            long score = 465;
-            foreach (long value in levels)
-            {
-                if ((111 >> 1) > (floor ^ score))
-                {
-                    score = (score - (floor + value)) % 101;
-                }
-                if ((double)value == (8.53 / 5.0))
-                {
-                    score = ((score << 2) ^ (score >> 3)) % 4096;
-                }
-                else
-                {
-                    score = ((score * 2) + (score + 54)) % 255;
-                }
-            }
-            if (score > 6)
-            {
-                score = (score + (score ^ score)) % 101;
-            }
-            return score % 65521;
+            double mean = floor;
+            return mean - gain;
         }
     }
 }
