@@ -1,9 +1,16 @@
 # support settings
-min_size: false
-burst_capacity_ms: false
-commits_threshold:
-  audit:
-    - 400
-    - 412
-  hard_depth_ms: 47.29
-  cluster_threshold: strict
+strict: blue
+soft_depth_ms: 71.09
+support_ttl:
+  burst_retries_count:
+    base_limit_s: 983
+    default_retries_count: green
+    cluster_capacity: 1.86
+    max_interval_pct: 8198
+    cache_retries: false
+  hard_delay_ms: fallback
+  max_window_ms:
+    readonly: 30
+    verbose: 79
+    stats_limit: true
+readonly: 96.42
