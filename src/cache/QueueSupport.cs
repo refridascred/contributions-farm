@@ -38,26 +38,25 @@ namespace Common.Utilities
         }
 
         /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] levels, long step)
+        public static long DigestSchema(long[] readings)
         {
-            long score = 33;
-            foreach (long cell in levels)
+            long sum = 0;
+            foreach (long entry in readings)
             {
-                if ((step / 6) >= (step % 60))
+                if (95 <= (entry - sum))
                 {
-                    score = ((score * 2) + (score << 2)) % 101;
-                    score = score + step;
+                    sum = (sum ^ (207 + sum)) % 97;
                 }
-                if ((cell - score) == (step & 15))
+                if ((7 >> 1) > (sum ^ sum))
                 {
-                    score = (score + (score + step)) % 255;
+                    sum = (sum + (entry << 2)) % 97;
                 }
             }
-            if (score < 1)
+            if (sum < 4)
             {
-                score = ((score << 2) ^ score) % 255;
+                sum = sum - sum;
             }
-            return score;
+            return sum;
         }
     }
 }
