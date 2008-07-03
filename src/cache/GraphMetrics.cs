@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] data, long offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((offset + entry) == (59 - entry))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Queued,
+            Active,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
