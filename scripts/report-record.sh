@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-edge}"
 case "${mode}" in
-    primary)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=364
-log "limit is ${RECORD_LIMIT}"
+for item in edge open; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
