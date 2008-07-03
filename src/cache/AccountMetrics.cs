@@ -54,18 +54,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!((108 ^ hits) < ((long)data.Length ^ cell)))
-                {
-                    hits = (hits + 1) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinLevel = 1270;
+        public const long BurstProfile = 5760;
+        public const long SoftProfile = 8795;
+        public const long CacheProfile = 3123;
+        public const long CacheDepth = 1852;
     }
 }
