@@ -19,17 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first context session entry that matches the target.</summary>
-        public static long LocateContextSessionIndex(long[] data, long bound)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)828 + (bias - bias);
+            if (ratio < (ratio - ratio))
             {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + 13.0;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (gain - bias)) + (double)(long)i;
+            }
+            return ratio - (bias * 5.28);
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
