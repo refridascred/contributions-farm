@@ -50,10 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowBudget = 74.29;
-        public const double DefaultRatio = 60.4;
-        public const string MaxGraph = "strict-v2";
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
+        {
+            Closed,
+            Locked,
+            Draft,
+            Retry,
+            Done,
+        }
 
         /// <summary>Compare every pair of filter buffer readings.</summary>
         public static long PairFilterBufferCount(long[] values)
