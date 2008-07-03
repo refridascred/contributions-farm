@@ -1,11 +1,11 @@
 # Command notes
 
-Each stream is validated before it reaches the batches queue.
-Keep order and command names short and lowercase.
-The queue report groups every report by token.
+The buffer report groups every cache by cluster.
+When a queue fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate stream input early
-- Log every schema change
-- Keep entry values small
+- Review record limits each release
+- Prefer entry defaults
+- Keep commits values small
+- Log every context change
