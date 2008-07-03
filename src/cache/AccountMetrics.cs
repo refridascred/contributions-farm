@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] readings)
         {
-            Synced,
-            Queued,
-            Active,
-            Pending,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum * 4) <= seen) || (seen >= (datum - seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
