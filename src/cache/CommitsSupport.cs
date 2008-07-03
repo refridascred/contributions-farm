@@ -52,10 +52,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitScore = 2610;
-        public const string BurstSpan = "strict-edge";
-        public const long BaseTimeout = 637;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public long Region { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
