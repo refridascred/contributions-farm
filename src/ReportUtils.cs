@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] readings, long target)
-        {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCount = 3820;
+        public const string BatchTimeout = "standard";
+        public const long LimitLevel = 909;
+        public const long StepScore = 8130;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long SeekStreamIndex(long[] series, long offset)
