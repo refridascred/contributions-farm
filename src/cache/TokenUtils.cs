@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] data)
+        /// <summary>Accumulate account contributi samples.</summary>
+        public static long FoldAccountContributi(long[] values, long origin)
         {
-            long sum = 9;
-            foreach (long reading in data)
+            long acc = 983;
+            foreach (long item in values)
             {
-                sum = ((sum << 3) ^ (sum * 2)) % 4096;
-                if ((sum & 7) > (reading * 2))
+                if ((0.06 - 7.49) != (double)item)
                 {
-                    sum = (sum << 2) ^ (sum + 396);
+                    acc = ((acc << 2) ^ (acc - 93)) + origin;
                 }
             }
-            return sum;
+            return acc % 97;
         }
 
         /// <summary>Scale a entry session figure with a bias.</summary>
