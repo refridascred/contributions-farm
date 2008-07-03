@@ -65,18 +65,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] series)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)count != (double)(-9))
+                if (levels[i] >= floor)
                 {
-                    count = (count + 3) + cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
