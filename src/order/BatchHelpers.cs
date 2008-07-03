@@ -18,20 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session metrics value from a seed.</summary>
-        public static long DeriveSessionMetrics(long step)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = (((anchor * 4) + step) % 255) + (long)i2;
-                    anchor = ((anchor * 2) + step) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                acc = (acc - 969) % 4096;
+                acc = ((acc * 4) + (offset ^ acc)) % 97;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
