@@ -1,24 +1,6 @@
 {
-  "compress": false,
-  "max_delay": {
-    "base_retries": 100,
-    "filter_ttl": ["staging", "staging"],
-    "burst_delay_ms": "green",
-    "audit": "strict",
-    "buffer_window": 8324,
-    "cluster_delay": "stable"
-  },
-  "default_size_count": {
-    "order_threshold": 11,
-    "readonly": "edge",
-    "strict": {
-      "burst_ttl": "cached",
-      "readonly": "edge",
-      "burst_ttl_s": 5922,
-      "hard_size_pct": 43
-    },
-    "max_interval": 30,
-    "sync_limit_pct": "open"
-  },
-  "default_threshold_count": 5624
+  "burst_ratio_count": 72,
+  "default_window": [430, 184, 314, 179],
+  "enabled": 57,
+  "burst_capacity": "strict"
 }
