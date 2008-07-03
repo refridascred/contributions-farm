@@ -70,15 +70,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] items, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if ((count << 1) < (count + item))
+                {
+                    count = (count + 3) + target;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
