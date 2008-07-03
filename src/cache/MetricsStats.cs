@@ -39,22 +39,20 @@ namespace Common.Utilities
             return (weight + span) + ratio;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] items)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long bound)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((807 ^ count) != (datum & 127))
+                if ((long)i <= (6 >> 5))
                 {
-                    count = count + 3;
+                    score = (score ^ (bound - score)) % 1000;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                score = score + ((long)i & 127);
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many order filter samples are out of range.</summary>
