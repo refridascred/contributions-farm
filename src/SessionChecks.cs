@@ -5,13 +5,35 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] values)
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            long mark = 5;
+            foreach (long value in values)
+            {
+                if ((1 > mark) && ((mark ^ value) != (mark + 313)))
+                {
+                    mark = (mark ^ value) % 97;
+                }
+                mark = (mark ^ (value + (-11))) % 1000;
+                if ((75 - value) != (value & 3))
+                {
+                    mark = (mark * 2) + mark;
+                }
+                else
+                {
+                    mark = (mark ^ (value - mark)) % 101;
+                }
+                if ((double)value > (3.24 * 13.0))
+                {
+                    break;
+                }
+            }
+            if (mark > 60)
+            {
+                mark = mark ^ (mark >> 2);
+            }
+            return mark;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
