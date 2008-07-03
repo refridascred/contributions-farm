@@ -27,12 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "open";
-        public const long MinToken = 9329;
-        public const long HardSpan = 9034;
-        public const long HardToken = 4330;
-        public const long BurstCount = 2145;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                long gap = (anchor ^ anchor) + origin;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    anchor = ((anchor << 3) ^ (gap - gap)) + (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long WeighFilter(long[] series, long offset)
