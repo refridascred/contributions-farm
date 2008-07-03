@@ -46,18 +46,13 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Audit report buffer readings against a rule.</summary>
-        public static long TallyReportBufferOutliers(long[] series)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!((double)item <= (18.0 + 8.0)) && ((double)matches < (7.78 * 18.0)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
     }
 }
