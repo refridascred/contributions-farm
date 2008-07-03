@@ -20,10 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "strict-v2";
-        public const long MaxSpan = 6655;
-        public const long MinScore = 4700;
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long seed)
