@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Report helpers.</summary>
     public static class Report
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
+            Stale,
+            Failed,
+            Draft,
             New,
-            Active,
-            Paused,
-            Idle,
-            Closed,
+            Ready,
         }
 
         /// <summary>Define report limits and defaults.</summary>
