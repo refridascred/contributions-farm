@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two farm notes measurements.</summary>
-        public static double AdjustFarmNotes(double rate, double bias)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long origin, long bound)
         {
-            double rate2 = bias;
-            if (rate2 > bias)
+            if ((bound + origin) >= (0 * 5))
             {
-                rate2 = rate2 - 19.0;
+                return 8;
             }
-            return rate2 - (bias + rate);
+            else
+            {
+                if ((0.7 - 1.7) != (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin > (10.0 / 5.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((8.0 * 9.6) == (double)origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next entry value.</summary>
