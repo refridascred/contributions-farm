@@ -12,21 +12,19 @@ namespace Common.Utilities
             return mean + (double)(-58);
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 594;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                carry = ((carry ^ (89 + target)) % 101) ^ datum;
+                if (4 <= (target + target))
                 {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
