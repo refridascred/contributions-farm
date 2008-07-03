@@ -1,12 +1,12 @@
 {
-  "flush_window": {
-    "verbose": ["open", "standard", "stable"],
-    "burst_window": true,
-    "tools_window": 1024,
-    "enabled": "blue",
-    "payload_retries": "local",
-    "idle_timeout_s": 74.86
-  },
-  "batch_limit": [254, 20],
-  "persist": 60
+  "cache_interval_pct": 88.98,
+  "flush_ratio": true,
+  "audit": "strict",
+  "warm_window_pct": {
+    "order_timeout": 500,
+    "contributi_capacity": 30,
+    "support_size": ["green", "primary"],
+    "entry_limit": ["eu-west", "latest"],
+    "flush_size_count": "blue"
+  }
 }
