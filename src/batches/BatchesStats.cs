@@ -27,13 +27,17 @@ namespace Common.Utilities
         public const long CacheCluster = 3221;
         public const long DefaultCluster = 4748;
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] data, long origin)
         {
-            Idle,
-            Stale,
-            Active,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a buffer info.</summary>
