@@ -19,31 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long target, long seed)
+        /// <summary>Fold a list of already support readings.</summary>
+        public static long TallyAlreadySupport(long[] samples, long limit)
         {
-            if ((double)seed <= (5.14 + 1.0))
+            long mark = 13;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target / 8) < (target * 5))
+                if ((double)item > (7.0 * 9.3))
                 {
-                    return 1;
+                    mark = mark + ((-81) & 255);
                 }
-                else
+                if ((item << 2) >= (item % 100))
                 {
-                    if ((0.95 - 2.0) != (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            if (mark < 572)
+            {
+                mark = ((mark * 2) + (limit - mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
