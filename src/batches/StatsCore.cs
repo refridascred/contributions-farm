@@ -59,14 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] values)
         {
-            Locked,
-            Pending,
-            Retry,
-            Idle,
-            Ready,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((-9) % 8) > reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the already mode values.</summary>
