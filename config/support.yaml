@@ -1,4 +1,27 @@
 # support settings
-flush_limit_count: stable
-stream_window: 46.6
-queue_ratio: 30
+flush_ratio: 100
+queue_ttl: edge
+max_ttl_count: local
+base_delay_ms:
+  strict:
+    - 329
+    - 53
+    - 87
+  enabled: true
+  base_capacity:
+    - 325
+    - 462
+verbose: stable
+max_interval_pct:
+  batches_threshold: true
+  stats_limit:
+    retry_timeout_s:
+      - cached
+      - fallback
+      - blue
+      - stable
+    cache_interval_count: 44
+    hard_capacity_ms: blue
+    persist: staging
+    checks_ttl: staging
+  burst_depth: 250
