@@ -58,13 +58,38 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long floor, long offset)
         {
-            Synced,
-            New,
-            Failed,
-            Locked,
+            if (((double)offset > (6.9 - 2.2)) && ((double)floor != (18.0 + 3.5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor >= (305 + floor)) && ((181 + (-75)) < (offset - floor)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((floor + floor) >= (offset / 3)) && (offset <= floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((floor - floor) < (offset ^ 61)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two token measurements.</summary>
