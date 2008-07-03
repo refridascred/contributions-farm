@@ -30,13 +30,11 @@ namespace Common.Utilities
         public const long MaxBudget = 2450;
         public const double WindowCount = 18.0;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 2935;
+        public const long RetryFactor = 1690;
+        public const long BaseFilter = 9071;
+        public const string HardFilter = "legacy-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryRatio = 267;
