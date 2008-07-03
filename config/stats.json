@@ -1,23 +1,6 @@
 {
-  "verbose": false,
-  "flush_timeout_count": {
-    "hard_timeout": true,
-    "dry_run": [472, 80],
-    "token_capacity": true,
-    "hard_size": "eu-west",
-    "cluster_limit": "latest",
-    "tools_size": "open"
-  },
-  "compress": "standard",
-  "warm_interval_pct": {
-    "dry_run": false,
-    "cache_ratio_ms": {
-      "flush_interval_count": [149, 356, 495, 86],
-      "retry_delay": true,
-      "counter_ttl": false
-    },
-    "readonly": 29,
-    "batch_window": false,
-    "hard_delay_pct": 8.8
-  }
+  "warm_retries_ms": "cached",
+  "flush_retries": false,
+  "readonly": 1024,
+  "burst_size_pct": 3530
 }
