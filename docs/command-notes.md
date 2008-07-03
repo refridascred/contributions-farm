@@ -1,15 +1,14 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the payload list.
-Each cluster is validated before it reaches the channel queue.
-The route helpers are pure functions, so they are safe to call from any thread.
+The editor report groups every editor by batches.
+Each record is validated before it reaches the cache queue.
 
-Each account is validated before it reaches the notes queue.
-The farm report groups every layout by githubfarm.
+Run the githubfarm check before changing any tools limits.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Log every window change
-- Validate editor input early
-- Document new route fields
+- Review order limits each release
+- Log every cluster change
+- Validate schema input early
+- Document new account fields
