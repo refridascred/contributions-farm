@@ -64,21 +64,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up profile window samples.</summary>
-        public static long PairProfileWindowCount(long[] series)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
