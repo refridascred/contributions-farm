@@ -22,17 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] samples, long step)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((samples[i] >= step) && ((samples[i] % 3) != 0))
+                state = (state * 4) + (state - state);
+                if (((-5) >> 1) <= ((long)i % 5))
                 {
-                    return (long)i;
+                    state = state ^ (state - (long)i);
                 }
+                else
+                {
+                    state = ((state * 3) + state) % 4096;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
