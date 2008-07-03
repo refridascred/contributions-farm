@@ -1,20 +1,6 @@
 # entry settings
-poll_size_pct:
-  idle_depth_pct: blue
-  verbose: staging
-  readonly: green
-  cache_depth_s: 1132
-flush_ratio_ms: true
-max_depth:
-  - 444
-  - 413
-  - 337
-buffer_threshold:
-  hard_threshold_ms: true
-  max_interval_s: local
-  soft_ttl_pct: 13.53
-  batch_retries: 500
-  max_threshold_s: strict
-  hard_limit: 99
-session_ratio: 64
-base_size: 250
+cache_threshold_s: strict
+dry_run:
+  - cached
+  - green
+max_retries_ms: 47.66
