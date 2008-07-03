@@ -1,6 +1,13 @@
 {
-  "token_limit": false,
-  "token_ratio": false,
-  "default_retries_count": "latest",
-  "cache_ttl_ms": 77
+  "cache_delay_pct": {
+    "cache_capacity": true,
+    "max_timeout_count": "local",
+    "enabled": "green",
+    "readonly": 79.91,
+    "batch_delay_pct": true
+  },
+  "warm_timeout": "standard",
+  "account_timeout": 1024,
+  "readonly": false,
+  "warm_interval_s": "edge"
 }
