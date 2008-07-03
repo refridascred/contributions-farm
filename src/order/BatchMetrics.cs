@@ -20,22 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] series, long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] levels, long target)
         {
-            long score = 21;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((7.04 - 11.0) < (double)score)
+                if (cell >= target)
                 {
-                    score = (((score * 5) + (3 >> 5)) % 1000) ^ reading;
+                    stale = false;
+                    break;
                 }
             }
-            if (score > 15)
-            {
-                score = ((score << 2) ^ (2 - offset)) % 65521;
-            }
-            return score % 65521;
+            return stale;
         }
 
         /// <summary>Locate a route reading by value.</summary>
