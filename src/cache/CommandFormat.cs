@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long seed)
         {
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
-            public bool Mode { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc << 3) ^ (591 * 3)) % 97;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
