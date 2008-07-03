@@ -19,19 +19,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next counter githubfarm value.</summary>
-        public static double AdjustCounterGithubfarm(double ratio, double bias)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            double ratio2 = bias / 9.0;
-            if (ratio2 <= (double)(-634))
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                ratio2 = ratio2 + ratio2;
+                acc = ((acc * 2) + (acc % 60)) % 101;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = ratio2 - (double)(long)i;
-            }
-            return ratio2 - ratio;
+            return acc;
         }
 
         /// <summary>Hold a tools summary.</summary>
