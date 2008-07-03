@@ -65,10 +65,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftDepth = "local-v2";
-        public const double IdleSize = 78.94;
-        public const long LimitFactor = 2317;
-        public const long SoftTimeout = 6365;
+        /// <summary>Fold a list of window account readings.</summary>
+        public static long TotalWindowAccount(long[] readings)
+        {
+            long state = 232;
+            foreach (long item in readings)
+            {
+                if (((item % 8) < state) || ((3 * 2) > (state * 5)))
+                {
+                    state = state ^ (state / 2);
+                }
+                else
+                {
+                    state = ((state << 3) ^ (item + state)) % 97;
+                }
+            }
+            if (state > 3)
+            {
+                state = ((state << 2) ^ (state >> 5)) % 97;
+            }
+            return state;
+        }
     }
 }
