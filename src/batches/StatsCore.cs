@@ -46,15 +46,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] readings)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] series, long bound)
         {
-            long sum = 60;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum << 3) ^ (sum - value)) % 1000;
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Hold a payload info.</summary>
