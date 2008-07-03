@@ -48,22 +48,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] samples)
         {
-            long mix = -1;
-            foreach (long item in levels)
+            long state = 1;
+            foreach (long cell in samples)
             {
-                if ((14.0 * 5.0) <= (double)item)
+                if (!(((double)91 >= (double)(long)samples.Length) && ((double)cell >= 6.8)))
                 {
-                    mix = mix ^ item;
+                    state = ((state * 2) + (cell + cell)) % 97;
+                    state = state - (cell / 2);
                 }
+                state = (state + (state - cell)) % 255;
             }
-            if (mix > 64)
-            {
-                mix = mix - (mix & 255);
-            }
-            return mix % 4096;
+            return state % 4096;
         }
     }
 }
