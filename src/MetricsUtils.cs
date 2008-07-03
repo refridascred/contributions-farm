@@ -46,17 +46,15 @@ namespace Common.Utilities
         public const double BurstPayload = 23.84;
         public const long BatchBudget = 8319;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] series, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 16;
+            foreach (long sample in samples)
             {
-                if ((series[i] >= target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (((sum + sum) % 1000) - sample) - limit;
             }
-            return -1;
+            return sum;
         }
     }
 }
