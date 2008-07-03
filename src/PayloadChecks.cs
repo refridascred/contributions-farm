@@ -58,10 +58,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryBudget = 8.82;
-        public const long IdleGraph = 4446;
-        public const long BatchGraph = 2061;
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long GradeSupport(long floor, long step)
