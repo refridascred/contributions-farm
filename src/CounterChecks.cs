@@ -76,9 +76,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchEntry = "cached-v2";
-        public const long MaxEntry = 8837;
-        public const string IdleEntry = "staging";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchCount = "strict-1";
+        public const double BatchEditor = 94.79;
+        public const double CacheSpan = 89.11;
     }
 }
