@@ -41,14 +41,13 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Synced,
-            Paused,
-            Done,
-            Retry,
+            Pending,
             Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
