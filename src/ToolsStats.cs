@@ -35,23 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next layout command value from a seed.</summary>
-        public static long RollLayoutCommand(long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((((long)i ^ acc) <= 503) && ((acc + offset) == (acc & 255)))
+                if ((datum & 3) > datum)
                 {
-                    acc = (acc ^ 6) % 1000;
+                    matches = matches + 2;
                 }
-                else
-                {
-                    acc = acc ^ (acc - offset);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the metric mode values.</summary>
