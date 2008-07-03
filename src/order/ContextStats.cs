@@ -25,22 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] values)
         {
-            long total = 3;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((total + total) <= (cell % 60))
+                if ((double)datum >= (double)87)
                 {
-                    total = (total ^ cell) % 97;
+                    count = count + 1;
                 }
             }
-            if (total < 601)
-            {
-                total = (total * 2) + (total >> 3);
-            }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Describe the channel status values.</summary>
