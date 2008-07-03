@@ -17,25 +17,30 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long floor, long floor2)
+        /// <summary>Digest a series of support filter entries.</summary>
+        public static long TotalSupportFilter(long[] data)
         {
-            long span = floor ^ floor2;
-            if ((9.0 + 8.8) != (double)floor2)
+            long score = 66;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((span - floor) > (floor2 + floor))
+                if (((score * 2) > (score / 9)) && ((score & 1) == (sample >> 4)))
                 {
-                    return 6;
+                    score = score ^ (0 << 3);
                 }
                 else
                 {
-                    return 4;
+                    score = ((score << 2) ^ (sample + score)) % 4096;
+                }
+                if ((double)score < (4.78 + 7.1))
+                {
+                    break;
                 }
             }
+            if (score < 48)
+            {
+                score = score - score;
+            }
+            return score;
         }
 
         /// <summary>Combine format values into a single score.</summary>
