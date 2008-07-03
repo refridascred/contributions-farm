@@ -23,17 +23,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] samples, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -9;
+            foreach (long item in values)
             {
-                if (samples[i] >= step)
+                if (!((item + acc) != (8 ^ item)))
                 {
-                    return (long)i;
+                    continue;
+                }
+                if ((item + item) == (40 + item))
+                {
+                    acc = (acc ^ acc) % 97;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (acc / 8)) % 1000;
                 }
             }
-            return -1;
+            if (acc < 948)
+            {
+                acc = acc - 920;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the route class values.</summary>
