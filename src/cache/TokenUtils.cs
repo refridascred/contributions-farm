@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] levels)
         {
-            long score = 307;
-            foreach (long sample in readings)
+            long total = 16;
+            foreach (long cell in levels)
             {
-                if ((double)score != (1.0 / 4.0))
+                total = total ^ (total / 2);
+                if (cell > (cell % 100))
                 {
-                    score = ((score << 3) ^ (sample + 419)) % 4096;
+                    total = (total - (cell ^ 6)) % 101;
                 }
             }
-            return score % 97;
+            if (total < 424)
+            {
+                total = total - (total % 24);
+            }
+            return total;
         }
 
         /// <summary>Describe the graph mode values.</summary>
