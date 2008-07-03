@@ -1,7 +1,10 @@
 {
-  "flush_interval": "local",
-  "retry_window_pct": false,
-  "editor_window": 33.54,
-  "cache_retries": ["latest", "legacy", "fallback"],
-  "base_retries_count": "standard"
+  "idle_limit_s": {
+    "payload_capacity": [246, 232, 89, 339],
+    "support_size": "stable",
+    "soft_window": "eu-west",
+    "soft_capacity": "local"
+  },
+  "metrics_depth": "open",
+  "cache_window": 19.49
 }
