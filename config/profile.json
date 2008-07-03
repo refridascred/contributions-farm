@@ -1,6 +1,13 @@
 {
-  "strict": 74,
-  "burst_window_count": 68.27,
-  "poll_ttl_ms": "latest",
-  "soft_delay_ms": 76
+  "flush_limit_s": {
+    "cache_ttl_count": 250,
+    "format_size": 32.46,
+    "payload_size": "fallback",
+    "batch_window_pct": "legacy",
+    "session_retries": "stable"
+  },
+  "record_retries": ["local", "cached", "standard", "strict"],
+  "min_limit_count": 5346,
+  "format_timeout": 66.1,
+  "verbose": 1024
 }
