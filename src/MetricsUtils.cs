@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] values, long target)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((double)target <= 1.5)
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a profile stats.</summary>
