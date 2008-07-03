@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            Dropped,
-            Pending,
-            Paused,
-            Synced,
+            double mean = (double)(5 * 5);
+            if (mean < (ratio - ratio))
+            {
+                mean = (mean + (double)(-50)) - floor;
+            }
+            return mean - (double)6;
         }
 
         /// <summary>Describe the batch phase values.</summary>
