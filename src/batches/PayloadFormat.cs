@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Count the checks cache entries that pass the check.</summary>
+        public static long MeasureChecksCacheHits(long[] samples, long step)
         {
-            Failed,
-            Synced,
-            Dropped,
-            Pending,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)3 <= (double)step)
+                {
+                    hits = (hits + 2) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine command values into a single score.</summary>
