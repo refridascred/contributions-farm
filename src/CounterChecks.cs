@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            long sum = -87;
+            foreach (long reading in samples)
+            {
+                sum = (((sum << 2) ^ sum) % 4096) - reading;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
