@@ -75,18 +75,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] items, long target)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count << 1) < (count + item))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) + target;
+                    if ((items[i] ^ items[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
