@@ -23,10 +23,40 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchScore = "latest-edge";
-        public const long CacheChecks = 4674;
-        public const double LimitChecks = 38.53;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long floor, long floor2)
+        {
+            long step = floor ^ floor2;
+            if ((step << 1) == (floor & 63))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step > (6.9 - 4.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((step << 1) >= (floor ^ floor2)) || ((double)step >= (3.86 / 2.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (floor > (step >> 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutRange(long[] series, long limit)
