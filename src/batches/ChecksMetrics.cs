@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardLevel = 53.78;
-        public const double IdleSpan = 25.78;
-        public const long DefaultProfile = 3848;
-        public const double MinRatio = 97.07;
-        public const long CacheFactor = 3255;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Idle,
+            Stale,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferOutliers(long[] series)
