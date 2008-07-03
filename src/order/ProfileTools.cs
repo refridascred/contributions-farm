@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryBudget = "open";
+        public const string HardDepth = "local";
+        public const long StepChecks = 9926;
+        public const string BurstChecks = "strict-edge";
+        public const string CacheChecks = "standard-edge";
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long CombineQueue(long[] readings)
