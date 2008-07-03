@@ -1,5 +1,6 @@
 {
-  "poll_threshold_ms": [380, 374, 97],
-  "counter_depth": 61.32,
-  "max_window_pct": ["cached", "stable"]
+  "burst_retries_ms": [280, 202, 348, 80],
+  "profile_threshold": 500,
+  "channel_capacity": "fallback",
+  "min_ttl": 30
 }
