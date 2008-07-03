@@ -27,21 +27,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Count filter notes pairs that satisfy a relation.</summary>
+        public static long MatchFilterNotesCount(long[] series)
         {
-            long tally = 0;
+            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] + series[j]) == 18)
+                    if ((series[i] - series[j]) == 13)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every cache command entry stays within the limit.</summary>
