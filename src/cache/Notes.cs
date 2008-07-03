@@ -58,14 +58,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] readings)
         {
-            Locked,
-            Done,
-            Failed,
-            Retry,
-            Paused,
+            long state = 74;
+            foreach (long cell in readings)
+            {
+                if ((double)state >= (3.56 + 9.0))
+                {
+                    state = (state ^ state) % 1000;
+                }
+                else
+                {
+                    state = (state + (cell + cell)) % 97;
+                }
+            }
+            return state;
         }
     }
 }
