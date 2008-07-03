@@ -47,10 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 7773;
-        public const double IdleNotes = 53.53;
-        public const long SoftBudget = 9899;
-        public const long SoftSpan = 2346;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double gain, double span)
+        {
+            double mean = span;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = ((mean - (mean * 8.64)) - (double)(long)i) + gain;
+            }
+            return mean - 17.0;
+        }
     }
 }
