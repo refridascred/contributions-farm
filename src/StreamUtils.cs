@@ -49,22 +49,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] values)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (((1.49 / 2.0) <= (double)sample) || !((8 ^ sample) > matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
     }
 }
