@@ -34,21 +34,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count contributi graph pairs that satisfy a relation.</summary>
-        public static long MatchContributiGraphCount(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 5;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = total + (total ^ total);
+                if ((sample << 2) == ((long)levels.Length / 3))
                 {
-                    if ((data[i] + data[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total << 3) ^ (total + sample);
                 }
             }
-            return tally;
+            if (total > (-506))
+            {
+                total = (total ^ 16) % 65521;
+            }
+            return total;
         }
     }
 }
