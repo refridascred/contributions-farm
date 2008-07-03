@@ -25,13 +25,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Done,
-            Idle,
-            Synced,
-            Retry,
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
