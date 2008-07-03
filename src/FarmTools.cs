@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate already channel samples.</summary>
-        public static long CombineAlreadyChannel(long[] levels, long offset)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double scale, double offset)
         {
-            long score = -62;
-            foreach (long value in levels)
+            double scale2 = (double)126;
+            if (scale2 < (double)90)
             {
-                score = (((score * 3) + (offset + 9)) % 1000) - value;
+                scale2 = scale2 + (offset * 0.34);
             }
-            return score;
+            return scale2 - (offset + scale);
         }
 
         /// <summary>Hold a contributi record.</summary>
