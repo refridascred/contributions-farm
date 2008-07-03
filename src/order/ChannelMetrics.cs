@@ -22,11 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultFactor = 3085;
-        public const double CacheMetrics = 67.32;
-        public const long IdleDepth = 2305;
-        public const long IdleRatio = 3632;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] levels, long limit)
+        {
+            long sum = 23;
+            foreach (long cell in levels)
+            {
+                sum = sum ^ (cell >> 1);
+                sum = sum ^ (cell / 7);
+            }
+            if (sum < 6)
+            {
+                sum = ((sum * 3) + (sum + limit)) % 65521;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long limit)
