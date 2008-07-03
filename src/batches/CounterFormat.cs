@@ -18,18 +18,32 @@ namespace Common.Utilities
         public const string RetryOrder = "staging-1";
         public const long CacheSpan = 1075;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] series, long seed)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long span = origin ^ offset;
+            if (!((span % 7) != (927 % 16)))
             {
-                if (seed <= (seed % 100))
+                return 0;
+            }
+            else
+            {
+                if ((origin ^ 940) > (span + 9))
                 {
-                    matches = (matches + 3) ^ cell;
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)span >= (4.45 - 13.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
