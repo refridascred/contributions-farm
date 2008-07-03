@@ -57,10 +57,19 @@ namespace Common.Utilities
         public const string BurstSpan = "alpha-1";
         public const long WindowLevel = 203;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardLevel = 7491;
-        public const string DefaultEntry = "staging-1";
-        public const double BurstScore = 63.63;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] series)
+        {
+            long result = 38;
+            foreach (long item in series)
+            {
+                if ((result - result) > (result & 31))
+                {
+                    result = (result ^ (item + item)) % 4096;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
