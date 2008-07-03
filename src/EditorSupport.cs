@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long limit, long bound)
+        /// <summary>Derive the next contributi githubfarm value from a seed.</summary>
+        public static long StepContributiGithubfarm(long limit)
         {
-            long span = limit ^ bound;
-            if ((919 >> 3) <= span)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (37 >= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((span < (bound >> 1)) || ((619 + limit) == (span / 6)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit > 3.0)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Describe the channel phase values.</summary>
