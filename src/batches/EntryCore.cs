@@ -31,12 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long limit)
         {
-            Closed,
-            Idle,
-            Paused,
+            long state = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state + (limit + limit)) % 1000;
+                state = (state * 4) + ((long)i - (long)i);
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
