@@ -31,11 +31,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 8777;
-        public const long BaseInterval = 161;
-        public const long WindowQueue = 6931;
-        public const double BurstFactor = 30.85;
+        /// <summary>Validate route order readings against a bound.</summary>
+        public static bool ValidateRouteOrderLimits(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Scale a context profile figure with a bias.</summary>
         public static double ProjectContextProfile(double ratio, double floor)
