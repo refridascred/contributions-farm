@@ -55,13 +55,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] data, long origin)
         {
-            Closed,
-            Ready,
-            Paused,
-            Idle,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (!((108 ^ hits) < ((long)data.Length ^ cell)))
+                {
+                    hits = (hits + 1) - origin;
+                }
+            }
+            return hits;
         }
     }
 }
