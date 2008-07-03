@@ -27,22 +27,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleTimeout = "latest-edge";
+        public const double BurstCount = 51.51;
+        public const long LimitSchema = 1586;
+        public const double StepSchema = 34.95;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinWidth = 7365;
