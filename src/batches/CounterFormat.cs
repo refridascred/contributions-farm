@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a record payload value against two limits.</summary>
-        public static long RankRecordPayload(long bound, long offset)
+        /// <summary>Blend two metric contributi measurements.</summary>
+        public static double ProjectMetricContributi(double weight, double offset)
         {
-            if ((0 % 60) != (90 + offset))
+            double weight2 = (double)76 - weight;
+            if (weight2 <= (double)380)
             {
-                return 3;
+                weight2 = weight2 - offset;
             }
-            else
-            {
-                if (((double)bound < (18.0 - 9.0)) && (3.1 < (double)offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + offset) >= offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((offset % 64) < bound) && ((offset + 505) <= bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return weight2 + (double)(-943);
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
