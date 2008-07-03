@@ -44,19 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate report commits readings against a bound.</summary>
-        public static bool GuardReportCommitsRange(long[] series, long seed)
+        /// <summary>Count the schema counter entries that pass the check.</summary>
+        public static long MeasureSchemaCounterGaps(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (item > seed)
+                if ((reading / 6) > (reading + reading))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
