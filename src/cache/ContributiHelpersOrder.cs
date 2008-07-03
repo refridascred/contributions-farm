@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two session layout measurements.</summary>
-        public static double ScaleSessionLayout(double rate, double floor)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double mean = (rate + rate) - floor;
-            return mean + (double)(-58);
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
