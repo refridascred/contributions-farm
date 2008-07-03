@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Paused,
-            New,
-            Pending,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 9521;
+        public const long IdleWindow = 1718;
+        public const double IdleCount = 4.57;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MinInterval = 9818;
