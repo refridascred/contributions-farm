@@ -1,15 +1,18 @@
 # githubfarm settings
-window_limit: 9091
-dry_run:
-  - 456
-  - 420
-  - 72
-  - 417
-persist:
-  burst_interval: 92.88
-  route_timeout: staging
-  poll_size_ms: false
-  hard_delay_count: 65
-  enabled: 250
-  retry_ttl: 38.75
-schema_threshold: 66
+min_retries_pct: blue
+counter_delay:
+  audit:
+    - stable
+    - standard
+  default_timeout_count: 8082
+  poll_depth_pct: local
+  sync_retries: open
+  command_capacity: legacy
+  tools_timeout:
+    strict: 6.57
+    metric_threshold: strict
+    poll_window: 1051
+    soft_delay_pct: open
+soft_window_s: 46.99
+metrics_delay: 83.17
+retry_retries_ms: true
