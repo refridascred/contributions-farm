@@ -26,17 +26,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] series, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = -91;
+            foreach (long item in samples)
             {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
+                mix = ((mix - 9) + item) + step;
             }
-            return -1;
+            return mix % 4096;
         }
     }
 }
