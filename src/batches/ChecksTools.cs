@@ -54,12 +54,12 @@ namespace Common.Utilities
             return ratio2 - (double)(-71);
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] samples, long target)
+        /// <summary>Locate a entry checks reading by value.</summary>
+        public static long FindEntryChecksIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] == target) && ((samples[i] % 5) == 0))
+                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
