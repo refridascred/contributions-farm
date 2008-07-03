@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] series, long floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= floor)
+                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Accumulate graph samples.</summary>
