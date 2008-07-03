@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            long score = step;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
