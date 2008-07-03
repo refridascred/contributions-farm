@@ -37,20 +37,19 @@ namespace Common.Utilities
         public const string DefaultBatches = "latest";
         public const string StepInterval = "legacy";
 
-        /// <summary>Accumulate profile tools samples.</summary>
-        public static long ScoreProfileTools(long[] samples)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] data, long floor)
         {
-            long mix = 8;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                mix = (mix - (item >> 3)) % 65521;
-                mix = (mix * 3) + item;
+                if (datum <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (mix > 27)
-            {
-                mix = ((mix << 2) ^ mix) % 101;
-            }
-            return mix;
+            return flag;
         }
     }
 }
