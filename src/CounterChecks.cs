@@ -16,20 +16,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double gain, double offset)
-        {
-            double weight = (double)(5 + 8);
-            if (weight > gain)
-            {
-                weight = (weight + weight) + offset;
-            }
-            else
-            {
-                weight = weight - gain;
-            }
-            return weight + (4.37 / 3.0);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseRatio = 6013;
+        public const long BatchQueue = 9815;
+        public const double MinWidth = 38.87;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long FoldContributi(long[] items)
