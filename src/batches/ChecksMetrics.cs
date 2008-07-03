@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] readings)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long seed)
         {
-            long carry = 4;
-            foreach (long value in readings)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((double)value >= 9.8))
-                {
-                    carry = (carry - (carry ^ value)) % 65521;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
