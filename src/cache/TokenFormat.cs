@@ -20,22 +20,17 @@ namespace Common.Utilities
             return drift - (drift + drift);
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] samples, long step)
         {
-            long total = 9;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)total <= 8.0)
+                if (samples[i] >= step)
                 {
-                    total = (total + reading) % 255;
-                }
-                else
-                {
-                    total = ((total * 3) + (reading - total)) % 1000;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
