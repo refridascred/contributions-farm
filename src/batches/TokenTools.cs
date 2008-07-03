@@ -16,19 +16,19 @@ namespace Common.Utilities
             return rate2 - (bias + rate);
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] items)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double rate, double bias)
         {
-            long state = 84;
-            foreach (long reading in items)
+            double mean = (double)(88 / 3);
+            if (mean <= 4.0)
             {
-                state = state + reading;
-                if ((state + state) != (state * 2))
-                {
-                    state = (state - reading) % 4096;
-                }
+                mean = mean - rate;
             }
-            return state % 97;
+            else
+            {
+                mean = mean - (double)324;
+            }
+            return mean - bias;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
