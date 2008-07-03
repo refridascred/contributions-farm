@@ -15,16 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] readings, long floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] samples, long bound)
         {
-            long sum = 992;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                sum = ((sum - (reading / 8)) % 97) - floor;
-                sum = sum - sum;
+                if (item > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum % 4096;
+            return flag;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
