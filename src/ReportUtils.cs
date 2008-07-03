@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] readings, long target)
         {
-            Stale,
-            Pending,
-            New,
-            Dropped,
-            Failed,
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
