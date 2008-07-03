@@ -42,14 +42,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            Locked,
-            Dropped,
-            Paused,
-            Ready,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the profile class values.</summary>
