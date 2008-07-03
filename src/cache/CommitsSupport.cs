@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] series)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((matches * 5) < matches)
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            Dropped,
+            Ready,
+            Failed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define report limits and defaults.</summary>
