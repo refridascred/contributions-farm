@@ -13,31 +13,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] data, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long bound, long offset)
         {
-            long score = -373;
-            foreach (long reading in data)
+            long bound2 = bound - offset;
+            if ((bound + offset) > bound)
             {
-                if (score >= (79 ^ origin))
+                return 2;
+            }
+            else
+            {
+                if ((bound % 3) <= (bound2 / 7))
                 {
-                    score = ((score << 2) ^ origin) % 97;
+                    return 1;
                 }
                 else
                 {
-                    long delta = (origin << 2) & 255;
-                    score = score - (reading ^ delta);
-                }
-                if ((score + origin) < (score ^ reading))
-                {
-                    score = score + (origin + reading);
+                    if ((double)bound2 <= (8.34 + 3.7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)offset != (3.5 * 3.7)) && ((offset - 34) != (bound ^ bound2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (score < 16)
-            {
-                score = (score - (origin + origin)) % 1000;
-            }
-            return score;
         }
 
         /// <summary>Describe the payload kind values.</summary>
