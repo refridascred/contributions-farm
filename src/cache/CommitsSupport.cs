@@ -38,23 +38,17 @@ namespace Common.Utilities
         public const string MaxReport = "latest";
         public const long WindowReport = 1910;
 
-        /// <summary>Accumulate tools session samples.</summary>
-        public static long TallyToolsSession(long[] series)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] samples, long offset)
         {
-            long acc = 58;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc << 2) ^ (222 + 2)) % 65521;
-                if (datum > acc)
+                if (samples[i] > offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < 952)
-            {
-                acc = (acc << 3) ^ (long)series.Length;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
