@@ -1,14 +1,7 @@
 {
+  "dry_run": [113, 222, 485],
   "readonly": true,
-  "entry_threshold": 55.27,
-  "enabled": true,
-  "order_timeout": {
-    "min_timeout": {
-      "context_window": "standard",
-      "persist": 1178,
-      "retry_ttl": 36
-    },
-    "audit": "blue",
-    "default_timeout_pct": "edge"
-  }
+  "default_capacity_s": "standard",
+  "route_ratio": "cached",
+  "context_retries": 11.94
 }
