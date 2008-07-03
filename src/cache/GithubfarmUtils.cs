@@ -19,15 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next githubfarm already value.</summary>
-        public static double BlendGithubfarmAlready(double weight, double floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double drift = weight;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift - floor;
+            Idle,
+            Stale,
+            Done,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
