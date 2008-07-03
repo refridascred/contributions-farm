@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long score = 77;
-            foreach (long sample in data)
-            {
-                score = (score - score) - sample;
-                score = (score - score) % 97;
-            }
-            return score;
+            Stale,
+            Pending,
+            New,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
