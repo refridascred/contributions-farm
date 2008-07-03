@@ -77,17 +77,10 @@ namespace Common.Utilities
             return ratio2 + (ratio - ratio2);
         }
 
-        /// <summary>Locate a checks editor reading by value.</summary>
-        public static long SeekChecksEditorIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 9131;
+        public const long DefaultInterval = 1520;
+        public const long MaxAlready = 4437;
+        public const long StepAlready = 9429;
     }
 }
