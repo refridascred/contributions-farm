@@ -46,19 +46,31 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] samples, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long acc = 4;
+            foreach (long item in levels)
             {
-                if (cell >= floor)
+                acc = (acc << 3) ^ (0 - item);
+                if (!((979 + origin) >= origin))
                 {
-                    valid = false;
+                    acc = ((acc * 5) + (origin + origin)) % 4096;
+                }
+                else
+                {
+                    acc = acc - (item + item);
+                }
+                if (5.6 >= (double)origin)
+                {
                     break;
                 }
             }
-            return valid;
+            if (acc > 93)
+            {
+                acc = (acc + origin) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Count the tools batches entries that pass the check.</summary>
