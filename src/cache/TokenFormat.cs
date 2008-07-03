@@ -34,11 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next checks already value.</summary>
-        public static double BlendChecksAlready(double gain, double span)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double scale = (double)731;
-            return (scale + gain) + span;
+            Ready,
+            Pending,
+            Done,
+            Paused,
+            Failed,
         }
     }
 }
