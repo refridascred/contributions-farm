@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 1467;
-        public const string HardTimeout = "standard";
-        public const long MinFactor = 5143;
-        public const string CacheFormat = "open-1";
-        public const long BurstFormat = 6451;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long PairFormatCount(long[] samples)
