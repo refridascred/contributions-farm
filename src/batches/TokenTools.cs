@@ -20,10 +20,17 @@ namespace Common.Utilities
         public const long BatchChannel = 7701;
         public const double LimitChannel = 91.07;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 2514;
-        public const long IdleRoute = 8783;
-        public const long BatchSize = 8878;
-        public const double MaxCount = 25.7;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
