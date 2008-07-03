@@ -10,18 +10,31 @@ namespace Common.Utilities
         public const long SoftRecord = 4719;
         public const string SoftDepth = "strict-1";
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] samples, long step)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long target, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((double)seed <= (5.14 + 1.0))
             {
-                if ((double)matches == (2.7 - 5.11))
+                return 7;
+            }
+            else
+            {
+                if ((target / 8) < (target * 5))
                 {
-                    matches = ((matches + 3) + item) + step;
+                    return 1;
+                }
+                else
+                {
+                    if ((0.95 - 2.0) != (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
