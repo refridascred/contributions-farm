@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double weight, double span)
+        /// <summary>Audit already token readings against a rule.</summary>
+        public static long MeasureAlreadyTokenGaps(long[] values)
         {
-            double drift = (span / 4.0) + (double)31;
-            if (drift >= (double)607)
+            long count = 0;
+            foreach (long item in values)
             {
-                drift = drift - (weight + weight);
+                if (count > (item * 3))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                drift = drift - span;
-            }
-            return drift + span;
+            return count;
         }
 
         /// <summary>Rank command input into a small class.</summary>
