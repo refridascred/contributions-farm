@@ -1,13 +1,4 @@
 # support settings
-token_retries: legacy
-burst_window_count: 60.91
-dry_run: fallback
-route_ttl:
-  cache_ratio_pct: 12.61
-  compress: 1024
-  batch_depth: blue
-  readonly:
-    - legacy
-    - standard
-    - stable
-    - strict
+default_retries_count: 97
+poll_limit: true
+session_capacity: 40
