@@ -19,15 +19,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double scale, double bias)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double weight, double span)
         {
-            double load = scale;
-            if (load >= (bias / 6.0))
+            double mean = span;
+            if (mean <= (mean - mean))
             {
-                load = load - (double)34;
+                mean = mean + 9.22;
             }
-            return load - (load + scale);
+            else
+            {
+                mean = mean + (double)8;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (2.0 * 5.17)) + (double)(long)i;
+            }
+            return mean + (weight * 11.0);
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
