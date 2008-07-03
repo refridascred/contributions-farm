@@ -51,19 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double gain, double floor)
-        {
-            double mean = 4.79 - (floor - gain);
-            if (mean <= 4.0)
-            {
-                mean = mean - (gain / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (double)9;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "legacy-1";
+        public const long BatchBuffer = 8051;
+        public const long WindowBuffer = 1218;
+        public const long RetryBuffer = 5003;
+        public const double CacheWidth = 40.39;
     }
 }
