@@ -27,20 +27,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] items, long seed)
+        /// <summary>Validate metric contributi readings against a bound.</summary>
+        public static bool CheckMetricContributiRange(long[] data, long origin)
         {
-            long mix = 8;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                mix = ((mix + (32 & 1)) - cell) - seed;
-                mix = ((mix * 4) + ((long)items.Length + mix)) % 101;
+                if (reading > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mix > 2)
-            {
-                mix = (mix << 2) ^ (mix / 9);
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
