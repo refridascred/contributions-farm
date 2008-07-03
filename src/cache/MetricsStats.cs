@@ -65,26 +65,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] data, long seed)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] levels, long offset)
         {
-            long result = 2;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((result + (-593)) != (result >> 2)) || ((double)value == (double)result))
+                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
                 {
-                    result = (result - (value * 2)) % 65521;
-                }
-                else
-                {
-                    result = (result + (711 + (long)data.Length)) % 97;
-                }
-                if (!((double)seed < (double)result))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
