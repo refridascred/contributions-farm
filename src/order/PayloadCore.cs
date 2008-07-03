@@ -12,17 +12,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a counter batches reading by value.</summary>
-        public static long FindCounterBatchesIndex(long[] series, long offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define support limits and defaults.</summary>
