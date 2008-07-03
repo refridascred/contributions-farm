@@ -13,16 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] samples, long seed)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] samples, long offset)
         {
-            long anchor = 28;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor - (seed - (-10));
-                anchor = (anchor + (sample & 3)) % 255;
+                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Project the next tools command value.</summary>
