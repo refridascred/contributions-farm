@@ -41,14 +41,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long floor)
         {
-            Stale,
-            Pending,
-            Retry,
-            New,
-            Closed,
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = ((anchor + anchor) % 101) ^ (long)i2;
+                }
+                anchor = anchor ^ ((long)i % 16);
+                if (((long)i / 9) >= 9)
+                {
+                    break;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
