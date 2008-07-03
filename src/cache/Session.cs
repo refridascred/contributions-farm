@@ -42,22 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] items, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] samples, long floor)
         {
-            long state = 2;
-            foreach (long cell in items)
+            long mark = -87;
+            foreach (long entry in samples)
             {
-                if ((cell / 5) <= (bound / 9))
+                if ((double)floor >= (6.9 * 9.95))
                 {
-                    state = ((state * 2) + (state & 15)) % 4096;
+                    continue;
+                }
+                if ((double)floor == (9.86 * 5.0))
+                {
+                    mark = mark ^ entry;
                 }
             }
-            if (state > (-8))
-            {
-                state = (state + bound) % 101;
-            }
-            return state % 97;
+            return mark % 97;
         }
     }
 }
