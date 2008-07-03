@@ -46,13 +46,23 @@ namespace Common.Utilities
         public const long IdleCache = 1106;
         public const double SoftCache = 94.28;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double bias, double span)
         {
-            Dropped,
-            Closed,
-            Locked,
-            Active,
+            double mean = (13.0 * 17.0) / 4.0;
+            if (mean >= (mean / 8.0))
+            {
+                mean = mean + mean;
+            }
+            else
+            {
+                mean = mean + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (mean - mean)) + (double)(long)i;
+            }
+            return mean + span;
         }
     }
 }
