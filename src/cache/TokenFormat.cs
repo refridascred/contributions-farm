@@ -38,25 +38,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long limit, long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] readings, long origin)
         {
-            long diff = limit ^ bound;
-            if (diff < (diff + bound))
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)diff > (double)limit)
+                if (entry < origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
