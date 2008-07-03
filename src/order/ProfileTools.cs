@@ -30,22 +30,29 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long floor, long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long offset, long origin)
         {
-            if ((double)floor >= (3.38 * 7.54))
+            if ((8.91 / 4.0) <= (double)origin)
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((bound << 3) <= (floor + bound))
+                if ((327 / 6) <= origin)
                 {
                     return 5;
                 }
                 else
                 {
-                    return 2;
+                    if (((origin - origin) != (offset ^ offset)) || ((double)offset >= 6.2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
