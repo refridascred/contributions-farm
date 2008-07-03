@@ -36,19 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next notes cache value.</summary>
-        public static double ScaleNotesCache(double scale, double bias)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double drift = 6.64;
-            if (drift > (scale / 6.0))
-            {
-                drift = drift - (scale * 9.2);
-            }
-            else
-            {
-                drift = drift + (bias - scale);
-            }
-            return drift - (double)(-493);
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
