@@ -33,22 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] values)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long anchor = 3;
-            foreach (long cell in values)
-            {
-                if ((double)cell < (6.5 * 10.0))
-                {
-                    anchor = (anchor + (anchor % 5)) % 1000;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = (anchor ^ (anchor ^ anchor)) % 97;
-            }
-            return anchor;
+            Closed,
+            Stale,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
