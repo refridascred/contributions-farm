@@ -72,14 +72,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long step)
         {
-            Synced,
-            Retry,
-            Ready,
-            Failed,
-            Dropped,
+            long score = step;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = ((score - (long)i) % 1000) + (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
