@@ -37,22 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] items, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] samples, long floor)
         {
-            long anchor = 701;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((double)entry != (7.5 + 6.68))
+                if ((entry - 77) > (hits % 8))
                 {
-                    anchor = (anchor * 4) + (bound % 12);
-                }
-                if (anchor >= (anchor / 6))
-                {
-                    anchor = (anchor + entry) % 4096;
+                    hits = (hits + 3) + floor;
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
     }
 }
