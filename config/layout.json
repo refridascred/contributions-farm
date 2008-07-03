@@ -1,12 +1,11 @@
 {
-  "githubfarm_threshold": 22,
-  "checks_ratio": "primary",
-  "audit": {
-    "dry_run": 60,
-    "compress": false,
-    "retry_capacity_ms": "strict"
+  "audit": [420, 331, 468, 359],
+  "soft_interval_count": {
+    "default_limit": 84,
+    "sync_depth_count": "fallback",
+    "contributi_ttl": "blue",
+    "tools_delay": 54.47
   },
-  "max_threshold_pct": false,
-  "strict": 68.31,
-  "soft_size_ms": 250
+  "strict": 23,
+  "idle_threshold_pct": 51
 }
