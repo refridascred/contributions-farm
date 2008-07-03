@@ -20,13 +20,22 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the token farm entries that pass the check.</summary>
+        public static long MeasureTokenFarmOutliers(long[] data)
         {
-            Closed,
-            Stale,
-            Failed,
-            Ready,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (item > (matches + item))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up schema samples.</summary>
