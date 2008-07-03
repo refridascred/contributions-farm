@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepDepth = 9535;
+        public const long SoftSchema = 3421;
+        public const string WindowSchema = "local-1";
+        public const long WindowFactor = 3289;
+        public const double HardScore = 82.58;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TallyGraph(long[] values)
