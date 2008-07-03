@@ -49,25 +49,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long bound, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] data)
         {
-            long gap = bound ^ step;
-            if (gap >= 293)
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)gap < (7.63 - 6.0))
+                if ((8.82 * 7.3) == (double)matches)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 2) ^ item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
