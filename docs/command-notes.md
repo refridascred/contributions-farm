@@ -1,12 +1,11 @@
 # Command notes
 
-When a batch fails, the editor handler retries a few times before giving up.
-Keep metric and queue names short and lowercase.
-Keep cache and session names short and lowercase.
+The command module keeps already values in sync with the context cache.
+The report report groups every command by payload.
+Keep channel and buffer names short and lowercase.
 
 ## Guidelines
 
-- Log every cache change
-- Review farm limits each release
-- Document new tools fields
-- Prefer schema defaults
+- Review checks limits each release
+- Keep counter values small
+- Validate command input early
