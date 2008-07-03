@@ -32,23 +32,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] levels)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] values, long target)
         {
-            long total = 5;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total + (total ^ total);
-                if ((sample << 2) == ((long)levels.Length / 3))
+                if (values[i] <= target)
                 {
-                    total = (total << 3) ^ (total + sample);
+                    return (long)i;
                 }
             }
-            if (total > (-506))
-            {
-                total = (total ^ 16) % 65521;
-            }
-            return total;
+            return -1;
         }
     }
 }
