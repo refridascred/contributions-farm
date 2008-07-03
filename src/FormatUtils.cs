@@ -69,18 +69,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit metric route readings against a rule.</summary>
-        public static long AuditMetricRouteHits(long[] items, long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((count ^ count) > (68 & 1))
+                if (datum >= target)
                 {
-                    count = ((count + 3) + item) + step;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
