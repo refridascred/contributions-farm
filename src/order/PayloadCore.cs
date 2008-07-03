@@ -58,19 +58,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] readings, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (reading > step)
+                if (!(item > (1 / 2)))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
