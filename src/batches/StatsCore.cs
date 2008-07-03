@@ -58,39 +58,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long step, long floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long prev = step - floor;
-            if (((double)step < (7.0 + 6.8)) && ((floor & 15) >= (floor / 9)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (4.45 > (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step ^ prev) <= (step + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (prev <= step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Synced,
+            New,
+            Failed,
+            Locked,
         }
 
         /// <summary>Blend two token measurements.</summary>
