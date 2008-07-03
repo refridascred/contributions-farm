@@ -42,11 +42,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 43.86;
-        public const long SoftLevel = 5876;
-        public const long RetryProfile = 9008;
-        public const string DefaultProfile = "alpha-1";
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double bias, double offset)
+        {
+            double gain = bias + (double)668;
+            if (gain >= bias)
+            {
+                gain = gain + 5.7;
+            }
+            return gain - offset;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextGaps(long[] values)
