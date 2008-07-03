@@ -20,22 +20,11 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Count the token farm entries that pass the check.</summary>
-        public static long MeasureTokenFarmOutliers(long[] data)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (item > (matches + item))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double ratio2 = 7.12;
+            return ((ratio2 - (double)243) + ratio) + floor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
