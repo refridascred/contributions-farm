@@ -40,18 +40,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record commits samples.</summary>
-        public static long TallyRecordCommits(long[] data, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long origin)
         {
-            long carry = 8;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((carry << 2) >= (sample << 2)) || ((double)sample > (double)carry))
+                if (levels[i] <= origin)
                 {
-                    carry = (((carry << 3) ^ sample) % 255) - origin;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
