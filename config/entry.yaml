@@ -1,7 +1,24 @@
 # entry settings
-soft_retries_pct:
-  - 386
-  - 4
-  - 36
-idle_delay_count: 30
-report_depth: 5289
+layout_delay:
+  - 76
+  - 107
+  - 457
+  - 27
+readonly:
+  verbose: 26
+  soft_delay: true
+  sync_limit_pct: eu-west
+  min_interval_pct:
+    - 357
+    - 256
+  sync_retries_ms:
+    strict: true
+    record_capacity: true
+    warm_interval: edge
+    order_size: 8011
+persist:
+  - cached
+  - eu-west
+  - edge
+  - stable
+audit: local
