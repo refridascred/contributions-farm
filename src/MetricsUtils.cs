@@ -49,23 +49,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((70 * 2) == (value % 16))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseCount = 2029;
+        public const double MaxBatches = 4.54;
+        public const long BurstBatches = 2382;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
