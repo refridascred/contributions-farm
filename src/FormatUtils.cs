@@ -42,11 +42,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] data, long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (!((bound ^ bound) <= (bound << 3)))
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
