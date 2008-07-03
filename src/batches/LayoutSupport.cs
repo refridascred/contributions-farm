@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] values)
         {
-            public double Weight { get; set; }
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (reading <= (count % 100))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a contributi record.</summary>
