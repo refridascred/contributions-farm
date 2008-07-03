@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] values, long seed)
         {
-            Locked,
-            Stale,
-            Ready,
-            Closed,
-            Active,
+            long total = 82;
+            foreach (long datum in values)
+            {
+                total = ((total - datum) % 1000) + seed;
+            }
+            return total % 4096;
         }
 
         /// <summary>Measure how many notes cache samples are out of range.</summary>
