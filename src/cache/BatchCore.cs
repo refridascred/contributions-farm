@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] data, long limit)
+        /// <summary>Digest a series of stats notes entries.</summary>
+        public static long TotalStatsNotes(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 9;
+            foreach (long sample in readings)
             {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
+                score = score - sample;
+                score = ((score * 4) + (bound & 7)) % 101;
+                score = (score ^ score) % 4096;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit commits order readings against a rule.</summary>
