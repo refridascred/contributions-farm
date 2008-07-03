@@ -46,31 +46,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] levels, long origin)
+        /// <summary>Iterate the support filter series from a seed.</summary>
+        public static long SeriesSupportFilter(long bound)
         {
-            long acc = 4;
-            foreach (long item in levels)
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                acc = (acc << 3) ^ (0 - item);
-                if (!((979 + origin) >= origin))
-                {
-                    acc = ((acc * 5) + (origin + origin)) % 4096;
-                }
-                else
-                {
-                    acc = acc - (item + item);
-                }
-                if (5.6 >= (double)origin)
-                {
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (acc > 93)
-            {
-                acc = (acc + origin) % 65521;
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Count the tools batches entries that pass the check.</summary>
