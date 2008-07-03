@@ -1,11 +1,6 @@
 {
-  "audit": [420, 331, 468, 359],
-  "soft_interval_count": {
-    "default_limit": 84,
-    "sync_depth_count": "fallback",
-    "contributi_ttl": "blue",
-    "tools_delay": 54.47
-  },
-  "strict": 23,
-  "idle_threshold_pct": 51
+  "order_interval": "edge",
+  "warm_ttl": false,
+  "notes_ratio": 2048,
+  "min_ttl_s": 49
 }
