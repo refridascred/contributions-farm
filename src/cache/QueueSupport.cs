@@ -34,25 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long limit, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] values)
         {
-            long slot = limit ^ seed;
-            if (!(seed < (slot << 3)))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((slot / 9) < (slot * 5)))
+                if (((seen - 1) > (entry + entry)) && (((-178) - seen) > (entry - seen)))
                 {
-                    return 0;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 3;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
