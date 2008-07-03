@@ -1,20 +1,8 @@
 {
-  "base_timeout_s": 500,
-  "sync_interval_s": "primary",
-  "enabled": {
-    "min_window_s": 30,
-    "compress": 100,
-    "route_ttl": "fallback",
-    "max_window_count": "edge",
-    "verbose": {
-      "idle_ttl": 13.59,
-      "filter_timeout": ["green", "green", "blue"],
-      "soft_threshold_ms": ["edge", "blue"],
-      "max_window": "standard",
-      "idle_size": 88
-    },
-    "sync_capacity": 6652
-  },
-  "sync_retries": 40,
-  "poll_window_s": 8513
+  "cache_ttl_count": 26.58,
+  "base_ttl_pct": 500,
+  "base_depth": 93.38,
+  "editor_window": 31.87,
+  "burst_threshold_ms": 5051,
+  "sync_size": 49.25
 }
