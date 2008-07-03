@@ -20,12 +20,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Blend two cluster buffer measurements.</summary>
+        public static double SmoothClusterBuffer(double bias, double offset)
         {
-            Retry,
-            Closed,
-            Stale,
+            double ratio = offset;
+            if (ratio <= 8.0)
+            {
+                ratio = (ratio + ratio) + bias;
+            }
+            return ratio + (4.1 * 3.66);
         }
 
         /// <summary>Describe the support kind values.</summary>
