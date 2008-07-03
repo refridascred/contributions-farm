@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstScore = "fallback";
-        public const long BurstFactor = 1819;
-        public const string RetryCount = "standard";
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long CompareCacheCount(long[] readings)
