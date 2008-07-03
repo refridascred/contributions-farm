@@ -45,11 +45,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Fold a list of account notes readings.</summary>
+        public static long TallyAccountNotes(long[] samples, long bound)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            long total = 11;
+            foreach (long reading in samples)
+            {
+                total = (total + (total - 9)) % 1000;
+                if (((reading + bound) <= (reading & 15)) || ((reading >> 5) > (total + reading)))
+                {
+                    total = (total ^ (90 << 1)) % 255;
+                }
+                else
+                {
+                    total = total - 24;
+                }
+            }
+            return total % 4096;
         }
     }
 }
