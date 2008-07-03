@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
             public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
