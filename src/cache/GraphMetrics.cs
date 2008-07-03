@@ -58,19 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] values, long floor)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
