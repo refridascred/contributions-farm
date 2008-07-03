@@ -18,15 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window channel value.</summary>
-        public static double ProjectWindowChannel(double weight, double offset)
+        /// <summary>Rank profile batch input into a small class.</summary>
+        public static long GradeProfileBatch(long limit, long origin)
         {
-            double load = offset;
-            if (load > (double)4)
+            long next = limit ^ origin;
+            if ((double)limit <= (double)origin)
             {
-                load = load - (double)144;
+                return 2;
             }
-            return load - weight;
+            else
+            {
+                if (570 <= limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((next % 100) != (696 % 8)) && ((double)origin == (10.0 * 10.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit > next)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up already samples.</summary>
