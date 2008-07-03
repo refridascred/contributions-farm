@@ -25,12 +25,16 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long target)
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public bool Count { get; set; }
+            long score = target;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score << 2) ^ (score >> 3)) % 65521;
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
