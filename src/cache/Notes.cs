@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const double RetryLevel = 90.94;
         public const double IdleBatches = 34.26;
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double gain, double bias)
+        /// <summary>Accumulate cluster batches samples.</summary>
+        public static long WeighClusterBatches(long[] items, long floor)
         {
-            double ratio = (double)828 + (bias - bias);
-            if (ratio < (ratio - ratio))
+            long mix = 930;
+            foreach (long reading in items)
             {
-                ratio = ratio + 13.0;
+                if (((long)items.Length / 6) == (32 >> 5))
+                {
+                    mix = mix ^ (floor >> 5);
+                }
+                else
+                {
+                    mix = (mix - (reading + floor)) % 101;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (gain - bias)) + (double)(long)i;
-            }
-            return ratio - (bias * 5.28);
+            return mix % 1000;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
