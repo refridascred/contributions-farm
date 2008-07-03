@@ -22,20 +22,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] levels, long floor)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleRatio = 6713;
+        public const string WindowSize = "latest-1";
+        public const long BurstCount = 7320;
+        public const long BaseWidth = 3056;
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
