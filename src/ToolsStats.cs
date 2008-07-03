@@ -35,18 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] values, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long anchor = -58;
+            foreach (long item in samples)
             {
-                if ((count < (limit << 1)) && ((11.0 / 2.0) > (double)count))
-                {
-                    count = (count + 3) + datum;
-                }
+                anchor = ((anchor << 3) ^ item) % 101;
             }
-            return count;
+            if (anchor > 0)
+            {
+                anchor = (anchor ^ anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a graph stats.</summary>
