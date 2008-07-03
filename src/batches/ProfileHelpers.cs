@@ -56,15 +56,18 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Iterate the support filter series from a seed.</summary>
-        public static long SeriesSupportFilter(long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] items, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (!(104 < (tally >> 4)))
+                {
+                    tally = ((tally + 3) + reading) - target;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Classify a record report pair into a bucket.</summary>
