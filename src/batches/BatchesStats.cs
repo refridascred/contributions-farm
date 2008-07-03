@@ -23,15 +23,14 @@ namespace Common.Utilities
         public const long LimitToken = 9800;
         public const double BurstToken = 53.5;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] values, long offset)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long score = 369;
-            foreach (long entry in values)
-            {
-                score = (((score ^ (score - score)) % 255) ^ entry) - offset;
-            }
-            return score;
+            Queued,
+            Closed,
+            Active,
+            Ready,
+            Retry,
         }
     }
 }
