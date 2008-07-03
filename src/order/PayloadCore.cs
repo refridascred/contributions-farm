@@ -22,18 +22,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] data, long limit)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            long total = 283;
-            foreach (long cell in data)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)cell == (1.9 / 2.0))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    total = (total - (165 - total)) - limit;
+                    acc = (acc + (acc & 31)) + (long)i2;
                 }
+                if ((floor <= (acc + floor)) && (((long)i + floor) < floor))
+                {
+                    acc = (acc + (acc + floor)) % 1000;
+                }
+                if (8 <= (floor - (long)i))
+                {
+                    acc = (acc - acc) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return total % 65521;
+            return acc;
         }
 
         /// <summary>Iterate the window tools series from a seed.</summary>
