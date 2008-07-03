@@ -33,39 +33,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long floor, long seed)
-        {
-            if (((double)(-10) >= (double)floor) || ((floor + seed) <= (seed / 7)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed - seed) != (seed ^ seed)) || ((floor + seed) < (24 >> 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((619 / 8) == (49 - floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed ^ floor) < seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBudget = 7228;
+        public const long CacheBatches = 326;
+        public const long BaseDepth = 5750;
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
