@@ -46,19 +46,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] levels, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long offset, long seed)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            if ((seed >= (seed - seed)) || ((offset >> 5) <= (seed - offset)))
             {
-                if (value <= seed)
+                return 8;
+            }
+            else
+            {
+                if ((offset ^ seed) > offset)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((offset & 255) >= (offset - offset)) || ((offset - seed) <= (8 - 456)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
