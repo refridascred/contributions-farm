@@ -33,13 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long step)
         {
-            Failed,
-            Paused,
-            Idle,
-            Closed,
+            long mix = step;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
