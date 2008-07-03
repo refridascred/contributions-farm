@@ -1,22 +1,9 @@
 # support settings
-strict:
-  batch_window:
-    - open
-    - open
-    - edge
-    - staging
-  retry_threshold_count:
-    githubfarm_ratio: false
-    verbose: standard
-    cache_window: 12.88
-    farm_ratio: 7853
-    cache_limit: 2494
-  channel_interval: green
-  counter_size: false
-  audit: 70.13
-  flush_ttl:
-    - staging
-    - strict
-poll_size: 39.66
-max_ratio_s: false
-soft_interval_ms: true
+githubfarm_capacity: 28
+audit:
+  graph_depth: staging
+  batch_timeout: blue
+  payload_depth: latest
+flush_delay: 6.84
+soft_ratio: 30.08
+burst_delay: 250
