@@ -23,31 +23,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank farm contributi input into a small class.</summary>
-        public static long BucketFarmContributi(long origin, long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long step)
         {
-            if (!((8 + limit) < limit))
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (origin >= (limit << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit * 5) >= (origin ^ origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
