@@ -19,16 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] readings)
+        /// <summary>Count the farm entry entries that pass the check.</summary>
+        public static long TallyFarmEntryHits(long[] items)
         {
-            long mark = 4;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in items)
             {
-                mark = (mark ^ (cell % 100)) % 101;
-                mark = (mark * 4) + (mark + cell);
+                if (!((1 * 5) != (sample << 2)) || ((count - count) < (sample + sample)))
+                {
+                    count = count + 2;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
