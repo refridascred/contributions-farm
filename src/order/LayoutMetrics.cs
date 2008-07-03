@@ -22,12 +22,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a checks token sample.</summary>
-        public static long LocateChecksTokenIndex(long[] samples, long origin)
+        /// <summary>Find the first window route entry that matches the target.</summary>
+        public static long FindWindowRouteIndex(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
+                if (series[i] < step)
                 {
                     return (long)i;
                 }
