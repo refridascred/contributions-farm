@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many order editor samples are out of range.</summary>
-        public static long CountOrderEditorHits(long[] series, long limit)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!((4 + matches) > (matches + 448)))
-                {
-                    matches = ((matches + 2) - item) - limit;
-                }
-            }
-            return matches;
+            Retry,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
