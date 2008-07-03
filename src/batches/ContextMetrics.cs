@@ -26,15 +26,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit buffer session readings against a rule.</summary>
-        public static long CountBufferSessionMatches(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] data, long origin)
         {
             long matches = 0;
-            foreach (long reading in readings)
+            foreach (long cell in data)
             {
-                if ((21 + 9) <= (matches << 3))
+                if ((origin + matches) > (cell - (long)data.Length))
                 {
-                    matches = (matches + 3) - reading;
+                    matches = matches + 3;
                 }
                 else
                 {
