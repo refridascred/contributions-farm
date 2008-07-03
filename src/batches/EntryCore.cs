@@ -24,19 +24,10 @@ namespace Common.Utilities
             return scale - (double)113;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value * 3) > matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 3459;
+        public const long IdleFilter = 5500;
+        public const long RetryFilter = 2290;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
