@@ -23,39 +23,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long floor, long floor2)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            long step = floor ^ floor2;
-            if ((step << 1) == (floor & 63))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step > (6.9 - 4.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((step << 1) >= (floor ^ floor2)) || ((double)step >= (3.86 / 2.0)))
+                    if ((items[i] - items[j]) > 9)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (floor > (step >> 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
