@@ -70,13 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] series, long seed)
         {
-            public bool Total { get; set; }
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((seed - seed) < (seed << 2))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
     }
 }
