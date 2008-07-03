@@ -50,11 +50,14 @@ namespace Common.Utilities
         public const string BurstSpan = "strict-edge";
         public const long BaseTimeout = 637;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryRatio = 267;
-        public const long BaseInterval = 7623;
-        public const long SoftFactor = 7858;
-        public const long WindowSpan = 5969;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Paused,
+            Closed,
+            Done,
+            Pending,
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LookupBatchesIndex(long[] values, long step)
