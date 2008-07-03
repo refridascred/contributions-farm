@@ -15,22 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Measure how many notes cache samples are out of range.</summary>
+        public static long CountNotesCacheGaps(long[] data)
         {
-            long sum = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (sum >= (sum / 5))
+                if ((datum ^ datum) < hits)
                 {
-                    sum = (sum * 2) + 211;
-                }
-                else
-                {
-                    sum = (sum + (cell % 12)) % 97;
+                    hits = hits + 2;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
