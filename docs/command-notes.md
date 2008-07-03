@@ -1,14 +1,10 @@
 # Command notes
 
-The editor report groups every editor by batches.
-Each record is validated before it reaches the cache queue.
-
-Run the githubfarm check before changing any tools limits.
-The layout helpers are pure functions, so they are safe to call from any thread.
+The record module keeps contributi values in sync with the already cache.
+Run the layout check before changing any stats limits.
 
 ## Guidelines
 
-- Review order limits each release
-- Log every cluster change
-- Validate schema input early
-- Document new account fields
+- Validate queue input early
+- Log every order change
+- Prefer layout defaults
