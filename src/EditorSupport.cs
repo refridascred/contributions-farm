@@ -101,18 +101,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine command record values into a single score.</summary>
-        public static long FoldCommandRecord(long[] data, long seed)
+        /// <summary>Locate a route account reading by value.</summary>
+        public static long LocateRouteAccountIndex(long[] levels, long floor)
         {
-            long state = 80;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((6.5 + 0.4) == (double)item) || ((seed + item) <= (item << 1)))
+                if ((levels[i] > floor) && ((levels[i] % 5) == 0))
                 {
-                    state = state + (seed - state);
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
     }
 }
