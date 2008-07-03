@@ -1,9 +1,12 @@
 # githubfarm settings
-batch_retries: false
-poll_window:
-  - 125
-  - 495
-  - 423
-  - 101
-readonly: latest
-strict: 35
+readonly: false
+max_timeout_s:
+  max_depth_ms: 90.22
+  flush_retries_s: 86
+  account_limit: 12.6
+  readonly: false
+  audit: 4320
+order_window:
+  - blue
+  - local
+  - cached
