@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const double WindowCount = 34.83;
         public const double SoftLayout = 22.45;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] samples, long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (!((datum & 1) != (datum + matches)) && ((double)matches < 3.0))
+                if (datum > seed)
                 {
-                    matches = (matches + 2) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the counter phase values.</summary>
