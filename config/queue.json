@@ -1,5 +1,5 @@
 {
-  "farm_ttl": 94.65,
-  "dry_run": true,
-  "enabled": false
+  "flush_delay_ms": false,
+  "profile_capacity": 7964,
+  "burst_ttl_s": 1881
 }
