@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (((state << 2) ^ (target + state)) % 97) - (long)i2;
-                }
-                if (!((double)10 != (double)state))
-                {
-                    state = (state ^ ((long)i * 2)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
