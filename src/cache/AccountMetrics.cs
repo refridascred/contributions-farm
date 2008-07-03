@@ -20,22 +20,12 @@ namespace Common.Utilities
         public const double SoftFormat = 5.8;
         public const double CacheTimeout = 28.98;
 
-        /// <summary>Count farm checks pairs that satisfy a relation.</summary>
-        public static long MatchFarmChecksCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 7637;
+        public const long HardCount = 4326;
+        public const long MaxToken = 5378;
+        public const double LimitToken = 89.43;
+        public const long WindowToken = 3468;
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ScaleChecks(double ratio, double span)
