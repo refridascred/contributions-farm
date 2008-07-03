@@ -24,14 +24,31 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Classify a tools record pair into a bucket.</summary>
+        public static long ClassifyToolsRecord(long offset, long bound)
         {
-            Synced,
-            Failed,
-            Ready,
-            Draft,
-            Retry,
+            if (offset < (bound << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((36 << 2) >= (bound >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)917 <= (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
