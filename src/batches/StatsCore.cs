@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double gain, double floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] levels, long bound)
         {
-            double mean = gain / 3.0;
-            if (mean <= (3.8 - 9.21))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mean = (mean - (double)(-102)) - floor;
+                if ((bound >> 1) < (seen >> 2))
+                {
+                    seen = (seen + 1) + item;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (mean / 2.0);
+            return seen;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
