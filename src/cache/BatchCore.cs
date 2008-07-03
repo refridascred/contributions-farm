@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of stats notes entries.</summary>
-        public static long TotalStatsNotes(long[] readings, long bound)
-        {
-            long score = 9;
-            foreach (long sample in readings)
-            {
-                score = score - sample;
-                score = ((score * 4) + (bound & 7)) % 101;
-                score = (score ^ score) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 22.11;
+        public const long RetryInterval = 2753;
+        public const string BurstLevel = "latest-edge";
+        public const double CacheFarm = 23.7;
 
         /// <summary>Check that every contributi session entry stays within the limit.</summary>
         public static bool VerifyContributiSessionRange(long[] items, long step)
