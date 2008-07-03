@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command already counter forward.</summary>
-        public static long SeriesCommandAlready(long target)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double scale, double bias)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            double load = scale;
+            if (load >= (bias / 6.0))
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                load = load - (double)34;
             }
-            return anchor;
+            return load - (load + scale);
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
