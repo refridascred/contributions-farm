@@ -38,17 +38,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] items, long offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long origin, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((origin + origin) < (origin - origin))
             {
-                if (items[i] >= offset)
+                return 0;
+            }
+            else
+            {
+                if ((595 & 7) > (origin << 1))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
