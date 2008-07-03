@@ -69,17 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] levels, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (levels[i] > bound)
+                if (!(reading < (count & 63)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the metric contributi entries that pass the check.</summary>
