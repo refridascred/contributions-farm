@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] levels, long floor)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long anchor = -856;
-            foreach (long item in levels)
-            {
-                anchor = ((anchor ^ (6 % 16)) % 97) - item;
-            }
-            if (anchor > 6)
-            {
-                anchor = (anchor ^ floor) % 255;
-            }
-            return anchor;
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Count the support editor entries that pass the check.</summary>
