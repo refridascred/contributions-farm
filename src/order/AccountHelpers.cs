@@ -24,10 +24,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 59.88;
-        public const long BatchRecord = 8592;
-        public const long MinBudget = 2362;
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double ratio, double bias)
+        {
+            double ratio2 = bias;
+            if (ratio2 >= (ratio2 - 14.0))
+            {
+                ratio2 = (ratio2 - (bias * 15.0)) - ratio;
+            }
+            else
+            {
+                ratio2 = ratio2 + (18.0 / 6.0);
+            }
+            return ratio2 - (double)1;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string BurstToken = "strict";
