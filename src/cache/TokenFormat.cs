@@ -20,22 +20,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] series, long bound)
         {
-            long anchor = 143;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((long)values.Length > (anchor + anchor))
+                if ((entry + bound) >= bound)
                 {
-                    anchor = anchor ^ anchor;
-                }
-                else
-                {
-                    anchor = (anchor - (datum / 2)) % 1000;
+                    matches = matches + 3;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Project the next checks already value.</summary>
