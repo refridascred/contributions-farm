@@ -34,18 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] levels, long bound)
+        /// <summary>Count the contributi command entries that pass the check.</summary>
+        public static long MeasureContributiCommandMatches(long[] samples, long target)
         {
-            long sum = 758;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((bound + 65) <= (sample >> 5))
+                if ((((15 & 7) > tally) || (tally < (-500))) || ((tally < (tally >> 3)) || ((entry / 4) > 9)))
                 {
-                    sum = ((sum << 3) ^ 323) % 255;
+                    tally = (tally + 3) - target;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
