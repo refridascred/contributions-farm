@@ -55,19 +55,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] levels, long limit)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Ready,
+            Paused,
+            Idle,
         }
     }
 }
