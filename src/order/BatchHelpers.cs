@@ -36,25 +36,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] data, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long step = (floor + result) + 65;
-                if ((result > ((long)i - (long)i)) || (result > (step / 6)))
+                if (data[i] == target)
                 {
-                    result = (result * 2) + ((long)i << 2);
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result << 2) ^ 873;
-                    result = (result ^ (-58)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
     }
 }
