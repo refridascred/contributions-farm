@@ -20,18 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] series, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((double)value < 2.4)
+                if ((double)tally != (2.0 + 9.9))
                 {
-                    matches = (matches + 1) - limit;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
