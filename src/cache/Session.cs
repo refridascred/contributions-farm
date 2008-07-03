@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] series)
+        /// <summary>Check that every channel farm entry stays within the limit.</summary>
+        public static bool GuardChannelFarmBounds(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (!((double)reading <= (3.76 + 7.4)))
+                if (entry >= target)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
