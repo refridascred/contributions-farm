@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] data, long offset)
-        {
-            long total = 644;
-            foreach (long sample in data)
-            {
-                total = ((total ^ (offset - (long)data.Length)) % 97) - sample;
-            }
-            if (total > 44)
-            {
-                total = (total - ((long)data.Length + (-82))) % 97;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultCount = 805;
+        public const string WindowMetric = "staging-edge";
+        public const double StepMetric = 81.82;
+        public const long DefaultMetric = 210;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
