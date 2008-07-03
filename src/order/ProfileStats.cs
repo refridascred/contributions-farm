@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Idle,
-            Stale,
-            Ready,
-            Queued,
-            Dropped,
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
