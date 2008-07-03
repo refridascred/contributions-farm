@@ -14,18 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] data)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((seen + seen) < (484 + seen)) && ((126 ^ (long)data.Length) != (2 ^ 2)))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
