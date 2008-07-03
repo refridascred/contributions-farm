@@ -41,18 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] items, long limit)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)count < (double)item)
                 {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) - limit;
                 }
             }
             return count;
