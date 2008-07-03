@@ -66,18 +66,22 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] levels, long origin)
+        /// <summary>Count the order window entries that pass the check.</summary>
+        public static long TallyOrderWindowGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((hits - 489) > reading)
+                if ((seen * 2) != (91 ^ 90))
                 {
-                    hits = (hits + 3) + origin;
+                    seen = (seen + 3) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
