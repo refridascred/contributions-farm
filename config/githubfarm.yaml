@@ -1,25 +1,9 @@
 # githubfarm settings
-enabled:
-  compress: 3491
-  poll_retries_ms:
-    - 377
-    - 142
-    - 126
-    - 444
-  audit: 63
-  hard_retries: 1024
-tools_timeout: false
-default_timeout: 83
-already_retries: 30
-verbose:
-  flush_retries_s: staging
-  counter_size: 8229
-  default_delay_pct:
-    - fallback
-    - blue
-  hard_size_ms: 47
-  max_threshold_s: 30
-  batch_depth_ms:
-    poll_window: 96
-    default_interval_count: 30
-    retry_capacity: standard
+compress: false
+batch_ratio: primary
+payload_size: green
+default_retries_ms: strict
+poll_window_s:
+  strict: 96
+  enabled: false
+  batch_interval_s: 1024
