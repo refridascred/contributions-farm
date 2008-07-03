@@ -20,14 +20,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long bound)
         {
-            Synced,
-            Ready,
-            Done,
-            Failed,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
