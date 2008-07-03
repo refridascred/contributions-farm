@@ -27,12 +27,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxBudget = 4317;
-        public const double StepFormat = 39.75;
-        public const long BurstTimeout = 3296;
-        public const string StepSize = "legacy-edge";
-        public const double IdleSize = 22.58;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
