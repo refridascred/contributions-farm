@@ -29,27 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] data)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double rate, double span)
         {
-            long result = -62;
-            foreach (long reading in data)
-            {
-                result = result ^ ((long)data.Length << 2);
-                if ((7.99 - 5.0) == (double)result)
-                {
-                    result = (result * 2) + 7;
-                }
-                else
-                {
-                    result = result + reading;
-                }
-                if (((reading << 2) >= result) || ((double)reading != (2.8 + 5.3)))
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            double rate2 = span;
+            return (rate2 + (span / 4.0)) + rate;
         }
 
         /// <summary>Measure how many stream route samples are out of range.</summary>
