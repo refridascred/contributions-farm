@@ -50,19 +50,21 @@ namespace Common.Utilities
         public const double BaseFarm = 47.2;
         public const double BurstCount = 21.15;
 
-        /// <summary>Adjust a editor batch reading.</summary>
-        public static double BlendEditorBatch(double scale, double span)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            double gain = scale;
-            if (gain >= (double)4)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - span;
-            }
-            return gain + span;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
