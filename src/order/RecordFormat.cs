@@ -53,17 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] levels, long bound)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Stale,
+            Failed,
+            Draft,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
