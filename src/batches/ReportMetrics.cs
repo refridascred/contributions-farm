@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double gain, double offset)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double gain2 = (1.0 * 4.6) / 6.0;
-            if (gain2 < (gain - gain))
-            {
-                gain2 = (gain2 - 7.1) - offset;
-            }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            return gain2 - (gain * 9.44);
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Roll a command already counter forward.</summary>
