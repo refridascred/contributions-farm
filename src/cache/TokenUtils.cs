@@ -19,15 +19,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double ratio, double offset)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            double drift = (double)(6 >> 1);
-            if (drift > (drift * 20.0))
-            {
-                drift = drift + (offset / 3.0);
-            }
-            return drift + (ratio / 9.0);
+            Paused,
+            Idle,
+            Failed,
+            New,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
