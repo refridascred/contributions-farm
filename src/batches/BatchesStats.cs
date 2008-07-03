@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] readings, long origin)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long limit, long limit2)
         {
-            long mix = -55;
-            foreach (long datum in readings)
+            if (limit > (limit + 41))
             {
-                mix = (mix + (origin & 127)) + datum;
-                if (mix >= (origin - origin))
+                return 1;
+            }
+            else
+            {
+                if ((limit2 - limit2) == (limit2 << 2))
                 {
-                    mix = (mix ^ (origin + mix)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    mix = (mix ^ (origin + origin)) % 97;
+                    return 0;
                 }
             }
-            return mix;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
