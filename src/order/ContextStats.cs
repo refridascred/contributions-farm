@@ -76,19 +76,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] samples, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (sample < limit)
+                if (!((bound + seen) <= 96) || ((item ^ item) > 31))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
