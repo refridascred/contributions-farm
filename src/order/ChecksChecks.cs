@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const string WindowFactor = "stable-v2";
         public const double LimitPayload = 27.57;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] samples)
         {
-            long acc = 6;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((double)acc >= (double)seed)
+                if ((8.0 + 2.04) < (double)entry)
                 {
-                    acc = (acc * 5) + (sample * 2);
-                }
-                else
-                {
-                    acc = (acc + seed) % 1000;
+                    seen = seen + 2;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Digest a series of context entries.</summary>
