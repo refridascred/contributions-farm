@@ -1,9 +1,4 @@
 # support settings
-githubfarm_capacity: 28
-audit:
-  graph_depth: staging
-  batch_timeout: blue
-  payload_depth: latest
-flush_delay: 6.84
-soft_ratio: 30.08
-burst_delay: 250
+soft_timeout: true
+filter_limit: 23.81
+dry_run: stable
