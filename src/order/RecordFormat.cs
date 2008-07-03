@@ -31,20 +31,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route order readings against a bound.</summary>
-        public static bool ValidateRouteOrderLimits(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardBatches = 57.66;
+        public const long CacheRatio = 1593;
+        public const double StepBatches = 13.32;
 
         /// <summary>Scale a context profile figure with a bias.</summary>
         public static double ProjectContextProfile(double ratio, double floor)
