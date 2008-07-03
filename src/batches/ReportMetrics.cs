@@ -14,11 +14,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double ratio, double span)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            double load = span;
-            return (load + (5.2 / 9.0)) + ratio;
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
