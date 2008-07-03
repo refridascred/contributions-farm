@@ -20,19 +20,30 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] samples, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long acc = 9;
+            foreach (long sample in values)
             {
-                if (sample < target)
+                if (!((sample - 540) > sample))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc * 3) + sample;
+                }
+                if (!(((acc % 10) != (sample & 3)) && (acc <= ((-2) + acc))))
+                {
+                    acc = (acc + (acc >> 1)) % 97;
+                }
+                if ((acc - 22) > (acc + acc))
+                {
+                    acc = (acc ^ (sample & 15)) % 97;
                 }
             }
-            return valid;
+            if (acc < 234)
+            {
+                acc = ((acc << 2) ^ (7 + acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
