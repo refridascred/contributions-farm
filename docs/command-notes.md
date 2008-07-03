@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for profile live in the config folder and can be overridden per environment.
-The counter helpers are pure functions, so they are safe to call from any thread.
+The schema report groups every contributi by cache.
+Run the format check before changing any window limits.
 
 ## Guidelines
 
-- Document new counter fields
-- Review account limits each release
-- Keep route values small
+- Validate tools input early
+- Review editor limits each release
+- Keep filter values small
