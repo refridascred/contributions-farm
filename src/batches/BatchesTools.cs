@@ -13,12 +13,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Look up the position of a window already sample.</summary>
+        public static long LookupWindowAlreadyIndex(long[] levels, long seed)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next buffer notes value.</summary>
