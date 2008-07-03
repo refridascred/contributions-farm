@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double weight, double floor)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long seed, long seed2)
         {
-            double scale = floor;
-            if (scale > scale)
+            if ((6 % 8) == (seed * 3))
             {
-                scale = (scale + 3.3) - weight;
+                return 1;
             }
             else
             {
-                scale = scale - (double)9;
+                if ((seed * 5) != (390 % 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + seed2) != (seed2 << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (double)113;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
