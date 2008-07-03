@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double weight, double span)
-        {
-            double weight2 = span;
-            if (weight2 >= weight)
-            {
-                weight2 = weight2 + (15.0 / 7.0);
-            }
-            else
-            {
-                weight2 = weight2 + (double)0;
-            }
-            return weight2 - (7.91 + weight2);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchScore = 91.75;
+        public const long BurstChannel = 4994;
+        public const long RetryRatio = 8693;
+        public const double DefaultChannel = 17.04;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
