@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of already stream entries.</summary>
-        public static long FoldAlreadyStream(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportHits(long[] levels, long seed)
         {
-            long mix = 10;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((2.8 / 6.0) < (double)entry)
+                if ((3.25 / 2.0) < (double)seed)
                 {
-                    continue;
+                    matches = (matches + 1) + item;
                 }
-                mix = ((mix << 2) ^ (entry + 82)) % 255;
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Grade a window report value against two limits.</summary>
