@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Grade a entry filter value against two limits.</summary>
+        public static long RankEntryFilter(long bound, long seed)
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            if ((double)seed >= (1.35 + 2.9))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound == (0.19 / 4.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
