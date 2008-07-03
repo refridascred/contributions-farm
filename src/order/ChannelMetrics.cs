@@ -47,22 +47,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] readings, long seed)
+        /// <summary>Project the next notes cache value.</summary>
+        public static double ScaleNotesCache(double scale, double bias)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double drift = 6.64;
+            if (drift > (scale / 6.0))
             {
-                if ((double)count > (2.09 - 2.0))
-                {
-                    count = ((count + 2) ^ reading) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = drift - (scale * 9.2);
             }
-            return count;
+            else
+            {
+                drift = drift + (bias - scale);
+            }
+            return drift - (double)(-493);
         }
     }
 }
