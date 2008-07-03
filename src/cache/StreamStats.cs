@@ -39,13 +39,10 @@ namespace Common.Utilities
         public const long StepDepth = 5128;
         public const string WindowFarm = "staging-edge";
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultSpan = "local-1";
+        public const double MaxRoute = 98.89;
+        public const string CacheTimeout = "alpha-v2";
+        public const long RetryFactor = 9099;
     }
 }
