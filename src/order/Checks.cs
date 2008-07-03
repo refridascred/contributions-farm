@@ -18,14 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
             Retry,
-            Idle,
-            Active,
-            Closed,
-            Locked,
+            Draft,
+            Pending,
+            Queued,
+            New,
         }
 
         /// <summary>Compare every pair of context session readings.</summary>
