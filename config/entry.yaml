@@ -1,6 +1,5 @@
 # entry settings
-batches_limit: false
-dry_run:
-  - 380
-  - 419
-burst_capacity: 250
+poll_size_pct: 2713
+audit: 2329
+idle_retries: 98.02
+soft_timeout_pct: cached
