@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long seed, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            if ((double)target <= (2.0 - 3.36))
+            long result = 962;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed / 7) < (seed * 4))
+                if ((result <= ((-547) + result)) && ((result << 2) <= reading))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    result = result - (reading - result);
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
