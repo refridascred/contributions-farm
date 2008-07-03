@@ -28,19 +28,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] samples, long offset)
+        /// <summary>Audit batches githubfarm readings against a rule.</summary>
+        public static long MeasureBatchesGithubfarmGaps(long[] data)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (datum >= offset)
+                if (((-44) << 2) >= (entry >> 2))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Project the next batch value.</summary>
