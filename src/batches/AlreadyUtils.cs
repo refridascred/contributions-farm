@@ -37,20 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] levels, long floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] readings, long origin)
         {
-            long total = 35;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total - (sample ^ floor);
-                total = (total * 2) + total;
-                if ((2.1 * 5.53) < (2.53 + 1.6))
+                if (readings[i] >= origin)
                 {
-                    total = ((total << 3) ^ total) % 255;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Project the next editor profile value.</summary>
