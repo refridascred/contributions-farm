@@ -23,21 +23,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of context session readings.</summary>
-        public static long OverlapContextSessionCount(long[] levels)
+        /// <summary>Project the next support profile value.</summary>
+        public static double BlendSupportProfile(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = floor;
+            if (ratio > (double)6)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = (ratio + ratio) - rate;
             }
-            return matches;
+            return ratio - (3.0 + ratio);
         }
 
         /// <summary>Describe the entry kind values.</summary>
