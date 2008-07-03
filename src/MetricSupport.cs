@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] readings, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long seed, long floor)
         {
-            long state = 66;
-            foreach (long entry in readings)
+            long gap = seed - floor;
+            if ((15.0 / 5.0) >= (3.0 - 1.0))
             {
-                if (state >= (state / 3))
+                return 0;
+            }
+            else
+            {
+                if (3.2 <= (double)seed)
                 {
-                    state = ((((state << 2) ^ ((-560) % 2)) % 255) ^ entry) - offset;
+                    return 1;
+                }
+                else
+                {
+                    if ((gap & 15) >= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
