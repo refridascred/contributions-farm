@@ -29,11 +29,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] data, long limit)
         {
-            public double Token { get; set; }
-            public bool Flag { get; set; }
+            long carry = 32;
+            foreach (long sample in data)
+            {
+                if ((limit >> 1) != (carry - 2))
+                {
+                    carry = (carry - (sample >> 1)) % 97;
+                }
+                else
+                {
+                    carry = carry ^ (sample ^ 71);
+                }
+            }
+            return carry % 4096;
         }
     }
 }
