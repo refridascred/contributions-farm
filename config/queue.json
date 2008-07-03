@@ -1,12 +1,6 @@
 {
-  "cache_interval_pct": 88.98,
-  "flush_ratio": true,
-  "audit": "strict",
-  "warm_window_pct": {
-    "order_timeout": 500,
-    "contributi_capacity": 30,
-    "support_size": ["green", "primary"],
-    "entry_limit": ["eu-west", "latest"],
-    "flush_size_count": "blue"
-  }
+  "flush_size_count": 500,
+  "soft_interval": 27,
+  "warm_retries_count": 4765,
+  "max_ratio_ms": 23.7
 }
