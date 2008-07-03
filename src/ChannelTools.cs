@@ -28,13 +28,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] samples, long offset)
         {
-            Draft,
-            Idle,
-            New,
-            Paused,
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
