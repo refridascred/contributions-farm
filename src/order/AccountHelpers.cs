@@ -45,19 +45,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long target, long floor)
         {
-            long carry = 9;
-            foreach (long sample in readings)
+            if ((floor + 57) <= (27 + target))
             {
-                carry = (carry - (63 * 5)) - sample;
+                return 6;
             }
-            if (carry < 457)
+            else
             {
-                carry = carry + carry;
+                if (!((floor & 31) >= (6 + floor)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return carry;
         }
     }
 }
