@@ -20,32 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long limit, long step)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long diff = limit + step;
-            if (!((double)diff < (14.0 + 13.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((34 - diff) > diff)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((7 - step) < limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Locked,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a farm summary.</summary>
