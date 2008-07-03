@@ -27,15 +27,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the cache editor series from a seed.</summary>
-        public static long DeriveCacheEditor(long seed)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Retry,
+            Active,
+            Failed,
+            Closed,
+            Synced,
         }
     }
 }
