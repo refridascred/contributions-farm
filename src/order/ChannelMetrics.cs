@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] series, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long acc = -545;
+            foreach (long cell in readings)
             {
-                if (entry > offset)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc << 3) ^ (8 - cell)) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
