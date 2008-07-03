@@ -27,24 +27,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank profile command input into a small class.</summary>
-        public static long ClassifyProfileCommand(long seed, long bound)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double gain, double span)
         {
-            if (((seed + bound) > (bound - seed)) || ((seed % 97) < (seed + bound)))
+            double gain2 = 4.3;
+            if (gain2 >= (4.19 / 5.0))
             {
-                return 7;
+                gain2 = (gain2 - (double)5) - span;
             }
-            else
-            {
-                if ((double)seed <= (double)855)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return gain2 - gain;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
