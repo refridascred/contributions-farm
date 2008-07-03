@@ -35,18 +35,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardBudget = 4750;
+        public const double MaxInterval = 51.95;
+        public const long LimitToken = 9800;
+        public const double BurstToken = 53.5;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long CombineStream(long[] values, long offset)
