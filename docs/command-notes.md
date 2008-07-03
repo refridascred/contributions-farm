@@ -1,15 +1,15 @@
 # Command notes
 
-Each metric is validated before it reaches the route queue.
-Each buffer is validated before it reaches the entry queue.
+A metric that stays idle for too long is moved to the format list.
+Use support settings to tune how often payload data is refreshed.
+Use graph settings to tune how often notes data is refreshed.
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-A cache that stays idle for too long is moved to the metric list.
-Keep token and queue names short and lowercase.
+Use commits settings to tune how often context data is refreshed.
+Run the metrics check before changing any batches limits.
 
 ## Guidelines
 
-- Prefer account defaults
-- Validate buffer input early
-- Review batches limits each release
-- Document new batch fields
+- Document new checks fields
+- Review support limits each release
+- Log every window change
+- Prefer profile defaults
