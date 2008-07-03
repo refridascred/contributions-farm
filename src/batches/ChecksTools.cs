@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] items)
         {
-            New,
-            Active,
-            Paused,
-            Draft,
-            Synced,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((866 ^ count) < (count ^ count))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a payload reading.</summary>
