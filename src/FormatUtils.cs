@@ -39,15 +39,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double gain, double bias)
+        /// <summary>Iterate the stats layout series from a seed.</summary>
+        public static long DeriveStatsLayout(long target)
         {
-            double weight = (double)(-92) / 4.0;
-            for (int i = 0; i < 8; i++)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                weight = (((weight - (weight + 6.4)) + (double)(long)i) + gain) - bias;
+                score = (score - target) % 97;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return weight + weight;
+            return score;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
