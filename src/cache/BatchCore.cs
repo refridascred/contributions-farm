@@ -46,31 +46,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long offset, long seed)
+        /// <summary>Blend two queue contributi measurements.</summary>
+        public static double SmoothQueueContributi(double weight, double span)
         {
-            if ((seed >= (seed - seed)) || ((offset >> 5) <= (seed - offset)))
+            double drift = (double)9 * 8.7;
+            if (drift < (weight + drift))
             {
-                return 8;
+                drift = drift + span;
             }
             else
             {
-                if ((offset ^ seed) > offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset & 255) >= (offset - offset)) || ((offset - seed) <= (8 - 456)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                drift = drift - 6.1;
             }
+            return drift - (weight + span);
         }
     }
 }
