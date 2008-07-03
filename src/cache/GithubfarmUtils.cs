@@ -41,21 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order queue samples.</summary>
-        public static long MatchOrderQueueCount(long[] values)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
