@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] values)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
