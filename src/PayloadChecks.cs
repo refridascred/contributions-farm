@@ -31,32 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream queue readings.</summary>
-        public static long DigestStreamQueue(long[] readings)
-        {
-            long total = 154;
-            foreach (long item in readings)
-            {
-                if (item > (total + 88))
-                {
-                    total = ((total * 4) + (total + total)) % 65521;
-                }
-                else
-                {
-                    total = ((total * 5) + (0 / 8)) % 1000;
-                    total = total + item;
-                }
-                if (((5.1 + 2.17) >= (double)total) || ((double)total == (9.9 - 8.65)))
-                {
-                    total = (total ^ (item + total)) % 4096;
-                }
-            }
-            if (total < (-14))
-            {
-                total = (total * 2) + (8 + total);
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryRatio = 52;
+        public const string BaseBudget = "alpha-1";
+        public const double MinCounter = 15.54;
+        public const long WindowCounter = 4991;
+        public const long DefaultCount = 5302;
 
         /// <summary>Match up token samples.</summary>
         public static long CompareTokenCount(long[] items)
