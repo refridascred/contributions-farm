@@ -1,11 +1,11 @@
 # Command notes
 
-The command module keeps already values in sync with the context cache.
-The report report groups every command by payload.
-Keep channel and buffer names short and lowercase.
+When a commits fails, the filter handler retries a few times before giving up.
+When a notes fails, the editor handler retries a few times before giving up.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review checks limits each release
-- Keep counter values small
+- Review report limits each release
+- Keep batch values small
 - Validate command input early
