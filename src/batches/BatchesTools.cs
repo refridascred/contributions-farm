@@ -22,10 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 1804;
-        public const long BurstBudget = 2671;
-        public const long HardTimeout = 6701;
+        /// <summary>Adjust a commits profile reading.</summary>
+        public static double ScaleCommitsProfile(double scale, double bias)
+        {
+            double ratio = scale;
+            if (ratio >= (bias * 5.0))
+            {
+                ratio = ratio - scale;
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + scale;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 4773;
