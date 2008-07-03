@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitBudget = 3345;
-        public const long SoftToken = 1185;
-        public const long BurstScore = 1240;
-        public const long BurstCount = 4700;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((double)matches > (5.5 * 20.0))
+                {
+                    matches = ((matches + 3) + item) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
