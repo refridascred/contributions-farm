@@ -64,12 +64,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long step, long origin)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            if (step <= (origin % 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step % 7) < (16 + 834))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin >= (1 * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batch graph samples.</summary>
