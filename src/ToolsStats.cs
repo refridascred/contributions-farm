@@ -49,18 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] samples)
+        /// <summary>Blend two channel batches measurements.</summary>
+        public static double AdjustChannelBatches(double rate, double bias)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double ratio = (double)(232 >> 4);
+            if (ratio >= ratio)
             {
-                if ((33 / 4) <= (6 + value))
-                {
-                    count = count + 3;
-                }
+                ratio = (ratio + (double)782) - rate;
             }
-            return count;
+            else
+            {
+                ratio = ratio - bias;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
