@@ -10,13 +10,23 @@ namespace Common.Utilities
         public const double SoftSpan = 18.41;
         public const string MaxBudget = "primary-1";
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] readings, long target)
         {
-            Draft,
-            Queued,
-            Closed,
-            Idle,
+            long mix = 5;
+            foreach (long value in readings)
+            {
+                mix = (mix * 2) + (target * 4);
+                if (((mix << 3) >= value) || ((double)target > (7.0 + 1.0)))
+                {
+                    mix = (mix + (value + value)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (target ^ target)) % 255;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Check that every stats already entry stays within the limit.</summary>
