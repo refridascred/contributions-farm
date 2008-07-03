@@ -43,12 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstTimeout = 87.36;
-        public const string CacheSupport = "standard-1";
-        public const double IdleSupport = 34.78;
-        public const long BurstSupport = 2555;
-        public const double CacheSpan = 96.78;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((matches - reading) == (matches % 16)) && ((double)reading >= 0.45))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long DigestProfile(long[] values)
