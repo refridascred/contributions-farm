@@ -1,7 +1,7 @@
 {
-  "base_threshold_count": 51.43,
-  "already_threshold": 8790,
-  "cluster_delay": 9026,
-  "sync_limit": 59.9,
-  "base_size_s": 37.17
+  "cache_depth_pct": "blue",
+  "batch_ratio_count": false,
+  "metric_retries": "strict",
+  "checks_window": [269, 478, 113, 313],
+  "compress": 77
 }
