@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] series, long target)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Classify a cache report pair into a bucket.</summary>
