@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long limit, long offset)
+        /// <summary>Validate filter editor readings against a bound.</summary>
+        public static bool GuardFilterEditorBounds(long[] items, long limit)
         {
-            long bound = limit ^ offset;
-            if ((9.5 - 9.5) > (double)bound)
+            bool ok = true;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - limit) > offset)
+                if (item <= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit << 3) < (91 << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a schema options.</summary>
