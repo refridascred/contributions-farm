@@ -42,31 +42,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long seed, long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            if (limit <= seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9.0 < (double)seed) || ((seed - limit) <= (limit % 100)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.4 + 10.0) <= (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
