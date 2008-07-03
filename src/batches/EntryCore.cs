@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSize = 7103;
+        public const string IdleTimeout = "stable-v2";
+        public const long LimitTimeout = 578;
+        public const long RetryWidth = 2291;
 
         /// <summary>Adjust a filter report reading.</summary>
         public static double AdjustFilterReport(double rate, double floor)
