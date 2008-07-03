@@ -45,18 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = sum - (sum + 26);
-                sum = (sum << 2) ^ 0;
-                sum = sum + (-10);
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Pending,
+            Stale,
+            Synced,
         }
 
         /// <summary>Describe the support mode values.</summary>
