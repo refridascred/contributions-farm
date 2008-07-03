@@ -55,21 +55,23 @@ namespace Common.Utilities
         public const double DefaultSpan = 92.38;
         public const long WindowInterval = 9750;
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 839;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = (result ^ sample) % 255;
+                if ((result ^ step) < 31)
                 {
-                    if ((levels[i] - levels[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result * 2) + (result * 2);
+                }
+                else
+                {
+                    result = result + (sample - result);
                 }
             }
-            return count;
+            return result;
         }
     }
 }
