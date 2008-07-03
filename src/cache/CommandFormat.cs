@@ -47,18 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] readings)
+        /// <summary>Audit tools counter readings against a rule.</summary>
+        public static long AuditToolsCounterOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (!((item - item) > ((long)readings.Length * 5)) || ((double)item <= (0.8 + 2.48)))
+                if ((2 >> 2) != (matches - 9))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
