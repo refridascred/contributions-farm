@@ -1,5 +1,19 @@
 {
-  "persist": ["eu-west", "stable"],
-  "flush_ttl_count": false,
-  "audit": 100
+  "route_window": ["strict", "edge", "eu-west"],
+  "min_timeout_ms": false,
+  "queue_interval": ["cached", "open", "green", "edge"],
+  "base_capacity": 47.56,
+  "flush_ratio": {
+    "sync_size_ms": {
+      "max_depth_ms": 61.57,
+      "window_size": 9526,
+      "poll_timeout_pct": 250
+    },
+    "githubfarm_ratio": {
+      "entry_retries": "strict",
+      "soft_depth_count": 84,
+      "max_limit": 3166
+    },
+    "githubfarm_delay": "legacy"
+  }
 }
