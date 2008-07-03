@@ -14,10 +14,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 9185;
-        public const long IdleBudget = 2958;
-        public const double StepCount = 71.25;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long FoldChannel(long[] data)
