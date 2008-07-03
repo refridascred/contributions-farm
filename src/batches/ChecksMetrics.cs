@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] readings)
         {
-            Idle,
-            Stale,
-            Retry,
-            Pending,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (3 <= (hits & 127))
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
