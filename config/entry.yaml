@@ -1,5 +1,22 @@
 # entry settings
-compress: 13.12
-enabled: 83.2
-base_ttl_pct: 500
-cache_ttl_pct: 250
+buffer_capacity: 4.33
+idle_ttl_ms: standard
+githubfarm_size: 58.07
+hard_size:
+  sync_ratio_s: false
+  min_depth_count:
+    - primary
+    - standard
+    - latest
+  cache_delay_pct:
+    warm_retries_pct: cached
+    hard_delay_ms: fallback
+    persist: local
+    dry_run: 12
+    max_ttl_s: 48.85
+  buffer_window: 22.02
+  persist:
+    - stable
+    - local
+    - edge
+flush_retries: 3743
