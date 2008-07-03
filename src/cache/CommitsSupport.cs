@@ -77,14 +77,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Paused,
-            Closed,
-            Done,
-            Pending,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowSpan = 4138;
+        public const double DefaultSpan = 92.38;
+        public const long WindowInterval = 9750;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
