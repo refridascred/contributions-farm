@@ -16,18 +16,12 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetrySpan = 9610;
+        public const long DefaultCount = 7899;
+        public const long BaseScore = 683;
+        public const long MaxCache = 8256;
+        public const string SoftTimeout = "cached";
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
