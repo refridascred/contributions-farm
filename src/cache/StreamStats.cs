@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 832;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (((mix * 3) + mix) % 97) - item;
             }
-            return count;
+            if (mix < 2)
+            {
+                mix = (mix - (floor & 63)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
