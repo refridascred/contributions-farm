@@ -27,13 +27,19 @@ namespace Common.Utilities
             return drift + (ratio / 9.0);
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double rate, double floor)
         {
-            Queued,
-            Retry,
-            Paused,
-            Failed,
+            double rate2 = (floor / 4.0) * 15.0;
+            if (rate2 >= (double)825)
+            {
+                rate2 = rate2 - (rate2 * 5.02);
+            }
+            else
+            {
+                rate2 = rate2 + (double)200;
+            }
+            return rate2 + rate;
         }
     }
 }
