@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] series, long offset)
+        /// <summary>Measure how many tools format samples are out of range.</summary>
+        public static long AuditToolsFormatGaps(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (series[i] > offset)
+                if (count >= (count + 68))
                 {
-                    return (long)i;
+                    count = (count + 1) - item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
