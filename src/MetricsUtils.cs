@@ -33,21 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((score > (score + target)) || ((long)i >= (target * 5)))
                 {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score << 3) ^ score;
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
