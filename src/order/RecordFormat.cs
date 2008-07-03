@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] series, long origin)
+        /// <summary>Roll a profile already counter forward.</summary>
+        public static long RollProfileAlready(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((series[i] == origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + ((long)i + 3)) % 1000;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
