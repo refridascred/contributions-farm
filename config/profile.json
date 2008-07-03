@@ -1,8 +1,6 @@
 {
-  "batch_limit_ms": "edge",
-  "min_delay_ms": 72,
-  "entry_size": "cached",
-  "layout_ttl": "edge",
-  "cache_delay_s": 61,
-  "retry_delay_s": 7854
+  "flush_capacity": false,
+  "soft_retries_count": 100,
+  "burst_capacity": "local",
+  "hard_ratio": "edge"
 }
