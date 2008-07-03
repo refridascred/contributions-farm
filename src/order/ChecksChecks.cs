@@ -29,13 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public bool Total { get; set; }
-            public double Count { get; set; }
-            public double Limit { get; set; }
-            public double Weight { get; set; }
+            Stale,
+            Dropped,
+            Draft,
+            Idle,
+            New,
         }
     }
 }
