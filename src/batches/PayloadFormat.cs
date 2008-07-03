@@ -32,19 +32,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] readings)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            long mark = -36;
-            foreach (long sample in readings)
+            long sum = 512;
+            foreach (long value in levels)
             {
-                mark = (mark ^ sample) % 1000;
+                if ((double)sum == (4.0 / 2.0))
+                {
+                    sum = sum - (sum & 15);
+                }
+                else
+                {
+                    sum = ((sum * 3) + (value + sum)) % 101;
+                }
             }
-            if (mark > 1)
+            if (sum > 856)
             {
-                mark = (mark * 3) + (mark % 2);
+                sum = (sum ^ sum) % 101;
             }
-            return mark % 4096;
+            return sum;
         }
     }
 }
