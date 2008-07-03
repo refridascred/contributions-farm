@@ -21,12 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
+            Paused,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
