@@ -27,22 +27,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] levels, long limit)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (hits < (709 << 3))
-                {
-                    hits = ((hits + 2) ^ reading) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Ready,
+            Dropped,
+            New,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
