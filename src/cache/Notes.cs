@@ -59,19 +59,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] series, long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long bound)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 2) + (bound & 15)) % 65521;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
