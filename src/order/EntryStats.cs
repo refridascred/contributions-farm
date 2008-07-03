@@ -34,13 +34,39 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Grade a command stats value against two limits.</summary>
+        public static long RankCommandStats(long seed, long origin)
         {
-            Active,
-            Ready,
-            Dropped,
-            Paused,
+            long offset = seed + origin;
+            if (seed < origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset >> 2) != (seed >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - 1) >= seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (10.0 + 9.9))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
