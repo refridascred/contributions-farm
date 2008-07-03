@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryFactor = 17.34;
-        public const double WindowCommand = 69.05;
-        public const long MaxCommand = 3888;
-        public const double BurstCommand = 17.96;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsGaps(long[] items)
