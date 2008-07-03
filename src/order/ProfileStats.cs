@@ -35,9 +35,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 315;
-        public const long LimitScore = 1030;
-        public const long StepBudget = 8502;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Dropped,
+            Idle,
+            Paused,
+        }
     }
 }
