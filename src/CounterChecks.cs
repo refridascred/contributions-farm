@@ -54,25 +54,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long origin, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] samples, long offset)
         {
-            long prev = origin ^ seed;
-            if (origin > prev)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed & 31) != (prev >> 3))
+                if (!(offset >= value))
                 {
-                    return 5;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 0;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
