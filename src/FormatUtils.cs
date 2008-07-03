@@ -64,18 +64,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] readings, long limit)
+        /// <summary>Audit metric route readings against a rule.</summary>
+        public static long AuditMetricRouteHits(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((long)readings.Length >= (limit & 15))
+                if ((count ^ count) > (68 & 1))
                 {
-                    hits = (hits + 3) + entry;
+                    count = ((count + 3) + item) + step;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
