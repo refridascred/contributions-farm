@@ -23,23 +23,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of filter metrics readings.</summary>
-        public static long WeighFilterMetrics(long[] data, long offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            long result = 98;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result - (item / 7)) % 65521;
-                if (((item >> 1) > (offset % 12)) && ((offset >> 2) > (item - item)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result + (222 / 9);
+                    if ((levels[i] + levels[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 49)
-            {
-                result = (result << 3) ^ (offset + offset);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
