@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Accumulate support notes samples.</summary>
+        public static long DigestSupportNotes(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            long sum = 809;
+            foreach (long sample in items)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (((double)sample != (3.11 + 8.54)) || ((double)sum != (double)sample))
+                {
+                    sum = (sum + (sum / 3)) % 101;
+                }
             }
-            return mark;
+            if (sum > 38)
+            {
+                sum = sum - (sum * 4);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Rank farm contributi input into a small class.</summary>
