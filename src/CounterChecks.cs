@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of batch session readings.</summary>
-        public static long OverlapBatchSessionCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 5918;
+        public const long LimitInterval = 5004;
+        public const double MaxBudget = 82.15;
+        public const long LimitBuffer = 9656;
+        public const long MinBuffer = 9200;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinDepth = 8089;
