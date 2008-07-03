@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next layout token value.</summary>
-        public static double ScaleLayoutToken(double rate, double bias)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double weight = 8.44 - bias;
-            if (weight <= (rate + bias))
-            {
-                weight = weight - (double)186;
-            }
-            return weight - rate;
+            Failed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
