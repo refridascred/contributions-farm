@@ -1,13 +1,7 @@
 {
-  "format_threshold": 45.89,
-  "warm_ratio_pct": 12.89,
-  "batch_limit": "local",
-  "cache_capacity": {
-    "soft_depth_count": 1024,
-    "base_window_s": "cached",
-    "soft_capacity_ms": ["strict", "latest", "standard"],
-    "audit": 32.33,
-    "flush_capacity": 2594
-  },
-  "persist": ["primary", "blue", "open", "open"]
+  "channel_depth": true,
+  "persist": 30,
+  "base_depth_s": "blue",
+  "batch_delay": 39.38,
+  "githubfarm_ttl": 91.91
 }
