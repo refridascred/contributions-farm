@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryBudget = "open";
-        public const string HardDepth = "local";
-        public const long StepChecks = 9926;
-        public const string BurstChecks = "strict-edge";
-        public const string CacheChecks = "standard-edge";
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long CombineQueue(long[] readings)
