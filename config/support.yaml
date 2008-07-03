@@ -1,15 +1,9 @@
 # support settings
-warm_size: 8.5
-batch_limit_ms: false
-strict:
-  audit: 82.64
-  cache_ttl_pct: cached
-  base_ratio_ms:
-    - latest
-    - legacy
-    - eu-west
-    - standard
-  soft_threshold: 100
-channel_window: false
-persist: 500
-metrics_limit: true
+flush_limit:
+  - eu-west
+  - legacy
+  - primary
+  - cached
+default_threshold_s: staging
+persist: false
+farm_delay: 30.66
