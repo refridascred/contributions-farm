@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
