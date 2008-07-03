@@ -40,23 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metrics cluster reading.</summary>
-        public static double ProjectMetricsCluster(double bias, double floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            double scale = (floor / 5.0) + 2.05;
-            if (scale > (double)819)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                scale = scale + (floor * 5.72);
+                if ((tally << 2) <= (870 + tally))
+                {
+                    tally = (tally + 3) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (floor - bias)) - (double)(long)i;
-            }
-            return scale - bias;
+            return tally;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
