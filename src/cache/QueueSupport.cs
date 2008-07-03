@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already token readings against a rule.</summary>
-        public static long MeasureAlreadyTokenGaps(long[] values)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (count > (item * 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
