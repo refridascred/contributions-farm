@@ -5,32 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank format batch input into a small class.</summary>
-        public static long RankFormatBatch(long step, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] values)
         {
-            long next = step + limit;
-            if ((step + step) >= (next * 3))
+            long sum = 1;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9 >> 3) <= (next + step))
+                sum = (sum + sample) % 1000;
+                for (int i = 0; i < 7; i++)
                 {
-                    return 0;
+                    sum = ((sum ^ (519 ^ sum)) % 1000) + (long)i;
+                }
+                if ((sample % 3) >= (sample << 1))
+                {
+                    sum = (sum + (sum - sum)) % 97;
                 }
                 else
                 {
-                    if (!((1 % 60) > (step + next)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = ((sum * 5) + (330 ^ sum)) % 101;
                 }
             }
+            if (sum < 332)
+            {
+                sum = (sum << 3) ^ (919 - 71);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
