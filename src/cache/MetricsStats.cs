@@ -51,12 +51,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long seed, long offset)
         {
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
+            long slot = seed + offset;
+            if (seed < (slot + seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed + slot) >= (seed << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
