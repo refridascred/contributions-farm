@@ -66,17 +66,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] levels, long origin)
+        /// <summary>Accumulate schema payload samples.</summary>
+        public static long TallySchemaPayload(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 793;
+            foreach (long item in series)
             {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
+                sum = ((((sum * 4) + sum) % 4096) ^ item) - floor;
             }
-            return -1;
+            return sum;
         }
     }
 }
