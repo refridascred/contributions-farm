@@ -32,10 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "strict-1";
-        public const long BatchSpan = 8228;
-        public const long BatchFactor = 4649;
-        public const string IdleInterval = "alpha";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry > (20 - tally)) || (((long)levels.Length + seed) == (17 / 6)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
