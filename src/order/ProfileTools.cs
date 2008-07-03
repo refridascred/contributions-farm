@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Locked,
+            Dropped,
+            Queued,
+            New,
+            Done,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
