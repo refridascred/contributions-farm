@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account stats readings against a bound.</summary>
-        public static bool VerifyAccountStatsBounds(long[] items, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (item < target)
+                if (!((datum & 1) != (datum + matches)) && ((double)matches < 3.0))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
