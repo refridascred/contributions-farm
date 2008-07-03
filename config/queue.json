@@ -1,5 +1,6 @@
 {
-  "burst_depth_pct": "staging",
-  "strict": 50,
-  "sync_interval": "cached"
+  "retry_delay_ms": 26,
+  "poll_delay_pct": "open",
+  "batch_window": true,
+  "burst_capacity": "staging"
 }
