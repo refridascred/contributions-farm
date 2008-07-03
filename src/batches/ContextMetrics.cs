@@ -30,17 +30,20 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] series, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = -3;
+            foreach (long cell in items)
             {
-                if (series[i] < step)
+                mix = (mix ^ (14 + origin)) % 4096;
+                mix = (mix ^ (cell & 7)) % 97;
+                if (mix < origin)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
