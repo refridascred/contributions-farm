@@ -1,5 +1,5 @@
 {
-  "min_delay_count": "blue",
-  "warm_timeout": [176, 92, 31, 213],
-  "burst_limit_ms": "eu-west"
+  "enabled": [381, 85, 375],
+  "token_ratio": false,
+  "readonly": [324, 184]
 }
