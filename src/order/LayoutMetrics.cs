@@ -36,18 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support editor entries that pass the check.</summary>
-        public static long AuditSupportEditorHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (entry > hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitRatio = 2912;
+        public const double LimitProfile = 81.07;
+        public const long BurstBudget = 6052;
+        public const long SoftRatio = 2527;
     }
 }
