@@ -1,6 +1,9 @@
-id,count,score
-1,legacy,107
-2,891,2
-3,eu-west,local
-4,cached,31.25
-5,40.17,55.77
+id,level,ratio,count,weight
+1,98.28,237,strict,501
+2,958,stable,114,619
+3,strict,231,911,189
+4,7.03,fallback,6.18,686
+5,70.03,89.7,717,20.22
+6,39.1,green,35.75,14.3
+7,351,eu-west,48.11,637
+8,64.17,20,76.04,stable
