@@ -77,12 +77,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Dropped,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryWidth = 8002;
+        public const string DefaultAlready = "staging-edge";
+        public const long SoftScore = 6457;
+        public const long HardAlready = 5349;
+        public const long CacheLevel = 4570;
     }
 }
