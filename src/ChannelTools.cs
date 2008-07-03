@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double ratio, double offset)
         {
-            Retry,
-            Idle,
-            Ready,
-            Synced,
+            double scale = offset;
+            return scale + (ratio - offset);
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
