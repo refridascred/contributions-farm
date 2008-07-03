@@ -48,13 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Done,
-            Failed,
-            Closed,
+            Synced,
             Paused,
+            Draft,
+            Active,
         }
     }
 }
