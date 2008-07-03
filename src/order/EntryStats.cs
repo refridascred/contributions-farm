@@ -55,18 +55,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of buffer metric entries.</summary>
-        public static long FoldBufferMetric(long[] items, long seed)
+        /// <summary>Rank contributi batch input into a small class.</summary>
+        public static long GradeContributiBatch(long step, long target)
         {
-            long anchor = 284;
-            foreach (long sample in items)
+            if (step > (step + target))
             {
-                if (!((anchor + sample) > (sample - seed)))
+                return 6;
+            }
+            else
+            {
+                if ((target % 10) <= (step ^ step))
                 {
-                    anchor = ((anchor * 2) + seed) % 101;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)4 <= (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((target + 87) == (target >> 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return anchor % 65521;
         }
     }
 }
