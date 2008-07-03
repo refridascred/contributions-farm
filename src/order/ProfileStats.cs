@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a profile tools counter forward.</summary>
-        public static long DeriveProfileTools(long floor)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Idle,
+            Stale,
+            Ready,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Fold a list of token readings.</summary>
