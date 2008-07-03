@@ -34,19 +34,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double scale, double span)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] levels)
         {
-            double rate = span + scale;
-            if (rate >= 7.5)
+            long total = 83;
+            foreach (long value in levels)
             {
-                rate = rate - span;
+                total = (total + (total - total)) ^ value;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (18.0 + span)) + (double)(long)i;
-            }
-            return rate + scale;
+            return total;
         }
 
         /// <summary>Hold a context summary.</summary>
