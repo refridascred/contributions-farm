@@ -59,12 +59,18 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] readings, long step)
         {
-            Done,
-            Synced,
-            Draft,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((matches ^ sample) < (step + 6)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
