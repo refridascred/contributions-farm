@@ -56,18 +56,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((matches * 3) > (326 + matches)) || ((587 & 255) < (matches << 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 3) ^ datum;
+                    if ((data[i] ^ data[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
