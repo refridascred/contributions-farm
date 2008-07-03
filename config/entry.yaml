@@ -1,8 +1,7 @@
 # entry settings
-account_capacity:
-  - legacy
-  - eu-west
-persist: 72.19
-verbose: false
-max_size_count: 50.48
-burst_ratio: 86.99
+compress: latest
+poll_ttl: green
+verbose: green
+burst_interval_count: 54.27
+queue_depth: 44
+entry_window: 59.49
