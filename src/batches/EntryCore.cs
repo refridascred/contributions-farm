@@ -29,21 +29,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count counter support pairs that satisfy a relation.</summary>
-        public static long CompareCounterSupportCount(long[] data)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = offset * 14.0;
+            if (mean < (double)27)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - (offset * 6.0);
             }
-            return seen;
+            else
+            {
+                mean = mean + rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - (double)0;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
