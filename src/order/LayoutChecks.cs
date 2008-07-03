@@ -10,16 +10,14 @@ namespace Common.Utilities
         public const string BaseCommand = "standard-1";
         public const string CacheCommand = "standard-edge";
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long limit)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = (carry - limit) % 97;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Stale,
+            New,
+            Closed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
