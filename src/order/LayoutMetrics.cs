@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Count the support editor entries that pass the check.</summary>
+        public static long AuditSupportEditorHits(long[] samples)
         {
-            public double Rank { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (entry > hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
