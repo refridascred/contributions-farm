@@ -32,10 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 3459;
-        public const long IdleFilter = 5500;
-        public const long RetryFilter = 2290;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 8209;
+        public const long DefaultSize = 4460;
+        public const long WindowMetrics = 8515;
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
