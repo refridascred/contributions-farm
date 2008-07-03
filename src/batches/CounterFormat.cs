@@ -39,20 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout counter readings against a bound.</summary>
-        public static bool ValidateLayoutCounterBounds(long[] data, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 5121;
+        public const long MaxInterval = 9347;
+        public const double SoftBatch = 81.33;
+        public const long LimitDepth = 1829;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long WeighOrder(long[] levels)
