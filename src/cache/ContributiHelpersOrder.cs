@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long limit, long offset)
         {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            long bound = limit ^ offset;
+            if ((9.5 - 9.5) > (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound - limit) > offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit << 3) < (91 << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
