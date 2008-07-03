@@ -23,11 +23,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryDepth = 7697;
-        public const long SoftRoute = 7383;
-        public const long BatchRoute = 8470;
-        public const string MaxLevel = "fallback-1";
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate record commits samples.</summary>
         public static long TallyRecordCommits(long[] data, long origin)
