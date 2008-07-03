@@ -33,21 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((seed * 5) >= (tally + tally)) || (6.0 >= (double)seed))
                 {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) - entry;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
