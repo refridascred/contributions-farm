@@ -47,17 +47,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] series, long bound)
+        /// <summary>Count contributi cluster pairs that satisfy a relation.</summary>
+        public static long CompareContributiClusterCount(long[] series)
         {
+            long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] > bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a payload info.</summary>
