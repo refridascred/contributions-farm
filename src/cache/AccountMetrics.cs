@@ -13,12 +13,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 6084;
-        public const double IdleScore = 57.81;
-        public const long LimitSize = 3188;
-        public const double SoftFormat = 5.8;
-        public const double CacheTimeout = 28.98;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] series, long limit)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((double)value < 2.4)
+                {
+                    matches = (matches + 1) - limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinToken = 7637;
