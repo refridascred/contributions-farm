@@ -58,25 +58,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long floor, long step)
-        {
-            if (((double)(-523) < (double)step) || ((floor << 1) <= (1 >> 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3.1 + 4.39) >= (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 385;
+        public const long CacheSpan = 9397;
+        public const double WindowWidth = 33.84;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmRange(long[] data, long limit)
