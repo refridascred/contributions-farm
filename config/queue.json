@@ -1,6 +1,8 @@
 {
-  "cache_threshold": 34,
-  "burst_retries_s": "legacy",
-  "contributi_threshold": "staging",
-  "dry_run": 30
+  "already_delay": "fallback",
+  "burst_capacity_count": "primary",
+  "soft_timeout_pct": "fallback",
+  "strict": 30,
+  "cache_interval_count": 6679,
+  "warm_ttl_pct": "standard"
 }
