@@ -20,11 +20,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 6340;
-        public const long CacheScore = 2945;
-        public const long WindowLevel = 7632;
-        public const string SoftScore = "open-edge";
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Retry,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
