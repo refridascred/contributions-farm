@@ -19,15 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double weight, double bias)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long offset, long target)
         {
-            double load = (double)(75 + 81);
-            for (int i = 0; i < 7; i++)
+            if ((target << 3) == (offset + offset))
             {
-                load = ((load + (7.4 / 9.0)) - (double)(long)i) - bias;
+                return 2;
             }
-            return load - (weight / 2.0);
+            else
+            {
+                if ((target + target) >= (offset + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
