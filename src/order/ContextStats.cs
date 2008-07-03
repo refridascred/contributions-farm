@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate filter buffer readings against a bound.</summary>
-        public static bool CheckFilterBufferBounds(long[] levels, long origin)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Draft,
+            Closed,
         }
 
         /// <summary>Match up githubfarm samples.</summary>
