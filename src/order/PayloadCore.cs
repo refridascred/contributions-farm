@@ -31,29 +31,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the window tools series from a seed.</summary>
-        public static long SeriesWindowTools(long seed)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] data, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = mix - (mix >> 2);
-                if ((double)seed >= (5.6 * 8.0))
+                if ((data[i] >= origin) && ((data[i] % 3) != 0))
                 {
-                    mix = mix + (mix * 2);
+                    return (long)i;
                 }
-                if (((double)seed < 1.18) || ((seed % 60) == (seed - (long)i)))
-                {
-                    mix = mix ^ seed;
-                }
-                else
-                {
-                    mix = (mix + (mix - seed)) % 1000;
-                    mix = (mix * 4) + mix;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
