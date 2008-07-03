@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a format filter value against two limits.</summary>
-        public static long SortFormatFilter(long limit, long bound)
+        /// <summary>Validate filter buffer readings against a bound.</summary>
+        public static bool CheckFilterBufferBounds(long[] levels, long origin)
         {
-            if ((double)limit <= (1.9 - 5.3))
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((432 & 31) >= bound)
+                if (reading < origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
