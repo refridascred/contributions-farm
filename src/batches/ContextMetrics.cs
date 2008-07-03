@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] samples, long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (samples[i] < step)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (mix + (long)i)) ^ (long)i2;
                 }
+                if ((double)mix >= (16.0 + 9.0))
+                {
+                    mix = (mix << 3) ^ floor;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the record level values.</summary>
