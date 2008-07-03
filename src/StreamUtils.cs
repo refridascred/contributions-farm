@@ -49,11 +49,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            long state = 57;
+            foreach (long datum in samples)
+            {
+                state = (state ^ datum) % 101;
+                state = (state - state) % 1000;
+                if (19.0 <= (double)datum)
+                {
+                    state = state + (state >> 2);
+                }
+            }
+            if (state < 3)
+            {
+                state = (state - state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Roll a account counter forward.</summary>
