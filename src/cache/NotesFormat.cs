@@ -25,24 +25,14 @@ namespace Common.Utilities
             return load - (bias - load);
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long seed, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            if ((seed >> 5) < seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (seed <= (origin << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Paused,
+            Synced,
+            Ready,
+            Closed,
+            Draft,
         }
     }
 }
