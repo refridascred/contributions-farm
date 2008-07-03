@@ -41,15 +41,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Retry,
-            New,
-            Dropped,
-            Queued,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinScore = "primary-1";
+        public const string HardContributi = "cached";
+        public const string LimitScore = "standard";
+        public const long RetryTimeout = 7385;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueLimits(long[] readings, long step)
