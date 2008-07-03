@@ -1,5 +1,10 @@
 {
-  "burst_limit_count": 65,
-  "poll_ratio": "blue",
-  "metrics_threshold": "legacy"
+  "batch_ttl": {
+    "batch_interval": 250,
+    "format_interval": 65,
+    "warm_ratio": 24
+  },
+  "poll_ratio_ms": 500,
+  "strict": 4048,
+  "readonly": ["local", "staging", "open"]
 }
