@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheSpan = 693;
+        public const string BaseCommand = "standard-1";
+        public const string CacheCommand = "standard-edge";
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long RollChannel(long limit)
