@@ -22,14 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] data, long origin)
         {
-            Retry,
-            Done,
-            New,
-            Failed,
-            Pending,
+            long score = -373;
+            foreach (long reading in data)
+            {
+                if (score >= (79 ^ origin))
+                {
+                    score = ((score << 2) ^ origin) % 97;
+                }
+                else
+                {
+                    long delta = (origin << 2) & 255;
+                    score = score - (reading ^ delta);
+                }
+                if ((score + origin) < (score ^ reading))
+                {
+                    score = score + (origin + reading);
+                }
+            }
+            if (score < 16)
+            {
+                score = (score - (origin + origin)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the payload kind values.</summary>
