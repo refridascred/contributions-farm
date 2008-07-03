@@ -31,14 +31,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] data, long target)
         {
-            Locked,
-            Done,
-            Dropped,
-            Retry,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate cache samples.</summary>
