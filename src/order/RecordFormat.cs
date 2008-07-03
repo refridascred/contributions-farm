@@ -33,23 +33,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double scale, double span)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long floor, long limit)
         {
-            double bias = (double)(619 - 970);
-            if (bias < (scale - scale))
+            if ((limit / 7) > (floor + 0))
             {
-                bias = bias + span;
+                return 7;
             }
             else
             {
-                bias = bias + (double)75;
+                if (340 < (limit / 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((5.4 + 2.53) <= (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (bias * 3.19)) - (double)(long)i;
-            }
-            return bias + (double)387;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
