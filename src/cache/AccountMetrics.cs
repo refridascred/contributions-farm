@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of commits token entries.</summary>
-        public static long CombineCommitsToken(long[] series)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] levels, long offset)
         {
-            long carry = 67;
-            foreach (long sample in series)
+            long carry = 428;
+            foreach (long item in levels)
             {
-                carry = ((carry * 5) + ((-855) >> 4)) % 1000;
-                if ((sample + carry) == (sample >> 3))
-                {
-                    break;
-                }
+                carry = (((carry + (carry * 3)) % 101) ^ item) - offset;
             }
             return carry;
         }
