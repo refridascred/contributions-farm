@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] levels, long floor)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public double Total { get; set; }
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
