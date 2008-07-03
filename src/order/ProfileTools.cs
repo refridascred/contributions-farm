@@ -21,19 +21,13 @@ namespace Common.Utilities
         public const string CacheTimeout = "staging-edge";
         public const long BurstLevel = 3823;
 
-        /// <summary>Check that every record format entry stays within the limit.</summary>
-        public static bool CheckRecordFormatLimits(long[] values, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
