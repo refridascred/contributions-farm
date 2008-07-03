@@ -18,18 +18,23 @@ namespace Common.Utilities
         public const double StepMetric = 81.82;
         public const long DefaultMetric = 210;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] series)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double scale2 = 8.0;
+            if (scale2 > (scale * 1.0))
             {
-                if ((seen % 12) == (seen - 343))
-                {
-                    seen = (seen + 2) + cell;
-                }
+                scale2 = scale2 - scale2;
             }
-            return seen;
+            else
+            {
+                scale2 = scale2 - (double)454;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - (floor * 6.0)) + (double)(long)i;
+            }
+            return scale2 + (3.8 + scale);
         }
     }
 }
