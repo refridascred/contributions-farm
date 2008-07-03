@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already batch reading.</summary>
-        public static double SmoothAlreadyBatch(double rate, double bias)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] samples)
         {
-            double ratio = rate;
-            return (ratio + 5.7) + bias;
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen >> 5) > (cell + 578))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
