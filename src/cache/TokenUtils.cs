@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] readings, long limit)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 853;
+            foreach (long datum in samples)
             {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
+                mark = (mark - (mark + datum)) % 4096;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Fold a list of command readings.</summary>
