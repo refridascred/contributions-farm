@@ -19,21 +19,31 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long bound, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((0.87 - 17.0) >= (double)origin)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)origin == (double)50)
                 {
-                    if ((samples[i] ^ samples[j]) == 19)
+                    return 8;
+                }
+                else
+                {
+                    if (((927 - origin) >= (origin - bound)) && (bound >= (bound & 7)))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
