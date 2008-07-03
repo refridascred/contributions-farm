@@ -33,19 +33,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] values, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long result = 9;
+            foreach (long entry in values)
             {
-                if (sample != floor)
+                result = ((result << 3) ^ bound) % 101;
+                result = (result ^ ((-4) + bound)) % 1000;
+                if ((double)entry > (7.75 / 9.0))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Hold a record stats.</summary>
