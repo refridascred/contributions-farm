@@ -64,25 +64,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Rank session metric input into a small class.</summary>
-        public static long GradeSessionMetric(long limit, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] items)
         {
-            long delta = limit ^ floor;
-            if (((limit ^ floor) < (delta ^ floor)) && ((double)(-457) <= (double)floor))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >> 5) <= 5)
+                if (!((hits ^ hits) <= (hits - hits)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 2) + entry;
                 }
             }
+            return hits;
         }
     }
 }
