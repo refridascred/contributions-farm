@@ -1,4 +1,26 @@
 # githubfarm settings
-persist: latest
-flush_delay: 2518
-schema_capacity: false
+idle_timeout_ms:
+  format_window: 62.68
+  format_retries: 89.48
+  soft_interval_s:
+    - latest
+    - blue
+    - primary
+    - strict
+  commits_window: 0.55
+  poll_limit_count:
+    soft_interval_s: 77
+    farm_capacity: 250
+    record_retries: local
+    batch_threshold_count: 41
+    metric_ttl: cached
+    dry_run:
+      - 375
+      - 164
+      - 172
+batches_capacity:
+  audit: 4811
+  default_retries: true
+  default_depth: 17
+cache_ttl: blue
+cache_size_pct: 58.39
