@@ -75,39 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command stats value against two limits.</summary>
-        public static long RankCommandStats(long seed, long origin)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long offset = seed + origin;
-            if (seed < origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset >> 2) != (seed >> 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset - 1) >= seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (10.0 + 9.9))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of buffer metric entries.</summary>
