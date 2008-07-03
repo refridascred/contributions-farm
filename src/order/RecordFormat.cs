@@ -66,24 +66,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] levels, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin & 1) <= origin)
+                if (levels[i] >= seed)
                 {
-                    anchor = (anchor + (anchor >> 3)) % 101;
-                    anchor = ((anchor * 4) + (origin >> 3)) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = anchor + (origin << 1);
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
     }
 }
