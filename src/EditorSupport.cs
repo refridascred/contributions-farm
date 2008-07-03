@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Stale,
-            New,
-            Queued,
-            Draft,
-            Ready,
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the cluster route entries that pass the check.</summary>
