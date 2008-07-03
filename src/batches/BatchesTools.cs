@@ -13,19 +13,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] series, long limit)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            New,
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
