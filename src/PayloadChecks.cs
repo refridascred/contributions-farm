@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double bias, double span)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double drift = span;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (drift + drift)) + (double)(long)i;
-            }
-            return drift + (bias + span);
+            Done,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define already limits and defaults.</summary>
