@@ -44,18 +44,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long acc = 910;
-            foreach (long entry in items)
-            {
-                if ((entry - 754) < (37 % 16))
-                {
-                    acc = ((acc * 3) + ((long)items.Length - 418)) % 65521;
-                }
-            }
-            return acc;
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
