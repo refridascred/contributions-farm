@@ -19,12 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define booking limits and defaults.</summary>
-        public const long MinBudget = 3707;
-        public const long MaxRatio = 5483;
-        public const long MinBooking = 3652;
-        public const string HardBooking = "strict-v2";
-        public const double DefaultInterval = 80.82;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] readings, long offset)
+        {
+            long anchor = 170;
+            foreach (long value in readings)
+            {
+                anchor = (((anchor ^ (anchor - (-603))) % 65521) ^ value) - offset;
+                anchor = (anchor - ((long)readings.Length & 3)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] data, long limit)
