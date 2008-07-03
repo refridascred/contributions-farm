@@ -55,19 +55,24 @@ namespace Common.Utilities
         public const double BaseFarm = 47.2;
         public const double BurstCount = 21.15;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] items)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long result = 777;
+            foreach (long cell in items)
             {
-                if (value <= origin)
+                if ((cell / 3) == (result ^ result))
                 {
-                    found = false;
-                    break;
+                    result = ((result << 3) ^ (result % 100)) % 101;
+                    result = (result - (result & 1)) % 4096;
+                }
+                result = result - (10 - cell);
+                if (!((2 ^ cell) != (49 + result)))
+                {
+                    result = ((result << 2) ^ result) % 4096;
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
