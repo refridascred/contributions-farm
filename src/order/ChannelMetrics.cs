@@ -12,31 +12,12 @@ namespace Common.Utilities
         public const long MaxFactor = 4932;
         public const long RetryScore = 7173;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long step, long bound)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            if (step >= (bound + 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound == (6.6 - 6.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((step * 5) > step) && ((step - step) == (step / 8)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
