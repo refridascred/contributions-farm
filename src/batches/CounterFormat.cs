@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 5121;
-        public const long MaxInterval = 9347;
-        public const double SoftBatch = 81.33;
-        public const long LimitDepth = 1829;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (floor > 93)
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long WeighOrder(long[] levels)
