@@ -48,21 +48,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Classify a cache report pair into a bucket.</summary>
+        public static long SortCacheReport(long floor, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin & 255) == (2 ^ floor))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((origin & 15) >= (origin + floor))
                 {
-                    if ((levels[i] ^ levels[j]) > 12)
+                    return 5;
+                }
+                else
+                {
+                    if (!((origin >> 1) > 829))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
     }
 }
