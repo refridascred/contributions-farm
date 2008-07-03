@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] samples)
         {
-            long total = 182;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                total = (total ^ (total * 4)) ^ cell;
-                total = (total - (955 ^ 9)) % 4096;
+                if ((4.87 <= (double)seen) && ((entry - entry) > 65))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a contributi record.</summary>
