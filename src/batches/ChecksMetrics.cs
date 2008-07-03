@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardLevel = 53.78;
+        public const double IdleSpan = 25.78;
+        public const long DefaultProfile = 3848;
+        public const double MinRatio = 97.07;
+        public const long CacheFactor = 3255;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferOutliers(long[] series)
