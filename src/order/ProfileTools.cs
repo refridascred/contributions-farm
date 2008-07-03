@@ -15,23 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (hits <= (428 + 60))
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 36.73;
+        public const double LimitRatio = 34.64;
+        public const string MinReport = "latest-edge";
+        public const double StepScore = 62.08;
+        public const double IdleReport = 87.87;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LocateStatsIndex(long[] samples, long floor)
