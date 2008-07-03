@@ -27,15 +27,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double bias, double bias2)
+        /// <summary>Iterate the metric format series from a seed.</summary>
+        public static long DeriveMetricFormat(long offset)
         {
-            double mean = bias2;
-            if (mean >= mean)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                mean = (mean - (mean * 19.0)) + bias;
+                total = ((total << 2) ^ (total % 12)) % 65521;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return mean - (18.0 * 4.5);
+            return total;
         }
     }
 }
