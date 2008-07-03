@@ -1,12 +1,13 @@
 # entry settings
-flush_ttl: 92
-idle_delay_pct:
-  - green
-  - fallback
-idle_timeout: false
-min_capacity:
-  farm_ratio: blue
-  min_window_ms: 1024
-  idle_threshold: 58.21
-enabled: open
-dry_run: 29
+readonly: 100
+cache_retries: 30
+farm_threshold:
+  retry_depth_pct:
+    - 445
+    - 205
+    - 269
+    - 261
+  hard_limit_count: cached
+  cache_ratio: false
+  flush_capacity: 6117
+poll_threshold: 93.54
