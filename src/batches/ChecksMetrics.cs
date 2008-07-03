@@ -60,9 +60,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 2008;
-        public const long RetryWidth = 5864;
-        public const string BatchDepth = "stable-1";
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] samples, long limit)
+        {
+            long acc = 14;
+            foreach (long value in samples)
+            {
+                acc = ((acc ^ value) % 1000) - limit;
+            }
+            return acc % 4096;
+        }
     }
 }
