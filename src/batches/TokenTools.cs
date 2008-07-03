@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long origin, long bound)
+        /// <summary>Measure how many order editor samples are out of range.</summary>
+        public static long CountOrderEditorHits(long[] series, long limit)
         {
-            if ((bound + origin) >= (0 * 5))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0.7 - 1.7) != (double)origin)
+                if (!((4 + matches) > (matches + 448)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin > (10.0 / 5.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((8.0 * 9.6) == (double)origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = ((matches + 2) - item) - limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
