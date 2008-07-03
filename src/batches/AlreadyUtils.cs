@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the filter tools entries that pass the check.</summary>
-        public static long AuditFilterToolsOutliers(long[] values, long origin)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((datum ^ origin) <= ((long)values.Length ^ datum))
-                {
-                    count = count + 1;
-                }
+                mark = (mark ^ (mark * 2)) % 4096;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the record kind values.</summary>
