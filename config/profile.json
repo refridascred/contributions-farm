@@ -1,6 +1,14 @@
 {
-  "flush_capacity": false,
-  "soft_retries_count": 100,
-  "burst_capacity": "local",
-  "hard_ratio": "edge"
+  "channel_size": "green",
+  "hard_window_pct": 7.78,
+  "cache_interval": {
+    "cache_ratio": "blue",
+    "strict": 1024,
+    "flush_capacity_count": "fallback",
+    "warm_retries": "fallback",
+    "poll_ttl": "open"
+  },
+  "min_timeout_s": true,
+  "account_limit": 17.52,
+  "sync_depth": 24.49
 }
