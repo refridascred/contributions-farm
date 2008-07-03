@@ -13,19 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] data, long limit)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Stale,
+            Synced,
+            Draft,
         }
 
         /// <summary>Audit checks metric readings against a rule.</summary>
