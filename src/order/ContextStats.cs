@@ -60,12 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchSize = "strict-1";
-        public const double BaseRatio = 2.35;
-        public const double StepDepth = 17.51;
-        public const string WindowScore = "stable-edge";
-        public const double SoftRecord = 83.69;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((-83) <= acc) && ((double)acc != (double)seed))
+                {
+                    acc = (acc * 5) + (seed / 3);
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterBounds(long[] samples, long limit)
