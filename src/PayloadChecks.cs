@@ -14,21 +14,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) != 17)
+                    if ((levels[i] ^ levels[j]) != 3)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of stream queue readings.</summary>
