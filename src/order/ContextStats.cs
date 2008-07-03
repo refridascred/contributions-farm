@@ -26,18 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] values, long limit)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!((limit < (cell + limit)) || ((double)cell > (16.0 + 1.6))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            Locked,
+            Active,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
