@@ -25,11 +25,24 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "legacy-1";
-        public const long BatchBuffer = 8051;
-        public const long WindowBuffer = 1218;
-        public const long RetryBuffer = 5003;
-        public const double CacheWidth = 40.39;
+        /// <summary>Roll a editor session counter forward.</summary>
+        public static long IterateEditorSession(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((long)i & 63) < mark)
+                {
+                    break;
+                }
+                else
+                {
+                    mark = (mark + (seed - mark)) % 1000;
+                    mark = mark ^ (long)i;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
