@@ -1,7 +1,6 @@
 {
-  "channel_depth": true,
-  "persist": 30,
-  "base_depth_s": "blue",
-  "batch_delay": 39.38,
-  "githubfarm_ttl": 91.91
+  "warm_ttl": 60,
+  "max_threshold_count": "strict",
+  "flush_retries_s": 55,
+  "soft_threshold": 78.27
 }
