@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] items, long floor)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum << 2) > (floor / 9))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
