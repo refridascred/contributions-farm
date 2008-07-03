@@ -22,25 +22,18 @@ namespace Common.Utilities
         public const long CacheWindow = 5573;
         public const long HardScore = 2166;
 
-        /// <summary>Iterate the report record series from a seed.</summary>
-        public static long SeriesReportRecord(long step)
+        /// <summary>Audit commits channel readings against a rule.</summary>
+        public static long MeasureCommitsChannelMatches(long[] readings, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                acc = (acc - 37) % 101;
-                if ((88 + acc) == (acc / 3))
+                if ((reading << 1) < 86)
                 {
-                    acc = (acc ^ (acc + 54)) % 97;
+                    count = (count + 1) - limit;
                 }
-                else
-                {
-                    acc = ((acc * 4) + (step & 1)) % 1000;
-                }
-                acc = (acc + (8 - (long)i)) % 101;
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the batch mode values.</summary>
