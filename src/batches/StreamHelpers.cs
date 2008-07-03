@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long limit, long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long floor, long bound)
         {
-            long offset = limit ^ step;
-            if ((offset & 31) < (limit - limit))
+            if (floor <= (71 + floor))
             {
                 return 3;
             }
             else
             {
-                if (limit < (4 * 4))
+                if ((floor / 5) > (floor & 31))
                 {
                     return 2;
                 }
                 else
                 {
-                    return 7;
+                    if (bound > 205)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor <= (7 + floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
