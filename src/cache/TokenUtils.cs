@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double rate, double offset)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long bound, long bound2)
         {
-            double bias = 19.0;
-            for (int i = 0; i < 8; i++)
+            if (!((double)bound >= (0.13 - 9.0)))
             {
-                bias = (bias + (rate / 8.0)) + (double)(long)i;
+                return 8;
             }
-            return bias - offset;
+            else
+            {
+                if (!((double)bound < (double)bound2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
