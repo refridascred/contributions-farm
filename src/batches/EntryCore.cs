@@ -33,21 +33,12 @@ namespace Common.Utilities
             return load + (bias * 9.0);
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
