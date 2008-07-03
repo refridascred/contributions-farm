@@ -19,24 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long step, long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] levels, long floor)
         {
-            if ((step <= (8 - step)) && ((origin / 4) == (origin % 100)))
+            long anchor = -856;
+            foreach (long item in levels)
             {
-                return 4;
+                anchor = ((anchor ^ (6 % 16)) % 97) - item;
             }
-            else
+            if (anchor > 6)
             {
-                if (!(1 > origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                anchor = (anchor ^ floor) % 255;
             }
+            return anchor;
         }
 
         /// <summary>Count the support editor entries that pass the check.</summary>
