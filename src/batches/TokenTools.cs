@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] readings)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (((entry ^ seen) == (seen & 31)) || ((entry % 12) == (entry - seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the checks kind values.</summary>
