@@ -19,17 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum * 2) + (sum + limit);
-                sum = sum - sum;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Retry,
+            Done,
+            New,
+            Failed,
+            Pending,
         }
 
         /// <summary>Rank context input into a small class.</summary>
