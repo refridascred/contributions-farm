@@ -20,15 +20,10 @@ namespace Common.Utilities
         public const string DefaultFormat = "cached-v2";
         public const long IdleFormat = 2676;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Synced,
-            Failed,
-            Retry,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 6506;
+        public const double LimitRatio = 1.83;
+        public const double RetryQueue = 92.88;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextHits(long[] readings)
