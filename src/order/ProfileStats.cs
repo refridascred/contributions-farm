@@ -16,17 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] samples, long floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = -40;
+            foreach (long cell in data)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
+                if ((long)data.Length > (615 % 12))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ (cell - score);
                 }
+                score = (score ^ (score + score)) % 4096;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
