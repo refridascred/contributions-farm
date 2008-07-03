@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a already graph reading.</summary>
-        public static double ProjectAlreadyGraph(double scale, double floor)
-        {
-            double gain = floor;
-            if (gain > (gain - gain))
-            {
-                gain = gain - (double)93;
-            }
-            else
-            {
-                gain = gain + 3.0;
-            }
-            return gain + (scale - floor);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetrySize = 734;
+        public const string BatchDepth = "staging-1";
+        public const long DefaultGraph = 7516;
+        public const long BatchGraph = 3001;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
