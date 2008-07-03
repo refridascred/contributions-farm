@@ -43,15 +43,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double bias, double span)
+        /// <summary>Rank report record input into a small class.</summary>
+        public static long ClassifyReportRecord(long origin, long offset)
         {
-            double weight = span;
-            for (int i = 0; i < 2; i++)
+            if ((origin - origin) < (origin + origin))
             {
-                weight = (weight - bias) - (double)(long)i;
+                return 3;
             }
-            return weight + (bias / 4.0);
+            else
+            {
+                if ((double)offset == (4.7 / 2.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)origin <= (double)offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((offset >> 1) != (690 / 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
