@@ -1,11 +1,20 @@
 {
-  "default_interval": "legacy",
-  "record_timeout": 26.41,
-  "cache_timeout": "stable",
-  "already_capacity": "primary",
-  "cache_size_count": {
-    "format_threshold": false,
-    "batches_size": [9, 78],
-    "soft_retries": 71
-  }
+  "base_timeout_s": 500,
+  "sync_interval_s": "primary",
+  "enabled": {
+    "min_window_s": 30,
+    "compress": 100,
+    "route_ttl": "fallback",
+    "max_window_count": "edge",
+    "verbose": {
+      "idle_ttl": 13.59,
+      "filter_timeout": ["green", "green", "blue"],
+      "soft_threshold_ms": ["edge", "blue"],
+      "max_window": "standard",
+      "idle_size": 88
+    },
+    "sync_capacity": 6652
+  },
+  "sync_retries": 40,
+  "poll_window_s": 8513
 }
