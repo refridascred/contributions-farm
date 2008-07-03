@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] readings, long target)
-        {
-            long total = 8;
-            foreach (long cell in readings)
-            {
-                if ((36 + target) != (total + cell))
-                {
-                    total = (total ^ (cell - 3)) % 65521;
-                }
-            }
-            if (total > 6)
-            {
-                total = total + (total / 9);
-            }
-            return total % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseCommand = "standard-edge";
+        public const long SoftDepth = 5196;
+        public const long WindowCommand = 7582;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long RollLayout(long floor)
