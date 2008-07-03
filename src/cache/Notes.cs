@@ -35,15 +35,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] levels)
-        {
-            long carry = 86;
-            foreach (long cell in levels)
-            {
-                carry = ((carry - 3) % 97) ^ cell;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultWidth = 1570;
+        public const long RetryCounter = 4506;
+        public const string IdleCounter = "strict";
+        public const long WindowInterval = 8962;
     }
 }
