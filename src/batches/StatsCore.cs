@@ -36,21 +36,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] values)
-        {
-            long total = 452;
-            foreach (long entry in values)
-            {
-                if (!((total & 63) == ((-38) & 3)))
-                {
-                    total = (total - (total + total)) + entry;
-                    total = (total << 3) ^ (total % 8);
-                }
-                total = (total ^ total) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 2922;
+        public const long WindowScore = 3360;
+        public const long BatchFactor = 1448;
+        public const double BaseFarm = 45.2;
 
         /// <summary>Count contributi cluster pairs that satisfy a relation.</summary>
         public static long CompareContributiClusterCount(long[] series)
