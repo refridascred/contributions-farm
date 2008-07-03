@@ -34,17 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first window route entry that matches the target.</summary>
-        public static long FindWindowRouteIndex(long[] series, long step)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
