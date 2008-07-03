@@ -41,19 +41,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long total = 923;
-            foreach (long entry in items)
-            {
-                total = (total << 3) ^ (332 % 12);
-                if (((6.0 - 4.6) != (double)(long)items.Length) || ((entry / 2) <= (entry - total)))
-                {
-                    break;
-                }
-            }
-            return total;
+            Idle,
+            Locked,
+            Pending,
+            Draft,
+            Retry,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
