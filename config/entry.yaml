@@ -1,23 +1,9 @@
 # entry settings
-poll_capacity_s: 9626
-burst_retries_count:
-  min_limit_pct: 14
-  min_threshold: 27
-  warm_limit:
-    - cached
-    - standard
-    - latest
-    - edge
-burst_ratio:
-  base_window_count:
-    editor_window: false
-    layout_ratio: true
-    base_limit:
-      - 268
-      - 397
-      - 489
-    readonly: 100
-    default_depth_pct: 23.67
-  batch_interval_ms: 30
-  burst_window_count: false
-max_delay_pct: 37
+order_delay: 5694
+sync_size_ms:
+  - 83
+  - 324
+verbose: open
+default_depth: local
+soft_ttl_pct: primary
+support_timeout: 3866
