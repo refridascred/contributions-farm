@@ -19,15 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long bound, long step)
         {
-            long mix = 42;
-            foreach (long datum in levels)
+            if ((double)step > (19.0 - 15.0))
             {
-                mix = ((mix - 477) % 4096) - datum;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((step * 5) <= (4 & 63))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound < (7.0 / 2.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound - bound) >= bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
