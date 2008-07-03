@@ -6,18 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-primary}"
+mode="${1:-green}"
 case "${mode}" in
-    edge)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in fallback eu-west legacy strict; do
+    log "checking ${item}"
+done
