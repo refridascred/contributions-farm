@@ -49,19 +49,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] values, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (datum >= target)
+                if ((bound + entry) <= entry)
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
