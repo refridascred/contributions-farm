@@ -19,10 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 1312;
-        public const string BaseSession = "local";
-        public const long CacheInterval = 9957;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] readings)
+        {
+            long acc = 38;
+            foreach (long entry in readings)
+            {
+                if ((double)entry <= (8.43 + 3.6))
+                {
+                    acc = (acc * 4) + (acc * 3);
+                }
+                else
+                {
+                    acc = (acc - (acc + (-1))) % 4096;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
         public static long OverlapGithubfarmBufferCount(long[] data)
