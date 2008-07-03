@@ -48,18 +48,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit counter command readings against a rule.</summary>
-        public static long AuditCounterCommandOutliers(long[] values)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long acc = 4;
+            foreach (long sample in data)
             {
-                if ((-33) > datum)
+                if ((double)sample != (8.1 - 5.35))
                 {
-                    seen = seen + 2;
+                    acc = ((acc * 5) + (796 * 3)) % 101;
+                }
+                else
+                {
+                    acc = acc - (acc + acc);
                 }
             }
-            return seen;
+            return acc;
         }
     }
 }
