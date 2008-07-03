@@ -19,24 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long offset, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] series, long target)
         {
-            if ((target << 3) == (offset + offset))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + target) >= (offset + offset))
+                if ((seen ^ datum) < (seen * 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    seen = (seen + 1) + target;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
