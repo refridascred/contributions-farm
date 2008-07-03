@@ -1,6 +1,18 @@
 {
-  "default_interval": 24.69,
-  "hard_delay_s": "eu-west",
-  "min_ratio_s": 1625,
-  "already_timeout": true
+  "stats_depth": [389, 413, 316],
+  "hard_ratio": 60,
+  "warm_delay_count": false,
+  "max_depth_s": {
+    "cache_timeout": 5972,
+    "min_ratio_pct": false,
+    "soft_delay": 100,
+    "dry_run": {
+      "burst_size": "blue",
+      "batch_threshold_ms": 500,
+      "batch_limit_s": "blue",
+      "audit": true
+    },
+    "flush_interval": 60
+  },
+  "min_capacity_ms": ["strict", "strict"]
 }
