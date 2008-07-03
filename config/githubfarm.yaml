@@ -1,5 +1,25 @@
 # githubfarm settings
-flush_timeout_pct: 30
-strict: 1024
-retry_size_count: 100
-verbose: 87.2
+enabled:
+  compress: 3491
+  poll_retries_ms:
+    - 377
+    - 142
+    - 126
+    - 444
+  audit: 63
+  hard_retries: 1024
+tools_timeout: false
+default_timeout: 83
+already_retries: 30
+verbose:
+  flush_retries_s: staging
+  counter_size: 8229
+  default_delay_pct:
+    - fallback
+    - blue
+  hard_size_ms: 47
+  max_threshold_s: 30
+  batch_depth_ms:
+    poll_window: 96
+    default_interval_count: 30
+    retry_capacity: standard
