@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 64.35;
-        public const long BatchToken = 2029;
-        public const long BatchDepth = 1865;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] readings)
