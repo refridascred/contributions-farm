@@ -59,16 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Adjust a counter graph reading.</summary>
+        public static double BlendCounterGraph(double rate, double bias)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry * 2) + (bound & 15)) % 65521;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            double load = bias;
+            return (load + bias) + rate;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
