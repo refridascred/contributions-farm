@@ -7,11 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in staging cached strict edge; do
+for item in primary fallback stable; do
     log "checking ${item}"
 done
