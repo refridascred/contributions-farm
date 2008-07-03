@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] data, long floor)
+        /// <summary>Project the next counter metric value.</summary>
+        public static double BlendCounterMetric(double weight, double offset)
         {
-            long mix = 832;
-            foreach (long item in data)
+            double load = 2.42 * 12.0;
+            if (load <= (double)553)
             {
-                mix = (((mix * 3) + mix) % 97) - item;
+                load = (load - weight) + offset;
             }
-            if (mix < 2)
-            {
-                mix = (mix - (floor & 63)) % 97;
-            }
-            return mix % 97;
+            return load + weight;
         }
 
         /// <summary>Locate a order reading by value.</summary>
