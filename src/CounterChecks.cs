@@ -49,22 +49,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] data)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((871 + matches) > 38)
-                {
-                    matches = (matches + 3) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
