@@ -31,12 +31,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Closed,
-            Active,
+            Locked,
+            Done,
             Dropped,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define support limits and defaults.</summary>
