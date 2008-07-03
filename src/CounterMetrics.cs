@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long origin, long seed)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long delta = origin ^ seed;
-            if ((origin / 9) == (delta << 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed > (double)54)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (6 >= (seed ^ seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
