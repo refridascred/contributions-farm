@@ -73,10 +73,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstSize = 1780;
-        public const long BurstWidth = 8890;
-        public const double RetryLevel = 90.2;
-        public const string LimitStream = "strict-v2";
+        /// <summary>Measure how many order filter samples are out of range.</summary>
+        public static long TallyOrderFilterMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((sample > tally) && ((9.1 / 3.0) < (double)tally)) || ((double)819 > (double)tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
