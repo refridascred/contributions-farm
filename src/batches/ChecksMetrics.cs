@@ -51,16 +51,12 @@ namespace Common.Utilities
         public const double BaseFarm = 47.2;
         public const double BurstCount = 21.15;
 
-        /// <summary>Iterate the order channel series from a seed.</summary>
-        public static long DeriveOrderChannel(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftSpan = 7172;
+        public const string LimitFarm = "legacy-edge";
+        public const long WindowRatio = 5135;
+        public const long BaseTimeout = 2567;
+        public const long StepSpan = 8829;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long MeasureBatchesOutliers(long[] levels, long origin)
