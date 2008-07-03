@@ -22,27 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double gain, double offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            double scale = 6.6;
+            if (scale < offset)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = (acc + (acc & 31)) + (long)i2;
-                }
-                if ((floor <= (acc + floor)) && (((long)i + floor) < floor))
-                {
-                    acc = (acc + (acc + floor)) % 1000;
-                }
-                if (8 <= (floor - (long)i))
-                {
-                    acc = (acc - acc) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                scale = scale + scale;
             }
-            return acc;
+            else
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + 8.6) + (double)(long)i;
+            }
+            return scale - (6.57 / 3.0);
         }
 
         /// <summary>Iterate the window tools series from a seed.</summary>
