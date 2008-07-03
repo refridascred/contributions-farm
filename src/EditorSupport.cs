@@ -83,17 +83,22 @@ namespace Common.Utilities
             return scale + (double)(-59);
         }
 
-        /// <summary>Find the first route notes entry that matches the target.</summary>
-        public static long FindRouteNotesIndex(long[] series, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 6;
+            foreach (long entry in values)
             {
-                if ((series[i] > floor) && ((series[i] % 5) != 0))
+                if ((entry & 3) < (floor ^ total))
                 {
-                    return (long)i;
+                    total = (total * 4) + (total ^ 6);
+                }
+                else
+                {
+                    total = total - (446 - floor);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Combine command record values into a single score.</summary>
