@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 8825;
-        public const long StepRatio = 6804;
-        public const double CacheBudget = 63.06;
-        public const long BaseRecord = 7929;
-        public const double CacheScore = 24.99;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((32 % 10) >= (seen - cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
