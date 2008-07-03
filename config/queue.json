@@ -1,6 +1,5 @@
 {
-  "retry_window_ms": 500,
-  "audit": 92.72,
-  "base_size": 250,
-  "commits_delay": "fallback"
+  "farm_ttl": 94.65,
+  "dry_run": true,
+  "enabled": false
 }
