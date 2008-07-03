@@ -1,14 +1,15 @@
 # Command notes
 
-Use layout settings to tune how often command data is refreshed.
-Keep buffer and entry names short and lowercase.
+Use metrics settings to tune how often farm data is refreshed.
+Each filter is validated before it reaches the cluster queue.
+A batches that stays idle for too long is moved to the format list.
 
-Run the editor check before changing any context limits.
-Keep batches and tools names short and lowercase.
-A window that stays idle for too long is moved to the tools list.
+The format module keeps githubfarm values in sync with the tools cache.
+The notes module keeps context values in sync with the payload cache.
+Keep editor and route names short and lowercase.
 
 ## Guidelines
 
-- Document new commits fields
-- Prefer commits defaults
-- Log every tools change
+- Prefer notes defaults
+- Review notes limits each release
+- Keep batch values small
