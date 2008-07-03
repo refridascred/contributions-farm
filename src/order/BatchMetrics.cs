@@ -22,10 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitSpan = 34.64;
-        public const long CacheCommits = 4805;
-        public const double LimitScore = 83.23;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            New,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] levels, long bound)
