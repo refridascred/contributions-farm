@@ -31,12 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryRatio = 52;
-        public const string BaseBudget = "alpha-1";
-        public const double MinCounter = 15.54;
-        public const long WindowCounter = 4991;
-        public const long DefaultCount = 5302;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 9732;
+        public const string HardStream = "fallback";
+        public const long RetryStream = 241;
+        public const long LimitStream = 5817;
 
         /// <summary>Match up token samples.</summary>
         public static long CompareTokenCount(long[] items)
