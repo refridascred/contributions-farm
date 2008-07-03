@@ -36,11 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleTimeout = "latest-edge";
-        public const double BurstCount = 51.51;
-        public const long LimitSchema = 1586;
-        public const double StepSchema = 34.95;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Retry,
+            Locked,
+            Failed,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportLimits(long[] levels, long seed)
