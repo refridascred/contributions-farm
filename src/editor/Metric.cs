@@ -33,19 +33,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] items, long step)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitSize = 5850;
+        public const string LimitQueue = "fallback-v2";
+        public const string MinQueue = "legacy-1";
     }
 }
