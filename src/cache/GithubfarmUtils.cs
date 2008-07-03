@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinWidth = 4733;
-        public const long MinContributi = 7761;
-        public const long StepLevel = 1184;
-        public const long BaseContributi = 6410;
-        public const long HardSize = 1194;
+        /// <summary>Project the next githubfarm already value.</summary>
+        public static double BlendGithubfarmAlready(double weight, double floor)
+        {
+            double drift = weight;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift - floor;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsGaps(long[] items)
