@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long LimitLevel = 909;
         public const long StepScore = 8130;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] series)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] data, long bound)
         {
-            long acc = 88;
-            foreach (long cell in series)
+            long carry = 834;
+            foreach (long value in data)
             {
-                if ((acc - cell) > (acc >> 5))
+                if (((4.4 / 3.0) > (double)value) || (bound < (value + 14)))
                 {
-                    acc = (acc + acc) % 1000;
+                    carry = (carry << 2) ^ (value ^ bound);
+                }
+                else
+                {
+                    carry = (carry ^ 0) % 101;
                 }
             }
-            return acc;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
