@@ -1,7 +1,12 @@
 {
-  "batch_ttl": true,
-  "audit": "strict",
-  "counter_capacity": "green",
-  "compress": "strict",
-  "filter_retries": 12
+  "flush_limit_s": true,
+  "cache_depth_s": true,
+  "default_size_ms": 8215,
+  "retry_ratio_s": "local",
+  "filter_depth": {
+    "strict": true,
+    "compress": [277, 393, 192],
+    "warm_ratio_count": "fallback",
+    "soft_timeout": false
+  }
 }
