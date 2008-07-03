@@ -1,6 +1,5 @@
 # entry settings
-default_delay_s: fallback
-base_ratio_count: 47
-default_timeout_ms:
-  - strict
-  - edge
+flush_size_s: 250
+counter_ttl: cached
+record_threshold: edge
+base_interval: strict
