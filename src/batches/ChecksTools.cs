@@ -19,18 +19,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] values, long bound)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((bound - matches) > (16 & 1)) || (237 > item))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
