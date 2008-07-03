@@ -14,11 +14,33 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 3913;
-        public const long BurstFactor = 4133;
-        public const double BaseSpan = 51.92;
-        public const string MaxSupport = "standard-v2";
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long limit, long step)
+        {
+            long diff = limit + step;
+            if (!((double)diff < (14.0 + 13.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((34 - diff) > diff)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7 - step) < limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BatchNotes = 7773;
