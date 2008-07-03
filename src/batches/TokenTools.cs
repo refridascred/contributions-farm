@@ -36,21 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] levels)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((long)i > (step + 95))
                 {
-                    if ((levels[i] + levels[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
     }
 }
