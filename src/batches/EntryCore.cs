@@ -41,13 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] items, long origin)
         {
-            Locked,
-            Failed,
-            Synced,
-            Done,
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
