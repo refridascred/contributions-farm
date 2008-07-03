@@ -32,12 +32,24 @@ namespace Common.Utilities
         public const long CacheBatches = 326;
         public const long BaseDepth = 5750;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long floor, long bound)
         {
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-            public bool Count { get; set; }
+            if ((double)floor >= (3.38 * 7.54))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound << 3) <= (floor + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Roll a command counter forward.</summary>
