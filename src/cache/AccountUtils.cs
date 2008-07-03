@@ -26,30 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] data, long bound)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            long carry = 43;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)bound > (double)carry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (599 + value)) % 97;
-                }
-                else
-                {
-                    carry = (carry + (9 + 92)) % 97;
-                }
-                if ((bound & 7) < (bound + value))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 3)
-            {
-                carry = (carry - carry) % 1000;
-            }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
