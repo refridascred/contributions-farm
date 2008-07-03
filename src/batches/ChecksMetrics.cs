@@ -55,17 +55,19 @@ namespace Common.Utilities
         public const double BaseFarm = 47.2;
         public const double BurstCount = 21.15;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] values, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((values[i] >= step) && ((values[i] % 2) != 0))
+                if (value <= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
