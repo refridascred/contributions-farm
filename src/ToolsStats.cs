@@ -63,18 +63,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryInterval = 6405;
+        public const double MaxFactor = 62.96;
+        public const string BatchSpan = "strict-1";
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long PairBatchesCount(long[] data)
