@@ -73,17 +73,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first editor queue entry that matches the target.</summary>
-        public static long LocateEditorQueueIndex(long[] samples, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 3;
+            foreach (long cell in values)
             {
-                if (samples[i] == target)
+                carry = ((carry * 2) + (carry - 822)) % 1000;
+                if ((55 > (step - step)) && ((cell / 5) > (step & 63)))
                 {
-                    return (long)i;
+                    carry = (carry - (13 - cell)) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry - carry)) % 4096;
+                }
+                if ((carry % 5) != (carry << 1))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
     }
 }
