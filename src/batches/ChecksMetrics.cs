@@ -51,12 +51,18 @@ namespace Common.Utilities
         public const double BaseFarm = 47.2;
         public const double BurstCount = 21.15;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftSpan = 7172;
-        public const string LimitFarm = "legacy-edge";
-        public const long WindowRatio = 5135;
-        public const long BaseTimeout = 2567;
-        public const long StepSpan = 8829;
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long MeasureBatchesOutliers(long[] levels, long origin)
