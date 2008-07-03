@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] items, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            long carry = 5;
+            foreach (long reading in items)
             {
-                if ((target + acc) < (acc % 24))
+                if ((double)reading > (double)bound)
                 {
-                    acc = acc + (acc + 0);
-                    continue;
+                    carry = (carry * 5) + (bound % 2);
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            if (carry > 63)
+            {
+                carry = carry ^ (bound * 4);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a layout info.</summary>
