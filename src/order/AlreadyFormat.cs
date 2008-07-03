@@ -15,14 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 7453;
+        public const long BaseRoute = 4214;
+        public const double HardScore = 90.82;
+        public const long MinInterval = 2296;
+        public const long CacheDepth = 7380;
 
         /// <summary>Combine entry token values into a single score.</summary>
         public static long ScoreEntryToken(long[] values, long origin)
