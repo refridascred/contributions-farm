@@ -33,18 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] data)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if ((origin - origin) < (seed - origin))
             {
-                if ((269 % 60) > (matches % 3))
+                return 6;
+            }
+            else
+            {
+                if (!(seed >= (719 / 5)))
                 {
-                    matches = (matches + 2) + value;
+                    return 0;
+                }
+                else
+                {
+                    if ((8.2 - 9.59) > (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
