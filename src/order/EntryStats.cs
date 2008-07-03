@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = anchor + (floor + floor);
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Locked,
+            Stale,
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Digest a series of metric entries.</summary>
