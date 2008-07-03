@@ -29,24 +29,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series, long target)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long floor, long floor2)
         {
-            long mix = 623;
-            foreach (long item in series)
+            long span = floor ^ floor2;
+            if ((9.0 + 8.8) != (double)floor2)
             {
-                mix = mix - (target * 2);
-                mix = mix - (target + item);
-                if ((item + item) < (5 << 3))
+                return 8;
+            }
+            else
+            {
+                if ((span - floor) > (floor2 + floor))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (mix < 7)
-            {
-                mix = ((mix * 2) + (target + target)) % 97;
-            }
-            return mix % 1000;
         }
 
         /// <summary>Describe the batches mode values.</summary>
