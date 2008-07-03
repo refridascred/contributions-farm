@@ -70,18 +70,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] values, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (((value - count) <= count) || ((double)value >= (double)count))
+                if ((seed * 5) > (seed & 31))
                 {
-                    count = (count + 1) - seed;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
