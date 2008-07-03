@@ -58,22 +58,39 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long step, long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long prev = step - floor;
+            if (((double)step < (7.0 + 6.8)) && ((floor & 15) >= (floor / 9)))
             {
-                if (!(((datum << 1) <= matches) || ((datum - datum) >= (0 ^ datum))))
+                return 0;
+            }
+            else
+            {
+                if (4.45 > (double)floor)
                 {
-                    matches = matches + 1;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((step ^ prev) <= (step + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (prev <= step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two token measurements.</summary>
