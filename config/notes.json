@@ -1,17 +1,6 @@
 {
-  "enabled": [389, 51, 56],
-  "soft_interval_pct": 1024,
-  "default_threshold_count": {
-    "cache_size": "latest",
-    "idle_ttl": "green",
-    "retry_window_ms": true,
-    "max_interval_pct": {
-      "idle_delay_count": 1024,
-      "verbose": 500,
-      "soft_threshold": true,
-      "default_capacity": 95.93,
-      "notes_delay": 18.83,
-      "cluster_ratio": "edge"
-    }
-  }
+  "token_limit": false,
+  "token_ratio": false,
+  "default_retries_count": "latest",
+  "cache_ttl_ms": 77
 }
