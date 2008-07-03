@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double gain, double floor)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            double mean = gain / 3.0;
+            if (mean <= (3.8 - 9.21))
             {
-                if (((long)i - score) <= score)
-                {
-                    score = ((score << 2) ^ (seed - score)) % 65521;
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 101;
+                mean = (mean - (double)(-102)) - floor;
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (mean / 2.0);
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
