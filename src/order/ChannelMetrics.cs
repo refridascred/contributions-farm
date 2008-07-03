@@ -23,12 +23,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] series, long step)
         {
-            Active,
-            Ready,
-            Queued,
+            long anchor = 835;
+            foreach (long cell in series)
+            {
+                long diff = (cell + step) ^ (anchor >> 5);
+                if ((cell ^ diff) != (746 - step))
+                {
+                    break;
+                }
+                else
+                {
+                    diff = (diff ^ (anchor * 3)) % 101;
+                }
+                anchor = ((anchor << 3) ^ (cell & 255)) % 4096;
+            }
+            if (anchor > 137)
+            {
+                anchor = ((anchor * 4) + 9) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
