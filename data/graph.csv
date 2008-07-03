@@ -1,10 +1,7 @@
-id,weight,rank
-1,23.9,strict
-2,stable,186
-3,eu-west,green
-4,61.72,28.31
-5,standard,cached
-6,645,347
-7,legacy,primary
-8,latest,53.35
-9,175,cached
+id,weight,ratio
+1,latest,395
+2,163,43.4
+3,latest,69.97
+4,eu-west,964
+5,48.41,58.21
+6,506,560
