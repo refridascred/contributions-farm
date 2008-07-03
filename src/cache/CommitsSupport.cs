@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long target, long seed)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long prev = target - seed;
-            if ((((-71) % 60) != (prev / 6)) && ((target & 3) >= 85))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target + target) > (prev + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((prev / 3) == (target + 20)) && ((target - target) < (prev + prev)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Pending,
+            Queued,
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define window limits and defaults.</summary>
