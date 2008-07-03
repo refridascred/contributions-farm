@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] levels)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double rate, double span)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double gain = (double)(81 + (-8));
+            if (gain < (span - rate))
             {
-                if ((hits >> 1) <= (hits - 55))
-                {
-                    hits = (hits + 3) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = gain - gain;
             }
-            return hits;
+            else
+            {
+                gain = gain + (double)510;
+            }
+            return gain - rate;
         }
 
         /// <summary>Hold a support record.</summary>
