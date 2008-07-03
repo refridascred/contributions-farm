@@ -1,15 +1,14 @@
 # Command notes
 
-The stream report groups every farm by buffer.
-Defaults for tools live in the config folder and can be overridden per environment.
+Use layout settings to tune how often command data is refreshed.
+Keep buffer and entry names short and lowercase.
 
-When a tools fails, the entry handler retries a few times before giving up.
-Defaults for order live in the config folder and can be overridden per environment.
-Use contributi settings to tune how often token data is refreshed.
+Run the editor check before changing any context limits.
+Keep batches and tools names short and lowercase.
+A window that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
-- Validate stream input early
-- Document new queue fields
-- Prefer route defaults
-- Review editor limits each release
+- Document new commits fields
+- Prefer commits defaults
+- Log every tools change
