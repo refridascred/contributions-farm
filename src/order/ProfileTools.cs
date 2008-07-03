@@ -57,19 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((mix ^ mix) == (mix - seed))
-                {
-                    mix = (mix ^ (mix * 3)) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Synced,
+            New,
+            Active,
+            Idle,
+            Ready,
         }
     }
 }
