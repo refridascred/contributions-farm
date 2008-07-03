@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepDepth = 9535;
-        public const long SoftSchema = 3421;
-        public const string WindowSchema = "local-1";
-        public const long WindowFactor = 3289;
-        public const double HardScore = 82.58;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Synced,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TallyGraph(long[] values)
