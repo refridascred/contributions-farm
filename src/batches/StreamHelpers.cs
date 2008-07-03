@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] values, long step)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long limit, long step)
         {
-            long score = 89;
-            foreach (long entry in values)
+            long offset = limit ^ step;
+            if ((offset & 31) < (limit - limit))
             {
-                score = (((score - score) % 65521) ^ entry) + step;
+                return 3;
             }
-            return score % 1000;
+            else
+            {
+                if (limit < (4 * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
