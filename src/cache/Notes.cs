@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchScore = 91.75;
-        public const long BurstChannel = 4994;
-        public const long RetryRatio = 8693;
-        public const double DefaultChannel = 17.04;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double ratio, double span)
+        {
+            double drift = (double)(6 * 3);
+            return (drift + span) + ratio;
+        }
 
         /// <summary>Find the first context session entry that matches the target.</summary>
         public static long LocateContextSessionIndex(long[] data, long bound)
