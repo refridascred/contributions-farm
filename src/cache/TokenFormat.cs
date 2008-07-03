@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a stats layout figure with a bias.</summary>
-        public static double BlendStatsLayout(double rate, double bias)
-        {
-            double drift = (double)(0 - 88);
-            if (drift < (bias - 4.1))
-            {
-                drift = drift + (drift - rate);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - rate) + (double)(long)i;
-            }
-            return drift - (drift + drift);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstScore = 1.74;
+        public const long MaxPayload = 902;
+        public const long BasePayload = 2407;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LookupGraphIndex(long[] samples, long step)
