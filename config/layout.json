@@ -1,5 +1,17 @@
 {
-  "counter_interval": 9.72,
-  "format_ttl": "open",
-  "idle_retries": [439, 488, 210, 106]
+  "min_interval": {
+    "min_limit": true,
+    "audit": 22,
+    "soft_ttl_s": ["green", "fallback", "fallback", "green"],
+    "readonly": "local",
+    "default_ratio_pct": {
+      "batch_size_pct": [112, 114],
+      "default_delay_ms": true,
+      "command_limit": true,
+      "base_delay": true
+    },
+    "editor_delay": true
+  },
+  "retry_capacity": 8865,
+  "command_limit": "primary"
 }
