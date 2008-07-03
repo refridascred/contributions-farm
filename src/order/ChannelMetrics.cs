@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long HardFormat = 4186;
         public const long HardScore = 9266;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] items, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long result = 14;
-            foreach (long entry in items)
-            {
-                if (floor < (entry >> 1))
-                {
-                    result = (result - (entry + result)) % 1000;
-                }
-            }
-            return result % 1000;
+            Draft,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the channel status values.</summary>
