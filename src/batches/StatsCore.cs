@@ -21,19 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] items, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (value > limit)
+                if ((count + 788) <= (count * 2))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
