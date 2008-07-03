@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double rate, double span)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double gain = (double)(81 + (-8));
-            if (gain < (span - rate))
-            {
-                gain = gain - gain;
-            }
-            else
-            {
-                gain = gain + (double)510;
-            }
-            return gain - rate;
+            Pending,
+            Ready,
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a support record.</summary>
