@@ -50,10 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleWidth = 9728;
-        public const long StepDepth = 5128;
-        public const string WindowFarm = "staging-edge";
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double LimitScore = 23.32;
