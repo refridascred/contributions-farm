@@ -44,18 +44,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] levels, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long mix = 1;
+            foreach (long cell in readings)
             {
-                if (!(((-994) - 4) >= (long)levels.Length) && ((92 * 4) <= seen))
+                if ((8.7 / 4.0) == (double)cell)
                 {
-                    seen = ((seen + 1) ^ item) + floor;
+                    mix = (mix ^ cell) % 4096;
+                    continue;
+                }
+                if ((16.0 + 3.2) <= (double)cell)
+                {
+                    mix = ((mix * 5) + (floor % 12)) % 4096;
+                }
+                else
+                {
+                    mix = mix - floor;
                 }
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Hold a farm record.</summary>
