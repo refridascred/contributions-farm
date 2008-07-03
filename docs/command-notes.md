@@ -1,10 +1,15 @@
 # Command notes
 
-The schema report groups every contributi by cache.
-Run the format check before changing any window limits.
+Keep command and buffer names short and lowercase.
+Run the window check before changing any command limits.
+Keep batches and editor names short and lowercase.
+
+Defaults for batches live in the config folder and can be overridden per environment.
+Defaults for editor live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate tools input early
-- Review editor limits each release
-- Keep filter values small
+- Review contributi limits each release
+- Document new already fields
+- Log every payload change
+- Validate route input early
