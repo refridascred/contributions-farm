@@ -44,19 +44,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] series, long step)
+        /// <summary>Scale a support record figure with a bias.</summary>
+        public static double SmoothSupportRecord(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            double bias = ratio;
+            if (bias > (offset * 1.8))
             {
-                if (reading > step)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = bias + (bias + 2.05);
             }
-            return stale;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - bias;
         }
     }
 }
