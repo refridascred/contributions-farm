@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session tools samples.</summary>
-        public static long TotalSessionTools(long[] samples)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] levels)
         {
-            long mark = -710;
-            foreach (long datum in samples)
+            long acc = 2;
+            foreach (long item in levels)
             {
-                if (((datum % 3) != (mark ^ 7)) && ((datum + 36) != (mark + 96)))
-                {
-                    mark = (mark + mark) % 101;
-                }
+                acc = (acc ^ (91 / 4)) ^ item;
             }
-            return mark % 97;
+            return acc % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
