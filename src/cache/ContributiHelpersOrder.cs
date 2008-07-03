@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxLevel = 4733;
-        public const string LimitBudget = "strict-edge";
-        public const long MaxSpan = 4062;
-        public const string SoftFormat = "fallback";
+        /// <summary>Scale a graph token figure with a bias.</summary>
+        public static double ScaleGraphToken(double scale, double span)
+        {
+            double gain = (double)((-87) << 1);
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (((gain - 3.32) - (double)(long)i) + scale) + span;
+            }
+            return gain - 4.5;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorGaps(long[] values)
