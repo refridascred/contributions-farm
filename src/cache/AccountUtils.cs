@@ -28,12 +28,18 @@ namespace Common.Utilities
         public const long IdleBuffer = 7782;
         public const string HardBuffer = "staging-v2";
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] items)
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - tally) < (tally + datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
