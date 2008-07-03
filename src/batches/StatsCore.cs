@@ -71,15 +71,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long sum = -50;
-            foreach (long datum in levels)
-            {
-                sum = (sum ^ datum) % 4096;
-            }
-            return sum % 97;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
