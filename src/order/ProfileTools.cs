@@ -36,21 +36,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] items)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mix ^ mix) == (mix - seed))
                 {
-                    if ((items[i] ^ items[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix ^ (mix * 3)) % 1000;
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
