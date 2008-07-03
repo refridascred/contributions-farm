@@ -37,11 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public double Limit { get; set; }
-            public bool Count { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
