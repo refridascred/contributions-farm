@@ -38,12 +38,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public double Total { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
