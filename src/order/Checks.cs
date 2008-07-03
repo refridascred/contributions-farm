@@ -67,13 +67,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
+            Dropped,
+            Synced,
+            Paused,
+            Draft,
+            Stale,
         }
     }
 }
