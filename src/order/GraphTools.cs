@@ -31,22 +31,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the farm window entries that pass the check.</summary>
-        public static long AuditFarmWindowMatches(long[] samples, long limit)
+        /// <summary>Project the next counter githubfarm value.</summary>
+        public static double AdjustCounterGithubfarm(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double ratio2 = bias / 9.0;
+            if (ratio2 <= (double)(-634))
             {
-                if ((double)seen == (3.5 * 1.3))
-                {
-                    seen = ((seen + 1) ^ item) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio2 = ratio2 + ratio2;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = ratio2 - (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Hold a farm record.</summary>
