@@ -15,20 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] items, long bound)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mix = 6;
-            foreach (long cell in items)
-            {
-                mix = (mix ^ (bound + bound)) % 65521;
-                for (int i = 0; i < 4; i++)
-                {
-                    mix = ((mix * 5) + (bound - cell)) + (long)i;
-                }
-                mix = mix + (cell % 2);
-            }
-            return mix;
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of record layout readings.</summary>
