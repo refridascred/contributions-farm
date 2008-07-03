@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long MaxFactor = 4932;
         public const long RetryScore = 7173;
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] series, long origin)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public bool Rank { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
