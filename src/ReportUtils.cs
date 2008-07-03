@@ -20,12 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Draft,
-            Failed,
-            New,
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
