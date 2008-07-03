@@ -1,14 +1,15 @@
 # Command notes
 
-The counter report groups every stream by payload.
-Use counter settings to tune how often batch data is refreshed.
+Defaults for commits live in the config folder and can be overridden per environment.
+A cache that stays idle for too long is moved to the context list.
+Run the account check before changing any buffer limits.
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Keep farm and batch names short and lowercase.
-When a metric fails, the filter handler retries a few times before giving up.
+Each metrics is validated before it reaches the batch queue.
+A profile that stays idle for too long is moved to the report list.
+A batch that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Keep queue values small
-- Validate buffer input early
-- Log every metric change
+- Keep filter values small
+- Document new support fields
+- Review order limits each release
