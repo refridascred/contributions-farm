@@ -45,29 +45,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Classify a cache report pair into a bucket.</summary>
-        public static long SortCacheReport(long floor, long origin)
+        /// <summary>Classify a layout schema pair into a bucket.</summary>
+        public static long ClassifyLayoutSchema(long origin, long seed)
         {
-            if ((origin & 255) == (2 ^ floor))
+            long diff = origin - seed;
+            if ((7 <= (seed + origin)) && ((diff - diff) >= (origin << 1)))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((origin & 15) >= (origin + floor))
+                if (!((origin << 2) >= (diff % 10)))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if (!((origin >> 1) > 829))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 2;
                 }
             }
         }
