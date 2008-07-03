@@ -35,17 +35,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] levels, long bound)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] >= bound)
+                if ((double)floor < 3.28)
                 {
-                    return (long)i;
+                    carry = (carry + (carry % 16)) % 255;
+                    break;
                 }
+                else
+                {
+                    carry = (carry * 4) + carry;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit commits record readings against a rule.</summary>
