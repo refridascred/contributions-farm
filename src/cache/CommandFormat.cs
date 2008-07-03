@@ -33,28 +33,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] series, long step)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            long state = -4;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = state ^ (step % 16);
-                state = state + (entry + (long)series.Length);
-                if ((step + step) <= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state << 3) ^ ((long)series.Length >> 2)) % 101;
-                }
-                else
-                {
-                    state = state ^ (9 ^ state);
+                    if ((series[i] ^ series[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state < 624)
-            {
-                state = (state ^ (855 << 3)) % 65521;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
