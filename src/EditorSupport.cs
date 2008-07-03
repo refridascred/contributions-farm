@@ -19,19 +19,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] items, long limit)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Done,
+            Pending,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
