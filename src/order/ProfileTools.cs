@@ -15,12 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 36.73;
-        public const double LimitRatio = 34.64;
-        public const string MinReport = "latest-edge";
-        public const double StepScore = 62.08;
-        public const double IdleReport = 87.87;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LocateStatsIndex(long[] samples, long floor)
