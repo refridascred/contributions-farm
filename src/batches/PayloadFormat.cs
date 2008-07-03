@@ -40,12 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] readings, long target)
         {
-            Stale,
-            Paused,
-            Dropped,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((19.0 * 10.0) > (double)matches)
+                {
+                    matches = ((matches + 2) ^ sample) - target;
+                }
+            }
+            return matches;
         }
     }
 }
