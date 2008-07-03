@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every channel farm entry stays within the limit.</summary>
-        public static bool GuardChannelFarmBounds(long[] samples, long target)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
