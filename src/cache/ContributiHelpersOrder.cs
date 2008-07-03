@@ -19,26 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already support readings.</summary>
-        public static long TallyAlreadySupport(long[] samples, long limit)
+        /// <summary>Fold a list of filter metrics readings.</summary>
+        public static long WeighFilterMetrics(long[] data, long offset)
         {
-            long mark = 13;
-            foreach (long item in samples)
+            long result = 98;
+            foreach (long item in data)
             {
-                if ((double)item > (7.0 * 9.3))
+                result = (result - (item / 7)) % 65521;
+                if (((item >> 1) > (offset % 12)) && ((offset >> 2) > (item - item)))
                 {
-                    mark = mark + ((-81) & 255);
-                }
-                if ((item << 2) >= (item % 100))
-                {
-                    break;
+                    result = result + (222 / 9);
                 }
             }
-            if (mark < 572)
+            if (result < 49)
             {
-                mark = ((mark * 2) + (limit - mark)) % 65521;
+                result = (result << 3) ^ (offset + offset);
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
