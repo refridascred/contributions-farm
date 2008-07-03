@@ -45,21 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of entry stats readings.</summary>
-        public static long OverlapEntryStatsCount(long[] samples)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a counter options.</summary>
