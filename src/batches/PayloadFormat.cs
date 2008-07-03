@@ -29,23 +29,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long target)
         {
-            long sum = 74;
-            foreach (long entry in values)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                sum = ((sum << 2) ^ sum) % 65521;
-                if (sum >= entry)
-                {
-                    break;
-                }
+                mix = ((mix << 3) ^ (mix << 3)) % 65521;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            if (sum > 48)
-            {
-                sum = (sum - (sum + 170)) % 4096;
-            }
-            return sum;
+            return mix;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
