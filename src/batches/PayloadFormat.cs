@@ -40,26 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long sum = 512;
-            foreach (long value in levels)
-            {
-                if ((double)sum == (4.0 / 2.0))
-                {
-                    sum = sum - (sum & 15);
-                }
-                else
-                {
-                    sum = ((sum * 3) + (value + sum)) % 101;
-                }
-            }
-            if (sum > 856)
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum;
+            Stale,
+            Paused,
+            Dropped,
         }
     }
 }
