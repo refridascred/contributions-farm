@@ -23,22 +23,17 @@ namespace Common.Utilities
         public const double MaxFilter = 96.87;
         public const long RetryLevel = 68;
 
-        /// <summary>Measure how many record window samples are out of range.</summary>
-        public static long TallyRecordWindowGaps(long[] items)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (98 <= matches)
+                if (series[i] >= seed)
                 {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
