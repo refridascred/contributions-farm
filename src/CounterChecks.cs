@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report stats samples are out of range.</summary>
-        public static long AuditReportStatsHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading == (2.46 - 1.39))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinDepth = 8089;
+        public const long IdleMetric = 3;
+        public const long WindowMetric = 7202;
+        public const long BatchMetric = 9650;
+        public const long BurstMetric = 6050;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long FoldContributi(long[] items)
