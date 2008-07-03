@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)series.Length >> 3) >= (seen - seen))
                 {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 2) + datum) + bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
