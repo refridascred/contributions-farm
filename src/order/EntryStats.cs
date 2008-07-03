@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] data, long target)
         {
-            public bool Score { get; set; }
-            public double Total { get; set; }
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
+            long anchor = 932;
+            foreach (long entry in data)
+            {
+                if (((16.0 / 3.0) > (double)target) || ((target / 4) > entry))
+                {
+                    anchor = ((anchor << 2) ^ (target * 5)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (624 + entry)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
