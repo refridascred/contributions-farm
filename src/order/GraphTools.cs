@@ -20,24 +20,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long origin)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((carry - 241) > origin)
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry * 5) + (carry + 7);
-                }
-                carry = (carry - (carry + (long)i)) % 97;
-                carry = ((carry * 5) + (long)i) % 65521;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Describe the token kind values.</summary>
