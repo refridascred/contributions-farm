@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] series)
         {
-            long score = seed;
-            for (int i = 0; i < 13; i++)
+            long carry = 71;
+            foreach (long item in series)
             {
-                score = score + (score >> 3);
-                score = ((score * 4) + (long)i) % 101;
+                if ((item & 127) < (item << 3))
+                {
+                    carry = carry ^ (44 + item);
+                }
             }
-            return score;
+            return carry % 97;
         }
 
         /// <summary>Project the next context value.</summary>
