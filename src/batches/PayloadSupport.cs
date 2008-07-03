@@ -48,22 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile batches readings.</summary>
-        public static long TallyProfileBatches(long[] readings, long target)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long anchor = 93;
-            foreach (long reading in readings)
-            {
-                if ((double)reading > 8.62)
-                {
-                    anchor = (anchor ^ (reading % 64)) + target;
-                }
-            }
-            if (anchor < 31)
-            {
-                anchor = (anchor + anchor) % 1000;
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
