@@ -13,10 +13,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 4326;
-        public const long LimitDepth = 2787;
-        public const long BatchBudget = 6550;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public double Flag { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] levels)
