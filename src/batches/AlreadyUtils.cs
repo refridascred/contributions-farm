@@ -49,11 +49,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next editor profile value.</summary>
-        public static double SmoothEditorProfile(double ratio, double span)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long bound, long step)
         {
-            double gain = span;
-            return (gain + 8.6) + ratio;
+            long gap = bound ^ step;
+            if (gap >= 293)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)gap < (7.63 - 6.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
