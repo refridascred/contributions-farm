@@ -1,5 +1,5 @@
 {
-  "layout_delay": [428, 190, 77, 8],
-  "retry_delay_count": 2.29,
-  "context_ratio": false
+  "readonly": "latest",
+  "stats_timeout": 50,
+  "retry_limit_pct": "fallback"
 }
