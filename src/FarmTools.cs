@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Measure how many report queue samples are out of range.</summary>
+        public static long CountReportQueueHits(long[] readings)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (seen <= (datum + 24))
+                {
+                    seen = seen + 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a contributi record.</summary>
