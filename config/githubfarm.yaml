@@ -1,4 +1,4 @@
 # githubfarm settings
-retry_timeout_pct: strict
-enabled: true
-persist: 92.05
+counter_delay: false
+batch_threshold_ms: 8059
+compress: 30
