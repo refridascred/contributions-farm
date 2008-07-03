@@ -1,5 +1,14 @@
 {
-  "readonly": "latest",
-  "stats_timeout": 50,
-  "retry_limit_pct": "fallback"
+  "default_capacity_pct": "staging",
+  "min_ttl": "primary",
+  "poll_limit_s": {
+    "cache_size": [181, 28],
+    "compress": ["strict", "latest"],
+    "retry_ratio_s": true,
+    "verbose": true,
+    "enabled": 28.67
+  },
+  "persist": [264, 356, 106, 195],
+  "command_interval": 5514,
+  "tools_depth": true
 }
