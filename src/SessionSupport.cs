@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 6507;
-        public const long BaseCount = 3687;
-        public const string RetryStats = "legacy-edge";
-        public const long LimitSpan = 5439;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Done,
+            Queued,
+            New,
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
