@@ -72,19 +72,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] items, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (item != floor)
                 {
-                    score = ((score - (long)i) % 1000) + (long)i2;
+                    stale = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return stale;
         }
     }
 }
