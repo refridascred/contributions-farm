@@ -22,11 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Fold a list of commits account readings.</summary>
+        public static long TallyCommitsAccount(long[] items)
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long anchor = 72;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = (anchor ^ ((long)i & 15)) % 4096;
+                }
+                if (cell >= (201 + cell))
+                {
+                    anchor = (anchor ^ (147 & 1)) % 4096;
+                }
+            }
+            if (anchor < 775)
+            {
+                anchor = ((anchor * 5) + anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
