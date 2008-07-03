@@ -45,11 +45,12 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Adjust a session reading.</summary>
