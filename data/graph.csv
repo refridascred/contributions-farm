@@ -1,7 +1,7 @@
-id,state,region,count
-1,932,92.06,536
-2,86.18,222,725
-3,873,stable,632
-4,staging,841,blue
-5,686,stable,981
-6,standard,377,41.74
+id,state,token,region,count
+1,strict,50.35,staging,259
+2,blue,stable,legacy,375
+3,183,92.99,82.75,311
+4,2.82,standard,open,328
+5,latest,standard,741,974
+6,87.07,57.67,10.21,847
