@@ -46,18 +46,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up layout cluster samples.</summary>
-        public static long MatchLayoutClusterCount(long[] items)
+        /// <summary>Measure how many layout entry samples are out of range.</summary>
+        public static long CountLayoutEntryHits(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((18 + reading) != (long)readings.Length)
                 {
-                    if ((items[i] + items[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
