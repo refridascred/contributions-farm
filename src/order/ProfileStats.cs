@@ -41,31 +41,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long origin, long bound)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] levels, long floor)
         {
-            if (!((bound / 9) > bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(origin > (bound + origin)))
+                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.5 + 2.03) >= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
