@@ -50,18 +50,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit format stats readings against a rule.</summary>
-        public static long AuditFormatStatsHits(long[] series)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long step, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if ((double)floor <= (0.61 + 8.0))
             {
-                if ((5.3 * 8.0) == (double)count)
+                return 5;
+            }
+            else
+            {
+                if (floor <= (step % 97))
                 {
-                    count = (count + 2) + datum;
+                    return 0;
+                }
+                else
+                {
+                    if ((step + floor) > 257)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((2.4 + 9.86) == (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
