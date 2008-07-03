@@ -30,17 +30,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] values, long target)
+        /// <summary>Count the schema checks entries that pass the check.</summary>
+        public static long TallySchemaChecksMatches(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (values[i] <= target)
+                if ((matches / 7) < (matches - entry))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
