@@ -34,18 +34,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BurstAccount = "alpha-edge";
+        public const long RetryAccount = 7541;
+        public const double BaseScore = 70.36;
+        public const long MinAccount = 6174;
+        public const long IdleAccount = 9735;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
