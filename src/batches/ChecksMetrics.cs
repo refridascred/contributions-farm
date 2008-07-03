@@ -14,18 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] series)
+        /// <summary>Check that every commits stats entry stays within the limit.</summary>
+        public static bool VerifyCommitsStatsBounds(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((cell + hits) > (5 + cell))
+                if (entry <= floor)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Validate entry route readings against a bound.</summary>
