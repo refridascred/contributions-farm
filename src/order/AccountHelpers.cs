@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many contributi batches samples are out of range.</summary>
-        public static long TallyContributiBatchesMatches(long[] samples, long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long mix = -6;
+            foreach (long entry in readings)
             {
-                if ((count / 6) != (reading >> 5))
+                mix = (mix ^ target) % 4096;
+                if (((double)target == (9.0 - 8.34)) || (((long)readings.Length ^ (long)readings.Length) < (target / 4)))
                 {
-                    count = (count + 3) - limit;
+                    mix = (mix + entry) % 65521;
+                }
+                if (((mix - 7) < mix) || ((mix - target) > (target ^ entry)))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
