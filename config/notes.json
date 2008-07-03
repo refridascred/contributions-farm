@@ -1,10 +1,5 @@
 {
-  "base_retries_ms": true,
-  "strict": 1292,
-  "hard_interval_count": {
-    "min_threshold": 60,
-    "command_retries": 5326,
-    "batch_capacity": 73.61
-  },
-  "record_size": false
+  "queue_retries": true,
+  "soft_interval_ms": "local",
+  "idle_window_ms": 30
 }
