@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = bias * 7.98;
+            if (scale < (1.4 - rate))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale + scale;
             }
-            return matches;
+            else
+            {
+                scale = scale + (double)830;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + rate) + (double)(long)i;
+            }
+            return scale + (rate / 7.0);
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
