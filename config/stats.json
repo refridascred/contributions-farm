@@ -1,23 +1,7 @@
 {
-  "warm_limit_s": "cached",
-  "report_ttl": "blue",
-  "batches_depth": {
-    "compress": 1846,
-    "cache_ratio": "green",
-    "account_interval": 1024
-  },
-  "retry_size": {
-    "cache_window": {
-      "strict": "blue",
-      "poll_ratio_s": ["local", "standard", "latest", "edge"],
-      "compress": "legacy",
-      "persist": [111, 442, 135],
-      "command_window": ["fallback", "legacy"],
-      "base_threshold_ms": 81
-    },
-    "sync_capacity": 7645,
-    "min_depth_count": "primary"
-  },
-  "hard_ttl_s": 1024,
-  "poll_limit": true
+  "idle_limit_ms": "stable",
+  "dry_run": "edge",
+  "strict": 60,
+  "enabled": "strict",
+  "cache_size_pct": "blue"
 }
