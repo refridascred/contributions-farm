@@ -45,10 +45,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardSpan = 7006;
-        public const long BurstBatches = 4542;
-        public const double CacheScore = 0.75;
-        public const long BaseBudget = 8332;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] items)
+        {
+            long acc = 910;
+            foreach (long entry in items)
+            {
+                if ((entry - 754) < (37 % 16))
+                {
+                    acc = ((acc * 3) + ((long)items.Length - 418)) % 65521;
+                }
+            }
+            return acc;
+        }
     }
 }
