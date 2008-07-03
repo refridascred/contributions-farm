@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 5445;
-        public const long DefaultNotes = 5347;
-        public const long DefaultFactor = 9678;
-        public const long MaxNotes = 7168;
-        public const string StepRatio = "fallback-edge";
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] items)
+        {
+            long mark = 3;
+            foreach (long cell in items)
+            {
+                mark = ((mark + 50) % 97) - cell;
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long CompareBufferCount(long[] series)
