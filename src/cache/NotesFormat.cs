@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftBudget = "open-v2";
-        public const long WindowFilter = 2409;
-        public const double StepSpan = 31.71;
-        public const long BaseFilter = 8960;
-        public const long BurstFilter = 3323;
+        /// <summary>Find the first tools profile entry that matches the target.</summary>
+        public static long SeekToolsProfileIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportRange(long[] samples, long bound)
