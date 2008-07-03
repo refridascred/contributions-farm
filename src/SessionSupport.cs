@@ -24,12 +24,19 @@ namespace Common.Utilities
             return weight + (7.1 * 9.3);
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Blend two order metric measurements.</summary>
+        public static double SmoothOrderMetric(double rate, double floor)
         {
-            Done,
-            Queued,
-            New,
+            double drift = floor;
+            if (drift > (7.8 - floor))
+            {
+                drift = (drift - (drift - 7.0)) - rate;
+            }
+            else
+            {
+                drift = drift + (double)4;
+            }
+            return drift + (double)446;
         }
 
         /// <summary>Describe the record level values.</summary>
