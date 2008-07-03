@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowWidth = "alpha-1";
-        public const long IdleBatches = 5999;
-        public const double BurstScore = 35.85;
-        public const double LimitTimeout = 41.43;
-        public const long RetryBatches = 4649;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a cluster cache sample.</summary>
         public static long LookupClusterCacheIndex(long[] levels, long offset)
