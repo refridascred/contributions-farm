@@ -14,12 +14,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long step, long origin)
         {
-            Stale,
-            Queued,
-            Failed,
+            if ((step <= (8 - step)) && ((origin / 4) == (origin % 100)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(1 > origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first window route entry that matches the target.</summary>
