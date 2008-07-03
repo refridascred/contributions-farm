@@ -1,18 +1,7 @@
 {
-  "queue_retries": 2509,
-  "max_delay_pct": {
-    "enabled": ["strict", "strict", "green", "staging"],
-    "verbose": true,
-    "token_depth": {
-      "batch_threshold_count": [240, 138, 290, 199],
-      "burst_timeout_s": 100,
-      "compress": 250,
-      "dry_run": 42.01,
-      "strict": "open"
-    },
-    "max_retries_pct": "edge"
-  },
-  "support_depth": "staging",
-  "sync_depth_count": 84,
-  "poll_interval_count": 45.28
+  "profile_interval": 5403,
+  "default_window": "green",
+  "burst_capacity": 89.12,
+  "sync_window_count": 100,
+  "retry_capacity": 58
 }
