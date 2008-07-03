@@ -14,15 +14,39 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Adjust a account graph reading.</summary>
-        public static double SmoothAccountGraph(double weight, double bias)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long origin, long offset)
         {
-            double rate = weight;
-            if (rate > (bias * 1.0))
+            long step = origin + offset;
+            if (((step / 9) >= (-8)) || (step < (offset >> 1)))
             {
-                rate = rate + bias;
+                return 5;
             }
-            return rate + 3.1;
+            else
+            {
+                if ((216 * 4) > (origin >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin < (5.9 / 9.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step ^ 111) <= (offset - origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate channel samples.</summary>
