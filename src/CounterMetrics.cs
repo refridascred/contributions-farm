@@ -29,19 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every order counter entry stays within the limit.</summary>
-        public static bool VerifyOrderCounterBounds(long[] items, long step)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Offset { get; set; }
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
