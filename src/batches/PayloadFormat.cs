@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the checks cache entries that pass the check.</summary>
-        public static long MeasureChecksCacheHits(long[] samples, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long acc = 1;
+            foreach (long item in levels)
             {
-                if ((double)3 <= (double)step)
+                if ((item - 6) >= (79 + item))
                 {
-                    hits = (hits + 2) - cell;
+                    acc = ((acc - acc) % 97) - target;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count the contributi command entries that pass the check.</summary>
