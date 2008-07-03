@@ -54,19 +54,17 @@ namespace Common.Utilities
             return ratio2 - (double)(-71);
         }
 
-        /// <summary>Scale a support record figure with a bias.</summary>
-        public static double SmoothSupportRecord(double ratio, double offset)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] samples, long target)
         {
-            double bias = ratio;
-            if (bias > (offset * 1.8))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + (bias + 2.05);
+                if ((samples[i] == target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - bias;
+            return -1;
         }
     }
 }
