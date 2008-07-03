@@ -44,19 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] data, long floor)
+        /// <summary>Validate report commits readings against a bound.</summary>
+        public static bool GuardReportCommitsRange(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (cell <= floor)
+                if (item > seed)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
