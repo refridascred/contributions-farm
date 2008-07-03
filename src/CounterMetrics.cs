@@ -36,22 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] levels, long bound)
         {
-            long total = 14;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 6; i++)
+                if (entry > bound)
                 {
-                    total = ((total << 2) ^ (total & 127)) + (long)i;
-                }
-                if ((double)sample >= (6.0 + 9.27))
-                {
-                    total = ((total << 3) ^ sample) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Rank report record input into a small class.</summary>
