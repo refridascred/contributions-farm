@@ -22,22 +22,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many payload cluster samples are out of range.</summary>
-        public static long MeasurePayloadClusterHits(long[] data, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long mix = 6;
+            foreach (long cell in items)
             {
-                if ((5 - hits) != (limit ^ limit))
+                mix = (mix ^ (bound + bound)) % 65521;
+                for (int i = 0; i < 4; i++)
                 {
-                    hits = (hits + 2) + sample;
+                    mix = ((mix * 5) + (bound - cell)) + (long)i;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = mix + (cell % 2);
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Fold a list of record layout readings.</summary>
