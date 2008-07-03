@@ -33,32 +33,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long seed, long limit)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] values, long limit)
         {
-            long offset = seed + limit;
-            if (((15.0 + 0.6) >= (double)offset) && ((double)limit >= (double)limit))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((1.9 / 7.0) == (double)offset) && (seed <= (limit ^ offset)))
+                if (values[i] < limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit / 3) < offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the token mode values.</summary>
