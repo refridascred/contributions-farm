@@ -50,12 +50,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] readings, long step)
         {
-            Pending,
-            Active,
-            Stale,
+            long sum = 3;
+            foreach (long sample in readings)
+            {
+                if (((step - sample) >= (sum + 19)) && ((sample - step) < (sum + sum)))
+                {
+                    sum = (sum - 37) % 4096;
+                }
+            }
+            return sum;
         }
     }
 }
