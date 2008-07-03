@@ -35,18 +35,9 @@ namespace Common.Utilities
         public const long StepSpan = 5329;
         public const long HardReport = 4719;
 
-        /// <summary>Measure how many entry already samples are out of range.</summary>
-        public static long TallyEntryAlreadyGaps(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((item + 530) <= tally)
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 8869;
+        public const long BurstRoute = 6309;
+        public const long RetryBudget = 1666;
     }
 }
