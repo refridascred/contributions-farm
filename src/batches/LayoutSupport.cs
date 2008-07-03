@@ -35,20 +35,14 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Iterate the filter buffer series from a seed.</summary>
-        public static long RollFilterBuffer(long seed)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((mix + mix) >= mix)
-                {
-                    mix = ((mix << 2) ^ 19) % 4096;
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Synced,
+            Paused,
+            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
