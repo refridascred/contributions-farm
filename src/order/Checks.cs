@@ -53,14 +53,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long seed, long limit)
         {
-            Dropped,
-            Synced,
-            Paused,
-            Draft,
-            Stale,
+            if (limit <= seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((9.0 < (double)seed) || ((seed - limit) <= (limit % 100)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((1.4 + 10.0) <= (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
