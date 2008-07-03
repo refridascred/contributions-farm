@@ -20,21 +20,12 @@ namespace Common.Utilities
             return mean - (mean / 2.0);
         }
 
-        /// <summary>Count stream schema pairs that satisfy a relation.</summary>
-        public static long CompareStreamSchemaCount(long[] samples)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Done,
+            Draft,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
