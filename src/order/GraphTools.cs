@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Audit stats contributi readings against a rule.</summary>
+        public static long TallyStatsContributiHits(long[] items, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((3.4 - 0.6) <= (double)sample)
+                {
+                    seen = (seen + 3) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a layout stats.</summary>
