@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long seed)
         {
-            long mark = 853;
-            foreach (long datum in samples)
+            long score = seed;
+            for (int i = 0; i < 13; i++)
             {
-                mark = (mark - (mark + datum)) % 4096;
+                score = score + (score >> 3);
+                score = ((score * 4) + (long)i) % 101;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Project the next context value.</summary>
