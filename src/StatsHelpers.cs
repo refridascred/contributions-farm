@@ -54,13 +54,25 @@ namespace Common.Utilities
         public const long CacheChecks = 4674;
         public const double LimitChecks = 38.53;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long offset, long origin)
         {
-            Done,
-            Paused,
-            Idle,
-            Pending,
+            long gap = offset + origin;
+            if (!((gap + origin) < offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset ^ origin) < offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
