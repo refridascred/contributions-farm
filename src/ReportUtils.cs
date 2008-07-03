@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double gain, double span)
+        /// <summary>Check that every payload report entry stays within the limit.</summary>
+        public static bool CheckPayloadReportRange(long[] items, long step)
         {
-            double load = span * 0.83;
-            if (load <= gain)
+            bool found = true;
+            foreach (long sample in items)
             {
-                load = load - (double)5;
+                if (sample < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load + (load - gain);
+            return found;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
