@@ -72,13 +72,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double rate, double floor)
         {
-            Closed,
-            Active,
-            Done,
-            Failed,
+            double bias = rate;
+            if (bias >= (bias + floor))
+            {
+                bias = bias - (7.0 * 7.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + bias;
         }
     }
 }
