@@ -37,12 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] data, long bound)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] < bound)
+                if (levels[i] > bound)
                 {
                     return (long)i;
                 }
