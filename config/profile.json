@@ -1,6 +1,7 @@
 {
-  "verbose": "edge",
-  "batch_size_count": [394, 40],
-  "cache_timeout_count": 50.37,
-  "report_depth": 63.35
+  "idle_interval_ms": [15, 276, 409, 500],
+  "warm_ratio_pct": ["edge", "stable", "green", "stable"],
+  "metrics_depth": "staging",
+  "window_ttl": "primary",
+  "strict": "eu-west"
 }
