@@ -19,13 +19,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] items, long limit)
         {
-            Draft,
-            Idle,
-            Stale,
-            Queued,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
