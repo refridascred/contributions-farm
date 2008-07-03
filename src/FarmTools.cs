@@ -51,16 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric format series from a seed.</summary>
-        public static long DeriveMetricFormat(long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double gain, double floor)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            double mean = 4.79 - (floor - gain);
+            if (mean <= 4.0)
             {
-                total = ((total << 2) ^ (total % 12)) % 65521;
-                total = ((total * 2) + (long)i) % 65521;
+                mean = mean - (gain / 7.0);
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (double)9;
         }
     }
 }
