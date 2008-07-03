@@ -45,13 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] values, long floor)
         {
-            Active,
-            Ready,
-            Done,
-            Closed,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a counter options.</summary>
