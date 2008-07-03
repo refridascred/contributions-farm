@@ -1,7 +1,7 @@
 {
-  "base_window": 473,
-  "burst_capacity_s": [429, 281, 57, 316],
-  "already_ttl": ["open", "primary"],
-  "idle_retries_s": [284, 163, 320],
-  "verbose": [207, 199, 150, 43]
+  "batch_ttl": true,
+  "audit": "strict",
+  "counter_capacity": "green",
+  "compress": "strict",
+  "filter_retries": 12
 }
