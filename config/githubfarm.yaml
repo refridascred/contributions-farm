@@ -1,9 +1,24 @@
 # githubfarm settings
-compress: false
-batch_ratio: primary
-payload_size: green
-default_retries_ms: strict
-poll_window_s:
-  strict: 96
-  enabled: false
-  batch_interval_s: 1024
+enabled:
+  retry_size_pct: latest
+  max_ratio_s:
+    min_ttl_ms: cached
+    batch_ttl_pct: latest
+    compress: 3.41
+  sync_depth_count: 3053
+  retry_retries:
+    soft_limit: 1024
+    strict: 91
+    retry_depth_ms: false
+    retry_limit_s: standard
+    metrics_capacity: strict
+    soft_depth: 5.36
+  idle_limit_s:
+    - standard
+    - eu-west
+    - staging
+  soft_size_pct: stable
+profile_delay: edge
+checks_interval: 30
+default_threshold_pct: standard
+cache_window: cached
