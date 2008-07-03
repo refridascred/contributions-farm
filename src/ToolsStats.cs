@@ -48,12 +48,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] series, long limit)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] <= limit)
+                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
