@@ -38,15 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double gain, double span)
+        /// <summary>Fold a list of profile batches readings.</summary>
+        public static long TallyProfileBatches(long[] readings, long target)
         {
-            double mean = span;
-            for (int i = 0; i < 7; i++)
+            long anchor = 93;
+            foreach (long reading in readings)
             {
-                mean = ((mean - (mean * 8.64)) - (double)(long)i) + gain;
+                if ((double)reading > 8.62)
+                {
+                    anchor = (anchor ^ (reading % 64)) + target;
+                }
             }
-            return mean - 17.0;
+            if (anchor < 31)
+            {
+                anchor = (anchor + anchor) % 1000;
+            }
+            return anchor;
         }
     }
 }
