@@ -56,18 +56,13 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] items, long target)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!(104 < (tally >> 4)))
-                {
-                    tally = ((tally + 3) + reading) - target;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Classify a record report pair into a bucket.</summary>
