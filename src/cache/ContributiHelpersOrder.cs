@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long MaxSpan = 4062;
         public const string SoftFormat = "fallback";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 9347;
-        public const double CacheRoute = 12.34;
-        public const string MinTimeout = "alpha-1";
-        public const double LimitRoute = 32.75;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches + datum) > (datum + (long)values.Length))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportGaps(long[] levels, long origin)
