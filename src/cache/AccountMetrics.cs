@@ -28,19 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] samples, long bound)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long state = 2;
-            foreach (long value in samples)
-            {
-                state = (state - state) - value;
-                if ((1.0 / 7.0) > (double)bound)
-                {
-                    break;
-                }
-            }
-            return state;
+            Active,
+            Retry,
+            New,
+            Closed,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
