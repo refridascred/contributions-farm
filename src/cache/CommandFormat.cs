@@ -23,12 +23,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long step, long target)
         {
-            Stale,
-            Retry,
-            Active,
+            long step2 = step ^ target;
+            if ((step2 << 2) > step2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target <= step) || ((step2 / 5) <= (step & 127)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step << 3) == (step2 - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
