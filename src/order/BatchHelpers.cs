@@ -22,18 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] series)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] data)
         {
-            long total = 532;
-            foreach (long reading in series)
+            long mark = 7;
+            foreach (long sample in data)
             {
-                if ((double)total > (double)reading)
+                if (((sample >> 2) < (sample ^ 769)) && ((mark >> 2) < sample))
                 {
-                    total = (total * 3) + (82 + total);
+                    mark = mark + (sample + mark);
+                }
+                if ((sample >> 4) != (mark + 9))
+                {
+                    mark = mark - (93 * 3);
+                }
+                else
+                {
+                    mark = (mark + (mark - mark)) % 4096;
                 }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
