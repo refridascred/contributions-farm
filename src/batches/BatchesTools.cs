@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long origin)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor << 3) ^ (471 % 97);
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Adjust a commits profile reading.</summary>
