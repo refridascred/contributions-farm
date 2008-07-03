@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseCommand = "standard-edge";
-        public const long SoftDepth = 5196;
-        public const long WindowCommand = 7582;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] series)
+        {
+            long mix = 36;
+            foreach (long value in series)
+            {
+                mix = (mix * 5) + (value + mix);
+                if ((double)mix < (7.0 - 1.1))
+                {
+                    mix = (mix << 2) ^ (value % 24);
+                }
+            }
+            if (mix < 3)
+            {
+                mix = mix ^ (mix & 1);
+            }
+            return mix;
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LookupMetricIndex(long[] samples, long floor)
