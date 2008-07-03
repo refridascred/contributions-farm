@@ -14,13 +14,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long origin, long bound)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
+            long offset = origin - bound;
+            if (((bound - origin) <= (899 + offset)) || ((3.63 / 8.0) == (double)bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound >= (9.0 - 3.96))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a window header.</summary>
