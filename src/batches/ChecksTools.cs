@@ -33,15 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long step)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double ratio, double floor)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            double ratio2 = 19.0 / 4.0;
+            if (ratio2 < (double)5)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                ratio2 = ((ratio2 + (double)2) - ratio) - floor;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+            }
+            return ratio2 - (double)(-71);
         }
 
         /// <summary>Scale a support record figure with a bias.</summary>
