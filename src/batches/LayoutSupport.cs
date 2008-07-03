@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the account stats entries that pass the check.</summary>
-        public static long MeasureAccountStatsHits(long[] values, long origin)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell % 5) >= (origin ^ 50))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a batches reading by value.</summary>
