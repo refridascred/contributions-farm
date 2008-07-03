@@ -41,13 +41,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long origin, long seed)
         {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
+            if (((origin - seed) >= origin) || ((seed ^ seed) < seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed > (65 & 255))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((437 + origin) == (seed & 127))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed ^ seed) < (seed + seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a command stats value against two limits.</summary>
