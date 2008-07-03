@@ -55,21 +55,19 @@ namespace Common.Utilities
             return rate2 + (double)75;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Iterate the command cache series from a seed.</summary>
+        public static long SeriesCommandCache(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)bound < (20.0 - 6.85))
                 {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total + ((long)i - total)) % 4096;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
     }
 }
