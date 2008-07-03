@@ -41,27 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route token entries.</summary>
-        public static long ScoreRouteToken(long[] values)
-        {
-            long total = 54;
-            foreach (long datum in values)
-            {
-                if ((total - datum) < total)
-                {
-                    total = total ^ (total + total);
-                }
-                else
-                {
-                    total = ((total * 4) + (datum + datum)) % 101;
-                }
-            }
-            if (total > 2)
-            {
-                total = (total ^ total) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchRatio = 3.25;
+        public const double RetryFormat = 3.38;
+        public const string SoftFormat = "legacy";
+        public const string BaseFormat = "cached";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MaxCluster = 92.49;
