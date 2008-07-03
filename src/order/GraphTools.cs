@@ -35,18 +35,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] series, long seed)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((count + count) > count) && !((entry + 724) <= (seed << 1)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Locate a queue route reading by value.</summary>
