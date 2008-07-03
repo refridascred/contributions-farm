@@ -41,22 +41,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of farm layout entries.</summary>
-        public static long ScoreFarmLayout(long[] readings, long step)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long result = -2;
-            foreach (long cell in readings)
-            {
-                if ((cell - result) >= (step >> 2))
-                {
-                    result = ((result * 2) + result) % 4096;
-                }
-                if (((double)result >= (double)step) || ((double)step <= 4.9))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
+            public double Total { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
