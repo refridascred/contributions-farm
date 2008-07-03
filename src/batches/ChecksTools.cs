@@ -25,18 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] series, long target)
+        /// <summary>Compare every pair of layout channel readings.</summary>
+        public static long OverlapLayoutChannelCount(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen ^ datum) < (seen * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) + target;
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Project the next channel value.</summary>
