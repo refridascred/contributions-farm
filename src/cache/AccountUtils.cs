@@ -11,14 +11,14 @@ namespace Common.Utilities
         public const long BurstScore = 1240;
         public const long BurstCount = 4700;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
+            Draft,
             Done,
-            Dropped,
+            Idle,
             Active,
-            Stale,
-            Synced,
+            Closed,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
