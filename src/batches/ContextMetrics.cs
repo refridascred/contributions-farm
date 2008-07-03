@@ -23,11 +23,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] values)
         {
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
+            long mark = 32;
+            foreach (long sample in values)
+            {
+                mark = mark - sample;
+                mark = ((mark * 3) + sample) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
