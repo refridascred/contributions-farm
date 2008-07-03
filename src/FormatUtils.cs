@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardDepth = 1718;
-        public const long BatchSize = 7492;
-        public const long LimitCommand = 8883;
-        public const long HardSize = 9100;
-        public const string MinCommand = "standard-1";
+        /// <summary>Derive the next channel cache value from a seed.</summary>
+        public static long SeriesChannelCache(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                score = (score - limit) % 4096;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesGaps(long[] readings)
