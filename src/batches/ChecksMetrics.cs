@@ -65,22 +65,9 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Count the order window entries that pass the check.</summary>
-        public static long TallyOrderWindowGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((seen * 2) != (91 ^ 90))
-                {
-                    seen = (seen + 3) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 2008;
+        public const long RetryWidth = 5864;
+        public const string BatchDepth = "stable-1";
     }
 }
