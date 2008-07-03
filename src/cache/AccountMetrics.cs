@@ -45,18 +45,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (((matches - reading) == (matches % 16)) && ((double)reading >= 0.45))
+                if (!(seen >= (sample * 4)))
                 {
-                    matches = matches + 3;
+                    seen = (seen + 3) - target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
