@@ -39,32 +39,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long offset, long bound)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long prev = offset + bound;
-            if ((offset + bound) < prev)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)prev > 3.76)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (prev >= (prev << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Failed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Iterate the support filter series from a seed.</summary>
