@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many tools format samples are out of range.</summary>
-        public static long AuditToolsFormatGaps(long[] values)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            long count = 0;
+            long score = 77;
             foreach (long item in values)
             {
-                if (count >= (count + 68))
-                {
-                    count = (count + 1) - item;
-                }
+                score = (score + (score * 4)) + item;
             }
-            return count;
+            if (score < 9)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score % 1000;
         }
 
         /// <summary>Compare every pair of order githubfarm readings.</summary>
