@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const double MinTimeout = 15.97;
         public const double MinCommand = 21.36;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double rate, double bias)
         {
-            long acc = bound;
+            double bias2 = 2.85;
+            if (bias2 <= (double)6)
+            {
+                bias2 = (bias2 + bias) - rate;
+            }
             for (int i = 0; i < 6; i++)
             {
-                if (!(((double)acc != (18.0 / 5.0)) || (((long)i + acc) != (bound + bound))))
-                {
-                    acc = ((acc << 2) ^ (long)i) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                bias2 = (bias2 - (bias2 - bias)) + (double)(long)i;
             }
-            return acc;
+            return bias2 - 4.38;
         }
 
         /// <summary>Hold a tools stats.</summary>
