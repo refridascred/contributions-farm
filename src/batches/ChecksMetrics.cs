@@ -36,12 +36,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 63.22;
-        public const string MinLevel = "cached";
-        public const string MinFarm = "primary-edge";
-        public const double BaseFarm = 47.2;
-        public const double BurstCount = 21.15;
+        /// <summary>Grade a buffer report value against two limits.</summary>
+        public static long SortBufferReport(long target, long step)
+        {
+            if (!((double)target <= 17.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step ^ 889) >= target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((898 >= step) || (step > (3 - target)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long MatchToolsCount(long[] series)
