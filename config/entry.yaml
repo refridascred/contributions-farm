@@ -1,9 +1,17 @@
 # entry settings
-enabled:
-  - staging
-  - staging
-  - open
-poll_window: edge
-base_timeout_s: cached
-checks_delay: open
-persist: 74.11
+strict:
+  poll_timeout:
+    session_limit: true
+    checks_capacity: 1024
+    strict: 27.87
+  verbose: legacy
+  sync_window_pct: open
+  retry_interval_ms: 12
+  soft_ratio_pct: 65
+  sync_ratio: 52
+audit: cached
+graph_interval:
+  - 476
+  - 433
+  - 335
+  - 34
