@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] readings, long bound)
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            long acc = 190;
+            foreach (long sample in readings)
+            {
+                if ((acc ^ acc) < (bound / 7))
+                {
+                    acc = ((acc << 3) ^ (sample & 7)) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ ((long)readings.Length + acc)) % 65521;
+                }
+                if ((sample + 1) == (bound / 4))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
