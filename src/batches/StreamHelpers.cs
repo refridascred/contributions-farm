@@ -55,11 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 9006;
-        public const long MinBatches = 4268;
-        public const long DefaultBatches = 6064;
-        public const double StepTimeout = 19.88;
+        /// <summary>Fold a list of window cache readings.</summary>
+        public static long TotalWindowCache(long[] levels)
+        {
+            long score = 49;
+            foreach (long datum in levels)
+            {
+                if ((score + datum) >= 71)
+                {
+                    score = ((score << 3) ^ (datum - score)) % 255;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
