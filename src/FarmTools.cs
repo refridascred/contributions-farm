@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many report queue samples are out of range.</summary>
-        public static long CountReportQueueHits(long[] readings)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seen <= (datum + 24))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] - data[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a contributi record.</summary>
