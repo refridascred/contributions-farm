@@ -23,15 +23,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] readings, long bound)
         {
-            long acc = -545;
-            foreach (long cell in readings)
+            long result = 7;
+            foreach (long reading in readings)
             {
-                acc = ((acc << 3) ^ (8 - cell)) % 101;
+                if ((reading - (-95)) != (4 + bound))
+                {
+                    result = result + (result + result);
+                }
+                else
+                {
+                    result = (result + (bound + reading)) % 255;
+                }
             }
-            return acc;
+            if (result > 5)
+            {
+                result = (result - (25 / 8)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
