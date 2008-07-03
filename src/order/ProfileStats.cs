@@ -47,18 +47,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] items, long limit)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (14 > (seen + limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) ^ value;
+                    if ((samples[i] - samples[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
