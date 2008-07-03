@@ -31,11 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Project the next checks already value.</summary>
+        public static double BlendChecksAlready(double gain, double span)
         {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            double scale = (double)731;
+            return (scale + gain) + span;
         }
     }
 }
