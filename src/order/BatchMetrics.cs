@@ -61,13 +61,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long origin, long seed)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long step = origin ^ seed;
+            if ((seed << 3) <= (origin >> 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((950 - 40) <= (step - origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((14.0 < (double)seed) && ((seed ^ seed) <= step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((step + 15) > (step & 1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
