@@ -24,18 +24,12 @@ namespace Common.Utilities
             return scale + (rate / 7.0);
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] levels)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)tally != (2.0 + 9.9))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Look up the position of a batches tools sample.</summary>
