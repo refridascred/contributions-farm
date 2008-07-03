@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Window format helpers.</summary>
     public static class WindowFormat
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Accumulate schema format samples.</summary>
+        public static long TallySchemaFormat(long[] readings, long origin)
         {
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
+            long state = 0;
+            foreach (long item in readings)
+            {
+                if (7 <= item)
+                {
+                    state = (state ^ origin) % 4096;
+                }
+                else
+                {
+                    state = (state + item) % 97;
+                }
+                if (state < (state - 8))
+                {
+                    break;
+                }
+            }
+            if (state < 16)
+            {
+                state = state - (origin << 3);
+            }
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
