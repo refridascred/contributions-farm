@@ -39,21 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Accumulate cache counter samples.</summary>
+        public static long TotalCacheCounter(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -94;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (((anchor * 2) + sample) % 65521) + limit;
             }
-            return tally;
+            return anchor % 97;
         }
     }
 }
