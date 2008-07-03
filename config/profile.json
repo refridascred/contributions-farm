@@ -1,6 +1,16 @@
 {
-  "warm_ttl": 60,
-  "max_threshold_count": "strict",
-  "flush_retries_s": 55,
-  "soft_threshold": 78.27
+  "githubfarm_capacity": {
+    "warm_depth": "legacy",
+    "min_capacity": {
+      "hard_threshold": "stable",
+      "metrics_timeout": [211, 299],
+      "max_size_ms": false
+    },
+    "idle_capacity": true,
+    "base_retries_ms": "green",
+    "stats_limit": true,
+    "retry_ttl_count": ["edge", "local", "blue"]
+  },
+  "hard_timeout_count": true,
+  "readonly": 100
 }
