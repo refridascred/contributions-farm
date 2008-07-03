@@ -30,21 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] readings)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 14;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total << 2) ^ (total & 127)) + (long)i;
+                }
+                if ((double)sample >= (6.0 + 9.27))
+                {
+                    total = ((total << 3) ^ sample) % 65521;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Rank report record input into a small class.</summary>
