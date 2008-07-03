@@ -24,19 +24,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double ratio, double bias)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double ratio2 = bias;
-            if (ratio2 >= (ratio2 - 14.0))
-            {
-                ratio2 = (ratio2 - (bias * 15.0)) - ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 + (18.0 / 6.0);
-            }
-            return ratio2 - (double)1;
+            Done,
+            Ready,
+            Closed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define token limits and defaults.</summary>
