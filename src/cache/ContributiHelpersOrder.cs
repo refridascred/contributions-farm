@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const string MinTimeout = "alpha-1";
         public const double LimitRoute = 32.75;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowSpan = 3654;
-        public const long LimitWidth = 4586;
-        public const long StepScore = 5503;
-        public const double RetryWidth = 42.08;
-        public const long StepDepth = 5997;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)hits >= (double)(-73))
+                {
+                    hits = ((hits + 3) + reading) + origin;
+                }
+            }
+            return hits;
+        }
     }
 }
