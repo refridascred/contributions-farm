@@ -37,14 +37,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] items)
         {
-            Ready,
-            Stale,
-            New,
-            Draft,
-            Closed,
+            long total = -8;
+            foreach (long sample in items)
+            {
+                if ((4 + total) <= 129)
+                {
+                    total = (((total << 3) ^ ((long)items.Length - total)) % 65521) - sample;
+                }
+                else
+                {
+                    total = (total * 4) + (94 % 2);
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
