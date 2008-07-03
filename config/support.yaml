@@ -1,11 +1,15 @@
 # support settings
-strict: eu-west
-max_delay: green
-poll_size_count: staging
-base_retries_pct: 7855
-batch_timeout: 3108
-account_capacity:
-  - 441
-  - 92
-  - 126
-  - 439
+warm_size: 8.5
+batch_limit_ms: false
+strict:
+  audit: 82.64
+  cache_ttl_pct: cached
+  base_ratio_ms:
+    - latest
+    - legacy
+    - eu-west
+    - standard
+  soft_threshold: 100
+channel_window: false
+persist: 500
+metrics_limit: true
