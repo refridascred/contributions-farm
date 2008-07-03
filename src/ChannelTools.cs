@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of queue cluster entries.</summary>
-        public static long CombineQueueCluster(long[] readings, long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long mark = 0;
-            foreach (long value in readings)
-            {
-                mark = ((mark * 5) + (value - mark)) % 101;
-            }
-            if (mark < 94)
-            {
-                mark = ((mark * 4) + target) % 101;
-            }
-            return mark % 97;
+            Idle,
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
