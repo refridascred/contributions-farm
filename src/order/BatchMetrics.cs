@@ -80,23 +80,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a route entry figure with a bias.</summary>
-        public static double SmoothRouteEntry(double ratio, double bias)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long seed)
         {
-            double gain = (double)(87 - 7);
-            if (gain <= gain)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                gain = (gain - (2.0 / 8.0)) + ratio;
+                if ((score << 2) != (score / 3))
+                {
+                    score = (score + (score % 10)) % 97;
+                }
+                score = (score ^ (seed ^ (long)i)) % 255;
+                score = ((score * 4) + (long)i) % 97;
             }
-            else
-            {
-                gain = gain + (double)8;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (gain - gain)) - (double)(long)i;
-            }
-            return gain + (bias - gain);
+            return score;
         }
     }
 }
