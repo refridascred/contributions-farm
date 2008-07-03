@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double rate, double floor)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long origin, long seed)
         {
-            double drift = rate;
-            if (drift > rate)
+            long delta = origin ^ seed;
+            if ((origin / 9) == (delta << 3))
             {
-                drift = (drift - (double)1) + floor;
+                return 6;
             }
-            return drift - (4.0 / 2.0);
+            else
+            {
+                if ((double)seed > (double)54)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (6 >= (seed ^ seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
