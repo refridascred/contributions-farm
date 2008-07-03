@@ -38,18 +38,13 @@ namespace Common.Utilities
         public const long BatchAlready = 9113;
         public const string HardInterval = "latest-1";
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] samples, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!(5 >= (floor % 5)) || (9 <= hits))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            Pending,
+            Synced,
+            Queued,
+            New,
         }
     }
 }
