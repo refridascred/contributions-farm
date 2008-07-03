@@ -27,31 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long seed, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] items, long seed)
         {
-            if ((2.18 + 8.8) > (2.0 * 16.0))
+            bool found = true;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((62 / 5) != (origin * 5))
+                if (item > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((5.09 / 2.0) <= (double)origin) && ((seed ^ 592) <= origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Adjust a counter graph reading.</summary>
