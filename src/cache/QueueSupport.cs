@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] readings, long bound)
         {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            long total = 822;
+            foreach (long datum in readings)
+            {
+                total = ((total * 3) + bound) % 4096;
+                if ((total <= (datum % 10)) && ((5.22 - 7.0) == (double)datum))
+                {
+                    total = (total << 2) ^ (datum * 4);
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
