@@ -22,14 +22,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Measure how many payload cluster samples are out of range.</summary>
+        public static long MeasurePayloadClusterHits(long[] data, long limit)
         {
-            Locked,
-            Failed,
-            New,
-            Pending,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((5 - hits) != (limit ^ limit))
+                {
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate context samples.</summary>
