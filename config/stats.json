@@ -1,6 +1,7 @@
 {
-  "hard_window": "cached",
-  "warm_depth_s": 41,
-  "cache_window_count": true,
-  "base_window_count": [348, 283, 44]
+  "sync_ttl_s": false,
+  "compress": 96,
+  "soft_limit_s": "stable",
+  "format_ratio": 1437,
+  "warm_limit_pct": 475
 }
