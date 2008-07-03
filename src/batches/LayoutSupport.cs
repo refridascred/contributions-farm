@@ -35,13 +35,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] readings, long seed)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a checks record.</summary>
