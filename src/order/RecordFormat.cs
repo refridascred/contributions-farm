@@ -33,21 +33,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (double)(619 - 970);
+            if (bias < (scale - scale))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias + span;
             }
-            return tally;
+            else
+            {
+                bias = bias + (double)75;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (bias * 3.19)) - (double)(long)i;
+            }
+            return bias + (double)387;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
