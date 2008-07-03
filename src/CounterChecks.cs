@@ -53,22 +53,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] samples, long offset)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!(offset >= value))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Synced,
+            Done,
+            Idle,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
