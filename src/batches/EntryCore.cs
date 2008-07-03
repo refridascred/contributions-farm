@@ -60,21 +60,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of filter buffer readings.</summary>
-        public static long PairFilterBufferCount(long[] values)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double weight = ratio;
+            return weight + floor;
         }
     }
 }
