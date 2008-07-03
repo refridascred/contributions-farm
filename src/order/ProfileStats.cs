@@ -28,21 +28,20 @@ namespace Common.Utilities
         public const long MinBudget = 9155;
         public const long MaxScore = 2649;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] samples)
+        /// <summary>Accumulate profile tools samples.</summary>
+        public static long ScoreProfileTools(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 8;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix - (item >> 3)) % 65521;
+                mix = (mix * 3) + item;
             }
-            return hits;
+            if (mix > 27)
+            {
+                mix = ((mix << 2) ^ mix) % 101;
+            }
+            return mix;
         }
     }
 }
