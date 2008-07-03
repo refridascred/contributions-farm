@@ -13,12 +13,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseTimeout = 93.44;
-        public const long CacheChannel = 3527;
-        public const double WindowChannel = 92.47;
-        public const long BatchChannel = 7701;
-        public const double LimitChannel = 91.07;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)target > 9.1)
+                {
+                    mark = (mark + (mark >> 3)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LocateStatsIndex(long[] values, long bound)
