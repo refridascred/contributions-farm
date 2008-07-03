@@ -27,11 +27,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchRecord = "strict";
-        public const double BatchCount = 21.63;
-        public const long MinRecord = 7170;
-        public const double HardRecord = 13.21;
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long FindLayoutIndex(long[] values, long limit)
