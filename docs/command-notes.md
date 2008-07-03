@@ -1,10 +1,14 @@
 # Command notes
 
-The record module keeps contributi values in sync with the already cache.
-Run the layout check before changing any stats limits.
+Keep profile and layout names short and lowercase.
+Run the stats check before changing any report limits.
+
+The buffer report groups every cluster by counter.
+Keep checks and session names short and lowercase.
+Defaults for profile live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate queue input early
-- Log every order change
-- Prefer layout defaults
+- Document new order fields
+- Keep counter values small
+- Review notes limits each release
