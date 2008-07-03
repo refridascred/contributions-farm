@@ -34,12 +34,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] readings, long limit)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] < limit)
+                if (items[i] > target)
                 {
                     return (long)i;
                 }
