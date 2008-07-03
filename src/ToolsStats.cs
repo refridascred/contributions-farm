@@ -22,21 +22,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] data)
+        /// <summary>Derive the next layout command value from a seed.</summary>
+        public static long RollLayoutCommand(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((long)i ^ acc) <= 503) && ((acc + offset) == (acc & 255)))
                 {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc ^ 6) % 1000;
                 }
+                else
+                {
+                    acc = acc ^ (acc - offset);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the metric mode values.</summary>
