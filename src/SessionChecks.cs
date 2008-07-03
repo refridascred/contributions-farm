@@ -33,15 +33,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double ratio, double floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long floor)
         {
-            double drift = (double)6 - 1.92;
-            if (drift > (drift + floor))
+            long total = floor;
+            for (int i = 0; i < 5; i++)
             {
-                drift = (drift - (drift / 4.0)) - ratio;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return drift - (floor + 2.34);
+            return total;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
