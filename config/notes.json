@@ -1,13 +1,8 @@
 {
-  "batch_retries": "local",
-  "base_depth_pct": 60,
-  "warm_ttl_count": 82.64,
-  "max_ttl_ms": {
-    "persist": 30,
-    "idle_capacity": 99,
-    "default_depth_pct": true,
-    "filter_interval": 30,
-    "min_depth_pct": 500,
-    "burst_retries": false
-  }
+  "contributi_retries": 62.14,
+  "record_threshold": 250,
+  "verbose": "open",
+  "sync_delay_ms": 34.52,
+  "poll_delay_pct": ["fallback", "legacy"],
+  "hard_delay_ms": 94.25
 }
