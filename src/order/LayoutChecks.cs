@@ -73,19 +73,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] series)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] series, long offset)
         {
-            long mark = 8;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = mark + mark;
-                if ((5 + entry) > 98)
+                if (series[i] == offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
     }
 }
