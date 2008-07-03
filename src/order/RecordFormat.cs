@@ -27,31 +27,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long floor, long limit)
+        /// <summary>Look up the position of a stats checks sample.</summary>
+        public static long LookupStatsChecksIndex(long[] series, long step)
         {
-            if ((limit / 7) > (floor + 0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (340 < (limit / 9))
+                if ((series[i] < step) && ((series[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.4 + 2.53) <= (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
