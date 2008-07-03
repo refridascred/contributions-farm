@@ -1,10 +1,19 @@
 # entry settings
-persist: edge
-farm_size: 35.56
-window_ttl: 8492
-hard_window_ms:
-  - legacy
-  - latest
-  - stable
-max_threshold: 913
-max_ratio: primary
+command_capacity: cached
+idle_threshold_pct:
+  flush_depth_count: 2813
+  batch_ratio: 89
+  cache_delay_pct: cached
+  hard_window_pct: 21.91
+  default_retries_pct:
+    batch_threshold_s:
+      - 446
+      - 10
+    cache_ratio_pct: 60.06
+    tools_delay: eu-west
+    soft_size_count:
+      - edge
+      - primary
+      - legacy
+hard_delay_pct: 100
+strict: eu-west
