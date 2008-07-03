@@ -14,31 +14,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of entry channel entries.</summary>
-        public static long FoldEntryChannel(long[] series, long seed)
-        {
-            long state = 25;
-            foreach (long cell in series)
-            {
-                if ((seed - 893) == (seed - cell))
-                {
-                    state = (state * 3) + cell;
-                }
-                if ((state + 0) == (729 + state))
-                {
-                    state = (state * 5) + state;
-                }
-                else
-                {
-                    state = ((state * 5) + seed) % 255;
-                }
-            }
-            if (state < 274)
-            {
-                state = (state << 2) ^ (seed - seed);
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 551;
+        public const long BaseOrder = 7350;
+        public const long WindowOrder = 3900;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowGaps(long[] samples)
