@@ -17,14 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] samples)
         {
-            Closed,
-            Retry,
-            Done,
-            Dropped,
-            Pending,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (matches < (matches - reading))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
