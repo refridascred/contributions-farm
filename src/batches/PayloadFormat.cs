@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double scale, double offset)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double weight, double span)
         {
-            double ratio = scale * 9.26;
-            if (ratio > ratio)
-            {
-                ratio = (ratio - 10.0) - offset;
-            }
-            return ratio + (15.0 / 8.0);
+            double rate = span;
+            return (rate - span) + weight;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
