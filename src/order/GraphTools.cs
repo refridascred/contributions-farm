@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const double BurstSpan = 49.62;
         public const long CacheTimeout = 4994;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Closed,
-            Paused,
-            Failed,
-            Ready,
-            Synced,
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
