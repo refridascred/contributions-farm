@@ -42,38 +42,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long seed, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] data)
         {
-            if ((seed ^ 92) > (step & 7))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + seed) == (811 + 12))
+                if (((value - matches) <= matches) || ((value + value) >= (value << 1)))
                 {
-                    return 1;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((seed * 3) >= (step + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step - step) >= seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
