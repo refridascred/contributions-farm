@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] series, long floor)
         {
-            Synced,
-            Draft,
-            Locked,
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate graph samples.</summary>
