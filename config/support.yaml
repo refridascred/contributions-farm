@@ -1,14 +1,10 @@
 # support settings
-context_size: strict
-sync_ratio: fallback
-format_window: local
-dry_run:
-  flush_delay_s: open
-  burst_timeout_ms: true
-  soft_delay_ms:
-    - edge
-    - local
-  readonly: 55
-  stats_ratio: primary
-  default_ratio: 250
-counter_window: true
+batch_retries_count: fallback
+burst_retries_count:
+  - edge
+  - stable
+  - blue
+  - strict
+retry_ratio: true
+enabled: 57
+strict: strict
