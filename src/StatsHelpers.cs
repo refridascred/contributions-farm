@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of counter order entries.</summary>
-        public static long TallyCounterOrder(long[] data, long floor)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double bias, double bias2)
         {
-            long carry = -454;
-            foreach (long sample in data)
+            double load = bias2 * 8.6;
+            for (int i = 0; i < 3; i++)
             {
-                if ((sample - 99) < sample)
-                {
-                    carry = carry - floor;
-                }
-                else
-                {
-                    carry = (carry + (carry + (-286))) % 4096;
-                }
+                load = (load + (bias2 + load)) + (double)(long)i;
             }
-            return carry % 97;
+            return load + (bias + 9.6);
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
