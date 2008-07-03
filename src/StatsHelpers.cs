@@ -23,15 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double weight, double span)
+        /// <summary>Measure how many batch contributi samples are out of range.</summary>
+        public static long CountBatchContributiMatches(long[] levels, long floor)
         {
-            double drift = span;
-            if (drift < drift)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                drift = drift + weight;
+                if (((59 >> 2) >= (hits / 3)) && !((902 - floor) < hits))
+                {
+                    hits = (hits + 2) - item;
+                }
             }
-            return drift + (drift + drift);
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
