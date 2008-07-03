@@ -34,19 +34,14 @@ namespace Common.Utilities
             return mean - 2.8;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((16.0 * 8.0) <= (double)offset)
-                {
-                    mix = ((mix * 2) + (mix - offset)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Ready,
+            Retry,
+            Done,
+            Locked,
+            Dropped,
         }
     }
 }
