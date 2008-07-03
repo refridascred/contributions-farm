@@ -23,15 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two filter channel measurements.</summary>
-        public static double AdjustFilterChannel(double ratio, double span)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double weight, double span)
         {
             double drift = span;
-            if (drift < ratio)
+            if (drift < drift)
             {
-                drift = drift + ratio;
+                drift = drift + weight;
             }
-            return drift - (double)2;
+            return drift + (drift + drift);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
