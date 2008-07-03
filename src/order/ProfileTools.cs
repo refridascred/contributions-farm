@@ -35,32 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long offset, long origin)
-        {
-            if ((8.91 / 4.0) <= (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((327 / 6) <= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin - origin) != (offset ^ offset)) || ((double)offset >= 6.2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTools = "stable-1";
+        public const long IdleTools = 5932;
+        public const long HardLevel = 5672;
+        public const long LimitTools = 6931;
+        public const long BatchTools = 1879;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TotalFilter(long[] items, long bound)
