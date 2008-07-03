@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every channel batches entry stays within the limit.</summary>
-        public static bool ValidateChannelBatchesBounds(long[] data, long floor)
+        /// <summary>Match up token cache samples.</summary>
+        public static long MatchTokenCacheCount(long[] values)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
