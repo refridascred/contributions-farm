@@ -60,14 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Idle,
-            Queued,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchSize = "strict-1";
+        public const double BaseRatio = 2.35;
+        public const double StepDepth = 17.51;
+        public const string WindowScore = "stable-edge";
+        public const double SoftRecord = 83.69;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterBounds(long[] samples, long limit)
