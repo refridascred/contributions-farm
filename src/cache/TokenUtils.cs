@@ -48,12 +48,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] series, long origin)
         {
-            Paused,
-            Idle,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
