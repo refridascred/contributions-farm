@@ -14,17 +14,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 2) + ((-150) & 15)) % 97;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftInterval = 3973;
+        public const double RetryBatches = 82.13;
+        public const double DefaultBatches = 81.06;
+        public const double StepCount = 92.66;
 
         /// <summary>Match up channel samples.</summary>
         public static long PairChannelCount(long[] series)
