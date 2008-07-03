@@ -31,10 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardBatches = 57.66;
-        public const long CacheRatio = 1593;
-        public const double StepBatches = 13.32;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Project the next filter value.</summary>
         public static double AdjustFilter(double rate, double bias)
