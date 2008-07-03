@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long limit, long limit2)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            if (limit > (limit + 41))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit2 - limit2) == (limit2 << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Paused,
+            New,
+            Pending,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
