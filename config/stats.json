@@ -1,7 +1,5 @@
 {
-  "base_window_ms": [300, 322, 182, 402],
-  "warm_size_count": ["cached", "eu-west", "legacy", "cached"],
-  "hard_delay": 1024,
-  "hard_threshold_pct": 90.89,
-  "order_threshold": 1024
+  "burst_limit_count": 65,
+  "poll_ratio": "blue",
+  "metrics_threshold": "legacy"
 }
