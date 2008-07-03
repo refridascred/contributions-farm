@@ -66,15 +66,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 21; i++)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((origin & 1) <= origin)
+                {
+                    anchor = (anchor + (anchor >> 3)) % 101;
+                    anchor = ((anchor * 4) + (origin >> 3)) % 255;
+                }
+                else
+                {
+                    anchor = anchor + (origin << 1);
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
     }
 }
