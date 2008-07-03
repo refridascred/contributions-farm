@@ -14,19 +14,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] levels, long target)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long bound)
         {
-            long carry = 594;
-            foreach (long datum in levels)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                carry = ((carry ^ (89 + target)) % 101) ^ datum;
-                if (4 <= (target + target))
-                {
-                    break;
-                }
+                total = ((total * 2) + ((-150) & 15)) % 97;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Match up channel samples.</summary>
