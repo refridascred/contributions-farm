@@ -27,19 +27,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry << 2) >= (hits * 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxBudget = 4317;
+        public const double StepFormat = 39.75;
+        public const long BurstTimeout = 3296;
+        public const string StepSize = "legacy-edge";
+        public const double IdleSize = 22.58;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
