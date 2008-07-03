@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
+        /// <summary>Adjust a already graph reading.</summary>
+        public static double ProjectAlreadyGraph(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double gain = floor;
+            if (gain > (gain - gain))
             {
-                if ((datum ^ (-69)) <= (datum >> 3))
-                {
-                    seen = seen + 2;
-                }
+                gain = gain - (double)93;
             }
-            return seen;
+            else
+            {
+                gain = gain + 3.0;
+            }
+            return gain + (scale - floor);
         }
 
         /// <summary>Describe the schema state values.</summary>
