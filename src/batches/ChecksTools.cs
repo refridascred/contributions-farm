@@ -44,18 +44,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many entry queue samples are out of range.</summary>
-        public static long MeasureEntryQueueGaps(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((-613) % 60) != (matches - seed))
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleSpan = "primary-v2";
+        public const long SoftNotes = 447;
+        public const string HardNotes = "primary";
+        public const double LimitNotes = 35.55;
     }
 }
