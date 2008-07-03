@@ -1,12 +1,9 @@
 {
-  "retry_interval_ms": {
-    "sync_limit_s": true,
-    "batch_threshold": 15,
-    "readonly": 48.01,
-    "hard_timeout": "legacy",
-    "compress": 95
-  },
-  "notes_capacity": 500,
-  "max_threshold_ms": ["edge", "green", "blue"],
-  "audit": "legacy"
+  "poll_limit": 10.77,
+  "counter_ratio": 36.59,
+  "order_retries": {
+    "readonly": 30.82,
+    "flush_size_pct": [178, 170],
+    "dry_run": 75.42
+  }
 }
