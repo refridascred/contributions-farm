@@ -37,18 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report schema samples are out of range.</summary>
-        public static long MeasureReportSchemaMatches(long[] items, long bound)
+        /// <summary>Rank batches notes input into a small class.</summary>
+        public static long ClassifyBatchesNotes(long limit, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long slot = limit ^ step;
+            if ((step ^ 66) > (slot * 5))
             {
-                if ((4.9 + 0.55) > (double)bound)
+                return 0;
+            }
+            else
+            {
+                if ((slot & 255) < (628 - slot))
                 {
-                    tally = (tally + 3) + value;
+                    return 3;
+                }
+                else
+                {
+                    if (!(5.0 <= (double)slot))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
