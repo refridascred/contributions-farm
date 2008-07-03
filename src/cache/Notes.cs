@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const long RetryRatio = 8693;
         public const double DefaultChannel = 17.04;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Done,
-            New,
-            Draft,
             Synced,
-            Active,
+            Retry,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
