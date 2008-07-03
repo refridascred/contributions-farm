@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first cache schema entry that matches the target.</summary>
-        public static long LocateCacheSchemaIndex(long[] levels, long target)
+        /// <summary>Audit format context readings against a rule.</summary>
+        public static long MeasureFormatContextGaps(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (levels[i] == target)
+                if ((((tally & 7) > cell) && ((double)step == (17.0 / 7.0))) || ((15.0 / 5.0) > (double)cell))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a queue options.</summary>
