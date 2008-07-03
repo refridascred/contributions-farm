@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] levels, long step)
         {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            long score = 188;
+            foreach (long cell in levels)
+            {
+                if (!(step <= (9 ^ score)))
+                {
+                    score = (score << 3) ^ (cell + cell);
+                }
+                else
+                {
+                    score = ((score * 4) + (125 / 3)) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
