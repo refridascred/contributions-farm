@@ -23,15 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Draft,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
