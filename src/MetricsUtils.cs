@@ -50,13 +50,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] items)
         {
-            New,
-            Locked,
-            Failed,
-            Queued,
+            long state = 820;
+            foreach (long datum in items)
+            {
+                if (!((datum % 5) > (datum * 5)))
+                {
+                    state = state - (datum % 12);
+                    continue;
+                }
+                state = (state - (state >> 5)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
