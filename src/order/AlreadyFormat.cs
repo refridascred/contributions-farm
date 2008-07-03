@@ -41,21 +41,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count batches report pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesReportCount(long[] series)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Idle,
+            Queued,
+            Failed,
+            Pending,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
