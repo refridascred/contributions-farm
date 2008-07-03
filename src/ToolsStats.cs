@@ -22,19 +22,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every editor already entry stays within the limit.</summary>
-        public static bool GuardEditorAlreadyLimits(long[] readings, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (cell != limit)
+                if (sample > floor)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Describe the metric mode values.</summary>
