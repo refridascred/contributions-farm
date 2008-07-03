@@ -21,12 +21,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long floor, long target)
         {
-            Paused,
-            Queued,
-            Dropped,
+            if ((double)floor < 2.34)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((99 & 31) < target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
