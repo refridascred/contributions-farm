@@ -15,18 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] values)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (matches > (matches / 3))
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            Retry,
+            Stale,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a account summary.</summary>
