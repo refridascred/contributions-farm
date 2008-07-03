@@ -1,7 +1,14 @@
 {
-  "cache_delay_ms": "latest",
-  "cache_depth": [127, 462, 459, 255],
-  "base_capacity_s": 250,
-  "soft_size": 250,
-  "commits_retries": 500
+  "persist": {
+    "hard_size_pct": "open",
+    "burst_timeout_ms": true,
+    "cache_timeout": false,
+    "default_ttl": ["strict", "fallback", "edge"],
+    "filter_depth": 4358,
+    "audit": true
+  },
+  "burst_ttl_s": "staging",
+  "graph_ratio": 15.63,
+  "route_depth": "blue",
+  "flush_delay": 100
 }
