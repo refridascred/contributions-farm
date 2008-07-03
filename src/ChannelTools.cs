@@ -34,17 +34,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long seed)
+        /// <summary>Fold a list of cache route readings.</summary>
+        public static long FoldCacheRoute(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 8;
+            foreach (long datum in values)
             {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
+                score = ((score - ((long)values.Length - 72)) ^ datum) + seed;
             }
-            return -1;
+            return score;
         }
     }
 }
