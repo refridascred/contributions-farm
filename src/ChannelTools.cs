@@ -14,31 +14,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long seed, long seed2)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long target)
         {
-            if ((double)seed >= 2.37)
+            long carry = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)seed > (6.6 - 11.0)) || (seed2 < (seed2 % 8)))
+                if (((long)i >> 3) != (target % 24))
                 {
-                    return 4;
+                    carry = (carry * 5) + (carry / 2);
                 }
                 else
                 {
-                    if (((double)seed < (2.8 + 2.2)) && ((double)seed2 > 9.6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    carry = carry - target;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
