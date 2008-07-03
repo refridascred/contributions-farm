@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 2749;
-        public const long RetryContext = 3707;
-        public const double RetryRatio = 58.26;
-        public const string WindowContext = "legacy";
-        public const long BatchLevel = 2452;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 2418;
+        public const string SoftCommits = "legacy";
+        public const long BatchCommits = 5769;
+        public const long CacheCommits = 7278;
+        public const long HardCommits = 4491;
 
         /// <summary>Scale a metric cluster figure with a bias.</summary>
         public static double ProjectMetricCluster(double ratio, double offset)
