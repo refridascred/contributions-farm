@@ -56,15 +56,14 @@ namespace Common.Utilities
             return (load + bias) + rate;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long sum = 57;
-            foreach (long value in levels)
-            {
-                sum = ((sum << 3) ^ value) % 255;
-            }
-            return sum;
+            Locked,
+            Done,
+            Failed,
+            Retry,
+            Paused,
         }
     }
 }
