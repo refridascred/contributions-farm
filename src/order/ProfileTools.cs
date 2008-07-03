@@ -33,13 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Compare every pair of token stats readings.</summary>
+        public static long MatchTokenStatsCount(long[] data)
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
