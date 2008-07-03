@@ -1,8 +1,7 @@
 {
-  "contributi_retries": 62.14,
-  "record_threshold": 250,
-  "verbose": "open",
-  "sync_delay_ms": 34.52,
-  "poll_delay_pct": ["fallback", "legacy"],
-  "hard_delay_ms": 94.25
+  "cache_delay_ms": "latest",
+  "cache_depth": [127, 462, 459, 255],
+  "base_capacity_s": 250,
+  "soft_size": 250,
+  "commits_retries": 500
 }
