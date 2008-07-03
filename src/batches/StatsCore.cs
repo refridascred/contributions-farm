@@ -69,21 +69,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up batch graph samples.</summary>
-        public static long PairBatchGraphCount(long[] levels)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long origin, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (origin >= floor)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (11.0 < (double)origin)
                 {
-                    if ((levels[i] + levels[j]) == 5)
+                    return 6;
+                }
+                else
+                {
+                    if ((floor + floor) > origin)
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(origin < (floor - origin)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
