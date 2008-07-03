@@ -1,7 +1,13 @@
 {
-  "hard_retries_count": "edge",
-  "context_size": false,
-  "poll_depth": 100,
-  "window_delay": "standard",
-  "enabled": true
+  "base_depth_ms": {
+    "hard_ttl_s": ["strict", "cached", "primary"],
+    "tools_limit": "open",
+    "schema_limit": 41.35,
+    "compress": true,
+    "retry_size_pct": 32
+  },
+  "cluster_interval": 3794,
+  "sync_size_pct": false,
+  "persist": true,
+  "default_ttl": 49
 }
