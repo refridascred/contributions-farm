@@ -1,18 +1,10 @@
 {
-  "retry_capacity_count": 2309,
-  "cache_size_count": false,
-  "persist": 2897,
-  "verbose": [12, 296, 80],
-  "poll_capacity_ms": {
-    "notes_size": {
-      "verbose": ["primary", "eu-west", "latest", "blue"],
-      "stream_limit": 74.88,
-      "cluster_window": [413, 146, 450, 194],
-      "burst_capacity": "open",
-      "context_window": 30,
-      "dry_run": "local"
-    },
-    "dry_run": [212, 255],
-    "enabled": true
-  }
+  "commits_size": {
+    "dry_run": 28,
+    "cache_retries": ["green", "standard", "staging"],
+    "idle_ttl": 2817
+  },
+  "warm_ratio": "eu-west",
+  "filter_limit": "local",
+  "min_window_ms": "open"
 }
