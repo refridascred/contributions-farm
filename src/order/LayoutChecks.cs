@@ -43,19 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double ratio, double span)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double rate = (span * 6.8) + (double)9;
-            if (rate <= (rate - span))
-            {
-                rate = rate + (double)272;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (ratio * 5.01)) - (double)(long)i;
-            }
-            return rate - rate;
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
