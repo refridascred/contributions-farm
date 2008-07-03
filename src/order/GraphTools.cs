@@ -50,11 +50,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 42.86;
-        public const double LimitRatio = 27.77;
-        public const double BatchReport = 57.15;
-        public const double BurstReport = 77.64;
-        public const string IdleReport = "alpha";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultDepth = 767;
+        public const long SoftDepth = 3265;
+        public const long LimitScore = 2575;
     }
 }
