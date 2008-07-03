@@ -29,14 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] data, long seed)
         {
-            Retry,
-            Locked,
-            Failed,
-            Dropped,
-            Draft,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (!(hits <= (seed ^ (long)data.Length)))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two queue contributi measurements.</summary>
