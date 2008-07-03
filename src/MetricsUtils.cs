@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long seed, long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] values)
         {
-            long lane = seed - limit;
-            if (!(0.2 >= (double)seed))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((lane / 4) >= seed)
+                if (seen >= (seen ^ (long)values.Length))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((61 % 10) > (limit + 680))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (lane <= (seed >> 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 1) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
