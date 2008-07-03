@@ -31,14 +31,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Ready,
-            Draft,
-            Idle,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstInterval = 7802;
+        public const double BaseWindow = 71.04;
+        public const double IdleSpan = 50.7;
+        public const long DefaultWindow = 8713;
     }
 }
