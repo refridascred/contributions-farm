@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            long state = 53;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    state = ((state - 15) % 101) ^ (long)i;
+                }
+                state = (state ^ (reading + state)) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Accumulate graph samples.</summary>
