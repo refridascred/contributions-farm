@@ -32,32 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long origin, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] values)
         {
-            long cur = origin ^ floor;
-            if (floor < (cur & 15))
+            long mark = 199;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((2.3 + 8.0) > (double)floor) || (704 <= cur))
+                if ((mark + mark) > (509 + mark))
                 {
-                    return 0;
+                    continue;
                 }
-                else
-                {
-                    if ((floor + cur) >= (floor % 24))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mark = (((mark << 2) ^ 394) % 4096) - sample;
             }
+            return mark % 97;
         }
     }
 }
