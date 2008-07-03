@@ -54,10 +54,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 6506;
-        public const double LimitRatio = 1.83;
-        public const double RetryQueue = 92.88;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Failed,
+            Pending,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long SeekStatsIndex(long[] data, long offset)
