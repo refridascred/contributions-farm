@@ -14,40 +14,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long origin, long offset)
-        {
-            long step = origin + offset;
-            if (((step / 9) >= (-8)) || (step < (offset >> 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((216 * 4) > (origin >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin < (5.9 / 9.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step ^ 111) <= (offset - origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 9185;
+        public const long IdleBudget = 2958;
+        public const double StepCount = 71.25;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long FoldChannel(long[] data)
