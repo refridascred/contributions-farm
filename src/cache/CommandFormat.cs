@@ -23,21 +23,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count filter notes pairs that satisfy a relation.</summary>
-        public static long MatchFilterNotesCount(long[] series)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double bias2 = (double)960 / 4.0;
+            return (bias2 - floor) + bias;
         }
 
         /// <summary>Describe the profile kind values.</summary>
