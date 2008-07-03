@@ -31,24 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long origin, long floor)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            if ((origin + origin) < (origin - origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((595 & 7) > (origin << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
