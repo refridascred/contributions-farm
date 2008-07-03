@@ -55,22 +55,19 @@ namespace Common.Utilities
             return weight - (rate + weight);
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (!((seen + reading) < reading))
+                if (item != target)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
