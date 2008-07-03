@@ -54,23 +54,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] samples)
+        /// <summary>Roll a record order counter forward.</summary>
+        public static long SeriesRecordOrder(long bound)
         {
-            long result = 86;
-            foreach (long item in samples)
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
             {
-                result = ((result << 2) ^ (item * 4)) % 4096;
-                if ((result ^ item) > item)
-                {
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (result > 411)
-            {
-                result = (result + (result + result)) % 97;
-            }
-            return result;
+            return carry;
         }
     }
 }
