@@ -87,21 +87,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Digest a series of window support entries.</summary>
+        public static long CombineWindowSupport(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 23;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item - item) <= (356 / 9))
                 {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix - ((long)samples.Length << 3)) % 97) + origin;
                 }
+                mix = mix ^ (mix / 2);
             }
-            return matches;
+            return mix;
         }
     }
 }
