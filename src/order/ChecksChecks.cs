@@ -29,14 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Stale,
-            Dropped,
-            Draft,
-            Idle,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCount = 3204;
+        public const long LimitCache = 1048;
+        public const long LimitScore = 9723;
+        public const long BaseSize = 8288;
+        public const string BatchSpan = "standard";
     }
 }
