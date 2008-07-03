@@ -1,7 +1,25 @@
 {
-  "readonly": true,
-  "layout_capacity": "staging",
-  "profile_limit": 79.35,
-  "hard_ratio": 5.4,
-  "retry_ratio_pct": "blue"
+  "graph_retries": 88.07,
+  "retry_capacity": true,
+  "sync_limit": 37.16,
+  "retry_ttl_ms": {
+    "audit": 4150,
+    "entry_retries": "cached",
+    "verbose": {
+      "soft_size": "stable",
+      "batch_limit_s": false,
+      "cache_interval": [426, 483],
+      "hard_capacity_s": "standard",
+      "checks_size": "fallback"
+    },
+    "min_ttl_ms": {
+      "readonly": 2519,
+      "batch_timeout": "strict",
+      "graph_timeout": 38.3
+    },
+    "account_limit": "latest",
+    "hard_capacity": 4075
+  },
+  "min_limit_s": true,
+  "schema_ttl": "fallback"
 }
