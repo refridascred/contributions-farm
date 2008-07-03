@@ -35,10 +35,13 @@ namespace Common.Utilities
         public const long StepDepth = 5128;
         public const string WindowFarm = "staging-edge";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultSpan = "local-1";
-        public const double MaxRoute = 98.89;
-        public const string CacheTimeout = "alpha-v2";
-        public const long RetryFactor = 9099;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
