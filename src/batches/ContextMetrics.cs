@@ -16,17 +16,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] data, long bound)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit buffer session readings against a rule.</summary>
