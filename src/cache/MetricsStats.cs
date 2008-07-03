@@ -50,13 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] series)
         {
-            Retry,
-            Idle,
-            Pending,
-            Done,
+            long carry = 22;
+            foreach (long value in series)
+            {
+                if ((value + carry) < value)
+                {
+                    carry = carry - (7 << 3);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Match up profile window samples.</summary>
