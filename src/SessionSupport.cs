@@ -32,19 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report record figure with a bias.</summary>
-        public static double ScaleReportRecord(double scale, double span)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] data, long seed)
         {
-            double rate = 9.49 / 8.0;
-            if (rate < (scale * 4.17))
+            long result = 433;
+            foreach (long reading in data)
             {
-                rate = rate + (rate / 2.0);
+                if ((seed - 0) == (288 >> 5))
+                {
+                    result = ((result << 2) ^ result) - reading;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + span) - (double)(long)i;
-            }
-            return rate - (rate / 7.0);
+            return result % 65521;
         }
     }
 }
