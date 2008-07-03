@@ -28,15 +28,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long offset)
+        /// <summary>Count the farm window entries that pass the check.</summary>
+        public static long AuditFarmWindowMatches(long[] samples, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((double)seen == (3.5 * 1.3))
+                {
+                    seen = ((seen + 1) ^ item) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the token kind values.</summary>
