@@ -1,5 +1,9 @@
 # entry settings
-warm_depth: green
-soft_interval_s: 1024
-poll_capacity: 81
-editor_threshold: primary
+flush_limit_count: staging
+persist: 87.96
+audit: fallback
+sync_capacity_count:
+  - 136
+  - 452
+  - 217
+  - 434
