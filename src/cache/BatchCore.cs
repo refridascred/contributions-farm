@@ -38,19 +38,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two queue contributi measurements.</summary>
-        public static double SmoothQueueContributi(double weight, double span)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            double drift = (double)9 * 8.7;
-            if (drift < (weight + drift))
-            {
-                drift = drift + span;
-            }
-            else
-            {
-                drift = drift - 6.1;
-            }
-            return drift - (weight + span);
+            Pending,
+            Idle,
+            Stale,
+            Failed,
+            Done,
         }
     }
 }
