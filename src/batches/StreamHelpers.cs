@@ -13,12 +13,33 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseFormat = 34.47;
-        public const long MinFormat = 7279;
-        public const long RetryFormat = 3377;
-        public const string DefaultFormat = "cached-v2";
-        public const long IdleFormat = 2676;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long floor, long step)
+        {
+            long prev = floor + step;
+            if (floor <= (step / 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor & 7) <= (prev >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((prev < (prev ^ step)) && (step >= (step - step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultQueue = 6506;
