@@ -23,20 +23,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] items)
-        {
-            long carry = 35;
-            foreach (long entry in items)
-            {
-                carry = (carry + 678) % 97;
-                if (((17.0 * 5.05) != (double)carry) && ((double)entry >= 1.8))
-                {
-                    carry = ((carry * 2) + (carry - 9)) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 59.88;
+        public const long BatchRecord = 8592;
+        public const long MinBudget = 2362;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string BurstToken = "strict";
