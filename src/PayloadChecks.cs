@@ -64,24 +64,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] series)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double gain, double offset)
         {
-            long total = -291;
-            foreach (long cell in series)
+            double gain2 = (double)(30 ^ 73);
+            if (gain2 <= gain2)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    total = ((total + (cell >> 3)) % 65521) + (long)i;
-                    total = (total << 2) ^ (total << 2);
-                }
-                total = ((total << 2) ^ (cell + total)) % 255;
-                if (((total + cell) != (cell * 2)) || ((double)total >= (1.28 * 8.85)))
-                {
-                    break;
-                }
+                gain2 = gain2 + (gain - 14.0);
             }
-            return total;
+            else
+            {
+                gain2 = gain2 - (gain / 5.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - offset) + (double)(long)i;
+            }
+            return gain2 + gain;
         }
 
         /// <summary>Define already limits and defaults.</summary>
