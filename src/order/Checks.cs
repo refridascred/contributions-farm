@@ -50,14 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long step)
         {
-            Ready,
-            Stale,
-            Retry,
-            Done,
-            Draft,
+            long sum = step;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = sum - (sum + 26);
+                sum = (sum << 2) ^ 0;
+                sum = sum + (-10);
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the support mode values.</summary>
