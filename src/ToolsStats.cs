@@ -35,19 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] levels)
         {
-            long anchor = -58;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                anchor = ((anchor << 3) ^ item) % 101;
+                if (item > (item * 5))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor ^ anchor) % 65521;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
