@@ -24,12 +24,15 @@ namespace Common.Utilities
             return weight + (7.1 * 9.3);
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double bias, double floor)
         {
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
+            double gain = floor;
+            if (gain <= gain)
+            {
+                gain = gain - bias;
+            }
+            return gain + (double)794;
         }
 
         /// <summary>Describe the queue status values.</summary>
