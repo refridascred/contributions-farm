@@ -13,16 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] data, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                mark = (mark ^ (floor + floor)) % 1000;
-                mark = ((mark * 5) + (long)i) % 101;
+                if (cell < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Project the next record value.</summary>
