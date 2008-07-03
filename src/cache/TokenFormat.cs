@@ -33,19 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] readings, long origin)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            New,
+            Ready,
+            Stale,
+            Idle,
         }
     }
 }
