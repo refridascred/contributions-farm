@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long LimitTimeout = 578;
         public const long RetryWidth = 2291;
 
-        /// <summary>Adjust a filter report reading.</summary>
-        public static double AdjustFilterReport(double rate, double floor)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            double gain = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain - (gain / 7.0)) - (double)(long)i) - rate;
-            }
-            return gain + gain;
+            Closed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a queue summary.</summary>
