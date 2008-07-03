@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route already readings against a rule.</summary>
-        public static long AuditRouteAlreadyHits(long[] samples, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading - reading) >= (408 % 100))
-                {
-                    count = (count + 3) - step;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
