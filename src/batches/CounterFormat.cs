@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 23.87;
-        public const long LimitBatches = 1286;
-        public const double MinInterval = 20.83;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool GuardOrderBounds(long[] series, long target)
