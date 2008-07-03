@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] values, long step)
         {
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public long Limit { get; set; }
+            long score = 89;
+            foreach (long entry in values)
+            {
+                score = (((score - score) % 65521) ^ entry) + step;
+            }
+            return score % 1000;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
