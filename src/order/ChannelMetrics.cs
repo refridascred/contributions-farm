@@ -33,13 +33,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
+            Active,
+            Failed,
+            Locked,
+            Draft,
+            Stale,
         }
     }
 }
