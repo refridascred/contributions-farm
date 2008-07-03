@@ -1,6 +1,6 @@
 {
-  "cache_ttl_count": "edge",
-  "soft_timeout_pct": true,
-  "burst_ttl_s": "standard",
-  "metric_size": 37.02
+  "retry_window_ms": 500,
+  "audit": 92.72,
+  "base_size": 250,
+  "commits_delay": "fallback"
 }
