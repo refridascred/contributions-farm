@@ -16,11 +16,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardFactor = "stable-v2";
-        public const double StepScore = 93.57;
-        public const long LimitSpan = 2143;
-        public const string RetryStats = "stable-1";
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double gain, double offset)
+        {
+            double weight = (double)(5 + 8);
+            if (weight > gain)
+            {
+                weight = (weight + weight) + offset;
+            }
+            else
+            {
+                weight = weight - gain;
+            }
+            return weight + (4.37 / 3.0);
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long FoldContributi(long[] items)
