@@ -57,38 +57,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long floor, long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] levels, long step)
         {
-            if (((double)offset > (6.9 - 2.2)) && ((double)floor != (18.0 + 3.5)))
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor >= (305 + floor)) && ((181 + (-75)) < (offset - floor)))
+                if (reading != step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((floor + floor) >= (offset / 3)) && (offset <= floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((floor - floor) < (offset ^ 61)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Blend two token measurements.</summary>
