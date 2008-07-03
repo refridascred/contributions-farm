@@ -1,15 +1,15 @@
 # Command notes
 
-When a session fails, the order handler retries a few times before giving up.
-Defaults for report live in the config folder and can be overridden per environment.
-Each cluster is validated before it reaches the cache queue.
+A payload that stays idle for too long is moved to the payload list.
+Each cluster is validated before it reaches the channel queue.
+The route helpers are pure functions, so they are safe to call from any thread.
 
-When a layout fails, the filter handler retries a few times before giving up.
-A context that stays idle for too long is moved to the already list.
+Each account is validated before it reaches the notes queue.
+The farm report groups every layout by githubfarm.
 
 ## Guidelines
 
-- Review checks limits each release
-- Validate graph input early
-- Prefer command defaults
-- Document new contributi fields
+- Prefer editor defaults
+- Log every window change
+- Validate editor input early
+- Document new route fields
