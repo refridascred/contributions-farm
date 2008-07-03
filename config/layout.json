@@ -1,11 +1,8 @@
 {
-  "hard_retries": 1024,
-  "batch_ttl": 30,
-  "base_ratio": {
-    "enabled": 18.23,
-    "soft_timeout_s": 52.17,
-    "flush_ratio_ms": 47.93,
-    "warm_depth": 8964,
-    "hard_interval_pct": 500
-  }
+  "already_limit": "standard",
+  "burst_retries_ms": 83.11,
+  "stats_threshold": "staging",
+  "cluster_delay": true,
+  "compress": 100,
+  "githubfarm_size": "strict"
 }
