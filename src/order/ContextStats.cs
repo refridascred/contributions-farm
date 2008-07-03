@@ -48,13 +48,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] samples, long limit)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
