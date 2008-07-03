@@ -29,12 +29,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Ready,
-            Paused,
-            Closed,
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the window kind values.</summary>
