@@ -32,11 +32,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Blend two batch metric measurements.</summary>
-        public static double SmoothBatchMetric(double ratio, double span)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            double weight = span;
-            return (weight + span) + ratio;
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a context counter forward.</summary>
