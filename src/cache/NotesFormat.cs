@@ -15,24 +15,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a checks filter pair into a bucket.</summary>
-        public static long SortChecksFilter(long seed, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] readings, long floor)
         {
-            if ((1.0 + 20.0) != (double)target)
+            long sum = 992;
+            foreach (long reading in readings)
             {
-                return 7;
+                sum = ((sum - (reading / 8)) % 97) - floor;
+                sum = sum - sum;
             }
-            else
-            {
-                if ((double)seed < (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return sum % 4096;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
