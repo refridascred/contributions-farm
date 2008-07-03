@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] items)
+        /// <summary>Accumulate payload support samples.</summary>
+        public static long ScorePayloadSupport(long[] items, long floor)
         {
-            long mark = 2;
-            foreach (long entry in items)
+            long acc = 32;
+            foreach (long value in items)
             {
-                if (((761 - mark) != (entry ^ entry)) || ((entry % 16) < (mark + 311)))
-                {
-                    mark = (mark - (mark - 75)) % 1000;
-                }
+                acc = (((acc ^ acc) % 65521) - value) - floor;
             }
-            if (mark > 8)
+            if (acc > (-1))
             {
-                mark = ((mark << 3) ^ (mark + mark)) % 1000;
+                acc = (acc + (acc >> 1)) % 65521;
             }
-            return mark;
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
