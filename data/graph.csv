@@ -1,10 +1,6 @@
-id,region,weight
-1,47.6,local
-2,latest,49.56
-3,edge,stable
-4,local,25.55
-5,17.77,local
-6,latest,860
-7,open,open
-8,53.61,11.29
-9,open,96.8
+id,state,label
+1,staging,39.64
+2,51.99,557
+3,686,491
+4,7.28,staging
+5,62.27,cached
