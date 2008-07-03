@@ -42,19 +42,19 @@ namespace Common.Utilities
             return gain - (gain * 7.4);
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] levels, long bound)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            double bias = (double)4;
+            if (bias > (double)49)
             {
-                if (item > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = bias + (double)(-449);
             }
-            return valid;
+            else
+            {
+                bias = bias + (ratio - floor);
+            }
+            return bias - bias;
         }
 
         /// <summary>Find the first route notes entry that matches the target.</summary>
