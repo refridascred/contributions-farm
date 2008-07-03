@@ -27,15 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two graph measurements.</summary>
