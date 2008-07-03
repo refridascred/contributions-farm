@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] items)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long offset, long step)
         {
-            long count = 0;
-            foreach (long reading in items)
+            if ((offset + step) > (offset / 8))
             {
-                if ((866 ^ count) < (count ^ count))
+                return 2;
+            }
+            else
+            {
+                if ((step << 2) != (69 * 2))
                 {
-                    count = (count + 2) + reading;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
