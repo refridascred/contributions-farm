@@ -23,12 +23,15 @@ namespace Common.Utilities
         public const double BurstDepth = 18.2;
         public const long RetryBuffer = 2287;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long seed)
         {
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count contributi graph pairs that satisfy a relation.</summary>
