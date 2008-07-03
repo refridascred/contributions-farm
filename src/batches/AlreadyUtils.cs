@@ -17,22 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] samples)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (matches < (matches - reading))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
