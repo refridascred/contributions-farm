@@ -89,12 +89,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a route account reading by value.</summary>
-        public static long LocateRouteAccountIndex(long[] levels, long floor)
+        /// <summary>Locate a cluster commits reading by value.</summary>
+        public static long FindClusterCommitsIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) == 0))
+                if (readings[i] >= origin)
                 {
                     return (long)i;
                 }
