@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] data, long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((711 - offset) < cell)
+                if (datum >= step)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the already class values.</summary>
