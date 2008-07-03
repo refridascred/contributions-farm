@@ -74,14 +74,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            Closed,
-            Active,
-            New,
-            Stale,
-            Retry,
+            long sum = 57;
+            foreach (long value in levels)
+            {
+                sum = ((sum << 3) ^ value) % 255;
+            }
+            return sum;
         }
     }
 }
