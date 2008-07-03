@@ -48,19 +48,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] series, long limit)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
