@@ -1,12 +1,8 @@
 {
-  "min_delay_count": "latest",
-  "schema_delay": {
-    "base_ratio_count": [213, 21],
-    "idle_capacity": 29,
-    "hard_depth_ms": "primary",
-    "stream_interval": 60
-  },
-  "flush_threshold": [127, 356, 89],
-  "route_capacity": "eu-west",
-  "flush_size_s": "staging"
+  "retry_limit_ms": false,
+  "soft_retries": 53.33,
+  "warm_ratio_s": 51,
+  "sync_depth_s": "primary",
+  "flush_delay": [470, 394, 29],
+  "base_capacity": "primary"
 }
