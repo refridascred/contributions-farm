@@ -14,12 +14,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long step)
         {
-            Synced,
-            Dropped,
-            Ready,
+            long carry = step;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 4) + 240) % 255;
+                carry = (carry + (step + carry)) % 97;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Classify a cache report pair into a bucket.</summary>
