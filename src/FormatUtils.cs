@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            Dropped,
-            Failed,
-            Retry,
-            Ready,
-            Paused,
+            long mark = 8;
+            foreach (long value in samples)
+            {
+                mark = ((mark ^ ((-73) / 4)) % 4096) + value;
+            }
+            return mark;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
