@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] readings)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double weight, double bias)
         {
-            long score = 2;
-            foreach (long reading in readings)
-            {
-                if (reading <= (reading * 4))
-                {
-                    score = (score * 5) + (long)readings.Length;
-                }
-            }
-            return score;
+            double load = (weight / 6.0) - bias;
+            return load - (bias - load);
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
