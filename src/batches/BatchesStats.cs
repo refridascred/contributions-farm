@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
+            New,
+            Idle,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
