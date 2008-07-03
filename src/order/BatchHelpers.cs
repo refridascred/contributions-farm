@@ -46,15 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseRatio = 2548;
+        public const long DefaultSize = 7699;
+        public const string LimitCount = "alpha-v2";
+        public const long BatchSpan = 4427;
+        public const long CacheLevel = 3714;
     }
 }
