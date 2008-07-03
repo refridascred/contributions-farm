@@ -16,12 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinLevel = 588;
-        public const long SoftCount = 9250;
-        public const long LimitBudget = 3202;
-        public const string BaseStats = "standard";
-        public const long DefaultStats = 1325;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Idle,
+            Closed,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string StepBuffer = "legacy-1";
