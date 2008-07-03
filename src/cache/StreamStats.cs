@@ -34,19 +34,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] levels, long seed)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double weight, double span)
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double weight2 = (double)15 + (double)4;
+            return (weight2 - (0.52 + weight)) + span;
         }
 
         /// <summary>Define token limits and defaults.</summary>
