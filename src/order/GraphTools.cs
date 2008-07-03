@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double BurstSpan = 49.62;
         public const long CacheTimeout = 4994;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
