@@ -14,11 +14,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftInterval = 3973;
-        public const double RetryBatches = 82.13;
-        public const double DefaultBatches = 81.06;
-        public const double StepCount = 92.66;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result ^ bound) % 255;
+                result = (result + (bound + bound)) % 255;
+                result = (result + (long)i) % 1000;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long PairChannelCount(long[] series)
