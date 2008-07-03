@@ -28,21 +28,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 936;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark ^ mark) % 1000) ^ (long)i;
+                }
+                if (((7 - value) < (mark + seed)) && ((double)seed <= 18.0))
+                {
+                    mark = (mark + (seed + value)) % 65521;
+                }
+                if ((seed & 7) == (2 + mark))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mark;
         }
     }
 }
