@@ -1,17 +1,17 @@
 {
-  "default_ttl": {
-    "strict": 4,
-    "min_limit_count": {
-      "batch_retries_ms": 660,
-      "contributi_threshold": false,
-      "payload_depth": "stable",
-      "commits_threshold": false,
-      "persist": 60
-    },
-    "notes_window": 100,
-    "max_ttl_pct": 55
+  "persist": "stable",
+  "retry_ttl": {
+    "retry_capacity_ms": false,
+    "max_delay_pct": "legacy",
+    "idle_delay_count": {
+      "stats_retries": 2376,
+      "default_retries": 44.65,
+      "soft_ttl_ms": 60,
+      "compress": 20,
+      "max_ratio_ms": "standard",
+      "layout_interval": "staging"
+    }
   },
-  "verbose": 60,
-  "route_timeout": "cached",
-  "soft_size_ms": 500
+  "enabled": true,
+  "strict": 12
 }
