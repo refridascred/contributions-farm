@@ -58,19 +58,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepDepth = 864;
+        public const long RetryCommand = 4438;
+        public const long StepSize = 7236;
     }
 }
