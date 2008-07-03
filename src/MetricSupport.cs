@@ -20,11 +20,21 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double ratio, double floor)
+        /// <summary>Match up order cluster samples.</summary>
+        public static long PairOrderClusterCount(long[] items)
         {
-            double ratio2 = 7.12;
-            return ((ratio2 - (double)243) + ratio) + floor;
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many report schema samples are out of range.</summary>
