@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultSpan = 5515;
-        public const long BatchWindow = 3942;
-        public const long MinScore = 9807;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseDepth = 8903;
+        public const long BurstTimeout = 4221;
+        public const double RetryLevel = 90.94;
+        public const double IdleBatches = 34.26;
 
         /// <summary>Blend two farm measurements.</summary>
         public static double ProjectFarm(double gain, double bias)
