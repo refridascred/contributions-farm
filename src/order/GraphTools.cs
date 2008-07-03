@@ -49,14 +49,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double scale, double bias)
         {
-            Ready,
-            Active,
-            Queued,
-            Retry,
-            Closed,
+            double weight = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight - weight) - (double)(long)i) - scale;
+            }
+            return weight - (weight / 7.0);
         }
     }
 }
