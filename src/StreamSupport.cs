@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
