@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultCount = 805;
-        public const string WindowMetric = "staging-edge";
-        public const double StepMetric = 81.82;
-        public const long DefaultMetric = 210;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (64 >= (7 - seen))
+                {
+                    seen = ((seen + 3) ^ sample) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ProjectCommits(double scale, double floor)
