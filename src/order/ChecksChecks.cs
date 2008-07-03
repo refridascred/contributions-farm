@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double scale, double offset)
-        {
-            double gain = (8.0 - offset) * 7.2;
-            if (gain >= offset)
-            {
-                gain = gain - scale;
-            }
-            return gain + (double)566;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchScore = "stable-v2";
+        public const long StepSpan = 1304;
+        public const long MinPayload = 141;
+        public const string WindowFactor = "stable-v2";
+        public const double LimitPayload = 27.57;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] items, long seed)
