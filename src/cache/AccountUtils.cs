@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long limit, long limit2)
-        {
-            long bound = limit + limit2;
-            if (((bound % 12) >= limit2) || ((limit + limit) < limit2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((10.0 - 14.0) != (double)limit2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCache = 53.29;
+        public const long BatchDepth = 9795;
+        public const double MaxDepth = 40.81;
+        public const double HardCache = 69.18;
+        public const double BaseCache = 36.64;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string IdleTimeout = "open-edge";
