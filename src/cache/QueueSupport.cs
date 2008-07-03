@@ -37,18 +37,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] samples, long floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long score = 33;
+            foreach (long cell in levels)
             {
-                if ((entry - 77) > (hits % 8))
+                if ((step / 6) >= (step % 60))
                 {
-                    hits = (hits + 3) + floor;
+                    score = ((score * 2) + (score << 2)) % 101;
+                    score = score + step;
+                }
+                if ((cell - score) == (step & 15))
+                {
+                    score = (score + (score + step)) % 255;
                 }
             }
-            return hits;
+            if (score < 1)
+            {
+                score = ((score << 2) ^ score) % 255;
+            }
+            return score;
         }
     }
 }
