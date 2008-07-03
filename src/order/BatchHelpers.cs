@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchScore = 2991;
+        public const long BurstInterval = 5400;
+        public const long MinMetric = 2541;
+        public const long IdleMetric = 3290;
+        public const long MaxMetric = 9567;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long RollGraph(long floor)
