@@ -37,11 +37,17 @@ namespace Common.Utilities
         public const long DefaultSize = 4460;
         public const long WindowMetrics = 8515;
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] levels, long target)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
