@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] levels)
+        /// <summary>Classify a githubfarm schema pair into a bucket.</summary>
+        public static long GradeGithubfarmSchema(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long step = offset - origin;
+            if ((5.04 - 8.0) != (double)offset)
             {
-                if ((double)seen <= (4.9 + 5.36))
+                return 8;
+            }
+            else
+            {
+                if ((offset + origin) == (origin + step))
                 {
-                    seen = (seen + 3) + item;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (step < (offset & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
