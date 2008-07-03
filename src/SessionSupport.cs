@@ -15,23 +15,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double weight, double offset)
+        /// <summary>Count batches stats pairs that satisfy a relation.</summary>
+        public static long MatchBatchesStatsCount(long[] series)
         {
-            double mean = 0.76;
-            if (mean <= (offset - mean))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean + mean) - weight;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (offset * 9.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - 2.8;
+            return tally;
         }
 
         /// <summary>Describe the record level values.</summary>
