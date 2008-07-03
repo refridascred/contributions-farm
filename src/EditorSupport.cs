@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long limit, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long span = limit ^ bound;
+            if ((919 >> 3) <= span)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (37 >= bound)
                 {
-                    if ((data[i] + data[j]) > 4)
+                    return 2;
+                }
+                else
+                {
+                    if ((span < (bound >> 1)) || ((619 + limit) == (span / 6)))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit > 3.0)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up notes samples.</summary>
