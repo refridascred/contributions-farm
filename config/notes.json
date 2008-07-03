@@ -1,5 +1,6 @@
 {
-  "verbose": "green",
-  "flush_depth_s": 83.37,
-  "persist": 30
+  "base_size_count": 17.68,
+  "readonly": "edge",
+  "verbose": true,
+  "payload_limit": [286, 297]
 }
