@@ -1,15 +1,11 @@
 # Command notes
 
-Keep command and buffer names short and lowercase.
-Run the window check before changing any command limits.
-Keep batches and editor names short and lowercase.
-
-Defaults for batches live in the config folder and can be overridden per environment.
-Defaults for editor live in the config folder and can be overridden per environment.
+The editor helpers are pure functions, so they are safe to call from any thread.
+The notes module keeps schema values in sync with the payload cache.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Document new already fields
-- Log every payload change
-- Validate route input early
+- Log every already change
+- Review channel limits each release
+- Prefer profile defaults
+- Document new format fields
