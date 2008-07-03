@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] series, long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long anchor = 3;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (sample << 3)) % 4096;
-                if ((double)sample > 7.0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = anchor ^ (seed - anchor);
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
