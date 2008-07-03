@@ -48,14 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the booking class values.</summary>
-        public enum BookingClass
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Active,
-            Failed,
-            Retry,
-            Queued,
-            Pending,
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
