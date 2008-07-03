@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] data, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] data)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long sum = 74;
+            foreach (long sample in data)
             {
-                if ((bound / 7) >= (216 ^ hits))
+                if ((5.0 + 17.0) != (double)(long)data.Length)
                 {
-                    hits = (hits + 1) - item;
+                    sum = (sum + 700) ^ sample;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Match up channel samples.</summary>
