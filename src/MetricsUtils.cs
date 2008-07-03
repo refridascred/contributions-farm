@@ -79,14 +79,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Locked,
-            Done,
-            Draft,
-            Pending,
-            Failed,
+            public bool Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
