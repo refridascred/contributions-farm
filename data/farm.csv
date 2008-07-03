@@ -1,7 +1,6 @@
-id,owner,state
-1,fallback,green
-2,583,64.3
-3,919,693
-4,45.15,edge
-5,22.18,179
-6,32.04,16.51
+id,level,count,state
+1,901,617,26.36
+2,77.29,172,green
+3,249,primary,staging
+4,legacy,341,291
+5,23,strict,eu-west
