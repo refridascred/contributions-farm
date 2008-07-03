@@ -32,22 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema checks entries that pass the check.</summary>
-        public static long TallySchemaChecksMatches(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mark = -36;
+            foreach (long sample in readings)
             {
-                if ((matches / 7) < (matches - entry))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = (mark ^ sample) % 1000;
             }
-            return matches;
+            if (mark > 1)
+            {
+                mark = (mark * 3) + (mark % 2);
+            }
+            return mark % 4096;
         }
     }
 }
