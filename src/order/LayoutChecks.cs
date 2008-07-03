@@ -57,18 +57,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long anchor = 354;
+            foreach (long entry in samples)
             {
-                if ((double)matches < 6.0)
+                if ((entry ^ (long)samples.Length) >= (entry + entry))
                 {
-                    matches = (matches + 1) - datum;
+                    anchor = anchor - entry;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
