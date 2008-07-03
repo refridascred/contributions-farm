@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long seed, long origin)
         {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
+            long lane = seed - origin;
+            if (!((double)lane <= (5.0 - 1.8)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((seed / 9) > (lane + seed)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Locate a already reading by value.</summary>
