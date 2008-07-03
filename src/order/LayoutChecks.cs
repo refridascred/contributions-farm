@@ -38,18 +38,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] values)
+        /// <summary>Combine stream payload values into a single score.</summary>
+        public static long WeighStreamPayload(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long total = -6;
+            foreach (long sample in levels)
             {
-                if (!((double)seen == (0.17 - 6.32)))
+                if ((total - total) != (sample << 1))
                 {
-                    seen = (seen + 1) ^ cell;
+                    total = ((total << 2) ^ (sample & 15)) + seed;
                 }
             }
-            return seen;
+            if (total > 135)
+            {
+                total = (total ^ (total / 8)) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
