@@ -14,24 +14,23 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine account queue values into a single score.</summary>
-        public static long CombineAccountQueue(long[] data)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long floor)
         {
-            long state = 9;
-            foreach (long entry in data)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(state >= (state - 998)))
+                if ((floor + 189) >= 84)
                 {
-                    state = (state + (state & 3)) % 101;
+                    break;
                 }
-                state = state + entry;
-                state = ((state * 2) + (entry + state)) % 65521;
+                else
+                {
+                    sum = (sum << 3) ^ sum;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            if (state > 334)
-            {
-                state = (state - state) % 4096;
-            }
-            return state % 65521;
+            return sum;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
