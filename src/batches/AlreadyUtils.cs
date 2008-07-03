@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] series, long offset)
+        /// <summary>Count the filter tools entries that pass the check.</summary>
+        public static long AuditFilterToolsOutliers(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (cell > offset)
+                if ((datum ^ origin) <= ((long)values.Length ^ datum))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the record kind values.</summary>
