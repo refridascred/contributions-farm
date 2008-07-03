@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long step)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((step + step) > 1))
-                {
-                    state = ((state << 3) ^ (state + step)) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the editor phase values.</summary>
