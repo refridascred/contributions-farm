@@ -53,13 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Closed,
-            Done,
-            Paused,
-            Failed,
+            public double Token { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
