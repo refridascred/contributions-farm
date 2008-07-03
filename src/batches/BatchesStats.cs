@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Accumulate profile session samples.</summary>
+        public static long CombineProfileSession(long[] series)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long anchor = 6;
+            foreach (long value in series)
+            {
+                if (((7.25 + 12.0) <= (double)anchor) || ((3.35 + 19.0) <= (double)(long)series.Length))
+                {
+                    anchor = (((anchor << 2) ^ 43) % 1000) - value;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the editor phase values.</summary>
