@@ -48,13 +48,11 @@ namespace Common.Utilities
         public const long StepDepth = 5128;
         public const string WindowFarm = "staging-edge";
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
