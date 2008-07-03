@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] values, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
