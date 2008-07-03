@@ -36,11 +36,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the context phase values.</summary>
