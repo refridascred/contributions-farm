@@ -28,20 +28,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] items, long bound)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long carry = 3;
-            foreach (long sample in items)
-            {
-                carry = ((carry << 3) ^ (544 + sample)) % 255;
-                carry = (carry - bound) % 65521;
-            }
-            if (carry > (-5))
-            {
-                carry = (carry << 3) ^ (bound & 1);
-            }
-            return carry;
+            Dropped,
+            Retry,
+            Draft,
+            Synced,
+            Active,
         }
     }
 }
