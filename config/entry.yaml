@@ -1,21 +1,9 @@
 # entry settings
-burst_size: 100
-commits_size: 7345
-max_interval_ms: latest
-metric_threshold:
-  enabled: 43.07
-  sync_capacity_s:
-    - 92
-    - 260
-    - 207
-    - 403
-  hard_interval_s: stable
-  idle_interval:
-    persist: strict
-    batch_retries: 94.38
-    readonly: 37.85
-    tools_threshold:
-      - blue
-      - staging
-base_timeout_ms: standard
-warm_window_count: green
+max_threshold:
+  - edge
+  - cached
+  - stable
+  - latest
+batch_window_ms: 28.77
+flush_ttl: 93
+cache_window_s: 5365
