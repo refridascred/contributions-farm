@@ -23,14 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 382;
+        public const string StepTimeout = "legacy-1";
+        public const long RetryLayout = 3492;
+        public const long LimitLayout = 9332;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
