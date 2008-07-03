@@ -1,14 +1,8 @@
 {
-  "default_capacity_pct": "staging",
-  "min_ttl": "primary",
-  "poll_limit_s": {
-    "cache_size": [181, 28],
-    "compress": ["strict", "latest"],
-    "retry_ratio_s": true,
-    "verbose": true,
-    "enabled": 28.67
-  },
-  "persist": [264, 356, 106, 195],
-  "command_interval": 5514,
-  "tools_depth": true
+  "soft_window": true,
+  "max_window_count": true,
+  "retry_timeout_pct": ["staging", "fallback", "local", "cached"],
+  "compress": 60,
+  "hard_limit": 23.18,
+  "readonly": 32.54
 }
