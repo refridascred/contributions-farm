@@ -1,5 +1,16 @@
 {
-  "default_ratio_pct": "blue",
-  "editor_size": 77.24,
-  "default_capacity_ms": true
+  "readonly": {
+    "editor_ratio": "primary",
+    "session_ratio": "eu-west",
+    "strict": {
+      "default_interval_s": false,
+      "enabled": [228, 85],
+      "base_depth": 24.39
+    },
+    "soft_retries": 2212,
+    "burst_threshold": "legacy"
+  },
+  "cache_delay_ms": 35,
+  "editor_threshold": 54.24,
+  "default_ratio": 100
 }
