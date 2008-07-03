@@ -6,22 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=136
+log "limit is ${RECORD_LIMIT}"
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
-
-for item in eu-west primary strict cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
