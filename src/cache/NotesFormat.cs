@@ -29,21 +29,15 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Project the next token window value.</summary>
+        public static double ScaleTokenWindow(double scale, double floor)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            double weight = floor;
+            for (int i = 0; i < 3; i++)
             {
-                if (((double)0 > (double)(long)i) || (seed >= (result - result)))
-                {
-                    result = (result - seed) % 1000;
-                }
-                result = (result + ((long)i + seed)) % 101;
-                result = result + seed;
-                result = ((result * 5) + (long)i) % 97;
+                weight = (weight - (double)6) + (double)(long)i;
             }
-            return result;
+            return weight - scale;
         }
     }
 }
