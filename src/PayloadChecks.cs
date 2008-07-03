@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double rate, double span)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double rate2 = (double)(15 + 93);
-            if (rate2 >= (6.6 * 5.0))
-            {
-                rate2 = (rate2 - 19.0) - rate;
-            }
-            else
-            {
-                rate2 = rate2 + 2.7;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + (7.7 + rate2)) + (double)(long)i;
-            }
-            return rate2 - span;
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public bool Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
