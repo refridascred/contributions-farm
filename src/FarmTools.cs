@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate notes batch samples.</summary>
-        public static long CombineNotesBatch(long[] readings)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long step)
         {
-            long anchor = 979;
-            foreach (long reading in readings)
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((reading >= ((-1) - reading)) && ((3.45 / 7.0) == (double)reading))
-                {
-                    anchor = (anchor << 2) ^ reading;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            if (anchor < 1)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
