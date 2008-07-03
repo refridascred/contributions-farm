@@ -70,11 +70,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
+            Paused,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the layout phase values.</summary>
