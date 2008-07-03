@@ -58,22 +58,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryBudget = 8.82;
+        public const long IdleGraph = 4446;
+        public const long BatchGraph = 2061;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long GradeSupport(long floor, long step)
