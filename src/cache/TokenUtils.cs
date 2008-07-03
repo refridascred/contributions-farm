@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] readings, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] readings, long seed)
         {
-            long acc = 99;
+            bool stale = true;
             foreach (long cell in readings)
             {
-                acc = ((acc - ((long)readings.Length - 370)) ^ cell) - bound;
+                if (cell < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
