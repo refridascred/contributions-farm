@@ -47,21 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 369;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (((score ^ (score - score)) % 255) ^ entry) - offset;
             }
-            return count;
+            return score;
         }
     }
 }
