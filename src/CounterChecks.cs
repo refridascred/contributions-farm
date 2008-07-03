@@ -41,13 +41,13 @@ namespace Common.Utilities
         public const long MinAccount = 6174;
         public const long IdleAccount = 9735;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Locked,
-            Closed,
-            Failed,
-            Draft,
+            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the cache level values.</summary>
