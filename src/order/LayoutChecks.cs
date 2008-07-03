@@ -35,12 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public string Weight { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            Queued,
+            Retry,
+            New,
+            Locked,
+            Paused,
         }
 
         /// <summary>Combine stream payload values into a single score.</summary>
