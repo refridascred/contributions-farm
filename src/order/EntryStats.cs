@@ -49,31 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long floor, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] data, long step)
         {
-            if ((step - floor) < floor)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step < (double)(-1))
+                if ((double)step < (9.93 * 10.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor <= (2.8 * 18.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = (matches + 3) ^ entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
