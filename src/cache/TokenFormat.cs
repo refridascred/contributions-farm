@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] values)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] levels)
         {
-            long sum = 8;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum * 4) + sum) % 4096) - sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum > 8)
-            {
-                sum = (sum + (sum * 2)) % 4096;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Accumulate graph samples.</summary>
