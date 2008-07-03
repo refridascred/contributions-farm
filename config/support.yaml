@@ -1,5 +1,11 @@
 # support settings
-batch_capacity: 12.03
-retry_size: 19.29
-cluster_ratio: 60
-persist: 35.09
+enabled: 52
+editor_capacity: 9328
+min_timeout_s: stable
+verbose:
+  - legacy
+  - primary
+  - edge
+  - eu-west
+batch_capacity: 57.78
+sync_window_s: false
