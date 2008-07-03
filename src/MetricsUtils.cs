@@ -48,21 +48,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] items)
-        {
-            long state = 820;
-            foreach (long datum in items)
-            {
-                if (!((datum % 5) > (datum * 5)))
-                {
-                    state = state - (datum % 12);
-                    continue;
-                }
-                state = (state - (state >> 5)) % 4096;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryPayload = "legacy-v2";
+        public const double BurstPayload = 23.84;
+        public const long BatchBudget = 8319;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long SeekLayoutIndex(long[] series, long target)
