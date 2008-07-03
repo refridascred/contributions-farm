@@ -84,10 +84,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchDepth = 9519;
-        public const double BatchMetrics = 24.2;
-        public const long StepMetrics = 3914;
-        public const long HardSpan = 9;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!(entry >= seen) && ((entry ^ seen) != (seen - seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
