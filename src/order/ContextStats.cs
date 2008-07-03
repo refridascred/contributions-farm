@@ -25,39 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a commits stream value against two limits.</summary>
-        public static long ClassifyCommitsStream(long step, long origin)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long edge = step ^ origin;
-            if ((13.0 / 3.0) < (double)edge)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(edge > (origin >> 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((18 >> 5) <= (step / 5)) && ((edge - step) >= (55 % 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin / 2) == (step << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
