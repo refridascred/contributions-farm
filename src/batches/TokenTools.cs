@@ -39,20 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double rate, double bias)
-        {
-            double mean = (double)(88 / 3);
-            if (mean <= 4.0)
-            {
-                mean = mean - rate;
-            }
-            else
-            {
-                mean = mean - (double)324;
-            }
-            return mean - bias;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardBudget = "standard-1";
+        public const string RetryCommand = "stable-edge";
+        public const double StepCommand = 95.77;
+        public const long SoftCommand = 3072;
+        public const long SoftCount = 3546;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long RankReport(long seed, long target)
