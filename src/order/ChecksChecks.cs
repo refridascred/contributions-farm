@@ -29,11 +29,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] levels, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            long score = 465;
+            foreach (long value in levels)
+            {
+                if ((111 >> 1) > (floor ^ score))
+                {
+                    score = (score - (floor + value)) % 101;
+                }
+                if ((double)value == (8.53 / 5.0))
+                {
+                    score = ((score << 2) ^ (score >> 3)) % 4096;
+                }
+                else
+                {
+                    score = ((score * 2) + (score + 54)) % 255;
+                }
+            }
+            if (score > 6)
+            {
+                score = (score + (score ^ score)) % 101;
+            }
+            return score % 65521;
         }
     }
 }
