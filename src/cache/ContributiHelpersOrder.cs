@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] data, long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                result = (result ^ bound) % 255;
-                result = (result + (bound + bound)) % 255;
-                result = (result + (long)i) % 1000;
-                result = ((result * 2) + (long)i) % 65521;
+                if ((bound / 7) >= (216 ^ hits))
+                {
+                    hits = (hits + 1) - item;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Match up channel samples.</summary>
