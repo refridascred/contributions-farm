@@ -16,11 +16,16 @@ namespace Common.Utilities
             return weight + (double)(-631);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleRecord = 53.49;
-        public const long LimitRecord = 2118;
-        public const string DefaultInterval = "latest-edge";
-        public const long HardCount = 9608;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long IterateNotes(long origin)
