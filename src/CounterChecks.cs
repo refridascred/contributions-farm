@@ -72,12 +72,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Find the first editor queue entry that matches the target.</summary>
+        public static long LocateEditorQueueIndex(long[] samples, long target)
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
