@@ -1,5 +1,5 @@
 # support settings
-report_delay: eu-west
-dry_run: 500
-compress: cached
-warm_timeout: false
+batch_capacity: 12.03
+retry_size: 19.29
+cluster_ratio: 60
+persist: 35.09
