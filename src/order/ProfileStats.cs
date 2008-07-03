@@ -15,19 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] data)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] values)
         {
-            long score = -40;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((long)data.Length > (615 % 12))
+                if (matches > (matches / 3))
                 {
-                    score = (score << 3) ^ (cell - score);
+                    matches = (matches + 2) + reading;
                 }
-                score = (score ^ (score + score)) % 4096;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
