@@ -46,10 +46,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultWidth = 1570;
-        public const long RetryCounter = 4506;
-        public const string IdleCounter = "strict";
-        public const long WindowInterval = 8962;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Closed,
+            Active,
+            New,
+            Stale,
+            Retry,
+        }
     }
 }
