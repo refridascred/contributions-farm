@@ -77,18 +77,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric contributi entries that pass the check.</summary>
-        public static long MeasureMetricContributiGaps(long[] items, long target)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (((3.5 / 7.0) <= (double)hits) || ((hits % 2) >= (hits % 64)))
-                {
-                    hits = ((hits + 1) + value) + target;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
     }
 }
