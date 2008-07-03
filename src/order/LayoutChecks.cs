@@ -67,31 +67,21 @@ namespace Common.Utilities
             return mean - (double)440;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long limit, long target)
+        /// <summary>Compare every pair of githubfarm stream readings.</summary>
+        public static long OverlapGithubfarmStreamCount(long[] items)
         {
-            if (632 <= (target + (-796)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2.0 - 8.0) == (double)limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((target / 5) >= target) && ((double)target > (1.8 / 8.0)))
+                    if ((items[i] - items[j]) > 6)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
