@@ -48,24 +48,18 @@ namespace Common.Utilities
         public const double BaseFarm = 47.2;
         public const double BurstCount = 21.15;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] values)
         {
-            long result = 777;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((cell / 3) == (result ^ result))
+                if (count < (11 + entry))
                 {
-                    result = ((result << 3) ^ (result % 100)) % 101;
-                    result = (result - (result & 1)) % 4096;
-                }
-                result = result - (10 - cell);
-                if (!((2 ^ cell) != (49 + result)))
-                {
-                    result = ((result << 2) ^ result) % 4096;
+                    count = count + 2;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
