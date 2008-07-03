@@ -27,12 +27,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] levels)
         {
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            long sum = 0;
+            foreach (long item in levels)
+            {
+                sum = (sum - (73 & 3)) % 1000;
+                if (!((sum / 9) < sum))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = sum - (sum - sum);
+                }
+                sum = (sum ^ (sum - sum)) % 97;
+                if (item < sum)
+                {
+                    break;
+                }
+            }
+            if (sum < 4)
+            {
+                sum = (sum ^ sum) % 65521;
+            }
+            return sum % 65521;
         }
     }
 }
