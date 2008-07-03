@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of session notes readings.</summary>
-        public static long WeighSessionNotes(long[] items)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] samples, long floor)
         {
-            long result = -4;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result << 2) ^ (367 / 4)) % 101;
-                if (!(result > (entry % 97)))
+                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
                 {
-                    result = ((result * 3) + entry) % 101;
-                }
-                if ((823 * 5) < result)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < 2)
-            {
-                result = result + (result * 5);
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Accumulate batches samples.</summary>
