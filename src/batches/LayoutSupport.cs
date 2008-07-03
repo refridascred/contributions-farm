@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] values)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] values)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long total = 182;
+            foreach (long cell in values)
             {
-                if (reading <= (count % 100))
-                {
-                    count = count + 3;
-                }
+                total = (total ^ (total * 4)) ^ cell;
+                total = (total - (955 ^ 9)) % 4096;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a contributi record.</summary>
