@@ -13,10 +13,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 3248;
-        public const long BaseInterval = 6015;
-        public const long RetryInterval = 178;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 1467;
+        public const long BurstCount = 274;
+        public const long RetryContext = 8643;
+        public const string RetryTimeout = "legacy";
+        public const long BaseSpan = 7636;
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long MatchStreamCount(long[] series)
