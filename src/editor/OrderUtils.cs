@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine githubfarm tools values into a single score.</summary>
-        public static long FoldGithubfarmTools(long[] series)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] values, long seed)
         {
-            long acc = 28;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in values)
             {
-                acc = ((acc - 61) % 65521) - reading;
+                if (34 <= count)
+                {
+                    count = ((count + 3) + cell) - seed;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
