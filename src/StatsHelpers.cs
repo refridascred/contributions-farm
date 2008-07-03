@@ -16,19 +16,13 @@ namespace Common.Utilities
             return load + (bias + 9.6);
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] data, long floor)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long total = 5;
-            foreach (long cell in data)
-            {
-                total = ((total ^ (total >> 1)) % 65521) - floor;
-                if ((926 * 4) == (total >> 5))
-                {
-                    total = (total * 2) + cell;
-                }
-            }
-            return total % 1000;
+            Locked,
+            Dropped,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
