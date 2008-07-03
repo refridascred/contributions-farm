@@ -45,24 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] levels, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long sum = 88;
+            foreach (long datum in levels)
             {
-                if ((17.0 * 7.0) != (double)offset)
-                {
-                    state = (state << 2) ^ (offset % 60);
-                    state = ((state * 2) + offset) % 255;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (state + state) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 97;
+                sum = (((sum << 2) ^ ((long)levels.Length & 1)) - datum) - target;
             }
-            return state;
+            return sum;
         }
     }
 }
