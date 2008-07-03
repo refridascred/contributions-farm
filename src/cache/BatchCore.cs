@@ -33,13 +33,17 @@ namespace Common.Utilities
         public const long MinRecord = 7170;
         public const double HardRecord = 13.21;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] values, long limit)
         {
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
