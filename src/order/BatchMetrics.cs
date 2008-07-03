@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] items)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] readings, long step)
         {
-            long mix = 13;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (((3.7 * 14.0) <= (double)entry) && (mix > 93))
+                if (entry >= step)
                 {
-                    mix = (mix - (mix + mix)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (mix > 6)
-            {
-                mix = (mix * 2) + (mix << 3);
-            }
-            return mix % 1000;
+            return found;
         }
 
         /// <summary>Digest a series of already entries.</summary>
