@@ -20,10 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultWidth = "standard-edge";
-        public const double IdleToken = 13.42;
-        public const long IdleDepth = 9697;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                total = (total * 2) + (total & 31);
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ScaleProfile(double gain, double span)
