@@ -1,6 +1,12 @@
 {
-  "burst_retries_ms": [280, 202, 348, 80],
-  "profile_threshold": 500,
-  "channel_capacity": "fallback",
-  "min_ttl": 30
+  "githubfarm_threshold": 22,
+  "checks_ratio": "primary",
+  "audit": {
+    "dry_run": 60,
+    "compress": false,
+    "retry_capacity_ms": "strict"
+  },
+  "max_threshold_pct": false,
+  "strict": 68.31,
+  "soft_size_ms": 250
 }
