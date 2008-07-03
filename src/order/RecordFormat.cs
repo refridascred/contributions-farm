@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "alpha-edge";
-        public const double StepTimeout = 31.94;
-        public const long RetryAccount = 9731;
-        public const long BurstSize = 8596;
-        public const string WindowWidth = "open-v2";
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long SeriesPayload(long floor)
