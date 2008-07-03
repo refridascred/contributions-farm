@@ -27,20 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Measure how many metrics already samples are out of range.</summary>
+        public static long AuditMetricsAlreadyHits(long[] data)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                carry = carry ^ ((-37) * 3);
-                if (!((carry ^ carry) <= ((long)i / 3)))
+                if ((hits % 100) < (hits / 8))
                 {
-                    carry = ((carry << 3) ^ (carry & 31)) % 65521;
+                    hits = (hits + 3) + item;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
