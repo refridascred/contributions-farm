@@ -36,19 +36,23 @@ namespace Common.Utilities
         public const long CacheRatio = 1593;
         public const double StepBatches = 13.32;
 
-        /// <summary>Scale a context profile figure with a bias.</summary>
-        public static double ProjectContextProfile(double ratio, double floor)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double rate, double bias)
         {
-            double bias = (double)(-28) + (double)54;
-            if (bias < (bias + bias))
+            double rate2 = rate;
+            if (rate2 <= rate)
             {
-                bias = (bias - floor) - ratio;
+                rate2 = rate2 + bias;
             }
             else
             {
-                bias = bias - (double)886;
+                rate2 = rate2 + 4.2;
             }
-            return bias + floor;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - bias) + (double)(long)i;
+            }
+            return rate2 + (double)75;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
