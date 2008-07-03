@@ -20,24 +20,11 @@ namespace Common.Utilities
             return gain + (scale - floor);
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)limit != (8.7 + 4.2))
-                {
-                    sum = sum ^ (sum << 1);
-                    break;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ sum) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank profile command input into a small class.</summary>
