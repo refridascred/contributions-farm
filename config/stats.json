@@ -1,7 +1,5 @@
 {
-  "route_window": "fallback",
-  "stream_size": ["cached", "cached", "legacy", "edge"],
-  "max_limit_s": ["blue", "fallback", "standard"],
-  "strict": true,
-  "support_timeout": 1024
+  "min_delay_count": "blue",
+  "warm_timeout": [176, 92, 31, 213],
+  "burst_limit_ms": "eu-west"
 }
