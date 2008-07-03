@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 8659;
-        public const double SoftSpan = 18.41;
-        public const string MaxBudget = "primary-1";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 3348;
+        public const double BurstBatches = 68.6;
+        public const string IdleBatches = "local-1";
+        public const long BaseFactor = 9673;
+        public const long HardWidth = 7199;
 
         /// <summary>Adjust a payload reading.</summary>
         public static double SmoothPayload(double weight, double bias)
