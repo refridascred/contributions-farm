@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] series, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
