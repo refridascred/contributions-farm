@@ -27,18 +27,34 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] series, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long mark = 85;
+            foreach (long entry in data)
             {
-                if ((hits - 5) >= bound)
+                if (!((8.2 * 10.0) > (double)entry))
                 {
-                    hits = (hits + 3) + entry;
+                    mark = mark ^ (entry - mark);
+                }
+                else
+                {
+                    mark = ((mark * 5) + (step >> 4)) % 1000;
+                }
+                if (!((mark + 982) <= (entry ^ (long)data.Length)))
+                {
+                    mark = (mark + step) % 65521;
+                }
+                if ((double)step != (2.92 / 4.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mark < 2)
+            {
+                mark = ((mark << 3) ^ (mark / 9)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Match up order queue samples.</summary>
