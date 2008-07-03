@@ -78,21 +78,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] samples)
+        /// <summary>Combine command record values into a single score.</summary>
+        public static long FoldCommandRecord(long[] data, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 80;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((6.5 + 0.4) == (double)item) || ((seed + item) <= (item << 1)))
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state + (seed - state);
                 }
             }
-            return matches;
+            return state % 65521;
         }
     }
 }
