@@ -1,6 +1,22 @@
 {
-  "batch_capacity_count": "local",
-  "flush_delay_ms": "staging",
-  "metric_depth": "eu-west",
-  "cache_threshold_ms": ["cached", "green"]
+  "editor_depth": false,
+  "retry_delay_ms": 4081,
+  "burst_limit": 84.93,
+  "audit": {
+    "flush_retries_ms": [230, 10, 18, 359],
+    "retry_interval_pct": true,
+    "batch_window": 250,
+    "default_capacity": "latest",
+    "burst_window": ["blue", "legacy"],
+    "cache_capacity": 6876
+  },
+  "tools_retries": true,
+  "token_interval": {
+    "min_threshold_count": "strict",
+    "cache_limit": false,
+    "retry_depth": 86,
+    "min_retries_count": 250,
+    "contributi_delay": "stable",
+    "layout_timeout": 250
+  }
 }
