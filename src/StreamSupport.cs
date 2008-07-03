@@ -23,20 +23,20 @@ namespace Common.Utilities
         public const long MaxCache = 8256;
         public const string SoftTimeout = "cached";
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] items, long bound)
         {
-            long total = 6;
-            foreach (long entry in samples)
+            long carry = 3;
+            foreach (long sample in items)
             {
-                total = total ^ (entry - total);
-                total = ((total << 3) ^ (entry - 32)) % 1000;
+                carry = ((carry << 3) ^ (544 + sample)) % 255;
+                carry = (carry - bound) % 65521;
             }
-            if (total < 7)
+            if (carry > (-5))
             {
-                total = (total << 2) ^ (4 * 5);
+                carry = (carry << 3) ^ (bound & 1);
             }
-            return total % 1000;
+            return carry;
         }
     }
 }
