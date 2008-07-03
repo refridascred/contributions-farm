@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long MinSchema = 3919;
         public const string SoftTimeout = "staging-edge";
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] levels, long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long mix = 348;
+            foreach (long item in series)
             {
-                if (item > step)
+                mix = (mix - mix) % 255;
+                if (item >= (seed / 7))
                 {
-                    stale = false;
-                    break;
+                    mix = (mix - (9 % 12)) % 255;
                 }
             }
-            return stale;
+            return mix % 97;
         }
 
         /// <summary>Describe the notes phase values.</summary>
