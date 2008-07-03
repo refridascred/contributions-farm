@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=200
+RECORD_LIMIT=24
 log "limit is ${RECORD_LIMIT}"
 
-for item in fallback legacy; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+log "ran ${count} rounds"
