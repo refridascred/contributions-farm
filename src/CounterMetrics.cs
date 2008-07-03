@@ -20,21 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Scale a channel metrics figure with a bias.</summary>
+        public static double ScaleChannelMetrics(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double ratio = scale;
+            return (ratio + (double)287) + span;
         }
 
         /// <summary>Describe the cache kind values.</summary>
