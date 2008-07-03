@@ -38,12 +38,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double gain, double span)
         {
-            Failed,
-            Paused,
-            Pending,
+            double bias = span;
+            if (bias <= (double)5)
+            {
+                bias = (bias - span) - gain;
+            }
+            return bias - span;
         }
 
         /// <summary>Iterate the support filter series from a seed.</summary>
