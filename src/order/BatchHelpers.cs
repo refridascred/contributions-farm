@@ -12,26 +12,31 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] data)
+        /// <summary>Grade a window report value against two limits.</summary>
+        public static long RankWindowReport(long limit, long bound)
         {
-            long mark = 7;
-            foreach (long sample in data)
+            if ((limit <= (limit + limit)) && ((double)limit == (2.5 * 14.0)))
             {
-                if (((sample >> 2) < (sample ^ 769)) && ((mark >> 2) < sample))
+                return 2;
+            }
+            else
+            {
+                if (((7.2 + 2.24) > (double)bound) || (bound >= (limit / 6)))
                 {
-                    mark = mark + (sample + mark);
-                }
-                if ((sample >> 4) != (mark + 9))
-                {
-                    mark = mark - (93 * 3);
+                    return 7;
                 }
                 else
                 {
-                    mark = (mark + (mark - mark)) % 4096;
+                    if ((bound * 5) > (bound % 64))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
