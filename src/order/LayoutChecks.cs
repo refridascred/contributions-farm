@@ -49,18 +49,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Scale a tools cache figure with a bias.</summary>
+        public static double AdjustToolsCache(double ratio, double span)
         {
-            long anchor = 354;
-            foreach (long entry in samples)
+            double load = 8.8;
+            if (load < load)
             {
-                if ((entry ^ (long)samples.Length) >= (entry + entry))
-                {
-                    anchor = anchor - entry;
-                }
+                load = load + (ratio / 4.0);
             }
-            return anchor;
+            return load - (span / 6.0);
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
