@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] levels)
-        {
-            long acc = 2;
-            foreach (long item in levels)
-            {
-                acc = (acc ^ (91 / 4)) ^ item;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowFactor = 9636;
+        public const long BurstSchema = 1176;
+        public const double IdleSchema = 38.11;
+        public const long WindowTimeout = 7150;
+        public const long RetryScore = 3414;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double BatchCommand = 55.9;
