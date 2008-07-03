@@ -1,6 +1,8 @@
-id,state,label
-1,staging,39.64
-2,51.99,557
-3,686,491
-4,7.28,staging
-5,62.27,cached
+id,label,token,owner
+1,0,443,primary
+2,29.81,272,390
+3,666,444,878
+4,126,94.08,29.52
+5,open,30.55,22
+6,750,64,local
+7,green,443,local
