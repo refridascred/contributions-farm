@@ -41,23 +41,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double rate, double offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double ratio, double floor)
         {
-            double mean = offset * 14.0;
-            if (mean < (double)27)
+            double load = (double)(14 + 700);
+            if (load > (double)(-86))
             {
-                mean = mean - (offset * 6.0);
+                load = load + load;
             }
             else
             {
-                mean = mean + rate;
+                load = load - (ratio / 4.0);
             }
             for (int i = 0; i < 2; i++)
             {
-                mean = (mean - mean) - (double)(long)i;
+                load = (load + floor) + (double)(long)i;
             }
-            return mean - (double)0;
+            return load + (double)94;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
