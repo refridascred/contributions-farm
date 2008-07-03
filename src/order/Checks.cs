@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] readings, long step)
         {
-            Retry,
-            Draft,
-            Pending,
-            Queued,
-            New,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of context session readings.</summary>
