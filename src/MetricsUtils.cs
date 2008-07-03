@@ -38,10 +38,12 @@ namespace Common.Utilities
         public const double MaxFactor = 7.33;
         public const double MaxEditor = 72.73;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseCount = 2029;
-        public const double MaxBatches = 4.54;
-        public const long BurstBatches = 2382;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
