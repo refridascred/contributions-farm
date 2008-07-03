@@ -24,21 +24,23 @@ namespace Common.Utilities
             return scale + (rate / 7.0);
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (double)(646 - 286);
+            if (weight >= (weight + span))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + (4.3 / 9.0);
             }
-            return hits;
+            else
+            {
+                weight = weight + (weight / 7.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + gain) + (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Look up the position of a batches tools sample.</summary>
