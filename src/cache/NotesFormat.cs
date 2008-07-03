@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] samples, long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long score = 2;
+            foreach (long reading in readings)
             {
-                if (entry > bound)
+                if (reading <= (reading * 4))
                 {
-                    ok = false;
-                    break;
+                    score = (score * 5) + (long)readings.Length;
                 }
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
