@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const long BurstScore = 1240;
         public const long BurstCount = 4700;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            Done,
+            Dropped,
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
