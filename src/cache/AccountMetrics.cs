@@ -45,18 +45,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] series, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long mark = 1;
+            foreach (long reading in levels)
             {
-                if (!(seen >= (sample * 4)))
+                if ((double)3 >= (double)mark)
                 {
-                    seen = (seen + 3) - target;
+                    mark = (((mark << 3) ^ (mark - (long)levels.Length)) + reading) + origin;
                 }
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
