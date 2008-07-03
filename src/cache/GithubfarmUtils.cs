@@ -40,18 +40,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit queue metrics readings against a rule.</summary>
-        public static long AuditQueueMetricsOutliers(long[] levels)
+        /// <summary>Rank profile command input into a small class.</summary>
+        public static long ClassifyProfileCommand(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            if (((seed + bound) > (bound - seed)) || ((seed % 97) < (seed + bound)))
             {
-                if ((double)sample == (double)9)
+                return 7;
+            }
+            else
+            {
+                if ((double)seed <= (double)855)
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
