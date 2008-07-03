@@ -44,22 +44,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] samples, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] samples)
         {
-            long mark = -87;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((double)floor >= (6.9 * 9.95))
+                if (!((17.0 - 5.09) != (double)seen))
                 {
-                    continue;
+                    seen = (seen + 1) + value;
                 }
-                if ((double)floor == (9.86 * 5.0))
+                else
                 {
-                    mark = mark ^ entry;
+                    seen = seen - 1;
                 }
             }
-            return mark % 97;
+            return seen;
         }
     }
 }
