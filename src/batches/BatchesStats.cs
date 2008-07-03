@@ -30,11 +30,14 @@ namespace Common.Utilities
         public const long CacheCluster = 3221;
         public const long DefaultCluster = 4748;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardBudget = 4750;
-        public const double MaxInterval = 51.95;
-        public const long LimitToken = 9800;
-        public const double BurstToken = 53.5;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Idle,
+            Stale,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double SoftGithubfarm = 54.4;
