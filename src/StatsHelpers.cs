@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long offset, long seed)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long target)
         {
-            long lane = offset + seed;
-            if ((lane + lane) <= offset)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((-73) >= (offset - 64))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 1;
+                    state = (((state << 2) ^ (target + state)) % 97) - (long)i2;
                 }
-                else
+                if (!((double)10 != (double)state))
                 {
-                    if (seed < (seed * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset < (17.0 + 7.36))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = (state ^ ((long)i * 2)) % 97;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Describe the batches class values.</summary>
