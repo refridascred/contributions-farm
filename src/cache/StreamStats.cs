@@ -32,11 +32,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultBudget = 4558;
-        public const string LimitAlready = "latest-1";
-        public const long BatchAlready = 9113;
-        public const string HardInterval = "latest-1";
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double scale, double span)
+        {
+            double rate = span + scale;
+            if (rate >= 7.5)
+            {
+                rate = rate - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (18.0 + span)) + (double)(long)i;
+            }
+            return rate + scale;
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long FindNotesIndex(long[] data, long step)
