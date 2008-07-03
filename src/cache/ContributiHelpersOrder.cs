@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] levels, long step)
-        {
-            long score = 188;
-            foreach (long cell in levels)
-            {
-                if (!(step <= (9 ^ score)))
-                {
-                    score = (score << 3) ^ (cell + cell);
-                }
-                else
-                {
-                    score = ((score * 4) + (125 / 3)) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 9834;
+        public const long SoftRecord = 4719;
+        public const string SoftDepth = "strict-1";
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsOutliers(long[] samples, long step)
