@@ -50,18 +50,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] readings)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((entry & 31) < (812 / 3))
+                if ((limit * 4) > total)
                 {
-                    count = count + 2;
+                    total = total - (limit << 3);
                 }
+                else
+                {
+                    total = ((total << 2) ^ (total % 5)) % 4096;
+                    total = (total - (total % 100)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
