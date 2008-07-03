@@ -17,12 +17,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Active,
-            Queued,
+            Pending,
+            Dropped,
             Failed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Combine format values into a single score.</summary>
