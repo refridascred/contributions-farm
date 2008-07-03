@@ -20,18 +20,10 @@ namespace Common.Utilities
         public const double BaseSpan = 51.92;
         public const string MaxSupport = "standard-v2";
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] levels)
-        {
-            long mark = 0;
-            foreach (long value in levels)
-            {
-                if ((value & 3) >= mark)
-                {
-                    mark = (mark << 3) ^ (value >> 5);
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 7773;
+        public const double IdleNotes = 53.53;
+        public const long SoftBudget = 9899;
+        public const long SoftSpan = 2346;
     }
 }
