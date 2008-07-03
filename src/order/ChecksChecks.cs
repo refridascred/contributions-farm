@@ -23,22 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor + (anchor - 510)) % 255;
-                if ((double)offset <= (double)(long)i)
-                {
-                    anchor = (anchor << 3) ^ (long)i;
-                    break;
-                }
-                anchor = (anchor + (anchor % 7)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of context entries.</summary>
