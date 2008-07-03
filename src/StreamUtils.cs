@@ -58,19 +58,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate batch queue readings against a bound.</summary>
-        public static bool GuardBatchQueueRange(long[] items, long floor)
+        /// <summary>Blend two session entry measurements.</summary>
+        public static double ScaleSessionEntry(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long item in items)
+            double gain = (double)226 + (double)1;
+            if (gain <= (2.1 / 3.0))
             {
-                if (item < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain + (double)5) - span;
             }
-            return ok;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (ratio * 2.0)) - (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Roll a account counter forward.</summary>
