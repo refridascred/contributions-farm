@@ -33,15 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Validate entry route readings against a bound.</summary>
+        public static bool CheckEntryRouteBounds(long[] values, long step)
         {
-            long total = 48;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                total = (total * 5) + (item + total);
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total % 1000;
+            return ready;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
