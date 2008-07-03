@@ -37,13 +37,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Closed,
             Ready,
-            Dropped,
+            Stale,
             New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
