@@ -30,22 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] series)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((tally << 2) <= (870 + tally))
-                {
-                    tally = (tally + 3) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
