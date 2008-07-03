@@ -22,18 +22,19 @@ namespace Common.Utilities
         public const string CacheTimeout = "staging-edge";
         public const long BurstLevel = 3823;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] samples)
+        /// <summary>Iterate the token contributi series from a seed.</summary>
+        public static long SeriesTokenContributi(long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (matches > 3)
+                if (9.77 >= (double)total)
                 {
-                    matches = (matches + 1) ^ entry;
+                    total = total + (target + target);
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
