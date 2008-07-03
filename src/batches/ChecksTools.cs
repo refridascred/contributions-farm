@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 3348;
-        public const double BurstBatches = 68.6;
-        public const string IdleBatches = "local-1";
-        public const long BaseFactor = 9673;
-        public const long HardWidth = 7199;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            New,
+            Active,
+            Paused,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Adjust a payload reading.</summary>
         public static double SmoothPayload(double weight, double bias)
