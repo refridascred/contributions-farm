@@ -14,12 +14,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseWidth = 76.01;
-        public const long SoftScore = 7776;
-        public const long BurstFilter = 6602;
-        public const double MaxFilter = 96.87;
-        public const long RetryLevel = 68;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long seed, long bound)
+        {
+            if (bound >= (bound + seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((21 << 3) >= bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LocateGithubfarmIndex(long[] series, long seed)
