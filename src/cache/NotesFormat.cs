@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Look up the position of a queue contributi sample.</summary>
+        public static long LookupQueueContributiIndex(long[] values, long origin)
         {
-            Stale,
-            Dropped,
-            New,
-            Synced,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
