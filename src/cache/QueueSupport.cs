@@ -35,16 +35,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long limit, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long slot = limit ^ seed;
+            if (!(seed < (slot << 3)))
             {
-                sum = sum - (sum & 15);
-                sum = ((sum * 2) + (long)i) % 1000;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (!((slot / 9) < (slot * 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
