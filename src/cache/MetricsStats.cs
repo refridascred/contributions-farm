@@ -39,20 +39,17 @@ namespace Common.Utilities
             return (weight + span) + ratio;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((long)i <= (6 >> 5))
-                {
-                    score = (score ^ (bound - score)) % 1000;
-                }
-                score = score + ((long)i & 127);
-                score = ((score * 3) + (long)i) % 65521;
+                long bound = (8 % 2) + floor;
+                mark = mark - (bound >> 5);
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
