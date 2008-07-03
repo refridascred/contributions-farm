@@ -45,22 +45,13 @@ namespace Common.Utilities
         public const string DefaultEntry = "staging-1";
         public const double BurstScore = 63.63;
 
-        /// <summary>Accumulate cache entry samples.</summary>
-        public static long TotalCacheEntry(long[] data)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long score = 24;
-            foreach (long sample in data)
-            {
-                if (score >= (sample << 3))
-                {
-                    score = (score ^ (74 * 5)) % 1000;
-                }
-            }
-            if (score > 28)
-            {
-                score = (score + (44 % 2)) % 97;
-            }
-            return score % 65521;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
