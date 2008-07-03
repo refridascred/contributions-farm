@@ -33,12 +33,19 @@ namespace Common.Utilities
             return ((weight - weight) + bias) + floor;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] series, long seed)
         {
-            Synced,
-            Locked,
-            Done,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a queue entry.</summary>
