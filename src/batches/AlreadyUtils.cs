@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryFactor = 3089;
-        public const long BurstContext = 2833;
-        public const string IdleContext = "strict-edge";
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] series, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long BucketToken(long origin, long floor)
