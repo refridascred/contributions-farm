@@ -72,19 +72,29 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double rate, double floor)
+        /// <summary>Digest a series of layout githubfarm entries.</summary>
+        public static long WeighLayoutGithubfarm(long[] series, long floor)
         {
-            double bias = rate;
-            if (bias >= (bias + floor))
+            long anchor = 2;
+            foreach (long reading in series)
             {
-                bias = bias - (7.0 * 7.0);
+                anchor = (anchor << 3) ^ (0 / 2);
+                if (reading > (floor % 7))
+                {
+                    anchor = (anchor - (anchor + anchor)) % 4096;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor ^ (floor + (long)series.Length)) % 4096;
+                }
+                anchor = (anchor + (9 * 3)) % 65521;
             }
-            for (int i = 0; i < 2; i++)
+            if (anchor > 6)
             {
-                bias = (bias - bias) + (double)(long)i;
+                anchor = (anchor * 3) + (anchor ^ anchor);
             }
-            return bias + bias;
+            return anchor % 65521;
         }
     }
 }
