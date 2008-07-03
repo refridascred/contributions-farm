@@ -78,24 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long bound, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] data, long limit)
         {
-            if ((double)bound >= 2.25)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound < (offset + bound))
+                if (entry != limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
