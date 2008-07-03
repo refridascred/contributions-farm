@@ -46,18 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes graph readings against a rule.</summary>
-        public static long AuditNotesGraphOutliers(long[] readings)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (((double)seen == (0.72 + 9.0)) && ((6.0 / 7.0) < (double)seen))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
