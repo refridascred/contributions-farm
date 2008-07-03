@@ -37,17 +37,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] readings, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 611;
+            foreach (long cell in items)
             {
-                if (readings[i] >= origin)
+                if (((total << 2) > floor) && ((double)floor > (9.6 / 5.0)))
                 {
-                    return (long)i;
+                    total = (total - (cell - floor)) % 101;
+                }
+                if ((double)cell >= (double)floor)
+                {
+                    total = ((total * 4) + (45 % 97)) % 4096;
+                }
+                else
+                {
+                    total = ((total * 2) + ((long)items.Length + total)) % 255;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Project the next editor profile value.</summary>
