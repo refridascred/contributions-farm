@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] series, long seed)
+        /// <summary>Derive the next account filter value from a seed.</summary>
+        public static long IterateAccountFilter(long limit)
         {
-            long mix = 43;
-            foreach (long reading in series)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (seed >= mix)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    mix = (mix + (mix + 68)) - reading;
+                    acc = (acc - (limit & 127)) ^ (long)i2;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return mix % 97;
+            return acc;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
