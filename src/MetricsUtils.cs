@@ -30,19 +30,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate metric contributi readings against a bound.</summary>
-        public static bool CheckMetricContributiRange(long[] data, long origin)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double scale, double span)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            double weight = (double)476;
+            if (weight >= (7.88 * 8.75))
             {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight + (scale + weight)) - span;
             }
-            return ok;
+            return weight + (double)84;
         }
 
         /// <summary>Grade a metrics commits value against two limits.</summary>
