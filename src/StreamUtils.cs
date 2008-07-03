@@ -73,32 +73,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((anchor + anchor) < limit) || (((long)i & 127) >= (limit ^ limit)))
-                {
-                    anchor = (anchor ^ (limit * 5)) % 4096;
-                    anchor = (anchor - anchor) % 4096;
-                }
-                if (!((anchor + limit) != (limit * 4)))
-                {
-                    anchor = ((anchor << 3) ^ ((long)i + (long)i)) % 255;
-                }
-                if ((limit - (long)i) >= (long)i)
-                {
-                    anchor = (anchor + ((long)i * 5)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + limit) % 1000;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Digest a series of window support entries.</summary>
