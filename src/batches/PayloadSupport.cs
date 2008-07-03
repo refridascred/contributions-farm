@@ -27,12 +27,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] series, long origin)
         {
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
