@@ -50,13 +50,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] samples)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((33 / 4) <= (6 + value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
