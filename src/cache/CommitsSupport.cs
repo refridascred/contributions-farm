@@ -56,14 +56,21 @@ namespace Common.Utilities
         public const double DefaultSpan = 92.38;
         public const long WindowInterval = 9750;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] levels)
         {
-            New,
-            Locked,
-            Ready,
-            Failed,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
