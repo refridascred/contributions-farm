@@ -26,16 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] values, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                total = ((total << 3) ^ (total + 82)) % 97;
-                total = ((total * 5) + (long)i) % 65521;
+                if (!((limit < (cell + limit)) || ((double)cell > (16.0 + 1.6))))
+                {
+                    matches = matches + 3;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
