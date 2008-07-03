@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] levels, long floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((13 * 4) != (seen - floor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) + reading;
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
