@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a githubfarm schema pair into a bucket.</summary>
-        public static long GradeGithubfarmSchema(long offset, long origin)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long step = offset - origin;
-            if ((5.04 - 8.0) != (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + origin) == (origin + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step < (offset & 127))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Validate order readings against a bound.</summary>
