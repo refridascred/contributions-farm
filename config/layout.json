@@ -1,6 +1,5 @@
 {
-  "strict": 1024,
-  "editor_depth": "cached",
-  "base_threshold_ms": 500,
-  "min_limit_s": 10.74
+  "default_ratio_pct": "blue",
+  "editor_size": 77.24,
+  "default_capacity_ms": true
 }
