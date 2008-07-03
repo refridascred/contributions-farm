@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long seed)
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            long total = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if (total > (long)i)
+                {
+                    total = (total - ((long)i + (-7))) % 101;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Audit already token readings against a rule.</summary>
