@@ -33,18 +33,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 8081;
+        public const long BaseDepth = 8696;
+        public const double RetryBatches = 90.91;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long DigestLayout(long[] readings)
