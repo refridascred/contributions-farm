@@ -1,13 +1,8 @@
 {
-  "base_depth_ms": {
-    "hard_ttl_s": ["strict", "cached", "primary"],
-    "tools_limit": "open",
-    "schema_limit": 41.35,
-    "compress": true,
-    "retry_size_pct": 32
-  },
-  "cluster_interval": 3794,
-  "sync_size_pct": false,
-  "persist": true,
-  "default_ttl": 49
+  "poll_size": 81.27,
+  "max_depth": 60,
+  "idle_interval_count": [93, 479, 257],
+  "enabled": 5.83,
+  "dry_run": "strict",
+  "readonly": 5952
 }
