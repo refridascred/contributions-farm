@@ -27,10 +27,18 @@ namespace Common.Utilities
             return ((ratio2 - (double)243) + ratio) + floor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowSpan = 9263;
-        public const long SoftFactor = 2547;
-        public const double RetryLevel = 0.91;
-        public const string CacheChecks = "strict-v2";
+        /// <summary>Measure how many report schema samples are out of range.</summary>
+        public static long MeasureReportSchemaMatches(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((4.9 + 0.55) > (double)bound)
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
+        }
     }
 }
