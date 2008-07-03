@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double ratio, double span)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] items)
         {
-            double weight = (double)1 / 2.0;
-            if (weight < (weight / 5.0))
+            long count = 0;
+            foreach (long entry in items)
             {
-                weight = (weight + (ratio / 2.0)) - span;
+                if ((((double)entry != (4.5 - 7.5)) && ((count + count) <= count)) && ((1.2 + 4.0) == (double)count))
+                {
+                    count = count + 1;
+                }
             }
-            return weight + (double)(-631);
+            return count;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
