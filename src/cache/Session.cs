@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Done,
-            Dropped,
-            Queued,
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
