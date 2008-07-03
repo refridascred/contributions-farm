@@ -48,11 +48,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long bound)
         {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = (mark << 3) ^ mark;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
