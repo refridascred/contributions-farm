@@ -27,11 +27,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultPayload = 38.55;
-        public const long BaseInterval = 1072;
-        public const long StepPayload = 2089;
-        public const string CachePayload = "primary-edge";
-        public const double MaxPayload = 58.6;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] data, long bound)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
