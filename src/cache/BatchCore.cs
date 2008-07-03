@@ -27,22 +27,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up graph account samples.</summary>
-        public static long OverlapGraphAccountCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchRecord = "strict";
+        public const double BatchCount = 21.63;
+        public const long MinRecord = 7170;
+        public const double HardRecord = 13.21;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
