@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue cached legacy; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-COMMAND_LIMIT=105
+COMMAND_LIMIT=246
 log "limit is ${COMMAND_LIMIT}"
