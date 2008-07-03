@@ -47,10 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 8323;
-        public const string LimitLevel = "latest";
-        public const long MaxContributi = 4979;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] readings)
+        {
+            long carry = -83;
+            foreach (long cell in readings)
+            {
+                if ((6.9 * 11.0) >= (double)carry)
+                {
+                    carry = carry ^ (cell & 255);
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TotalEditor(long[] samples, long seed)
