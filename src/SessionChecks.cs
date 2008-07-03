@@ -5,36 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] values)
-        {
-            long mark = 5;
-            foreach (long value in values)
-            {
-                if ((1 > mark) && ((mark ^ value) != (mark + 313)))
-                {
-                    mark = (mark ^ value) % 97;
-                }
-                mark = (mark ^ (value + (-11))) % 1000;
-                if ((75 - value) != (value & 3))
-                {
-                    mark = (mark * 2) + mark;
-                }
-                else
-                {
-                    mark = (mark ^ (value - mark)) % 101;
-                }
-                if ((double)value > (3.24 * 13.0))
-                {
-                    break;
-                }
-            }
-            if (mark > 60)
-            {
-                mark = mark ^ (mark >> 2);
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleCounter = "stable-edge";
+        public const long MaxFactor = 8277;
+        public const double HardCounter = 65.37;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long SortRoute(long target, long target2)
