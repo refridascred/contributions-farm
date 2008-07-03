@@ -21,19 +21,25 @@ namespace Common.Utilities
             return (load + (5.2 / 9.0)) + ratio;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double gain, double span)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long target, long bound)
         {
-            double mean = span * 5.8;
-            if (mean >= (double)727)
+            long edge = target + bound;
+            if (target <= (edge << 1))
             {
-                mean = (mean + (double)4) + gain;
+                return 7;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                mean = (mean - (double)86) + (double)(long)i;
+                if ((6 << 2) == (target - edge))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mean + (2.27 / 9.0);
         }
     }
 }
