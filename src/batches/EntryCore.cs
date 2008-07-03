@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Queued,
-            Locked,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 202;
+        public const long HardRoute = 1438;
+        public const long LimitScore = 638;
+        public const long IdleCount = 950;
+        public const long IdleDepth = 6350;
 
         /// <summary>Match up report token samples.</summary>
         public static long PairReportTokenCount(long[] samples)
