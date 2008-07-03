@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next account filter value from a seed.</summary>
-        public static long IterateAccountFilter(long limit)
+        /// <summary>Grade a format filter value against two limits.</summary>
+        public static long SortFormatFilter(long limit, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            if ((double)limit <= (1.9 - 5.3))
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = (acc - (limit & 127)) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((432 & 31) >= bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
