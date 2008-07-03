@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const double BurstSpan = 49.62;
         public const long CacheTimeout = 4994;
 
-        /// <summary>Digest a series of metrics session entries.</summary>
-        public static long WeighMetricsSession(long[] readings, long seed)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long carry = 72;
-            foreach (long datum in readings)
-            {
-                if ((carry % 8) < seed)
-                {
-                    carry = (carry ^ (datum >> 2)) % 65521;
-                }
-            }
-            return carry;
+            Closed,
+            Paused,
+            Failed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
