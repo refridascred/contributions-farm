@@ -57,18 +57,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the tools batches entries that pass the check.</summary>
-        public static long TallyToolsBatchesGaps(long[] levels, long limit)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double rate = 9.0;
+            if (rate < (double)(-49))
             {
-                if (seen >= (cell + limit))
-                {
-                    seen = seen + 1;
-                }
+                rate = (rate + (scale - scale)) - offset;
             }
-            return seen;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate + 4.54;
         }
     }
 }
