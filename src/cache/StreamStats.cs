@@ -55,11 +55,11 @@ namespace Common.Utilities
         public const long StepDepth = 5128;
         public const string WindowFarm = "staging-edge";
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
