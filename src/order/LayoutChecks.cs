@@ -30,22 +30,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] readings)
+        /// <summary>Scale a batch payload figure with a bias.</summary>
+        public static double ScaleBatchPayload(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double drift = floor;
+            if (drift > (floor / 9.0))
             {
-                if ((((long)readings.Length & 63) >= (972 + 3)) || (((-317) + (long)readings.Length) >= (158 & 63)))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = (drift - floor) - rate;
             }
-            return matches;
+            return drift + (floor / 5.0);
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
