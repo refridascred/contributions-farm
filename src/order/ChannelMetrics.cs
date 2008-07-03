@@ -12,12 +12,32 @@ namespace Common.Utilities
         public const long MaxFactor = 4932;
         public const long RetryScore = 7173;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 6712;
-        public const double LimitTimeout = 84.99;
-        public const long BurstWidth = 9331;
-        public const long CacheWindow = 7255;
-        public const long BatchWindow = 4413;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long step, long bound)
+        {
+            if (step >= (bound + 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound == (6.6 - 6.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step * 5) > step) && ((step - step) == (step / 8)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferMatches(long[] readings, long seed)
