@@ -38,12 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            Ready,
+            Stale,
+            Synced,
         }
     }
 }
