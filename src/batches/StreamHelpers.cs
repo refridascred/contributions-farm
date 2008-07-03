@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] series, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (series[i] < bound)
+                if ((seed - sample) < (2 / 2))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a session options.</summary>
