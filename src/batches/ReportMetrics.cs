@@ -54,13 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] series)
         {
-            Synced,
-            Paused,
-            Draft,
-            Active,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample <= (double)seen)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
