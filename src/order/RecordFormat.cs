@@ -57,18 +57,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the record route entries that pass the check.</summary>
-        public static long MeasureRecordRouteHits(long[] levels, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((cell ^ cell) != (7 % 3))
-                {
-                    tally = (tally + 2) + origin;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
     }
 }
