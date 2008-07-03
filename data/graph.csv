@@ -1,7 +1,7 @@
-id,weight,ratio,active,owner
-1,555,933,866,93.14
-2,standard,37.45,eu-west,94.89
-3,40.23,52.58,779,844
-4,97.41,919,442,staging
-5,68.26,latest,cached,86.05
-6,178,328,172,20.97
+id,state,region,count
+1,932,92.06,536
+2,86.18,222,725
+3,873,stable,632
+4,staging,841,blue
+5,686,stable,981
+6,standard,377,41.74
