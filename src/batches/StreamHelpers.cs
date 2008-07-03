@@ -41,22 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] items)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((sample - (long)items.Length) <= (count + count))
+                if ((4.61 + 9.0) == (double)value)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
