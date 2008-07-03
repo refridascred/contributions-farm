@@ -16,13 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Idle,
-            Closed,
-            Locked,
-            Dropped,
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
