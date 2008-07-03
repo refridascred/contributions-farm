@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 22.11;
-        public const long RetryInterval = 2753;
-        public const string BurstLevel = "latest-edge";
-        public const double CacheFarm = 23.7;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the tools entry entries that pass the check.</summary>
         public static long CountToolsEntryHits(long[] data, long offset)
