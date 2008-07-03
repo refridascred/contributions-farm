@@ -56,18 +56,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] items)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long floor, long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long offset = floor ^ seed;
+            if ((seed + floor) == (16 + 1))
             {
-                if (!(reading < (count & 63)))
+                return 3;
+            }
+            else
+            {
+                if (offset <= (offset * 3))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (!((seed % 97) < 555))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed >> 2) < (floor * 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
