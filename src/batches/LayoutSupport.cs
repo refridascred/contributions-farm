@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] values)
         {
-            Synced,
-            Locked,
-            Queued,
-            Done,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((((1.0 + 12.0) == (double)(long)values.Length) || ((entry ^ entry) == (entry % 2))) || ((entry / 8) >= (seen % 60)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the account class values.</summary>
