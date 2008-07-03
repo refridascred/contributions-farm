@@ -49,15 +49,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double scale, double bias)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double weight = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight - weight) - (double)(long)i) - scale;
-            }
-            return weight - (weight / 7.0);
+            Idle,
+            Locked,
+            Active,
+            Paused,
         }
     }
 }
