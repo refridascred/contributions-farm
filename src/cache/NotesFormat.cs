@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first tools profile entry that matches the target.</summary>
-        public static long SeekToolsProfileIndex(long[] values, long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((values[i] < floor) && ((values[i] % 5) != 0))
+                if (value < step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the queue status values.</summary>
