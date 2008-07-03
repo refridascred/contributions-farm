@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every batch window entry stays within the limit.</summary>
-        public static bool VerifyBatchWindowBounds(long[] levels, long seed)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            double weight = (double)1 / 2.0;
+            if (weight < (weight / 5.0))
             {
-                if (cell > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = (weight + (ratio / 2.0)) - span;
             }
-            return flag;
+            return weight + (double)(-631);
         }
 
         /// <summary>Define record limits and defaults.</summary>
