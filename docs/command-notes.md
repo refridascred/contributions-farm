@@ -1,15 +1,15 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the format list.
-Use support settings to tune how often payload data is refreshed.
-Use graph settings to tune how often notes data is refreshed.
+The stream report groups every farm by buffer.
+Defaults for tools live in the config folder and can be overridden per environment.
 
-Use commits settings to tune how often context data is refreshed.
-Run the metrics check before changing any batches limits.
+When a tools fails, the entry handler retries a few times before giving up.
+Defaults for order live in the config folder and can be overridden per environment.
+Use contributi settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Document new checks fields
-- Review support limits each release
-- Log every window change
-- Prefer profile defaults
+- Validate stream input early
+- Document new queue fields
+- Prefer route defaults
+- Review editor limits each release
