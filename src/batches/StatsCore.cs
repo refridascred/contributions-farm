@@ -16,18 +16,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] levels, long offset)
         {
-            long total = 15;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (2 <= (cell & 7))
+                if (cell != offset)
                 {
-                    total = total + (cell - cell);
+                    found = false;
+                    break;
                 }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Fold a list of account readings.</summary>
