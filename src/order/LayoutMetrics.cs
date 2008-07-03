@@ -14,12 +14,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 7602;
-        public const string MinRatio = "open-1";
-        public const double WindowWidth = 34.52;
-        public const long MaxSize = 4484;
-        public const string RetryBatch = "fallback";
+        /// <summary>Rank graph entry input into a small class.</summary>
+        public static long RankGraphEntry(long step, long target)
+        {
+            if ((target - target) >= (target + target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step == (8.11 + 17.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target < (step - 85)) && ((87 ^ target) != (910 + target)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up buffer samples.</summary>
         public static long PairBufferCount(long[] samples)
