@@ -1,8 +1,7 @@
 {
-  "retry_capacity": true,
-  "enabled": 1024,
-  "warm_limit_s": 100,
-  "cache_ratio_ms": "legacy",
-  "verbose": 78,
-  "warm_window": [411, 317]
+  "flush_interval": "local",
+  "retry_window_pct": false,
+  "editor_window": 33.54,
+  "cache_retries": ["latest", "legacy", "fallback"],
+  "base_retries_count": "standard"
 }
