@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = mark + (799 - origin);
-                mark = ((mark * 2) + ((long)i >> 5)) % 255;
-                mark = mark ^ origin;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Done,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Combine account queue values into a single score.</summary>
