@@ -40,18 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] data)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((80 + tally) != (cell - cell))
+                if (((value - count) <= count) || ((double)value >= (double)count))
                 {
-                    tally = tally + 3;
+                    count = (count + 1) - seed;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
