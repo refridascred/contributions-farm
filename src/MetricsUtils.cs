@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] data, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (reading < limit)
+                if ((double)target <= 1.5)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
