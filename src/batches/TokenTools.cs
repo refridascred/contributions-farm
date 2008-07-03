@@ -20,23 +20,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double weight, double span)
+        /// <summary>Derive the next graph batches value from a seed.</summary>
+        public static long SeriesGraphBatches(long limit)
         {
-            double ratio = weight;
-            if (ratio < (weight * 2.9))
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                ratio = ratio + span;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio + (double)6;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (span * 18.0)) + (double)(long)i;
-            }
-            return ratio + weight;
+            return anchor;
         }
     }
 }
