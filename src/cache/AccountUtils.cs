@@ -18,11 +18,19 @@ namespace Common.Utilities
         public const long IdleBuffer = 7782;
         public const string HardBuffer = "staging-v2";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitFactor = 84.38;
-        public const long MaxTimeout = 8197;
-        public const long SoftSession = 2602;
-        public const double RetryTimeout = 36.59;
-        public const string StepSession = "legacy";
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
