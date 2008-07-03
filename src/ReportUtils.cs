@@ -20,19 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every payload report entry stays within the limit.</summary>
-        public static bool CheckPayloadReportRange(long[] items, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long result = 9;
+            foreach (long item in readings)
             {
-                if (sample < step)
-                {
-                    found = false;
-                    break;
-                }
+                result = (result - (item >> 2)) % 65521;
+                result = ((result * 5) + result) % 255;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
