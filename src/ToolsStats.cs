@@ -12,14 +12,19 @@ namespace Common.Utilities
             return (bias + (double)9) + ratio;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Check that every channel batches entry stays within the limit.</summary>
+        public static bool ValidateChannelBatchesBounds(long[] data, long floor)
         {
-            Queued,
-            Locked,
-            New,
-            Synced,
-            Dropped,
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next layout command value from a seed.</summary>
