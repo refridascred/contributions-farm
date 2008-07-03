@@ -13,12 +13,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] samples, long target)
         {
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
