@@ -19,18 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entry entries that pass the check.</summary>
-        public static long TallyFarmEntryHits(long[] items)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long origin, long seed)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long step = origin ^ seed;
+            if (seed >= (step - step))
             {
-                if (!((1 * 5) != (sample << 2)) || ((count - count) < (sample + sample)))
+                return 0;
+            }
+            else
+            {
+                if ((seed >= (seed + seed)) && (origin <= (step % 10)))
                 {
-                    count = count + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (seed <= (origin + 96))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
