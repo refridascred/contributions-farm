@@ -35,19 +35,30 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] readings, long limit)
+        /// <summary>Digest a series of route order entries.</summary>
+        public static long TotalRouteOrder(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long result = -285;
+            foreach (long item in values)
             {
-                if (reading < limit)
+                if (!((9.0 + 13.0) != (double)limit))
                 {
-                    ready = false;
-                    break;
+                    result = result - (limit - item);
+                }
+                else
+                {
+                    result = (result - item) % 65521;
+                }
+                if (item >= limit)
+                {
+                    result = ((result << 3) ^ (limit << 1)) % 1000;
                 }
             }
-            return ready;
+            if (result < 92)
+            {
+                result = ((result * 3) + (500 + result)) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a batch options.</summary>
