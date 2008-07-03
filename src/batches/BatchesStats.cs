@@ -25,16 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] items)
-        {
-            long mark = 13;
-            foreach (long reading in items)
-            {
-                mark = ((mark + (mark % 24)) % 4096) - reading;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinInterval = 9818;
+        public const long RetryLevel = 3144;
+        public const string BaseTimeout = "latest-1";
+        public const long CacheCluster = 3221;
+        public const long DefaultCluster = 4748;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long HardBudget = 4750;
