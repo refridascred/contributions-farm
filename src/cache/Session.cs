@@ -36,18 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] data)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value >> 1) != (tally % 7))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Idle,
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
