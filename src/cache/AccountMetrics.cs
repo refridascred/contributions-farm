@@ -59,25 +59,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long seed, long origin)
+        /// <summary>Digest a series of record stream entries.</summary>
+        public static long ScoreRecordStream(long[] values, long origin)
         {
-            long span = seed + origin;
-            if (seed >= (span / 3))
+            long acc = 334;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((span << 1) == (span - origin))
+                if ((4.0 / 6.0) == (double)item)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    acc = (acc + origin) % 255;
                 }
             }
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
