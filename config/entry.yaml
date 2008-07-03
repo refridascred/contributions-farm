@@ -1,9 +1,6 @@
 # entry settings
-max_threshold:
-  - edge
-  - cached
-  - stable
-  - latest
-batch_window_ms: 28.77
-flush_ttl: 93
-cache_window_s: 5365
+batches_limit: false
+dry_run:
+  - 380
+  - 419
+burst_capacity: 250
