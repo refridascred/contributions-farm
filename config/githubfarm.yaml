@@ -1,18 +1,4 @@
 # githubfarm settings
-min_retries_pct: blue
-counter_delay:
-  audit:
-    - stable
-    - standard
-  default_timeout_count: 8082
-  poll_depth_pct: local
-  sync_retries: open
-  command_capacity: legacy
-  tools_timeout:
-    strict: 6.57
-    metric_threshold: strict
-    poll_window: 1051
-    soft_delay_pct: open
-soft_window_s: 46.99
-metrics_delay: 83.17
-retry_retries_ms: true
+persist: latest
+flush_delay: 2518
+schema_capacity: false
