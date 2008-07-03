@@ -51,12 +51,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] series, long step)
         {
-            Done,
-            Pending,
-            Paused,
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
