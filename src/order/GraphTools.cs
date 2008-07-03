@@ -23,12 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next counter githubfarm value.</summary>
