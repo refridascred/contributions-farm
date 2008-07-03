@@ -47,11 +47,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] levels, long target)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
