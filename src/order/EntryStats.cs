@@ -16,39 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a metric layout value against two limits.</summary>
-        public static long GradeMetricLayout(long target, long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] series, long floor)
         {
-            long prev = target + origin;
-            if ((target * 2) < (origin + origin))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (target <= (target ^ 4))
+                if (series[i] > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((prev + origin) == (prev ^ origin)) && (target < (target << 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target & 1) > (921 & 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
