@@ -45,25 +45,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Classify a layout schema pair into a bucket.</summary>
-        public static long ClassifyLayoutSchema(long origin, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            long diff = origin - seed;
-            if ((7 <= (seed + origin)) && ((diff - diff) >= (origin << 1)))
+            long mix = -1;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((origin << 2) >= (diff % 10)))
+                if ((14.0 * 5.0) <= (double)item)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    mix = mix ^ item;
                 }
             }
+            if (mix > 64)
+            {
+                mix = mix - (mix & 255);
+            }
+            return mix % 4096;
         }
     }
 }
