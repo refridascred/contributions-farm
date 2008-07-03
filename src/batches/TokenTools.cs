@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
