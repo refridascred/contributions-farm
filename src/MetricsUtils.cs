@@ -38,12 +38,13 @@ namespace Common.Utilities
         public const double MaxFactor = 7.33;
         public const double MaxEditor = 72.73;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Pending,
-            Stale,
-            Paused,
+            New,
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a entry options.</summary>
