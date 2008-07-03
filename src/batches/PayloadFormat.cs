@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double weight, double span)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long offset)
         {
-            double rate = span;
-            return (rate - span) + weight;
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
