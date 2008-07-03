@@ -1,7 +1,15 @@
 # githubfarm settings
-verbose: 79.88
-cache_retries: 40
-hard_capacity: true
-account_limit: 100
-warm_capacity_ms: 52.26
-retry_ttl_s: primary
+window_limit: 9091
+dry_run:
+  - 456
+  - 420
+  - 72
+  - 417
+persist:
+  burst_interval: 92.88
+  route_timeout: staging
+  poll_size_ms: false
+  hard_delay_count: 65
+  enabled: 250
+  retry_ttl: 38.75
+schema_threshold: 66
