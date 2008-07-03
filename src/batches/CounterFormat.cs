@@ -39,32 +39,15 @@ namespace Common.Utilities
         public const string RetryOrder = "staging-1";
         public const long CacheSpan = 1075;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long origin, long offset)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long floor)
         {
-            long span = origin ^ offset;
-            if (!((span % 7) != (927 % 16)))
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((origin ^ 940) > (span + 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)span >= (4.45 - 13.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
