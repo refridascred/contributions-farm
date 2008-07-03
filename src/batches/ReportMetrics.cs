@@ -22,9 +22,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultGraph = 98.8;
-        public const long DefaultSize = 7129;
-        public const double IdleRatio = 86.69;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] levels, long target)
+        {
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
