@@ -46,21 +46,11 @@ namespace Common.Utilities
         public const string WindowCount = "legacy-edge";
         public const long MinFormat = 533;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCount = 7949;
+        public const double MinCounter = 72.36;
+        public const long HardCounter = 7052;
+        public const long WindowTimeout = 1204;
+        public const long CacheCounter = 1408;
     }
 }
