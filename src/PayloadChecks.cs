@@ -35,11 +35,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 9732;
-        public const string HardStream = "fallback";
-        public const long RetryStream = 241;
-        public const long LimitStream = 5817;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinFactor = "stable-v2";
+        public const long LimitAlready = 2552;
+        public const long WindowRatio = 9830;
 
         /// <summary>Match up token samples.</summary>
         public static long CompareTokenCount(long[] items)
