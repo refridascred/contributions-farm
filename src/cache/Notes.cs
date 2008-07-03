@@ -31,12 +31,17 @@ namespace Common.Utilities
         public const long HardPayload = 9575;
         public const long IdlePayload = 4773;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] series, long limit)
         {
-            Failed,
-            Locked,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < limit) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
