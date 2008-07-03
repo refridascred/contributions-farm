@@ -1,11 +1,12 @@
 {
-  "hard_retries_pct": 92.46,
-  "payload_window": 53,
-  "strict": {
-    "flush_capacity_ms": 1024,
-    "batch_retries": false,
-    "account_retries": ["open", "cached"],
-    "persist": ["blue", "latest"],
-    "audit": 22.75
+  "idle_ttl_pct": "legacy",
+  "farm_delay": "local",
+  "idle_retries_pct": 2,
+  "soft_size_pct": {
+    "dry_run": 100,
+    "buffer_retries": 8395,
+    "account_limit": 915,
+    "persist": [310, 298, 301],
+    "sync_threshold_count": 37
   }
 }
