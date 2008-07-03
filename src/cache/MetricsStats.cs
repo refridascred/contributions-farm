@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] data, long floor)
         {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = 245;
+            foreach (long reading in data)
+            {
+                acc = (((acc * 3) + (floor & 1)) % 4096) ^ reading;
+                acc = (acc * 3) + (acc + floor);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
