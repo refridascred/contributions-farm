@@ -47,17 +47,18 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] data, long step)
+        /// <summary>Audit report buffer readings against a rule.</summary>
+        public static long TallyReportBufferOutliers(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((data[i] < step) && ((data[i] % 2) != 0))
+                if (!((double)item <= (18.0 + 8.0)) && ((double)matches < (7.78 * 18.0)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
