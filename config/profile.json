@@ -1,14 +1,5 @@
 {
-  "base_ratio_pct": 8957,
-  "compress": {
-    "compress": "staging",
-    "dry_run": 500,
-    "retry_window_pct": 86.23,
-    "flush_retries_count": "local",
-    "verbose": 16
-  },
-  "metrics_threshold": true,
-  "sync_threshold_s": 63.83,
-  "min_interval_pct": 6325,
-  "base_capacity_ms": 31.02
+  "dry_run": "legacy",
+  "poll_ratio": "local",
+  "min_depth": 100
 }
