@@ -29,18 +29,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] samples)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)hits > (2.75 - 6.2))
+                if (data[i] > target)
                 {
-                    hits = (hits + 2) ^ value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
