@@ -20,19 +20,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double weight, double span)
         {
-            long anchor = 170;
-            foreach (long sample in data)
+            double ratio = weight;
+            if (ratio < (weight * 2.9))
             {
-                anchor = ((anchor * 2) + 7) % 4096;
-                if ((double)sample != (0.52 * 11.0))
-                {
-                    anchor = (anchor << 2) ^ (anchor << 2);
-                }
+                ratio = ratio + span;
             }
-            return anchor;
+            else
+            {
+                ratio = ratio + (double)6;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (span * 18.0)) + (double)(long)i;
+            }
+            return ratio + weight;
         }
     }
 }
