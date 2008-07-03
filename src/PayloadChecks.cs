@@ -47,10 +47,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 385;
-        public const long CacheSpan = 9397;
-        public const double WindowWidth = 33.84;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] levels)
+        {
+            long total = 558;
+            foreach (long cell in levels)
+            {
+                total = total ^ (cell ^ 52);
+            }
+            return total % 4096;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool VerifyGithubfarmRange(long[] data, long limit)
