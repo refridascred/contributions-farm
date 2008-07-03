@@ -17,12 +17,18 @@ namespace Common.Utilities
         public const long WindowCount = 9882;
         public const long WindowRatio = 7398;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] values, long bound)
         {
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((6.94 - 1.0) == (double)bound)
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a support record.</summary>
