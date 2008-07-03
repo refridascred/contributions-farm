@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of stream contributi readings.</summary>
-        public static long CompareStreamContributiCount(long[] levels)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (data[i] == floor)
                 {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the channel phase values.</summary>
