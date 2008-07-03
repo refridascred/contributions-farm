@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of metric support readings.</summary>
-        public static long CompareMetricSupportCount(long[] values)
+        /// <summary>Accumulate already channel samples.</summary>
+        public static long CombineAlreadyChannel(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = -62;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (((score * 3) + (offset + 9)) % 1000) - value;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a contributi record.</summary>
