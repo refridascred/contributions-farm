@@ -45,18 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit cache entry readings against a rule.</summary>
-        public static long AuditCacheEntryHits(long[] items)
+        /// <summary>Validate batch queue readings against a bound.</summary>
+        public static bool GuardBatchQueueRange(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (((count <= value) || (count >= (count & 1))) && ((long)items.Length < value))
+                if (item < floor)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Roll a account counter forward.</summary>
