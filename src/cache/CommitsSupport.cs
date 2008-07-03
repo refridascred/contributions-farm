@@ -33,10 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleDepth = 53.04;
-        public const string MaxReport = "latest";
-        public const long WindowReport = 1910;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] series, long step)
+        {
+            long mark = 0;
+            foreach (long reading in series)
+            {
+                long seen = (step * 2) + (reading << 3);
+                if ((double)seen < (14.0 * 0.6))
+                {
+                    break;
+                }
+                mark = (mark - (reading ^ 48)) % 65521;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphOutliers(long[] levels)
