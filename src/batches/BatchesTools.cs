@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] readings, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] values)
         {
-            long acc = 190;
-            foreach (long sample in readings)
+            long anchor = 88;
+            foreach (long datum in values)
             {
-                if ((acc ^ acc) < (bound / 7))
+                if ((datum ^ anchor) < (datum << 3))
                 {
-                    acc = ((acc << 3) ^ (sample & 7)) % 101;
+                    continue;
                 }
-                else
+                if (datum >= (anchor % 97))
                 {
-                    acc = (acc ^ ((long)readings.Length + acc)) % 65521;
-                }
-                if ((sample + 1) == (bound / 4))
-                {
-                    break;
+                    anchor = (anchor - anchor) % 4096;
                 }
             }
-            return acc;
+            if (anchor > 6)
+            {
+                anchor = (anchor * 4) + (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
