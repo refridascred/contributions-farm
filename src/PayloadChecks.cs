@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] samples, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long result = 6;
+            foreach (long value in values)
             {
-                if (cell != offset)
+                if ((result * 4) < 6)
                 {
-                    ok = false;
-                    break;
+                    result = (((result << 3) ^ (445 % 12)) % 101) - value;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Measure how many stream cluster samples are out of range.</summary>
