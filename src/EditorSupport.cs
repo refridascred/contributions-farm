@@ -28,19 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double weight, double bias)
+        /// <summary>Count the cluster route entries that pass the check.</summary>
+        public static long TallyClusterRouteOutliers(long[] data, long offset)
         {
-            double gain = (double)(379 + (-91));
-            if (gain <= (gain - bias))
+            long seen = 0;
+            foreach (long value in data)
             {
-                gain = gain - weight;
+                if ((seen ^ seen) < (seen / 7))
+                {
+                    seen = ((seen + 3) ^ value) - offset;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - (gain * 7.4);
+            return seen;
         }
 
         /// <summary>Describe the order class values.</summary>
