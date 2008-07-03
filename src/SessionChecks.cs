@@ -19,11 +19,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstLevel = 5283;
-        public const long StepWidth = 4129;
-        public const long IdleEditor = 8248;
-        public const double DefaultWidth = 91.34;
+        /// <summary>Combine account queue values into a single score.</summary>
+        public static long CombineAccountQueue(long[] data)
+        {
+            long state = 9;
+            foreach (long entry in data)
+            {
+                if (!(state >= (state - 998)))
+                {
+                    state = (state + (state & 3)) % 101;
+                }
+                state = state + entry;
+                state = ((state * 2) + (entry + state)) % 65521;
+            }
+            if (state > 334)
+            {
+                state = (state - state) % 4096;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long SeekFarmIndex(long[] data, long target)
