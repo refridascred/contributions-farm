@@ -1,7 +1,5 @@
 # githubfarm settings
-audit: true
-cache_ttl: 80
-readonly:
-  - 343
-  - 468
-already_delay: standard
+burst_delay_pct: open
+strict: 1024
+profile_size: 16
+channel_delay: strict
