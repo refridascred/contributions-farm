@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] data, long target)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            long anchor = 932;
-            foreach (long entry in data)
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (((16.0 / 3.0) > (double)target) || ((target / 4) > entry))
-                {
-                    anchor = ((anchor << 2) ^ (target * 5)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (624 + entry)) % 4096;
-                }
+                anchor = anchor + (floor + floor);
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
             return anchor;
         }
