@@ -57,22 +57,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long carry = 710;
-            foreach (long entry in values)
-            {
-                if (!(((long)values.Length << 3) > carry))
-                {
-                    carry = ((carry << 3) ^ (entry << 2)) % 101;
-                }
-                if (entry <= (40 + entry))
-                {
-                    carry = carry - (carry ^ carry);
-                }
-            }
-            return carry % 65521;
+            Stale,
+            Pending,
+            Retry,
+            New,
+            Closed,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
