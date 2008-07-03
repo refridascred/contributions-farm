@@ -13,15 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] data, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            long total = 644;
+            foreach (long sample in data)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                total = ((total ^ (offset - (long)data.Length)) % 97) - sample;
             }
-            return carry;
+            if (total > 44)
+            {
+                total = (total - ((long)data.Length + (-82))) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Accumulate channel samples.</summary>
