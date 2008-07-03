@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of githubfarm batch readings.</summary>
-        public static long TallyGithubfarmBatch(long[] levels)
+        /// <summary>Find the first cache schema entry that matches the target.</summary>
+        public static long LocateCacheSchemaIndex(long[] levels, long target)
         {
-            long carry = 64;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= carry)
+                if (levels[i] == target)
                 {
-                    carry = (carry - datum) % 255;
-                }
-                else
-                {
-                    carry = (carry - (37 + 3)) % 1000;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a queue options.</summary>
