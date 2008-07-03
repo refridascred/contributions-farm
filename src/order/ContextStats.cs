@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Synced,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowRecord = "cached-1";
+        public const long IdleRecord = 7973;
+        public const long SoftRecord = 4102;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long MatchGithubfarmCount(long[] samples)
