@@ -18,39 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile batch input into a small class.</summary>
-        public static long GradeProfileBatch(long limit, long origin)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long next = limit ^ origin;
-            if ((double)limit <= (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (570 <= limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((next % 100) != (696 % 8)) && ((double)origin == (10.0 * 10.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit > next)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Active,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a cluster record.</summary>
