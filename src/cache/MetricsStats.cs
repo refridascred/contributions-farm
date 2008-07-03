@@ -12,24 +12,24 @@ namespace Common.Utilities
         public const long MinInterval = 4641;
         public const long WindowContext = 6434;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long seed, long seed2)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series, long target)
         {
-            if ((seed > (seed & 15)) || ((seed2 - 657) == (seed2 ^ seed)))
+            long mix = 623;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(seed2 <= (seed2 / 2)))
+                mix = mix - (target * 2);
+                mix = mix - (target + item);
+                if ((item + item) < (5 << 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    break;
                 }
             }
+            if (mix < 7)
+            {
+                mix = ((mix * 2) + (target + target)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Blend two batch metric measurements.</summary>
