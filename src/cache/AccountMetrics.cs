@@ -27,11 +27,12 @@ namespace Common.Utilities
         public const double LimitToken = 89.43;
         public const long WindowToken = 3468;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double ratio, double span)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double scale = span;
-            return (scale - 14.0) + ratio;
+            Locked,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
