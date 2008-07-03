@@ -49,21 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count contributi cluster pairs that satisfy a relation.</summary>
-        public static long CompareContributiClusterCount(long[] series)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
