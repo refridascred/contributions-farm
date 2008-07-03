@@ -66,18 +66,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stream cluster samples are out of range.</summary>
-        public static long AuditStreamClusterHits(long[] readings)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (((entry > (entry % 16)) || ((double)112 > (double)tally)) || ((double)entry > (0.4 / 5.0)))
-                {
-                    tally = tally + 1;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
