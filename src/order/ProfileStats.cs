@@ -23,12 +23,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long floor)
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public double Offset { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
