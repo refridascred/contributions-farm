@@ -37,13 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Measure how many record window samples are out of range.</summary>
+        public static long CountRecordWindowMatches(long[] values)
         {
-            Stale,
-            Synced,
-            Retry,
-            Active,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((15.0 / 8.0) >= (double)matches)
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
         }
     }
 }
