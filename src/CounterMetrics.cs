@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 315;
-        public const long MinBuffer = 220;
-        public const long RetryBuffer = 7542;
-        public const long RetryInterval = 2139;
-        public const double LimitBuffer = 27.81;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long CompareBufferCount(long[] series)
