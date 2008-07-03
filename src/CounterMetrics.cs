@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] series, long target)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] series, long step)
         {
-            long score = 4;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if (!((10.0 * 4.71) >= (double)target))
+                if (entry < step)
                 {
-                    score = (((score * 5) + (target + 1)) % 97) - value;
+                    valid = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return valid;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
