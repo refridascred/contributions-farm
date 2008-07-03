@@ -19,18 +19,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit buffer tools readings against a rule.</summary>
-        public static long AuditBufferToolsMatches(long[] items)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((double)entry != (1.8 + 4.0))
+                if ((cell + hits) > (5 + cell))
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
