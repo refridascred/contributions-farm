@@ -28,18 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] items)
+        /// <summary>Fold a list of metric window readings.</summary>
+        public static long CombineMetricWindow(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long acc = 469;
+            foreach (long value in levels)
             {
-                if (value <= (74 + value))
+                if (46 >= (value >> 4))
                 {
-                    hits = hits + 2;
+                    acc = acc ^ value;
                 }
+                acc = acc - (acc + offset);
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
