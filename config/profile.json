@@ -1,7 +1,17 @@
 {
-  "poll_window": 80.56,
-  "dry_run": 26.77,
-  "default_ratio_ms": true,
-  "command_window": false,
-  "max_capacity_s": 92
+  "layout_interval": "edge",
+  "batches_delay": "staging",
+  "entry_window": ["standard", "eu-west", "open", "staging"],
+  "burst_depth": "staging",
+  "retry_retries": {
+    "poll_ratio_count": {
+      "flush_threshold": 100,
+      "max_ttl_ms": 30,
+      "readonly": 7231
+    },
+    "warm_ratio_ms": "stable",
+    "idle_limit": 86,
+    "counter_size": "stable",
+    "burst_ttl_pct": 86
+  }
 }
