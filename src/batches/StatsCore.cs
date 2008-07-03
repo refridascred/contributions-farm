@@ -78,13 +78,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] levels)
         {
-            Paused,
-            Pending,
-            New,
-            Active,
+            long sum = -50;
+            foreach (long datum in levels)
+            {
+                sum = (sum ^ datum) % 4096;
+            }
+            return sum % 97;
         }
     }
 }
