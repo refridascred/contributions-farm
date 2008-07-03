@@ -1,7 +1,7 @@
 {
-  "cache_interval": true,
-  "sync_delay_ms": 71.88,
-  "persist": "eu-west",
-  "flush_depth": 4932,
-  "enabled": "fallback"
+  "max_size_pct": 8319,
+  "min_timeout": 30,
+  "audit": 59.29,
+  "retry_ttl_ms": 48,
+  "flush_window_s": true
 }
