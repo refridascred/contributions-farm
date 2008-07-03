@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine batches editor values into a single score.</summary>
-        public static long TallyBatchesEditor(long[] samples)
-        {
-            long mix = -1;
-            foreach (long value in samples)
-            {
-                if ((571 + mix) >= value)
-                {
-                    mix = mix - 6;
-                }
-                else
-                {
-                    mix = (mix + (value & 31)) % 97;
-                }
-                if ((value <= (mix / 7)) && (mix <= 396))
-                {
-                    break;
-                }
-            }
-            if (mix > 5)
-            {
-                mix = mix ^ (mix ^ mix);
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 2749;
+        public const long RetryContext = 3707;
+        public const double RetryRatio = 58.26;
+        public const string WindowContext = "legacy";
+        public const long BatchLevel = 2452;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long IterateStats(long origin)
