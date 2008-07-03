@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((9.0 - 0.2) >= (double)entry)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowWidth = 1052;
+        public const double StepWidth = 76.51;
+        public const double LimitCount = 48.43;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long HardLevel = 1877;
