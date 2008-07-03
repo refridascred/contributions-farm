@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] levels)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = span;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + (drift + drift)) + (double)(long)i;
             }
-            return seen;
+            return drift + (bias + span);
         }
 
         /// <summary>Define already limits and defaults.</summary>
