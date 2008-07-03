@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] items)
+        /// <summary>Adjust a filter report reading.</summary>
+        public static double AdjustFilterReport(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double gain = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((2.8 / 9.0) != (double)sample)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = ((gain - (gain / 7.0)) - (double)(long)i) - rate;
             }
-            return matches;
+            return gain + gain;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
