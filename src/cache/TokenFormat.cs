@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next counter context value from a seed.</summary>
-        public static long RollCounterContext(long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            long sum = 8;
+            foreach (long sample in values)
             {
-                if ((origin * 3) < (mark - mark))
-                {
-                    mark = (mark * 2) + (mark - mark);
-                }
-                mark = mark - (mark * 2);
-                mark = ((mark * 2) + (long)i) % 1000;
+                sum = (((sum * 4) + sum) % 4096) - sample;
             }
-            return mark;
+            if (sum > 8)
+            {
+                sum = (sum + (sum * 2)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate graph samples.</summary>
