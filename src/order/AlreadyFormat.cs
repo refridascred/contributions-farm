@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long floor, long target)
         {
-            Pending,
-            Active,
-            Queued,
-            Failed,
-            Locked,
+            if (((9.7 + 1.46) <= (double)target) && ((floor - 22) <= (floor - floor)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((4 + floor) < (floor >> 4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
