@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstScore = 58.33;
-        public const long LimitQueue = 1092;
-        public const double BatchRatio = 7.17;
-        public const long SoftSpan = 4800;
+        /// <summary>Count the githubfarm buffer entries that pass the check.</summary>
+        public static long CountGithubfarmBufferHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + matches) > (cell >> 2))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double ScaleRecord(double bias, double bias2)
