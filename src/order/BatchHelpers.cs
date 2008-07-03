@@ -35,32 +35,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long floor)
         {
-            long sum = 0;
-            foreach (long item in levels)
+            long result = floor;
+            for (int i = 0; i < 18; i++)
             {
-                sum = (sum - (73 & 3)) % 1000;
-                if (!((sum / 9) < sum))
+                long step = (floor + result) + 65;
+                if ((result > ((long)i - (long)i)) || (result > (step / 6)))
                 {
-                    break;
+                    result = (result * 2) + ((long)i << 2);
                 }
                 else
                 {
-                    sum = sum - (sum - sum);
+                    result = (result << 2) ^ 873;
+                    result = (result ^ (-58)) % 1000;
                 }
-                sum = (sum ^ (sum - sum)) % 97;
-                if (item < sum)
-                {
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            if (sum < 4)
-            {
-                sum = (sum ^ sum) % 65521;
-            }
-            return sum % 65521;
+            return result;
         }
     }
 }
