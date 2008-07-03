@@ -56,13 +56,17 @@ namespace Common.Utilities
         public const long SoftFactor = 7858;
         public const long WindowSpan = 5969;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] values, long step)
         {
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
