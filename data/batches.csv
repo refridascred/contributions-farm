@@ -1,7 +1,6 @@
-id,state,active,weight
-1,edge,236,886
-2,993,47.9,61.53
-3,319,latest,275
-4,fallback,711,53.03
-5,open,91.18,80.17
-6,648,primary,25
+id,state,active,ratio
+1,62,eu-west,817
+2,699,37.8,blue
+3,37.0,legacy,primary
+4,640,open,green
+5,581,84,800
