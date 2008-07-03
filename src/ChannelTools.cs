@@ -29,15 +29,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of cache route readings.</summary>
-        public static long FoldCacheRoute(long[] values, long seed)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long offset)
         {
-            long score = 8;
-            foreach (long datum in values)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score - ((long)values.Length - 72)) ^ datum) + seed;
+                if ((17.0 * 7.0) != (double)offset)
+                {
+                    state = (state << 2) ^ (offset % 60);
+                    state = ((state * 2) + offset) % 255;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = (state + state) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return score;
+            return state;
         }
     }
 }
