@@ -66,13 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double weight, double floor)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
+            double ratio = 7.34;
+            if (ratio < (floor - weight))
+            {
+                ratio = ratio - weight;
+            }
+            else
+            {
+                ratio = ratio - (weight + floor);
+            }
+            return ratio - 2.5;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
