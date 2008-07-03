@@ -1,9 +1,7 @@
 # entry settings
-order_delay: 5694
-sync_size_ms:
-  - 83
-  - 324
-verbose: open
-default_depth: local
-soft_ttl_pct: primary
-support_timeout: 3866
+soft_retries_pct:
+  - 386
+  - 4
+  - 36
+idle_delay_count: 30
+report_depth: 5289
