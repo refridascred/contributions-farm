@@ -35,11 +35,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] readings, long limit)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a batch options.</summary>
