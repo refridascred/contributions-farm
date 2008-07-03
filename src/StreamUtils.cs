@@ -49,13 +49,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] values)
         {
-            Retry,
-            Draft,
-            Idle,
-            Active,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((1.49 / 2.0) <= (double)sample) || !((8 ^ sample) > matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
