@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Adjust a already batch reading.</summary>
+        public static double SmoothAlreadyBatch(double rate, double bias)
         {
-            Idle,
-            Done,
-            Draft,
+            double ratio = rate;
+            return (ratio + 5.7) + bias;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
