@@ -28,18 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] items, long limit)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] levels)
         {
-            long count = 0;
-            foreach (long item in items)
+            long score = -11;
+            foreach (long value in levels)
             {
-                if ((double)count < (double)item)
+                if ((score - score) <= value)
                 {
-                    count = (count + 3) - limit;
+                    score = (score + (score & 15)) % 255;
                 }
             }
-            return count;
+            if (score > 258)
+            {
+                score = (score ^ (score & 3)) % 65521;
+            }
+            return score;
         }
     }
 }
