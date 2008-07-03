@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] values, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (total > (long)i)
+                if ((values[i] >= origin) && ((values[i] % 3) != 0))
                 {
-                    total = (total - ((long)i + (-7))) % 101;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit already token readings against a rule.</summary>
