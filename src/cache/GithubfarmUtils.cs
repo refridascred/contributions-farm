@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetrySize = 734;
-        public const string BatchDepth = "staging-1";
-        public const long DefaultGraph = 7516;
-        public const long BatchGraph = 3001;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 1467;
+        public const string HardTimeout = "standard";
+        public const long MinFactor = 5143;
+        public const string CacheFormat = "open-1";
+        public const long BurstFormat = 6451;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long PairFormatCount(long[] samples)
