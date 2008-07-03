@@ -10,11 +10,31 @@ namespace Common.Utilities
         public const long BurstContext = 2833;
         public const string IdleContext = "strict-edge";
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long origin, long floor)
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            if (origin < (floor ^ floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.08 * 1.08) <= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + floor) >= (origin << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine window values into a single score.</summary>
