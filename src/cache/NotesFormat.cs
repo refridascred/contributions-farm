@@ -29,15 +29,21 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Project the next token window value.</summary>
-        public static double ScaleTokenWindow(double scale, double floor)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] series)
         {
-            double weight = floor;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight - (double)6) + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight - scale;
+            return hits;
         }
     }
 }
