@@ -1,5 +1,11 @@
 {
-  "queue_retries": true,
-  "soft_interval_ms": "local",
-  "idle_window_ms": 30
+  "default_interval": "legacy",
+  "record_timeout": 26.41,
+  "cache_timeout": "stable",
+  "already_capacity": "primary",
+  "cache_size_count": {
+    "format_threshold": false,
+    "batches_size": [9, 78],
+    "soft_retries": 71
+  }
 }
