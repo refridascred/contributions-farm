@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a format stats sample.</summary>
-        public static long LocateFormatStatsIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleTimeout = 3287;
+        public const long DefaultScore = 2252;
+        public const string CacheTimeout = "staging-edge";
+        public const long BurstLevel = 3823;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowBudget = 7228;
