@@ -1,7 +1,5 @@
 {
-  "cache_depth_pct": "blue",
-  "batch_ratio_count": false,
-  "metric_retries": "strict",
-  "checks_window": [269, 478, 113, 313],
-  "compress": 77
+  "sync_limit_pct": 51,
+  "session_timeout": 1.6,
+  "token_timeout": "legacy"
 }
