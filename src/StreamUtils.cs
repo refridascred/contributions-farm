@@ -30,15 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] samples, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] samples, long limit)
         {
-            long mix = 12;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                mix = (((mix + 72) % 4096) - value) - offset;
+                if (item < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Audit cache entry readings against a rule.</summary>
