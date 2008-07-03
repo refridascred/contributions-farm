@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] readings, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long total = 0;
+            foreach (long value in samples)
             {
-                if (entry >= step)
+                if (((total >> 5) <= total) || ((9.3 - 1.0) <= (double)total))
                 {
-                    found = false;
-                    break;
+                    total = ((total * 2) + (value + total)) % 1000;
+                }
+                else
+                {
+                    total = (total - (value / 7)) % 97;
                 }
             }
-            return found;
+            return total % 97;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
