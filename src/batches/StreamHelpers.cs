@@ -93,11 +93,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftDepth = "local-v2";
+        public const double IdleSize = 78.94;
+        public const long LimitFactor = 2317;
+        public const long SoftTimeout = 6365;
     }
 }
