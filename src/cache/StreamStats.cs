@@ -34,15 +34,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] levels)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] items)
         {
-            long total = 83;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total + (total - total)) ^ value;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a context summary.</summary>
