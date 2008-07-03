@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long acc = 439;
+            foreach (long value in data)
             {
-                if ((((1.0 + 12.0) == (double)(long)values.Length) || ((entry ^ entry) == (entry % 2))) || ((entry / 8) >= (seen % 60)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (acc + (0 + target)) + value;
             }
-            return seen;
+            if (acc < 6)
+            {
+                acc = ((acc << 2) ^ (acc % 16)) % 4096;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the account class values.</summary>
