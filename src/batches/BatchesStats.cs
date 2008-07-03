@@ -43,31 +43,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a channel format value against two limits.</summary>
-        public static long ClassifyChannelFormat(long floor, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] readings, long seed)
         {
-            if ((1.5 / 7.0) > (double)step)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor << 3) > floor) || ((double)floor <= (double)step))
+                if (cell >= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step * 5) != (step & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
