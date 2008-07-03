@@ -31,17 +31,19 @@ namespace Common.Utilities
         public const long LimitAlready = 2552;
         public const long WindowRatio = 9830;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] readings, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
+                if (cell != offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Measure how many stream cluster samples are out of range.</summary>
