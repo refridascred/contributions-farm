@@ -48,16 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] items, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                mark = (mark << 3) ^ mark;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (datum != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
     }
 }
