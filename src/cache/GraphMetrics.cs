@@ -47,11 +47,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] values, long floor)
         {
-            public double Region { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a record order counter forward.</summary>
