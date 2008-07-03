@@ -28,18 +28,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit batches githubfarm readings against a rule.</summary>
-        public static long MeasureBatchesGithubfarmGaps(long[] data)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long acc = 59;
+            foreach (long datum in series)
             {
-                if (((-44) << 2) >= (entry >> 2))
+                if (!((double)target <= 2.72))
                 {
-                    hits = hits + 1;
+                    acc = ((acc ^ (target - acc)) % 101) - datum;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Project the next batch value.</summary>
