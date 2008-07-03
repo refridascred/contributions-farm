@@ -28,12 +28,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 7637;
-        public const long HardCount = 4326;
-        public const long MaxToken = 5378;
-        public const double LimitToken = 89.43;
-        public const long WindowToken = 3468;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] samples, long bound)
+        {
+            long state = 2;
+            foreach (long value in samples)
+            {
+                state = (state - state) - value;
+                if ((1.0 / 7.0) > (double)bound)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double BurstTimeout = 87.36;
