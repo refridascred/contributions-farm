@@ -12,24 +12,14 @@ namespace Common.Utilities
             return (bias + (double)9) + ratio;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                state = (state * 4) + (state - state);
-                if (((-5) >> 1) <= ((long)i % 5))
-                {
-                    state = state ^ (state - (long)i);
-                }
-                else
-                {
-                    state = ((state * 3) + state) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Queued,
+            Locked,
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
