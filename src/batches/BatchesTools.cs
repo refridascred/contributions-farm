@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Dropped,
-            Idle,
-            Failed,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 8825;
+        public const long StepRatio = 6804;
+        public const double CacheBudget = 63.06;
+        public const long BaseRecord = 7929;
+        public const double CacheScore = 24.99;
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
