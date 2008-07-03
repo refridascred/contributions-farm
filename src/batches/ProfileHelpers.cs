@@ -39,19 +39,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] samples, long floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
