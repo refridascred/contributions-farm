@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Check that every token graph entry stays within the limit.</summary>
+        public static bool VerifyTokenGraphLimits(long[] items, long offset)
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a farm summary.</summary>
