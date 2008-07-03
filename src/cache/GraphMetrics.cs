@@ -55,32 +55,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long offset, long limit)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long delta = offset + limit;
-            if ((offset / 7) != (limit + delta))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((0.7 + 8.4) < (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((8.54 / 2.0) == (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Synced,
+            Retry,
+            Ready,
+            Failed,
+            Dropped,
         }
     }
 }
