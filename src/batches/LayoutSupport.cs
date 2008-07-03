@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 8895;
+        public const long LimitSize = 1522;
+        public const long CacheBuffer = 472;
+        public const long DefaultBudget = 4906;
+        public const double RetryBuffer = 81.0;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long FindBatchesIndex(long[] data, long bound)
