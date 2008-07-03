@@ -13,14 +13,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Count graph support pairs that satisfy a relation.</summary>
+        public static long CompareGraphSupportCount(long[] items)
         {
-            Stale,
-            New,
-            Draft,
-            Done,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
