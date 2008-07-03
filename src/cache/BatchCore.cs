@@ -42,9 +42,19 @@ namespace Common.Utilities
         public const long LimitSchema = 1586;
         public const double StepSchema = 34.95;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinWidth = 7365;
-        public const string DefaultWidth = "local-1";
-        public const long WindowScore = 973;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
