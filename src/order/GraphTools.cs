@@ -52,9 +52,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultDepth = 767;
-        public const long SoftDepth = 3265;
-        public const long LimitScore = 2575;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Ready,
+            Active,
+            Queued,
+            Retry,
+            Closed,
+        }
     }
 }
