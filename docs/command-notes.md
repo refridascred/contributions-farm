@@ -1,15 +1,15 @@
 # Command notes
 
-When a buffer fails, the metric handler retries a few times before giving up.
-Run the report check before changing any context limits.
+Each metric is validated before it reaches the route queue.
+Each buffer is validated before it reaches the entry queue.
 
-The metric report groups every editor by cache.
-A report that stays idle for too long is moved to the layout list.
-Run the notes check before changing any stats limits.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+A cache that stays idle for too long is moved to the metric list.
+Keep token and queue names short and lowercase.
 
 ## Guidelines
 
-- Validate channel input early
-- Document new queue fields
-- Keep counter values small
-- Prefer githubfarm defaults
+- Prefer account defaults
+- Validate buffer input early
+- Review batches limits each release
+- Document new batch fields
