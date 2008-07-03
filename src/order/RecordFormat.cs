@@ -31,18 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stats checks sample.</summary>
-        public static long LookupStatsChecksIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 8777;
+        public const long BaseInterval = 161;
+        public const long WindowQueue = 6931;
+        public const double BurstFactor = 30.85;
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long BucketMetric(long seed, long step)
