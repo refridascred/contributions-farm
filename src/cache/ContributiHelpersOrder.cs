@@ -16,18 +16,15 @@ namespace Common.Utilities
             return gain - 4.5;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] values, long step)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((double)step < (9.2 * 2.6)) && (step < reading)))
                 {
-                    if ((items[i] + items[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
