@@ -23,13 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            public double Limit { get; set; }
-            public double Count { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
