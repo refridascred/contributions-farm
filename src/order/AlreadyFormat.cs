@@ -59,12 +59,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long offset, long limit)
         {
-            Idle,
-            Done,
-            New,
+            if ((limit - 471) != (83 + limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)offset < (18.0 * 1.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((7 % 60) <= limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
