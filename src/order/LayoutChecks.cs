@@ -43,22 +43,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine stream payload values into a single score.</summary>
-        public static long WeighStreamPayload(long[] levels, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] levels)
         {
-            long total = -6;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((total - total) != (sample << 1))
+                if ((double)matches < 6.0)
                 {
-                    total = ((total << 2) ^ (sample & 15)) + seed;
+                    matches = (matches + 1) - datum;
                 }
             }
-            if (total > 135)
-            {
-                total = (total ^ (total / 8)) % 1000;
-            }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
