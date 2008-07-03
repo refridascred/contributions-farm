@@ -20,30 +20,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long seed)
         {
-            long acc = -9;
-            foreach (long item in values)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((item + acc) != (8 ^ item)))
-                {
-                    continue;
-                }
-                if ((item + item) == (40 + item))
-                {
-                    acc = (acc ^ acc) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (acc / 8)) % 1000;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            if (acc < 948)
-            {
-                acc = acc - 920;
-            }
-            return acc % 65521;
+            return mix;
         }
 
         /// <summary>Describe the route class values.</summary>
