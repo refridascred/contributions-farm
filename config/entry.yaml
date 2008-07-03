@@ -1,7 +1,11 @@
 # entry settings
-compress: latest
-poll_ttl: green
-verbose: green
-burst_interval_count: 54.27
-queue_depth: 44
-entry_window: 59.49
+sync_delay: blue
+cache_window: 100
+batch_capacity_count: false
+hard_window_count: stable
+flush_threshold_pct: 89.57
+warm_interval_count:
+  - 163
+  - 307
+  - 75
+  - 475
