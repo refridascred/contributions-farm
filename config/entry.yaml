@@ -1,22 +1,5 @@
 # entry settings
-soft_limit: 60
-flush_capacity_ms: 74.22
-dry_run: legacy
-base_limit:
-  - 187
-  - 345
-  - 245
-  - 350
-poll_capacity_count:
-  entry_size:
-    - staging
-    - legacy
-    - stable
-    - green
-  sync_interval_pct: legacy
-  min_depth: fallback
-  burst_window_ms: 3935
-  max_depth_ms:
-    - local
-    - local
-  persist: 60
+warm_depth: green
+soft_interval_s: 1024
+poll_capacity: 81
+editor_threshold: primary
