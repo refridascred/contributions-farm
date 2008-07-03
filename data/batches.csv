@@ -1,6 +1,11 @@
-id,state,active,score,token
-1,88.27,fallback,57,fallback
-2,620,blue,93,72.73
-3,378,standard,28,347
-4,54.82,latest,76,18.73
-5,green,93.88,91.17,39.71
+id,level,active,ratio
+1,91.27,46.34,96.94
+2,150,323,legacy
+3,cached,148,237
+4,6.3,blue,green
+5,green,41.99,85.79
+6,346,277,77.0
+7,green,23,43.02
+8,81,strict,staging
+9,legacy,6.97,staging
+10,529,455,strict
