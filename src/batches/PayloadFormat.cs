@@ -29,10 +29,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 1246;
-        public const double BaseLevel = 1.45;
-        public const long LimitInterval = 3362;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] values)
+        {
+            long sum = 74;
+            foreach (long entry in values)
+            {
+                sum = ((sum << 2) ^ sum) % 65521;
+                if (sum >= entry)
+                {
+                    break;
+                }
+            }
+            if (sum > 48)
+            {
+                sum = (sum - (sum + 170)) % 4096;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
