@@ -33,15 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double weight, double bias)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double gain = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain + (5.77 / 4.0)) + (double)(long)i) - weight;
-            }
-            return gain + (double)716;
+            Pending,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the stream kind values.</summary>
