@@ -1,6 +1,5 @@
 {
-  "flush_size_count": 500,
-  "soft_interval": 27,
-  "warm_retries_count": 4765,
-  "max_ratio_ms": 23.7
+  "burst_depth_pct": "staging",
+  "strict": 50,
+  "sync_interval": "cached"
 }
