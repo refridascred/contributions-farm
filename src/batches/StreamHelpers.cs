@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long floor, long floor2)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            long cur = floor - floor2;
-            if ((0 % 64) >= (floor2 - floor2))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor2 > (floor / 4)) && ((floor << 1) > 92))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur % 97) == (floor + 0))
+                    if ((series[i] + series[j]) != 0)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)cur > 5.3)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
