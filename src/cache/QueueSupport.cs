@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((datum & 31) >= (-54)) || (matches <= (matches % 24))) && (((long)items.Length * 4) > datum))
                 {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) - bound;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
