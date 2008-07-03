@@ -19,11 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] data, long bound)
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the schema state values.</summary>
