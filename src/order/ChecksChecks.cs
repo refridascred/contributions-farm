@@ -12,11 +12,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 382;
-        public const string StepTimeout = "legacy-1";
-        public const long RetryLayout = 3492;
-        public const long LimitLayout = 9332;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
