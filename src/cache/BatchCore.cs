@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Audit commits order readings against a rule.</summary>
+        public static long TallyCommitsOrderMatches(long[] levels, long origin)
         {
-            Retry,
-            Ready,
-            New,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (origin >= (22 ^ matches))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up token samples.</summary>
