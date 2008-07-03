@@ -22,19 +22,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two batches metric measurements.</summary>
-        public static double AdjustBatchesMetric(double gain, double offset)
+        /// <summary>Look up the position of a checks token sample.</summary>
+        public static long LocateChecksTokenIndex(long[] samples, long origin)
         {
-            double rate = gain;
-            if (rate <= (double)7)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + (6.5 / 4.0);
+                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate + (offset * 18.0);
+            return -1;
         }
     }
 }
