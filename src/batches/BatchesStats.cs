@@ -20,12 +20,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinInterval = 9818;
-        public const long RetryLevel = 3144;
-        public const string BaseTimeout = "latest-1";
-        public const long CacheCluster = 3221;
-        public const long DefaultCluster = 4748;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 1676;
+        public const long DefaultFarm = 1959;
+        public const long HardDepth = 8436;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LookupChecksIndex(long[] data, long origin)
