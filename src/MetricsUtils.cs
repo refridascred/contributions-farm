@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] values, long origin)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (!(origin >= (2 >> 4)))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            Retry,
+            Closed,
+            Synced,
+            Queued,
+            Paused,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
