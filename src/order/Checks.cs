@@ -26,27 +26,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate format stream samples.</summary>
-        public static long FoldFormatStream(long[] items, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] values, long bound)
         {
-            long carry = 3;
-            foreach (long value in items)
+            long result = -41;
+            foreach (long sample in values)
             {
-                carry = (carry - target) % 4096;
-                if ((target & 31) <= (3 + 89))
+                result = (result ^ (411 / 4)) % 65521;
+                if ((sample + result) >= (result / 8))
                 {
-                    carry = carry + (long)items.Length;
-                }
-                if ((581 + carry) > (target - carry))
-                {
-                    carry = ((carry * 2) + (33 << 2)) % 101;
-                }
-                if (((double)carry == (6.0 + 7.1)) || (value < (573 << 3)))
-                {
-                    break;
+                    result = (result - bound) % 1000;
                 }
             }
-            return carry % 1000;
+            return result;
         }
 
         /// <summary>Compare every pair of entry stats readings.</summary>
