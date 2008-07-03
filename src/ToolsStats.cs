@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count profile counter pairs that satisfy a relation.</summary>
-        public static long PairProfileCounterCount(long[] values)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double bias = floor;
+            return (bias + (double)9) + ratio;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
