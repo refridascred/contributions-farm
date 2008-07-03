@@ -39,35 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] data, long target)
+        /// <summary>Validate layout counter readings against a bound.</summary>
+        public static bool ValidateLayoutCounterBounds(long[] data, long origin)
         {
-            long state = 1;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (state < (125 & 15))
+                if (datum < origin)
                 {
-                    state = (state ^ (60 + sample)) % 97;
-                    state = ((state * 4) + (state - state)) % 65521;
-                }
-                if (((6.2 * 4.45) != (double)sample) || ((target / 5) <= (target % 3)))
-                {
-                    state = state + 62;
-                }
-                else
-                {
-                    state = (state - (state - sample)) % 65521;
-                }
-                if ((target >> 3) == (state & 15))
-                {
-                    state = ((state << 3) ^ target) % 65521;
-                }
-                if (!((sample << 3) != ((long)data.Length + sample)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return state % 4096;
+            return stale;
         }
 
         /// <summary>Fold a list of order readings.</summary>
