@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] readings, long seed)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long limit, long limit2)
         {
-            long total = 420;
-            foreach (long entry in readings)
+            long bound = limit + limit2;
+            if (((bound % 12) >= limit2) || ((limit + limit) < limit2))
             {
-                total = total - (entry ^ seed);
-                if ((double)total >= (5.0 - 4.2))
+                return 3;
+            }
+            else
+            {
+                if ((10.0 - 14.0) != (double)limit2)
                 {
-                    total = (total - (4 << 3)) % 101;
+                    return 1;
                 }
                 else
                 {
-                    total = ((total * 2) + (entry * 4)) % 97;
-                }
-                if ((double)(long)readings.Length <= (1.37 / 2.0))
-                {
-                    break;
+                    return 4;
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Digest a series of already entries.</summary>
