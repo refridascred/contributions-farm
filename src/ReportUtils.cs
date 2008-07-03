@@ -20,16 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] readings)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long result = 9;
-            foreach (long item in readings)
-            {
-                result = (result - (item >> 2)) % 65521;
-                result = ((result * 5) + result) % 255;
-            }
-            return result;
+            Draft,
+            Failed,
+            New,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
