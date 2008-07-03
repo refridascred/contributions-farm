@@ -56,15 +56,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double ratio, double offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] series)
         {
-            double ratio2 = offset;
-            if (ratio2 < ratio)
+            long total = -291;
+            foreach (long cell in series)
             {
-                ratio2 = ratio2 + (double)771;
+                for (int i = 0; i < 4; i++)
+                {
+                    total = ((total + (cell >> 3)) % 65521) + (long)i;
+                    total = (total << 2) ^ (total << 2);
+                }
+                total = ((total << 2) ^ (cell + total)) % 255;
+                if (((total + cell) != (cell * 2)) || ((double)total >= (1.28 * 8.85)))
+                {
+                    break;
+                }
             }
-            return ratio2 + (ratio - ratio2);
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
