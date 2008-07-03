@@ -22,21 +22,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up editor already samples.</summary>
-        public static long PairEditorAlreadyCount(long[] samples)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] samples, long step)
         {
-            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] >= step)
                 {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a order header.</summary>
