@@ -1,10 +1,6 @@
-id,ratio,label
-1,standard,48.13
-2,stable,727
-3,eu-west,74.74
-4,48.56,94.57
-5,586,fallback
-6,41.46,95.6
-7,97.12,67.16
-8,90.61,242
-9,staging,24.02
+id,token
+1,66.26
+2,540
+3,133
+4,latest
+5,green
