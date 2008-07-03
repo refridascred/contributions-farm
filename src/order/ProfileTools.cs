@@ -42,24 +42,10 @@ namespace Common.Utilities
         public const long LimitTools = 6931;
         public const long BatchTools = 1879;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] items, long bound)
-        {
-            long sum = 2;
-            foreach (long sample in items)
-            {
-                if (((sum * 4) <= 138) || ((sample / 7) <= sample))
-                {
-                    sum = (sum << 3) ^ sample;
-                    continue;
-                }
-                sum = (sum ^ (sample << 2)) % 97;
-            }
-            if (sum < (-43))
-            {
-                sum = sum ^ bound;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCluster = 92.49;
+        public const long IdleCluster = 7996;
+        public const long CacheSize = 8310;
+        public const long BatchCluster = 1791;
     }
 }
