@@ -41,39 +41,18 @@ namespace Common.Utilities
         public const long RetryProfile = 9008;
         public const string DefaultProfile = "alpha-1";
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long limit, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] values)
         {
-            long bound = limit + target;
-            if ((2.6 - 1.0) >= (double)target)
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit <= (3.2 / 2.0))
+                if ((double)hits <= (9.79 + 5.3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + limit) >= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)target >= (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = (hits + 1) + item;
                 }
             }
+            return hits;
         }
     }
 }
