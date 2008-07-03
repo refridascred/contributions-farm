@@ -18,15 +18,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double gain, double span)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] items, long seed)
         {
-            double gain2 = 4.3;
-            if (gain2 >= (4.19 / 5.0))
+            long count = 0;
+            foreach (long reading in items)
             {
-                gain2 = (gain2 - (double)5) - span;
+                if (((double)reading < (double)146) && (count < (60 + 167)))
+                {
+                    count = (count + 1) - seed;
+                }
             }
-            return gain2 - gain;
+            return count;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
