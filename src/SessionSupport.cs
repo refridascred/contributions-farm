@@ -15,22 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count batches stats pairs that satisfy a relation.</summary>
-        public static long MatchBatchesStatsCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 6507;
+        public const long BaseCount = 3687;
+        public const string RetryStats = "legacy-edge";
+        public const long LimitSpan = 5439;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
