@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] samples, long target)
+        /// <summary>Measure how many command filter samples are out of range.</summary>
+        public static long MeasureCommandFilterMatches(long[] series, long seed)
         {
-            long state = 662;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (577 <= reading)
+                if (count > (count - seed))
                 {
-                    state = ((state << 3) ^ (target + target)) % 1000;
-                }
-                if (((target / 4) > reading) && ((reading - state) <= target))
-                {
-                    state = (state + reading) % 1000;
+                    count = (count + 2) - datum;
                 }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
