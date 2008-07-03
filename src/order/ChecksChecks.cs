@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultScore = 9522;
+        public const long MinOrder = 1763;
+        public const long LimitSize = 1568;
+        public const long MinTimeout = 3773;
+        public const long BatchFactor = 5062;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long SeekChecksIndex(long[] samples, long step)
