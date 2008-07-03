@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Digest a series of commits token entries.</summary>
+        public static long CombineCommitsToken(long[] series)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            long carry = 67;
+            foreach (long sample in series)
+            {
+                carry = ((carry * 5) + ((-855) >> 4)) % 1000;
+                if ((sample + carry) == (sample >> 3))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
