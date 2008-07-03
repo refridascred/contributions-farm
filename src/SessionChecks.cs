@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Done,
-            Queued,
-            Dropped,
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine account queue values into a single score.</summary>
