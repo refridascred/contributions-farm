@@ -24,19 +24,19 @@ namespace Common.Utilities
             return mean + (double)110;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double bias, double offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] readings, long floor)
         {
-            double bias2 = (double)(760 ^ (-83));
-            if (bias2 >= (18.0 + 4.78))
+            long sum = 12;
+            foreach (long datum in readings)
             {
-                bias2 = (bias2 - bias) + offset;
+                sum = ((sum << 2) ^ floor) ^ datum;
             }
-            for (int i = 0; i < 4; i++)
+            if (sum < 53)
             {
-                bias2 = (bias2 + bias2) + (double)(long)i;
+                sum = sum - (sum & 15);
             }
-            return bias2 - bias;
+            return sum;
         }
 
         /// <summary>Describe the already phase values.</summary>
