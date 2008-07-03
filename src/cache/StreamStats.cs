@@ -16,11 +16,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Rank farm contributi input into a small class.</summary>
+        public static long BucketFarmContributi(long origin, long limit)
         {
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
+            if (!((8 + limit) < limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin >= (limit << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit * 5) >= (origin ^ origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
