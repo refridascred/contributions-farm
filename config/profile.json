@@ -1,8 +1,7 @@
 {
-  "min_window_count": "stable",
-  "layout_window": 12.53,
-  "hard_limit_ms": "strict",
-  "base_ttl_s": 9578,
-  "schema_retries": "legacy",
-  "verbose": 60.96
+  "poll_window": 80.56,
+  "dry_run": 26.77,
+  "default_ratio_ms": true,
+  "command_window": false,
+  "max_capacity_s": 92
 }
