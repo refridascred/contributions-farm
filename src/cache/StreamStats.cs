@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Fold a list of record account readings.</summary>
+        public static long TotalRecordAccount(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 607;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (step > (47 * 2))
                 {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result << 2) ^ (reading + reading);
                 }
             }
-            return count;
+            if (result > 97)
+            {
+                result = ((result << 2) ^ step) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
