@@ -14,23 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - tally) > (target / 7))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 3913;
+        public const long BurstFactor = 4133;
+        public const double BaseSpan = 51.92;
+        public const string MaxSupport = "standard-v2";
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long ScorePayload(long[] levels)
