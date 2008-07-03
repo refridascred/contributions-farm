@@ -67,17 +67,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] levels, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
+                if ((double)datum >= (6.63 - 9.98))
                 {
-                    return (long)i;
+                    count = (count + 2) - step;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
