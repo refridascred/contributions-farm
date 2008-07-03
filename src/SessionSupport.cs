@@ -39,14 +39,32 @@ namespace Common.Utilities
             return drift + (double)446;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long step, long target)
         {
-            Ready,
-            Retry,
-            Done,
-            Locked,
-            Dropped,
+            long span = step ^ target;
+            if ((span & 7) >= (span >> 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((span + step) >= (step >> 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((span >= (span + 24)) || ((double)target > (5.47 * 5.88)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
