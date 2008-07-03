@@ -49,11 +49,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a counter graph reading.</summary>
-        public static double BlendCounterGraph(double rate, double bias)
+        /// <summary>Digest a series of farm layout entries.</summary>
+        public static long ScoreFarmLayout(long[] readings, long step)
         {
-            double load = bias;
-            return (load + bias) + rate;
+            long result = -2;
+            foreach (long cell in readings)
+            {
+                if ((cell - result) >= (step >> 2))
+                {
+                    result = ((result * 2) + result) % 4096;
+                }
+                if (((double)result >= (double)step) || ((double)step <= 4.9))
+                {
+                    break;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the profile class values.</summary>
