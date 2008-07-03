@@ -20,22 +20,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine command channel values into a single score.</summary>
-        public static long TallyCommandChannel(long[] samples, long seed)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long carry = 2;
-            foreach (long value in samples)
-            {
-                if ((8.8 + 2.7) >= (double)carry)
-                {
-                    carry = ((carry + carry) % 1000) - seed;
-                }
-                else
-                {
-                    carry = (carry + (value / 6)) % 4096;
-                }
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the schema state values.</summary>
