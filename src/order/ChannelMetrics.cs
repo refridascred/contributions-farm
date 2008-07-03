@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] levels)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if ((origin >> 2) <= 530)
             {
-                if ((4.01 - 19.0) > (double)sample)
+                return 3;
+            }
+            else
+            {
+                if ((-4) <= origin)
                 {
-                    count = count + 2;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
