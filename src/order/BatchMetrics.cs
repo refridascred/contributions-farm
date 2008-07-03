@@ -70,18 +70,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + matches) == (matches / 8))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchDepth = 9519;
+        public const double BatchMetrics = 24.2;
+        public const long StepMetrics = 3914;
+        public const long HardSpan = 9;
     }
 }
