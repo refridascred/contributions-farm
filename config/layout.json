@@ -1,5 +1,6 @@
 {
-  "sync_capacity_pct": 30,
-  "hard_depth_s": "edge",
-  "order_threshold": 79
+  "strict": 1024,
+  "editor_depth": "cached",
+  "base_threshold_ms": 500,
+  "min_limit_s": 10.74
 }
