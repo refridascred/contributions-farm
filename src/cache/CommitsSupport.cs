@@ -45,10 +45,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowQueue = 20.55;
-        public const long BurstQueue = 3705;
-        public const string BatchSize = "staging-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitScore = 2610;
+        public const string BurstSpan = "strict-edge";
+        public const long BaseTimeout = 637;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryRatio = 267;
