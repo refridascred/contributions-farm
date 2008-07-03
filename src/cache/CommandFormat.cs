@@ -23,15 +23,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Stale,
+            Retry,
+            Active,
         }
 
         /// <summary>Describe the report state values.</summary>
