@@ -24,21 +24,18 @@ namespace Common.Utilities
             return scale - (double)113;
         }
 
-        /// <summary>Match up report token samples.</summary>
-        public static long PairReportTokenCount(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((value * 3) > matches)
                 {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a entry stats.</summary>
