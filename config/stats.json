@@ -1,6 +1,20 @@
 {
-  "cache_interval": 63.96,
-  "hard_ratio_pct": "blue",
-  "sync_size_pct": 87,
-  "min_window_count": [232, 163, 215]
+  "sync_ttl_s": true,
+  "cache_limit_ms": "blue",
+  "base_depth": "blue",
+  "cluster_size": {
+    "retry_interval_count": "open",
+    "cache_ttl_s": {
+      "verbose": 6874,
+      "persist": 95.03,
+      "max_timeout_pct": "strict",
+      "flush_limit_s": "open",
+      "default_limit": "open"
+    },
+    "persist": 32,
+    "max_delay_count": "cached",
+    "sync_size_s": "standard"
+  },
+  "retry_size_pct": 100,
+  "sync_size": 6.6
 }
