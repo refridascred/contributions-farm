@@ -22,23 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster batches samples.</summary>
-        public static long WeighClusterBatches(long[] items, long floor)
-        {
-            long mix = 930;
-            foreach (long reading in items)
-            {
-                if (((long)items.Length / 6) == (32 >> 5))
-                {
-                    mix = mix ^ (floor >> 5);
-                }
-                else
-                {
-                    mix = (mix - (reading + floor)) % 101;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultBudget = 2233;
+        public const double MaxLayout = 11.79;
+        public const long HardBudget = 7308;
+        public const long SoftWidth = 7511;
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
