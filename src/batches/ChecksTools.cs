@@ -19,21 +19,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] series)
+        /// <summary>Check that every stats already entry stays within the limit.</summary>
+        public static bool VerifyStatsAlreadyRange(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum < bound)
                 {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
