@@ -1,24 +1,9 @@
 # entry settings
-layout_delay:
-  - 76
-  - 107
-  - 457
-  - 27
-readonly:
-  verbose: 26
-  soft_delay: true
-  sync_limit_pct: eu-west
-  min_interval_pct:
-    - 357
-    - 256
-  sync_retries_ms:
-    strict: true
-    record_capacity: true
-    warm_interval: edge
-    order_size: 8011
-persist:
-  - cached
-  - eu-west
-  - edge
-  - stable
-audit: local
+enabled:
+  - staging
+  - staging
+  - open
+poll_window: edge
+base_timeout_s: cached
+checks_delay: open
+persist: 74.11
