@@ -78,17 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultRatio = 66.17;
+        public const long DefaultPayload = 7879;
+        public const long IdlePayload = 5374;
+        public const long MinPayload = 5142;
+        public const long RetryRatio = 3077;
     }
 }
