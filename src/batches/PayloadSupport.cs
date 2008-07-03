@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 8871;
-        public const double BaseMetrics = 98.68;
-        public const long IdleCount = 2962;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Synced,
+            Stale,
+            Queued,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Fold a list of contributi metric readings.</summary>
         public static long ScoreContributiMetric(long[] series)
