@@ -5,28 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] data, long offset)
+        /// <summary>Rank format batch input into a small class.</summary>
+        public static long RankFormatBatch(long step, long limit)
         {
-            long mix = 269;
-            foreach (long reading in data)
+            long next = step + limit;
+            if ((step + step) >= (next * 3))
             {
-                long tally = mix << 1;
-                if ((double)tally >= (6.5 * 10.0))
+                return 8;
+            }
+            else
+            {
+                if ((9 >> 3) <= (next + step))
                 {
-                    tally = ((tally << 2) ^ (tally & 7)) % 1000;
-                    continue;
-                }
-                if (!((reading >> 2) >= (reading / 4)))
-                {
-                    mix = mix - (mix ^ offset);
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix ^ (mix - reading)) % 65521;
+                    if (!((1 % 60) > (step + next)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mix % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
