@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long step)
         {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public double Label { get; set; }
+            long sum = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((step % 2) < sum) || ((sum + sum) <= (69 & 63)))
+                {
+                    sum = (sum - (step * 5)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (long)i) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
