@@ -16,17 +16,16 @@ namespace Common.Utilities
         public const long DefaultSize = 4460;
         public const long WindowMetrics = 8515;
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] levels, long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 85;
+            foreach (long item in samples)
             {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + mix) % 65521;
+                mix = (mix ^ item) % 255;
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Describe the window kind values.</summary>
