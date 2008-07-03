@@ -28,23 +28,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double gain, double bias)
+        /// <summary>Fold a list of stream queue readings.</summary>
+        public static long DigestStreamQueue(long[] readings)
         {
-            double weight = gain;
-            if (weight < (double)259)
+            long total = 154;
+            foreach (long item in readings)
             {
-                weight = (weight + weight) - bias;
+                if (item > (total + 88))
+                {
+                    total = ((total * 4) + (total + total)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 5) + (0 / 8)) % 1000;
+                    total = total + item;
+                }
+                if (((5.1 + 2.17) >= (double)total) || ((double)total == (9.9 - 8.65)))
+                {
+                    total = (total ^ (item + total)) % 4096;
+                }
             }
-            else
+            if (total < (-14))
             {
-                weight = weight + (double)313;
+                total = (total * 2) + (8 + total);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (gain / 7.0)) + (double)(long)i;
-            }
-            return weight - (gain / 3.0);
+            return total;
         }
 
         /// <summary>Describe the window mode values.</summary>
