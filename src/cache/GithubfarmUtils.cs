@@ -28,11 +28,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepContext = 56.4;
-        public const long SoftContext = 3359;
-        public const double DefaultFactor = 10.8;
-        public const long IdleInterval = 73;
+        /// <summary>Find the first buffer notes entry that matches the target.</summary>
+        public static long LocateBufferNotesIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up order queue samples.</summary>
         public static long MatchOrderQueueCount(long[] values)
