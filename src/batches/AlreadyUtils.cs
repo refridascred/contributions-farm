@@ -32,11 +32,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] items, long floor)
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
