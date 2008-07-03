@@ -23,19 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value - hits) > hits)
-                {
-                    hits = (hits + 3) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryDepth = 7697;
+        public const long SoftRoute = 7383;
+        public const long BatchRoute = 8470;
+        public const string MaxLevel = "fallback-1";
 
         /// <summary>Fold a list of window readings.</summary>
         public static long TallyWindow(long[] values)
