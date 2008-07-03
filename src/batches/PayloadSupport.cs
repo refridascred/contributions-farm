@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const double BaseMetrics = 98.68;
         public const long IdleCount = 2962;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Locked,
-            Stale,
-            Queued,
-            Ready,
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
