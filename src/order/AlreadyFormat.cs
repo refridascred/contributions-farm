@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next notes session value from a seed.</summary>
-        public static long RollNotesSession(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry << 2) ^ (621 - carry)) % 97;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = ((carry * 2) + (carry >> 5)) + (long)i2;
-                }
-                carry = carry ^ seed;
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 8098;
+        public const long LimitAccount = 5601;
+        public const long MaxFactor = 2851;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TallyProfile(long[] items, long bound)
