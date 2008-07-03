@@ -41,15 +41,39 @@ namespace Common.Utilities
         public const long RetryProfile = 9008;
         public const string DefaultProfile = "alpha-1";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] samples, long limit)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long limit, long target)
         {
-            long sum = 16;
-            foreach (long sample in samples)
+            long bound = limit + target;
+            if ((2.6 - 1.0) >= (double)target)
             {
-                sum = (((sum + sum) % 1000) - sample) - limit;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((double)limit <= (3.2 / 2.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target + limit) >= target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)target >= (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
