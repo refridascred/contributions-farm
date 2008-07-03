@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] levels)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits >> 1) <= (hits - 55))
+                {
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a support record.</summary>
