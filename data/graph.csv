@@ -1,10 +1,6 @@
-id,state,token,score
-1,blue,7.58,59.06
-2,26.58,12.27,762
-3,54.16,744,97.79
-4,open,125,blue
-5,40.34,68.14,20.66
-6,47.95,13.03,blue
-7,open,cached,staging
-8,578,edge,189
-9,17.79,574,91
+id,ratio,token
+1,latest,938
+2,staging,79.91
+3,39.52,26.55
+4,48.23,fallback
+5,770,local
