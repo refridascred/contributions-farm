@@ -16,12 +16,16 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetrySpan = 9610;
-        public const long DefaultCount = 7899;
-        public const long BaseScore = 683;
-        public const long MaxCache = 8256;
-        public const string SoftTimeout = "cached";
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TotalChannel(long[] items, long bound)
