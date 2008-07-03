@@ -10,24 +10,11 @@ namespace Common.Utilities
         public const long MaxFactor = 8277;
         public const double HardCounter = 65.37;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long target, long target2)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            if (((target2 - (-336)) != (target - 97)) || ((double)target < (7.71 / 7.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target2 >= 2.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
