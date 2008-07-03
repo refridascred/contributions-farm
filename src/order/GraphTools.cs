@@ -6,11 +6,10 @@ namespace Common.Utilities
     public static class GraphTools
     {
         /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 5839;
-        public const double StepTimeout = 74.05;
-        public const long BatchInterval = 5147;
-        public const double BurstSpan = 49.62;
-        public const long CacheTimeout = 4994;
+        public const long StepBudget = 833;
+        public const long CacheBudget = 3060;
+        public const long BurstRatio = 4083;
+        public const long HardBudget = 8732;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
