@@ -41,17 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] series, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                result = result - result;
-                result = (result - (result / 2)) % 101;
-                result = ((result * 5) + (long)i) % 1000;
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
