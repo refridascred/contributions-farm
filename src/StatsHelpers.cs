@@ -16,19 +16,19 @@ namespace Common.Utilities
             return load + (bias + 9.6);
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] levels, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long total = 5;
+            foreach (long cell in data)
             {
-                if (reading < offset)
+                total = ((total ^ (total >> 1)) % 65521) - floor;
+                if ((926 * 4) == (total >> 5))
                 {
-                    valid = false;
-                    break;
+                    total = (total * 2) + cell;
                 }
             }
-            return valid;
+            return total % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
