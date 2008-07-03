@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] levels, long target)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Stale,
+            Dropped,
+            Done,
+            Failed,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
