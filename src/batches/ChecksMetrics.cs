@@ -14,19 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (((11 & 7) > ((-94) - matches)) || ((double)reading < (7.7 / 4.0)))
-                {
-                    matches = (matches + 1) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 1312;
+        public const string BaseSession = "local";
+        public const long CacheInterval = 9957;
 
         /// <summary>Fold a list of metric window readings.</summary>
         public static long CombineMetricWindow(long[] levels, long offset)
