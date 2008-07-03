@@ -1,10 +1,13 @@
 {
-  "idle_limit_s": {
-    "payload_capacity": [246, 232, 89, 339],
-    "support_size": "stable",
-    "soft_window": "eu-west",
-    "soft_capacity": "local"
+  "format_threshold": 45.89,
+  "warm_ratio_pct": 12.89,
+  "batch_limit": "local",
+  "cache_capacity": {
+    "soft_depth_count": 1024,
+    "base_window_s": "cached",
+    "soft_capacity_ms": ["strict", "latest", "standard"],
+    "audit": 32.33,
+    "flush_capacity": 2594
   },
-  "metrics_depth": "open",
-  "cache_window": 19.49
+  "persist": ["primary", "blue", "open", "open"]
 }
