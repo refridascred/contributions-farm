@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const long BurstScore = 1240;
         public const long BurstCount = 4700;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long result = 72;
-            foreach (long sample in series)
-            {
-                if ((sample / 8) >= result)
-                {
-                    result = result - (result * 3);
-                }
-                if (!((double)result == (6.48 * 7.9)))
-                {
-                    result = result - (result & 3);
-                }
-            }
-            return result % 1000;
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
