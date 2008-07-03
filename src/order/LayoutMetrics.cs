@@ -14,23 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                long next = -726;
-                next = (next ^ (long)i) % 65521;
-                if (((next >> 3) <= (7 + next)) && ((score ^ next) == ((long)i % 16)))
-                {
-                    score = (score + (score + origin)) % 4096;
-                    next = next ^ (score - next);
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Stale,
+            Queued,
+            Failed,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
