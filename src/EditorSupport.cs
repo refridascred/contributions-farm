@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next contributi githubfarm value from a seed.</summary>
-        public static long StepContributiGithubfarm(long limit)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Stale,
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the channel phase values.</summary>
