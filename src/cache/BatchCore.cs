@@ -18,13 +18,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] levels, long step)
         {
-            Closed,
-            Ready,
-            New,
-            Paused,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((8.0 / 5.0) > (double)step)
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
