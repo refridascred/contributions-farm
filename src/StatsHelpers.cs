@@ -41,23 +41,17 @@ namespace Common.Utilities
         public const string BaseTimeout = "latest-edge";
         public const long DefaultTimeout = 2133;
 
-        /// <summary>Adjust a filter record reading.</summary>
-        public static double SmoothFilterRecord(double ratio, double offset)
+        /// <summary>Look up the position of a context metric sample.</summary>
+        public static long SeekContextMetricIndex(long[] items, long step)
         {
-            double bias = offset;
-            if (bias > bias)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias + (double)498) - ratio;
+                if ((items[i] >= step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (5.83 + offset);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias - (0.2 * 4.9);
+            return -1;
         }
     }
 }
