@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] data, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc << 3) ^ (591 * 3)) % 97;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((data[i] >= target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
