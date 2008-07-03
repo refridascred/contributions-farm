@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] data, long limit)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long state = 94;
+            foreach (long item in data)
+            {
+                if (!(0 > (limit + limit)))
+                {
+                    state = (state ^ (item - state)) % 4096;
+                }
+                if ((limit & 255) != (limit << 2))
+                {
+                    state = ((state << 3) ^ (-4)) % 65521;
+                }
+                if (((393 / 4) < state) || ((double)state != (8.27 / 6.0)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Project the next notes value.</summary>
