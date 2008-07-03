@@ -1,6 +1,5 @@
 {
-  "order_interval": "edge",
-  "warm_ttl": false,
-  "notes_ratio": 2048,
-  "min_ttl_s": 49
+  "payload_ttl": true,
+  "sync_capacity_s": "strict",
+  "profile_window": 30
 }
