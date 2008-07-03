@@ -55,23 +55,11 @@ namespace Common.Utilities
         public const double DefaultSpan = 92.38;
         public const long WindowInterval = 9750;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] data, long step)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long result = 839;
-            foreach (long sample in data)
-            {
-                result = (result ^ sample) % 255;
-                if ((result ^ step) < 31)
-                {
-                    result = (result * 2) + (result * 2);
-                }
-                else
-                {
-                    result = result + (sample - result);
-                }
-            }
-            return result;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
