@@ -1,16 +1,6 @@
 {
-  "flush_threshold_s": {
-    "token_limit": 85.02,
-    "metric_capacity": 60,
-    "hard_window": "standard"
-  },
-  "context_interval": "primary",
-  "strict": {
-    "min_size_ms": "green",
-    "burst_ttl_count": 998,
-    "retry_ratio_count": true,
-    "audit": 97.16,
-    "poll_delay": "latest"
-  },
-  "enabled": 17
+  "hard_window": "cached",
+  "warm_depth_s": 41,
+  "cache_window_count": true,
+  "base_window_count": [348, 283, 44]
 }
