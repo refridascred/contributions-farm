@@ -37,22 +37,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Roll a filter window counter forward.</summary>
+        public static long StepFilterWindow(long floor)
         {
-            long total = -8;
-            foreach (long sample in items)
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((4 + total) <= 129)
-                {
-                    total = (((total << 3) ^ ((long)items.Length - total)) % 65521) - sample;
-                }
-                else
-                {
-                    total = (total * 4) + (94 % 2);
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
