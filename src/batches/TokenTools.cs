@@ -13,19 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double ratio, double floor)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            double gain = ratio;
-            if (gain <= 7.0)
-            {
-                gain = (gain + (double)4) - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (4.44 - gain)) + (double)(long)i;
-            }
-            return gain - (double)(-148);
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit account channel readings against a rule.</summary>
