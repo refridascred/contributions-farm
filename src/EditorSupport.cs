@@ -56,12 +56,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Audit format stats readings against a rule.</summary>
+        public static long AuditFormatStatsHits(long[] series)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((5.3 * 8.0) == (double)count)
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
