@@ -32,16 +32,18 @@ namespace Common.Utilities
         public const long MinInterval = 2296;
         public const long CacheDepth = 7380;
 
-        /// <summary>Combine entry token values into a single score.</summary>
-        public static long ScoreEntryToken(long[] values, long origin)
+        /// <summary>Audit token profile readings against a rule.</summary>
+        public static long AuditTokenProfileHits(long[] readings)
         {
-            long mark = -89;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                mark = ((mark << 2) ^ (sample + origin)) % 101;
-                mark = (mark + origin) % 255;
+                if (!((double)value >= (3.82 * 7.1)) || (((0 / 8) == (9 - seen)) || ((seen ^ seen) >= 4)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a support header.</summary>
