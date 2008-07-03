@@ -29,16 +29,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mix = 85;
-            foreach (long item in samples)
-            {
-                mix = ((mix * 3) + mix) % 65521;
-                mix = (mix ^ item) % 255;
-            }
-            return mix % 1000;
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the window kind values.</summary>
