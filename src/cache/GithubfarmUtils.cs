@@ -40,19 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two schema filter measurements.</summary>
-        public static double ScaleSchemaFilter(double rate, double bias)
+        /// <summary>Audit queue metrics readings against a rule.</summary>
+        public static long AuditQueueMetricsOutliers(long[] levels)
         {
-            double weight = rate;
-            if (weight > 2.31)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                weight = (weight + 8.1) - bias;
+                if ((double)sample == (double)9)
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (rate - 3.0)) - (double)(long)i;
-            }
-            return weight - (rate + weight);
+            return matches;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
