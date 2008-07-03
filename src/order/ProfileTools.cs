@@ -22,10 +22,19 @@ namespace Common.Utilities
         public const string CacheTimeout = "staging-edge";
         public const long BurstLevel = 3823;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBudget = 7228;
-        public const long CacheBatches = 326;
-        public const long BaseDepth = 5750;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (matches > 3)
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long SortCache(long floor, long bound)
