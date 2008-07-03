@@ -60,12 +60,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] data, long seed)
         {
-            Done,
-            New,
-            Dropped,
+            long result = 2;
+            foreach (long value in data)
+            {
+                if (((result + (-593)) != (result >> 2)) || ((double)value == (double)result))
+                {
+                    result = (result - (value * 2)) % 65521;
+                }
+                else
+                {
+                    result = (result + (711 + (long)data.Length)) % 97;
+                }
+                if (!((double)seed < (double)result))
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
