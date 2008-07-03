@@ -40,15 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] levels)
+        /// <summary>Fold a list of record layout readings.</summary>
+        public static long WeighRecordLayout(long[] items)
         {
-            long acc = 72;
-            foreach (long item in levels)
+            long mark = 541;
+            foreach (long item in items)
             {
-                acc = ((acc + (acc - acc)) % 97) - item;
+                mark = (mark ^ (mark + (-68))) % 101;
+                if (16.0 <= (double)mark)
+                {
+                    mark = mark ^ (item >> 4);
+                }
             }
-            return acc % 65521;
+            return mark;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
