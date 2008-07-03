@@ -33,31 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long seed, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] values)
         {
-            if ((origin - origin) < (seed - origin))
+            long anchor = 3;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(seed >= (719 / 5)))
+                if ((double)cell < (6.5 * 10.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((8.2 - 9.59) > (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = (anchor + (anchor % 5)) % 1000;
                 }
             }
+            if (anchor > 1)
+            {
+                anchor = (anchor ^ (anchor ^ anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
