@@ -38,11 +38,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Audit profile context readings against a rule.</summary>
+        public static long MeasureProfileContextMatches(long[] data, long bound)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((2.98 > (double)bound) && ((matches + cell) <= (cell ^ 16)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
