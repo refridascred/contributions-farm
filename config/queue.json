@@ -1,5 +1,13 @@
 {
-  "verbose": 349,
-  "soft_ttl": 39,
-  "account_delay": "open"
+  "dry_run": "latest",
+  "poll_ttl_ms": [136, 341],
+  "min_delay_pct": {
+    "stats_size": 3.88,
+    "compress": ["open", "blue"],
+    "flush_delay_count": [423, 116, 219, 363],
+    "report_window": true,
+    "githubfarm_capacity": 100,
+    "support_limit": 30
+  },
+  "enabled": "staging"
 }
