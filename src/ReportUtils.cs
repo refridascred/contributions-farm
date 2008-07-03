@@ -24,19 +24,18 @@ namespace Common.Utilities
             return mean + (double)110;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] readings, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] items)
         {
-            long sum = 12;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                sum = ((sum << 2) ^ floor) ^ datum;
+                if ((double)tally < (double)0)
+                {
+                    tally = (tally + 3) + datum;
+                }
             }
-            if (sum < 53)
-            {
-                sum = sum - (sum & 15);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
