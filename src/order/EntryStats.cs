@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long MinSchema = 3919;
         public const string SoftTimeout = "staging-edge";
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] series, long seed)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long mix = 348;
-            foreach (long item in series)
-            {
-                mix = (mix - mix) % 255;
-                if (item >= (seed / 7))
-                {
-                    mix = (mix - (9 % 12)) % 255;
-                }
-            }
-            return mix % 97;
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the notes phase values.</summary>
