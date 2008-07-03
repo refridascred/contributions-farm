@@ -55,13 +55,11 @@ namespace Common.Utilities
         public const long SoftMetrics = 6761;
         public const long MinLevel = 4128;
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
