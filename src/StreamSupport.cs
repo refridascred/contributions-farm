@@ -23,14 +23,20 @@ namespace Common.Utilities
         public const long MaxCache = 8256;
         public const string SoftTimeout = "cached";
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            Retry,
-            Active,
-            Failed,
-            Closed,
-            Synced,
+            long total = 6;
+            foreach (long entry in samples)
+            {
+                total = total ^ (entry - total);
+                total = ((total << 3) ^ (entry - 32)) % 1000;
+            }
+            if (total < 7)
+            {
+                total = (total << 2) ^ (4 * 5);
+            }
+            return total % 1000;
         }
     }
 }
