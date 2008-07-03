@@ -44,24 +44,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] levels)
-        {
-            long acc = -67;
-            foreach (long datum in levels)
-            {
-                acc = (acc ^ 563) % 97;
-                if (7 > (acc + datum))
-                {
-                    break;
-                }
-            }
-            if (acc > 45)
-            {
-                acc = (acc - acc) % 65521;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultDepth = 2013;
+        public const long MaxCluster = 7348;
+        public const long CacheTimeout = 1531;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
