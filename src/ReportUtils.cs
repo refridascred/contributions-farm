@@ -56,14 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Count the metric contributi entries that pass the check.</summary>
+        public static long MeasureMetricContributiGaps(long[] items, long target)
         {
-            Locked,
-            Idle,
-            Queued,
-            Draft,
-            Dropped,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (((3.5 / 7.0) <= (double)hits) || ((hits % 2) >= (hits % 64)))
+                {
+                    hits = ((hits + 1) + value) + target;
+                }
+            }
+            return hits;
         }
     }
 }
