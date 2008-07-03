@@ -22,11 +22,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleRatio = 6713;
-        public const string WindowSize = "latest-1";
-        public const long BurstCount = 7320;
-        public const long BaseWidth = 3056;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((carry - 241) > origin)
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = (carry * 5) + (carry + 7);
+                }
+                carry = (carry - (carry + (long)i)) % 97;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
