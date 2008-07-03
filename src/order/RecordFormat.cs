@@ -62,23 +62,12 @@ namespace Common.Utilities
             return rate2 + (double)75;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] series, long step)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long score = 661;
-            foreach (long value in series)
-            {
-                if ((value ^ value) >= (score - 992))
-                {
-                    break;
-                }
-                score = ((score ^ score) % 4096) + step;
-            }
-            if (score < 7)
-            {
-                score = score ^ 9;
-            }
-            return score % 65521;
+            Active,
+            Draft,
+            Closed,
         }
     }
 }
