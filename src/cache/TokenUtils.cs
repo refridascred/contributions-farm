@@ -32,18 +32,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] samples)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (seen > (7 << 1))
+                if (!(hits >= (8 ^ value)))
                 {
-                    seen = (seen + 2) + sample;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
