@@ -1,6 +1,6 @@
 {
-  "sync_size": false,
-  "support_ratio": 30,
-  "already_size": 45,
-  "session_interval": 90
+  "default_interval": 24.69,
+  "hard_delay_s": "eu-west",
+  "min_ratio_s": 1625,
+  "already_timeout": true
 }
