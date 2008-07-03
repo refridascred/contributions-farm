@@ -57,27 +57,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] data, long limit)
-        {
-            long sum = 64;
-            foreach (long item in data)
-            {
-                if (!((3.19 * 0.8) <= (double)item))
-                {
-                    sum = ((sum << 2) ^ (sum / 2)) + limit;
-                }
-                else
-                {
-                    sum = (sum - item) % 101;
-                }
-            }
-            if (sum > 845)
-            {
-                sum = sum - sum;
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowQueue = 20.55;
+        public const long BurstQueue = 3705;
+        public const string BatchSize = "staging-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryRatio = 267;
