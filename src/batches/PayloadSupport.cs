@@ -15,20 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of contributi metric readings.</summary>
-        public static long ScoreContributiMetric(long[] series)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long sum = 75;
-            foreach (long entry in series)
-            {
-                sum = (sum ^ (sum ^ sum)) % 101;
-                sum = ((sum << 3) ^ (entry + sum)) % 4096;
-            }
-            if (sum > 803)
-            {
-                sum = ((sum << 2) ^ (5 / 2)) % 255;
-            }
-            return sum % 4096;
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of tools readings.</summary>
