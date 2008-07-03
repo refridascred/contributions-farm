@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double weight, double floor)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            double scale = floor;
+            if (scale > scale)
+            {
+                scale = (scale + 3.3) - weight;
+            }
+            else
+            {
+                scale = scale - (double)9;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (double)113;
         }
 
         /// <summary>Match up report token samples.</summary>
