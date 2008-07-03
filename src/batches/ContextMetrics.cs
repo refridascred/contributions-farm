@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Retry,
+            Pending,
+            Active,
+            New,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
