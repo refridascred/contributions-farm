@@ -1,7 +1,7 @@
 {
-  "sync_ttl_s": false,
-  "compress": 96,
-  "soft_limit_s": "stable",
-  "format_ratio": 1437,
-  "warm_limit_pct": 475
+  "route_window": "fallback",
+  "stream_size": ["cached", "cached", "legacy", "edge"],
+  "max_limit_s": ["blue", "fallback", "standard"],
+  "strict": true,
+  "support_timeout": 1024
 }
