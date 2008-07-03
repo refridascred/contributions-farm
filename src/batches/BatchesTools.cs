@@ -13,11 +13,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up cache samples.</summary>
