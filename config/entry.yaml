@@ -1,9 +1,5 @@
 # entry settings
-contributi_threshold: 16
-default_ttl: open
-cache_threshold_ms: 88
-compress:
-  - green
-  - legacy
-  - green
-  - stable
+compress: 13.12
+enabled: 83.2
+base_ttl_pct: 500
+cache_ttl_pct: 250
