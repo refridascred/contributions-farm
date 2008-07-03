@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinWidth = 4733;
+        public const long MinContributi = 7761;
+        public const long StepLevel = 1184;
+        public const long BaseContributi = 6410;
+        public const long HardSize = 1194;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsGaps(long[] items)
