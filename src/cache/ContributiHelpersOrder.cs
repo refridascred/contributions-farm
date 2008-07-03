@@ -26,11 +26,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long step, long floor)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
+            long slot = step + floor;
+            if ((step * 5) < (step ^ step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (218 > (slot / 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (slot > (slot % 10))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
