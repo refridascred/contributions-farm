@@ -38,12 +38,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Stale,
-            Draft,
-            Pending,
+            Retry,
+            Queued,
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
