@@ -21,25 +21,11 @@ namespace Common.Utilities
             return (load + (5.2 / 9.0)) + ratio;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long target, long bound)
-        {
-            long edge = target + bound;
-            if (target <= (edge << 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6 << 2) == (target - edge))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftSize = "latest-edge";
+        public const double DefaultBatch = 92.62;
+        public const long StepInterval = 7647;
+        public const string CacheScore = "stable-1";
+        public const string CacheInterval = "primary";
     }
 }
