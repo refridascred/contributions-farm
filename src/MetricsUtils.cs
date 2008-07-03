@@ -33,19 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long target)
         {
-            long carry = -48;
-            foreach (long sample in samples)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                carry = (carry + (carry - carry)) - sample;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            if (carry < 706)
-            {
-                carry = (carry ^ carry) % 1000;
-            }
-            return carry % 97;
+            return mix;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
