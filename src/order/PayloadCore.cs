@@ -41,18 +41,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] levels, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] series)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long result = 481;
+            foreach (long sample in series)
             {
-                if ((18.0 - 0.2) != (double)count)
+                if (!((sample / 2) <= (107 - sample)))
                 {
-                    count = ((count + 1) + cell) - floor;
+                    result = (result - (1 << 1)) % 4096;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
