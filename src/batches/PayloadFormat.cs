@@ -27,21 +27,15 @@ namespace Common.Utilities
         public const double BurstDepth = 18.2;
         public const long RetryBuffer = 2287;
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] data)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (floor * 20.0) / 3.0;
+            if (rate <= (rate - rate))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate + (rate + rate)) - weight;
             }
-            return matches;
+            return rate + rate;
         }
 
         /// <summary>Describe the batches level values.</summary>
