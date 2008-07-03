@@ -63,13 +63,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Locked,
-            Idle,
-            Closed,
-            New,
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
