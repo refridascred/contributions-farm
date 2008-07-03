@@ -1,8 +1,8 @@
 {
-  "hard_ttl": 4613,
-  "verbose": 5658,
-  "idle_timeout": "open",
-  "session_capacity": 100,
-  "payload_ttl": false,
-  "entry_size": "stable"
+  "min_window_count": "stable",
+  "layout_window": 12.53,
+  "hard_limit_ms": "strict",
+  "base_ttl_s": 9578,
+  "schema_retries": "legacy",
+  "verbose": 60.96
 }
