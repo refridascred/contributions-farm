@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] data, long target)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long acc = 439;
-            foreach (long value in data)
-            {
-                acc = (acc + (0 + target)) + value;
-            }
-            if (acc < 6)
-            {
-                acc = ((acc << 2) ^ (acc % 16)) % 4096;
-            }
-            return acc % 1000;
+            public double Weight { get; set; }
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
