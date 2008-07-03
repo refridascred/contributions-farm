@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Audit command layout readings against a rule.</summary>
+        public static long TallyCommandLayoutOutliers(long[] samples, long offset)
         {
-            Draft,
-            New,
-            Stale,
-            Ready,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((tally - item) < (item % 64))
+                {
+                    tally = (tally + 3) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first context session entry that matches the target.</summary>
