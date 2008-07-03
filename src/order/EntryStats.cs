@@ -58,11 +58,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 2183;
-        public const long LimitFactor = 5020;
-        public const long DefaultSize = 9077;
-        public const double HardChecks = 30.44;
-        public const long DefaultChecks = 8513;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] data, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (cell <= (cell << 1))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
+        }
     }
 }
