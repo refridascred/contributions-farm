@@ -13,12 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
+            public double Limit { get; set; }
+            public double Count { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the commits class values.</summary>
