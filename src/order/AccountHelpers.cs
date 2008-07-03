@@ -44,23 +44,10 @@ namespace Common.Utilities
         public const string BurstSpan = "alpha-1";
         public const long WindowLevel = 203;
 
-        /// <summary>Count the queue payload entries that pass the check.</summary>
-        public static long AuditQueuePayloadGaps(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value - value) != (step / 6))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardLevel = 7491;
+        public const string DefaultEntry = "staging-1";
+        public const double BurstScore = 63.63;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
