@@ -29,13 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Queued,
-            Locked,
-            Idle,
-            Retry,
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
