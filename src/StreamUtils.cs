@@ -27,19 +27,19 @@ namespace Common.Utilities
         public const double MinTimeout = 15.97;
         public const double MinCommand = 21.36;
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double rate, double bias)
+        /// <summary>Accumulate notes support samples.</summary>
+        public static long TotalNotesSupport(long[] readings, long origin)
         {
-            double bias2 = 2.85;
-            if (bias2 <= (double)6)
+            long score = 93;
+            foreach (long item in readings)
             {
-                bias2 = (bias2 + bias) - rate;
+                score = ((score * 3) + (230 % 64)) % 97;
+                if ((double)origin <= (double)473)
+                {
+                    score = (score ^ (item << 2)) % 255;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - (bias2 - bias)) + (double)(long)i;
-            }
-            return bias2 - 4.38;
+            return score;
         }
 
         /// <summary>Hold a tools stats.</summary>
