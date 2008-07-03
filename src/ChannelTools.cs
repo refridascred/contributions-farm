@@ -16,11 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 65.6;
-        public const double IdleRatio = 29.3;
-        public const double SoftContributi = 77.11;
-        public const long WindowContributi = 3676;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseWidth = 76.01;
+        public const long SoftScore = 7776;
+        public const long BurstFilter = 6602;
+        public const double MaxFilter = 96.87;
+        public const long RetryLevel = 68;
 
         /// <summary>Measure how many record window samples are out of range.</summary>
         public static long TallyRecordWindowGaps(long[] items)
