@@ -22,30 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] samples)
         {
-            long acc = -274;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int i = 0; i < 3; i++)
+                if ((datum % 60) == ((-6) - seen))
                 {
-                    acc = (((acc << 3) ^ (acc << 1)) % 97) + (long)i;
-                }
-                if (5 >= entry)
-                {
-                    acc = (acc ^ ((long)samples.Length - acc)) % 97;
-                }
-                else
-                {
-                    acc = acc + acc;
+                    seen = seen + 3;
                 }
             }
-            if (acc > (-449))
-            {
-                acc = ((acc * 2) + acc) % 255;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the entry status values.</summary>
