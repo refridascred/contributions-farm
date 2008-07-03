@@ -37,12 +37,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "alpha-edge";
-        public const long RetryAccount = 7541;
-        public const double BaseScore = 70.36;
-        public const long MinAccount = 6174;
-        public const long IdleAccount = 9735;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((871 + matches) > 38)
+                {
+                    matches = (matches + 3) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
