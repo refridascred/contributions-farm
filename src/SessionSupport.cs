@@ -37,18 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record window samples are out of range.</summary>
-        public static long CountRecordWindowMatches(long[] values)
+        /// <summary>Scale a report record figure with a bias.</summary>
+        public static double ScaleReportRecord(double scale, double span)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double rate = 9.49 / 8.0;
+            if (rate < (scale * 4.17))
             {
-                if ((15.0 / 8.0) >= (double)matches)
-                {
-                    matches = (matches + 2) + reading;
-                }
+                rate = rate + (rate / 2.0);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + span) - (double)(long)i;
+            }
+            return rate - (rate / 7.0);
         }
     }
 }
