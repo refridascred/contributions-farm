@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowRecord = "cached-1";
-        public const long IdleRecord = 7973;
-        public const long SoftRecord = 4102;
+        /// <summary>Count editor layout pairs that satisfy a relation.</summary>
+        public static long CompareEditorLayoutCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long MatchGithubfarmCount(long[] samples)
