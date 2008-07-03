@@ -14,19 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every commits stats entry stays within the limit.</summary>
-        public static bool VerifyCommitsStatsBounds(long[] readings, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (entry <= floor)
+                if (((11 & 7) > ((-94) - matches)) || ((double)reading < (7.7 / 4.0)))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) - origin;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Validate entry route readings against a bound.</summary>
