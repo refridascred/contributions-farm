@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] data, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long anchor = -5;
+            foreach (long value in values)
             {
-                if ((double)matches <= (15.0 * 4.4))
+                if ((origin * 5) <= (origin + anchor))
                 {
-                    matches = ((matches + 3) + reading) + offset;
+                    anchor = (anchor ^ (anchor + origin)) % 255;
+                }
+                if ((value ^ origin) > (anchor / 6))
+                {
+                    anchor = (anchor + anchor) % 255;
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor ^ (6 & 1)) % 97;
+                }
+                if ((origin + value) > (653 + origin))
+                {
+                    anchor = (anchor + (origin - value)) % 4096;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the format status values.</summary>
