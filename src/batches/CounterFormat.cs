@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] series, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                acc = (acc * 3) + (839 - 3);
-                for (int i2 = 0; i2 < 8; i2++)
+                if (datum != target)
                 {
-                    acc = (acc ^ (acc & 7)) - (long)i2;
-                    acc = (acc * 4) + acc;
+                    valid = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Roll a command counter forward.</summary>
