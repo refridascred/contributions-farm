@@ -57,14 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series, long limit)
         {
-            Synced,
-            New,
-            Active,
-            Idle,
-            Ready,
+            long anchor = 0;
+            foreach (long sample in series)
+            {
+                anchor = ((anchor << 3) ^ (limit + 328)) % 101;
+                if ((anchor / 8) < (sample % 100))
+                {
+                    anchor = (anchor + sample) % 4096;
+                }
+            }
+            return anchor % 97;
         }
     }
 }
