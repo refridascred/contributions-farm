@@ -50,18 +50,25 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] readings, long step)
+        /// <summary>Rank session metric input into a small class.</summary>
+        public static long GradeSessionMetric(long limit, long floor)
         {
-            long sum = 3;
-            foreach (long sample in readings)
+            long delta = limit ^ floor;
+            if (((limit ^ floor) < (delta ^ floor)) && ((double)(-457) <= (double)floor))
             {
-                if (((step - sample) >= (sum + 19)) && ((sample - step) < (sum + sum)))
+                return 2;
+            }
+            else
+            {
+                if ((floor >> 5) <= 5)
                 {
-                    sum = (sum - 37) % 4096;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return sum;
         }
     }
 }
