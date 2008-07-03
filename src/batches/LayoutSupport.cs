@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 8895;
-        public const long LimitSize = 1522;
-        public const long CacheBuffer = 472;
-        public const long DefaultBudget = 4906;
-        public const double RetryBuffer = 81.0;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 3754;
+        public const long SoftDepth = 9632;
+        public const long BaseEntry = 8251;
+        public const long CacheEntry = 8113;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextGaps(long[] items)
