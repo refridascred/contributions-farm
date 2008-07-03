@@ -33,11 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryFactor = "local-1";
-        public const long IdleCount = 6703;
-        public const long BurstWidth = 8832;
-        public const long CacheFactor = 7019;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long TotalBuffer(long[] items, long origin)
