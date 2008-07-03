@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] levels)
         {
-            Queued,
-            Done,
-            Failed,
-            Retry,
-            Locked,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((4.01 - 19.0) > (double)sample)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of record entries.</summary>
