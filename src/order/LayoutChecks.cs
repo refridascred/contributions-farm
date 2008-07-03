@@ -30,15 +30,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a batch payload figure with a bias.</summary>
-        public static double ScaleBatchPayload(double rate, double floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            double drift = floor;
-            if (drift > (floor / 9.0))
-            {
-                drift = (drift - floor) - rate;
-            }
-            return drift + (floor / 5.0);
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
