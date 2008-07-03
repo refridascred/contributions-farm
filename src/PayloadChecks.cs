@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] values, long step)
         {
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up metrics samples.</summary>
