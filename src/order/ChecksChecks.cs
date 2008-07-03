@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchScore = "stable-v2";
-        public const long StepSpan = 1304;
-        public const long MinPayload = 141;
-        public const string WindowFactor = "stable-v2";
-        public const double LimitPayload = 27.57;
+        /// <summary>Find the first stats command entry that matches the target.</summary>
+        public static long LookupStatsCommandIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long RollEntry(long offset)
