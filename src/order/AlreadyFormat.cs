@@ -39,14 +39,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Paused,
-            Idle,
-            Queued,
-            Failed,
-            Pending,
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine entry values into a single score.</summary>
