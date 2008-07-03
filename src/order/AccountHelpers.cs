@@ -38,32 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long seed, long origin)
-        {
-            if ((3.0 > (double)origin) && ((origin + origin) == (origin % 12)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed % 2) > (origin ^ origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin ^ 6) >= 94)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "strict";
+        public const long MinInterval = 7784;
+        public const string BurstSpan = "alpha-1";
+        public const long WindowLevel = 203;
 
         /// <summary>Count the queue payload entries that pass the check.</summary>
         public static long AuditQueuePayloadGaps(long[] items, long step)
