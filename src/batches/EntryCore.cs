@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 202;
-        public const long HardRoute = 1438;
-        public const long LimitScore = 638;
-        public const long IdleCount = 950;
-        public const long IdleDepth = 6350;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public long Count { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Match up report token samples.</summary>
         public static long PairReportTokenCount(long[] samples)
