@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=60
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-legacy}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in edge stable staging; do
+for item in primary strict eu-west fallback; do
     log "checking ${item}"
 done
