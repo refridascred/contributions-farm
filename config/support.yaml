@@ -1,11 +1,14 @@
 # support settings
-soft_window_s: 250
-readonly: 7921
-graph_ratio: 5716
-channel_limit: 49
-verbose:
-  - latest
-  - cached
-  - edge
-  - standard
-batches_ratio: true
+context_size: strict
+sync_ratio: fallback
+format_window: local
+dry_run:
+  flush_delay_s: open
+  burst_timeout_ms: true
+  soft_delay_ms:
+    - edge
+    - local
+  readonly: 55
+  stats_ratio: primary
+  default_ratio: 250
+counter_window: true
