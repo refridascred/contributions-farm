@@ -31,17 +31,19 @@ namespace Common.Utilities
         public const long HardPayload = 9575;
         public const long IdlePayload = 4773;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] series, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((series[i] < limit) && ((series[i] % 5) != 0))
+                if (reading != bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
