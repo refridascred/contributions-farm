@@ -26,17 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] items, long floor)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)(83 / 3);
+            return ((weight - weight) + bias) + floor;
         }
 
         /// <summary>Describe the context kind values.</summary>
