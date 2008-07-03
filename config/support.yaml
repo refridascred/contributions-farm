@@ -1,33 +1,21 @@
 # support settings
-base_ttl: stable
-base_depth:
-  compress:
-    - 444
-    - 288
-  context_retries:
-    flush_ttl_s: 97
-    already_window: 46.23
-    checks_threshold: true
-  dry_run: 250
-  record_ratio: green
-burst_delay_s:
-  min_delay: latest
-  cache_window_pct:
-    - 181
-    - 421
-  min_interval_pct: eu-west
-  burst_capacity_pct:
-    flush_depth_pct: 42.0
-    strict: 250
-    min_interval_pct: 60
-    max_delay_ms: true
-  max_limit_s:
-    verbose: strict
-    warm_depth_pct: edge
-    audit: false
-    strict:
-      - 345
-      - 3
-      - 278
-      - 147
-  min_timeout: false
+report_retries:
+  min_depth_s: 31.13
+  idle_threshold: strict
+  warm_size_count: 8212
+  poll_window_ms: open
+  editor_capacity:
+    max_delay: 66.93
+    min_capacity_count: 42.1
+    strict: 7384
+    burst_capacity_pct:
+      - 442
+      - 235
+      - 315
+    farm_threshold: 55
+buffer_ttl: fallback
+compress: primary
+persist: 3267
+hard_window:
+  - 481
+  - 104
