@@ -48,9 +48,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitSize = 6029;
-        public const long BatchContributi = 8514;
-        public const string HardLevel = "fallback";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 3914;
+        public const long WindowChecks = 9816;
+        public const long MinChecks = 4471;
     }
 }
