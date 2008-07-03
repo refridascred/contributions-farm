@@ -24,14 +24,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            Locked,
-            Paused,
-            Failed,
-            Retry,
-            Synced,
+            long mark = 13;
+            foreach (long reading in items)
+            {
+                mark = ((mark + (mark % 24)) % 4096) - reading;
+            }
+            return mark % 97;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
