@@ -1,22 +1,6 @@
 # githubfarm settings
-poll_limit_count:
-  flush_ratio_count: 16.94
-  max_window_ms: 61
-  warm_interval_pct: 66
-  batch_interval_count: 40
-  dry_run: 75.35
-  notes_ratio:
-    strict: 78.43
-    idle_depth_s: 21.23
-    compress: green
-    default_window: stable
-    audit: primary
-    token_threshold: latest
-base_capacity: 4264
-tools_interval:
-  - stable
-  - edge
-  - latest
-  - eu-west
-soft_retries_s: 97
-batch_capacity_s: 1.63
+base_timeout_ms: local
+batch_depth_ms: 13.68
+base_depth:
+  - 448
+  - 270
