@@ -50,17 +50,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] values, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 23;
+            foreach (long datum in items)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - (655 + anchor)) - datum;
+                anchor = (anchor + (anchor << 2)) % 101;
+                anchor = (anchor + (anchor ^ (long)items.Length)) % 97;
             }
-            return -1;
+            return anchor;
         }
     }
 }
