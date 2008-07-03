@@ -23,21 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value - hits) > hits)
                 {
-                    if ((levels[i] + levels[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) + limit;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of window readings.</summary>
