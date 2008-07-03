@@ -1,12 +1,6 @@
 {
-  "flush_limit_s": true,
-  "cache_depth_s": true,
-  "default_size_ms": 8215,
-  "retry_ratio_s": "local",
-  "filter_depth": {
-    "strict": true,
-    "compress": [277, 393, 192],
-    "warm_ratio_count": "fallback",
-    "soft_timeout": false
-  }
+  "persist": 40,
+  "entry_ratio": 36.86,
+  "batch_capacity_pct": 98.09,
+  "account_delay": 93
 }
