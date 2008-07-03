@@ -19,21 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] readings)
+        /// <summary>Roll a command already counter forward.</summary>
+        public static long SeriesCommandAlready(long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
