@@ -77,21 +77,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] data)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Retry,
+            Pending,
+            Draft,
         }
     }
 }
