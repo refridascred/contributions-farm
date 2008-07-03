@@ -44,17 +44,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long anchor = 23;
-            foreach (long datum in items)
-            {
-                anchor = (anchor - (655 + anchor)) - datum;
-                anchor = (anchor + (anchor << 2)) % 101;
-                anchor = (anchor + (anchor ^ (long)items.Length)) % 97;
-            }
-            return anchor;
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
