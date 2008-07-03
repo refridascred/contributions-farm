@@ -42,15 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Queued,
-            Retry,
-            New,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftFactor = 7003;
+        public const double BurstDepth = 0.28;
+        public const double RetryRoute = 74.82;
+        public const long RetrySize = 9795;
+        public const long StepRoute = 8516;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long DigestTools(long[] samples)
