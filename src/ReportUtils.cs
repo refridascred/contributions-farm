@@ -55,18 +55,12 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] readings)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((5.8 + 7.5) < (double)entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Queued,
+            Pending,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
