@@ -29,18 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] data, long seed)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (!(hits <= (seed ^ (long)data.Length)))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            Locked,
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Blend two queue contributi measurements.</summary>
