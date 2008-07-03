@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] data, long seed)
         {
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate profile samples.</summary>
