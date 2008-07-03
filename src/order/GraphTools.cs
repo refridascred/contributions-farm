@@ -52,17 +52,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a queue route reading by value.</summary>
-        public static long LookupQueueRouteIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 42.86;
+        public const double LimitRatio = 27.77;
+        public const double BatchReport = 57.15;
+        public const double BurstReport = 77.64;
+        public const string IdleReport = "alpha";
     }
 }
