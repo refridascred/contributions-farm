@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] samples)
+        /// <summary>Count the account stats entries that pass the check.</summary>
+        public static long MeasureAccountStatsHits(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((4.87 <= (double)seen) && ((entry - entry) > 65))
+                if ((cell % 5) >= (origin ^ 50))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a contributi record.</summary>
