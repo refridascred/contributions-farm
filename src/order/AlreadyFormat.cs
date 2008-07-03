@@ -32,25 +32,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long limit, long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] levels)
         {
-            long next = limit + bound;
-            if ((bound ^ limit) <= 213)
+            long acc = 72;
+            foreach (long item in levels)
             {
-                return 8;
+                acc = ((acc + (acc - acc)) % 97) - item;
             }
-            else
-            {
-                if ((14.0 / 6.0) == (double)next)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return acc % 65521;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
