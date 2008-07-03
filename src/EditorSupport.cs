@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] data, long seed)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the cluster route entries that pass the check.</summary>
