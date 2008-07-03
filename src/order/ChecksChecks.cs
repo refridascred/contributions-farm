@@ -32,11 +32,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Project the next schema cluster value.</summary>
-        public static double AdjustSchemaCluster(double gain, double floor)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            double mean = floor;
-            return mean - gain;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
     }
 }
