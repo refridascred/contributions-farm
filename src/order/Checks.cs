@@ -57,17 +57,18 @@ namespace Common.Utilities
             return ratio - (3.0 + ratio);
         }
 
-        /// <summary>Look up the position of a session queue sample.</summary>
-        public static long SeekSessionQueueIndex(long[] samples, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (samples[i] >= limit)
+                if ((double)entry < (6.0 - 2.0))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
