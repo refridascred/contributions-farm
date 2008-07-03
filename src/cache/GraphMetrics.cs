@@ -40,22 +40,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] samples, long offset)
+        /// <summary>Adjust a metrics cluster reading.</summary>
+        public static double ProjectMetricsCluster(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            double scale = (floor / 5.0) + 2.05;
+            if (scale > (double)819)
             {
-                if ((double)cell <= (5.32 + 3.0))
-                {
-                    matches = (matches + 1) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = scale + (floor * 5.72);
             }
-            return matches;
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (floor - bias)) - (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Describe the metrics level values.</summary>
