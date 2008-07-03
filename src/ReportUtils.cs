@@ -20,11 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] series, long offset)
         {
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
