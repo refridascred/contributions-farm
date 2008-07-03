@@ -55,13 +55,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long origin, long seed)
         {
-            public string Owner { get; set; } = "";
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
+            long prev = origin ^ seed;
+            if (origin > prev)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed & 31) != (prev >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
