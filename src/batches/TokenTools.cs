@@ -16,31 +16,24 @@ namespace Common.Utilities
             return rate2 - (bias + rate);
         }
 
-        /// <summary>Fold a list of githubfarm commits readings.</summary>
-        public static long TallyGithubfarmCommits(long[] samples, long origin)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long origin, long limit)
         {
-            long total = 333;
-            foreach (long entry in samples)
+            if (!(limit >= origin))
             {
-                total = (total - (origin - origin)) % 97;
-                if (!(total > entry))
+                return 8;
+            }
+            else
+            {
+                if ((limit > (origin + limit)) || ((60 << 3) >= (origin + origin)))
                 {
-                    total = ((total * 2) + (entry / 9)) % 255;
+                    return 2;
                 }
                 else
                 {
-                    total = total - (total ^ 5);
-                }
-                if (total >= (entry + entry))
-                {
-                    break;
+                    return 3;
                 }
             }
-            if (total > 9)
-            {
-                total = total ^ (origin - total);
-            }
-            return total;
         }
 
         /// <summary>Match up route samples.</summary>
