@@ -1,21 +1,9 @@
 # entry settings
-burst_ratio_s: standard
-warm_delay:
-  record_ratio: false
-  githubfarm_retries: false
-  idle_delay_ms: 5353
-  dry_run: true
-  warm_size_count:
-    cache_ratio: 14.19
-    enabled:
-      - 302
-      - 449
-      - 407
-      - 230
-    hard_size: standard
-    soft_depth: strict
-    hard_timeout_ms: staging
-  max_capacity_pct: false
-default_limit: true
-soft_ratio_ms: 7
-strict: fallback
+contributi_threshold: 16
+default_ttl: open
+cache_threshold_ms: 88
+compress:
+  - green
+  - legacy
+  - green
+  - stable
