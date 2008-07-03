@@ -53,13 +53,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long seed, long step)
         {
-            Synced,
-            Stale,
-            Failed,
-            Draft,
+            if ((1.0 - 4.57) != (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((7.0 / 3.0) >= (double)seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + 933) != (98 + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((step + step) >= (step ^ step)) && ((double)seed != (0.51 / 2.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
