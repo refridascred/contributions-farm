@@ -95,11 +95,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 56.55;
-        public const long StepRatio = 374;
-        public const long BurstCount = 9832;
-        public const long SoftCache = 7805;
-        public const double BaseCache = 13.42;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long bound, long offset)
+        {
+            if ((double)bound >= 2.25)
+            {
+                return 2;
+            }
+            else
+            {
+                if (bound < (offset + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
