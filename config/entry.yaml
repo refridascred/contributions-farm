@@ -1,6 +1,13 @@
 # entry settings
-cache_threshold_s: strict
-dry_run:
-  - cached
-  - green
-max_retries_ms: 47.66
+commits_threshold:
+  window_retries: green
+  base_depth: true
+  soft_interval:
+    - 142
+    - 153
+    - 117
+  soft_delay: cached
+  base_ttl_s: 30
+soft_ratio: 15
+poll_ratio_s: 35.77
+cache_ttl_pct: false
