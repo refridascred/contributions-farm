@@ -1,19 +1,7 @@
 {
-  "soft_ratio": {
-    "hard_window_s": true,
-    "soft_timeout_ms": {
-      "hard_delay": 6.62,
-      "window_ttl": "local",
-      "max_limit": "eu-west",
-      "persist": false,
-      "idle_window_pct": 30,
-      "burst_capacity": false
-    },
-    "batches_threshold": 20.67,
-    "strict": 86.17,
-    "soft_timeout_pct": "eu-west"
-  },
-  "burst_limit_pct": 87,
-  "retry_interval_pct": 93,
-  "max_ratio_s": 26.58
+  "base_threshold_count": 51.43,
+  "already_threshold": 8790,
+  "cluster_delay": 9026,
+  "sync_limit": 59.9,
+  "base_size_s": 37.17
 }
