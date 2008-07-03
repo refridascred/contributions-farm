@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxLevel = 78.13;
-        public const long MaxOrder = 3798;
-        public const string CacheSpan = "legacy-edge";
-        public const long MaxBudget = 2272;
-        public const string LimitSize = "fallback-v2";
+        /// <summary>Validate layout buffer readings against a bound.</summary>
+        public static bool VerifyLayoutBufferLimits(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double BaseFormat = 34.47;
