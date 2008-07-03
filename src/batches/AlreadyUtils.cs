@@ -33,19 +33,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double ratio, double floor)
+        /// <summary>Project the next editor profile value.</summary>
+        public static double SmoothEditorProfile(double ratio, double span)
         {
-            double gain = (double)66;
-            if (gain <= (gain - gain))
-            {
-                gain = (gain + (ratio + gain)) + floor;
-            }
-            else
-            {
-                gain = gain - ratio;
-            }
-            return gain + ratio;
+            double gain = span;
+            return (gain + 8.6) + ratio;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
