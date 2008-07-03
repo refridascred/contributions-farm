@@ -72,22 +72,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] values, long floor)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long total = 6;
-            foreach (long entry in values)
-            {
-                if ((entry & 3) < (floor ^ total))
-                {
-                    total = (total * 4) + (total ^ 6);
-                }
-                else
-                {
-                    total = total - (446 - floor);
-                }
-            }
-            return total;
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
