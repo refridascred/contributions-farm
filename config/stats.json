@@ -1,7 +1,5 @@
 {
-  "idle_limit_ms": "stable",
-  "dry_run": "edge",
-  "strict": 60,
-  "enabled": "strict",
-  "cache_size_pct": "blue"
+  "persist": ["eu-west", "stable"],
+  "flush_ttl_count": false,
+  "audit": 100
 }
