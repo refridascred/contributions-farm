@@ -29,18 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] series)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (!((double)hits == (7.4 - 6.75)))
+                if ((((-7) & 63) >= (seed - seed)) || (((double)sample > (5.4 * 7.96)) && ((seed + 385) < (sample ^ count))))
                 {
-                    hits = (hits + 2) + datum;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank report record input into a small class.</summary>
