@@ -19,15 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double gain, double bias)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double load = (double)((-226) - (-7));
-            for (int i = 0; i < 3; i++)
-            {
-                load = ((load + (gain - load)) + (double)(long)i) + bias;
-            }
-            return load - load;
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
