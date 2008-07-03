@@ -62,20 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a command support counter forward.</summary>
-        public static long SeriesCommandSupport(long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] levels, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (((103 >> 2) > (long)i) && ((long)i <= seed))
+                if (entry <= offset)
                 {
-                    mark = ((mark << 2) ^ ((long)i + mark)) % 1000;
-                    continue;
+                    stale = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return stale;
         }
     }
 }
