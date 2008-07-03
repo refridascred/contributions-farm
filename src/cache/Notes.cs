@@ -58,22 +58,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] readings)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long seed, long offset)
         {
-            long state = 74;
-            foreach (long cell in readings)
+            if (19.0 > (double)offset)
             {
-                if ((double)state >= (3.56 + 9.0))
+                return 4;
+            }
+            else
+            {
+                if ((offset >= (seed + seed)) && ((offset + offset) != (seed + seed)))
                 {
-                    state = (state ^ state) % 1000;
+                    return 7;
                 }
                 else
                 {
-                    state = (state + (cell + cell)) % 97;
+                    return 0;
                 }
             }
-            return state;
         }
     }
 }
