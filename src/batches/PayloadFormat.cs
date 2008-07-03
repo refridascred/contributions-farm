@@ -34,18 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the contributi command entries that pass the check.</summary>
-        public static long MeasureContributiCommandMatches(long[] samples, long target)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((((15 & 7) > tally) || (tally < (-500))) || ((tally < (tally >> 3)) || ((entry / 4) > 9)))
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
