@@ -79,16 +79,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum * 2) + (1 / 8);
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Stale,
+            Queued,
+            Retry,
+            Ready,
+            Paused,
         }
 
         /// <summary>Accumulate graph samples.</summary>
