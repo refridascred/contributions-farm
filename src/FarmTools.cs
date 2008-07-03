@@ -28,12 +28,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
