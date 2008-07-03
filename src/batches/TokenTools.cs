@@ -20,15 +20,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next graph batches value from a seed.</summary>
-        public static long SeriesGraphBatches(long limit)
+        /// <summary>Iterate the layout entry series from a seed.</summary>
+        public static long SeriesLayoutEntry(long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
     }
 }
