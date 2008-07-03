@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinDepth = 6781;
-        public const long WindowWidth = 3409;
-        public const double IdleDepth = 66.91;
-        public const long MaxFactor = 4932;
-        public const long RetryScore = 7173;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] readings, long seed)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell > (9.0 / 8.0))
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionLimits(long[] series, long origin)
