@@ -57,19 +57,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine channel account values into a single score.</summary>
-        public static long WeighChannelAccount(long[] samples, long floor)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long anchor = 0;
-            foreach (long datum in samples)
-            {
-                anchor = (anchor - (floor + floor)) ^ datum;
-            }
-            if (anchor > 5)
-            {
-                anchor = ((anchor << 3) ^ (326 - anchor)) % 101;
-            }
-            return anchor;
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
