@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double rate, double floor)
         {
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
-            public double Size { get; set; }
+            double drift = rate;
+            if (drift > rate)
+            {
+                drift = (drift - (double)1) + floor;
+            }
+            return drift - (4.0 / 2.0);
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
