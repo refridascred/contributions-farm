@@ -20,16 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                total = (total * 2) + (total & 31);
-                total = ((total * 2) + (long)i) % 101;
+                mark = (mark ^ (floor + floor)) % 1000;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
