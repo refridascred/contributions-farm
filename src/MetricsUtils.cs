@@ -49,11 +49,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheSpan = "open-edge";
-        public const long BaseMetrics = 5745;
-        public const long SoftMetrics = 6761;
-        public const long MinLevel = 4128;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
