@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long seed, long target)
         {
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
+            if ((double)target <= (2.0 - 3.36))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed / 7) < (seed * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Roll a command already counter forward.</summary>
