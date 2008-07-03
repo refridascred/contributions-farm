@@ -22,14 +22,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Accumulate session tools samples.</summary>
+        public static long TotalSessionTools(long[] samples)
         {
-            New,
-            Idle,
-            Queued,
-            Closed,
-            Dropped,
+            long mark = -710;
+            foreach (long datum in samples)
+            {
+                if (((datum % 3) != (mark ^ 7)) && ((datum + 36) != (mark + 96)))
+                {
+                    mark = (mark + mark) % 101;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
