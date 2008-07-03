@@ -42,12 +42,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public bool Region { get; set; }
+            Done,
+            Failed,
+            Closed,
+            Paused,
         }
     }
 }
