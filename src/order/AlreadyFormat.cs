@@ -71,31 +71,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long offset, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] data)
         {
-            if ((limit - 471) != (83 + limit))
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset < (18.0 * 1.0))
+                if ((sample + sample) != (long)data.Length)
                 {
-                    return 1;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((7 % 60) <= limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
