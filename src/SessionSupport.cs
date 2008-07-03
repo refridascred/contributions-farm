@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every token entry entry stays within the limit.</summary>
-        public static bool VerifyTokenEntryLimits(long[] data, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Paused,
+            Retry,
+            Active,
+            Failed,
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
