@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next channel cache value from a seed.</summary>
-        public static long SeriesChannelCache(long limit)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score - limit) % 4096;
-                score = ((score * 3) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Match up farm samples.</summary>
