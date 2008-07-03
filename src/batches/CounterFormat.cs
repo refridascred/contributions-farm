@@ -33,11 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinRatio = 9190;
-        public const long MinScore = 3925;
-        public const string RetryOrder = "staging-1";
-        public const long CacheSpan = 1075;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = (acc * 3) + (839 - 3);
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = (acc ^ (acc & 7)) - (long)i2;
+                    acc = (acc * 4) + acc;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long DeriveCommand(long floor)
