@@ -36,19 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two channel batches measurements.</summary>
-        public static double AdjustChannelBatches(double rate, double bias)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double ratio = (double)(232 >> 4);
-            if (ratio >= ratio)
-            {
-                ratio = (ratio + (double)782) - rate;
-            }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            return ratio + ratio;
+            Failed,
+            Ready,
+            Draft,
+            Paused,
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
