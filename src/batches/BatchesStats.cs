@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 9521;
-        public const long IdleWindow = 1718;
-        public const double IdleCount = 4.57;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] values, long limit)
+        {
+            long score = 5;
+            foreach (long reading in values)
+            {
+                if ((score << 3) != (limit * 3))
+                {
+                    score = ((score << 3) ^ (score + limit)) - reading;
+                }
+            }
+            if (score > 3)
+            {
+                score = score ^ score;
+            }
+            return score % 97;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MinInterval = 9818;
