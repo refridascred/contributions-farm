@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] readings, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] data)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long carry = -6;
+            foreach (long datum in data)
             {
-                if (value < step)
+                if ((datum << 2) != (carry / 2))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry * 2) + (29 - carry);
                 }
             }
-            return ready;
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
