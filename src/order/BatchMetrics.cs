@@ -61,12 +61,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
