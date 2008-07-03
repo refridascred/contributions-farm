@@ -43,26 +43,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long mix = 28;
-            foreach (long cell in items)
-            {
-                if ((1.5 < (double)cell) || ((cell + mix) >= (mix * 3)))
-                {
-                    mix = (mix * 4) + (194 + 38);
-                }
-                else
-                {
-                    mix = (mix + (1 + mix)) % 4096;
-                }
-                if (!((mix - mix) != (cell << 1)))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Dropped,
+            Closed,
+            Locked,
+            Active,
         }
     }
 }
