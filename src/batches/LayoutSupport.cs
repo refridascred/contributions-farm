@@ -33,15 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double gain, double span)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double weight, double bias)
         {
-            double load = span;
-            for (int i = 0; i < 8; i++)
+            double gain = bias;
+            for (int i = 0; i < 7; i++)
             {
-                load = (load + (double)117) + (double)(long)i;
+                gain = ((gain + (5.77 / 4.0)) + (double)(long)i) - weight;
             }
-            return load - gain;
+            return gain + (double)716;
         }
 
         /// <summary>Describe the stream kind values.</summary>
