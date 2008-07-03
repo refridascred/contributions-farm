@@ -34,19 +34,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] items, long step)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Idle,
+            Ready,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
