@@ -49,18 +49,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] data, long step)
+        /// <summary>Measure how many batch commits samples are out of range.</summary>
+        public static long AuditBatchCommitsOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((double)datum >= (6.63 - 9.98))
+                if (hits > (320 & 7))
                 {
-                    count = (count + 2) - step;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
