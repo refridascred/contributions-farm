@@ -1,21 +1,13 @@
 # support settings
-max_timeout:
-  - 407
-  - 379
-  - 334
-  - 140
-editor_delay: cached
-window_timeout:
-  enabled: 94
-  editor_window:
-    - staging
-    - latest
-    - staging
-    - green
-  counter_size:
-    - 455
-    - 200
-    - 439
-    - 119
-  verbose: 2716
-  tools_ratio: strict
+token_retries: legacy
+burst_window_count: 60.91
+dry_run: fallback
+route_ttl:
+  cache_ratio_pct: 12.61
+  compress: 1024
+  batch_depth: blue
+  readonly:
+    - legacy
+    - standard
+    - stable
+    - strict
