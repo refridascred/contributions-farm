@@ -48,18 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window cache readings.</summary>
-        public static long TotalWindowCache(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] levels, long floor)
         {
-            long score = 49;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((score + datum) >= 71)
+                if (!(((-994) - 4) >= (long)levels.Length) && ((92 * 4) <= seen))
                 {
-                    score = ((score << 3) ^ (datum - score)) % 255;
+                    seen = ((seen + 1) ^ item) + floor;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a farm record.</summary>
