@@ -22,16 +22,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Blend two batches metric measurements.</summary>
+        public static double AdjustBatchesMetric(double gain, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            double rate = gain;
+            if (rate <= (double)7)
             {
-                carry = (carry - limit) % 65521;
-                carry = ((carry * 5) + (long)i) % 101;
+                rate = rate + (6.5 / 4.0);
             }
-            return carry;
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + (offset * 18.0);
         }
     }
 }
