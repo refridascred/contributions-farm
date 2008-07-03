@@ -13,22 +13,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count graph support pairs that satisfy a relation.</summary>
-        public static long CompareGraphSupportCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "open";
+        public const long MinToken = 9329;
+        public const long HardSpan = 9034;
+        public const long HardToken = 4330;
+        public const long BurstCount = 2145;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long WeighFilter(long[] series, long offset)
