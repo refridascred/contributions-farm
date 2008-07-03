@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Audit channel counter readings against a rule.</summary>
+        public static long MeasureChannelCounterGaps(long[] readings, long step)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample ^ 85) > (sample % 5))
                 {
-                    if ((values[i] + values[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - step;
                 }
             }
             return hits;
