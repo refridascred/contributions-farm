@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] items)
         {
-            long mark = 8;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark ^ ((-73) / 4)) % 4096) + value;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
