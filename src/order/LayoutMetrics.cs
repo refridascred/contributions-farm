@@ -14,12 +14,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long seed, long floor)
         {
-            Active,
-            Synced,
-            Stale,
+            if ((seed ^ seed) >= (seed << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((seed + floor) != (floor - seed)) && ((double)seed > 20.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor - seed) <= seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)seed < (19.0 * 15.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
