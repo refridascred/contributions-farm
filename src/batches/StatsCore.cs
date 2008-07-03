@@ -21,19 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] levels, long offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (cell != offset)
+                if (value > limit)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
