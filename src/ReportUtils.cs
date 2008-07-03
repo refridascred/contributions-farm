@@ -65,17 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Roll a command support counter forward.</summary>
+        public static long SeriesCommandSupport(long seed)
         {
             long mark = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 12; i++)
             {
-                if (mark < ((-34) + mark))
+                if (((103 >> 2) > (long)i) && ((long)i <= seed))
                 {
-                    break;
+                    mark = ((mark << 2) ^ ((long)i + mark)) % 1000;
+                    continue;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
             return mark;
         }
