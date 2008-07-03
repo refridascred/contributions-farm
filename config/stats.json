@@ -1,21 +1,6 @@
 {
-  "min_size_count": 73,
-  "warm_size": 1058,
-  "verbose": true,
-  "warm_limit": 752,
-  "dry_run": {
-    "max_limit_ms": false,
-    "report_size": true,
-    "default_ttl": true,
-    "queue_limit": "green",
-    "warm_interval_s": {
-      "session_depth": ["eu-west", "legacy", "edge", "eu-west"],
-      "flush_ratio_pct": 76,
-      "account_depth": [331, 382, 259],
-      "cache_ttl_ms": 60,
-      "hard_limit_count": "fallback",
-      "flush_retries_ms": "green"
-    }
-  },
-  "token_delay": "legacy"
+  "sync_size": false,
+  "support_ratio": 30,
+  "already_size": 45,
+  "session_interval": 90
 }
