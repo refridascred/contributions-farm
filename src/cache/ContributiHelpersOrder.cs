@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate filter editor readings against a bound.</summary>
-        public static bool GuardFilterEditorBounds(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 3986;
+        public const long BurstEntry = 908;
+        public const long SoftCount = 2624;
+        public const long IdleEntry = 1299;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstRoute = 9347;
