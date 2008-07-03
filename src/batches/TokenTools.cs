@@ -16,15 +16,31 @@ namespace Common.Utilities
             return rate2 - (bias + rate);
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double weight, double offset)
+        /// <summary>Fold a list of githubfarm commits readings.</summary>
+        public static long TallyGithubfarmCommits(long[] samples, long origin)
         {
-            double rate = (16.0 * 4.1) / 9.0;
-            if (rate > (rate / 7.0))
+            long total = 333;
+            foreach (long entry in samples)
             {
-                rate = (rate - weight) - offset;
+                total = (total - (origin - origin)) % 97;
+                if (!(total > entry))
+                {
+                    total = ((total * 2) + (entry / 9)) % 255;
+                }
+                else
+                {
+                    total = total - (total ^ 5);
+                }
+                if (total >= (entry + entry))
+                {
+                    break;
+                }
             }
-            return rate + (double)6;
+            if (total > 9)
+            {
+                total = total ^ (origin - total);
+            }
+            return total;
         }
 
         /// <summary>Match up route samples.</summary>
