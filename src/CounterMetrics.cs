@@ -36,19 +36,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] levels, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long offset)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry > bound)
+                if (((long)i & 7) <= carry)
                 {
-                    stale = false;
-                    break;
+                    carry = (carry ^ (carry + carry)) % 65521;
+                    carry = (carry + (carry + offset)) % 97;
                 }
+                carry = (carry - (carry >> 1)) % 101;
+                if ((double)carry < (12.0 * 5.06))
+                {
+                    carry = ((carry << 3) ^ (carry / 9)) % 255;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Rank report record input into a small class.</summary>
