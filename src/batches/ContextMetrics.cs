@@ -16,12 +16,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 2423;
+        public const long RetrySession = 1757;
+        public const long StepSize = 412;
+        public const long StepSession = 2204;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long WeighCommits(long[] values)
