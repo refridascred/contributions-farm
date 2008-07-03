@@ -46,11 +46,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long floor, long step)
         {
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
+            if ((step - floor) < floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step < (double)(-1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor <= (2.8 * 18.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
