@@ -46,9 +46,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 4298;
-        public const long BurstSpan = 3683;
-        public const double SoftEntry = 48.69;
+        /// <summary>Locate a queue route reading by value.</summary>
+        public static long LookupQueueRouteIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
