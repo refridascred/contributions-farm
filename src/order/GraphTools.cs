@@ -42,13 +42,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public bool Total { get; set; }
+            Locked,
+            Dropped,
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Locate a queue route reading by value.</summary>
