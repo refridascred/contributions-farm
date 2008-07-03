@@ -1,16 +1,22 @@
 # support settings
-strict: blue
-soft_depth_ms: 71.09
-support_ttl:
-  burst_retries_count:
-    base_limit_s: 983
-    default_retries_count: green
-    cluster_capacity: 1.86
-    max_interval_pct: 8198
-    cache_retries: false
-  hard_delay_ms: fallback
-  max_window_ms:
-    readonly: 30
-    verbose: 79
-    stats_limit: true
-readonly: 96.42
+persist: 100
+sync_threshold_count:
+  - 99
+  - 273
+  - 433
+  - 442
+account_capacity: 60.35
+window_ttl:
+  - blue
+  - eu-west
+default_ratio:
+  burst_interval_pct: 500
+  min_size_s: eu-west
+  readonly: local
+  poll_limit_s: false
+  enabled: cached
+  flush_limit:
+    metrics_depth: strict
+    dry_run: eu-west
+    retry_interval: 8187
+    verbose: local
