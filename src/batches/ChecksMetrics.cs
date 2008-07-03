@@ -51,17 +51,19 @@ namespace Common.Utilities
         public const double BaseFarm = 47.2;
         public const double BurstCount = 21.15;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] items, long offset)
+        /// <summary>Adjust a editor batch reading.</summary>
+        public static double BlendEditorBatch(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = scale;
+            if (gain >= (double)4)
             {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
+                gain = gain + span;
             }
-            return -1;
+            else
+            {
+                gain = gain - span;
+            }
+            return gain + span;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
