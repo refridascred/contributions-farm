@@ -41,17 +41,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                long bound = (8 % 2) + floor;
-                mark = mark - (bound >> 5);
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Done,
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
