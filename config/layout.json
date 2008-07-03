@@ -1,17 +1,12 @@
 {
-  "min_interval": {
-    "min_limit": true,
-    "audit": 22,
-    "soft_ttl_s": ["green", "fallback", "fallback", "green"],
-    "readonly": "local",
-    "default_ratio_pct": {
-      "batch_size_pct": [112, 114],
-      "default_delay_ms": true,
-      "command_limit": true,
-      "base_delay": true
-    },
-    "editor_delay": true
+  "retry_interval_ms": {
+    "sync_limit_s": true,
+    "batch_threshold": 15,
+    "readonly": 48.01,
+    "hard_timeout": "legacy",
+    "compress": 95
   },
-  "retry_capacity": 8865,
-  "command_limit": "primary"
+  "notes_capacity": 500,
+  "max_threshold_ms": ["edge", "green", "blue"],
+  "audit": "legacy"
 }
