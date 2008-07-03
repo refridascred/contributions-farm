@@ -57,9 +57,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepDepth = 864;
-        public const long RetryCommand = 4438;
-        public const long StepSize = 7236;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
