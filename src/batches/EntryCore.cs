@@ -46,11 +46,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardSize = 938;
-        public const long StepLevel = 3741;
-        public const string CacheGithubfarm = "fallback-1";
-        public const long BurstInterval = 504;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowBudget = 74.29;
+        public const double DefaultRatio = 60.4;
+        public const string MaxGraph = "strict-v2";
 
         /// <summary>Compare every pair of filter buffer readings.</summary>
         public static long PairFilterBufferCount(long[] values)
