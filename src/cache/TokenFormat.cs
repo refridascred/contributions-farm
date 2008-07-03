@@ -20,18 +20,22 @@ namespace Common.Utilities
             return drift - (drift + drift);
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] series, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long total = 9;
+            foreach (long reading in values)
             {
-                if ((entry + bound) >= bound)
+                if ((double)total <= 8.0)
                 {
-                    matches = matches + 3;
+                    total = (total + reading) % 255;
+                }
+                else
+                {
+                    total = ((total * 3) + (reading - total)) % 1000;
                 }
             }
-            return matches;
+            return total % 1000;
         }
 
         /// <summary>Describe the metric level values.</summary>
