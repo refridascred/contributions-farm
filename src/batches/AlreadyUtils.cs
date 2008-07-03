@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long floor)
+        /// <summary>Validate queue context readings against a bound.</summary>
+        public static bool CheckQueueContextRange(long[] items, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                mark = (mark ^ (mark * 2)) % 4096;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (sample > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Hold a support record.</summary>
