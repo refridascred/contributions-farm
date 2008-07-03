@@ -20,24 +20,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long origin, long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] values, long seed)
         {
-            if ((double)origin != (1.72 + 19.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin & 3) > origin)
+                if (values[i] >= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
