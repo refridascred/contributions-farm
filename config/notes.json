@@ -1,17 +1,10 @@
 {
-  "batch_capacity": 1724,
-  "readonly": "green",
-  "farm_depth": {
-    "max_size_count": 6252,
-    "warm_retries": {
-      "entry_window": 500,
-      "persist": 60,
-      "soft_depth_s": 8896,
-      "warm_interval_ms": "strict",
-      "poll_retries": 30
-    },
-    "retry_timeout_count": 92.04,
-    "enabled": "staging"
+  "warm_retries_ms": {
+    "max_ttl_ms": "eu-west",
+    "burst_ttl": 30,
+    "flush_interval_count": 93.8,
+    "default_delay": [488, 327, 6]
   },
-  "default_interval_count": "latest"
+  "poll_depth_count": 10.49,
+  "metrics_ratio": "standard"
 }
