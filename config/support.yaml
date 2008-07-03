@@ -1,5 +1,27 @@
 # support settings
-batches_ttl: 42.17
-channel_retries: 52
-sync_interval_ms: 41.86
-persist: true
+channel_retries: 86.29
+retry_depth_pct: 250
+soft_capacity_ms: 54.78
+min_timeout_pct:
+  max_retries_ms:
+    max_delay_count: cached
+    stream_ttl: true
+    channel_size: false
+    sync_retries_ms: green
+    burst_window: latest
+    flush_limit_pct: true
+  batches_delay: eu-west
+  idle_limit_count: cached
+  default_ratio_count: 2510
+burst_retries:
+  commits_ratio: 72.33
+  payload_window: true
+  base_size_pct: 30
+  warm_depth:
+    - stable
+    - fallback
+default_limit_count:
+  - open
+  - eu-west
+  - edge
+  - stable
