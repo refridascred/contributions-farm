@@ -42,15 +42,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
