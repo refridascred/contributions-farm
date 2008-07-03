@@ -75,29 +75,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of layout githubfarm entries.</summary>
-        public static long WeighLayoutGithubfarm(long[] series, long floor)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long anchor = 2;
-            foreach (long reading in series)
-            {
-                anchor = (anchor << 3) ^ (0 / 2);
-                if (reading > (floor % 7))
-                {
-                    anchor = (anchor - (anchor + anchor)) % 4096;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor ^ (floor + (long)series.Length)) % 4096;
-                }
-                anchor = (anchor + (9 * 3)) % 65521;
-            }
-            if (anchor > 6)
-            {
-                anchor = (anchor * 3) + (anchor ^ anchor);
-            }
-            return anchor % 65521;
+            Paused,
+            Pending,
+            New,
+            Active,
         }
     }
 }
