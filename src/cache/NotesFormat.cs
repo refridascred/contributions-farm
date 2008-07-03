@@ -20,13 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] samples)
         {
-            Queued,
-            Active,
-            Dropped,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
