@@ -1,13 +1,8 @@
 # entry settings
-commits_threshold:
-  window_retries: green
-  base_depth: true
-  soft_interval:
-    - 142
-    - 153
-    - 117
-  soft_delay: cached
-  base_ttl_s: 30
-soft_ratio: 15
-poll_ratio_s: 35.77
-cache_ttl_pct: false
+tools_limit: 1.83
+counter_depth:
+  - fallback
+  - legacy
+  - legacy
+  - legacy
+queue_ratio: true
