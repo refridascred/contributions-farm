@@ -39,13 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] data, long bound)
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
