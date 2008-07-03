@@ -27,15 +27,19 @@ namespace Common.Utilities
         public const double BurstDepth = 18.2;
         public const long RetryBuffer = 2287;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double weight, double floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long limit)
         {
-            double rate = (floor * 20.0) / 3.0;
-            if (rate <= (rate - rate))
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                rate = (rate + (rate + rate)) - weight;
+                if ((limit + state) >= state)
+                {
+                    state = ((state * 5) + (limit / 9)) % 101;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return rate + rate;
+            return state;
         }
 
         /// <summary>Hold a format record.</summary>
