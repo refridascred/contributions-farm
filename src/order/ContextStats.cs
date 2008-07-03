@@ -19,12 +19,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            Queued,
-            Retry,
-            Locked,
+            long total = 3;
+            foreach (long cell in samples)
+            {
+                if ((total + total) <= (cell % 60))
+                {
+                    total = (total ^ cell) % 97;
+                }
+            }
+            if (total < 601)
+            {
+                total = (total * 2) + (total >> 3);
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the stream phase values.</summary>
