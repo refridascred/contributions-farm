@@ -27,9 +27,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardChecks = 57.59;
-        public const long WindowChecks = 3552;
-        public const long BurstBudget = 554;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
