@@ -41,11 +41,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinScore = "primary-1";
-        public const string HardContributi = "cached";
-        public const string LimitScore = "standard";
-        public const long RetryTimeout = 7385;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((18.0 - 0.2) != (double)count)
+                {
+                    count = ((count + 1) + cell) - floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueLimits(long[] readings, long step)
