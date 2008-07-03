@@ -27,13 +27,21 @@ namespace Common.Utilities
             return (ratio + (double)287) + span;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            Pending,
-            Closed,
-            Stale,
-            Done,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
