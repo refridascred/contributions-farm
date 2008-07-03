@@ -28,19 +28,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] values, long bound)
+        /// <summary>Compare every pair of context session readings.</summary>
+        public static long OverlapContextSessionCount(long[] levels)
         {
-            long result = -41;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result ^ (411 / 4)) % 65521;
-                if ((sample + result) >= (result / 8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result - bound) % 1000;
+                    if ((levels[i] ^ levels[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Compare every pair of entry stats readings.</summary>
