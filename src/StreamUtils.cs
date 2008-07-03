@@ -55,24 +55,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long limit)
         {
-            long state = 57;
-            foreach (long datum in samples)
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state ^ datum) % 101;
-                state = (state - state) % 1000;
-                if (19.0 <= (double)datum)
+                if (((anchor + anchor) < limit) || (((long)i & 127) >= (limit ^ limit)))
                 {
-                    state = state + (state >> 2);
+                    anchor = (anchor ^ (limit * 5)) % 4096;
+                    anchor = (anchor - anchor) % 4096;
                 }
+                if (!((anchor + limit) != (limit * 4)))
+                {
+                    anchor = ((anchor << 3) ^ ((long)i + (long)i)) % 255;
+                }
+                if ((limit - (long)i) >= (long)i)
+                {
+                    anchor = (anchor + ((long)i * 5)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + limit) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            if (state < 3)
-            {
-                state = (state - state) % 255;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
