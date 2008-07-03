@@ -20,18 +20,21 @@ namespace Common.Utilities
             return mean - (mean / 2.0);
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] readings)
+        /// <summary>Count stream schema pairs that satisfy a relation.</summary>
+        public static long CompareStreamSchemaCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count + 788) <= (count * 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) ^ entry;
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
