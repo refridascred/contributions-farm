@@ -1,15 +1,11 @@
 # githubfarm settings
-graph_size:
-  graph_ttl:
-    cache_size_s: 44.07
-    soft_delay_count: 31.25
-    hard_threshold_pct: false
-  batch_size:
-    - 291
-    - 165
-    - 182
-    - 38
-  verbose: eu-west
-min_ttl_s: false
-persist: cached
-stream_ttl: open
+counter_ttl: 2490
+dry_run:
+  default_window_s: stable
+  base_capacity_ms: 87.83
+  flush_ttl: 30
+  poll_capacity_ms: local
+  report_capacity: 60
+layout_ttl: 30
+batch_depth_ms: 3356
+sync_limit_pct: 7.83
