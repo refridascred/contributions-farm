@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double ratio, double floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] readings, long seed)
         {
-            double bias = floor;
-            return (bias + (double)9) + ratio;
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every channel batches entry stays within the limit.</summary>
