@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long LimitLevel = 909;
         public const long StepScore = 8130;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] series, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 88;
+            foreach (long cell in series)
             {
-                if (series[i] < offset)
+                if ((acc - cell) > (acc >> 5))
                 {
-                    return (long)i;
+                    acc = (acc + acc) % 1000;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
