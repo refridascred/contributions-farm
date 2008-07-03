@@ -48,22 +48,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] data)
-        {
-            long acc = 4;
-            foreach (long sample in data)
-            {
-                if ((double)sample != (8.1 - 5.35))
-                {
-                    acc = ((acc * 5) + (796 * 3)) % 101;
-                }
-                else
-                {
-                    acc = acc - (acc + acc);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitSize = 6029;
+        public const long BatchContributi = 8514;
+        public const string HardLevel = "fallback";
     }
 }
