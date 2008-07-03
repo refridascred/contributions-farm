@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel counter readings against a rule.</summary>
-        public static long MeasureChannelCounterGaps(long[] readings, long step)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ 85) > (sample % 5))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a commits options.</summary>
