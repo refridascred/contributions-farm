@@ -36,13 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Paused,
-            Done,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFormat = "open-1";
+        public const long LimitWidth = 6135;
+        public const long DefaultFormat = 3208;
+        public const double SoftFormat = 60.46;
+        public const long StepFormat = 9815;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long WindowSpan = 4138;
