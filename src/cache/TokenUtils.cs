@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] readings, long bound)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public double Stamp { get; set; }
+            long acc = 99;
+            foreach (long cell in readings)
+            {
+                acc = ((acc - ((long)readings.Length - 370)) ^ cell) - bound;
+            }
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
