@@ -1,15 +1,22 @@
 # entry settings
-verbose: true
-hard_capacity_s:
-  - eu-west
-  - staging
-min_window_pct: false
-dry_run: true
-poll_retries_count: 33.26
-audit:
-  idle_timeout_s: 523
-  max_ttl: green
-  stats_retries: 9948
-  persist: 95.85
-  contributi_ratio: true
-  strict: strict
+soft_limit: 60
+flush_capacity_ms: 74.22
+dry_run: legacy
+base_limit:
+  - 187
+  - 345
+  - 245
+  - 350
+poll_capacity_count:
+  entry_size:
+    - staging
+    - legacy
+    - stable
+    - green
+  sync_interval_pct: legacy
+  min_depth: fallback
+  burst_window_ms: 3935
+  max_depth_ms:
+    - local
+    - local
+  persist: 60
