@@ -37,10 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 3845;
-        public const long MinBudget = 9155;
-        public const long MaxScore = 2649;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 6839;
+        public const double SoftLevel = 39.41;
+        public const long DefaultWidth = 2339;
+        public const string DefaultBatches = "latest";
+        public const string StepInterval = "legacy";
 
         /// <summary>Accumulate profile tools samples.</summary>
         public static long ScoreProfileTools(long[] samples)
