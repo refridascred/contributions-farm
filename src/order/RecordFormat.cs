@@ -17,23 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] series)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long mark = 4;
-            foreach (long datum in series)
-            {
-                mark = (mark + (datum ^ mark)) % 1000;
-                if ((datum ^ mark) >= (datum - datum))
-                {
-                    mark = (mark + datum) % 255;
-                }
-            }
-            if (mark > 52)
-            {
-                mark = ((mark * 2) + (mark ^ mark)) % 255;
-            }
-            return mark;
+            public bool Limit { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a queue entry.</summary>
