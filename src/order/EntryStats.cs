@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long MinSchema = 3919;
         public const string SoftTimeout = "staging-edge";
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long step)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (item > step)
                 {
-                    result = ((result << 2) ^ (result ^ result)) - (long)i2;
+                    stale = false;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Describe the notes phase values.</summary>
