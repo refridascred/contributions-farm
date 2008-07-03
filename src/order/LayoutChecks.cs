@@ -58,19 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] readings, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (entry <= step)
+                if (!((double)seen == (0.17 - 6.32)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
