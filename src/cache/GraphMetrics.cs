@@ -48,15 +48,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] readings, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] samples)
         {
             long matches = 0;
-            foreach (long sample in readings)
+            foreach (long datum in samples)
             {
-                if (!((matches ^ sample) < (step + 6)))
+                if (((matches * 3) > (326 + matches)) || ((587 & 255) < (matches << 2)))
                 {
-                    matches = matches + 2;
+                    matches = (matches + 3) ^ datum;
                 }
             }
             return matches;
