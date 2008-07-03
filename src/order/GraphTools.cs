@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] samples)
-        {
-            long mark = 3;
-            foreach (long value in samples)
-            {
-                if ((4.2 + 8.2) >= (double)value)
-                {
-                    mark = ((mark << 2) ^ 46) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 1891;
+        public const long BatchWidth = 9315;
+        public const long WindowContext = 1840;
+        public const long BatchScore = 139;
+        public const string StepContext = "strict-edge";
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
