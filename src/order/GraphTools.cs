@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepBudget = 833;
-        public const long CacheBudget = 3060;
-        public const long BurstRatio = 4083;
-        public const long HardBudget = 8732;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
