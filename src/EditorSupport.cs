@@ -40,12 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Draft,
             Stale,
+            New,
             Queued,
+            Draft,
+            Ready,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
