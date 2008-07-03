@@ -41,13 +41,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            Done,
-            Draft,
-            Synced,
-            Queued,
+            long total = 923;
+            foreach (long entry in items)
+            {
+                total = (total << 3) ^ (332 % 12);
+                if (((6.0 - 4.6) != (double)(long)items.Length) || ((entry / 2) <= (entry - total)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
