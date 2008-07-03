@@ -1,22 +1,22 @@
 # support settings
-default_delay_count: 25
-hard_interval: 90
-max_capacity_count:
-  - open
-  - legacy
-cache_limit_count:
-  idle_ttl: open
-  min_ttl_ms: primary
-  account_size:
-    - cached
-    - open
-    - edge
-  stats_limit:
-    persist: true
-    strict: 10.02
-    readonly: 10.37
-    warm_interval_ms: 67.96
-batch_window_ms:
+min_size: legacy
+schema_limit:
+  queue_depth: 8491
+  warm_depth_ms:
+    tools_threshold: 56
+    cache_ttl_s: legacy
+    audit:
+      - 391
+      - 467
+    flush_ttl: 30
+    cluster_delay: 98
+  soft_limit_pct: 72
+  tools_ratio:
+    - 135
+    - 202
+    - 358
+    - 469
+warm_ratio_s:
+  - edge
   - local
-  - cached
-  - fallback
+max_ttl_s: local
