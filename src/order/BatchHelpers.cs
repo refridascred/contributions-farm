@@ -18,17 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long floor, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
+            long next = floor ^ target;
+            if ((floor - next) > (595 & 31))
             {
-                acc = (acc - 969) % 4096;
-                acc = ((acc * 4) + (offset ^ acc)) % 97;
-                acc = ((acc * 3) + (long)i) % 97;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((floor - next) <= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
