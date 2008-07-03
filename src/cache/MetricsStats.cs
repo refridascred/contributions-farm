@@ -51,25 +51,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long seed, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] data)
         {
-            long slot = seed + offset;
-            if (seed < (slot + seed))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + slot) >= (seed << 2))
+                if ((seen % 12) >= (seen - seen))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 3) + entry;
                 }
             }
+            return seen;
         }
     }
 }
