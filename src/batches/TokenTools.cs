@@ -16,13 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] data, long target)
         {
-            Ready,
-            New,
-            Failed,
-            Active,
+            long total = 1;
+            foreach (long entry in data)
+            {
+                total = (total * 4) + (entry % 97);
+                if ((target % 7) != (target >> 3))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Match up route samples.</summary>
