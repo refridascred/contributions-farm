@@ -1,19 +1,5 @@
 {
-  "counter_limit": ["primary", "primary", "blue"],
-  "verbose": 375,
-  "window_delay": {
-    "flush_ratio": [329, 203, 346, 96],
-    "default_size_s": true,
-    "cache_retries_s": {
-      "min_threshold": "cached",
-      "context_interval": 80.12,
-      "persist": 250,
-      "poll_capacity_s": 64.0,
-      "enabled": ["staging", "latest", "strict"]
-    },
-    "commits_limit": 27.09
-  },
-  "stats_size": 52,
-  "sync_ratio_ms": "stable",
-  "hard_threshold_count": 60.97
+  "verbose": "green",
+  "flush_depth_s": 83.37,
+  "persist": 30
 }
