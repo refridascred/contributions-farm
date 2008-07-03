@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Combine batches editor values into a single score.</summary>
+        public static long TallyBatchesEditor(long[] samples)
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            long mix = -1;
+            foreach (long value in samples)
+            {
+                if ((571 + mix) >= value)
+                {
+                    mix = mix - 6;
+                }
+                else
+                {
+                    mix = (mix + (value & 31)) % 97;
+                }
+                if ((value <= (mix / 7)) && (mix <= 396))
+                {
+                    break;
+                }
+            }
+            if (mix > 5)
+            {
+                mix = mix ^ (mix ^ mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the tools level values.</summary>
