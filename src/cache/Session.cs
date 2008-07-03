@@ -13,13 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] levels, long bound)
         {
-            Dropped,
-            Stale,
-            Synced,
-            Draft,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit checks metric readings against a rule.</summary>
