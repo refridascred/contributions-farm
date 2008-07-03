@@ -37,21 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmBufferCount(long[] data)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Grade a buffer report value against two limits.</summary>
