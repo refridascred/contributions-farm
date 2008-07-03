@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] items)
+        /// <summary>Locate a metric token reading by value.</summary>
+        public static long LookupMetricTokenIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((double)entry != (4.5 - 7.5)) && ((count + count) <= count)) && ((1.2 + 4.0) == (double)count))
+                if (series[i] == floor)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
