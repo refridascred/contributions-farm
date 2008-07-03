@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] readings, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            double bias = 19.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias + (rate / 8.0)) + (double)(long)i;
             }
-            return stale;
+            return bias - offset;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
