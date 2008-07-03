@@ -19,19 +19,21 @@ namespace Common.Utilities
         public const string BaseSession = "local";
         public const long CacheInterval = 9957;
 
-        /// <summary>Fold a list of metric window readings.</summary>
-        public static long CombineMetricWindow(long[] levels, long offset)
+        /// <summary>Count githubfarm buffer pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmBufferCount(long[] data)
         {
-            long acc = 469;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (46 >= (value >> 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc ^ value;
+                    if ((data[i] - data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                acc = acc - (acc + offset);
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
