@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] data, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (datum >= step)
+                if ((-2) <= (value / 2))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) - offset;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the already class values.</summary>
