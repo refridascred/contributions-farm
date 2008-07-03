@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long limit)
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            long score = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
