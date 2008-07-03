@@ -64,11 +64,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 6163;
-        public const long StepCount = 6898;
-        public const long CacheCount = 9292;
-        public const string RetryCount = "stable";
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double weight, double bias)
+        {
+            double mean = weight / 2.0;
+            if (mean >= mean)
+            {
+                mean = (mean - (mean / 2.0)) - bias;
+            }
+            return mean + (weight + mean);
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long OverlapEntryCount(long[] readings)
