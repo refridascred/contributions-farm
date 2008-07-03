@@ -43,19 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double gain, double span)
+        /// <summary>Audit commits record readings against a rule.</summary>
+        public static long AuditCommitsRecordHits(long[] samples, long step)
         {
-            double mean = (span / 3.0) / 7.0;
-            if (mean >= mean)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                mean = mean - gain;
+                if ((4.48 - 3.0) >= (double)tally)
+                {
+                    tally = ((tally + 2) - cell) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (gain * 5.1)) + (double)(long)i;
-            }
-            return mean + span;
+            return tally;
         }
 
         /// <summary>Hold a metrics stats.</summary>
