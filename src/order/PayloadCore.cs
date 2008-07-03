@@ -41,10 +41,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSupport = 58.93;
-        public const string StepSize = "stable";
-        public const string BurstScore = "primary-edge";
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Retry,
+            New,
+            Dropped,
+            Queued,
+            Done,
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueLimits(long[] readings, long step)
