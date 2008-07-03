@@ -14,31 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank graph entry input into a small class.</summary>
-        public static long RankGraphEntry(long step, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] data)
         {
-            if ((target - target) >= (target + target))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step == (8.11 + 17.0))
+                if (((seen + seen) < (484 + seen)) && ((126 ^ (long)data.Length) != (2 ^ 2)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target < (step - 85)) && ((87 ^ target) != (910 + target)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = (seen + 1) ^ entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
