@@ -28,12 +28,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Count the account filter entries that pass the check.</summary>
+        public static long TallyAccountFilterMatches(long[] samples)
         {
-            public double Offset { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)seen < (7.71 / 9.0))
+                {
+                    seen = (seen + 3) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
