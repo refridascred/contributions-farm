@@ -20,12 +20,24 @@ namespace Common.Utilities
             return gain + (scale - floor);
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            Idle,
-            Stale,
-            Done,
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)limit != (8.7 + 4.2))
+                {
+                    sum = sum ^ (sum << 1);
+                    break;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ sum) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Blend two schema filter measurements.</summary>
