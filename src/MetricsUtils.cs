@@ -38,11 +38,12 @@ namespace Common.Utilities
         public const double MaxFactor = 7.33;
         public const double MaxEditor = 72.73;
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            Pending,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a entry options.</summary>
