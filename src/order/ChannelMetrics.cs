@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] samples, long target)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public long Size { get; set; }
+            long state = 662;
+            foreach (long reading in samples)
+            {
+                if (577 <= reading)
+                {
+                    state = ((state << 3) ^ (target + target)) % 1000;
+                }
+                if (((target / 4) > reading) && ((reading - state) <= target))
+                {
+                    state = (state + reading) % 1000;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
