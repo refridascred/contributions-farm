@@ -60,18 +60,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] items, long seed)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((seed * 5) > (seed & 31))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            Paused,
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
