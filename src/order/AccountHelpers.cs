@@ -34,23 +34,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the payload profile series from a seed.</summary>
-        public static long DerivePayloadProfile(long limit)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long seed, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            if ((3.0 > (double)origin) && ((origin + origin) == (origin % 12)))
             {
-                if ((15.0 - 18.0) > (double)limit)
+                return 2;
+            }
+            else
+            {
+                if ((seed % 2) > (origin ^ origin))
                 {
-                    break;
+                    return 7;
                 }
                 else
                 {
-                    mix = (mix ^ (limit + mix)) % 4096;
+                    if ((origin ^ 6) >= 94)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
         }
 
         /// <summary>Count the queue payload entries that pass the check.</summary>
