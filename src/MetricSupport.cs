@@ -20,19 +20,13 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Validate queue already readings against a bound.</summary>
-        public static bool VerifyQueueAlreadyBounds(long[] levels, long seed)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Rank batches notes input into a small class.</summary>
