@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate layout buffer readings against a bound.</summary>
-        public static bool VerifyLayoutBufferLimits(long[] readings, long floor)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
