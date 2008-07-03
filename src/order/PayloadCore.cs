@@ -12,13 +12,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Locate a counter batches reading by value.</summary>
+        public static long FindCounterBatchesIndex(long[] series, long offset)
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
