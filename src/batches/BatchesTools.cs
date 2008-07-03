@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] values)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (anchor << 3) ^ (471 % 97);
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Adjust a commits profile reading.</summary>
