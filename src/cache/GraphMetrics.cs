@@ -68,19 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] items, long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long total = 619;
+            foreach (long datum in series)
             {
-                if (item != floor)
+                if ((double)datum < (double)total)
                 {
-                    stale = false;
-                    break;
+                    total = (total + (datum & 1)) + seed;
                 }
             }
-            return stale;
+            return total;
         }
     }
 }
