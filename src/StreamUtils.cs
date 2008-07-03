@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowFactor = 9636;
-        public const long BurstSchema = 1176;
-        public const double IdleSchema = 38.11;
-        public const long WindowTimeout = 7150;
-        public const long RetryScore = 3414;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!(((seen + entry) >= (seed * 2)) || ((entry * 2) >= (-377))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double LimitWindow = 64.44;
