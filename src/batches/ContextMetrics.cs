@@ -56,18 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((((double)(long)data.Length >= 17.0) && ((seen & 63) <= item)) || ((item - item) > (720 ^ item)))
+                if ((cell & 127) < (-7))
                 {
-                    seen = seen + 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
