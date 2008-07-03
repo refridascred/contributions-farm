@@ -29,21 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] levels)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
