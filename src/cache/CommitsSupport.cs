@@ -61,12 +61,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
             Paused,
-            Queued,
-            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
