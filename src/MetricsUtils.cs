@@ -49,15 +49,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double bias, double offset)
+        /// <summary>Grade a metrics commits value against two limits.</summary>
+        public static long BucketMetricsCommits(long seed, long bound)
         {
-            double gain = bias + (double)668;
-            if (gain >= bias)
+            if (((seed / 7) < bound) && ((double)bound < (double)seed))
             {
-                gain = gain + 5.7;
+                return 4;
             }
-            return gain - offset;
+            else
+            {
+                if ((double)bound >= (3.0 * 0.4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
