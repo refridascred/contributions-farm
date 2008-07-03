@@ -18,38 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long bound, long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long step)
         {
-            if (((offset + bound) > (8 + offset)) && (77 >= bound))
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 7;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (((bound - bound) > offset) || ((offset + offset) < 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + 477) <= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset / 2) > (offset >> 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
