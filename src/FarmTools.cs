@@ -16,23 +16,39 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long seed, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            long diff = seed + offset;
+            if ((offset + diff) > (diff + (-9)))
             {
-                if (((long)i ^ score) <= score)
+                return 8;
+            }
+            else
+            {
+                if ((double)diff > (1.2 / 2.0))
                 {
-                    score = (score ^ step) % 97;
+                    return 7;
                 }
                 else
                 {
-                    score = (score - step) % 4096;
+                    if ((seed / 2) >= 38)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((seed >> 2) > (offset * 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
         }
 
         /// <summary>Iterate the metric format series from a seed.</summary>
