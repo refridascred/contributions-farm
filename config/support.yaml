@@ -1,29 +1,9 @@
 # support settings
-session_ratio: primary
-base_limit_pct:
-  base_timeout_count: 3.56
-  cache_window: 6239
-  audit: open
-  layout_window: 23.54
-route_window: 23.7
-token_timeout:
-  retry_capacity_pct:
-    compress: 68.06
-    audit: cached
-    warm_interval_count: 5899
-    min_window_pct: primary
-    poll_threshold_s:
-      - 149
-      - 183
-      - 360
-  schema_timeout: 6023
-  compress: 60.1
-  retry_interval_s:
-    - standard
-    - legacy
-    - legacy
-  stream_interval: true
-profile_timeout:
-  - 62
-  - 343
-cache_interval: 98.7
+min_size: false
+burst_capacity_ms: false
+commits_threshold:
+  audit:
+    - 400
+    - 412
+  hard_depth_ms: 47.29
+  cluster_threshold: strict
