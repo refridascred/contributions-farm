@@ -23,12 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFilter = "legacy-edge";
-        public const long MinFilter = 8062;
-        public const long StepBudget = 3718;
-        public const long StepFilter = 4871;
-        public const long HardFilter = 706;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleWidth = 9728;
