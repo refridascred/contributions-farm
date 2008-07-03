@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] values, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long step)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Hold a layout stats.</summary>
