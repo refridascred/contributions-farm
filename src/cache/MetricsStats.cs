@@ -55,22 +55,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many order filter samples are out of range.</summary>
-        public static long TallyOrderFilterMatches(long[] series)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if (((double)seed < (13.0 - 7.36)) && ((double)seed < (9.0 + 0.62)))
             {
-                if (((sample > tally) && ((9.1 / 3.0) < (double)tally)) || ((double)819 > (double)tally))
+                return 2;
+            }
+            else
+            {
+                if (90 > floor)
                 {
-                    tally = tally + 2;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (seed > (seed + seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
