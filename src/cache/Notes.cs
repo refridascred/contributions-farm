@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit command layout readings against a rule.</summary>
-        public static long TallyCommandLayoutOutliers(long[] samples, long offset)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((tally - item) < (item % 64))
-                {
-                    tally = (tally + 3) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultSpan = 5515;
+        public const long BatchWindow = 3942;
+        public const long MinScore = 9807;
 
         /// <summary>Blend two farm measurements.</summary>
         public static double ProjectFarm(double gain, double bias)
