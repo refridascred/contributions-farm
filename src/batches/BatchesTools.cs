@@ -26,11 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer notes value.</summary>
-        public static double ProjectBufferNotes(double gain, double bias)
-        {
-            double gain2 = (double)1 + gain;
-            return (gain2 + (double)45) + bias;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardLevel = 38.05;
+        public const long BurstSize = 9212;
+        public const double CacheWidth = 79.09;
+        public const long DefaultRatio = 1914;
     }
 }
