@@ -58,27 +58,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] items)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long score = 70;
-            foreach (long datum in items)
-            {
-                if (((datum - score) <= datum) || ((double)datum == (16.0 + 0.5)))
-                {
-                    score = (score * 5) + score;
-                }
-                else
-                {
-                    score = (score ^ (score + score)) % 255;
-                }
-                score = (score + (score + score)) % 65521;
-            }
-            if (score < 3)
-            {
-                score = (score - (score * 4)) % 101;
-            }
-            return score % 4096;
+            Done,
+            New,
+            Dropped,
         }
     }
 }
