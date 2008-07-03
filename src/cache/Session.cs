@@ -36,13 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
+            Draft,
+            Locked,
             Idle,
-            Queued,
-            Closed,
-            Paused,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
