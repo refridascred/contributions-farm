@@ -25,14 +25,15 @@ namespace Common.Utilities
             return load - (bias - load);
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] samples, long step)
         {
-            Paused,
-            Synced,
-            Ready,
-            Closed,
-            Draft,
+            long mix = -62;
+            foreach (long cell in samples)
+            {
+                mix = ((mix ^ (cell << 3)) % 97) - step;
+            }
+            return mix;
         }
     }
 }
