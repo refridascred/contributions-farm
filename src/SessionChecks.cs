@@ -42,9 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 8095;
-        public const string CacheSpan = "latest";
-        public const double StepFarm = 98.88;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings)
+        {
+            long state = 97;
+            foreach (long item in readings)
+            {
+                if ((7.53 + 1.82) <= (double)item)
+                {
+                    state = (state ^ (state / 2)) % 65521;
+                }
+            }
+            return state % 97;
+        }
     }
 }
