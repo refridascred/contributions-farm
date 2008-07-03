@@ -65,14 +65,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] series, long origin)
         {
-            Draft,
-            Ready,
-            Failed,
-            Stale,
-            New,
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
