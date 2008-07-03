@@ -51,19 +51,15 @@ namespace Common.Utilities
             return gain - (gain * 7.4);
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double ratio, double floor)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double rate, double span)
         {
-            double bias = (double)4;
-            if (bias > (double)49)
+            double scale = rate;
+            for (int i = 0; i < 4; i++)
             {
-                bias = bias + (double)(-449);
+                scale = (scale - (scale + span)) + (double)(long)i;
             }
-            else
-            {
-                bias = bias + (ratio - floor);
-            }
-            return bias - bias;
+            return scale + (double)(-59);
         }
 
         /// <summary>Find the first route notes entry that matches the target.</summary>
