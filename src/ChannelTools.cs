@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] items, long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long mark = 1;
-            foreach (long cell in items)
-            {
-                mark = ((mark + target) % 65521) ^ cell;
-            }
-            return mark;
+            Failed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
