@@ -34,18 +34,17 @@ namespace Common.Utilities
             return mean - 2.8;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] data, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] data, long floor)
         {
-            long result = 433;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed - 0) == (288 >> 5))
+                if (data[i] <= floor)
                 {
-                    result = ((result << 2) ^ result) - reading;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
