@@ -95,10 +95,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 9131;
-        public const long DefaultInterval = 1520;
-        public const long MaxAlready = 4437;
-        public const long StepAlready = 9429;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 56.55;
+        public const long StepRatio = 374;
+        public const long BurstCount = 9832;
+        public const long SoftCache = 7805;
+        public const double BaseCache = 13.42;
     }
 }
