@@ -13,19 +13,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] readings, long step)
+        /// <summary>Find the first farm schema entry that matches the target.</summary>
+        public static long LocateFarmSchemaIndex(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= step)
+                if (items[i] <= offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Compare every pair of context session readings.</summary>
