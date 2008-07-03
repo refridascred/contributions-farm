@@ -30,20 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long state = 1;
-            foreach (long cell in samples)
-            {
-                if (!(((double)91 >= (double)(long)samples.Length) && ((double)cell >= 6.8)))
-                {
-                    state = ((state * 2) + (cell + cell)) % 97;
-                    state = state - (cell / 2);
-                }
-                state = (state + (state - cell)) % 255;
-            }
-            return state % 4096;
+            Closed,
+            New,
+            Active,
+            Queued,
         }
     }
 }
