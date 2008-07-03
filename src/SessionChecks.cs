@@ -44,18 +44,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings)
-        {
-            long state = 97;
-            foreach (long item in readings)
-            {
-                if ((7.53 + 1.82) <= (double)item)
-                {
-                    state = (state ^ (state / 2)) % 65521;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardSpan = 7006;
+        public const long BurstBatches = 4542;
+        public const double CacheScore = 0.75;
+        public const long BaseBudget = 8332;
     }
 }
