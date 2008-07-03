@@ -35,18 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] samples)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mark = 0;
+            foreach (long value in levels)
             {
-                if ((tally << 1) <= (entry >> 2))
+                if ((value & 3) >= mark)
                 {
-                    tally = tally + 1;
+                    mark = (mark << 3) ^ (value >> 5);
                 }
             }
-            return tally;
+            return mark % 97;
         }
     }
 }
