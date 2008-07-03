@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 551;
-        public const long BaseOrder = 7350;
-        public const long WindowOrder = 3900;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = (score - bound) - (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowGaps(long[] samples)
