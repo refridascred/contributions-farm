@@ -19,21 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 14;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (floor < (entry >> 1))
                 {
-                    if ((data[i] ^ data[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result - (entry + result)) % 1000;
                 }
             }
-            return seen;
+            return result % 1000;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
