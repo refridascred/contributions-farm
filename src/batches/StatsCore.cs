@@ -64,31 +64,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long step, long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            if (step <= (origin % 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step % 7) < (16 + 834))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin >= (1 * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Locked,
+            Pending,
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Match up batch graph samples.</summary>
