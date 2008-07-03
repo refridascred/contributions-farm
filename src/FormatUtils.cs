@@ -49,16 +49,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the stats layout series from a seed.</summary>
-        public static long DeriveStatsLayout(long target)
+        /// <summary>Combine channel account values into a single score.</summary>
+        public static long WeighChannelAccount(long[] samples, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
+            long anchor = 0;
+            foreach (long datum in samples)
             {
-                score = (score - target) % 97;
-                score = ((score * 2) + (long)i) % 1000;
+                anchor = (anchor - (floor + floor)) ^ datum;
             }
-            return score;
+            if (anchor > 5)
+            {
+                anchor = ((anchor << 3) ^ (326 - anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
