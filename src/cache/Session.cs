@@ -28,15 +28,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double scale, double offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] data, long seed)
         {
-            double scale2 = (double)0 - (double)99;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                scale2 = ((scale2 - scale2) + (double)(long)i) + offset;
+                if ((double)seed > (19.0 / 9.0))
+                {
+                    seen = (seen + 3) + sample;
+                }
             }
-            return scale2 - (scale - scale);
+            return seen;
         }
 
         /// <summary>Accumulate support samples.</summary>
