@@ -62,11 +62,13 @@ namespace Common.Utilities
             return gain - (gain * 7.4);
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
+            Done,
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
