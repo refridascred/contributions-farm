@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] readings)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (!((8.38 / 9.0) < (double)value) && (((0.81 - 10.0) == (double)value) && ((value + 660) < 4)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
