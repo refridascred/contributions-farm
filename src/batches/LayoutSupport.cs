@@ -50,11 +50,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] readings)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry & 31) < (812 / 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
