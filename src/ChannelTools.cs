@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] series, long bound)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long seed, long seed2)
         {
-            long mix = 61;
-            foreach (long cell in series)
+            if ((double)seed >= 2.37)
             {
-                mix = mix - (cell % 100);
-                if ((bound >> 5) > (bound << 3))
+                return 7;
+            }
+            else
+            {
+                if (((double)seed > (6.6 - 11.0)) || (seed2 < (seed2 % 8)))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)seed < (2.8 + 2.2)) && ((double)seed2 > 9.6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix % 1000;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
