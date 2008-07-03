@@ -33,18 +33,17 @@ namespace Common.Utilities
         public const double BaseDepth = 34.31;
         public const double CacheEntry = 31.18;
 
-        /// <summary>Count the schema counter entries that pass the check.</summary>
-        public static long MeasureSchemaCounterGaps(long[] readings)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading / 6) > (reading + reading))
+                if ((series[i] >= step) && ((series[i] % 2) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
