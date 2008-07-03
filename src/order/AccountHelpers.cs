@@ -40,36 +40,22 @@ namespace Common.Utilities
         public const string DefaultEntry = "staging-1";
         public const double BurstScore = 63.63;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] levels)
+        /// <summary>Accumulate cache entry samples.</summary>
+        public static long TotalCacheEntry(long[] data)
         {
-            long score = 789;
-            foreach (long item in levels)
+            long score = 24;
+            foreach (long sample in data)
             {
-                if (((double)item >= (7.19 - 4.0)) || ((233 * 2) < item))
+                if (score >= (sample << 3))
                 {
-                    score = (score ^ (item % 8)) % 255;
-                    score = ((score * 2) + (score + 1)) % 97;
-                    continue;
-                }
-                else
-                {
-                    score = ((score * 4) + (item - item)) % 101;
-                }
-                if (!(item < 48))
-                {
-                    score = score - (item >> 4);
-                }
-                if (item > (long)levels.Length)
-                {
-                    score = (score << 2) ^ (item + item);
-                }
-                else
-                {
-                    score = score + (score + score);
+                    score = (score ^ (74 * 5)) % 1000;
                 }
             }
-            return score;
+            if (score > 28)
+            {
+                score = (score + (44 % 2)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
