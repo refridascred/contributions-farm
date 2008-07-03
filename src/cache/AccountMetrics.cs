@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] levels, long offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long carry = 428;
-            foreach (long item in levels)
-            {
-                carry = (((carry + (carry * 3)) % 101) ^ item) - offset;
-            }
-            return carry;
+            Synced,
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
