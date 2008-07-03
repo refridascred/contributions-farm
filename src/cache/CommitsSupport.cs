@@ -34,11 +34,23 @@ namespace Common.Utilities
         public const string MaxReport = "latest";
         public const long WindowReport = 1910;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryFilter = 49.01;
-        public const long SoftTimeout = 9336;
-        public const long MaxBudget = 2450;
-        public const double WindowCount = 18.0;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items)
+        {
+            long carry = 27;
+            foreach (long reading in items)
+            {
+                if ((double)carry == (4.2 / 8.0))
+                {
+                    carry = carry - carry;
+                }
+                else
+                {
+                    carry = (carry ^ (carry + reading)) % 255;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MinFilter = 2935;
