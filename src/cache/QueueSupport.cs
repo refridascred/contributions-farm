@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] values)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.7 * 1.06) > (5.3 * 6.27))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) ^ reading;
+                    if ((data[i] - data[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
