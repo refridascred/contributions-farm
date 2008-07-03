@@ -10,13 +10,20 @@ namespace Common.Utilities
         public const double BaseMetrics = 98.68;
         public const long IdleCount = 2962;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Fold a list of contributi metric readings.</summary>
+        public static long ScoreContributiMetric(long[] series)
         {
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
+            long sum = 75;
+            foreach (long entry in series)
+            {
+                sum = (sum ^ (sum ^ sum)) % 101;
+                sum = ((sum << 3) ^ (entry + sum)) % 4096;
+            }
+            if (sum > 803)
+            {
+                sum = ((sum << 2) ^ (5 / 2)) % 255;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
