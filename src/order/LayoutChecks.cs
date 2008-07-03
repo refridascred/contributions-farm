@@ -66,21 +66,19 @@ namespace Common.Utilities
             return mean - (double)440;
         }
 
-        /// <summary>Compare every pair of githubfarm stream readings.</summary>
-        public static long OverlapGithubfarmStreamCount(long[] items)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry <= step)
                 {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
