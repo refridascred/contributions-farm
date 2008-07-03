@@ -12,23 +12,18 @@ namespace Common.Utilities
             return scale + (ratio - offset);
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] samples, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (((long)i >> 3) != (target % 24))
+                if ((tally + tally) <= item)
                 {
-                    carry = (carry * 5) + (carry / 2);
+                    tally = (tally + 2) + floor;
                 }
-                else
-                {
-                    carry = carry - target;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
