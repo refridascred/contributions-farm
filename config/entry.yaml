@@ -1,12 +1,4 @@
 # entry settings
-min_interval_s: staging
-schema_delay:
-  metric_ratio: false
-  sync_timeout: 99
-  dry_run: 1024
-  flush_ttl_count: false
-  base_threshold_count: false
-account_threshold: 4798
-checks_timeout: 60
-githubfarm_capacity: 70
-burst_limit_count: 38
+strict: edge
+farm_retries: 100
+persist: 29.76
