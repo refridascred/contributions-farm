@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] samples, long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (item > bound)
+                if (entry > bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
