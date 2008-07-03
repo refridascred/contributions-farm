@@ -36,13 +36,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] readings, long limit)
         {
-            Queued,
-            Draft,
-            Stale,
-            Retry,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count - limit) < (count - cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
