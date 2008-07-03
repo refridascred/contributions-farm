@@ -22,18 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] values, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((6.94 - 1.0) == (double)bound)
+                if (sample >= floor)
                 {
-                    tally = (tally + 1) + datum;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a support record.</summary>
