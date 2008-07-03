@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Retry,
-            Pending,
-            Ready,
-            New,
-            Active,
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
