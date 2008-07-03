@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 5918;
-        public const long LimitInterval = 5004;
-        public const double MaxBudget = 82.15;
-        public const long LimitBuffer = 9656;
-        public const long MinBuffer = 9200;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinDepth = 8089;
