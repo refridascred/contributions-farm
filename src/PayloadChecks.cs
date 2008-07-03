@@ -35,24 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long step, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long target)
         {
-            if ((floor / 9) <= (floor % 12))
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                state = ((state * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((step + 6) > step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return state;
         }
 
         /// <summary>Accumulate route samples.</summary>
