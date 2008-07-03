@@ -44,22 +44,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] samples)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((17.0 - 5.09) != (double)seen))
-                {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
     }
 }
