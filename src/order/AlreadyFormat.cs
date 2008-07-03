@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 7453;
-        public const long BaseRoute = 4214;
-        public const double HardScore = 90.82;
-        public const long MinInterval = 2296;
-        public const long CacheDepth = 7380;
+        /// <summary>Count farm support pairs that satisfy a relation.</summary>
+        public static long PairFarmSupportCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit token profile readings against a rule.</summary>
         public static long AuditTokenProfileHits(long[] readings)
