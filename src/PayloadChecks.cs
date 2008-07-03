@@ -26,10 +26,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinFactor = "stable-v2";
-        public const long LimitAlready = 2552;
-        public const long WindowRatio = 9830;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long step, long floor)
+        {
+            if ((floor / 9) <= (floor % 12))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + 6) > step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool GuardFilterLimits(long[] samples, long offset)
