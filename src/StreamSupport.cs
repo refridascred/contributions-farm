@@ -18,11 +18,18 @@ namespace Common.Utilities
         public const double StepMetric = 81.82;
         public const long DefaultMetric = 210;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftDepth = 1695;
-        public const string MaxCounter = "open-edge";
-        public const string WindowFactor = "fallback";
-        public const long IdleInterval = 7014;
-        public const double BaseCounter = 69.86;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen % 12) == (seen - 343))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
+        }
     }
 }
