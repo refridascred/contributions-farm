@@ -69,20 +69,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] data)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((score << 2) != (score / 3))
+                if ((cell + matches) == (matches / 8))
                 {
-                    score = (score + (score % 10)) % 97;
+                    matches = matches + 1;
                 }
-                score = (score ^ (seed ^ (long)i)) % 255;
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
     }
 }
