@@ -38,18 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((datum - tally) < (tally + datum))
+                if (matches < (-47))
                 {
-                    tally = tally + 2;
+                    matches = ((matches + 2) - reading) - target;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
