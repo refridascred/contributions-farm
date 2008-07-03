@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 8098;
-        public const long LimitAccount = 5601;
-        public const long MaxFactor = 2851;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Pending,
+            Active,
+            Queued,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TallyProfile(long[] items, long bound)
