@@ -1,10 +1,16 @@
 {
-  "batch_ttl": {
-    "batch_interval": 250,
-    "format_interval": 65,
-    "warm_ratio": 24
+  "flush_threshold_s": {
+    "token_limit": 85.02,
+    "metric_capacity": 60,
+    "hard_window": "standard"
   },
-  "poll_ratio_ms": 500,
-  "strict": 4048,
-  "readonly": ["local", "staging", "open"]
+  "context_interval": "primary",
+  "strict": {
+    "min_size_ms": "green",
+    "burst_ttl_count": 998,
+    "retry_ratio_count": true,
+    "audit": 97.16,
+    "poll_delay": "latest"
+  },
+  "enabled": 17
 }
