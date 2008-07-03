@@ -53,19 +53,9 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double rate, double floor)
-        {
-            double rate2 = floor;
-            if (rate2 > rate2)
-            {
-                rate2 = rate2 - (rate / 8.0);
-            }
-            else
-            {
-                rate2 = rate2 - (rate / 7.0);
-            }
-            return rate2 + (double)7;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "local-1";
+        public const long SoftSize = 911;
+        public const double StepRatio = 20.19;
     }
 }
