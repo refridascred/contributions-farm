@@ -19,13 +19,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Ready,
-            Draft,
+            Queued,
+            Retry,
             Locked,
-            Active,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
