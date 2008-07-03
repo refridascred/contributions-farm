@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] readings)
         {
-            Active,
-            New,
-            Retry,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((double)hits > 7.99) || ((reading + hits) < (reading ^ 32)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
