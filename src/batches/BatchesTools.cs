@@ -15,18 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] data)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value >= (15.0 * 5.1))
+                if (samples[i] > seed)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
