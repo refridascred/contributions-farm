@@ -76,18 +76,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (!((hits ^ hits) <= (hits - hits)))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchEntry = "cached-v2";
+        public const long MaxEntry = 8837;
+        public const string IdleEntry = "staging";
     }
 }
