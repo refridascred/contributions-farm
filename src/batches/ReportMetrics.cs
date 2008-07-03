@@ -38,13 +38,14 @@ namespace Common.Utilities
             return mean + (weight * 11.0);
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Locked,
-            Draft,
-            Ready,
-            Done,
+            Retry,
+            New,
+            Synced,
+            Closed,
+            Dropped,
         }
     }
 }
