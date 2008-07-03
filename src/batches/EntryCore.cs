@@ -29,17 +29,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Count counter support pairs that satisfy a relation.</summary>
+        public static long CompareCounterSupportCount(long[] data)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state + (limit + limit)) % 1000;
-                state = (state * 4) + ((long)i - (long)i);
-                state = ((state * 3) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
