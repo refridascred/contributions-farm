@@ -2,11 +2,8 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    count INTEGER NOT NULL DEFAULT 0,
-    region TEXT
+    created_at TIMESTAMP,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
-
-INSERT INTO layout_items (state, count, region) VALUES ('green', 58, 'stable');
-INSERT INTO layout_items (state, count, region) VALUES ('primary', 43, 'eu-west');
+CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
