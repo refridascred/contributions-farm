@@ -26,11 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double bias, double floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long offset)
         {
-            double weight = (double)(83 / 3);
-            return ((weight - weight) + bias) + floor;
+            long total = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total << 3) ^ (total + 82)) % 97;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
