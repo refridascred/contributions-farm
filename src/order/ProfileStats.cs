@@ -21,24 +21,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long floor, long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            if ((double)floor < 2.34)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((99 & 31) < target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
