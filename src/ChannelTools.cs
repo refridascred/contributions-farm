@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
+            Idle,
+            Retry,
+            Failed,
             Locked,
-            Ready,
-            Queued,
-            Draft,
-            New,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
