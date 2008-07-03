@@ -19,12 +19,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] items)
         {
-            Ready,
-            Done,
-            Pending,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
