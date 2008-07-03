@@ -16,15 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Look up the position of a format stats sample.</summary>
+        public static long LocateFormatStatsIndex(long[] series, long bound)
         {
-            long sum = 340;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum << 3) ^ (-39)) ^ cell;
+                if ((series[i] <= bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
