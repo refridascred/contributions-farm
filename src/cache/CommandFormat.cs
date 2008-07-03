@@ -55,10 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstInterval = 7802;
-        public const double BaseWindow = 71.04;
-        public const double IdleSpan = 50.7;
-        public const long DefaultWindow = 8713;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
