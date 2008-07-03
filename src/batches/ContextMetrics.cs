@@ -40,17 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] readings, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((readings[i] == origin) && ((readings[i] % 5) == 0))
+                if ((80 + tally) != (cell - cell))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
