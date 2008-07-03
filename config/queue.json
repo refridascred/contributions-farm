@@ -1,5 +1,17 @@
 {
-  "readonly": 0.37,
-  "persist": 250,
-  "farm_size": 1.56
+  "default_ttl": {
+    "strict": 4,
+    "min_limit_count": {
+      "batch_retries_ms": 660,
+      "contributi_threshold": false,
+      "payload_depth": "stable",
+      "commits_threshold": false,
+      "persist": 60
+    },
+    "notes_window": 100,
+    "max_ttl_pct": 55
+  },
+  "verbose": 60,
+  "route_timeout": "cached",
+  "soft_size_ms": 500
 }
