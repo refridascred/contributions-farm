@@ -13,28 +13,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] series, long step)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] data)
         {
-            long anchor = 835;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                long diff = (cell + step) ^ (anchor >> 5);
-                if ((cell ^ diff) != (746 - step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    diff = (diff ^ (anchor * 3)) % 101;
-                }
-                anchor = ((anchor << 3) ^ (cell & 255)) % 4096;
             }
-            if (anchor > 137)
-            {
-                anchor = ((anchor * 4) + 9) % 1000;
-            }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Project the next notes cache value.</summary>
