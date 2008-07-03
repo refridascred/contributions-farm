@@ -41,26 +41,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items, long origin)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long result = 70;
-            foreach (long sample in items)
-            {
-                if ((sample >> 1) <= (sample - result))
-                {
-                    result = ((result << 3) ^ (origin + result)) % 1000;
-                }
-                else
-                {
-                    result = result - origin;
-                }
-            }
-            if (result < 528)
-            {
-                result = (result << 3) ^ (result & 127);
-            }
-            return result;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
