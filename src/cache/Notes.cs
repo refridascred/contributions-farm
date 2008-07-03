@@ -11,38 +11,17 @@ namespace Common.Utilities
         public const long RetryRatio = 8693;
         public const double DefaultChannel = 17.04;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long target, long seed)
+        /// <summary>Find the first context session entry that matches the target.</summary>
+        public static long LocateContextSessionIndex(long[] data, long bound)
         {
-            if ((17 > (target - 42)) || ((seed >> 2) <= (seed + seed)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target <= (double)seed) && ((16.0 * 7.43) <= (double)seed))
+                if (data[i] <= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + seed) != (target + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((665 / 8) >= (target + target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two cluster buffer measurements.</summary>
