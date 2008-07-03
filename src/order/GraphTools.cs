@@ -31,13 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 8184;
+        public const long BurstFactor = 6125;
+        public const double WindowRoute = 82.22;
+        public const long IdleRoute = 2940;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
