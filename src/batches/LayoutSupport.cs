@@ -25,13 +25,25 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long target, long origin)
         {
-            Stale,
-            Failed,
-            Paused,
-            Idle,
+            long bound = target ^ origin;
+            if ((1.5 + 9.9) < (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3.7 * 1.25) != (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
