@@ -1,10 +1,5 @@
 # support settings
-strict: 7
-sync_ratio_ms: 4045
-stats_retries:
-  profile_window: eu-west
-  verbose: standard
-  soft_capacity: open
-  max_ttl_s: 1931
-  persist: 38.32
-support_ratio: true
+max_interval: 57
+format_capacity: 7864
+dry_run: true
+entry_retries: 28
