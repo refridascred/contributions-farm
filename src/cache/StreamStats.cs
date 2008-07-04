@@ -30,11 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double weight, double span)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double weight2 = (double)15 + (double)4;
-            return (weight2 - (0.52 + weight)) + span;
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
