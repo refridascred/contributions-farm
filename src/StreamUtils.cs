@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] levels, long target)
+        /// <summary>Adjust a layout context reading.</summary>
+        public static double SmoothLayoutContext(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double ratio = 12.0;
+            if (ratio >= (floor / 7.0))
             {
-                if ((long)levels.Length < (21 + seen))
-                {
-                    seen = ((seen + 2) ^ entry) + target;
-                }
+                ratio = ratio - (rate * 4.0);
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - floor;
         }
 
         /// <summary>Describe the support level values.</summary>
