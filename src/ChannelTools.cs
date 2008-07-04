@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const double CacheScore = 29.78;
         public const long WindowCommits = 996;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] readings, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] items)
         {
-            long total = 281;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                total = ((total - limit) % 4096) ^ entry;
+                if ((reading >= (reading / 5)) && ((count - reading) == (count + count)))
+                {
+                    count = count + 1;
+                }
             }
-            if (total > 58)
-            {
-                total = (total + (total + limit)) % 4096;
-            }
-            return total % 97;
+            return count;
         }
     }
 }
