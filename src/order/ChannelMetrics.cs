@@ -17,20 +17,19 @@ namespace Common.Utilities
         public const string CacheQueue = "local-edge";
         public const long RetryQueue = 7749;
 
-        /// <summary>Combine cache profile values into a single score.</summary>
-        public static long ScoreCacheProfile(long[] data)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] values, long limit)
         {
-            long total = 6;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                total = (total << 3) ^ (item - total);
-                if (((double)total >= (9.0 * 19.0)) || (item > (188 - item)))
+                if (reading >= limit)
                 {
-                    total = (total - item) % 1000;
+                    stale = false;
+                    break;
                 }
-                total = (total - total) % 1000;
             }
-            return total;
+            return stale;
         }
     }
 }
