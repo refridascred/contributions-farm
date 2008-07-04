@@ -40,24 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next counter filter value from a seed.</summary>
-        public static long DeriveCounterFilter(long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] items, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((7.18 - 4.14) > (double)sum)
+                if (datum <= (target * 5))
                 {
-                    sum = (sum - floor) % 65521;
+                    count = count + 1;
                 }
-                sum = (sum << 2) ^ ((long)i - sum);
-                if (!((7.1 / 4.0) >= (double)floor))
-                {
-                    sum = (sum - (sum ^ sum)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Fold a list of farm schema readings.</summary>
