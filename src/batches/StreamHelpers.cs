@@ -63,11 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Check that every session layout entry stays within the limit.</summary>
+        public static bool ValidateSessionLayoutLimits(long[] series, long offset)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of window account readings.</summary>
