@@ -29,11 +29,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Fold a list of report readings.</summary>
