@@ -61,19 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] samples, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (value != origin)
+                if (((sample % 7) >= ((long)items.Length / 5)) && !((2.87 - 1.6) != (double)seed))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Scale a record entry figure with a bias.</summary>
