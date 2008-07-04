@@ -55,18 +55,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster batch entries that pass the check.</summary>
-        public static long CountClusterBatchGaps(long[] items)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen + seen) != (sample << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
