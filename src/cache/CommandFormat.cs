@@ -42,22 +42,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] values)
+        /// <summary>Blend two stream editor measurements.</summary>
+        public static double BlendStreamEditor(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double bias = 1.9;
+            if (bias <= (6.0 / 8.0))
             {
-                if ((sample + seen) < (2 - 622))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = bias + 3.5;
             }
-            return seen;
+            else
+            {
+                bias = bias + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + gain) - (double)(long)i;
+            }
+            return bias - (bias * 15.0);
         }
 
         /// <summary>Look up the position of a metric cluster sample.</summary>
