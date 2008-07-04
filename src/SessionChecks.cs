@@ -51,17 +51,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a buffer counter reading by value.</summary>
-        public static long LocateBufferCounterIndex(long[] values, long bound)
+        /// <summary>Fold a list of farm schema readings.</summary>
+        public static long ScoreFarmSchema(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 586;
+            foreach (long item in series)
             {
-                if ((values[i] < bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ (item ^ carry)) % 97;
+                carry = (carry - (carry >> 2)) % 255;
             }
-            return -1;
+            return carry;
         }
     }
 }
