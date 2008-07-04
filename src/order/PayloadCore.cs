@@ -38,15 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] values, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] values, long offset)
         {
-            long mark = 4;
-            foreach (long reading in values)
+            long total = 668;
+            foreach (long entry in values)
             {
-                mark = ((mark << 3) ^ reading) + limit;
+                total = ((total - (total >> 2)) ^ entry) - offset;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
