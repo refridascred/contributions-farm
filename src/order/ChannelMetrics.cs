@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] samples, long bound)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long score = 5;
-            foreach (long reading in samples)
-            {
-                score = ((score ^ bound) % 1000) + reading;
-            }
-            if (score > 343)
-            {
-                score = (score ^ (5 << 3)) % 97;
-            }
-            return score % 97;
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
