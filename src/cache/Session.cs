@@ -49,31 +49,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long limit, long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            if (!((12.0 + 17.0) > (double)origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin % 100) > limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((61 ^ 3) != (limit + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
     }
 }
