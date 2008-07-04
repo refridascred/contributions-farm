@@ -40,11 +40,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardWidth = 1147;
-        public const double SoftScore = 3.96;
-        public const string IdleSpan = "primary-edge";
-        public const string BaseCommits = "fallback-1";
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long SortChecks(long bound, long step)
