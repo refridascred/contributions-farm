@@ -46,13 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] readings)
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count >> 2) < (reading - count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a support summary.</summary>
