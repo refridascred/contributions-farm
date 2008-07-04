@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const string BaseSize = "standard-v2";
         public const long MaxLevel = 8093;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 22.78;
+        public const long BurstEditor = 3756;
+        public const string DefaultEditor = "cached-1";
+        public const long StepSize = 4318;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TotalFarm(long[] levels)
