@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format notes entries that pass the check.</summary>
-        public static long AuditFormatNotesHits(long[] data, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] items)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long score = -186;
+            foreach (long entry in items)
             {
-                if (!((4 & 255) != (count + count)) || ((count % 2) >= (cell ^ cell)))
+                if ((entry > (score - entry)) && ((3.43 - 6.7) == (double)score))
                 {
-                    count = (count + 1) + limit;
+                    score = (score << 3) ^ score;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a graph record.</summary>
