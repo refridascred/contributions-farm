@@ -55,21 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Iterate the farm payload series from a seed.</summary>
+        public static long DeriveFarmPayload(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((data[i] - data[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (((score << 3) ^ (score + offset)) % 4096) + (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
     }
 }
