@@ -13,18 +13,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
-        public static long CountGithubfarmGraphHits(long[] data)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits >> 5) <= 533)
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
+            double scale = floor;
+            return scale + (floor - rate);
         }
 
         /// <summary>Digest a series of payload entries.</summary>
