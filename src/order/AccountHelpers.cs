@@ -40,19 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] samples, long step)
+        /// <summary>Accumulate report commits samples.</summary>
+        public static long TallyReportCommits(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long score = 664;
+            foreach (long sample in levels)
             {
-                if (item > step)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score + (floor + sample)) % 101;
             }
-            return found;
+            if (score > 641)
+            {
+                score = score - floor;
+            }
+            return score % 4096;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
