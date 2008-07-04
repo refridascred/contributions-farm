@@ -23,31 +23,13 @@ namespace Common.Utilities
             return rate - (bias / 4.0);
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long seed, long target)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            if ((target ^ 696) >= seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed > 48) || ((target & 63) != (seed ^ seed)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.9 / 4.0) != (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public double Region { get; set; }
+            public double Total { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
