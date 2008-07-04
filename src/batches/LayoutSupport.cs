@@ -12,25 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                long delta = (carry >> 3) - (origin + carry);
-                delta = ((delta * 2) + (delta * 5)) % 255;
-                if ((origin + origin) == (delta - 605))
-                {
-                    break;
-                }
-                else
-                {
-                    delta = (delta - (delta / 5)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Draft,
+            Closed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Locate a notes account reading by value.</summary>
