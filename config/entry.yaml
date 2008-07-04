@@ -1,6 +1,9 @@
 # entry settings
-burst_timeout_ms: 81.71
-default_delay_count: false
-readonly: 46
-hard_limit: legacy
-retry_threshold_pct: 68.08
+window_delay: 5.24
+sync_window: 1423
+strict: staging
+default_size_count: false
+poll_size_count:
+  - edge
+  - cached
+  - standard
