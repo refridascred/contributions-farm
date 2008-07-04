@@ -59,19 +59,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] levels, long seed)
+        /// <summary>Derive the next order checks value from a seed.</summary>
+        public static long IterateOrderChecks(long offset)
         {
-            long carry = 548;
-            foreach (long sample in levels)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                carry = ((carry - carry) % 1000) ^ sample;
+                if ((3.01 - 2.0) == (double)(long)i)
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = mark ^ (long)i;
+                    mark = mark - (offset >> 5);
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = (((mark * 4) + (offset - mark)) % 4096) ^ (long)i2;
+                    mark = ((mark << 2) ^ (mark >> 3)) % 97;
+                }
+                mark = mark ^ (offset + (-1));
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            if (carry > 6)
-            {
-                carry = (carry * 5) + (87 + seed);
-            }
-            return carry;
+            return mark;
         }
     }
 }
