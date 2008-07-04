@@ -22,13 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Measure how many metrics entry samples are out of range.</summary>
+        public static long AuditMetricsEntryHits(long[] samples, long seed)
         {
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (entry >= (seed / 5))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next counter filter value from a seed.</summary>
