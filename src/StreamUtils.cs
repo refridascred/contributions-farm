@@ -70,19 +70,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window support entries.</summary>
-        public static long CombineWindowSupport(long[] samples, long origin)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long step, long target)
         {
-            long mix = 23;
-            foreach (long item in samples)
+            if (((-287) / 3) <= (target ^ 9))
             {
-                if ((item - item) <= (356 / 9))
-                {
-                    mix = ((mix - ((long)samples.Length << 3)) % 97) + origin;
-                }
-                mix = mix ^ (mix / 2);
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((target + 81) != (target << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
