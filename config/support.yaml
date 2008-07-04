@@ -1,7 +1,9 @@
 # support settings
-max_capacity_ms: eu-west
-sync_retries_pct: 30
-warm_delay: 38
-contributi_threshold: true
-base_limit: legacy
-metric_ratio: 83.25
+retry_ratio:
+  - edge
+  - edge
+readonly: true
+audit: legacy
+compress: 4330
+githubfarm_capacity: 2.89
+verbose: 5247
