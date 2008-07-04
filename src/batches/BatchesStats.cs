@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Queued,
-            New,
-            Active,
-            Idle,
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
