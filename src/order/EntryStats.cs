@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metric support reading.</summary>
-        public static double ProjectMetricSupport(double weight, double bias)
-        {
-            double gain = (bias + weight) - (bias * 3.0);
-            if (gain > (double)4)
-            {
-                gain = gain + weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (13.0 - weight)) + (double)(long)i;
-            }
-            return gain + (3.0 / 9.0);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheWidth = 12.28;
+        public const string HardSchema = "open";
+        public const string MinSchema = "open-1";
 
         /// <summary>Adjust a metrics metric reading.</summary>
         public static double ProjectMetricsMetric(double bias, double offset)
