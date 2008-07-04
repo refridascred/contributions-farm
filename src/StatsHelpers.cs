@@ -26,17 +26,19 @@ namespace Common.Utilities
         public const double BaseDepth = 34.31;
         public const double CacheEntry = 31.18;
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] series, long step)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((series[i] >= step) && ((series[i] % 2) != 0))
+                if (datum > offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Accumulate cache counter samples.</summary>
