@@ -84,19 +84,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] items, long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Draft,
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
