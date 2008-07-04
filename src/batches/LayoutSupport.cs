@@ -65,15 +65,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] items, long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long result = 3;
-            foreach (long cell in items)
-            {
-                result = ((((result << 3) ^ (503 >> 1)) % 101) + cell) - offset;
-            }
-            return result;
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
