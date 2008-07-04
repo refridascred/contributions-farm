@@ -10,21 +10,21 @@ namespace Common.Utilities
         public const long LimitDepth = 2845;
         public const long StepLevel = 3911;
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] series)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] series)
         {
-            long count = 0;
+            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] - series[j]) > 20)
+                    if ((series[i] + series[j]) > 0)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
