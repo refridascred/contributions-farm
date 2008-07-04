@@ -22,21 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up token cache samples.</summary>
-        public static long MatchTokenCacheCount(long[] values)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 555;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)total <= (double)78))
                 {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total - (923 >> 4)) % 97) ^ item;
+                }
+                else
+                {
+                    total = total ^ (total / 4);
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
