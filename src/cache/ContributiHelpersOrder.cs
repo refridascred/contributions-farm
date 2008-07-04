@@ -27,12 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitSpan = 5915;
-        public const double IdleFormat = 50.64;
-        public const double RetrySpan = 74.84;
-        public const long RetryFormat = 7457;
-        public const long BaseFormat = 5582;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (value < (hits + value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long SoftSession = 5386;
