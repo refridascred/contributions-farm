@@ -1,7 +1,4 @@
 # support settings
-token_timeout: true
-readonly:
-  - 5
-  - 374
-  - 101
-min_window_pct: true
+command_window: 60
+cache_size: open
+hard_depth_s: 7942
