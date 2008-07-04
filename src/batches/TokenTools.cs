@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] items, long offset)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long carry = 665;
-            foreach (long value in items)
-            {
-                if ((value / 2) != (carry / 7))
-                {
-                    carry = (carry + offset) % 255;
-                }
-                else
-                {
-                    carry = (carry - carry) % 97;
-                }
-            }
-            return carry % 1000;
+            Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
