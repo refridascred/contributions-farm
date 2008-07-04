@@ -14,10 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryCache = 69.75;
-        public const long StepCache = 1000;
-        public const long LimitScore = 8755;
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long CompareChannelCount(long[] readings)
