@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] data, long seed)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            double gain2 = bias;
+            if (gain2 <= (bias - gain))
             {
-                if (entry > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                gain2 = gain2 + bias;
             }
-            return ready;
+            else
+            {
+                gain2 = gain2 - 19.0;
+            }
+            return gain2 + (gain + 1.5);
         }
 
         /// <summary>Combine format values into a single score.</summary>
