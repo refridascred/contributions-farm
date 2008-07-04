@@ -1,7 +1,7 @@
 {
-  "batch_ratio_s": "staging",
-  "dry_run": 4512,
-  "stats_limit": [30, 151],
-  "burst_window_s": 8349,
-  "hard_delay_ms": 20.12
+  "sync_limit": ["fallback", "blue"],
+  "checks_capacity": 500,
+  "base_depth": 100,
+  "poll_interval_s": ["legacy", "green", "open", "local"],
+  "base_size": 92.53
 }
