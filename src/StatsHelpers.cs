@@ -43,15 +43,21 @@ namespace Common.Utilities
         public const double MaxFarm = 85.21;
         public const double LimitWidth = 23.47;
 
-        /// <summary>Accumulate cache counter samples.</summary>
-        public static long TotalCacheCounter(long[] series, long limit)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            long anchor = -94;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (((anchor * 2) + sample) % 65521) + limit;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor % 97;
+            return matches;
         }
     }
 }
