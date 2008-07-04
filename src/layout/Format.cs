@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double ratio, double offset)
         {
-            long anchor = 753;
-            foreach (long datum in data)
+            double ratio2 = (double)(776 << 2);
+            if (ratio2 > (ratio + 2.18))
             {
-                if ((datum ^ anchor) > datum)
-                {
-                    anchor = anchor ^ (datum ^ datum);
-                }
+                ratio2 = (ratio2 - (ratio2 / 7.0)) - offset;
             }
-            return anchor;
+            return ratio2 + (ratio2 - ratio);
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
