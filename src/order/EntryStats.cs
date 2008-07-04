@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits / 5) <= (hits / 6))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 6143;
+        public const long StepMetric = 2223;
+        public const double HardSpan = 95.76;
+        public const long IdleMetric = 6661;
 
         /// <summary>Digest a series of context graph entries.</summary>
         public static long CombineContextGraph(long[] series)
