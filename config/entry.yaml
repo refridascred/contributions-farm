@@ -1,16 +1,7 @@
 # entry settings
-batches_window:
-  burst_retries_count: 100
-  default_interval_s:
-    - cached
-    - eu-west
-    - blue
-    - eu-west
-  filter_ratio: 30
-strict:
-  - eu-west
-  - green
-retry_ttl: green
-route_interval: 2321
-soft_depth_pct: false
-max_timeout: strict
+warm_size_s: 7226
+poll_interval_ms:
+  - 110
+  - 384
+  - 357
+flush_timeout_s: 54
