@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Iterate the token support series from a seed.</summary>
+        public static long SeriesTokenSupport(long origin)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (acc >= (origin / 2))
+                {
+                    acc = (acc * 4) + (long)i;
+                    acc = (acc ^ ((long)i + origin)) % 255;
+                }
+                else
+                {
+                    acc = (acc - (long)i) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Combine cache window values into a single score.</summary>
