@@ -64,21 +64,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] readings)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mix = 318;
-            foreach (long cell in readings)
-            {
-                mix = (mix - (cell + cell)) % 101;
-                mix = ((mix << 2) ^ (cell + mix)) % 1000;
-                mix = (mix ^ cell) % 101;
-            }
-            if (mix > 3)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
