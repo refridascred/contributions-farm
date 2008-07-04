@@ -31,17 +31,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a metric support reading by value.</summary>
-        public static long LocateMetricSupportIndex(long[] series, long target)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
