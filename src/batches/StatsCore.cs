@@ -74,24 +74,22 @@ namespace Common.Utilities
         public const long CacheLevel = 6790;
         public const string MinDepth = "local";
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] levels, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] series, long floor)
         {
-            long result = 26;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long item in series)
             {
-                result = (result * 2) + (result - cell);
-                result = (result ^ (89 % 16)) % 1000;
-                if (((2.0 - 5.88) == (double)cell) && ((862 & 3) > (cell + cell)))
+                if ((double)matches < (double)floor)
                 {
-                    result = ((result << 3) ^ (result - target)) % 1000;
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (result > (-5))
-            {
-                result = ((result * 5) + (target * 5)) % 255;
-            }
-            return result % 65521;
+            return matches;
         }
     }
 }
