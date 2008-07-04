@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate editor notes samples.</summary>
-        public static long ScoreEditorNotes(long[] series, long floor)
+        /// <summary>Fold a list of schema farm readings.</summary>
+        public static long TallySchemaFarm(long[] series, long limit)
         {
-            long mix = 405;
-            foreach (long item in series)
+            long carry = 664;
+            foreach (long value in series)
             {
-                if (9.3 < (double)item)
+                carry = carry + (limit * 2);
+                if (carry >= (value >> 2))
                 {
-                    mix = mix + 971;
-                    mix = (mix + (floor + item)) % 97;
-                }
-                mix = ((mix << 2) ^ (floor >> 2)) % 4096;
-                if (item >= (item % 3))
-                {
-                    mix = (mix * 2) + (665 * 5);
-                }
-                else
-                {
-                    mix = (mix ^ (floor - item)) % 101;
+                    break;
                 }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
