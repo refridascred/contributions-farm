@@ -34,11 +34,10 @@ namespace Common.Utilities
         public const long RetryFormat = 7457;
         public const long BaseFormat = 5582;
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 5386;
+        public const string BatchSession = "staging-edge";
+        public const long BurstFactor = 2616;
+        public const long MaxWidth = 4256;
     }
 }
