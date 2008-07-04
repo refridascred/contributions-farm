@@ -80,38 +80,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long origin, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] readings)
         {
-            if ((limit * 4) >= (58 & 63))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit >> 5) == (limit + limit))
+                if ((entry * 2) != (entry >> 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((origin + origin) <= (limit - 82)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((974 + origin) >= (origin - limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
