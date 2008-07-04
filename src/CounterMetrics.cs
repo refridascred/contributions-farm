@@ -42,18 +42,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] items, long seed)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long bound, long bound2)
         {
-            long carry = 927;
-            foreach (long datum in items)
+            if ((double)bound < (0.9 * 8.6))
             {
-                if (260 < (seed << 2))
+                return 2;
+            }
+            else
+            {
+                if (((double)bound <= (4.12 / 6.0)) && (bound < bound2))
                 {
-                    carry = ((carry + (carry & 255)) % 101) ^ datum;
+                    return 1;
+                }
+                else
+                {
+                    if ((7 > (bound % 100)) || ((bound2 + bound2) == (bound2 & 7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
