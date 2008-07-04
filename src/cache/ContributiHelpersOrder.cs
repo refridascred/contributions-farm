@@ -37,10 +37,15 @@ namespace Common.Utilities
         public const long RetryCount = 4006;
         public const long CacheReport = 5525;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 5386;
-        public const string BatchSession = "staging-edge";
-        public const long BurstFactor = 2616;
-        public const long MaxWidth = 4256;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] levels, long offset)
+        {
+            long mark = 717;
+            foreach (long entry in levels)
+            {
+                mark = (mark - (entry + 9)) - offset;
+            }
+            return mark;
+        }
     }
 }
