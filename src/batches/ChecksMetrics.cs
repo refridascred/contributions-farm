@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] levels, long seed)
-        {
-            long result = 4;
-            foreach (long cell in levels)
-            {
-                if (((cell << 1) == (121 % 10)) && (cell >= (result & 1)))
-                {
-                    result = ((result - result) % 255) - seed;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxWidth = 3588;
+        public const long CacheSchema = 6132;
+        public const string BaseLevel = "cached";
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] samples)
