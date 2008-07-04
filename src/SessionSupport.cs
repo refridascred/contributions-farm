@@ -19,22 +19,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 7345;
+        public const long BatchContext = 4698;
+        public const long StepContext = 2289;
+        public const long LimitInterval = 9037;
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double ratio, double span)
