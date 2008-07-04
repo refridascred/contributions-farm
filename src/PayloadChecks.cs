@@ -84,14 +84,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Locate a checks counter reading by value.</summary>
+        public static long LocateChecksCounterIndex(long[] data, long bound)
         {
-            Active,
-            Draft,
-            Closed,
-            Locked,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
