@@ -50,15 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] readings, long origin)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
             long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((309 / 3) <= origin) && ((3.0 * 0.2) > (double)matches)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 2) + reading;
+                    if ((data[i] - data[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
