@@ -52,14 +52,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            New,
+            Queued,
+            Stale,
             Ready,
-            Active,
             Pending,
-            Locked,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
