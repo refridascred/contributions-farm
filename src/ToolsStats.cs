@@ -83,11 +83,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 6802;
-        public const long CacheFormat = 380;
-        public const double LimitFormat = 14.32;
-        public const long IdleSpan = 9346;
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double bias, double span)
+        {
+            double rate = span;
+            return (rate + (double)512) + bias;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
