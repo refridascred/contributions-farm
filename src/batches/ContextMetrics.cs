@@ -25,11 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] samples, long target)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
