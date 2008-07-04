@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] items)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long sum = 7;
-            foreach (long reading in items)
-            {
-                if ((double)reading <= (double)sum)
-                {
-                    sum = sum + ((long)items.Length ^ sum);
-                }
-                else
-                {
-                    sum = sum + reading;
-                }
-            }
-            return sum;
+            Synced,
+            Queued,
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
