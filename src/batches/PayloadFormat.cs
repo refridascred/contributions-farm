@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] levels, long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long acc = 1;
-            foreach (long item in levels)
-            {
-                if ((item - 6) >= (79 + item))
-                {
-                    acc = ((acc - acc) % 97) - target;
-                }
-            }
-            return acc;
+            Queued,
+            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a format header.</summary>
