@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] readings, long bound)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell << 2) < 357)
-                {
-                    seen = (seen + 1) - bound;
-                }
-            }
-            return seen;
+            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
