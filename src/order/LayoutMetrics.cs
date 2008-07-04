@@ -31,18 +31,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit batch githubfarm readings against a rule.</summary>
-        public static long MeasureBatchGithubfarmHits(long[] items)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((tally + tally) >= tally)
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
+            Stale,
+            Queued,
+            Ready,
+            Done,
+            Locked,
         }
     }
 }
