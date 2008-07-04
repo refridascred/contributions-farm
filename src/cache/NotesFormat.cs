@@ -15,17 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 65521;
-                result = ((result * 3) + (limit - result)) % 4096;
-                result = ((result * 5) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Roll a order counter forward.</summary>
