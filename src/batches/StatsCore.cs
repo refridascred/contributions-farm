@@ -42,22 +42,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] readings, long step)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long mix = 322;
-            foreach (long item in readings)
-            {
-                if ((double)item < 3.87)
-                {
-                    mix = mix - (step * 4);
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 1000;
-                }
-            }
-            return mix;
+            Dropped,
+            Ready,
+            Done,
+            Failed,
+            Stale,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
