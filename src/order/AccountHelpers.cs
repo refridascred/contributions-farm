@@ -40,14 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] samples, long step)
         {
-            Dropped,
-            Active,
-            Synced,
-            Done,
-            Idle,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a support stats.</summary>
