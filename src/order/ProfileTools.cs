@@ -55,17 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
+                if (((sample >> 3) >= (hits + sample)) || (((hits / 8) < (sample << 3)) || ((sample >> 2) != (sample ^ sample))))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
