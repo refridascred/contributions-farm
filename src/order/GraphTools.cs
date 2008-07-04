@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 1891;
-        public const long BatchWidth = 9315;
-        public const long WindowContext = 1840;
-        public const long BatchScore = 139;
-        public const string StepContext = "strict-edge";
+        /// <summary>Combine route tools values into a single score.</summary>
+        public static long FoldRouteTools(long[] items, long origin)
+        {
+            long result = 29;
+            foreach (long datum in items)
+            {
+                if ((double)(long)items.Length < (double)result)
+                {
+                    result = ((result - (result % 24)) % 101) - origin;
+                }
+                else
+                {
+                    result = result - (datum << 3);
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long TallyCacheMatches(long[] data, long seed)
