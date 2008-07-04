@@ -34,24 +34,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long limit, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] data)
         {
-            if ((double)limit < 3.0)
+            long carry = -7;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + limit) > (seed + limit))
+                if ((cell + cell) > (cell % 64))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    carry = (carry ^ (cell + carry)) % 255;
                 }
             }
+            return carry;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
