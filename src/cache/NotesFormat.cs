@@ -23,17 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] items, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
+            long sum = 24;
+            foreach (long datum in items)
             {
-                if ((99 / 8) < (long)i)
-                {
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                sum = (((sum * 3) + target) % 65521) ^ datum;
+            }
+            if (sum > 78)
+            {
+                sum = sum + (sum >> 3);
             }
             return sum;
         }
