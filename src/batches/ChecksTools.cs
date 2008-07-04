@@ -13,17 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] readings, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((readings[i] == step) && ((readings[i] % 5) != 0))
+                if ((920 >= (long)series.Length) || ((matches >= (matches >> 2)) || ((double)sample < (13.0 * 4.43))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a queue info.</summary>
