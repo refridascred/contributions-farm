@@ -19,13 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Digest a series of context graph entries.</summary>
+        public static long CombineContextGraph(long[] series)
         {
-            Closed,
-            New,
-            Pending,
-            Queued,
+            long mark = 452;
+            foreach (long reading in series)
+            {
+                mark = ((mark * 3) + (reading - reading)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of stats cache entries.</summary>
