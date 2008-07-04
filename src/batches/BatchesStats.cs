@@ -51,19 +51,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] data, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long mix = 936;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mix = (((mix + (limit >> 3)) % 101) ^ (long)i) ^ value;
-                }
-                mix = mix - (mix - 226);
-            }
-            return mix;
+            Failed,
+            Ready,
+            Synced,
+            Done,
         }
     }
 }
