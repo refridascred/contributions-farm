@@ -60,11 +60,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] values, long step)
         {
-            public double Token { get; set; }
-            public bool Weight { get; set; }
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
