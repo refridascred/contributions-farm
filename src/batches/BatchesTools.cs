@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] samples, long limit)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] levels, long target)
         {
             bool ready = true;
-            foreach (long datum in samples)
+            foreach (long entry in levels)
             {
-                if (datum >= limit)
+                if (entry != target)
                 {
                     ready = false;
                     break;
