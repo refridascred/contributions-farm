@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] values, long origin)
+        /// <summary>Accumulate contributi cluster samples.</summary>
+        public static long CombineContributiCluster(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 32;
+            foreach (long datum in items)
             {
-                if ((values[i] >= origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark + 42) + datum;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
