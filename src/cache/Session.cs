@@ -31,11 +31,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
