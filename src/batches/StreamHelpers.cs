@@ -13,13 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
+            Active,
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
