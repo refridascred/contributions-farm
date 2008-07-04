@@ -43,21 +43,25 @@ namespace Common.Utilities
         public const double MaxFarm = 85.21;
         public const double LimitWidth = 23.47;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long target, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound = target + offset;
+            if ((offset >> 1) < (bound + 0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (3 < (bound >> 4))
                 {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
     }
 }
