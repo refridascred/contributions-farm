@@ -45,24 +45,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long seed, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] items, long origin)
         {
-            if (19.0 > (double)offset)
+            long sum = 735;
+            foreach (long value in items)
             {
-                return 4;
+                sum = ((sum - (value % 8)) % 4096) + origin;
             }
-            else
-            {
-                if ((offset >= (seed + seed)) && ((offset + offset) != (seed + seed)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return sum % 1000;
         }
     }
 }
