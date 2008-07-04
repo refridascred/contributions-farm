@@ -70,13 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the cluster batch entries that pass the check.</summary>
+        public static long CountClusterBatchGaps(long[] items)
         {
-            Pending,
-            Active,
-            Draft,
-            Done,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((seen + seen) != (sample << 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
