@@ -43,17 +43,21 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Look up the position of a batches tools sample.</summary>
-        public static long LookupBatchesToolsIndex(long[] items, long offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
