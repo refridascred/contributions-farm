@@ -29,14 +29,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            New,
-            Queued,
-            Closed,
-            Synced,
-            Retry,
+            long mix = 41;
+            foreach (long item in levels)
+            {
+                if (((double)item == (9.4 - 10.0)) && ((88 % 97) <= (item - 695)))
+                {
+                    mix = ((mix << 2) ^ item) % 65521;
+                }
+                else
+                {
+                    mix = mix - (item % 97);
+                }
+            }
+            if (mix < 93)
+            {
+                mix = (mix + (mix % 10)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Match up layout checks samples.</summary>
