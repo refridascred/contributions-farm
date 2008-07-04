@@ -54,22 +54,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of context tools entries.</summary>
-        public static long ScoreContextTools(long[] items, long limit)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long state = 7;
-            foreach (long entry in items)
-            {
-                if ((entry + entry) < (limit << 1))
-                {
-                    state = state + (18 + limit);
-                }
-            }
-            if (state > 51)
-            {
-                state = (state - (limit + state)) % 97;
-            }
-            return state;
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count route entry pairs that satisfy a relation.</summary>
