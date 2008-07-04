@@ -25,18 +25,19 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] series)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((reading << 2) != (reading + reading))
+                if ((99 / 8) < (long)i)
                 {
-                    count = count + 1;
+                    break;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
     }
 }
