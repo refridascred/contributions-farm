@@ -32,18 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] readings)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double scale, double bias)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double ratio = (double)(2 % 8);
+            if (ratio < bias)
             {
-                if (count < (878 / 5))
-                {
-                    count = (count + 3) ^ datum;
-                }
+                ratio = (ratio + (bias * 7.0)) - scale;
             }
-            return count;
+            else
+            {
+                ratio = ratio + 10.0;
+            }
+            return ratio + (ratio - ratio);
         }
 
         /// <summary>Define record limits and defaults.</summary>
