@@ -32,28 +32,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] values, long seed)
-        {
-            long anchor = 1;
-            foreach (long value in values)
-            {
-                anchor = ((anchor << 2) ^ (19 ^ value)) % 101;
-                if ((6.8 - 4.74) != (double)value)
-                {
-                    anchor = ((anchor << 3) ^ (value + value)) % 101;
-                }
-                else
-                {
-                    anchor = anchor ^ (value >> 4);
-                }
-            }
-            if (anchor < 290)
-            {
-                anchor = anchor ^ (70 - seed);
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardScore = 8926;
+        public const double SoftBuffer = 41.72;
+        public const long IdleBuffer = 1524;
+        public const double HardBuffer = 45.21;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheCommand = 1467;
