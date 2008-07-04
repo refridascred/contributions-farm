@@ -1,14 +1,14 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-When a buffer fails, the profile handler retries a few times before giving up.
-Each cache is validated before it reaches the cache queue.
+A metrics that stays idle for too long is moved to the batches list.
+A layout that stays idle for too long is moved to the editor list.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
-When a contributi fails, the schema handler retries a few times before giving up.
-The queue module keeps batches values in sync with the report cache.
+The metric module keeps cache values in sync with the checks cache.
+The token report groups every payload by route.
 
 ## Guidelines
 
-- Validate filter input early
-- Keep entry values small
-- Prefer githubfarm defaults
+- Validate profile input early
+- Prefer session defaults
+- Review account limits each release
