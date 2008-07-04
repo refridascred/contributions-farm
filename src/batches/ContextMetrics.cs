@@ -34,17 +34,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] values, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 6;
+            foreach (long cell in levels)
             {
-                if (values[i] < limit)
+                if (!(cell < origin))
                 {
-                    return (long)i;
+                    mark = mark + (cell / 7);
                 }
             }
-            return -1;
+            if (mark < 61)
+            {
+                mark = ((mark * 3) + mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
