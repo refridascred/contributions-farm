@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long floor, long target)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double scale, double floor)
         {
-            if ((target + target) >= target)
+            double gain = scale + (floor - 2.5);
+            if (gain > gain)
             {
-                return 3;
+                gain = gain - gain;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (((target + floor) != (target << 2)) && ((32 % 100) <= (floor + target)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target >> 5) == (target & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                gain = (gain - (2.48 + floor)) + (double)(long)i;
             }
+            return gain - (gain * 5.4);
         }
 
         /// <summary>Scale a stats report figure with a bias.</summary>
