@@ -37,12 +37,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Scale a contributi order figure with a bias.</summary>
+        public static double SmoothContributiOrder(double rate, double floor)
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public bool Offset { get; set; }
+            double load = (rate - rate) * 9.8;
+            return (load - (4.3 * 9.9)) + floor;
         }
 
         /// <summary>Fold a list of account readings.</summary>
