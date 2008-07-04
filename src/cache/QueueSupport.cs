@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long origin, long bound)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double scale, double floor)
         {
-            if ((origin + bound) >= origin)
+            double rate = (double)((-881) ^ 288);
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                rate = (rate + floor) + (double)(long)i;
             }
-            else
-            {
-                if ((bound ^ origin) <= (bound - origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return rate - (scale + floor);
         }
 
         /// <summary>Locate a batch reading by value.</summary>
