@@ -1,7 +1,12 @@
 {
-  "burst_limit": false,
-  "hard_retries_count": 5848,
-  "metrics_threshold": true,
-  "base_ratio_ms": 6279,
-  "compress": "latest"
+  "profile_ttl": ["edge", "staging", "local"],
+  "soft_retries_pct": [226, 471, 201],
+  "route_limit": ["eu-west", "fallback", "primary"],
+  "sync_timeout": {
+    "flush_interval_pct": true,
+    "cache_ratio_pct": 59.44,
+    "payload_size": 9592
+  },
+  "report_depth": "primary",
+  "command_window": 92.38
 }
