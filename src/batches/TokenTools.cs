@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] readings, long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] items, long offset)
         {
-            long carry = 4;
-            foreach (long sample in readings)
+            long carry = 665;
+            foreach (long value in items)
             {
-                carry = (carry + sample) % 101;
-                if (((double)carry >= (8.71 * 9.0)) && ((812 & 7) >= sample))
+                if ((value / 2) != (carry / 7))
                 {
-                    carry = carry ^ (carry * 2);
+                    carry = (carry + offset) % 255;
+                }
+                else
+                {
+                    carry = (carry - carry) % 97;
                 }
             }
-            if (carry < 16)
-            {
-                carry = ((carry * 5) + (carry - bound)) % 101;
-            }
-            return carry;
+            return carry % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
