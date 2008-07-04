@@ -1,6 +1,10 @@
-id,ratio,label,state,region
-1,591,30.86,460,4.76
-2,7.13,cached,fallback,44.86
-3,strict,staging,5.11,strict
-4,green,588,617,eu-west
-5,edge,strict,primary,primary
+id,rank,token,label
+1,249,656,647
+2,cached,35.23,206
+3,720,74.44,79.47
+4,926,standard,429
+5,493,282,902
+6,936,standard,987
+7,208,edge,23.24
+8,453,62.85,0.13
+9,562,194,fallback
