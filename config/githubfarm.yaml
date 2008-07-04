@@ -1,19 +1,12 @@
 # githubfarm settings
-audit: standard
-base_depth_ms: 78.69
-commits_interval: fallback
-hard_retries_s: latest
-cache_window:
-  window_depth:
-    soft_capacity_s:
-      - 80
-      - 112
-      - 139
-      - 269
-    strict: 1024
-    readonly: 63
-    max_retries_ms: eu-west
-    burst_ratio_pct: green
-    token_ratio: latest
-  min_limit_ms: 37.22
-  token_ttl: 60
+compress: standard
+audit: 1024
+cluster_depth:
+  - 364
+  - 293
+  - 290
+stats_depth:
+  - 102
+  - 396
+  - 114
+  - 106
