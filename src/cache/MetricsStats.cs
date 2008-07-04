@@ -15,14 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] levels, long target)
         {
-            Pending,
-            Dropped,
-            Failed,
-            Idle,
-            Ready,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((5.19 * 5.8) != (double)entry)
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine format values into a single score.</summary>
