@@ -33,19 +33,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Adjust a graph context reading.</summary>
-        public static double ScaleGraphContext(double weight, double floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] series)
         {
-            double bias = (double)((-3) - (-1));
-            if (bias <= (double)85)
+            long anchor = 44;
+            foreach (long item in series)
             {
-                bias = (bias - floor) + weight;
+                if ((double)item >= 2.71)
+                {
+                    anchor = (anchor ^ (item - anchor)) % 255;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + (double)528;
+            return anchor % 1000;
         }
     }
 }
