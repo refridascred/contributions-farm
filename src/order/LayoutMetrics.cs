@@ -20,10 +20,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheTimeout = 103;
-        public const long LimitRoute = 2015;
-        public const long SoftRoute = 2995;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 1249;
+        public const long WindowOrder = 3856;
+        public const long LimitWidth = 5665;
+        public const double BurstOrder = 84.23;
+        public const double BaseOrder = 21.72;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long WeighLayout(long[] data, long target)
