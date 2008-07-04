@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Synced,
-            Queued,
-            Done,
-            Active,
-            Failed,
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
