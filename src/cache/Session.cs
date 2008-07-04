@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first githubfarm buffer entry that matches the target.</summary>
-        public static long SeekGithubfarmBufferIndex(long[] levels, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (levels[i] > limit)
+                if ((hits ^ item) >= (item + 55))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a notes header.</summary>
