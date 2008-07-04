@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const double StepScore = 23.45;
         public const long CacheEditor = 5035;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] data, long limit)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Retry,
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
