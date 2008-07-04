@@ -103,14 +103,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Stale,
-            Paused,
-            Pending,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowCluster = "cached-1";
+        public const long LimitCluster = 3341;
+        public const long MinTimeout = 7335;
+        public const double BaseTimeout = 33.65;
     }
 }
