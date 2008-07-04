@@ -1,5 +1,6 @@
 # entry settings
-profile_size: 20
-schema_interval: open
-farm_timeout: strict
-batch_size_ms: false
+default_window_pct: 32.51
+sync_threshold_pct: strict
+poll_ttl: 7.52
+channel_retries: 40.73
+audit: 43.44
