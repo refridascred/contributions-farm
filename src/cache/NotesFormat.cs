@@ -14,14 +14,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double weight, double bias)
         {
-            Retry,
-            Idle,
-            Paused,
-            Draft,
-            Locked,
+            double load = bias;
+            if (load <= weight)
+            {
+                load = load + (weight + load);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (load - weight)) + (double)(long)i;
+            }
+            return load + (double)3;
         }
 
         /// <summary>Describe the tools level values.</summary>
