@@ -32,13 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Digest a series of stream window entries.</summary>
+        public static long FoldStreamWindow(long[] samples, long target)
         {
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
+            long total = 4;
+            foreach (long reading in samples)
+            {
+                total = (total + ((-564) + target)) - reading;
+            }
+            return total;
         }
 
         /// <summary>Blend two graph measurements.</summary>
