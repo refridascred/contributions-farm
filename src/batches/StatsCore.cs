@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] levels, long seed)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long carry = 93;
-            foreach (long entry in levels)
-            {
-                if (((entry + entry) < seed) && ((entry % 64) < (956 ^ carry)))
-                {
-                    carry = ((carry << 3) ^ (entry + entry)) % 97;
-                }
-            }
-            return carry;
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
