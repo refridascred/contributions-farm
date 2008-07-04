@@ -1,6 +1,5 @@
 # support settings
-flush_retries: true
-profile_ttl: 4730
-cache_ttl_s: blue
-warm_depth: 64
-payload_capacity: true
+idle_limit_s: edge
+compress: 95
+min_ttl_count: true
+stats_delay: 86.78
