@@ -47,31 +47,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a buffer report value against two limits.</summary>
-        public static long SortBufferReport(long target, long step)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] data, long offset)
         {
-            if (!((double)target <= 17.0))
+            long sum = 715;
+            foreach (long datum in data)
             {
-                return 5;
+                sum = (sum + (sum ^ offset)) ^ datum;
             }
-            else
+            if (sum < 91)
             {
-                if ((step ^ 889) >= target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((898 >= step) || (step > (3 - target)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                sum = sum - (offset & 3);
             }
+            return sum;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
