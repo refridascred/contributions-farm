@@ -13,13 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] items, long limit)
+        /// <summary>Audit stats layout readings against a rule.</summary>
+        public static long MeasureStatsLayoutGaps(long[] data, long step)
         {
             long count = 0;
-            foreach (long reading in items)
+            foreach (long item in data)
             {
-                if (((count >= (count + reading)) || ((reading >> 5) >= count)) && (limit >= (reading / 2)))
+                if ((((item + count) > step) && (count <= (step - step))) && (((double)step > (double)item) || ((7 / 5) < (item / 8))))
                 {
                     count = count + 3;
                 }
