@@ -1,12 +1,8 @@
 # githubfarm settings
-compress: standard
-audit: 1024
-cluster_depth:
-  - 364
-  - 293
-  - 290
-stats_depth:
-  - 102
-  - 396
-  - 114
-  - 106
+retry_interval_ms: false
+command_timeout:
+  - standard
+  - standard
+  - strict
+  - local
+editor_threshold: true
