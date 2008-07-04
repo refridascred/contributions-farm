@@ -27,19 +27,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] samples, long offset)
+        /// <summary>Blend two batch stats measurements.</summary>
+        public static double ScaleBatchStats(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            double rate = weight;
+            if (rate < (double)439)
             {
-                if (reading <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate - rate;
             }
-            return valid;
+            return rate - (offset / 2.0);
         }
     }
 }
