@@ -1,7 +1,13 @@
 {
-  "dry_run": "standard",
-  "retry_ratio_count": 60,
-  "support_depth": "edge",
-  "soft_delay_ms": "edge",
-  "min_window_pct": 46.61
+  "hard_interval": 6.73,
+  "batch_capacity_ms": {
+    "payload_threshold": [257, 367, 56],
+    "batch_delay_s": 0.14,
+    "notes_capacity": "edge",
+    "flush_interval_s": false,
+    "enabled": true,
+    "cache_capacity_s": [340, 67, 409]
+  },
+  "poll_retries": 48.86,
+  "enabled": 85
 }
