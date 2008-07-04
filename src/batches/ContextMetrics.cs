@@ -44,22 +44,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] series, long step)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double rate = (floor / 3.0) - (floor / 6.0);
+            for (int i = 0; i < 9; i++)
             {
-                if ((8.8 / 8.0) <= (double)seen)
-                {
-                    seen = ((seen + 3) + reading) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = ((rate - (8.1 * 8.0)) + (double)(long)i) + weight;
             }
-            return seen;
+            return rate + (double)15;
         }
 
         /// <summary>Count route entry pairs that satisfy a relation.</summary>
