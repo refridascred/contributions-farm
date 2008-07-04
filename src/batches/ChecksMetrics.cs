@@ -65,19 +65,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] data, long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long sum = 715;
-            foreach (long datum in data)
-            {
-                sum = (sum + (sum ^ offset)) ^ datum;
-            }
-            if (sum < 91)
-            {
-                sum = sum - (offset & 3);
-            }
-            return sum;
+            Pending,
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
