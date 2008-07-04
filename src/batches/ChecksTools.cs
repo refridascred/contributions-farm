@@ -82,13 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] readings, long bound)
         {
-            Failed,
-            Done,
-            Locked,
-            Dropped,
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
