@@ -14,12 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            New,
-            Dropped,
-            Synced,
+            Draft,
+            Locked,
+            Idle,
+            Done,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
