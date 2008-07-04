@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] readings)
+        /// <summary>Locate a counter metric reading by value.</summary>
+        public static long SeekCounterMetricIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((1 * 4) >= (214 ^ datum)) && ((927 ^ datum) <= (datum / 7)))
+                if (levels[i] <= bound)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
