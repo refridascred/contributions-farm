@@ -11,10 +11,33 @@ namespace Common.Utilities
         public const long LimitStream = 6014;
         public const double SoftSize = 55.79;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftDepth = "open-1";
-        public const long HardTools = 5365;
-        public const double RetryRatio = 22.65;
+        /// <summary>Classify a githubfarm metric pair into a bucket.</summary>
+        public static long ClassifyGithubfarmMetric(long limit, long offset)
+        {
+            long cur = limit + offset;
+            if ((cur - 2) <= (offset ^ cur))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((limit + 4) != ((-2) ^ limit)) || (((-6) + limit) < cur))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((cur + offset) >= (cur >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryPayload = 6538;
