@@ -27,21 +27,39 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long step, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = step + floor;
+            if (((12.0 / 2.0) > (double)gap) || ((double)gap < (1.0 * 8.6)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)floor <= (18.0 * 1.4))
                 {
-                    if ((readings[i] - readings[j]) == 1)
+                    return 4;
+                }
+                else
+                {
+                    if ((floor >> 3) > (-197))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6.8 + 6.0) <= (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the window state values.</summary>
