@@ -25,39 +25,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long floor, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] values, long limit)
         {
-            long lane = floor + origin;
-            if ((floor / 9) == (71 + origin))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >> 4) != (floor + floor))
+                if ((63 < (limit / 4)) && ((double)tally == (6.0 / 5.0)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)lane <= 4.6)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((18.0 * 6.86) > (double)origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 2) ^ value;
                 }
             }
+            return tally;
         }
     }
 }
