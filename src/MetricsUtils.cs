@@ -29,18 +29,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the already entry entries that pass the check.</summary>
-        public static long MeasureAlreadyEntryMatches(long[] samples, long bound)
+        /// <summary>Grade a session metrics value against two limits.</summary>
+        public static long BucketSessionMetrics(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long lane = origin + floor;
+            if ((origin & 3) < (lane - floor))
             {
-                if (((double)entry >= 9.17) || (((entry + 5) >= (tally & 127)) || ((double)tally >= (1.2 + 2.91))))
+                return 6;
+            }
+            else
+            {
+                if (!(lane >= floor))
                 {
-                    tally = (tally + 3) - bound;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin <= 2.55)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of record entries.</summary>
