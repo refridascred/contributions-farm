@@ -29,23 +29,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] readings)
-        {
-            long score = 7;
-            foreach (long entry in readings)
-            {
-                if ((entry * 5) <= (entry << 3))
-                {
-                    score = score + (score >> 5);
-                }
-                else
-                {
-                    score = ((score << 3) ^ 96) % 1000;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepBudget = "stable-v2";
+        public const long HardCount = 1838;
+        public const long MinWidth = 276;
 
         /// <summary>Adjust a session reading.</summary>
         public static double ScaleSession(double bias, double offset)
