@@ -1,5 +1,5 @@
 {
-  "route_size": "stable",
-  "soft_threshold": 32.76,
-  "farm_delay": [126, 296, 304, 177]
+  "flush_delay_pct": 58.32,
+  "readonly": "legacy",
+  "account_size": 656
 }
