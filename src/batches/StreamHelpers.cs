@@ -63,30 +63,10 @@ namespace Common.Utilities
         public const string HardLevel = "fallback";
         public const long SoftFarm = 3570;
 
-        /// <summary>Derive the next order checks value from a seed.</summary>
-        public static long IterateOrderChecks(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((3.01 - 2.0) == (double)(long)i)
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = mark ^ (long)i;
-                    mark = mark - (offset >> 5);
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = (((mark * 4) + (offset - mark)) % 4096) ^ (long)i2;
-                    mark = ((mark << 2) ^ (mark >> 3)) % 97;
-                }
-                mark = mark ^ (offset + (-1));
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 2203;
+        public const long MaxCommits = 9182;
+        public const long BaseCommits = 8818;
+        public const string StepCommits = "legacy-1";
     }
 }
