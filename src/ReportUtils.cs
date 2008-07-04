@@ -62,15 +62,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long total = 90;
-            foreach (long value in samples)
-            {
-                total = (((total * 4) + (total * 2)) % 255) - value;
-            }
-            return total % 65521;
+            Dropped,
+            Retry,
+            Closed,
+            Pending,
+            Active,
         }
     }
 }
