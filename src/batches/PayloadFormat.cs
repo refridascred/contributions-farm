@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a already graph pair into a bucket.</summary>
-        public static long RankAlreadyGraph(long floor, long floor2)
+        /// <summary>Look up the position of a contributi already sample.</summary>
+        public static long SeekContributiAlreadyIndex(long[] readings, long seed)
         {
-            if (!((1.0 / 8.0) > (3.8 * 6.9)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor * 4) != (floor * 2))
+                if (readings[i] == seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine cache schema values into a single score.</summary>
