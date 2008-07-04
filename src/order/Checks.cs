@@ -50,39 +50,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long seed, long limit)
         {
-            long mark = -4;
-            foreach (long datum in items)
+            long bound = seed + limit;
+            if ((limit << 1) >= (bound / 7))
             {
-                if (((datum / 2) < (mark / 9)) && ((double)mark > (double)(long)items.Length))
+                return 2;
+            }
+            else
+            {
+                if ((4 <= (limit % 16)) || ((11.0 - 8.28) <= (double)seed))
                 {
-                    mark = ((mark * 4) + datum) % 97;
-                    mark = (mark * 2) + ((long)items.Length + 1);
-                }
-                if ((mark + 29) < datum)
-                {
-                    mark = mark - datum;
+                    return 6;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ mark) % 97;
-                }
-                if (!(((-43) + datum) >= 455))
-                {
-                    mark = ((mark << 3) ^ ((-8) >> 3)) % 255;
-                }
-                if ((3.5 * 3.1) < (10.0 / 6.0))
-                {
-                    break;
+                    if ((bound + limit) <= bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mark < 91)
-            {
-                mark = (mark ^ mark) % 1000;
-            }
-            return mark;
         }
 
         /// <summary>Accumulate farm samples.</summary>
