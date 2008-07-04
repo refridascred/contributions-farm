@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine entry session values into a single score.</summary>
-        public static long WeighEntrySession(long[] data)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long result = 368;
-            foreach (long sample in data)
-            {
-                result = ((result * 4) + 780) % 65521;
-                if ((sample / 5) < (result << 1))
-                {
-                    result = (result - (sample + result)) % 4096;
-                }
-            }
-            if (result > 82)
-            {
-                result = ((result * 2) + (result % 24)) % 65521;
-            }
-            return result;
+            Closed,
+            Synced,
+            Idle,
+            Locked,
+            Done,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
