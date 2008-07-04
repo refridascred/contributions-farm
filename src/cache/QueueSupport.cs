@@ -40,13 +40,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] items)
         {
-            Locked,
-            Idle,
-            Closed,
-            Ready,
+            long mix = 7;
+            foreach (long datum in items)
+            {
+                if ((mix + mix) <= datum)
+                {
+                    mix = (mix << 2) ^ (datum & 255);
+                }
+                else
+                {
+                    mix = mix - (mix * 5);
+                }
+            }
+            return mix;
         }
     }
 }
