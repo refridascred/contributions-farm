@@ -22,22 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics entry samples are out of range.</summary>
-        public static long AuditMetricsEntryHits(long[] samples, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = 1;
+            foreach (long datum in data)
             {
-                if (entry >= (seed / 5))
+                for (int i = 0; i < 9; i++)
                 {
-                    matches = matches + 1;
+                    sum = ((sum - (step ^ sum)) % 4096) - (long)i;
                 }
-                else
+                if ((step % 64) == (step % 5))
                 {
-                    matches = matches - 1;
+                    sum = (sum + (sum + (long)data.Length)) % 4096;
+                    sum = sum - sum;
+                }
+                if ((double)step <= (double)datum)
+                {
+                    sum = (sum << 3) ^ ((long)data.Length >> 3);
                 }
             }
-            return matches;
+            if (sum > 723)
+            {
+                sum = (sum - ((-588) - step)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
