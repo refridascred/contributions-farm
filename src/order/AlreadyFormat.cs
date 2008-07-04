@@ -33,23 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Measure how many already metric samples are out of range.</summary>
+        public static long TallyAlreadyMetricOutliers(long[] levels, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((mix << 1) >= mix)
+                if (((sample & 3) <= sample) && (((double)sample == (7.87 / 9.0)) || ((double)sample != (17.0 / 3.0))))
                 {
-                    continue;
+                    matches = (matches + 2) - floor;
                 }
-                else
-                {
-                    mix = (mix ^ (long)i) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Compare every pair of session buffer readings.</summary>
