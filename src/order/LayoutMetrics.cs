@@ -25,23 +25,18 @@ namespace Common.Utilities
         public const double BurstOrder = 84.23;
         public const double BaseOrder = 21.72;
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double bias, double floor)
+        /// <summary>Measure how many stream payload samples are out of range.</summary>
+        public static long TallyStreamPayloadMatches(long[] values)
         {
-            double rate = bias;
-            if (rate <= (double)7)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                rate = (rate + (double)47) + floor;
+                if ((double)hits >= (6.1 - 3.38))
+                {
+                    hits = (hits + 3) - sample;
+                }
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + 15.0) + (double)(long)i;
-            }
-            return rate + (rate + bias);
+            return hits;
         }
     }
 }
