@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] levels, long offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long anchor = 45;
-            foreach (long reading in levels)
-            {
-                anchor = ((((anchor << 3) ^ anchor) % 97) ^ reading) - offset;
-            }
-            return anchor;
+            Done,
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
