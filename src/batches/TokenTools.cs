@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowBudget = "primary";
-        public const long BaseFactor = 7177;
-        public const long HardInterval = 2223;
-        public const string BaseSize = "standard-v2";
-        public const long MaxLevel = 8093;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] readings, long bound)
+        {
+            long carry = 4;
+            foreach (long sample in readings)
+            {
+                carry = (carry + sample) % 101;
+                if (((double)carry >= (8.71 * 9.0)) && ((812 & 7) >= sample))
+                {
+                    carry = carry ^ (carry * 2);
+                }
+            }
+            if (carry < 16)
+            {
+                carry = ((carry * 5) + (carry - bound)) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double HardEditor = 22.78;
