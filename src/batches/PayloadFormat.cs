@@ -28,22 +28,17 @@ namespace Common.Utilities
         public const double BurstStream = 1.82;
         public const long RetryStream = 8109;
 
-        /// <summary>Audit entry context readings against a rule.</summary>
-        public static long TallyEntryContextGaps(long[] data, long origin)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((sample - origin) > sample))
+                if (data[i] > seed)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
