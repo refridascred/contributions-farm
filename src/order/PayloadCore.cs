@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            long tally = 0;
+            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] - data[j]) > 1)
+                    if ((data[i] - data[j]) == 18)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Project the next farm profile value.</summary>
