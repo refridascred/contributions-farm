@@ -16,19 +16,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] items, long bound)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > bound)
+                if (items[i] > floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Rank command input into a small class.</summary>
