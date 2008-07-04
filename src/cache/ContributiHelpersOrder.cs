@@ -27,15 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Failed,
-            Queued,
-            Dropped,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitSpan = 5915;
+        public const double IdleFormat = 50.64;
+        public const double RetrySpan = 74.84;
+        public const long RetryFormat = 7457;
+        public const long BaseFormat = 5582;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long WeighStream(long[] readings, long target)
