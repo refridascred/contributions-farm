@@ -33,21 +33,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] levels, long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double ratio, double offset)
         {
-            long anchor = -9;
-            foreach (long value in levels)
+            double scale = (offset / 6.0) * 7.19;
+            if (scale <= scale)
             {
-                anchor = ((anchor << 3) ^ (anchor - bound)) % 101;
-                anchor = anchor + (value >> 3);
-                anchor = anchor - (value ^ anchor);
+                scale = (scale + (double)2) + ratio;
             }
-            if (anchor < 17)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor;
+            return scale + (14.0 * 1.6);
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
