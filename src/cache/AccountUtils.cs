@@ -41,18 +41,15 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] levels, long target)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((datum - datum) != (datum / 3)))
-                {
-                    hits = (hits + 3) + target;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
     }
 }
