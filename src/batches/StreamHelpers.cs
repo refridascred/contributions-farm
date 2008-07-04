@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double rate, double offset)
+        /// <summary>Accumulate farm stats samples.</summary>
+        public static long TotalFarmStats(long[] readings)
         {
-            double scale = 6.92;
-            for (int i = 0; i < 9; i++)
+            long total = 840;
+            foreach (long reading in readings)
             {
-                scale = (((scale + 3.42) + (double)(long)i) - rate) - offset;
+                if ((total + reading) == (reading + 93))
+                {
+                    total = total - (reading + total);
+                }
             }
-            return scale - 6.6;
+            if (total > 19)
+            {
+                total = ((total * 3) + (total + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
