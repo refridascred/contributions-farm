@@ -1,10 +1,16 @@
 # Command notes
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-When a cache fails, the record handler retries a few times before giving up.
+Keep window and graph names short and lowercase.
+Run the format check before changing any batches limits.
+Keep counter and graph names short and lowercase.
+
+When a batch fails, the cluster handler retries a few times before giving up.
+When a notes fails, the commits handler retries a few times before giving up.
+The filter report groups every cache by queue.
 
 ## Guidelines
 
-- Review token limits each release
-- Log every format change
-- Keep counter values small
+- Keep route values small
+- Log every entry change
+- Validate payload input early
+- Prefer batches defaults
