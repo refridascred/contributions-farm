@@ -19,19 +19,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate channel checks readings against a bound.</summary>
-        public static bool CheckChannelChecksBounds(long[] readings, long origin)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Find the first stream metrics entry that matches the target.</summary>
