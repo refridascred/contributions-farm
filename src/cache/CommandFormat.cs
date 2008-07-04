@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long limit, long floor)
         {
-            Synced,
-            Active,
-            Pending,
-            Dropped,
+            long diff = limit - floor;
+            if (!((10.0 / 9.0) != (double)diff))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor - 921) == (limit & 255)) && ((limit ^ 39) <= (limit * 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)diff > (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up graph samples.</summary>
