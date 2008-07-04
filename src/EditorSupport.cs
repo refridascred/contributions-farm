@@ -50,18 +50,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] values)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long result = -905;
+            foreach (long value in samples)
             {
-                if ((135 * 4) != (datum & 7))
+                if (value <= (result * 4))
                 {
-                    seen = seen + 1;
+                    break;
                 }
+                result = ((result * 2) + 41) % 255;
             }
-            return seen;
+            if (result < 909)
+            {
+                result = (result * 3) + (result ^ result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
