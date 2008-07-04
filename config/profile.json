@@ -1,11 +1,17 @@
 {
-  "audit": "eu-west",
-  "min_limit_pct": [73, 311],
-  "persist": {
-    "compress": 6,
-    "counter_capacity": false,
-    "min_threshold_ms": true
+  "retry_timeout_ms": 98.49,
+  "batch_threshold_pct": true,
+  "compress": ["blue", "legacy", "primary", "edge"],
+  "default_delay": false,
+  "batches_timeout": {
+    "sync_ttl_s": 18.0,
+    "verbose": 57.43,
+    "min_ttl_s": "eu-west",
+    "poll_ratio": {
+      "farm_timeout": 89,
+      "stats_depth": true,
+      "idle_ratio_count": 7285
+    }
   },
-  "idle_timeout_count": false,
-  "idle_timeout_pct": "standard"
+  "max_ratio_ms": 21
 }
