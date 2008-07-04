@@ -53,12 +53,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double ratio, double bias)
         {
-            public double Level { get; set; }
-            public double Weight { get; set; }
-            public bool Token { get; set; }
+            double gain = (double)(11 % 60);
+            for (int i = 0; i < 4; i++)
+            {
+                gain = ((gain + (bias * 16.0)) + (double)(long)i) + ratio;
+            }
+            return gain + (double)28;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
