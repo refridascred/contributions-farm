@@ -27,13 +27,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long offset)
         {
-            Closed,
-            Ready,
-            New,
-            Locked,
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = (mark ^ ((long)i ^ mark)) % 101;
+                if ((5.5 * 4.06) > (double)offset)
+                {
+                    mark = (mark * 3) + offset;
+                }
+                mark = (mark * 2) + (mark * 2);
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the session editor series from a seed.</summary>
