@@ -36,10 +36,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 7036;
-        public const string BurstCache = "cached";
-        public const string HardSize = "latest";
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
