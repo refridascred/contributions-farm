@@ -55,18 +55,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] data)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long carry = 8;
+            foreach (long sample in levels)
             {
-                if (!(5.6 < (double)value))
+                if (!(sample <= (carry + sample)))
                 {
-                    matches = matches + 1;
+                    carry = carry + (sample - carry);
                 }
+                carry = carry - (carry >> 2);
             }
-            return matches;
+            return carry;
         }
     }
 }
