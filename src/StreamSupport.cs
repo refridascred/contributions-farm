@@ -36,17 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats order sample.</summary>
-        public static long SeekStatsOrderIndex(long[] data, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (data[i] <= limit)
+                if (((double)item <= (double)seed) && ((2.35 + 1.8) <= (3.57 * 16.0)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
