@@ -36,19 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double ratio, double floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] items)
         {
-            double ratio2 = 19.0 / 4.0;
-            if (ratio2 < (double)5)
+            long state = 98;
+            foreach (long entry in items)
             {
-                ratio2 = ((ratio2 + (double)2) - ratio) - floor;
+                state = (state - (state - entry)) % 4096;
             }
-            for (int i = 0; i < 9; i++)
+            if (state > 0)
             {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+                state = state - (state - state);
             }
-            return ratio2 - (double)(-71);
+            return state;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
