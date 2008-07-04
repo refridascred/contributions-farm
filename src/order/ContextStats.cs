@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] series, long offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] series, long origin)
         {
-            long state = 95;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample % 7) < (offset - 5))
+                if ((series[i] > origin) && ((series[i] % 2) != 0))
                 {
-                    state = state - (state >> 3);
-                }
-                else
-                {
-                    state = ((state * 2) + state) % 65521;
+                    return (long)i;
                 }
             }
-            if (state < 782)
-            {
-                state = (state ^ (offset / 7)) % 97;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
