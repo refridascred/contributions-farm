@@ -1,5 +1,6 @@
 {
-  "flush_capacity": false,
-  "contributi_threshold": "staging",
-  "session_size": false
+  "stats_window": true,
+  "flush_limit_count": 60,
+  "batch_delay_ms": true,
+  "account_limit": ["staging", "latest"]
 }
