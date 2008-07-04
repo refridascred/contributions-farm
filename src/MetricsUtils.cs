@@ -38,12 +38,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
