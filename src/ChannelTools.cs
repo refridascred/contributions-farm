@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Check that every metric order entry stays within the limit.</summary>
+        public static bool CheckMetricOrderBounds(long[] samples, long origin)
         {
-            Failed,
-            Retry,
-            Queued,
-            Synced,
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
