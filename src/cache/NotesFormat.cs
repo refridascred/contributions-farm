@@ -27,23 +27,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] data, long limit)
         {
-            long anchor = -43;
-            foreach (long value in values)
+            long carry = 3;
+            foreach (long value in data)
             {
-                anchor = (anchor + (anchor >> 5)) % 255;
-                if ((anchor >> 3) == (value + anchor))
-                {
-                    anchor = (anchor * 2) + (value / 5);
-                }
-                else
-                {
-                    anchor = (anchor * 3) + (anchor / 5);
-                }
+                carry = (carry ^ (value / 8)) - limit;
+                carry = (carry - value) % 1000;
             }
-            return anchor;
+            if (carry < 97)
+            {
+                carry = ((carry << 3) ^ carry) % 4096;
+            }
+            return carry % 4096;
         }
     }
 }
