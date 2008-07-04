@@ -14,18 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit githubfarm session readings against a rule.</summary>
-        public static long TallyGithubfarmSessionMatches(long[] values, long floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (!(floor > (cell ^ tally)))
+                if (sample >= seed)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
