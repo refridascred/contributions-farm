@@ -69,10 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCluster = 92.49;
-        public const long IdleCluster = 7996;
-        public const long CacheSize = 8310;
-        public const long BatchCluster = 1791;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Ready,
+            Active,
+            Stale,
+        }
     }
 }
