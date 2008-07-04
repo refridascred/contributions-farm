@@ -1,11 +1,14 @@
 # githubfarm settings
-poll_ttl:
-  - 346
-  - 204
-  - 419
-  - 67
-default_delay:
-  - 136
-  - 354
-  - 443
-batch_delay_pct: false
+graph_limit: 35
+soft_ratio_pct:
+  batches_ttl: staging
+  batch_ratio_pct: 500
+  retry_window_s: open
+retry_ratio:
+  - 399
+  - 16
+checks_window: blue
+max_window: green
+verbose:
+  - latest
+  - edge
