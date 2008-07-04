@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine already githubfarm values into a single score.</summary>
-        public static long TallyAlreadyGithubfarm(long[] data, long offset)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] samples)
         {
-            long mix = 34;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix ^ (cell / 3);
-                if ((offset + (long)data.Length) != (mix - cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix + (cell ^ offset)) % 1000;
+                    if ((samples[i] ^ samples[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix < 20)
-            {
-                mix = ((mix * 2) + (offset - offset)) % 1000;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the counter status values.</summary>
