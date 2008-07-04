@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Count the format notes entries that pass the check.</summary>
+        public static long AuditFormatNotesHits(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((4 & 255) != (count + count)) || ((count % 2) >= (cell ^ cell)))
                 {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + limit;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a graph record.</summary>
