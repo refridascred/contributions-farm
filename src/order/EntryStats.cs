@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] readings)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                carry = ((carry * 5) + ((long)i * 4)) % 65521;
-                if ((limit - (-1)) < (-7))
+                if ((hits / 5) <= (hits / 6))
                 {
-                    carry = (carry ^ limit) % 4096;
-                    carry = ((carry * 2) + (carry * 5)) % 97;
+                    hits = (hits + 2) + sample;
                 }
-                carry = ((carry * 2) + (limit + 2)) % 65521;
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
