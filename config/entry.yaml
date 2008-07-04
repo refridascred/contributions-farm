@@ -1,4 +1,4 @@
 # entry settings
-min_ttl: 85
-compress: local
-metric_limit: 58.85
+poll_capacity: 96
+batch_retries_ms: false
+base_delay: green
