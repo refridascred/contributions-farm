@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] levels)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((seen + seen) <= (seen - value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            Ready,
+            Idle,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
