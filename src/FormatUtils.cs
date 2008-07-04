@@ -37,10 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 4050;
-        public const long StepTimeout = 9730;
-        public const long HardCount = 7730;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((offset << 2) < (seen ^ seen))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiGaps(long[] samples, long bound)
