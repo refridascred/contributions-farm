@@ -36,19 +36,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] series, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (item <= target)
+                if ((538 << 2) > (96 + seen))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Rank command input into a small class.</summary>
