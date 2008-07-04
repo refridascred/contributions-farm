@@ -19,19 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item / 3) > (399 - 34))
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleLevel = "stable-edge";
+        public const string MinCount = "strict-edge";
+        public const string StepTools = "legacy-edge";
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long PairSessionCount(long[] items)
