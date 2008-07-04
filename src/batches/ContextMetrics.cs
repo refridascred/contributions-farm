@@ -63,12 +63,31 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long origin, long origin2)
         {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            if (((double)origin2 <= (19.0 - 5.0)) && (origin < (origin2 % 7)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin2 & 255) < (origin2 + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((origin2 + origin) < (87 ^ origin2)) && ((origin - origin2) >= (origin >> 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count route entry pairs that satisfy a relation.</summary>
