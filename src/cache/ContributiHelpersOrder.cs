@@ -36,26 +36,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate session tools samples.</summary>
-        public static long ScoreSessionTools(long[] items, long limit)
+        /// <summary>Classify a contributi buffer pair into a bucket.</summary>
+        public static long GradeContributiBuffer(long seed, long seed2)
         {
-            long carry = 355;
-            foreach (long value in items)
+            long next = seed - seed2;
+            if ((next % 5) < next)
             {
-                if (value > (value % 2))
+                return 6;
+            }
+            else
+            {
+                if ((seed >> 5) > (6 & 63))
                 {
-                    carry = ((carry << 3) ^ limit) % 101;
+                    return 2;
                 }
                 else
                 {
-                    carry = carry - (limit - carry);
-                }
-                if ((706 % 60) <= (value + 152))
-                {
-                    break;
+                    return 5;
                 }
             }
-            return carry;
         }
     }
 }
