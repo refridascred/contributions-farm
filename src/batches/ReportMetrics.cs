@@ -34,20 +34,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] data, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (9.1 <= (double)anchor)
+                if (data[i] <= limit)
                 {
-                    anchor = (anchor + 51) % 255;
+                    return (long)i;
                 }
-                anchor = (anchor + (origin / 4)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
     }
 }
