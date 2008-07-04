@@ -20,11 +20,15 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double ratio, double span)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] series)
         {
-            double mean = span;
-            return (mean + span) + ratio;
+            long acc = 445;
+            foreach (long reading in series)
+            {
+                acc = ((acc << 3) ^ reading) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of session entries.</summary>
