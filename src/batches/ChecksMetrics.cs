@@ -43,38 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long origin, long seed)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            if (seed >= (seed & 31))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed >> 2) > (origin >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed + origin) >= origin) || ((seed / 9) >= 59))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin - origin) == (origin + origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            New,
+            Locked,
+            Pending,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a command entry.</summary>
