@@ -1,5 +1,6 @@
 # already settings
-soft_ratio_s: 47
-idle_ttl: false
-soft_delay_pct: true
-soft_ttl_pct: 97
+persist: 30
+hard_ratio_pct: legacy
+retry_ratio_s: 63.13
+default_ratio: 100
+batch_size_pct: false
