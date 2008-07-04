@@ -1,8 +1,5 @@
 {
-  "editor_retries": 100,
-  "readonly": "eu-west",
-  "enabled": "blue",
-  "max_threshold_count": 60,
-  "soft_threshold": "blue",
-  "soft_limit_ms": "cached"
+  "account_delay": 85,
+  "default_ttl": 5331,
+  "hard_delay_pct": [85, 67, 114, 98]
 }
