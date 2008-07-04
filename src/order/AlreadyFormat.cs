@@ -65,9 +65,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstSpan = 4622;
-        public const long BurstLevel = 8573;
-        public const long HardStats = 2994;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Synced,
+            Stale,
+            Locked,
+            Idle,
+            Queued,
+        }
     }
 }
