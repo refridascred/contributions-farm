@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardSize = 5.79;
-        public const long HardSession = 8985;
-        public const double StepFactor = 34.34;
-        public const string LimitSpan = "local-v2";
+        /// <summary>Project the next entry stream value.</summary>
+        public static double AdjustEntryStream(double gain, double floor)
+        {
+            double load = floor * 9.0;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load + load) + (double)(long)i) + gain;
+            }
+            return load - load;
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long SeriesFilter(long step)
