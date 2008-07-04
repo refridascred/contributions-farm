@@ -45,18 +45,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long carry = 3;
-            foreach (long datum in items)
-            {
-                if (carry <= (carry & 127))
-                {
-                    carry = ((carry * 4) + (datum + datum)) % 4096;
-                }
-            }
-            return carry;
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
