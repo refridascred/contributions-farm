@@ -1,14 +1,10 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Each token is validated before it reaches the queue queue.
-
-Run the order check before changing any queue limits.
-Each graph is validated before it reaches the cache queue.
+Use filter settings to tune how often command data is refreshed.
+Run the format check before changing any checks limits.
 
 ## Guidelines
 
-- Document new filter fields
-- Validate cache input early
-- Review record limits each release
-- Keep account values small
+- Log every command change
+- Keep notes values small
+- Document new contributi fields
