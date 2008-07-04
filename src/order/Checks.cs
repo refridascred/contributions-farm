@@ -46,11 +46,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] series, long floor)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate command samples.</summary>
