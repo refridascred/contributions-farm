@@ -1,8 +1,6 @@
-id,label,token,owner
-1,0,443,primary
-2,29.81,272,390
-3,666,444,878
-4,126,94.08,29.52
-5,open,30.55,22
-6,750,64,local
-7,green,443,local
+id,active,state
+1,902,940
+2,25.24,69.33
+3,blue,local
+4,409,standard
+5,437,830
