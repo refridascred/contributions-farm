@@ -14,10 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepDepth = 73.17;
-        public const long BurstFormat = 2037;
-        public const string StepFormat = "strict-1";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 936;
+        public const string StepSize = "legacy-v2";
+        public const string DefaultNotes = "open-v2";
+        public const string HardNotes = "open-v2";
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
