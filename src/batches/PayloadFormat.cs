@@ -34,12 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
