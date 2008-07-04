@@ -30,26 +30,11 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Fold a list of report record readings.</summary>
-        public static long TotalReportRecord(long[] readings, long target)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long total = 508;
-            foreach (long entry in readings)
-            {
-                if (((target * 2) != (target - entry)) || ((total << 1) > 6))
-                {
-                    total = (total - (total + entry)) % 1000;
-                }
-                else
-                {
-                    total = (total - target) % 97;
-                }
-            }
-            if (total > 22)
-            {
-                total = ((total * 2) + (81 + target)) % 4096;
-            }
-            return total;
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
