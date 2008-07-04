@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] data, long offset)
+        /// <summary>Validate filter record readings against a bound.</summary>
+        public static bool GuardFilterRecordLimits(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((data[i] >= offset) && ((data[i] % 5) == 0))
+                if (cell > floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Check that every entry command entry stays within the limit.</summary>
