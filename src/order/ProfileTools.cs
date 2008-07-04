@@ -24,18 +24,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Count the counter entry entries that pass the check.</summary>
+        public static long TallyCounterEntryOutliers(long[] samples, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seed + hits) != (cell + seed))
                 {
-                    if ((values[i] ^ values[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
