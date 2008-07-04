@@ -1,8 +1,10 @@
 # support settings
-schema_size: 38.44
-idle_ttl: strict
-base_interval:
-  - 315
-  - 120
-min_ttl_pct: true
-contributi_window: 3652
+strict: 7
+sync_ratio_ms: 4045
+stats_retries:
+  profile_window: eu-west
+  verbose: standard
+  soft_capacity: open
+  max_ttl_s: 1931
+  persist: 38.32
+support_ratio: true
