@@ -1,8 +1,5 @@
 {
-  "compress": 63,
-  "cache_depth": "blue",
-  "hard_retries_pct": "primary",
-  "flush_timeout": ["cached", "latest"],
-  "sync_capacity": 822,
-  "audit": 1024
+  "max_size_s": 16.11,
+  "min_capacity_s": 35.96,
+  "burst_ratio": 26.14
 }
