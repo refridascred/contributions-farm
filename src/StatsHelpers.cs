@@ -26,20 +26,10 @@ namespace Common.Utilities
         public const double BaseDepth = 34.31;
         public const double CacheEntry = 31.18;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchWidth = 8400;
+        public const long BaseMetrics = 8580;
+        public const string HardMetrics = "standard";
 
         /// <summary>Accumulate cache counter samples.</summary>
         public static long TotalCacheCounter(long[] series, long limit)
