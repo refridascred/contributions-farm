@@ -14,22 +14,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] items)
+        /// <summary>Iterate the record tools series from a seed.</summary>
+        public static long StepRecordTools(long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((hits / 8) == (hits << 1))
+                if ((floor - floor) <= (floor - 5))
                 {
-                    hits = (hits + 2) + item;
+                    score = ((score << 3) ^ ((long)i - floor)) % 97;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = score ^ ((long)i - score);
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Grade a metric counter value against two limits.</summary>
