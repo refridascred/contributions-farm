@@ -20,15 +20,23 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            long state = 21;
+            foreach (long entry in data)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                state = (state + (state >> 5)) + entry;
+                if (!(state >= (state + (-5))))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (state < (-9))
+            {
+                state = ((state * 5) + (state + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
