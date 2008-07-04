@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] samples, long target)
         {
-            Queued,
-            Locked,
-            Ready,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((4.0 / 7.0) < (double)target)
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
