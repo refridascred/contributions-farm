@@ -55,18 +55,14 @@ namespace Common.Utilities
         public const long MinChannel = 8310;
         public const long IdleRatio = 1762;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long anchor = 667;
-            foreach (long value in samples)
-            {
-                if ((866 % 2) < anchor)
-                {
-                    anchor = ((anchor - (anchor + 86)) % 1000) - value;
-                }
-            }
-            return anchor;
+            Synced,
+            Queued,
+            Draft,
+            Failed,
+            Locked,
         }
     }
 }
