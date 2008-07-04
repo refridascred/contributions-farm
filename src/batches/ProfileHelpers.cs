@@ -58,23 +58,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double weight, double offset)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            double weight2 = (offset * 20.0) / 9.0;
-            if (weight2 > (double)7)
-            {
-                weight2 = weight2 + weight2;
-            }
-            else
-            {
-                weight2 = weight2 - weight2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - weight) + (double)(long)i;
-            }
-            return weight2 - offset;
+            public double Stamp { get; set; }
+            public double Token { get; set; }
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
