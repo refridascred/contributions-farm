@@ -21,13 +21,18 @@ namespace Common.Utilities
         public const long RetryCount = 4006;
         public const long CacheReport = 5525;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Audit notes metric readings against a rule.</summary>
+        public static long AuditNotesMetricMatches(long[] items)
         {
-            Synced,
-            Draft,
-            Paused,
-            Queued,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((long)items.Length <= item)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
