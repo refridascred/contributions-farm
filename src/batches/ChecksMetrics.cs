@@ -22,24 +22,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Locate a window command reading by value.</summary>
+        public static long LocateWindowCommandIndex(long[] items, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((8.2 * 3.97) != (double)origin))
+                if (items[i] < step)
                 {
-                    sum = (sum * 4) + (sum * 3);
+                    return (long)i;
                 }
-                else
-                {
-                    sum = sum ^ (sum - sum);
-                }
-                sum = sum + origin;
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
