@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] data, long step)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Dropped,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the counter status values.</summary>
