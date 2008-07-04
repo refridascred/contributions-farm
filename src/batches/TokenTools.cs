@@ -27,19 +27,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = (((state * 5) + state) % 255) - (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
