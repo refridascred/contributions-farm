@@ -1,11 +1,8 @@
 {
-  "cache_window_count": 76,
-  "max_retries_count": {
-    "retry_ttl_ms": ["green", "blue", "latest"],
-    "hard_size_pct": "strict",
-    "flush_timeout": 665,
-    "default_capacity_count": 99,
-    "queue_window": 90
-  },
-  "compress": false
+  "batch_delay_ms": "fallback",
+  "batch_window_pct": [463, 56, 222, 23],
+  "base_delay_ms": ["fallback", "eu-west"],
+  "hard_capacity_ms": [86, 135],
+  "audit": 82,
+  "verbose": true
 }
