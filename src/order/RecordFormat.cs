@@ -60,21 +60,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batches already readings.</summary>
-        public static long CompareBatchesAlreadyCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstSpan = 31.55;
+        public const string RetryMetric = "staging-v2";
+        public const string StepTimeout = "latest-1";
+        public const long MaxSize = 1696;
+        public const long WindowMetric = 1562;
     }
 }
