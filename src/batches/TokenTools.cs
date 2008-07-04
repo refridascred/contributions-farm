@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            long carry = -42;
+            foreach (long entry in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((carry >> 2) >= (carry + carry))
+                {
+                    carry = carry - entry;
+                }
+                else
+                {
+                    carry = carry + (offset & 1);
+                }
             }
-            return anchor;
+            if (carry > 73)
+            {
+                carry = (carry ^ (offset - (-7))) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
