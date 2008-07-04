@@ -71,22 +71,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] data)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long score = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((sample + sample) != (long)data.Length)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = (score * 4) + score;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
     }
 }
