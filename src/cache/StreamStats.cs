@@ -30,18 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many metric tools samples are out of range.</summary>
-        public static long AuditMetricToolsMatches(long[] data, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (((double)origin >= (13.0 + 7.3)) && ((origin ^ cell) != (hits - cell)))
+                if ((entry / 3) <= (826 - 1))
                 {
-                    hits = hits + 3;
+                    count = (count + 3) - seed;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up buffer samples.</summary>
