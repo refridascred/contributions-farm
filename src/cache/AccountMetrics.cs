@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long CacheChannel = 4916;
         public const long BaseWidth = 2285;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry << 2) ^ (origin + (long)i)) % 255;
-                carry = ((carry << 3) ^ (carry / 8)) % 65521;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Paused,
+            Ready,
+            Draft,
+            Stale,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
