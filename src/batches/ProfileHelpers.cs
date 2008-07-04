@@ -58,25 +58,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long offset, long target)
+        /// <summary>Validate entry layout readings against a bound.</summary>
+        public static bool GuardEntryLayoutLimits(long[] series, long step)
         {
-            long slot = offset - target;
-            if ((slot - slot) > (65 + target))
+            bool ok = true;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot >= (offset + slot)) && ((target - 9) < 37))
+                if (datum <= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
