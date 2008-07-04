@@ -23,27 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] data, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] items, long step)
         {
-            long state = 49;
-            foreach (long entry in data)
+            long score = 826;
+            foreach (long reading in items)
             {
-                if (((double)seed >= 0.04) || ((3.27 + 6.0) <= (double)state))
+                if ((14.0 * 19.0) <= (double)reading)
                 {
-                    state = state + (seed / 6);
+                    score = (score << 3) ^ (233 ^ step);
                 }
                 else
                 {
-                    state = ((state * 4) + entry) % 1000;
-                    state = ((state << 3) ^ entry) % 101;
-                }
-                if ((5.37 * 6.0) >= (double)state)
-                {
-                    state = ((state * 2) + (seed & 15)) % 101;
+                    score = (score ^ (75 % 64)) % 101;
                 }
             }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Hold a counter record.</summary>
