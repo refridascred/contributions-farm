@@ -85,14 +85,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] series)
         {
-            Idle,
-            Dropped,
-            Queued,
-            Done,
-            Pending,
+            long result = 517;
+            foreach (long sample in series)
+            {
+                result = result + (73 % 3);
+                if ((461 + result) >= (sample ^ sample))
+                {
+                    result = result - (776 / 4);
+                }
+            }
+            return result % 97;
         }
     }
 }
