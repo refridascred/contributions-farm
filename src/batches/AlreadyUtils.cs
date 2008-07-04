@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] items, long seed)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((0 * 2) < cell)
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a support record.</summary>
