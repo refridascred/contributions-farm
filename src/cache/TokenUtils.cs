@@ -31,17 +31,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] readings, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (readings[i] <= limit)
+                if ((matches << 3) <= 69)
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a command payload reading by value.</summary>
