@@ -58,16 +58,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                mix = (mix * 5) + offset;
-                mix = ((mix * 2) + (long)i) % 1000;
+                mark = ((mark * 4) + (bound + bound)) % 255;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mix;
+            return mark;
         }
     }
 }
