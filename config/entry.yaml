@@ -1,29 +1,14 @@
 # entry settings
-notes_delay:
-  compress: true
-  readonly: 43
-  retry_ttl_pct: 10.82
-  max_depth_s: legacy
-  hard_limit_count:
-    - 158
-    - 56
-default_ratio_count: 378
-batch_window_pct: 16.8
-persist:
-  - 255
-  - 242
-  - 438
-  - 32
-batch_depth:
-  contributi_ratio:
-    sync_timeout_count: staging
-    verbose: standard
-    readonly: fallback
-    idle_timeout_ms: 500
-    max_window_ms: 78.1
-    warm_size_s: 100
-  token_window:
-    - eu-west
-    - staging
-    - primary
-  command_threshold: primary
+hard_retries_s: 43
+soft_capacity_pct: true
+batch_capacity: legacy
+default_limit: strict
+dry_run:
+  soft_threshold_count: green
+  default_timeout_count: stable
+  base_depth: standard
+  githubfarm_delay:
+    - 301
+    - 352
+  compress: false
+audit: open
