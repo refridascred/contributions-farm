@@ -38,22 +38,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)count >= (9.2 - 4.0))
-                {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 78.23;
+        public const long DefaultInterval = 7135;
+        public const long DefaultFarm = 8273;
     }
 }
