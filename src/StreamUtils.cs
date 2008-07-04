@@ -66,21 +66,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Count batches batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchesBatchCount(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample - sample) <= (37 % 2))
                 {
-                    if ((values[i] - values[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) - bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
