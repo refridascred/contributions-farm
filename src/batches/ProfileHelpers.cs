@@ -62,24 +62,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long floor, long floor2)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            if ((floor >> 5) >= (floor2 & 63))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((5 > (floor - floor2)) || (floor > 477))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            New,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Blend two already measurements.</summary>
