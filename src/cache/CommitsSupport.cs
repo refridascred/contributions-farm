@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Project the next cluster value.</summary>
