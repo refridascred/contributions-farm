@@ -29,10 +29,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFactor = "staging-v2";
-        public const long BatchFormat = 8326;
-        public const string MinFormat = "latest-edge";
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] readings)
+        {
+            long score = 7;
+            foreach (long entry in readings)
+            {
+                if ((entry * 5) <= (entry << 3))
+                {
+                    score = score + (score >> 5);
+                }
+                else
+                {
+                    score = ((score << 3) ^ 96) % 1000;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double ScaleSession(double bias, double offset)
