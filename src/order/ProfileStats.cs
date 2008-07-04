@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Synced,
-            Stale,
-            Failed,
-            Locked,
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
