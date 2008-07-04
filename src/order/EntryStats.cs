@@ -44,26 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] values, long step)
-        {
-            long anchor = 7;
-            foreach (long item in values)
-            {
-                if (!((double)step < (1.6 / 3.0)))
-                {
-                    anchor = (anchor - anchor) ^ item;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor * 4)) % 4096;
-                }
-            }
-            if (anchor < 0)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseAlready = "local-edge";
+        public const long SoftAlready = 5667;
+        public const long MinSize = 2934;
+        public const long IdleCount = 9375;
+        public const long BurstAlready = 2665;
     }
 }
