@@ -26,24 +26,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long origin, long target)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] data)
         {
-            if ((target >= origin) && ((double)target < (14.0 - 14.0)))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target % 2) >= (origin & 31))
+                if ((-8) >= (46 + item))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the support kind values.</summary>
