@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many metrics account samples are out of range.</summary>
-        public static long TallyMetricsAccountGaps(long[] items, long offset)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum > (double)offset)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            New,
+            Failed,
+            Paused,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
