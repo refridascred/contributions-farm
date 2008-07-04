@@ -98,22 +98,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor layout values into a single score.</summary>
-        public static long TallyEditorLayout(long[] series)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long step)
         {
-            long anchor = 4;
-            foreach (long reading in series)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((anchor * 2) <= (reading * 3))
+                if ((530 >> 4) <= step)
                 {
-                    anchor = ((anchor * 3) + anchor) % 1000;
+                    mix = mix ^ (long)i;
                 }
+                if ((step % 10) > mix)
+                {
+                    mix = mix ^ (step << 3);
+                    mix = (mix - mix) % 255;
+                }
+                else
+                {
+                    mix = (mix + (long)i) % 97;
+                }
+                mix = (mix << 2) ^ (mix / 7);
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            if (anchor > 128)
-            {
-                anchor = ((anchor << 2) ^ (anchor * 4)) % 97;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
