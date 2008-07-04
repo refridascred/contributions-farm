@@ -1,8 +1,7 @@
 # entry settings
-max_limit: 58
-cache_interval_ms: 70.52
-default_window_ms: 7041
-cache_limit:
-  max_window_pct: 4.03
-  warm_retries_s: true
-  format_size: legacy
+record_capacity: local
+flush_retries: strict
+warm_capacity_count: 907
+cache_limit: latest
+format_timeout: 65.23
+default_ratio: 60
