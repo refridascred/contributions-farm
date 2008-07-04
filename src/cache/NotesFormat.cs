@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string BatchNotes = "alpha";
         public const long WindowWidth = 8435;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstReport = 45.63;
-        public const long StepReport = 4456;
-        public const long HardFactor = 7577;
-        public const long MaxRatio = 2806;
-        public const double MaxTimeout = 35.25;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long StepAccount(long bound)
