@@ -31,30 +31,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long limit, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long origin, long target)
         {
-            long delta = limit + seed;
-            if ((double)limit < (0.91 * 2.56))
+            if ((target >= origin) && ((double)target < (14.0 - 14.0)))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (((7.9 * 2.5) < (double)delta) || ((297 + seed) != (seed - delta)))
+                if ((target % 2) >= (origin & 31))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)2 != (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 8;
                 }
             }
         }
