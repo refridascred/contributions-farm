@@ -37,23 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] readings, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] values, long bound)
         {
-            long anchor = -27;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (origin >= (origin - 5))
+                if ((bound + 8) == (bound + bound))
                 {
-                    anchor = (anchor + reading) % 101;
-                    anchor = (anchor ^ anchor) % 4096;
-                }
-                if ((double)(long)readings.Length == (8.9 + 4.0))
-                {
-                    anchor = anchor + (origin - 457);
+                    matches = (matches + 2) + entry;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a counter summary.</summary>
