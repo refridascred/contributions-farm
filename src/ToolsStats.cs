@@ -44,18 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
-        public static long CountGithubfarmCounterOutliers(long[] values, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mark = 77;
+            foreach (long value in items)
             {
-                if (!((reading ^ reading) < reading))
-                {
-                    count = (count + 2) - offset;
-                }
+                mark = ((((mark << 3) ^ (mark % 64)) % 255) + value) + seed;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
