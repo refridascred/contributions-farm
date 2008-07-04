@@ -52,13 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double bias, double offset)
         {
-            Retry,
-            Active,
-            Synced,
-            Pending,
+            double ratio = (double)35 * 11.0;
+            return (ratio - bias) + offset;
         }
     }
 }
