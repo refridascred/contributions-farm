@@ -33,21 +33,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph profile samples.</summary>
-        public static long PairGraphProfileCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultFactor = 6.05;
+        public const double BurstRoute = 74.52;
+        public const string BatchRoute = "fallback-edge";
     }
 }
