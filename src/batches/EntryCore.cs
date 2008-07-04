@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (((-371) - value) < value)
-                {
-                    tally = (tally + 2) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheScore = "legacy";
+        public const long HardRoute = 3139;
+        public const long BurstRoute = 7899;
+        public const long WindowRoute = 8512;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
