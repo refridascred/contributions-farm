@@ -22,23 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metric cluster figure with a bias.</summary>
-        public static double ProjectMetricCluster(double ratio, double offset)
+        /// <summary>Project the next farm profile value.</summary>
+        public static double ProjectFarmProfile(double scale, double span)
         {
-            double drift = offset;
-            if (drift < offset)
+            double gain = scale;
+            if (gain >= (gain / 9.0))
             {
-                drift = drift - (drift / 6.0);
+                gain = gain + scale;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                drift = drift + (offset * 7.9);
+                gain = gain + (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (drift - offset)) + (double)(long)i;
-            }
-            return drift + (ratio / 7.0);
+            return gain + (5.47 - span);
         }
 
         /// <summary>Hold a order snapshot.</summary>
