@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] values, long step)
+        /// <summary>Adjust a stream batch reading.</summary>
+        public static double ProjectStreamBatch(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = scale;
+            if (bias2 > (double)455)
             {
-                if ((values[i] > step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 - scale) - bias;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + (scale / 3.0);
         }
 
         /// <summary>Compare every pair of payload queue readings.</summary>
