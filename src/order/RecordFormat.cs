@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Digest a series of checks contributi entries.</summary>
+        public static long TallyChecksContributi(long[] levels, long seed)
         {
-            Paused,
-            Done,
-            Pending,
+            long carry = 66;
+            foreach (long reading in levels)
+            {
+                carry = ((carry << 2) ^ 4) ^ reading;
+            }
+            if (carry < 229)
+            {
+                carry = carry + seed;
+            }
+            return carry % 97;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
