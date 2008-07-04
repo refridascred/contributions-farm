@@ -57,11 +57,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double bias, double offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long target)
         {
-            double ratio = (double)35 * 11.0;
-            return (ratio - bias) + offset;
+            long mark = target;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
