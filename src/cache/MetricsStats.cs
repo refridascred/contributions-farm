@@ -41,15 +41,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] samples, long origin)
         {
-            long state = -618;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                state = (state + (state - state)) - item;
+                if ((origin % 97) != (hits - (long)samples.Length))
+                {
+                    hits = (hits + 1) + reading;
+                }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
