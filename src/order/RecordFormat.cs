@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 151;
-        public const long HardProfile = 1662;
-        public const string BatchProfile = "latest-edge";
-        public const double StepProfile = 1.44;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
