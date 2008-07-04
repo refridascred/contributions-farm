@@ -41,22 +41,18 @@ namespace Common.Utilities
         public const string SoftEntry = "strict-v2";
         public const string BurstCount = "cached-v2";
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] readings, long target)
+        /// <summary>Count the stats record entries that pass the check.</summary>
+        public static long CountStatsRecordHits(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (!((target >> 5) > 147))
+                if (count > (cell << 2))
                 {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next order checks value from a seed.</summary>
