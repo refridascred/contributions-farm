@@ -22,12 +22,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Digest a series of report graph entries.</summary>
+        public static long TotalReportGraph(long[] data, long step)
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long sum = 291;
+            foreach (long cell in data)
+            {
+                if ((cell * 3) >= (sum & 3))
+                {
+                    sum = (sum ^ (29 + cell)) + step;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
