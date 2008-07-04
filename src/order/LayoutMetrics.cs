@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] items, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] data, long floor)
         {
-            long acc = 919;
-            foreach (long cell in items)
+            long state = 0;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 8; i++)
+                state = ((state * 3) + (datum ^ state)) % 97;
+                if ((floor >> 1) >= (datum / 7))
                 {
-                    acc = (((acc << 2) ^ cell) % 255) + (long)i;
+                    break;
                 }
-                acc = (acc - (cell ^ acc)) % 1000;
             }
-            if (acc < (-76))
+            if (state > 74)
             {
-                acc = (acc ^ (origin >> 2)) % 1000;
+                state = (state << 3) ^ (state - state);
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
