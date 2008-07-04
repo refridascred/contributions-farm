@@ -1,14 +1,14 @@
 # Command notes
 
-Use entry settings to tune how often token data is refreshed.
-Use checks settings to tune how often contributi data is refreshed.
+Each report is validated before it reaches the filter queue.
+Keep stream and window names short and lowercase.
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Use contributi settings to tune how often queue data is refreshed.
-Keep contributi and format names short and lowercase.
+The command module keeps stats values in sync with the githubfarm cache.
+Keep stream and stats names short and lowercase.
+A profile that stays idle for too long is moved to the filter list.
 
 ## Guidelines
 
-- Document new payload fields
-- Log every commits change
-- Prefer already defaults
+- Review token limits each release
+- Prefer token defaults
+- Validate payload input early
