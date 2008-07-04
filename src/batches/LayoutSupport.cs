@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session githubfarm figure with a bias.</summary>
-        public static double ScaleSessionGithubfarm(double bias, double bias2)
+        /// <summary>Locate a notes account reading by value.</summary>
+        public static long LocateNotesAccountIndex(long[] levels, long step)
         {
-            double scale = bias2;
-            if (scale < 3.4)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale + (bias2 - 9.67);
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale + bias;
+            return -1;
         }
 
         /// <summary>Describe the layout mode values.</summary>
