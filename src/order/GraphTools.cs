@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Find the first commits report entry that matches the target.</summary>
-        public static long SeekCommitsReportIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinCount = 5484;
+        public const long BurstEntry = 4685;
+        public const double BurstSpan = 87.88;
+        public const double LimitSpan = 54.93;
+        public const double BatchEntry = 2.7;
 
         /// <summary>Digest a series of command editor entries.</summary>
         public static long WeighCommandEditor(long[] items)
