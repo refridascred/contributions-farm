@@ -1,5 +1,5 @@
 {
-  "batch_ratio": 90.2,
-  "cache_interval": 55,
-  "report_window": 11
+  "warm_capacity_ms": 3289,
+  "batches_limit": true,
+  "batch_depth_ms": "latest"
 }
