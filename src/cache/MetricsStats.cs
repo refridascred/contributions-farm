@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Queued,
+            Done,
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
