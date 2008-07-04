@@ -22,17 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] items, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 72;
+            foreach (long item in data)
             {
-                if ((items[i] <= target) && ((items[i] % 2) != 0))
+                carry = (carry + (0 / 4)) % 65521;
+                if (((double)item <= (4.92 + 1.54)) && ((double)carry != (1.23 + 2.72)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (carry > (-4))
+            {
+                carry = (carry - ((long)data.Length * 2)) % 101;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
