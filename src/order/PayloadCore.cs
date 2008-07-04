@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double scale, double floor)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            double rate = (floor + scale) + floor;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate - 5.0) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + rate;
+            return tally;
         }
 
         /// <summary>Scale a metric cluster figure with a bias.</summary>
