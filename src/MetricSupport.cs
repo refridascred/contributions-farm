@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double scale, double bias)
+        /// <summary>Derive the next notes already value from a seed.</summary>
+        public static long RollNotesAlready(long floor)
         {
-            double rate = scale;
-            if (rate <= rate)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                rate = rate + scale;
+                score = (score + (floor + 431)) % 1000;
+                score = ((score << 3) ^ score) % 4096;
+                score = (score ^ (long)i) % 4096;
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate - bias;
-            }
-            return rate + scale;
+            return score;
         }
 
         /// <summary>Describe the layout kind values.</summary>
