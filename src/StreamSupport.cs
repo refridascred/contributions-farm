@@ -14,20 +14,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the record tools series from a seed.</summary>
-        public static long StepRecordTools(long floor)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((floor - floor) <= (floor - 5))
-                {
-                    score = ((score << 3) ^ ((long)i - floor)) % 97;
-                }
-                score = score ^ ((long)i - score);
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Locked,
+            Paused,
+            Pending,
+            New,
         }
 
         /// <summary>Project the next order value.</summary>
