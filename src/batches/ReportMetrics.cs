@@ -30,15 +30,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double rate, double offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] levels)
         {
-            double mean = (offset * 9.0) * 3.01;
-            if (mean < (mean * 8.72))
+            long count = 0;
+            foreach (long item in levels)
             {
-                mean = (mean + (double)2) - rate;
+                if ((count * 5) <= (item + count))
+                {
+                    count = count + 3;
+                }
             }
-            return mean - 5.6;
+            return count;
         }
     }
 }
