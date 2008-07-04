@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] samples, long seed)
         {
-            Stale,
-            Active,
-            Locked,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stream mode values.</summary>
