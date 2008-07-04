@@ -32,20 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((5.54 + 0.8) != (double)total)
-                {
-                    total = total + (step - total);
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Blend two graph measurements.</summary>
