@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] data, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (data[i] >= seed)
+                if ((((62 & 255) != (count + target)) || (((long)items.Length ^ (-5)) > (cell - 46))) && ((5 >= count) || ((count + target) <= 2)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
