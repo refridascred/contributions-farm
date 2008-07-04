@@ -37,26 +37,11 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Fold a list of route batch readings.</summary>
-        public static long WeighRouteBatch(long[] samples, long limit)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long total = 86;
-            foreach (long reading in samples)
-            {
-                if ((total - limit) > (total % 60))
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total + (reading ^ 815)) % 4096;
-                }
-                if (total > limit)
-                {
-                    total = total - (reading & 15);
-                }
-            }
-            return total % 65521;
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
