@@ -15,39 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long seed, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] readings, long offset)
         {
-            long step = seed ^ offset;
-            if ((step % 5) < (offset + step))
+            long result = 534;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((step / 4) <= step))
+                result = (result << 2) ^ offset;
+                if ((double)entry >= (1.0 + 4.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (step < (seed * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)seed <= (8.1 - 8.0)) || (seed < (seed * 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    result = ((result * 2) + (entry ^ result)) % 65521;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
