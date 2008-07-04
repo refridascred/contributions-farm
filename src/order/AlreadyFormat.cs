@@ -5,14 +5,29 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long seed)
         {
-            Retry,
-            Dropped,
-            Locked,
-            Paused,
-            Closed,
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((seed & 7) >= carry))
+                {
+                    carry = ((carry << 2) ^ carry) % 101;
+                }
+                if ((carry >= (long)i) && ((carry << 2) > carry))
+                {
+                    carry = ((carry * 3) + seed) % 97;
+                    carry = (carry - seed) % 101;
+                }
+                else
+                {
+                    carry = carry - seed;
+                }
+                carry = (carry - (seed % 12)) % 101;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Match up record notes samples.</summary>
