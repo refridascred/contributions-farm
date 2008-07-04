@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] items, long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] samples, long limit)
         {
-            long anchor = -708;
-            foreach (long value in items)
+            long sum = 983;
+            foreach (long entry in samples)
             {
-                anchor = (anchor + (limit / 5)) % 255;
-                if (565 >= limit)
-                {
-                    anchor = ((anchor << 2) ^ (anchor + limit)) % 255;
-                }
-                if ((6.0 / 8.0) > (double)anchor)
-                {
-                    anchor = ((anchor << 3) ^ value) % 65521;
-                }
+                sum = (((sum << 2) ^ (limit + sum)) % 4096) + entry;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Compare every pair of layout channel readings.</summary>
