@@ -20,31 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] samples, long bound)
         {
-            long result = -90;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((result + result) != ((-8) + result))
+                if (((-371) - value) < value)
                 {
-                    result = (result * 5) + (result >> 3);
-                }
-                result = (result - (result << 2)) % 101;
-                if ((result + 12) < result)
-                {
-                    result = (result + (result ^ result)) % 65521;
-                }
-                else
-                {
-                    result = result + (result + sample);
+                    tally = (tally + 2) + bound;
                 }
             }
-            if (result > 80)
-            {
-                result = ((result << 2) ^ (result >> 1)) % 1000;
-            }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Hold a contributi info.</summary>
