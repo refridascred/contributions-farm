@@ -12,10 +12,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseScore = "fallback";
-        public const string CacheQueue = "local-edge";
-        public const long RetryQueue = 7749;
+        /// <summary>Match up contributi context samples.</summary>
+        public static long MatchContributiContextCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double DefaultBudget = 39.48;
