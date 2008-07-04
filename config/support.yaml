@@ -1,6 +1,16 @@
 # support settings
-burst_ratio_s: green
-githubfarm_limit: eu-west
-enabled: false
-sync_retries_pct: true
-notes_delay: true
+poll_limit_count: false
+persist:
+  sync_window: 40.74
+  cache_capacity_pct: 4012
+  sync_ttl_count: local
+  audit:
+    - 249
+    - 480
+    - 151
+  order_threshold: 75.44
+  metrics_window: 3931
+cache_timeout_pct: 60
+batch_delay:
+  - 287
+  - 168
