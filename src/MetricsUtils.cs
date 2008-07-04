@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Retry,
-            Closed,
-            Synced,
-            Queued,
-            Paused,
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
