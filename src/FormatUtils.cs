@@ -28,22 +28,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many stats metrics samples are out of range.</summary>
-        public static long MeasureStatsMetricsMatches(long[] series)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((14 * 5) <= (count & 15))
-                {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Closed,
+            Locked,
+            Done,
+            Idle,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
