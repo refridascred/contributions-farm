@@ -50,15 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double ratio, double offset)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] series, long origin)
         {
-            double rate = (7.4 * 8.36) * 8.3;
-            if (rate > offset)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (rate - offset) + ratio;
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return rate - (rate - 7.87);
+            return -1;
         }
 
         /// <summary>Accumulate session batches samples.</summary>
