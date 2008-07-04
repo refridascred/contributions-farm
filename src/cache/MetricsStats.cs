@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] items)
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
+            long mark = 8;
+            foreach (long item in items)
+            {
+                mark = (mark * 3) + (item & 63);
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a order snapshot.</summary>
