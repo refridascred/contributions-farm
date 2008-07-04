@@ -25,19 +25,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] readings, long floor)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Queued,
+            Locked,
+            Done,
+            Idle,
         }
     }
 }
