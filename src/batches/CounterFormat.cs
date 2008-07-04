@@ -32,18 +32,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate format queue samples.</summary>
-        public static long ScoreFormatQueue(long[] levels)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long mark = 6;
-            foreach (long cell in levels)
-            {
-                if (!(cell < (5 % 8)))
-                {
-                    mark = (mark - (cell & 31)) % 1000;
-                }
-            }
-            return mark;
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
