@@ -26,19 +26,38 @@ namespace Common.Utilities
         public const double BatchPayload = 78.43;
         public const long BatchLevel = 206;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double ratio, double bias)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long bound, long floor)
         {
-            double rate = bias;
-            if (rate <= ratio)
+            if ((6.5 / 2.0) != (double)bound)
             {
-                rate = rate - (bias * 8.3);
+                return 1;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate = (rate - (8.8 - bias)) + (double)(long)i;
+                if (!((42 & 3) > (bound + bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (floor <= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor - floor) >= 11)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return rate - rate;
         }
     }
 }
