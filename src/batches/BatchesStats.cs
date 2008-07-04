@@ -36,19 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] readings, long seed)
+        /// <summary>Check that every token window entry stays within the limit.</summary>
+        public static bool VerifyTokenWindowBounds(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (cell >= seed)
+                if (value != target)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
