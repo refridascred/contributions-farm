@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
+mode="${1:-green}"
 case "${mode}" in
-    latest)
+    open)
         log "fast path"
         ;;
     *)
