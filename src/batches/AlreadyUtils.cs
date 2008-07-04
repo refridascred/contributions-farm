@@ -24,14 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] items)
         {
-            Pending,
-            Ready,
-            Failed,
-            Closed,
-            Synced,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((275 + matches) > value)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
