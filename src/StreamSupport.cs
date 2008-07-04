@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public long Total { get; set; }
+            Dropped,
+            Done,
+            Paused,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
