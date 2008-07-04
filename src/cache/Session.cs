@@ -19,17 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] series, long bound)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long limit, long limit2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long bound = limit + limit2;
+            if (limit > 9)
             {
-                if (series[i] > bound)
+                return 5;
+            }
+            else
+            {
+                if (((limit2 - 727) == ((-914) * 2)) || ((double)limit == (4.4 - 6.1)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + bound) == (limit2 >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound >= 107) || ((1.0 + 4.4) >= (double)bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
