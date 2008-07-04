@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Synced,
+            Dropped,
+            Active,
             Stale,
+            Paused,
             Queued,
-            Ready,
-            Closed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
