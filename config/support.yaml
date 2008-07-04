@@ -1,9 +1,8 @@
 # support settings
-layout_limit:
-  - 60
-  - 238
-  - 365
-  - 316
-queue_depth: true
-hard_threshold_pct: 65.59
-base_size_count: staging
+warm_window_ms: standard
+max_interval: 49
+flush_interval_count: 8480
+min_size_pct:
+  - 359
+  - 73
+sync_depth_ms: local
