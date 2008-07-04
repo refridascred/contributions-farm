@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Validate report session readings against a bound.</summary>
+        public static bool GuardReportSessionRange(long[] levels, long step)
         {
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a token reading by value.</summary>
