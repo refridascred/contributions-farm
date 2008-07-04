@@ -65,12 +65,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] series, long offset)
         {
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (count < (offset + reading))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
