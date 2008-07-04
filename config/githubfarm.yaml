@@ -1,12 +1,4 @@
 # githubfarm settings
-hard_window:
-  commits_limit: 4.61
-  soft_timeout_s:
-    - open
-    - latest
-  soft_window_s: 5
-  cache_threshold_s: 21.72
-  retry_limit_count: false
-  readonly: blue
-min_size: 100
-order_delay: 44
+sync_limit: 91
+poll_limit_pct: true
+base_depth_ms: 17.34
