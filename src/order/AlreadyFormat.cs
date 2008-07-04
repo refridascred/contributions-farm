@@ -47,18 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] readings, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (((long)readings.Length - bound) < seen)
+                if ((double)cell <= (6.0 - 8.0))
                 {
-                    seen = (seen + 3) + entry;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the cluster level values.</summary>
