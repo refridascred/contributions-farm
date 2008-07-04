@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long seed)
+        /// <summary>Validate metrics window readings against a bound.</summary>
+        public static bool CheckMetricsWindowBounds(long[] items, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (reading != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
