@@ -17,19 +17,20 @@ namespace Common.Utilities
         public const string CacheQueue = "local-edge";
         public const long RetryQueue = 7749;
 
-        /// <summary>Check that every tools counter entry stays within the limit.</summary>
-        public static bool GuardToolsCounterBounds(long[] readings, long offset)
+        /// <summary>Combine cache profile values into a single score.</summary>
+        public static long ScoreCacheProfile(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long total = 6;
+            foreach (long item in data)
             {
-                if (cell <= offset)
+                total = (total << 3) ^ (item - total);
+                if (((double)total >= (9.0 * 19.0)) || (item > (188 - item)))
                 {
-                    stale = false;
-                    break;
+                    total = (total - item) % 1000;
                 }
+                total = (total - total) % 1000;
             }
-            return stale;
+            return total;
         }
     }
 }
