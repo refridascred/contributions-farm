@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 144;
-        public const long LimitDepth = 2845;
-        public const long StepLevel = 3911;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long seed, long origin)
+        {
+            if (!((seed >> 1) < origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed >= (518 - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long OverlapProfileCount(long[] series)
