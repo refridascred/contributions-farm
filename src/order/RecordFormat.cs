@@ -44,23 +44,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] samples, long bound)
         {
-            long mark = -3;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                mark = (mark ^ (mark * 3)) % 255;
-                if ((mark >> 5) != (sample + sample))
+                if ((sample + tally) < bound)
                 {
-                    mark = mark ^ mark;
-                }
-                if ((mark + mark) > mark)
-                {
-                    mark = (mark - (sample + mark)) % 255;
+                    tally = tally + 2;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
