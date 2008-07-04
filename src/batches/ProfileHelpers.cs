@@ -36,15 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double gain, double span)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] series, long floor)
         {
-            double bias = span;
-            if (bias <= (double)5)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                bias = (bias - span) - gain;
+                if (((sample / 2) >= hits) || (sample > floor))
+                {
+                    hits = hits + 1;
+                }
             }
-            return bias - span;
+            return hits;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
