@@ -1,7 +1,7 @@
 {
-  "strict": 7141,
-  "verbose": ["green", "stable", "blue"],
-  "flush_size_count": 1903,
-  "batch_threshold": "local",
-  "cache_timeout_pct": 100
+  "enabled": true,
+  "schema_ttl": "latest",
+  "strict": false,
+  "cache_delay_ms": "blue",
+  "soft_delay_pct": "green"
 }
