@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Find the first schema buffer entry that matches the target.</summary>
+        public static long LocateSchemaBufferIndex(long[] samples, long step)
         {
-            Draft,
-            Closed,
-            Queued,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
