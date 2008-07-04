@@ -13,10 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchSpan = "legacy-edge";
-        public const long StepSchema = 5410;
-        public const double BatchSchema = 70.27;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
