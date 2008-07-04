@@ -19,31 +19,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long bound, long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            if ((0.87 - 17.0) >= (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin == (double)50)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((927 - origin) >= (origin - bound)) && (bound >= (bound & 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
