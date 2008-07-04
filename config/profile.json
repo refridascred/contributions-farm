@@ -1,5 +1,5 @@
 {
-  "poll_timeout_pct": ["latest", "latest", "legacy", "open"],
-  "batch_ttl_s": 24,
-  "poll_interval_ms": 15
+  "flush_capacity": false,
+  "contributi_threshold": "staging",
+  "session_size": false
 }
