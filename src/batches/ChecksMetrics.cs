@@ -19,31 +19,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] items, long origin)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            long total = 7;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total ^ (entry - total)) % 101) ^ (long)i;
-                    total = ((total << 3) ^ (entry + total)) % 65521;
-                }
-                if (((12.0 * 14.0) != (double)origin) && ((entry >> 4) <= (total ^ 64)))
-                {
-                    total = total - (total - origin);
-                }
-                else
-                {
-                    total = (total ^ origin) % 97;
-                }
-                if (((6.3 - 2.0) == (double)origin) || ((double)entry != (double)total))
-                {
-                    break;
+                    if ((series[i] - series[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
