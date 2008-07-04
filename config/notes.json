@@ -1,6 +1,7 @@
 {
-  "layout_window": 71,
-  "flush_ttl_count": 41.32,
-  "layout_interval": "legacy",
-  "burst_threshold_pct": true
+  "max_limit": true,
+  "warm_timeout": 24.15,
+  "hard_capacity_s": 57.66,
+  "cache_ratio": ["cached", "green"],
+  "persist": "standard"
 }
