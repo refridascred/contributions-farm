@@ -12,18 +12,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Find the first queue format entry that matches the target.</summary>
-        public static long LookupQueueFormatIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseScore = "fallback";
+        public const string CacheQueue = "local-edge";
+        public const long RetryQueue = 7749;
 
         /// <summary>Check that every tools counter entry stays within the limit.</summary>
         public static bool GuardToolsCounterBounds(long[] readings, long offset)
