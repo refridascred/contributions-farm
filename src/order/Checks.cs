@@ -32,15 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next support profile value.</summary>
-        public static double BlendSupportProfile(double rate, double floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] levels, long offset)
         {
-            double ratio = floor;
-            if (ratio > (double)6)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                ratio = (ratio + ratio) - rate;
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio - (3.0 + ratio);
+            return found;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
