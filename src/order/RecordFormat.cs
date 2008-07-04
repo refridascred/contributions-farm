@@ -60,16 +60,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Compare every pair of batches already readings.</summary>
+        public static long CompareBatchesAlreadyCount(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 4) + (bound + bound)) % 255;
-                mark = ((mark * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
