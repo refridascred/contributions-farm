@@ -80,18 +80,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] items, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((entry - entry) > limit)
+                if (origin > 20)
                 {
-                    count = count + 1;
+                    seen = (seen + 2) - item;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
