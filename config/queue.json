@@ -1,12 +1,7 @@
 {
-  "verbose": 68.98,
-  "command_depth": [430, 47, 181],
-  "default_retries_ms": ["stable", "legacy"],
-  "hard_capacity_pct": "cached",
-  "batch_size": {
-    "flush_capacity_count": 66,
-    "batch_ttl_count": "eu-west",
-    "audit": 2129,
-    "hard_ttl": "green"
-  }
+  "burst_timeout_ms": ["eu-west", "cached", "fallback"],
+  "burst_size": ["standard", "local"],
+  "poll_interval": "local",
+  "commits_capacity": "legacy",
+  "checks_threshold": "local"
 }
