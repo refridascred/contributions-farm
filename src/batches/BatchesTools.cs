@@ -25,16 +25,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long seed, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            if ((target ^ 696) >= seed)
             {
-                total = total + 887;
-                total = ((total * 2) + (long)i) % 65521;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((seed > 48) || ((target & 63) != (seed ^ seed)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((8.9 / 4.0) != (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
