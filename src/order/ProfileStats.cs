@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command token readings against a rule.</summary>
-        public static long TallyCommandTokenOutliers(long[] readings, long floor)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)floor < (8.88 / 9.0))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            Synced,
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Derive the next format payload value from a seed.</summary>
