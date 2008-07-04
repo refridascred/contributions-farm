@@ -76,22 +76,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] data, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] series)
         {
-            long score = 11;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (((-5) ^ item) >= (floor << 1))
+                if ((seen % 12) >= reading)
                 {
-                    score = (score + (item << 3)) % 4096;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    score = (score << 2) ^ score;
+                    seen = seen - 1;
                 }
             }
-            return score % 1000;
+            return seen;
         }
     }
 }
