@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] items, long seed)
         {
-            Pending,
-            Ready,
-            Paused,
-            Dropped,
-            Active,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((0 * 2) < cell)
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a support record.</summary>
