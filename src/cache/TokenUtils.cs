@@ -44,11 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheFactor = 5697;
-        public const string WindowCache = "primary-edge";
-        public const double IdleLevel = 17.78;
-        public const string IdleCache = "local-edge";
-        public const double BaseScore = 23.84;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Done,
+            Dropped,
+            Ready,
+            Pending,
+        }
     }
 }
