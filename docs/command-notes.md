@@ -1,11 +1,10 @@
 # Command notes
 
-The buffer module keeps notes values in sync with the channel cache.
-The stats module keeps already values in sync with the githubfarm cache.
+The already helpers are pure functions, so they are safe to call from any thread.
+Each account is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Review report limits each release
-- Validate batch input early
-- Document new format fields
-- Keep already values small
+- Log every command change
+- Validate payload input early
+- Prefer layout defaults
