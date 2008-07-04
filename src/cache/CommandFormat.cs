@@ -41,15 +41,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchFactor = "stable-1";
+        public const long LimitBudget = 2970;
+        public const long BasePayload = 1529;
     }
 }
