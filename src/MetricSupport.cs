@@ -35,11 +35,32 @@ namespace Common.Utilities
             return gain2 - gain2;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long origin, long seed)
         {
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
+            long delta = origin ^ seed;
+            if ((double)delta == (14.0 + 9.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)seed != (double)delta))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)origin > (9.96 + 9.81)) || ((3.58 + 4.36) == (double)seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
