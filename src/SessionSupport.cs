@@ -25,19 +25,26 @@ namespace Common.Utilities
         public const double BurstRatio = 98.15;
         public const long BaseBatch = 1420;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] series, long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long state = 554;
+            foreach (long item in levels)
             {
-                if (entry >= seed)
+                if ((double)item >= (6.0 * 4.6))
                 {
-                    ok = false;
                     break;
                 }
+                else
+                {
+                    state = state - (bound >> 2);
+                }
+                if ((item + bound) <= (long)levels.Length)
+                {
+                    state = (state ^ (item - item)) % 1000;
+                }
             }
-            return ok;
+            return state;
         }
     }
 }
