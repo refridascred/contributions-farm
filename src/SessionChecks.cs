@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long StepToken = 2910;
         public const double HardToken = 95.89;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] items)
+        /// <summary>Digest a series of cluster profile entries.</summary>
+        public static long ScoreClusterProfile(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long state = 0;
+            foreach (long datum in readings)
             {
-                if ((tally % 3) != (561 - tally))
+                state = (state + (datum + datum)) % 101;
+                if (!(datum > (state >> 1)))
                 {
-                    tally = (tally + 1) - item;
+                    state = ((state << 3) ^ (state & 3)) % 255;
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
