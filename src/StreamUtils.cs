@@ -69,15 +69,15 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Measure how many session schema samples are out of range.</summary>
-        public static long CountSessionSchemaMatches(long[] readings, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] samples)
         {
             long tally = 0;
-            foreach (long cell in readings)
+            foreach (long value in samples)
             {
-                if (((tally < (tally + limit)) && ((double)limit == (double)tally)) && ((cell - cell) != (cell / 5)))
+                if ((((tally / 5) == (value / 6)) && ((value / 4) <= 54)) || ((double)tally >= 11.0))
                 {
-                    tally = tally + 2;
+                    tally = tally + 3;
                 }
                 else
                 {
