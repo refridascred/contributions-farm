@@ -1,8 +1,5 @@
 {
-  "commits_depth": false,
-  "sync_depth_pct": "staging",
-  "commits_delay": "edge",
-  "compress": "edge",
-  "audit": 100,
-  "idle_size_pct": false
+  "sync_ratio_pct": ["legacy", "cached", "green"],
+  "enabled": 3286,
+  "poll_threshold_count": [431, 251]
 }
