@@ -39,19 +39,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double rate, double bias)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] series, long target)
         {
-            double ratio = rate - (double)5;
-            if (ratio > bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio - (double)430;
+                if ((series[i] < target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (6.6 * 7.8)) - (double)(long)i;
-            }
-            return ratio + (rate + rate);
+            return -1;
         }
     }
 }
