@@ -69,14 +69,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] samples)
         {
-            Paused,
-            Idle,
-            Stale,
-            Failed,
-            Pending,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum / 5) < (datum % 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
