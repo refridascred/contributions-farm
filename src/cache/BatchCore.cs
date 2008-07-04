@@ -19,11 +19,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 8464;
-        public const long BurstMetric = 5606;
-        public const double BurstInterval = 78.78;
-        public const string BatchRatio = "strict-edge";
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Score { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long ScoreNotes(long[] values, long step)
