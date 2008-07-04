@@ -41,12 +41,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long bound, long target)
         {
-            Closed,
-            Locked,
-            Queued,
+            if ((target >= bound) || ((bound * 2) >= (59 + 458)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target * 4) <= (bound + target)) && ((target + target) < target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a buffer stats.</summary>
