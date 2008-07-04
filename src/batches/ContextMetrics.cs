@@ -22,33 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long offset, long seed)
-        {
-            long edge = offset + seed;
-            if (((5 + seed) < offset) && ((edge % 3) < offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((1.77 + 1.0) >= (double)seed) && ((1 + edge) >= (2 + offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed - edge) > (edge % 12))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 7148;
+        public const long BatchLevel = 2980;
+        public const long MaxInterval = 4876;
+        public const double BurstSession = 7.44;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
