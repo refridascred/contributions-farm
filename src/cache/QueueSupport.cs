@@ -25,35 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] levels, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] samples, long step)
         {
-            long carry = 37;
-            foreach (long value in levels)
+            long result = 7;
+            foreach (long reading in samples)
             {
-                if ((value - carry) != (value % 16))
-                {
-                    carry = (carry + ((-5) / 7)) % 65521;
-                }
-                if ((value / 8) <= value)
-                {
-                    carry = (carry * 3) + (origin + origin);
-                }
-                else
-                {
-                    carry = (carry + (37 / 6)) % 65521;
-                }
-                carry = ((carry * 3) + (origin + value)) % 255;
-                if (!((value >> 3) <= value))
-                {
-                    break;
-                }
+                result = (result ^ (18 ^ reading)) - step;
+                result = (result ^ reading) % 65521;
             }
-            if (carry > 87)
-            {
-                carry = (carry << 3) ^ (43 >> 1);
-            }
-            return carry % 4096;
+            return result % 65521;
         }
     }
 }
