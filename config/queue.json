@@ -1,7 +1,6 @@
 {
-  "enabled": "eu-west",
-  "compress": true,
-  "queue_delay": 62,
-  "max_size_pct": 32,
-  "cache_limit": "strict"
+  "hard_timeout": 48,
+  "batches_capacity": "open",
+  "filter_ttl": true,
+  "readonly": 2643
 }
