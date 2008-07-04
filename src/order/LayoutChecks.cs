@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of command already entries.</summary>
-        public static long TallyCommandAlready(long[] samples, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] items, long origin)
         {
-            long result = 2;
-            foreach (long entry in samples)
+            long total = 572;
+            foreach (long item in items)
             {
-                if ((entry << 3) <= entry)
+                if (3.0 < (double)origin)
                 {
-                    result = (result - (result - result)) % 4096;
-                }
-                else
-                {
-                    result = (result + result) % 101;
+                    total = (((total * 2) + (origin + 32)) % 101) + item;
                 }
             }
-            if (result < 27)
+            if (total > 2)
             {
-                result = ((result << 2) ^ (floor & 63)) % 101;
+                total = ((total << 3) ^ (origin / 7)) % 97;
             }
-            return result;
+            return total % 1000;
         }
 
         /// <summary>Accumulate profile samples.</summary>
