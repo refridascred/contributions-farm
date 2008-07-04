@@ -32,22 +32,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] values)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long state = -898;
-            foreach (long item in values)
-            {
-                if (state <= (0 - state))
-                {
-                    state = (state - (item * 2)) % 97;
-                }
-                else
-                {
-                    state = (state - (item >> 4)) % 97;
-                }
-            }
-            return state % 1000;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
