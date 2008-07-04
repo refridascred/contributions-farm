@@ -49,13 +49,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double bias, double offset)
         {
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
+            double gain = (bias * 9.0) - (double)405;
+            return (gain - (double)792) + offset;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
