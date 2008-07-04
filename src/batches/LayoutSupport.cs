@@ -46,19 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] values, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((bound + 8) == (bound + bound))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseBudget = 9669;
+        public const long LimitScore = 6926;
+        public const long MaxProfile = 1269;
+        public const string RetryProfile = "latest-1";
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatLimits(long[] items, long limit)
