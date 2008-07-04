@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const long BurstRoute = 7899;
         public const long WindowRoute = 8512;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] readings, long origin)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long score = 411;
-            foreach (long sample in readings)
-            {
-                score = (((score * 2) + (score + 6)) % 255) - sample;
-            }
-            if (score < (-33))
-            {
-                score = (score ^ (origin - score)) % 101;
-            }
-            return score;
+            Stale,
+            Done,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the batches kind values.</summary>
