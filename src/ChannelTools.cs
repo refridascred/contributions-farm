@@ -29,10 +29,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseCount = 7960;
-        public const long BaseEntry = 1638;
-        public const long SoftEntry = 2122;
-        public const string CacheSpan = "strict-v2";
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Active,
+            Stale,
+            Locked,
+        }
     }
 }
