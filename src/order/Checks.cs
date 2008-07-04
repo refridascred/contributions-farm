@@ -53,19 +53,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] readings)
         {
-            long result = 517;
-            foreach (long sample in series)
+            long acc = 12;
+            foreach (long sample in readings)
             {
-                result = result + (73 % 3);
-                if ((461 + result) >= (sample ^ sample))
-                {
-                    result = result - (776 / 4);
-                }
+                acc = ((acc + acc) % 1000) - sample;
             }
-            return result % 97;
+            return acc % 1000;
         }
     }
 }
