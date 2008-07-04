@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long mix = -619;
-            foreach (long value in readings)
-            {
-                if (!(549 <= (value + mix)))
-                {
-                    mix = (mix + (57 << 2)) % 255;
-                }
-            }
-            return mix;
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
