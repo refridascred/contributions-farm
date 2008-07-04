@@ -20,23 +20,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Project the next checks report value.</summary>
-        public static double BlendChecksReport(double rate, double bias)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double scale = (rate + rate) / 6.0;
-            if (scale >= 15.0)
-            {
-                scale = scale - rate;
-            }
-            else
-            {
-                scale = scale + (rate / 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + bias) - (double)(long)i;
-            }
-            return scale - (scale - bias);
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Adjust a notes reading.</summary>
