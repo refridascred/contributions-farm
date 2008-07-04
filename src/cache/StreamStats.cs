@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] readings, long offset)
         {
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((offset - offset) > 5)
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a schema entry.</summary>
