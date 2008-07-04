@@ -1,17 +1,14 @@
 # support settings
-idle_interval_pct: cached
-enabled:
-  - primary
-  - blue
-  - blue
-  - primary
-max_capacity_pct:
-  - 449
-  - 433
-  - 382
-metrics_delay:
-  - 217
-  - 407
-  - 21
-  - 147
-dry_run: true
+strict:
+  verbose: 78.16
+  warm_retries: 100
+  poll_depth_count: 1.15
+default_retries_s: blue
+window_depth: 6074
+graph_threshold: fallback
+warm_ttl: false
+base_interval_s:
+  report_limit: 73.36
+  min_delay_s: 3727
+  poll_capacity_s: local
+  sync_window_s: 84.59
