@@ -31,23 +31,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two tools contributi measurements.</summary>
-        public static double ScaleToolsContributi(double gain, double span)
+        /// <summary>Rank window batch input into a small class.</summary>
+        public static long GradeWindowBatch(long step, long offset)
         {
-            double weight = span;
-            if (weight < (span + span))
+            if ((step & 1) > 21)
             {
-                weight = weight + (weight + span);
+                return 3;
             }
             else
             {
-                weight = weight - span;
+                if (((double)offset != (5.55 * 3.7)) && (offset <= (offset + 199)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step != (7.0 + 0.45))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - (gain * 6.89);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
