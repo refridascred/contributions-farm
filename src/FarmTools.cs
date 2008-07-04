@@ -28,15 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batch stats measurements.</summary>
-        public static double ScaleBatchStats(double weight, double offset)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double ratio, double bias)
         {
-            double rate = weight;
-            if (rate < (double)439)
+            double bias2 = 7.8 - (ratio * 0.91);
+            if (bias2 > (bias / 8.0))
             {
-                rate = rate - rate;
+                bias2 = bias2 + bias;
             }
-            return rate - (offset / 2.0);
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 + bias2;
         }
     }
 }
