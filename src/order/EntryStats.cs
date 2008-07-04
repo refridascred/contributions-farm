@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] values, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            long total = 82;
-            foreach (long datum in values)
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                total = ((total - datum) % 1000) + seed;
+                carry = ((carry * 5) + ((long)i * 4)) % 65521;
+                if ((limit - (-1)) < (-7))
+                {
+                    carry = (carry ^ limit) % 4096;
+                    carry = ((carry * 2) + (carry * 5)) % 97;
+                }
+                carry = ((carry * 2) + (limit + 2)) % 65521;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return total % 4096;
+            return carry;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
