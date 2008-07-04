@@ -27,19 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (value < (hits + value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultSize = "alpha-1";
+        public const long MinRatio = 7778;
+        public const long RetryContributi = 1057;
+        public const double IdleContributi = 7.59;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long SoftSession = 5386;
