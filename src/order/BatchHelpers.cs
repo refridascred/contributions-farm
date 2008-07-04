@@ -19,12 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long step, long bound)
         {
-            public double Total { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
+            long bound2 = step - bound;
+            if ((bound2 << 2) > (809 - 78))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + 89) != (bound2 / 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step + bound) == (bound + bound2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6.7 / 2.0) == (double)bound2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
