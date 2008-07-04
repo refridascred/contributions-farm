@@ -35,18 +35,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] series, long floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((floor + item) < (seen & 1)) && (((seen * 2) != (799 - (-89))) && ((double)(long)series.Length == (8.0 + 6.0))))
+                if (series[i] <= origin)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
