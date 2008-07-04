@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a layout report reading.</summary>
-        public static double ScaleLayoutReport(double weight, double offset)
+        /// <summary>Rank filter window input into a small class.</summary>
+        public static long BucketFilterWindow(long offset, long step)
         {
-            double weight2 = (double)1 + (double)756;
-            if (weight2 > (double)(-19))
+            if ((step % 12) != (offset / 2))
             {
-                weight2 = (weight2 - 0.4) - offset;
+                return 5;
             }
             else
             {
-                weight2 = weight2 + weight;
+                if ((5.0 * 3.32) != (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((92 + offset) >= (step & 127))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 - weight2) - (double)(long)i;
-            }
-            return weight2 + (double)(-9);
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
