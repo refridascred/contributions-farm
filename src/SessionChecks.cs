@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] series)
+        /// <summary>Accumulate checks report samples.</summary>
+        public static long CombineChecksReport(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 55;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)items.Length & 3) <= (reading + reading))
                 {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score << 3) ^ floor) % 1000;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Hold a stream summary.</summary>
