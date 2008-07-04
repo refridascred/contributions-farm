@@ -13,22 +13,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of account window entries.</summary>
-        public static long TallyAccountWindow(long[] levels, long origin)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
-            long mix = 613;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((10.0 / 3.0) != (double)mix) || (776 > (mix / 7)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix * 4) + (origin >> 2)) + reading;
-                }
-                else
-                {
-                    mix = ((mix * 4) + 7) % 65521;
+                    if ((values[i] + values[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
