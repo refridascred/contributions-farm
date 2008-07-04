@@ -19,13 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Check that every token stream entry stays within the limit.</summary>
+        public static bool CheckTokenStreamRange(long[] series, long origin)
         {
-            Synced,
-            Paused,
-            Closed,
-            Queued,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a batch stats.</summary>
