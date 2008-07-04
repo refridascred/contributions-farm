@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long seed, long seed2)
         {
-            public double Level { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            long diff = seed + seed2;
+            if ((seed + diff) == (seed + seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed + seed) == (seed - seed2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Blend two commits measurements.</summary>
