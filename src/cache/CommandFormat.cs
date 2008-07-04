@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] samples)
-        {
-            long state = 599;
-            foreach (long sample in samples)
-            {
-                if ((74 + sample) <= (state + state))
-                {
-                    state = state ^ (state + sample);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepTimeout = "legacy";
+        public const string LimitSize = "fallback";
+        public const double IdleFarm = 25.77;
+        public const double StepInterval = 78.54;
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] items)
