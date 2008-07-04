@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
-            public double Total { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Blend two schema measurements.</summary>
