@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy fallback staging primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-mode="${1:-strict}"
+mode="${1:-latest}"
 case "${mode}" in
-    staging)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=362
-log "limit is ${COMMAND_LIMIT}"
