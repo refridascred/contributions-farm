@@ -1,10 +1,12 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Each account is validated before it reaches the record queue.
+Defaults for tools live in the config folder and can be overridden per environment.
+Run the already check before changing any report limits.
+Use farm settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Log every command change
-- Validate payload input early
-- Prefer layout defaults
+- Document new commits fields
+- Validate route input early
+- Keep schema values small
+- Prefer context defaults
