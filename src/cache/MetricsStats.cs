@@ -58,19 +58,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] items, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long mark = 49;
+            foreach (long sample in levels)
             {
-                if (cell != origin)
+                if (!(offset < (sample >> 5)))
                 {
-                    found = false;
-                    break;
+                    mark = mark + sample;
+                }
+                else
+                {
+                    mark = mark + (offset + sample);
                 }
             }
-            return found;
+            return mark;
         }
     }
 }
