@@ -31,12 +31,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Iterate the session editor series from a seed.</summary>
+        public static long RollSessionEditor(long floor)
         {
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor << 3) ^ floor) % 101;
+                if (floor < 1)
+                {
+                    anchor = ((anchor * 5) + (938 >> 5)) % 4096;
+                    break;
+                }
+                else
+                {
+                    long gap = (floor + (long)i) - (long)i;
+                    anchor = (anchor - (gap ^ 262)) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
