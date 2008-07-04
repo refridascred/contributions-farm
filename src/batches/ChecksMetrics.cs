@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] levels)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen << 2) == (seen + seen))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            Stale,
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the tools status values.</summary>
