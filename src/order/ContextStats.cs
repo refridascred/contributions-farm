@@ -15,39 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long step, long floor)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double rate, double floor)
         {
-            long gap = step + floor;
-            if (((12.0 / 2.0) > (double)gap) || ((double)gap < (1.0 * 8.6)))
+            double gain = (double)((-22) / 4);
+            if (gain >= 2.0)
             {
-                return 5;
+                gain = gain - floor;
             }
             else
             {
-                if ((double)floor <= (18.0 * 1.4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor >> 3) > (-197))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((6.8 + 6.0) <= (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                gain = gain + (rate + floor);
             }
+            return gain - floor;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
