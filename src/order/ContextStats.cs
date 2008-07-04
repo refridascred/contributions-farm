@@ -39,19 +39,21 @@ namespace Common.Utilities
         public const long SoftWindow = 324;
         public const long RetryWindow = 63;
 
-        /// <summary>Blend two route report measurements.</summary>
-        public static double ProjectRouteReport(double gain, double bias)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            double mean = (bias / 9.0) * 8.9;
-            if (mean <= mean)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - (mean / 8.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + (bias + gain);
+            return matches;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
