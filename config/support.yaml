@@ -1,4 +1,32 @@
 # support settings
-hard_delay_count: open
-cache_timeout_count: false
-max_threshold_ms: false
+batch_threshold: edge
+queue_limit:
+  base_threshold_count: 50.62
+  poll_size_ms:
+    - strict
+    - legacy
+  burst_retries:
+    - 227
+    - 91
+    - 362
+    - 257
+  stats_capacity: strict
+min_capacity_ms:
+  persist:
+    idle_retries: fallback
+    batch_window_s: false
+    min_retries: 15.18
+    already_size:
+      - latest
+      - eu-west
+      - cached
+      - standard
+  cache_delay: true
+  burst_limit_count: 41
+  counter_retries:
+    commits_interval: staging
+    min_interval: 87.78
+    hard_delay_pct: false
+  audit: 60.94
+min_ratio_count: false
+default_interval: false
