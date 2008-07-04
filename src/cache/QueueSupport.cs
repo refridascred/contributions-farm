@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the commits queue series from a seed.</summary>
-        public static long IterateCommitsQueue(long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] samples, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
