@@ -49,22 +49,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((item * 2) == (7 - item)) || (step >= (step / 4)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftCount = 7081;
+        public const double WindowWidth = 21.07;
+        public const double WindowBatch = 25.19;
+        public const long StepTimeout = 477;
     }
 }
