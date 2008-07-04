@@ -42,9 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowRatio = 89.92;
-        public const long DefaultStats = 1276;
-        public const long IdleStats = 4229;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
