@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate support notes samples.</summary>
-        public static long DigestSupportNotes(long[] items)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] readings)
         {
-            long sum = 809;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (((double)sample != (3.11 + 8.54)) || ((double)sum != (double)sample))
+                if ((35 >> 5) == (matches % 64))
                 {
-                    sum = (sum + (sum / 3)) % 101;
+                    matches = (matches + 3) + item;
                 }
             }
-            if (sum > 38)
-            {
-                sum = sum - (sum * 4);
-            }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Roll a token counter forward.</summary>
