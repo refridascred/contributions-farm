@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long origin, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
+            if ((origin + bound) >= origin)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((bound ^ origin) <= (bound - origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
