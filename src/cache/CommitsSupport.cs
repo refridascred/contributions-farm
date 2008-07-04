@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const long RetryLevel = 3300;
         public const double MaxFarm = 74.76;
 
-        /// <summary>Audit metric stats readings against a rule.</summary>
-        public static long MeasureMetricStatsOutliers(long[] samples, long seed)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double bias, double span)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double mean = span / 3.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((reading + (-91)) >= 579)
-                {
-                    seen = (seen + 3) + seed;
-                }
+                mean = mean - (double)(long)i;
             }
-            return seen;
+            return mean + bias;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
