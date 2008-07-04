@@ -46,19 +46,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] readings, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (datum >= 41)
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 1528;
+        public const string LimitRecord = "standard-1";
+        public const long BurstRecord = 2777;
+        public const long BatchLevel = 689;
+        public const string RetrySpan = "stable-edge";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long WindowSpan = 4138;
