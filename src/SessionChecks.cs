@@ -29,19 +29,39 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double scale, double floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long origin, long target)
         {
-            double bias = 5.23 + 7.38;
-            if (bias < (double)(-270))
+            long span = origin ^ target;
+            if ((double)target > (3.1 / 4.0))
             {
-                bias = bias + floor;
+                return 4;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                bias = (bias - scale) + (double)(long)i;
+                if ((double)span == (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (span >= 31)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)origin > 8.23) || ((target - (-487)) > (span ^ span)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return bias - scale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
