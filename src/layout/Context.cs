@@ -38,11 +38,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two token tools measurements.</summary>
-        public static double SmoothTokenTools(double bias, double offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double ratio, double floor)
         {
-            double bias2 = (double)(-124) + (bias / 4.0);
-            return (bias2 - (double)96) + offset;
+            double bias = 20.0;
+            if (bias > (bias * 1.0))
+            {
+                bias = (bias + floor) + ratio;
+            }
+            return bias - (double)7;
         }
     }
 }
