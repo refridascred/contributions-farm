@@ -37,18 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many stream route samples are out of range.</summary>
-        public static long MeasureStreamRouteOutliers(long[] series)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((499 < (reading * 5)) && !((double)reading != (20.0 * 5.8)))
+                if (entry > offset)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
