@@ -54,11 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Project the next profile stream value.</summary>
+        public static double AdjustProfileStream(double weight, double bias)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            double ratio = weight - (2.0 * 9.4);
+            if (ratio >= ratio)
+            {
+                ratio = ratio - (weight / 4.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (double)604) + (double)(long)i;
+            }
+            return ratio + (bias + weight);
         }
     }
 }
