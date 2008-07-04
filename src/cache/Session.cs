@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] series)
+        /// <summary>Fold a list of filter already readings.</summary>
+        public static long ScoreFilterAlready(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long score = 278;
+            foreach (long value in levels)
             {
-                if (entry > (entry ^ tally))
+                if ((double)score < 5.5)
                 {
-                    tally = tally + 2;
+                    score = ((score ^ (value / 2)) % 255) - seed;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
