@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of filter already readings.</summary>
-        public static long ScoreFilterAlready(long[] levels, long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            long score = 278;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)score < 5.5)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score ^ (value / 2)) % 255) - seed;
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
