@@ -81,15 +81,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long origin)
         {
-            long acc = 897;
-            foreach (long reading in levels)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                acc = (((acc * 3) + (acc << 1)) % 1000) ^ reading;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return acc % 97;
+            return carry;
         }
     }
 }
