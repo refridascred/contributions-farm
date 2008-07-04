@@ -40,19 +40,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] values, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] readings)
         {
-            long acc = 22;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                acc = (((acc ^ (acc - acc)) % 255) ^ item) - step;
+                if ((107 + count) > (cell & 63))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (acc < 357)
-            {
-                acc = (acc * 5) + (8 + acc);
-            }
-            return acc;
+            return count;
         }
     }
 }
