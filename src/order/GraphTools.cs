@@ -53,11 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 8184;
-        public const long BurstFactor = 6125;
-        public const double WindowRoute = 82.22;
-        public const long IdleRoute = 2940;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public double Level { get; set; }
+            public double Weight { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] levels)
