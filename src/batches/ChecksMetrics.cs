@@ -52,21 +52,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up already report samples.</summary>
-        public static long OverlapAlreadyReportCount(long[] levels)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (readings[i] > seed)
                 {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
