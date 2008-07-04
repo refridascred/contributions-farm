@@ -64,38 +64,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long origin, long origin2)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] levels, long target)
         {
-            if ((origin + origin) <= (origin % 2))
+            long result = 67;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 5) < origin)
+                if ((target <= item) && (72 < target))
                 {
-                    return 0;
+                    result = (result + (result >> 5)) % 101;
                 }
-                else
+                if ((12 + 6) <= item)
                 {
-                    if (origin <= (origin2 + origin2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin2 >= (origin * 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Roll a format counter forward.</summary>
