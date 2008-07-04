@@ -53,21 +53,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample < floor)
                 {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
