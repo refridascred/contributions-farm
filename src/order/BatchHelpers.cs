@@ -32,18 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] levels, long offset)
+        /// <summary>Classify a record counter pair into a bucket.</summary>
+        public static long GradeRecordCounter(long step, long bound)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            if (6 >= step)
             {
-                if ((entry >> 1) >= (entry / 9))
+                return 7;
+            }
+            else
+            {
+                if (((step & 31) < (bound ^ bound)) && (step > (bound + step)))
                 {
-                    matches = (matches + 1) + offset;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
