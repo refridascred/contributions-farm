@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] readings, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
+                if (((-31) << 3) <= (hits ^ hits))
                 {
-                    return (long)i;
+                    hits = ((hits + 2) - value) - offset;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
