@@ -13,21 +13,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double gain, double bias)
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
+            double bias2 = (double)(719 + 7);
+            if (bias2 < (bias2 - 20.0))
             {
-                anchor = anchor - (limit << 3);
-                anchor = (anchor << 2) ^ (anchor + limit);
-                if (!!((anchor + 2) != (anchor - limit)))
-                {
-                    anchor = (anchor << 3) ^ ((long)i - anchor);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                bias2 = (bias2 - bias) + gain;
             }
-            return anchor;
+            return bias2 - (double)88;
         }
 
         /// <summary>Describe the channel phase values.</summary>
