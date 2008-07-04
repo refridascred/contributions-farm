@@ -54,19 +54,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] samples, long floor)
+        /// <summary>Digest a series of context tools entries.</summary>
+        public static long ScoreContextTools(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long state = 7;
+            foreach (long entry in items)
             {
-                if (item >= floor)
+                if ((entry + entry) < (limit << 1))
                 {
-                    ok = false;
-                    break;
+                    state = state + (18 + limit);
                 }
             }
-            return ok;
+            if (state > 51)
+            {
+                state = (state - (limit + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Count route entry pairs that satisfy a relation.</summary>
