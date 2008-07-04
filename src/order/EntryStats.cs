@@ -28,19 +28,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the session window entries that pass the check.</summary>
-        public static long TallySessionWindowGaps(long[] items, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!((20.0 + 19.0) >= (double)cell))
-                {
-                    hits = (hits + 1) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 5321;
+        public const double SoftDepth = 71.31;
+        public const long SoftRatio = 783;
+        public const long CacheCommits = 3416;
+        public const string MinInterval = "alpha-1";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinGithubfarm = 815;
