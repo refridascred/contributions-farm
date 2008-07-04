@@ -32,18 +32,10 @@ namespace Common.Utilities
             return (drift - (ratio * 5.6)) + offset;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (reading > ((long)items.Length ^ reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 5829;
+        public const double StepCount = 75.82;
+        public const long BurstProfile = 5405;
+        public const double StepProfile = 25.56;
     }
 }
