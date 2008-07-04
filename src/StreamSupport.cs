@@ -18,38 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a already cache value against two limits.</summary>
-        public static long SortAlreadyCache(long step, long target)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            if ((double)target > (3.08 / 9.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step ^ 35) != (target >> 4)) && ((92 + target) < (target / 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step >= (14.0 * 16.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step ^ target) < (133 + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
