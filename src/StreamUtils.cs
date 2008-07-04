@@ -19,19 +19,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every token stream entry stays within the limit.</summary>
-        public static bool CheckTokenStreamRange(long[] series, long origin)
+        /// <summary>Digest a series of layout counter entries.</summary>
+        public static long TotalLayoutCounter(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long acc = 44;
+            foreach (long entry in samples)
             {
-                if (datum < origin)
+                for (int i = 0; i < 10; i++)
                 {
-                    ok = false;
+                    acc = ((acc + (origin % 2)) % 4096) + (long)i;
+                }
+                acc = (acc - acc) % 255;
+                if ((entry / 4) >= (origin ^ acc))
+                {
                     break;
                 }
             }
-            return ok;
+            if (acc > 6)
+            {
+                acc = acc - (origin & 3);
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a batch stats.</summary>
