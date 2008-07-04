@@ -12,18 +12,18 @@ namespace Common.Utilities
             return scale + (ratio - offset);
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] samples, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((tally + tally) <= item)
+                if ((bound % 2) > (bound / 3))
                 {
-                    tally = (tally + 2) + floor;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Project the next contributi value.</summary>
