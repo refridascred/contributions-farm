@@ -1,5 +1,21 @@
 # entry settings
-base_interval_ms: 85.63
-batch_limit: 250
-token_window: true
-compress: 27.85
+enabled: 7518
+retry_delay: true
+readonly: 71.14
+sync_retries_count:
+  persist: 100
+  session_window: false
+  sync_capacity_ms:
+    poll_ratio_s: 500
+    account_ratio: stable
+    batch_ttl_ms:
+      - 315
+      - 177
+  checks_delay: 48.67
+  soft_ratio_ms:
+    - primary
+    - cached
+    - fallback
+    - edge
+base_interval: false
+batch_size_pct: 7383
