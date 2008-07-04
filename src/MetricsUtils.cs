@@ -45,14 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] data, long offset)
         {
-            Synced,
-            Queued,
-            Draft,
-            Failed,
-            Locked,
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
