@@ -55,14 +55,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] values)
         {
-            Dropped,
-            Synced,
-            Stale,
-            Closed,
-            Active,
+            long result = 611;
+            foreach (long value in values)
+            {
+                result = ((result << 3) ^ (result % 2)) % 4096;
+                if (!((result + value) > (value / 9)))
+                {
+                    result = (result - value) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a graph record.</summary>
