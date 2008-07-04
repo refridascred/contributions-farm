@@ -46,11 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public double Rank { get; set; }
-            public double Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
