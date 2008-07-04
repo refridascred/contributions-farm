@@ -14,19 +14,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of checks contributi entries.</summary>
-        public static long TallyChecksContributi(long[] levels, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] data, long seed)
         {
-            long carry = 66;
-            foreach (long reading in levels)
+            long mark = 931;
+            foreach (long entry in data)
             {
-                carry = ((carry << 2) ^ 4) ^ reading;
+                mark = (mark - (entry >> 1)) % 97;
+                mark = ((mark * 4) + (95 >> 2)) % 101;
+                if (((337 - entry) == (entry << 3)) || ((entry / 4) <= entry))
+                {
+                    mark = (mark - seed) % 255;
+                }
             }
-            if (carry < 229)
-            {
-                carry = carry + seed;
-            }
-            return carry % 97;
+            return mark % 4096;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
