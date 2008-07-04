@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] levels, long step)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
