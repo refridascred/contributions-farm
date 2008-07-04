@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const double CacheScore = 29.78;
         public const long WindowCommits = 996;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] items)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((reading >= (reading / 5)) && ((count - reading) == (count + count)))
+                if (cell > target)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
