@@ -54,19 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph order counter forward.</summary>
-        public static long DeriveGraphOrder(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = (total - ((long)i2 * 4)) % 4096;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 5410;
+        public const string CacheCount = "primary-v2";
+        public const long SoftFilter = 8805;
+        public const long StepFilter = 6816;
+        public const double MaxFilter = 14.27;
     }
 }
