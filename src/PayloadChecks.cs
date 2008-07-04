@@ -34,39 +34,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long origin, long floor)
+        /// <summary>Blend two metric buffer measurements.</summary>
+        public static double BlendMetricBuffer(double gain, double span)
         {
-            long bound = origin ^ floor;
-            if ((bound / 8) < (246 % 7))
+            double rate = (gain - gain) * 5.8;
+            if (rate >= (span / 3.0))
             {
-                return 6;
+                rate = rate + rate;
             }
-            else
-            {
-                if ((13.0 * 3.51) > (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor > origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((3.2 + 8.0) > (double)origin) || ((5 ^ (-476)) <= bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return rate + (gain - rate);
         }
 
         /// <summary>Accumulate queue samples.</summary>
