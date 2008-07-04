@@ -55,19 +55,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] levels, long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long floor)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long step2 = step - floor;
+            if ((floor - floor) < (step2 + floor))
             {
-                if (reading >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((double)267 >= (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((step << 1) > (step - step2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8.76 / 2.0) > (double)step2)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
