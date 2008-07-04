@@ -54,15 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long sum = 358;
-            foreach (long reading in data)
-            {
-                sum = sum ^ (reading + reading);
-            }
-            return sum;
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
