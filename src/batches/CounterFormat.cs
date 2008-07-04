@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardLevel = 54.48;
-        public const string CacheSize = "local";
-        public const double IdleRatio = 70.99;
-        public const long HardStream = 8334;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long RankNotes(long origin, long offset)
