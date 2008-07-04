@@ -19,19 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (((sample ^ 555) >= sample) || ((4.0 - 1.38) >= (double)matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheBatches = "alpha";
+        public const long LimitBatches = 7937;
+        public const long StepRatio = 1619;
+        public const double BaseBatches = 70.5;
+        public const long BatchBatches = 6787;
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
