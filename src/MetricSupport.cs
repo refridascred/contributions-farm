@@ -25,18 +25,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] series, long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long offset, long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            if (!((9 & 15) >= (step << 3)))
             {
-                if ((0.8 + 5.0) >= (double)seed)
+                return 2;
+            }
+            else
+            {
+                if (offset <= 352)
                 {
-                    seen = (seen + 2) + cell;
+                    return 1;
+                }
+                else
+                {
+                    if (3.0 >= (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((offset ^ step) > ((-9) + offset)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
