@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of notes support entries.</summary>
-        public static long ScoreNotesSupport(long[] samples)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] readings)
         {
-            long mark = 582;
-            foreach (long datum in samples)
+            long total = 86;
+            foreach (long cell in readings)
             {
-                if (((mark * 2) <= (mark + datum)) || ((730 & 7) == ((long)samples.Length + mark)))
+                if ((double)361 > (double)total)
                 {
-                    mark = (mark ^ (datum + datum)) % 4096;
+                    total = ((total << 3) ^ (71 - cell)) % 65521;
                 }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
