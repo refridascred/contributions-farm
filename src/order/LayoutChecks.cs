@@ -41,19 +41,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] levels, long limit)
         {
-            long score = 21;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((value - score) >= ((-2) >> 1))
+                if (item > (item * 3))
                 {
-                    score = ((score * 5) + ((-69) / 5)) % 4096;
+                    count = (count + 2) - limit;
                 }
-                score = (score ^ (98 >> 3)) % 1000;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
