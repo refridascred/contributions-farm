@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine route tools values into a single score.</summary>
-        public static long FoldRouteTools(long[] items, long origin)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] data)
         {
-            long result = 29;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)(long)items.Length < (double)result)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result - (result % 24)) % 101) - origin;
-                }
-                else
-                {
-                    result = result - (datum << 3);
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Compare every pair of payload filter readings.</summary>
