@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long seed, long seed2)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long diff = seed + seed2;
-            if ((seed + diff) == (seed + seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed + seed) == (seed - seed2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Queued,
+            Pending,
         }
 
         /// <summary>Blend two commits measurements.</summary>
