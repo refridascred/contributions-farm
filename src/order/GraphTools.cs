@@ -31,10 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchCommand = 94.8;
-        public const long MaxLevel = 5378;
-        public const string MinFactor = "primary-1";
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TallyChecks(long[] values, long floor)
