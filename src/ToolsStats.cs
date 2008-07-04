@@ -44,13 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
+        public static long CountGithubfarmCounterOutliers(long[] values, long offset)
         {
-            Failed,
-            Ready,
-            Draft,
-            Paused,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!((reading ^ reading) < reading))
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
