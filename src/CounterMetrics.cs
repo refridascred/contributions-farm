@@ -27,19 +27,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Measure how many account buffer samples are out of range.</summary>
+        public static long TallyAccountBufferOutliers(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((6.0 + 17.0) == (double)step)
+                if (!(((seen * 4) <= 1) || (seen <= (seen << 2))))
                 {
-                    acc = (acc * 2) + ((-3) >> 1);
+                    seen = (seen + 2) - reading;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Blend two notes checks measurements.</summary>
