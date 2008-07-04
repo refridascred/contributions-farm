@@ -22,17 +22,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first cluster commits entry that matches the target.</summary>
-        public static long LookupClusterCommitsIndex(long[] data, long target)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Locked,
+            Closed,
+            Dropped,
         }
     }
 }
