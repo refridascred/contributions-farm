@@ -34,12 +34,13 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            Queued,
+            Paused,
+            Synced,
+            Ready,
         }
     }
 }
