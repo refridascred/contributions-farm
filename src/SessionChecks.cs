@@ -19,13 +19,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (value >= (6 - count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the support mode values.</summary>
