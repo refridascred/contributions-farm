@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleBudget = "local-v2";
-        public const long StepTimeout = 2357;
-        public const string MinSize = "alpha-1";
-        public const string DefaultCache = "legacy-1";
-        public const long MinCache = 7241;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Active,
+            Closed,
+            Pending,
+            Done,
+            Failed,
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
