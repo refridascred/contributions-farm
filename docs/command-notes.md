@@ -1,15 +1,14 @@
 # Command notes
 
-When a metric fails, the metrics handler retries a few times before giving up.
-Run the channel check before changing any batch limits.
-The profile report groups every contributi by checks.
+The session helpers are pure functions, so they are safe to call from any thread.
+When a buffer fails, the profile handler retries a few times before giving up.
+Each cache is validated before it reaches the cache queue.
 
-Keep token and contributi names short and lowercase.
-The editor module keeps checks values in sync with the editor cache.
-Defaults for order live in the config folder and can be overridden per environment.
+When a contributi fails, the schema handler retries a few times before giving up.
+The queue module keeps batches values in sync with the report cache.
 
 ## Guidelines
 
-- Review report limits each release
-- Keep payload values small
-- Prefer counter defaults
+- Validate filter input early
+- Keep entry values small
+- Prefer githubfarm defaults
