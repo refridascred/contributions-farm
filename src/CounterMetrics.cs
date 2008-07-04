@@ -20,11 +20,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardScore = 8926;
-        public const double SoftBuffer = 41.72;
-        public const long IdleBuffer = 1524;
-        public const double HardBuffer = 45.21;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] series)
+        {
+            long mark = 75;
+            foreach (long value in series)
+            {
+                if ((double)mark != (double)value)
+                {
+                    mark = (mark - (mark ^ value)) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (value / 3)) % 4096;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheCommand = 1467;
