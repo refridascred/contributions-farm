@@ -42,12 +42,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Dropped,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchRatio = 3911;
+        public const long BurstBudget = 8832;
+        public const string RetryBudget = "stable-1";
+        public const string CacheSize = "legacy-edge";
     }
 }
