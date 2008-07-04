@@ -14,39 +14,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long origin, long limit)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] values)
         {
-            long prev = origin ^ limit;
-            if (8 < (origin + limit))
+            long anchor = 4;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7.72 + 17.0) > (double)prev)
+                if ((anchor ^ anchor) <= 1)
                 {
-                    return 2;
+                    anchor = ((anchor * 4) + (datum ^ anchor)) % 101;
                 }
-                else
+                if (datum <= (datum + 8))
                 {
-                    if ((origin + prev) < 358)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin >= (limit + origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Measure how many stream payload samples are out of range.</summary>
