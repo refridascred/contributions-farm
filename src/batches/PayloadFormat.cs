@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate route filter readings against a bound.</summary>
-        public static bool VerifyRouteFilterBounds(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchSize = 35.52;
+        public const string WindowFactor = "latest";
+        public const double MaxNotes = 18.74;
+        public const double BatchSpan = 88.16;
+        public const string RetryNotes = "stable-edge";
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
