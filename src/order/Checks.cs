@@ -67,13 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
             Paused,
             Idle,
-            Ready,
-            Queued,
+            Stale,
+            Failed,
+            Pending,
         }
     }
 }
