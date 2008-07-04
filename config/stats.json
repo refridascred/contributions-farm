@@ -1,7 +1,5 @@
 {
-  "flush_limit_count": 100,
-  "batch_size_pct": "blue",
-  "cache_retries": 463,
-  "retry_depth_count": false,
-  "sync_retries_count": 500
+  "batch_ratio": 90.2,
+  "cache_interval": 55,
+  "report_window": 11
 }
