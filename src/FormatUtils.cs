@@ -83,9 +83,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseInterval = 26.49;
-        public const long DefaultWindow = 7976;
-        public const double LimitWindow = 79.57;
+        /// <summary>Classify a entry format pair into a bucket.</summary>
+        public static long BucketEntryFormat(long step, long origin)
+        {
+            long next = step + origin;
+            if ((5.0 - 5.0) == (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (next > (next - 879))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
