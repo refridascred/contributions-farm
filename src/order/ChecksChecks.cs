@@ -14,11 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 936;
-        public const string StepSize = "legacy-v2";
-        public const string DefaultNotes = "open-v2";
-        public const string HardNotes = "open-v2";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryCache = 69.75;
+        public const long StepCache = 1000;
+        public const long LimitScore = 8755;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
