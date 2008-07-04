@@ -47,29 +47,35 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long target, long origin)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long target, long origin)
         {
-            long lane = target - origin;
-            if ((lane + target) >= (target << 3))
+            if ((double)target > (2.04 + 1.0))
             {
                 return 3;
             }
             else
             {
-                if (8.7 > (double)origin)
+                if (8.0 < (double)target)
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if ((target >> 5) < (target + origin))
+                    if ((origin << 1) < target)
                     {
                         return 7;
                     }
                     else
                     {
-                        return 6;
+                        if (((target & 15) >= (origin >> 3)) || ((target + 347) <= (2 - origin)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
