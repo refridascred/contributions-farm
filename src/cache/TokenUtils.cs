@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] levels, long limit)
         {
-            Closed,
-            Synced,
-            Draft,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum > (double)limit)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
