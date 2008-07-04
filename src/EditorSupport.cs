@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] values, long step)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
