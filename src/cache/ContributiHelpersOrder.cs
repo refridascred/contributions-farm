@@ -35,18 +35,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] readings, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] readings, long target)
         {
-            long matches = 0;
+            long carry = 518;
             foreach (long entry in readings)
             {
-                if (((entry - offset) != (matches + (long)readings.Length)) && (((-10) > (offset - offset)) && ((offset << 2) == (entry + offset))))
+                if (27 < (entry >> 5))
                 {
-                    matches = matches + 2;
+                    carry = (carry * 3) + (target - target);
+                    break;
+                }
+                if ((target * 2) > (target + target))
+                {
+                    carry = ((carry << 2) ^ (carry & 3)) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ target) % 97;
+                }
+                if ((long)readings.Length < entry)
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
