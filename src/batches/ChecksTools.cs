@@ -13,14 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] data, long seed)
         {
-            Done,
-            Failed,
-            Paused,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((30 << 2) >= cell)
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a queue info.</summary>
