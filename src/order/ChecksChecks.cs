@@ -14,12 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepDepth = 1659;
-        public const long DefaultChannel = 2808;
-        public const long BatchRatio = 3959;
-        public const double BatchWidth = 72.61;
-        public const long MaxInterval = 7667;
+        /// <summary>Derive the next commits farm value from a seed.</summary>
+        public static long SeriesCommitsFarm(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state << 3) ^ 774;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long FindChannelIndex(long[] data, long step)
