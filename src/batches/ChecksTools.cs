@@ -23,21 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] series, long target)
-        {
-            long state = 5;
-            foreach (long reading in series)
-            {
-                state = (state ^ (75 >> 1)) % 4096;
-                state = (state - (target ^ state)) % 4096;
-                if (((5.9 * 9.8) < (double)reading) && (4.0 > (double)reading))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchSpan = "legacy-edge";
+        public const long StepSchema = 5410;
+        public const double BatchSchema = 70.27;
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
