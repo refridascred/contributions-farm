@@ -19,11 +19,15 @@ namespace Common.Utilities
         public const long BaseScore = 4785;
         public const double IdleLevel = 42.58;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double weight, double bias)
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            double weight2 = 1.0;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = ((weight2 - (weight2 / 8.0)) + (double)(long)i) - bias;
+            }
+            return weight2 + weight;
         }
     }
 }
