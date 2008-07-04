@@ -23,13 +23,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Done,
+            Ready,
             Queued,
-            Active,
-            Pending,
+            Idle,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Project the next order value.</summary>
