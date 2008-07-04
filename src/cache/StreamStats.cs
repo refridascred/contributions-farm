@@ -22,15 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long step)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] levels, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (sample < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
