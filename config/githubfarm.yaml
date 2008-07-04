@@ -1,32 +1,9 @@
 # githubfarm settings
-persist:
+batch_capacity_s:
   - legacy
-  - eu-west
-queue_threshold:
-  command_limit: green
-  enabled: primary
-  sync_ttl: staging
-  payload_retries:
-    audit:
-      - 195
-      - 259
-      - 277
-      - 126
-    hard_retries:
-      - 232
-      - 365
-    default_capacity: latest
-    compress:
-      - 377
-      - 223
-      - 399
-    stream_delay: open
-    enabled: primary
-  batch_delay_s:
-    - 281
-    - 130
-  batch_window_pct: 8395
-hard_retries_ms: standard
-flush_delay: 49
-flush_ratio_ms: 7265
-max_capacity: cached
+  - latest
+  - legacy
+compress: 1024
+metric_capacity: 23.73
+base_window: 13.18
+base_depth_pct: 12.24
