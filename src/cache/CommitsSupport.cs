@@ -20,20 +20,11 @@ namespace Common.Utilities
             return (mean + span) + ratio;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double scale, double bias)
-        {
-            double ratio = (double)(2 % 8);
-            if (ratio < bias)
-            {
-                ratio = (ratio + (bias * 7.0)) - scale;
-            }
-            else
-            {
-                ratio = ratio + 10.0;
-            }
-            return ratio + (ratio - ratio);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxLevel = 995;
+        public const long HardFarm = 5074;
+        public const long RetryLevel = 3300;
+        public const double MaxFarm = 74.76;
 
         /// <summary>Audit metric stats readings against a rule.</summary>
         public static long MeasureMetricStatsOutliers(long[] samples, long seed)
