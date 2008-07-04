@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Measure how many report route samples are out of range.</summary>
+        public static long AuditReportRouteMatches(long[] readings)
         {
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)count <= (20.0 + 1.6))
+                {
+                    count = (count + 2) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of layout channel readings.</summary>
