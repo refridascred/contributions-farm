@@ -66,17 +66,18 @@ namespace Common.Utilities
         public const double DefaultSpan = 92.38;
         public const long WindowInterval = 9750;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] values, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 973;
+            foreach (long cell in levels)
             {
-                if (values[i] < bound)
+                if (6.9 > (double)cell)
                 {
-                    return (long)i;
+                    result = ((result * 3) + (550 + result)) % 1000;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
