@@ -14,22 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 4926;
+        public const long BatchChecks = 5388;
+        public const long MaxChecks = 358;
+        public const long MinCount = 4923;
+        public const long BatchDepth = 58;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LocateStatsIndex(long[] samples, long floor)
