@@ -29,12 +29,14 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Dropped,
+            Idle,
+            Draft,
+            New,
+            Stale,
             Pending,
-            Queued,
         }
     }
 }
