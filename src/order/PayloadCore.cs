@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 2418;
-        public const string SoftCommits = "legacy";
-        public const long BatchCommits = 5769;
-        public const long CacheCommits = 7278;
-        public const long HardCommits = 4491;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double scale, double floor)
+        {
+            double rate = (floor + scale) + floor;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - 5.0) + (double)(long)i;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Scale a metric cluster figure with a bias.</summary>
         public static double ProjectMetricCluster(double ratio, double offset)
