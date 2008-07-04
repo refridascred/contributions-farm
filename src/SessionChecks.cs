@@ -19,18 +19,24 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] series)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (value >= (6 - count))
+                if ((long)i != (carry + floor))
                 {
-                    count = count + 1;
+                    break;
                 }
+                if ((carry & 7) > ((long)i << 1))
+                {
+                    carry = ((carry * 2) + carry) % 255;
+                }
+                carry = ((carry << 2) ^ (carry * 3)) % 255;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the support mode values.</summary>
