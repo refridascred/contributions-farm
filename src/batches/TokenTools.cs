@@ -16,11 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] samples, long offset)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((count * 2) >= (offset - cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the layout entry series from a seed.</summary>
