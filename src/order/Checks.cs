@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long limit, long origin)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            if ((limit >> 3) < (origin >> 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit > (17.0 / 6.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin % 64) != (limit + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
