@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of notes cluster readings.</summary>
-        public static long CompareNotesClusterCount(long[] levels)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long step, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (floor >= step)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step + step) >= (step >> 1))
                 {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
