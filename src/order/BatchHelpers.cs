@@ -32,24 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record counter pair into a bucket.</summary>
-        public static long GradeRecordCounter(long step, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] values)
         {
-            if (6 >= step)
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((step & 31) < (bound ^ bound)) && (step > (bound + step)))
+                if ((double)9 <= (double)hits)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 3) ^ item;
                 }
             }
+            return hits;
         }
     }
 }
