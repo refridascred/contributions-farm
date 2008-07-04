@@ -1,16 +1,5 @@
 {
-  "strict": 22.06,
-  "batch_ratio_pct": 98,
-  "persist": 500,
-  "hard_size_count": {
-    "githubfarm_interval": ["green", "legacy", "local", "latest"],
-    "dry_run": "primary",
-    "cache_delay_ms": 14,
-    "schema_capacity": true,
-    "soft_delay_s": {
-      "warm_depth_count": ["green", "blue", "blue", "edge"],
-      "max_depth_s": "local",
-      "flush_delay_pct": "strict"
-    }
-  }
+  "persist": "staging",
+  "enabled": "staging",
+  "retry_window": [323, 131, 58]
 }
