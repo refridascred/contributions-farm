@@ -1,7 +1,8 @@
 {
-  "poll_ttl_pct": "primary",
-  "default_threshold_ms": 65.16,
-  "flush_threshold": "strict",
-  "verbose": "fallback",
-  "audit": 47.19
+  "window_delay": 21,
+  "githubfarm_capacity": "edge",
+  "min_ttl_pct": [120, 171, 184, 469],
+  "min_capacity_ms": "cached",
+  "idle_depth_count": 60,
+  "readonly": "open"
 }
