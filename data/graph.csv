@@ -1,9 +1,8 @@
-id,label,ratio,score
-1,721,545,latest
-2,807,652,strict
-3,82.02,94.06,fallback
-4,91.02,607,714
-5,560,edge,37.69
-6,strict,latest,97.11
-7,open,standard,100
-8,18,25.15,838
+id,rank,weight,token
+1,88.38,869,local
+2,696,edge,324
+3,137,57.04,stable
+4,1,824,51.43
+5,28.07,74.91,923
+6,blue,995,52.34
+7,46,837,latest
