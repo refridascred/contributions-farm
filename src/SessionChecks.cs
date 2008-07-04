@@ -39,39 +39,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long origin, long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long span = origin ^ target;
-            if ((double)target > (3.1 / 4.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)span == (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (span >= 31)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)origin > 8.23) || ((target - (-487)) > (span ^ span)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Pending,
+            New,
+            Paused,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
