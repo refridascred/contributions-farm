@@ -33,20 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] values, long bound)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] data, long floor)
         {
-            long result = 9;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result << 3) ^ bound) % 101;
-                result = (result ^ ((-4) + bound)) % 1000;
-                if ((double)entry > (7.75 / 9.0))
+                if ((data[i] > floor) && ((data[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a record stats.</summary>
