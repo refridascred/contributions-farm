@@ -46,19 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile stream value.</summary>
-        public static double AdjustProfileStream(double weight, double bias)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double rate, double bias)
         {
-            double ratio = weight - (2.0 * 9.4);
-            if (ratio >= ratio)
+            double ratio = rate - (double)5;
+            if (ratio > bias)
             {
-                ratio = ratio - (weight / 4.0);
+                ratio = ratio - (double)430;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 8; i++)
             {
-                ratio = (ratio - (double)604) + (double)(long)i;
+                ratio = (ratio + (6.6 * 7.8)) - (double)(long)i;
             }
-            return ratio + (bias + weight);
+            return ratio + (rate + rate);
         }
     }
 }
