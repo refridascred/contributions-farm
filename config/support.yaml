@@ -1,15 +1,9 @@
 # support settings
-audit: 1006
-base_ratio_count:
-  dry_run:
-    - 88
-    - 233
-    - 43
-  soft_interval_pct: primary
-  soft_limit: 73.91
-  warm_delay_count:
-    base_threshold_pct: 29.64
-    counter_delay: edge
-    sync_depth: 5288
-  max_threshold_s: green
-soft_depth: open
+layout_limit:
+  - 60
+  - 238
+  - 365
+  - 316
+queue_depth: true
+hard_threshold_pct: 65.59
+base_size_count: staging
