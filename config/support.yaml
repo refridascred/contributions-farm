@@ -1,14 +1,13 @@
 # support settings
-schema_timeout: fallback
-cache_retries_pct:
-  burst_limit: 31
-  sync_depth_count: 86.9
-  hard_limit: 30
-  hard_size: eu-west
-  audit:
-    - standard
-    - staging
-    - blue
-idle_interval: 71
-base_size_count: 36
-audit: 72
+persist: false
+counter_threshold:
+  checks_depth: 8163
+  batches_limit: 1924
+  flush_limit_pct: local
+  retry_capacity_s: 55
+  cache_timeout_s: primary
+  warm_delay: edge
+cache_timeout: primary
+min_window_s: primary
+burst_timeout_s: true
+checks_size: true
