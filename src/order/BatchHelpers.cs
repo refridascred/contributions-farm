@@ -32,18 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] values)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)9 <= (double)hits)
-                {
-                    hits = (hits + 3) ^ item;
-                }
+                anchor = (anchor << 3) ^ 498;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
     }
 }
