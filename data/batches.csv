@@ -1,7 +1,9 @@
-id,rank,ratio
-1,850,local
-2,22.81,75.72
-3,49.86,783
-4,156,81.11
-5,650,126
-6,838,29
+id,label,token
+1,61.97,latest
+2,eu-west,621
+3,standard,849
+4,53.78,eu-west
+5,940,standard
+6,554,814
+7,primary,68.41
+8,67.93,66.3
