@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell << 2) < (count * 3)) && !((count / 9) < (count + floor)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 3414;
+        public const long WindowChecks = 8318;
+        public const string RetryBudget = "primary";
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double BlendContext(double weight, double offset)
