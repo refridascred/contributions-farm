@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long seed, long limit)
+        /// <summary>Count githubfarm graph pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmGraphCount(long[] levels)
         {
-            if ((5.3 + 16.0) == (double)seed)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + 286) >= (291 + limit))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit << 2) == (916 + limit))
+                    if ((levels[i] ^ levels[j]) > 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the context mode values.</summary>
