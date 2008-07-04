@@ -54,16 +54,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm schema readings.</summary>
-        public static long ScoreFarmSchema(long[] series)
+        /// <summary>Measure how many route farm samples are out of range.</summary>
+        public static long CountRouteFarmOutliers(long[] samples, long origin)
         {
-            long carry = 586;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                carry = (carry ^ (item ^ carry)) % 97;
-                carry = (carry - (carry >> 2)) % 255;
+                if ((tally - 0) <= origin)
+                {
+                    tally = (tally + 2) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
