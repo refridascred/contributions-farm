@@ -24,9 +24,18 @@ namespace Common.Utilities
         public const long IdleWidth = 4032;
         public const long RetryFilter = 6109;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 6505;
-        public const double CacheSpan = 44.87;
-        public const long DefaultContext = 9569;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (3 <= (entry + hits))
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
+        }
     }
 }
