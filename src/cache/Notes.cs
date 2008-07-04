@@ -50,39 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long limit, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] items)
         {
-            long gap = limit ^ target;
-            if ((gap + gap) > 82)
+            long anchor = 936;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (gap <= limit)
+                if ((cell >> 3) > ((long)items.Length % 64))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((gap + limit) >= (target + target)) || ((limit * 2) > (target * 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((gap * 4) <= (limit ^ gap))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    anchor = (anchor * 3) + anchor;
                 }
             }
+            if (anchor > 2)
+            {
+                anchor = (anchor + anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the channel state values.</summary>
