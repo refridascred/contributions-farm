@@ -33,11 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Classify a graph metric pair into a bucket.</summary>
+        public static long SortGraphMetric(long offset, long step)
         {
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
+            long edge = offset ^ step;
+            if (4.0 <= (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((edge ^ edge) < edge)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the counter phase values.</summary>
