@@ -53,24 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long step, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] values, long floor)
         {
-            if ((9.1 - 5.61) <= (double)limit)
+            bool valid = true;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (step > (step + limit))
+                if (item >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
