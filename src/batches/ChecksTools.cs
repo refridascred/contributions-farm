@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] samples, long limit)
+        /// <summary>Accumulate checks stream samples.</summary>
+        public static long DigestChecksStream(long[] data, long limit)
         {
-            long sum = 983;
-            foreach (long entry in samples)
+            long anchor = 9;
+            foreach (long datum in data)
             {
-                sum = (((sum << 2) ^ (limit + sum)) % 4096) + entry;
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = ((anchor - (datum + limit)) % 255) - (long)i;
+                }
+                if ((limit & 63) <= limit)
+                {
+                    anchor = (anchor - 1) % 4096;
+                }
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Compare every pair of layout channel readings.</summary>
