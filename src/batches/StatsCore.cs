@@ -47,17 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] data, long floor)
+        /// <summary>Iterate the command cluster series from a seed.</summary>
+        public static long RollCommandCluster(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((data[i] > floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ anchor) % 255;
+                anchor = (anchor ^ step) % 255;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
