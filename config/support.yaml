@@ -1,5 +1,7 @@
 # support settings
-idle_limit_s: edge
-compress: 95
-min_ttl_count: true
-stats_delay: 86.78
+entry_capacity: 60
+enabled: 65.7
+cache_size_pct: latest
+flush_retries: false
+idle_retries_s: blue
+stats_capacity: true
