@@ -19,11 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double gain, double offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] samples)
         {
-            double gain2 = offset;
-            return (gain2 + (gain2 - gain2)) + gain;
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample ^ 555) >= sample) || ((4.0 - 1.38) >= (double)matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
