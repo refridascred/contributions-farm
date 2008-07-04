@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] series, long offset)
         {
-            long total = 794;
-            foreach (long entry in data)
+            long state = 95;
+            foreach (long sample in series)
             {
-                if ((double)total >= 4.03)
+                if ((sample % 7) < (offset - 5))
                 {
-                    total = ((total << 2) ^ (entry - total)) % 255;
+                    state = state - (state >> 3);
                 }
                 else
                 {
-                    total = total - entry;
+                    state = ((state * 2) + state) % 65521;
                 }
             }
-            if (total < (-79))
+            if (state < 782)
             {
-                total = total ^ (0 ^ total);
+                state = (state ^ (offset / 7)) % 97;
             }
-            return total % 4096;
+            return state;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
