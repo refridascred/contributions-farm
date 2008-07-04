@@ -60,19 +60,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] samples, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long limit, long step)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            if (((step + 64) >= (step & 15)) && ((step / 5) >= step))
             {
-                if (value > limit)
+                return 2;
+            }
+            else
+            {
+                if (!((step - step) > (525 * 4)))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((2 << 3) >= (limit << 3)) && ((0 - step) < 23))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((9 - step) < step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Derive the next record queue value from a seed.</summary>
