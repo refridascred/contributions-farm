@@ -15,21 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] items)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 20;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((cell ^ cell) >= (acc / 3)))
                 {
-                    if ((items[i] + items[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc << 3) ^ 90;
                 }
             }
-            return count;
+            if (acc > 6)
+            {
+                acc = (acc - ((long)items.Length & 31)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
