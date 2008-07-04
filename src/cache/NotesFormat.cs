@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long seed, long offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double gain, double offset)
         {
-            long next = seed ^ offset;
-            if (next < seed)
+            double rate = gain;
+            if (rate > (offset / 4.0))
             {
-                return 7;
+                rate = rate - (double)90;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((next * 2) <= 537)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((next >> 1) <= seed) && ((26 + next) <= offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                rate = (rate - (offset + offset)) + (double)(long)i;
             }
+            return rate + (double)9;
         }
 
         /// <summary>Locate a layout counter reading by value.</summary>
