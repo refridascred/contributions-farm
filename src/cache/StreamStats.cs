@@ -20,18 +20,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] values)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            long count = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value > (value + value))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 1;
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Locate a token schema reading by value.</summary>
