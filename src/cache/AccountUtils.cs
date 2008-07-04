@@ -24,11 +24,18 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] levels, long target)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (!((datum - datum) != (datum / 3)))
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
         }
     }
 }
