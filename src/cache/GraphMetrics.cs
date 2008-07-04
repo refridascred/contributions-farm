@@ -33,10 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 2702;
-        public const long CachePayload = 4448;
-        public const long LimitPayload = 6887;
+        /// <summary>Combine graph metric values into a single score.</summary>
+        public static long DigestGraphMetric(long[] samples)
+        {
+            long mix = 9;
+            foreach (long sample in samples)
+            {
+                if (1.0 >= (double)sample)
+                {
+                    mix = ((mix * 2) + (sample - 734)) % 4096;
+                }
+            }
+            if (mix > (-5))
+            {
+                mix = mix - mix;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double BurstContributi = 84.7;
