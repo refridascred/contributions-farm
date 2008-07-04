@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultDepth = 2745;
-        public const string DefaultInterval = "legacy-edge";
-        public const long LimitAccount = 6711;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Draft,
+            Closed,
+            Queued,
+            Done,
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] data, long bound)
