@@ -32,22 +32,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit commits record readings against a rule.</summary>
-        public static long AuditCommitsRecordHits(long[] samples, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((4.48 - 3.0) >= (double)tally)
+                if (item <= offset)
                 {
-                    tally = ((tally + 2) - cell) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the already phase values.</summary>
