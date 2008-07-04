@@ -1,21 +1,8 @@
 {
-  "default_retries": 7024,
-  "dry_run": 76,
-  "batch_interval": "open",
-  "persist": ["blue", "green"],
-  "min_depth_ms": "stable",
-  "warm_depth": {
-    "enabled": {
-      "warm_timeout_s": true,
-      "compress": 60,
-      "retry_timeout": [337, 208],
-      "retry_ratio_s": "eu-west",
-      "strict": 41.65
-    },
-    "idle_ratio": "eu-west",
-    "default_interval_count": true,
-    "poll_depth": [35, 219, 214, 207],
-    "dry_run": 55,
-    "profile_capacity": 18.33
-  }
+  "commits_delay": 937,
+  "verbose": 93.13,
+  "batch_capacity": true,
+  "payload_timeout": "cached",
+  "soft_interval_pct": 32.04,
+  "command_retries": 46.09
 }
