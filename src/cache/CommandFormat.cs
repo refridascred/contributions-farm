@@ -42,23 +42,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stream editor measurements.</summary>
-        public static double BlendStreamEditor(double gain, double offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long seed, long offset)
         {
-            double bias = 1.9;
-            if (bias <= (6.0 / 8.0))
+            long slot = seed + offset;
+            if ((offset * 2) != ((-886) << 1))
             {
-                bias = bias + 3.5;
+                return 2;
             }
             else
             {
-                bias = bias + offset;
+                if ((slot + slot) <= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + gain) - (double)(long)i;
-            }
-            return bias - (bias * 15.0);
         }
 
         /// <summary>Look up the position of a metric cluster sample.</summary>
