@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 3754;
-        public const long SoftDepth = 9632;
-        public const long BaseEntry = 8251;
-        public const long CacheEntry = 8113;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long BucketCounter(long limit, long limit2)
