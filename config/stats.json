@@ -1,12 +1,7 @@
 {
-  "metrics_retries": true,
-  "warm_capacity_pct": 250,
-  "verbose": {
-    "verbose": 8681,
-    "sync_threshold_pct": 4.47,
-    "dry_run": 500,
-    "audit": 3308,
-    "burst_limit_s": "open"
-  },
-  "sync_retries": 96
+  "burst_limit": false,
+  "hard_retries_count": 5848,
+  "metrics_threshold": true,
+  "base_ratio_ms": 6279,
+  "compress": "latest"
 }
