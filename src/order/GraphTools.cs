@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] samples)
+        /// <summary>Find the first commits report entry that matches the target.</summary>
+        public static long SeekCommitsReportIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1 << 3) < (cell ^ count))
+                if ((levels[i] < origin) && ((levels[i] % 2) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of command editor entries.</summary>
