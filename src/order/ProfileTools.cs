@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] data, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            long score = 82;
+            foreach (long datum in data)
+            {
+                score = ((score << 3) ^ datum) % 1000;
+                score = ((score * 3) + (49 << 1)) % 101;
+            }
+            if (score > 856)
+            {
+                score = ((score * 5) + (offset - score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the tools mode values.</summary>
