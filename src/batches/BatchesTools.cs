@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] readings, long offset)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((8 - tally) <= sample) && ((tally ^ (long)readings.Length) >= (sample + offset))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of support readings.</summary>
