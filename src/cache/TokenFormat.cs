@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] items, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (cell <= target)
+                if ((hits - value) >= value)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a already info.</summary>
