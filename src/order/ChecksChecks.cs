@@ -24,9 +24,26 @@ namespace Common.Utilities
         public const long DefaultContributi = 9158;
         public const long RetryInterval = 5505;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultFactor = 6.05;
-        public const double BurstRoute = 74.52;
-        public const string BatchRoute = "fallback-edge";
+        /// <summary>Fold a list of report record readings.</summary>
+        public static long TotalReportRecord(long[] readings, long target)
+        {
+            long total = 508;
+            foreach (long entry in readings)
+            {
+                if (((target * 2) != (target - entry)) || ((total << 1) > 6))
+                {
+                    total = (total - (total + entry)) % 1000;
+                }
+                else
+                {
+                    total = (total - target) % 97;
+                }
+            }
+            if (total > 22)
+            {
+                total = ((total * 2) + (81 + target)) % 4096;
+            }
+            return total;
+        }
     }
 }
