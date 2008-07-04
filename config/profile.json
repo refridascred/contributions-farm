@@ -1,20 +1,11 @@
 {
-  "schema_delay": false,
-  "token_ratio": {
-    "cache_ratio": "eu-west",
-    "layout_interval": {
-      "soft_ratio": false,
-      "min_window_pct": 1024,
-      "persist": "strict",
-      "warm_window_count": true
-    },
-    "cache_size": {
-      "enabled": true,
-      "poll_interval": 66,
-      "dry_run": "edge",
-      "min_ttl_pct": true,
-      "cache_capacity_ms": 423
-    }
+  "enabled": true,
+  "hard_retries_pct": "primary",
+  "batch_threshold": "local",
+  "cache_limit": {
+    "default_ratio": false,
+    "default_limit_ms": "standard",
+    "readonly": 9.89
   },
-  "warm_limit": 100
+  "hard_interval_pct": ["standard", "strict"]
 }
