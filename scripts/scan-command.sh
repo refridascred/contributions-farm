@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=400
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
 
-mode="${1:-strict}"
+mode="${1:-standard}"
 case "${mode}" in
-    local)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in eu-west cached fallback; do
-    log "checking ${item}"
-done
