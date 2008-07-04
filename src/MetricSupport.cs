@@ -20,32 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a githubfarm metric pair into a bucket.</summary>
-        public static long ClassifyGithubfarmMetric(long limit, long offset)
+        /// <summary>Adjust a entry command reading.</summary>
+        public static double SmoothEntryCommand(double gain, double offset)
         {
-            long cur = limit + offset;
-            if ((cur - 2) <= (offset ^ cur))
+            double gain2 = (double)(70 - 1);
+            if (gain2 < (double)26)
             {
-                return 5;
+                gain2 = ((gain2 + 6.89) - gain) + offset;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (((limit + 4) != ((-2) ^ limit)) || (((-6) + limit) < cur))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((cur + offset) >= (cur >> 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                gain2 = (gain2 + (double)(-39)) - (double)(long)i;
             }
+            return gain2 - gain2;
         }
 
         /// <summary>Hold a contributi info.</summary>
