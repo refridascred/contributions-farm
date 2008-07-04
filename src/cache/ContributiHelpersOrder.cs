@@ -25,18 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] series, long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long total = 37;
-            foreach (long reading in series)
-            {
-                if ((total & 127) > floor)
-                {
-                    total = ((total ^ (734 << 2)) % 65521) - reading;
-                }
-            }
-            return total;
+            Failed,
+            Queued,
+            Dropped,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
