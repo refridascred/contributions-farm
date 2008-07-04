@@ -36,18 +36,17 @@ namespace Common.Utilities
         public const long CacheRatio = 7380;
         public const string LimitTimeout = "local-edge";
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] data, long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry % 2) <= (72 + entry))
+                if (readings[i] > floor)
                 {
-                    tally = (tally + 2) - step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a stream record.</summary>
