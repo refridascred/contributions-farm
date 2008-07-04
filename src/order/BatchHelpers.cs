@@ -19,17 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first queue notes entry that matches the target.</summary>
-        public static long FindQueueNotesIndex(long[] samples, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
