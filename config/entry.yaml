@@ -1,8 +1,6 @@
 # entry settings
-contributi_delay: true
-sync_window_pct: 32.91
-hard_ratio_s: 4857
-burst_capacity_ms: 85.52
-min_delay:
-  - 438
-  - 452
+session_limit: strict
+sync_ratio_s: fallback
+schema_window: blue
+sync_depth: 52.3
+persist: 6356
