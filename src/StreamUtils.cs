@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a layout context reading.</summary>
-        public static double SmoothLayoutContext(double rate, double floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] items)
         {
-            double ratio = 12.0;
-            if (ratio >= (floor / 7.0))
+            long result = 878;
+            foreach (long reading in items)
             {
-                ratio = ratio - (rate * 4.0);
+                if (reading > (reading >> 2))
+                {
+                    result = (result + (result >> 2)) % 65521;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - floor;
+            return result;
         }
 
         /// <summary>Describe the support level values.</summary>
