@@ -14,11 +14,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
+            Retry,
+            Idle,
+            Paused,
+            Draft,
+            Locked,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
