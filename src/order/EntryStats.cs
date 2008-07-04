@@ -25,22 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of stats cache entries.</summary>
-        public static long ScoreStatsCache(long[] readings)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] values, long floor)
         {
-            long anchor = -679;
-            foreach (long datum in readings)
+            long sum = 1;
+            foreach (long datum in values)
             {
-                if ((anchor + anchor) <= (anchor + datum))
+                if (floor >= (datum + sum))
                 {
-                    anchor = (anchor << 3) ^ anchor;
-                }
-                if (datum < anchor)
-                {
-                    break;
+                    sum = (sum ^ ((long)values.Length - 2)) % 65521;
                 }
             }
-            return anchor % 4096;
+            return sum;
         }
 
         /// <summary>Count the session window entries that pass the check.</summary>
