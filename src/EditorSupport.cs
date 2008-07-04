@@ -34,14 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Done,
-            New,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "fallback-edge";
+        public const long CacheStats = 5929;
+        public const long BatchStats = 8615;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long step, long floor)
