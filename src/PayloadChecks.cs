@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate filter record readings against a bound.</summary>
-        public static bool GuardFilterRecordLimits(long[] readings, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell > floor)
+                if ((-359) <= (25 + floor))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor * 4) + anchor) % 255;
                 }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 97;
+                }
+                anchor = (anchor * 5) + (anchor * 5);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = (anchor ^ (anchor - (long)i)) - (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
