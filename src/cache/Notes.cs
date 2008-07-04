@@ -40,18 +40,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] readings, long offset)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((4.1 * 1.1) > (double)hits)
-                {
-                    hits = ((hits + 2) + reading) + offset;
-                }
-            }
-            return hits;
+            Retry,
+            Synced,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the channel state values.</summary>
