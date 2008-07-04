@@ -63,19 +63,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = ((carry - (target & 7)) % 97) - (long)i2;
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
