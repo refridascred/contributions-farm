@@ -1,6 +1,11 @@
-id,rank,weight
-1,932,blue
-2,fallback,59.99
-3,stable,291
-4,43.43,851
-5,blue,901
+id,label,count,active
+1,109,379,74.97
+2,fallback,946,967
+3,861,stable,39.16
+4,35.73,blue,271
+5,23.64,483,stable
+6,674,371,654
+7,primary,451,cached
+8,0.57,50.87,388
+9,619,704,353
+10,7.39,cached,356
