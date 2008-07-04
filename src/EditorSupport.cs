@@ -81,15 +81,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
