@@ -67,12 +67,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowScore = 7134;
-        public const long SoftMetrics = 3899;
-        public const long BurstScore = 8226;
-        public const long CacheLevel = 6790;
-        public const string MinDepth = "local";
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] samples, long limit)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next record queue value from a seed.</summary>
         public static long IterateRecordQueue(long offset)
