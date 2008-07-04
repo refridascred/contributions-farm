@@ -1,22 +1,7 @@
 {
-  "warm_capacity_count": "legacy",
-  "base_interval_count": 97,
-  "idle_size_s": {
-    "entry_window": 6519,
-    "poll_size_pct": 60,
-    "max_capacity_count": 80.39,
-    "batch_retries": 46
-  },
-  "default_capacity_s": 250,
-  "stats_ttl": 250,
-  "default_limit": {
-    "cache_capacity": {
-      "persist": "open",
-      "base_limit_pct": ["fallback", "blue"],
-      "audit": 3327,
-      "idle_delay": "open"
-    },
-    "warm_timeout": 5997,
-    "verbose": false
-  }
+  "cache_window": "cached",
+  "base_size_s": true,
+  "cluster_delay": 500,
+  "warm_retries_pct": "local",
+  "audit": 1557
 }
