@@ -23,16 +23,12 @@ namespace Common.Utilities
         public const long SoftCommits = 5288;
         public const string DefaultRatio = "cached-v2";
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state << 3) ^ 576) % 255;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
