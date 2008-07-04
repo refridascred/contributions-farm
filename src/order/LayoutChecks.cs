@@ -62,13 +62,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseTimeout = 7732;
+        public const long LimitGraph = 5618;
+        public const double BurstGraph = 37.54;
+        public const long DefaultScore = 821;
+        public const long HardGraph = 1032;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] series, long origin)
