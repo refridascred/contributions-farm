@@ -34,25 +34,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long step, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] items, long offset)
         {
-            long edge = step + origin;
-            if (!(edge > origin))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (step <= (origin - 9))
+                if ((sample + (long)items.Length) > (offset + sample))
                 {
-                    return 3;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 4;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
