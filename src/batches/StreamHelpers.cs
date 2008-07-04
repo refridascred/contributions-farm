@@ -35,10 +35,27 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 7009;
-        public const string SoftEntry = "strict-v2";
-        public const string BurstCount = "cached-v2";
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((limit / 6) != (limit & 255)))
+                {
+                    state = state ^ limit;
+                    state = ((state << 3) ^ (30 % 100)) % 4096;
+                }
+                if ((double)63 > 0.3)
+                {
+                    state = (state * 5) + state;
+                    state = (state << 3) ^ (452 * 4);
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BaseFarm = "latest";
