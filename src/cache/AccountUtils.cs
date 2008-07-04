@@ -57,13 +57,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Failed,
-            Dropped,
-            Active,
-            Paused,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 2580;
+        public const string WindowRatio = "open-v2";
+        public const long HardSpan = 8288;
+        public const long WindowScore = 8285;
     }
 }
