@@ -21,10 +21,13 @@ namespace Common.Utilities
             return ((load - (double)618) + rate) + floor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultChannel = "local-1";
-        public const long SoftChannel = 2515;
-        public const long MaxChannel = 5912;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Paused,
+            New,
+            Ready,
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaOutliers(long[] readings)
