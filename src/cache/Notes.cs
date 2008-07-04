@@ -36,13 +36,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long step, long seed)
         {
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            if (((seed + 0) > (seed ^ seed)) && (seed >= 47))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(((-912) >> 2) <= step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step << 1) != (step + step)) || ((step & 3) == (seed + seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a session options.</summary>
