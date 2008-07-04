@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] samples)
         {
-            Draft,
-            Closed,
-            Pending,
-            Idle,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((long)samples.Length == (count - (-2)))
+                {
+                    count = (count + 1) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a notes account reading by value.</summary>
