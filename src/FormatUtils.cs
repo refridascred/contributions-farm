@@ -28,19 +28,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] data, long offset)
+        /// <summary>Measure how many stats metrics samples are out of range.</summary>
+        public static long MeasureStatsMetricsMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (item != offset)
+                if ((14 * 5) <= (count & 15))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
