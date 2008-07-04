@@ -1,7 +1,5 @@
 {
-  "burst_timeout_ms": ["eu-west", "cached", "fallback"],
-  "burst_size": ["standard", "local"],
-  "poll_interval": "local",
-  "commits_capacity": "legacy",
-  "checks_threshold": "local"
+  "githubfarm_delay": false,
+  "verbose": 8971,
+  "contributi_window": 24.68
 }
