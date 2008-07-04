@@ -26,18 +26,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] levels, long seed)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double load = (double)(0 & 31);
+            if (load <= (double)921)
             {
-                if ((entry > (20 - tally)) || (((long)levels.Length + seed) == (17 / 6)))
-                {
-                    tally = tally + 2;
-                }
+                load = (load - load) - bias;
             }
-            return tally;
+            else
+            {
+                load = load + (double)912;
+            }
+            return load + (ratio * 17.0);
         }
     }
 }
