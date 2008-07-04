@@ -16,14 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] items, long offset)
         {
-            Retry,
-            Pending,
-            Done,
-            Locked,
-            Paused,
+            long total = 7;
+            foreach (long item in items)
+            {
+                if ((item - item) <= (offset + 840))
+                {
+                    total = (total << 3) ^ (item + item);
+                }
+                else
+                {
+                    total = total ^ (offset + total);
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
