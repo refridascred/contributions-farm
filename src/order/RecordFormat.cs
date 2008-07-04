@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor contributi samples are out of range.</summary>
-        public static long AuditEditorContributiGaps(long[] data)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (tally <= (tally - cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the already status values.</summary>
