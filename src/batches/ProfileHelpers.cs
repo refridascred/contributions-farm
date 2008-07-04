@@ -50,13 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] levels)
         {
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (!((datum + 486) != (datum >> 2)) || !(matches >= (datum + 376)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two already measurements.</summary>
