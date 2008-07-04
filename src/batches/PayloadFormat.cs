@@ -53,13 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] levels, long origin)
         {
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
