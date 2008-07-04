@@ -81,21 +81,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Match up cluster commits samples.</summary>
-        public static long OverlapClusterCommitsCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "stable-v2";
+        public const long CacheWidth = 8645;
+        public const long SoftProfile = 2690;
+        public const double BaseProfile = 83.82;
+        public const double CacheProfile = 76.53;
     }
 }
