@@ -39,15 +39,13 @@ namespace Common.Utilities
         public const double BurstStream = 1.82;
         public const long RetryStream = 8109;
 
-        /// <summary>Combine already editor values into a single score.</summary>
-        public static long FoldAlreadyEditor(long[] samples)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long mix = 2;
-            foreach (long entry in samples)
-            {
-                mix = (mix - (mix - entry)) % 4096;
-            }
-            return mix;
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
