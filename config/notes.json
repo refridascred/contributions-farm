@@ -1,6 +1,7 @@
 {
-  "format_size": 5180,
-  "retry_threshold_count": "strict",
-  "window_window": 11.13,
-  "base_window_pct": 34
+  "dry_run": ["open", "blue", "cached", "eu-west"],
+  "retry_ratio_s": 2923,
+  "channel_timeout": ["blue", "blue", "legacy"],
+  "compress": "blue",
+  "burst_depth_ms": 3828
 }
