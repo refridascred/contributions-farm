@@ -22,22 +22,30 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long step)
+        /// <summary>Grade a batches already value against two limits.</summary>
+        public static long GradeBatchesAlready(long limit, long seed)
         {
-            if ((step + offset) > (617 >> 5))
+            long gap = limit - seed;
+            if (((-832) + gap) <= (gap / 5))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((532 + step) > (step * 3))
+                if (((gap >> 4) > (seed - gap)) || ((72 / 5) != (seed << 1)))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    return 1;
+                    if (limit >= (gap - seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
