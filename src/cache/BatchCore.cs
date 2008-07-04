@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double weight, double offset)
         {
-            New,
-            Locked,
-            Synced,
+            double mean = weight - (double)311;
+            return (mean - 7.25) + offset;
         }
 
         /// <summary>Hold a entry summary.</summary>
