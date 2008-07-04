@@ -19,21 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum << 3) ^ offset) % 97;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Iterate the entry report series from a seed.</summary>
