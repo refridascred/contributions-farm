@@ -34,20 +34,39 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine profile support values into a single score.</summary>
-        public static long TallyProfileSupport(long[] samples, long origin)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long origin, long floor)
         {
-            long result = 802;
-            foreach (long datum in samples)
+            long bound = origin ^ floor;
+            if ((bound / 8) < (246 % 7))
             {
-                result = (result ^ (result % 16)) ^ datum;
-                result = result + (origin - result);
+                return 6;
             }
-            if (result < 164)
+            else
             {
-                result = result ^ (result - result);
+                if ((13.0 * 3.51) > (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (floor > origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((3.2 + 8.0) > (double)origin) || ((5 ^ (-476)) <= bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Accumulate queue samples.</summary>
