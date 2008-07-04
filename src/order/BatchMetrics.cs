@@ -56,19 +56,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] series, long offset)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            double weight = scale;
+            if (weight <= (double)967)
             {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - (double)(-426);
             }
-            return ready;
+            return weight - (floor * 7.1);
         }
 
         /// <summary>Rank payload input into a small class.</summary>
