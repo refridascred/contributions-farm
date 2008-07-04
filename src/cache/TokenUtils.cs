@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] data, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((data[i] <= origin) && ((data[i] % 3) != 0))
+                if (item > bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
