@@ -31,12 +31,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
+            Pending,
+            Queued,
+            Locked,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
