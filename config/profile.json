@@ -1,6 +1,16 @@
 {
-  "stats_window": true,
-  "flush_limit_count": 60,
-  "batch_delay_ms": true,
-  "account_limit": ["staging", "latest"]
+  "graph_retries": "green",
+  "enabled": {
+    "support_window": true,
+    "max_ratio": "edge",
+    "order_timeout": 4847,
+    "base_interval_ms": "local",
+    "session_window": {
+      "strict": 48.01,
+      "max_threshold_pct": 9,
+      "notes_ttl": 1915
+    }
+  },
+  "soft_ratio_count": 44.31,
+  "cache_ttl": true
 }
