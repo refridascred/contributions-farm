@@ -69,10 +69,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetrySize = 90.31;
-        public const long LimitScore = 733;
-        public const string MinCount = "alpha-v2";
-        public const long MinWidth = 7889;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] data)
+        {
+            long sum = 2;
+            foreach (long item in data)
+            {
+                if ((741 * 3) < (sum + 23))
+                {
+                    sum = sum - (8 >> 2);
+                }
+                if (0.03 <= (double)item)
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
