@@ -16,22 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardTimeout = 86.24;
+        public const double StepNotes = 92.66;
+        public const string IdleTimeout = "strict-edge";
+        public const double BaseNotes = 68.38;
+        public const string CacheNotes = "latest-edge";
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
