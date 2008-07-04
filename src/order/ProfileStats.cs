@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] readings, long target)
+        /// <summary>Audit command token readings against a rule.</summary>
+        public static long TallyCommandTokenOutliers(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((readings[i] == target) && ((readings[i] % 5) == 0))
+                if ((double)floor < (8.88 / 9.0))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate farm metrics readings against a bound.</summary>
