@@ -34,22 +34,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] items, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((sample + (long)items.Length) > (offset + sample))
+                if (hits > (7 ^ origin))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
