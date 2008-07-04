@@ -22,18 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] items, long target)
         {
-            long acc = 49;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((sample >> 2) != (sample ^ sample)))
+                if ((items[i] <= target) && ((items[i] % 2) != 0))
                 {
-                    acc = ((acc * 5) + sample) % 4096;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Audit cluster already readings against a rule.</summary>
