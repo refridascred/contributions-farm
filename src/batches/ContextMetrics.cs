@@ -26,21 +26,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 111;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((entry - step) < (step % 16)) || ((entry - entry) != (acc >> 2)))
                 {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc - (step / 8);
+                }
+                else
+                {
+                    acc = (acc - step) % 1000;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
