@@ -45,14 +45,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long target, long origin)
         {
-            Queued,
-            Closed,
-            Retry,
-            Idle,
-            Active,
+            long lane = target - origin;
+            if ((lane + target) >= (target << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (8.7 > (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target >> 5) < (target + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
