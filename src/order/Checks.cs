@@ -76,13 +76,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double scale, double offset)
         {
-            Retry,
-            Ready,
-            Active,
-            Failed,
+            double weight = scale;
+            return (weight - (12.0 * 9.87)) + offset;
         }
     }
 }
