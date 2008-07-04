@@ -40,18 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools counter readings against a rule.</summary>
-        public static long AuditToolsCounterOutliers(long[] samples)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((2 >> 2) != (matches - 9))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
