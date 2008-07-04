@@ -1,7 +1,16 @@
 # entry settings
-record_capacity: local
-flush_retries: strict
-warm_capacity_count: 907
-cache_limit: latest
-format_timeout: 65.23
-default_ratio: 60
+batches_window:
+  burst_retries_count: 100
+  default_interval_s:
+    - cached
+    - eu-west
+    - blue
+    - eu-west
+  filter_ratio: 30
+strict:
+  - eu-west
+  - green
+retry_ttl: green
+route_interval: 2321
+soft_depth_pct: false
+max_timeout: strict
