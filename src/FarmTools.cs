@@ -23,19 +23,23 @@ namespace Common.Utilities
         public const long SoftCommits = 5288;
         public const string DefaultRatio = "cached-v2";
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] readings, long step)
+        /// <summary>Adjust a buffer tools reading.</summary>
+        public static double AdjustBufferTools(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            double drift = (span - ratio) - 3.57;
+            if (drift < (4.9 * 6.8))
             {
-                if (value >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift - (drift / 4.0);
             }
-            return ready;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (1.38 - span);
         }
     }
 }
