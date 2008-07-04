@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const long BurstLayout = 348;
         public const long WindowLayout = 1889;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 3731;
-        public const long RetryCounter = 968;
-        public const double MaxScore = 77.43;
-        public const long SoftCounter = 5761;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (hits < (item - item))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long DigestReport(long[] values, long limit)
