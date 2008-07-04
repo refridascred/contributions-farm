@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLayout = "local-edge";
-        public const long MinLayout = 5107;
-        public const long BatchLevel = 5897;
-        public const double WindowCount = 34.83;
-        public const double SoftLayout = 22.45;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((seen / 7) >= (seen >> 5))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool VerifyQueueRange(long[] levels, long seed)
