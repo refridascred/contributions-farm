@@ -62,17 +62,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] samples, long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long step, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = step - target;
+            if ((double)step <= (6.48 / 7.0))
             {
-                if (samples[i] == step)
+                return 3;
+            }
+            else
+            {
+                if (!((edge + target) < (target << 2)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)edge < (double)70)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target & 255) >= edge) && ((step >> 1) <= (584 ^ step)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
