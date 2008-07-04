@@ -83,11 +83,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double bias, double span)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] items, long step)
         {
-            double rate = span;
-            return (rate + (double)512) + bias;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue mode values.</summary>
