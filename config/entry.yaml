@@ -1,32 +1,18 @@
 # entry settings
-schema_ttl: false
-warm_ttl: 500
-compress:
-  - 41
-  - 109
-  - 179
-  - 420
-verbose:
-  warm_ttl:
-    - 3
-    - 309
-  batch_retries_pct:
-    batch_threshold_ms: 60
-    batch_limit_s: edge
-    max_size_ms: blue
-    enabled: 55.79
-    flush_ttl_pct: 43
-    retry_size: 413
-  readonly:
-    - 115
-    - 312
-    - 113
-    - 253
-  poll_ttl:
-    layout_capacity: eu-west
-    hard_threshold: 95
-    cache_ttl_s: 2050
-    persist: 3430
-  warm_timeout_ms: true
-base_depth_pct: 97.59
-cache_ratio_pct: 63
+dry_run:
+  - fallback
+  - fallback
+  - eu-west
+  - primary
+order_window: 34.21
+retry_size:
+  compress:
+    max_window: 66.04
+    default_window_ms: primary
+    dry_run: latest
+    min_timeout_s: blue
+    batch_limit_count: 2189
+  warm_retries_ms: 7598
+  max_depth_ms: 21.28
+flush_delay_ms: eu-west
+batch_timeout_s: local
