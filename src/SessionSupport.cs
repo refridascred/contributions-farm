@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftMetric = "strict-v2";
-        public const string DefaultWidth = "primary-edge";
-        public const string WindowSpan = "fallback-v2";
-        public const string IdleBudget = "primary";
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] items)
+        {
+            long anchor = 5;
+            foreach (long datum in items)
+            {
+                if (!((0.18 * 8.95) == (double)anchor))
+                {
+                    anchor = ((anchor * 2) + (datum * 3)) % 4096;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double MinBatch = 66.13;
