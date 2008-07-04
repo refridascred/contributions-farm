@@ -23,22 +23,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] data, long seed)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long floor, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            if (!((target & 31) < (floor + floor)))
             {
-                if (!((double)seed >= (8.0 * 20.0)))
+                return 7;
+            }
+            else
+            {
+                if ((double)target != (3.72 + 14.0))
                 {
-                    hits = (hits + 2) + entry;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
