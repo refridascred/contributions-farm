@@ -52,13 +52,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long origin)
         {
-            Pending,
-            Failed,
-            Locked,
-            Synced,
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = (acc ^ ((long)i ^ (long)i)) % 97;
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
