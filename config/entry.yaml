@@ -1,21 +1,12 @@
 # entry settings
-default_delay_pct:
-  - strict
-  - cached
-  - staging
-batch_ttl: 60
-cache_limit_ms: false
-retry_retries_count:
-  default_timeout_s: 88.87
-  soft_threshold_s: 34.73
-  max_retries:
-    soft_timeout: strict
-    buffer_limit:
-      - open
-      - green
-      - blue
-    max_interval: 9.11
-    persist: 66.13
-    editor_window: 2274
-    batch_limit_ms: 2.87
-batch_threshold_pct: 2972
+checks_ratio: 7645
+soft_ratio_ms: true
+stream_interval:
+  graph_size:
+    flush_depth_ms: true
+    burst_ratio_count: 15.86
+    flush_delay_pct: 60
+    cache_delay: 91.15
+  entry_retries: 41
+  batch_threshold_s: 250
+retry_ttl_s: 100
