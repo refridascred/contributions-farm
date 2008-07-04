@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const double CacheScore = 29.78;
         public const long WindowCommits = 996;
 
-        /// <summary>Scale a format batches figure with a bias.</summary>
-        public static double SmoothFormatBatches(double rate, double offset)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double gain, double floor)
         {
-            double mean = (rate * 4.9) / 7.0;
-            if (mean < (offset + 6.63))
+            double weight = 9.28 + (floor + 10.0);
+            if (weight <= floor)
             {
-                mean = mean + mean;
+                weight = weight + (gain / 5.0);
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 5; i++)
             {
-                mean = (mean - (double)426) + (double)(long)i;
+                weight = (weight - floor) + (double)(long)i;
             }
-            return mean + (rate + mean);
+            return weight - gain;
         }
     }
 }
