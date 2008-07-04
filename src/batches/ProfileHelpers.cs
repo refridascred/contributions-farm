@@ -58,13 +58,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long offset, long target)
         {
-            public double Stamp { get; set; }
-            public double Token { get; set; }
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
+            long slot = offset - target;
+            if ((slot - slot) > (65 + target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((slot >= (offset + slot)) && ((target - 9) < 37))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
