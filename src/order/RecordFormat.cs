@@ -45,18 +45,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] samples, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((sample + tally) < bound)
+                if (entry <= target)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
