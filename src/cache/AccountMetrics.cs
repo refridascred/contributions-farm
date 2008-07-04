@@ -58,21 +58,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
