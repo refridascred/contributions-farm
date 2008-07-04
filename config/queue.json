@@ -1,7 +1,6 @@
 {
-  "compress": "latest",
-  "profile_size": "primary",
-  "editor_capacity": 1024,
-  "checks_timeout": "legacy",
-  "profile_retries": "primary"
+  "contributi_depth": "strict",
+  "audit": ["local", "cached"],
+  "editor_limit": 55.0,
+  "soft_threshold_ms": "strict"
 }
