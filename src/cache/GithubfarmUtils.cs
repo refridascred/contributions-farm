@@ -23,11 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            Done,
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a graph record.</summary>
