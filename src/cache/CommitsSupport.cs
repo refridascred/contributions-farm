@@ -45,32 +45,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank window batch input into a small class.</summary>
-        public static long GradeWindowBatch(long step, long offset)
-        {
-            if ((step & 1) > 21)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)offset != (5.55 * 3.7)) && (offset <= (offset + 199)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step != (7.0 + 0.45))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 5147;
+        public const long IdleGithubfarm = 614;
+        public const string DefaultGithubfarm = "staging-1";
+        public const double DefaultSpan = 18.73;
+        public const long IdleDepth = 1016;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
