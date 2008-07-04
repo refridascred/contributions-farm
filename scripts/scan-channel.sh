@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in primary eu-west local; do
+for item in local eu-west legacy; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=70
+log "limit is ${CHANNEL_LIMIT}"
