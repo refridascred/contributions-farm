@@ -35,12 +35,15 @@ namespace Common.Utilities
         public const double BurstStream = 1.82;
         public const long RetryStream = 8109;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Combine already editor values into a single score.</summary>
+        public static long FoldAlreadyEditor(long[] samples)
         {
-            Stale,
-            Retry,
-            Draft,
+            long mix = 2;
+            foreach (long entry in samples)
+            {
+                mix = (mix - (mix - entry)) % 4096;
+            }
+            return mix;
         }
     }
 }
