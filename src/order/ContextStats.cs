@@ -70,18 +70,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of format stats entries.</summary>
-        public static long CombineFormatStats(long[] values)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] data, long limit)
         {
-            long state = 59;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (state >= (state >> 1))
+                if (sample != limit)
                 {
-                    state = (((state << 3) ^ (state + 21)) % 255) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return state % 97;
+            return flag;
         }
     }
 }
