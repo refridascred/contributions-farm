@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit graph metrics readings against a rule.</summary>
-        public static long CountGraphMetricsOutliers(long[] data)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((tally + reading) > tally)
+                if (cell < offset)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Accumulate payload samples.</summary>
