@@ -41,19 +41,13 @@ namespace Common.Utilities
             return (load + (bias + 7.19)) + offset;
         }
 
-        /// <summary>Check that every checks context entry stays within the limit.</summary>
-        public static bool GuardChecksContextBounds(long[] values, long bound)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Adjust a batch reading.</summary>
