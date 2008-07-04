@@ -39,18 +39,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] samples, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long result = 8;
+            foreach (long datum in series)
             {
-                if ((89 + seen) != (datum >> 5))
+                if (4.7 <= (double)datum)
                 {
-                    seen = (seen + 1) - bound;
+                    result = ((result * 4) + result) - offset;
+                }
+                if ((datum - result) <= (datum << 1))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result > 1)
+            {
+                result = (result ^ (result << 1)) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
