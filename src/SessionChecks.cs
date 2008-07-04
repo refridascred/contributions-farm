@@ -42,13 +42,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 71.46;
+        public const string LimitDepth = "strict-edge";
+        public const string DefaultEntry = "latest-1";
     }
 }
