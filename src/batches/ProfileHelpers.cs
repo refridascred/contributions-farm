@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Iterate the format editor series from a seed.</summary>
+        public static long SeriesFormatEditor(long floor)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of stream window entries.</summary>
