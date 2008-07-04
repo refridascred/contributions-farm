@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate farm stats samples.</summary>
-        public static long TotalFarmStats(long[] readings)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long total = 840;
-            foreach (long reading in readings)
-            {
-                if ((total + reading) == (reading + 93))
-                {
-                    total = total - (reading + total);
-                }
-            }
-            if (total > 19)
-            {
-                total = ((total * 3) + (total + total)) % 65521;
-            }
-            return total;
+            Draft,
+            Retry,
+            Closed,
+            Stale,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
