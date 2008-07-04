@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format checks entries that pass the check.</summary>
-        public static long CountFormatChecksOutliers(long[] levels)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((double)count > 8.75)
+                if (item > limit)
                 {
-                    count = (count + 1) ^ value;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Digest a series of stream window entries.</summary>
