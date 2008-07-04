@@ -36,15 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a schema route reading.</summary>
-        public static double SmoothSchemaRoute(double rate, double offset)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] data, long target)
         {
-            double load = 7.7;
-            if (load > (double)459)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - (double)0) - offset;
+                if ((data[i] == target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (rate / 2.0);
+            return -1;
         }
     }
 }
