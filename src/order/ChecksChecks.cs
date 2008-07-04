@@ -33,32 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long step, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] readings, long offset)
         {
-            long gap = step ^ offset;
-            if ((offset < gap) || (step > ((-8) - step)))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset >= (0.6 / 3.0))
+                if (item <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((1 + offset) < (step << 3)) && ((gap + offset) >= (step * 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
