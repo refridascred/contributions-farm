@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double rate, double floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long floor)
         {
-            double gain = (double)((-22) / 4);
-            if (gain >= 2.0)
+            long total = floor;
+            for (int i = 0; i < 5; i++)
             {
-                gain = gain - floor;
+                if (total < floor)
+                {
+                    total = (total + total) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain + (rate + floor);
-            }
-            return gain - floor;
+            return total;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
