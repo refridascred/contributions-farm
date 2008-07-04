@@ -32,13 +32,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardWidth = 974;
+        public const long StepToken = 5194;
+        public const long BatchToken = 4755;
     }
 }
