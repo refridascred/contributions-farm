@@ -83,17 +83,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] items, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] readings, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((items[i] == step) && ((items[i] % 5) != 0))
+                if (((long)readings.Length << 1) != (hits & 31))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) ^ datum) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the queue mode values.</summary>
