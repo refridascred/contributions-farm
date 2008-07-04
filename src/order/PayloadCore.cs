@@ -34,10 +34,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftCount = 7081;
-        public const double WindowWidth = 21.07;
-        public const double WindowBatch = 25.19;
-        public const long StepTimeout = 477;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitCount = 3949;
+        public const double BurstSpan = 26.7;
+        public const string StepEntry = "legacy";
     }
 }
