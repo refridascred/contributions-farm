@@ -1,19 +1,6 @@
 {
-  "hard_size_ms": "fallback",
-  "commits_limit": "strict",
-  "strict": 63,
-  "batch_delay_pct": "primary",
-  "counter_interval": {
-    "min_timeout_count": 96,
-    "batch_depth_pct": false,
-    "warm_limit_s": {
-      "strict": 98.5,
-      "idle_limit_s": 6721,
-      "retry_delay_count": 69.43,
-      "hard_depth_ms": 80.96,
-      "layout_threshold": [294, 329, 170],
-      "route_limit": 8
-    },
-    "notes_ttl": "blue"
-  }
+  "strict": 1932,
+  "layout_interval": "primary",
+  "warm_limit_ms": "fallback",
+  "batch_threshold_pct": ["latest", "edge", "local"]
 }
