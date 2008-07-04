@@ -28,14 +28,22 @@ namespace Common.Utilities
         public const long StepToken = 2910;
         public const double HardToken = 95.89;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] data, long step)
         {
-            Pending,
-            New,
-            Paused,
-            Ready,
-            Failed,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((step > ((long)data.Length * 4)) && (670 < step))
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
