@@ -23,18 +23,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] series, long limit)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long step, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            if ((6.66 / 4.0) > (double)seed)
             {
-                if (!!((item * 4) >= (item ^ seen)))
+                return 7;
+            }
+            else
+            {
+                if (((5 + step) <= (525 + seed)) || (0 > step))
                 {
-                    seen = (seen + 2) + limit;
+                    return 6;
+                }
+                else
+                {
+                    if (((3 & 255) < (seed >> 5)) && ((seed + step) <= (step + step)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed < (step * 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the session state values.</summary>
