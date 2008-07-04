@@ -96,15 +96,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] samples, long limit)
+        /// <summary>Grade a tools editor value against two limits.</summary>
+        public static long SortToolsEditor(long origin, long origin2)
         {
-            long acc = 14;
-            foreach (long value in samples)
+            long diff = origin ^ origin2;
+            if ((diff * 2) == (diff * 3))
             {
-                acc = ((acc ^ value) % 1000) - limit;
+                return 2;
             }
-            return acc % 4096;
+            else
+            {
+                if ((double)origin > (7.0 + 3.66))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((diff >> 2) >= (origin2 - origin2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin2 < (origin ^ origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
