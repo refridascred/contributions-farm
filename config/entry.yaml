@@ -1,9 +1,4 @@
 # entry settings
-window_delay: 5.24
-sync_window: 1423
-strict: staging
-default_size_count: false
-poll_size_count:
-  - edge
-  - cached
-  - standard
+warm_retries: true
+idle_ttl: stable
+idle_size: 60
