@@ -31,24 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long floor)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double bias, double bias2)
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)floor < 3.28)
-                {
-                    carry = (carry + (carry % 16)) % 255;
-                    break;
-                }
-                else
-                {
-                    carry = (carry * 4) + carry;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            double scale = bias2;
+            return (scale - bias2) + bias;
         }
 
         /// <summary>Audit commits record readings against a rule.</summary>
