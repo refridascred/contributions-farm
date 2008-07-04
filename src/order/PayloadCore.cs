@@ -44,17 +44,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] series, long offset)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(0 - (-8));
+            if (mean > (double)3)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (double)768) + floor;
             }
-            return -1;
+            else
+            {
+                mean = mean + (mean - weight);
+            }
+            return mean + (1.0 + weight);
         }
     }
 }
