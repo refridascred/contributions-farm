@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] samples, long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            double rate = scale;
+            if (rate > (1.9 + scale))
             {
-                if (reading <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = rate + scale;
             }
-            return stale;
+            else
+            {
+                rate = rate - (scale + rate);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (scale + bias)) + (double)(long)i;
+            }
+            return rate - 5.2;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
