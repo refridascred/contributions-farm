@@ -10,21 +10,26 @@ namespace Common.Utilities
         public const long CacheSchema = 6132;
         public const string BaseLevel = "cached";
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 54;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)bound >= (7.97 / 8.0)))
                 {
-                    if ((samples[i] + samples[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score * 5) + datum;
+                }
+                if ((6.2 <= (double)datum) && ((6.0 + 5.0) != (double)datum))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score < 17)
+            {
+                score = score - (512 & 3);
+            }
+            return score;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
