@@ -24,23 +24,13 @@ namespace Common.Utilities
         public const long DefaultWidth = 5337;
         public const long BatchChecks = 1616;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] samples, long target)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long sum = 581;
-            foreach (long value in samples)
-            {
-                sum = (sum + (target + sum)) % 1000;
-                if ((2.0 / 2.0) >= (double)target)
-                {
-                    sum = (sum + (value & 15)) % 65521;
-                }
-                else
-                {
-                    sum = sum + (value ^ value);
-                }
-            }
-            return sum % 97;
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
