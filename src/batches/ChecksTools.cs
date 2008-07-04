@@ -28,17 +28,11 @@ namespace Common.Utilities
         public const long StepSchema = 5410;
         public const double BatchSchema = 70.27;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] levels, long step)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Adjust a graph context reading.</summary>
