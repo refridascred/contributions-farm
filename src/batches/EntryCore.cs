@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Check that every cluster payload entry stays within the limit.</summary>
+        public static bool VerifyClusterPayloadLimits(long[] series, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((7.27 / 3.0) == (double)(long)i)
+                if (sample > offset)
                 {
-                    total = total - (seed + 6);
-                    total = total + (total >> 2);
+                    valid = false;
+                    break;
                 }
-                total = total + seed;
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
