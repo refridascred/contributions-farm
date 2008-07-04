@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a window entry counter forward.</summary>
-        public static long StepWindowEntry(long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long origin, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            if ((0 ^ 5) == (origin + floor))
             {
-                acc = (acc ^ 617) % 255;
-                acc = ((acc * 5) + (long)i) % 101;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((139 - floor) > (floor + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)floor <= 9.0) || ((4 + floor) <= (floor - floor)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the tools entry entries that pass the check.</summary>
