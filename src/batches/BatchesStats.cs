@@ -14,21 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] items)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            New,
+            Paused,
+            Active,
+            Failed,
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
