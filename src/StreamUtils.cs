@@ -28,19 +28,24 @@ namespace Common.Utilities
         public const long CacheSession = 5959;
         public const double DefaultSession = 84.95;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] samples, long limit)
+        /// <summary>Iterate the stream metrics series from a seed.</summary>
+        public static long DeriveStreamMetrics(long step)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (item < limit)
+                if (((long)i >= (step >> 5)) || ((anchor - anchor) > (anchor + anchor)))
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                anchor = (anchor ^ (step - (long)i)) % 65521;
+                if ((step + anchor) != (anchor + anchor))
+                {
+                    anchor = (anchor + anchor) % 1000;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Blend two session entry measurements.</summary>
