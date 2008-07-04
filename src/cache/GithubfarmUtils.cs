@@ -44,25 +44,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long floor, long floor2)
+        /// <summary>Look up the position of a context contributi sample.</summary>
+        public static long SeekContextContributiIndex(long[] data, long floor)
         {
-            long prev = floor ^ floor2;
-            if (floor2 <= prev)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor != (3.9 + 16.0)) && ((double)prev == (3.96 / 6.0)))
+                if (data[i] == floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
