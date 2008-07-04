@@ -1,6 +1,13 @@
 {
-  "hard_threshold": "local",
-  "dry_run": true,
-  "min_retries_count": 71.06,
-  "min_capacity_count": "open"
+  "readonly": 8576,
+  "batch_capacity": "strict",
+  "soft_limit_ms": 55,
+  "audit": "primary",
+  "filter_capacity": {
+    "default_threshold_s": 989,
+    "entry_retries": [428, 236, 31, 140],
+    "max_depth_pct": "blue",
+    "warm_timeout_ms": 500
+  },
+  "default_ttl_s": "staging"
 }
