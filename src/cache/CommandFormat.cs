@@ -18,20 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((long)i + (long)i) != (acc / 9))
-                {
-                    continue;
-                }
-                acc = acc + (step / 7);
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Find the first stream metrics entry that matches the target.</summary>
