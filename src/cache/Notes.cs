@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] == origin)
                 {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
