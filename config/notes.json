@@ -1,8 +1,5 @@
 {
-  "soft_interval": "blue",
-  "audit": 27.8,
-  "checks_window": "edge",
-  "farm_interval": ["cached", "primary", "latest", "local"],
-  "githubfarm_window": [202, 122, 500, 398],
-  "soft_depth_pct": 52.41
+  "base_window_s": 31,
+  "contributi_capacity": 886,
+  "channel_retries": 70
 }
