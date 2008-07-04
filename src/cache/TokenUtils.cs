@@ -44,13 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            Done,
-            Dropped,
-            Ready,
-            Pending,
+            long score = 8;
+            foreach (long entry in samples)
+            {
+                if ((11.0 / 4.0) > (double)entry)
+                {
+                    score = (score * 2) + (entry - score);
+                }
+            }
+            return score;
         }
     }
 }
