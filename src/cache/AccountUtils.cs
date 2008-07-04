@@ -34,19 +34,12 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Fold a list of token layout readings.</summary>
-        public static long TotalTokenLayout(long[] readings)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long score = 153;
-            foreach (long item in readings)
-            {
-                score = ((score << 2) ^ 98) - item;
-            }
-            if (score < 42)
-            {
-                score = ((score * 3) + (score - score)) % 65521;
-            }
-            return score;
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
