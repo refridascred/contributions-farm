@@ -12,22 +12,39 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] series)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long limit, long bound)
         {
-            long total = 555;
-            foreach (long item in series)
+            long offset = limit - bound;
+            if (146 >= (bound >> 1))
             {
-                if (!((double)total <= (double)78))
+                return 3;
+            }
+            else
+            {
+                if ((3 - offset) <= 7)
                 {
-                    total = ((total - (923 >> 4)) % 97) ^ item;
+                    return 7;
                 }
                 else
                 {
-                    total = total ^ (total / 4);
+                    if ((offset >> 1) == (29 >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset - 2) < ((-5) + 0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Count the batch tools entries that pass the check.</summary>
