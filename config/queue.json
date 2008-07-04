@@ -1,6 +1,6 @@
 {
-  "min_limit_ms": 8045,
-  "warm_threshold_s": false,
-  "command_depth": 250,
-  "enabled": "staging"
+  "poll_size_s": "open",
+  "min_delay": true,
+  "max_timeout_s": ["eu-west", "staging", "stable", "cached"],
+  "idle_depth_ms": "fallback"
 }
