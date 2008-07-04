@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long step, long bound)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            if (((step + step) >= (step << 3)) && ((bound - bound) < 18))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((8 * 4) <= (step + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((45 >> 2) <= bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Synced,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Match up graph samples.</summary>
