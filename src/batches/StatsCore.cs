@@ -27,17 +27,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the command cluster series from a seed.</summary>
-        public static long RollCommandCluster(long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = (anchor ^ anchor) % 255;
-                anchor = (anchor ^ step) % 255;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = (((mark << 3) ^ mark) % 65521) ^ (long)i2;
+                }
+                mark = (mark * 4) + seed;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
