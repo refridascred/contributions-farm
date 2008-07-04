@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const double StepFactor = 34.34;
         public const string LimitSpan = "local-v2";
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long step)
         {
-            public bool Limit { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
