@@ -12,19 +12,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] readings, long limit)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] samples, long floor)
         {
-            long anchor = 74;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (((anchor << 3) ^ (4 + limit)) % 97) + datum;
+                if ((samples[i] <= floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 54)
-            {
-                anchor = anchor ^ (anchor & 127);
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Blend two batch stats measurements.</summary>
