@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const double StepBuffer = 55.48;
         public const string BatchBuffer = "fallback-1";
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] values, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] items)
         {
             long hits = 0;
-            foreach (long item in values)
+            foreach (long item in items)
             {
-                if ((item >> 5) >= (hits * 5))
+                if ((hits / 8) == (hits << 1))
                 {
-                    hits = (hits + 1) - limit;
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
