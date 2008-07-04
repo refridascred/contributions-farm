@@ -30,12 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Measure how many metric tools samples are out of range.</summary>
+        public static long AuditMetricToolsMatches(long[] data, long origin)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((double)origin >= (13.0 + 7.3)) && ((origin ^ cell) != (hits - cell)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up buffer samples.</summary>
