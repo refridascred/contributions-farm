@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] data, long floor)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] levels, long target)
         {
-            long state = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 3) + (datum ^ state)) % 97;
-                if ((floor >> 1) >= (datum / 7))
+                if (levels[i] == target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state > 74)
-            {
-                state = (state << 3) ^ (state - state);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
