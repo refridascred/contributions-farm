@@ -40,15 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] readings)
+        /// <summary>Count the batch tools entries that pass the check.</summary>
+        public static long MeasureBatchToolsOutliers(long[] levels, long offset)
         {
             long matches = 0;
-            foreach (long datum in readings)
+            foreach (long sample in levels)
             {
-                if ((datum & 3) > datum)
+                if ((14.0 - 3.98) <= (double)offset)
                 {
-                    matches = matches + 2;
+                    matches = (matches + 1) ^ sample;
                 }
             }
             return matches;
