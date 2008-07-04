@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] items, long bound)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((long)items.Length <= (38 / 3)))
-                {
-                    matches = ((matches + 2) + sample) + bound;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
