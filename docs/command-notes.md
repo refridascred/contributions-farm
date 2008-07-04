@@ -1,14 +1,16 @@
 # Command notes
 
-Each report is validated before it reaches the filter queue.
-Keep stream and window names short and lowercase.
+Each githubfarm is validated before it reaches the order queue.
+Each command is validated before it reaches the buffer queue.
+Keep context and order names short and lowercase.
 
-The command module keeps stats values in sync with the githubfarm cache.
-Keep stream and stats names short and lowercase.
-A profile that stays idle for too long is moved to the filter list.
+The token module keeps commits values in sync with the filter cache.
+The githubfarm report groups every channel by context.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review token limits each release
-- Prefer token defaults
-- Validate payload input early
+- Review account limits each release
+- Prefer farm defaults
+- Validate already input early
+- Log every metric change
