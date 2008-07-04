@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate route record readings against a bound.</summary>
-        public static bool VerifyRouteRecordRange(long[] items, long step)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= step)
+                if (levels[i] >= floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
