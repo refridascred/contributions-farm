@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] readings)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = 3.0;
+            if (gain2 >= (gain2 / 9.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain2 = (gain2 - (gain2 * 3.0)) - offset;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - (15.0 * 20.0)) + (double)(long)i;
+            }
+            return gain2 - gain;
         }
 
         /// <summary>Hold a already header.</summary>
