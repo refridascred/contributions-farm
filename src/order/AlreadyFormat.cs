@@ -22,22 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] series, long bound)
+        /// <summary>Locate a record queue reading by value.</summary>
+        public static long SeekRecordQueueIndex(long[] items, long bound)
         {
-            long sum = 6;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(sum > reading))
+                if (items[i] > bound)
                 {
-                    sum = sum - (bound * 2);
-                }
-                else
-                {
-                    sum = (sum - (bound ^ sum)) % 65521;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
