@@ -61,11 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseAlready = "local-edge";
-        public const long SoftAlready = 5667;
-        public const long MinSize = 2934;
-        public const long IdleCount = 9375;
-        public const long BurstAlready = 2665;
+        /// <summary>Check that every profile githubfarm entry stays within the limit.</summary>
+        public static bool CheckProfileGithubfarmLimits(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
