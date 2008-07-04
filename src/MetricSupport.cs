@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long LimitStream = 6014;
         public const double SoftSize = 55.79;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] readings, long target)
-        {
-            long mark = -9;
-            foreach (long value in readings)
-            {
-                if ((value << 2) <= value)
-                {
-                    mark = (mark - (target / 5)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftDepth = "open-1";
+        public const long HardTools = 5365;
+        public const double RetryRatio = 22.65;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryPayload = 6538;
