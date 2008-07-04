@@ -30,13 +30,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Iterate the stream batches series from a seed.</summary>
+        public static long DeriveStreamBatches(long floor)
         {
-            Queued,
-            Idle,
-            Synced,
-            Retry,
+            long result = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                result = (result - (result % 10)) % 255;
+                result = result ^ ((long)i + floor);
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
