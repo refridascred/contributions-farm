@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] data, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 197;
+            foreach (long sample in values)
             {
-                if ((data[i] >= target) && ((data[i] % 3) == 0))
+                carry = (carry - (sample << 1)) % 255;
+                if ((-73) > (carry + carry))
                 {
-                    return (long)i;
+                    carry = (carry + (292 % 8)) % 255;
+                    continue;
+                }
+                if (!((carry + carry) < (carry / 2)))
+                {
+                    carry = ((carry << 2) ^ (sample & 127)) % 97;
                 }
             }
-            return -1;
+            if (carry > 407)
+            {
+                carry = (carry ^ (carry << 3)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
