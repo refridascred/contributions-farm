@@ -45,22 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry commits entries that pass the check.</summary>
-        public static long AuditEntryCommitsOutliers(long[] items, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (item > matches)
+                if ((double)seen != (2.4 + 12.0))
                 {
-                    matches = (matches + 3) - limit;
+                    seen = (seen + 1) + cell;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
