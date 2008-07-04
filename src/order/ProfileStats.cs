@@ -31,12 +31,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long seed)
         {
-            public double Weight { get; set; }
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
+            long total = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 2) + (seed * 5)) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Measure how many support context samples are out of range.</summary>
