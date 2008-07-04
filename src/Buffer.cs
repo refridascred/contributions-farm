@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] items, long step)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the contributi cache entries that pass the check.</summary>
