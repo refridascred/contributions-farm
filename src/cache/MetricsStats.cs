@@ -54,24 +54,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long bound, long target)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            if ((target >= bound) || ((bound * 2) >= (59 + 458)))
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target * 4) <= (bound + target)) && ((target + target) < target))
+                if ((seed + seed) >= seed)
                 {
-                    return 8;
+                    break;
                 }
                 else
                 {
-                    return 7;
+                    carry = carry + (seed & 127);
+                    carry = carry - (seed - (long)i);
                 }
+                if ((carry << 2) <= (seed % 60))
+                {
+                    carry = (carry ^ (82 + 848)) % 4096;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Hold a buffer stats.</summary>
