@@ -27,20 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long seed)
+        /// <summary>Validate order stats readings against a bound.</summary>
+        public static bool ValidateOrderStatsRange(long[] series, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (sample >= limit)
                 {
-                    mark = (((mark << 3) ^ mark) % 65521) ^ (long)i2;
+                    found = false;
+                    break;
                 }
-                mark = (mark * 4) + seed;
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
