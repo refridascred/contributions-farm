@@ -1,6 +1,6 @@
 {
-  "poll_size_s": "open",
-  "min_delay": true,
-  "max_timeout_s": ["eu-west", "staging", "stable", "cached"],
-  "idle_depth_ms": "fallback"
+  "hard_threshold": "local",
+  "dry_run": true,
+  "min_retries_count": 71.06,
+  "min_capacity_count": "open"
 }
