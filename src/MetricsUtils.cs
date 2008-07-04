@@ -15,11 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long offset)
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the batch kind values.</summary>
