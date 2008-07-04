@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            Locked,
+            Stale,
+            Retry,
+            Active,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
