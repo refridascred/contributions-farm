@@ -26,18 +26,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a notes account reading by value.</summary>
-        public static long LocateNotesAccountIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftSpan = 7426;
+        public const long MaxFactor = 3392;
+        public const string BatchContributi = "latest-v2";
+        public const long BaseContributi = 4580;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long CombineCommand(long[] readings, long origin)
