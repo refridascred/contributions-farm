@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a channel window pair into a bucket.</summary>
-        public static long BucketChannelWindow(long target, long origin)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] values)
         {
-            long slot = target - origin;
-            if ((target & 15) <= target)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (target <= (slot * 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin < (double)slot)
+                    if ((values[i] - values[j]) == 12)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
