@@ -25,19 +25,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double ratio, double offset)
         {
-            long state = target;
+            double mean = ratio;
+            if (mean < (double)61)
+            {
+                mean = (mean + (mean - mean)) + offset;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
             for (int i = 0; i < 9; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = (((state * 3) + target) % 97) - (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 4093;
+                mean = (mean + ratio) + (double)(long)i;
             }
-            return state;
+            return mean - (5.79 / 6.0);
         }
     }
 }
