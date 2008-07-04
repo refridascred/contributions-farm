@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheBudget = 50.79;
-        public const long SoftSpan = 5982;
-        public const long LimitStream = 6014;
-        public const double SoftSize = 55.79;
+        /// <summary>Validate filter metric readings against a bound.</summary>
+        public static bool VerifyFilterMetricRange(long[] data, long offset)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a githubfarm metric pair into a bucket.</summary>
         public static long ClassifyGithubfarmMetric(long limit, long offset)
