@@ -69,17 +69,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowBudget = 9064;
+        public const string BurstSupport = "cached-v2";
+        public const string DefaultSupport = "alpha-v2";
+        public const string LimitFactor = "latest-1";
     }
 }
