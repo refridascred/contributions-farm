@@ -38,15 +38,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] samples, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
