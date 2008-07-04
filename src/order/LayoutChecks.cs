@@ -62,38 +62,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a githubfarm commits value against two limits.</summary>
-        public static long GradeGithubfarmCommits(long seed, long seed2)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            if (!((seed2 - seed) > (seed >> 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((6.2 / 4.0) <= (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((682 * 3) != (seed * 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed2 ^ seed) <= (seed2 % 97))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
