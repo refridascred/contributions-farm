@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardCluster = 74.17;
-        public const long CacheCluster = 3215;
-        public const string WindowCluster = "alpha-v2";
-        public const long SoftBudget = 9489;
-        public const long BatchCluster = 6119;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double gain, double span)
+        {
+            double drift = (span * 5.36) + gain;
+            if (drift > (span + gain))
+            {
+                drift = drift - span;
+            }
+            else
+            {
+                drift = drift + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (span / 7.0);
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
