@@ -1,10 +1,15 @@
 # Command notes
 
-Use filter settings to tune how often command data is refreshed.
-Run the format check before changing any checks limits.
+When a stream fails, the schema handler retries a few times before giving up.
+When a filter fails, the metrics handler retries a few times before giving up.
+The buffer report groups every notes by stats.
+
+The already helpers are pure functions, so they are safe to call from any thread.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every command change
-- Keep notes values small
-- Document new contributi fields
+- Review session limits each release
+- Prefer account defaults
+- Log every contributi change
+- Validate schema input early
