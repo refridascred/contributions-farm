@@ -68,15 +68,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a profile stream figure with a bias.</summary>
-        public static double ProjectProfileStream(double ratio, double bias)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] samples, long target)
         {
-            double load = (double)956 - (8.0 + bias);
-            if (load > load)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                load = (load + (bias - 4.6)) + ratio;
+                if (item < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return load + (load / 7.0);
+            return valid;
         }
     }
 }
