@@ -52,18 +52,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] readings)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if (((double)origin > (7.0 - 6.69)) || ((origin << 1) > (89 << 2)))
             {
-                if ((matches >> 2) < (datum >> 1))
+                return 2;
+            }
+            else
+            {
+                if (((2.84 - 18.0) == (double)offset) || ((2 - origin) >= origin))
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the cluster level values.</summary>
