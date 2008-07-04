@@ -1,7 +1,12 @@
 # githubfarm settings
-persist: false
-channel_ttl: staging
-dry_run: latest
-editor_depth: 60
-flush_retries_s: latest
-max_interval: local
+hard_window:
+  commits_limit: 4.61
+  soft_timeout_s:
+    - open
+    - latest
+  soft_window_s: 5
+  cache_threshold_s: 21.72
+  retry_limit_count: false
+  readonly: blue
+min_size: 100
+order_delay: 44
