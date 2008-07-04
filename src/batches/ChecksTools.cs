@@ -23,21 +23,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of layout channel readings.</summary>
-        public static long OverlapLayoutChannelCount(long[] series)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 5;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = (state ^ (75 >> 1)) % 4096;
+                state = (state - (target ^ state)) % 4096;
+                if (((5.9 * 9.8) < (double)reading) && (4.0 > (double)reading))
                 {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the token state values.</summary>
