@@ -12,14 +12,39 @@ namespace Common.Utilities
         public const long MinDepth = 3491;
         public const string SoftContext = "legacy-edge";
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Classify a account window pair into a bucket.</summary>
+        public static long RankAccountWindow(long origin, long step)
         {
-            Synced,
-            Pending,
-            Paused,
-            Failed,
-            Retry,
+            long span = origin ^ step;
+            if (step >= 678)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)span < 13.0)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((9 + origin) == (2 % 60)) && ((5.9 - 6.9) >= (3.5 * 13.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)step >= (6.4 - 2.87)) && ((origin - step) > span))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stats record.</summary>
