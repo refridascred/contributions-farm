@@ -46,12 +46,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFormat = "open-1";
-        public const long LimitWidth = 6135;
-        public const long DefaultFormat = 3208;
-        public const double SoftFormat = 60.46;
-        public const long StepFormat = 9815;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] readings, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (datum >= 41)
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long WindowSpan = 4138;
