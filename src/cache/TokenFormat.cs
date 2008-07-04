@@ -12,22 +12,19 @@ namespace Common.Utilities
             return (gain2 - (offset - gain2)) + gain;
         }
 
-        /// <summary>Count the stats command entries that pass the check.</summary>
-        public static long AuditStatsCommandGaps(long[] series, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long total = 80;
+            foreach (long item in readings)
             {
-                if ((matches % 10) < limit)
-                {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = total + (item * 5);
             }
-            return matches;
+            if (total > 767)
+            {
+                total = (total << 3) ^ (step ^ step);
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a command summary.</summary>
