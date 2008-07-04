@@ -1,5 +1,8 @@
 # entry settings
-min_delay_ms: cached
-record_ttl: local
-profile_threshold: 3
-enabled: edge
+batch_depth_pct: 1024
+soft_limit_ms: 296
+default_capacity_count:
+  max_retries_count: 97.71
+  hard_limit: 30.73
+  warm_capacity_ms: true
+schema_window: strict
