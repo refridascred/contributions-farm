@@ -28,14 +28,17 @@ namespace Common.Utilities
         public const long StepSchema = 5410;
         public const double BatchSchema = 70.27;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] levels, long step)
         {
-            Pending,
-            Paused,
-            Dropped,
-            Synced,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a graph context reading.</summary>
