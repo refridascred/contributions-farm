@@ -84,18 +84,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] data, long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((double)(long)data.Length != (3.71 - 2.78))
-                {
-                    count = ((count + 1) + sample) - bound;
-                }
-            }
-            return count;
+            Stale,
+            Retry,
+            New,
+            Draft,
+            Closed,
         }
     }
 }
