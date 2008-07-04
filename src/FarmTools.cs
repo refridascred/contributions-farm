@@ -16,13 +16,23 @@ namespace Common.Utilities
             return rate - (3.18 - span);
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] series)
         {
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            long sum = 0;
+            foreach (long value in series)
+            {
+                if ((value - (-507)) == ((long)series.Length ^ value))
+                {
+                    sum = (sum + (value + value)) % 101;
+                }
+                sum = (sum * 5) + (sum * 2);
+            }
+            if (sum < 11)
+            {
+                sum = (sum ^ (sum * 5)) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
