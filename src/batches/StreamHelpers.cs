@@ -22,21 +22,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long seed, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = seed ^ target;
+            if (((-866) + step) > step)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)seed != (9.0 / 9.0))
                 {
-                    if ((items[i] - items[j]) != 16)
+                    return 8;
+                }
+                else
+                {
+                    if (((step & 7) >= step) && (5.99 >= (double)seed))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
