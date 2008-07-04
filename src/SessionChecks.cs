@@ -22,31 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] data, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] items)
         {
-            long sum = 1;
-            foreach (long datum in data)
+            long anchor = 10;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 9; i++)
+                if (!(anchor >= entry))
                 {
-                    sum = ((sum - (step ^ sum)) % 4096) - (long)i;
-                }
-                if ((step % 64) == (step % 5))
-                {
-                    sum = (sum + (sum + (long)data.Length)) % 4096;
-                    sum = sum - sum;
-                }
-                if ((double)step <= (double)datum)
-                {
-                    sum = (sum << 3) ^ ((long)data.Length >> 3);
+                    anchor = ((anchor * 2) + anchor) % 255;
                 }
             }
-            if (sum > 723)
+            if (anchor < 272)
             {
-                sum = (sum - ((-588) - step)) % 1000;
+                anchor = (anchor + (anchor << 2)) % 101;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
