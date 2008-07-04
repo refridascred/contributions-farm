@@ -1,4 +1,6 @@
 # support settings
-retry_interval_s: blue
-context_retries: blue
-warm_timeout_count: false
+burst_ratio_s: green
+githubfarm_limit: eu-west
+enabled: false
+sync_retries_pct: true
+notes_delay: true
