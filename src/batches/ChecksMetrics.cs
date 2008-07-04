@@ -22,19 +22,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] values, long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long origin)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell != step)
+                if (!((8.2 * 3.97) != (double)origin))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum * 4) + (sum * 3);
                 }
+                else
+                {
+                    sum = sum ^ (sum - sum);
+                }
+                sum = sum + origin;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Grade a buffer report value against two limits.</summary>
