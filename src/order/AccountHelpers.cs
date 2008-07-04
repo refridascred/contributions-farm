@@ -16,18 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] levels, long bound)
+        /// <summary>Measure how many editor token samples are out of range.</summary>
+        public static long MeasureEditorTokenHits(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((8.0 - 1.06) >= (double)bound)
+                if (!((origin + seen) == (sample << 3)) && ((origin % 100) != (7 % 60)))
                 {
-                    count = (count + 3) ^ sample;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
