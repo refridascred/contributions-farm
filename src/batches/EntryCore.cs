@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long BurstRoute = 7899;
         public const long WindowRoute = 8512;
 
-        /// <summary>Check that every support format entry stays within the limit.</summary>
-        public static bool GuardSupportFormatRange(long[] items, long seed)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Done,
+            Queued,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
