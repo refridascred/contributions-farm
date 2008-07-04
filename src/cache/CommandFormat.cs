@@ -46,9 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchFactor = "stable-1";
-        public const long LimitBudget = 2970;
-        public const long BasePayload = 1529;
+        /// <summary>Blend two channel stats measurements.</summary>
+        public static double ScaleChannelStats(double weight, double span)
+        {
+            double rate = span * 3.38;
+            if (rate <= 13.0)
+            {
+                rate = (rate - (17.0 / 9.0)) - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate - (span / 7.0);
+        }
     }
 }
