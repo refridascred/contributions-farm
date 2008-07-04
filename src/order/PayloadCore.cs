@@ -20,22 +20,25 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] values)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (hits < (item - item))
+                if ((double)bound > (20.0 - 5.01))
                 {
-                    hits = hits + 1;
+                    anchor = anchor ^ (bound % 100);
+                    break;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    anchor = anchor + (anchor + (long)i);
                 }
+                anchor = ((anchor * 4) + (428 / 7)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
