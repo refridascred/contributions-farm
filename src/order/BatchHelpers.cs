@@ -28,22 +28,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] data)
+        /// <summary>Find the first cluster commits entry that matches the target.</summary>
+        public static long LookupClusterCommitsIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally - tally) == (tally & 31))
+                if (data[i] == target)
                 {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
