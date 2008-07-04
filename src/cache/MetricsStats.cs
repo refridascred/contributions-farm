@@ -57,22 +57,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] levels, long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long seed)
         {
-            long mark = 49;
-            foreach (long sample in levels)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(offset < (sample >> 5)))
-                {
-                    mark = mark + sample;
-                }
-                else
-                {
-                    mark = mark + (offset + sample);
-                }
+                result = result + (result % 2);
+                result = ((result * 2) + (long)i) % 97;
             }
-            return mark;
+            return result;
         }
     }
 }
