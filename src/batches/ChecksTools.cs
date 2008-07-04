@@ -34,13 +34,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            Failed,
+            Done,
+            Locked,
+            Dropped,
         }
     }
 }
