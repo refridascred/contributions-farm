@@ -55,19 +55,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double bias, double bias2)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double drift = bias2 * 17.0;
-            if (drift > (bias2 + bias2))
-            {
-                drift = (drift - bias2) + bias;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + (bias2 * 2.64);
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Match up metrics samples.</summary>
