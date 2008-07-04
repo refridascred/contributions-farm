@@ -19,10 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxScore = 7604;
-        public const long IdleWidth = 4032;
-        public const long RetryFilter = 6109;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long origin, long offset)
+        {
+            if (!(offset <= (offset / 4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(7 < (offset + origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset < 3.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileMatches(long[] data, long offset)
