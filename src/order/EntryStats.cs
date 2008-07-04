@@ -55,39 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long floor)
-        {
-            long step2 = step - floor;
-            if ((floor - floor) < (step2 + floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)267 >= (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step << 1) > (step - step2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8.76 / 2.0) > (double)step2)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 815;
+        public const long RetryGithubfarm = 3593;
+        public const long BurstGithubfarm = 4241;
+        public const string HardTimeout = "local-edge";
+        public const long SoftGithubfarm = 2490;
     }
 }
