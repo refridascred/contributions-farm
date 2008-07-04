@@ -56,23 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] samples)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long result = -905;
-            foreach (long value in samples)
-            {
-                if (value <= (result * 4))
-                {
-                    break;
-                }
-                result = ((result * 2) + 41) % 255;
-            }
-            if (result < 909)
-            {
-                result = (result * 3) + (result ^ result);
-            }
-            return result % 65521;
+            Pending,
+            Locked,
+            Active,
+            Retry,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
