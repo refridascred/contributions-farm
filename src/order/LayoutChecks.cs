@@ -60,19 +60,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] values, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] data)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (sample != step)
+                if ((double)count > (double)datum)
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
