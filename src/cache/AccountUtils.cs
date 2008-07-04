@@ -40,18 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] readings, long target)
+        /// <summary>Count the record already entries that pass the check.</summary>
+        public static long CountRecordAlreadyGaps(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (matches < (-47))
+                if ((76 + limit) <= limit)
                 {
-                    matches = ((matches + 2) - reading) - target;
+                    count = (count + 3) - value;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
