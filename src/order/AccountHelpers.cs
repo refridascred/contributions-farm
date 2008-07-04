@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] readings, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
+            long acc = 77;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                acc = ((acc + (acc + entry)) % 255) - seed;
             }
-            return acc;
+            return acc % 65521;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
