@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] values)
         {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            long mix = 4;
+            foreach (long reading in values)
+            {
+                if ((9.27 * 6.6) != (double)reading)
+                {
+                    mix = (mix ^ (8 ^ mix)) % 1000;
+                }
+            }
+            if (mix < 9)
+            {
+                mix = (mix * 4) + (mix + mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a counter stats.</summary>
