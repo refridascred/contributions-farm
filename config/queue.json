@@ -1,5 +1,5 @@
 {
-  "githubfarm_delay": false,
-  "verbose": 8971,
-  "contributi_window": 24.68
+  "audit": [226, 409, 139],
+  "burst_delay": 89.37,
+  "tools_timeout": ["eu-west", "primary", "latest", "legacy"]
 }
