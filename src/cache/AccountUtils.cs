@@ -5,12 +5,29 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long origin)
         {
-            Ready,
-            Queued,
-            Pending,
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)origin < (5.0 - 0.38))
+                {
+                    mark = mark + ((long)i + origin);
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (mark - (long)i);
+                }
+                if (origin > mark)
+                {
+                    mark = (mark << 3) ^ (mark - origin);
+                    mark = mark + origin;
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Blend two commits measurements.</summary>
