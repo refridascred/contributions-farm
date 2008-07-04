@@ -1,18 +1,5 @@
 {
-  "queue_ttl": 9338,
-  "hard_timeout_ms": {
-    "enabled": 87,
-    "stream_depth": true,
-    "hard_ratio": {
-      "metrics_depth": false,
-      "channel_size": 37,
-      "audit": "primary",
-      "stream_retries": 57.28,
-      "strict": true,
-      "base_timeout": 38
-    },
-    "max_depth_pct": 53
-  },
-  "sync_limit": 5229,
-  "base_delay_s": ["eu-west", "local", "cached"]
+  "queue_capacity": 18,
+  "retry_delay": 6123,
+  "support_depth": true
 }
