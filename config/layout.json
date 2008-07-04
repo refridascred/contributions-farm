@@ -1,5 +1,5 @@
 {
-  "account_delay": 85,
-  "default_ttl": 5331,
-  "hard_delay_pct": [85, 67, 114, 98]
+  "cache_capacity_pct": 34,
+  "batch_window_ms": 5721,
+  "batch_limit": 250
 }
