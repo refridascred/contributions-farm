@@ -33,18 +33,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many stream payload samples are out of range.</summary>
-        public static long TallyStreamPayloadMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((double)hits >= (6.1 - 3.38))
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleRatio = 3503;
+        public const long SoftRatio = 8094;
+        public const long MinBuffer = 918;
     }
 }
