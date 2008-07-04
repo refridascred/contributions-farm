@@ -29,9 +29,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleRatio = 3503;
-        public const long SoftRatio = 8094;
-        public const long MinBuffer = 918;
+        /// <summary>Roll a schema command counter forward.</summary>
+        public static long IterateSchemaCommand(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
