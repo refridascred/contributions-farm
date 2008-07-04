@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] samples, long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long seed, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long next = seed ^ offset;
+            if (next < seed)
             {
-                if (samples[i] <= seed)
+                return 7;
+            }
+            else
+            {
+                if ((next * 2) <= 537)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((next >> 1) <= seed) && ((26 + next) <= offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a layout counter reading by value.</summary>
