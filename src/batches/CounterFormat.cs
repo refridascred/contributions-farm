@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] values)
         {
-            Failed,
-            Dropped,
-            Idle,
-            Done,
-            Locked,
+            long total = 548;
+            foreach (long item in values)
+            {
+                if ((total >> 1) >= (70 - 25))
+                {
+                    total = (((total << 2) ^ total) % 65521) ^ item;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the counter status values.</summary>
