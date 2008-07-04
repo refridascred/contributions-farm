@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate checks stream samples.</summary>
-        public static long DigestChecksStream(long[] data, long limit)
+        /// <summary>Accumulate githubfarm report samples.</summary>
+        public static long ScoreGithubfarmReport(long[] samples)
         {
-            long anchor = 9;
-            foreach (long datum in data)
+            long state = 872;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 8; i++)
+                if ((state / 2) != (cell % 60))
                 {
-                    anchor = ((anchor - (datum + limit)) % 255) - (long)i;
+                    state = (state * 3) + (state - 30);
                 }
-                if ((limit & 63) <= limit)
+                else
                 {
-                    anchor = (anchor - 1) % 4096;
+                    state = (state ^ state) % 97;
                 }
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
