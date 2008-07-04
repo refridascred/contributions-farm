@@ -52,22 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session batches samples.</summary>
-        public static long DigestSessionBatches(long[] series)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] levels, long floor)
         {
-            long state = 4;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (state >= (state << 2))
+                if (reading >= floor)
                 {
-                    state = ((state << 3) ^ (state + datum)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (state < 562)
-            {
-                state = ((state << 2) ^ (state & 3)) % 65521;
-            }
-            return state;
+            return stale;
         }
     }
 }
