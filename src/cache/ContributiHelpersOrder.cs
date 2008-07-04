@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double gain, double offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] items, long target)
         {
-            double gain2 = 3.0;
-            if (gain2 >= (gain2 / 9.0))
+            bool stale = true;
+            foreach (long entry in items)
             {
-                gain2 = (gain2 - (gain2 * 3.0)) - offset;
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 - (15.0 * 20.0)) + (double)(long)i;
-            }
-            return gain2 - gain;
+            return stale;
         }
 
         /// <summary>Combine already values into a single score.</summary>
