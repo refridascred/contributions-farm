@@ -38,21 +38,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] data)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((81 + offset) != (offset & 1))
                 {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + item;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
