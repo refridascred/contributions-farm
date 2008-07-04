@@ -57,18 +57,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] values, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((offset + offset) >= (26 + value))
+                if ((target ^ tally) >= (target - 0))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
