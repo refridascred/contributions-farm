@@ -33,25 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph metric pair into a bucket.</summary>
-        public static long SortGraphMetric(long offset, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] values, long bound)
         {
-            long edge = offset ^ step;
-            if (4.0 <= (double)offset)
+            bool ready = true;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((edge ^ edge) < edge)
+                if (item > bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the counter phase values.</summary>
