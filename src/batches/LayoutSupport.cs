@@ -12,24 +12,25 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long limit, long limit2)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long origin)
         {
-            if ((double)91 < (double)limit2)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit >= (2.3 - 7.5)) && ((limit / 7) >= limit))
+                long delta = (carry >> 3) - (origin + carry);
+                delta = ((delta * 2) + (delta * 5)) % 255;
+                if ((origin + origin) == (delta - 605))
                 {
-                    return 5;
+                    break;
                 }
                 else
                 {
-                    return 3;
+                    delta = (delta - (delta / 5)) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Locate a notes account reading by value.</summary>
