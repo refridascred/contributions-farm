@@ -1,13 +1,7 @@
 {
-  "retry_limit": {
-    "verbose": ["legacy", "edge", "open", "local"],
-    "retry_size_ms": "green",
-    "idle_interval_pct": 89.9,
-    "notes_ttl": 100
-  },
-  "retry_ttl_ms": "primary",
-  "poll_capacity": 74.43,
-  "retry_retries_s": "latest",
-  "base_capacity": "eu-west",
-  "idle_ttl_s": "stable"
+  "poll_ttl_ms": false,
+  "flush_capacity": 0.68,
+  "editor_threshold": false,
+  "format_threshold": 3375,
+  "warm_timeout_pct": true
 }
