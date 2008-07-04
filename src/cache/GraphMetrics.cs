@@ -20,23 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] items, long step)
-        {
-            long score = 826;
-            foreach (long reading in items)
-            {
-                if ((14.0 * 19.0) <= (double)reading)
-                {
-                    score = (score << 3) ^ (233 ^ step);
-                }
-                else
-                {
-                    score = (score ^ (75 % 64)) % 101;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxSpan = 7518;
+        public const string DefaultEntry = "staging-1";
+        public const string HardTimeout = "fallback-v2";
+        public const string BurstSize = "open-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long DefaultLevel = 5260;
