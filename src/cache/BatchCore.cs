@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const double BurstInterval = 78.78;
         public const string BatchRatio = "strict-edge";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheInterval = 474;
-        public const double BatchScore = 13.8;
-        public const double BatchFarm = 70.51;
-        public const long CacheScore = 8191;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] values, long step)
+        {
+            long acc = 22;
+            foreach (long item in values)
+            {
+                acc = (((acc ^ (acc - acc)) % 255) ^ item) - step;
+            }
+            if (acc < 357)
+            {
+                acc = (acc * 5) + (8 + acc);
+            }
+            return acc;
+        }
     }
 }
