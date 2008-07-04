@@ -13,10 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleLevel = "stable-edge";
-        public const string MinCount = "strict-edge";
-        public const string StepTools = "legacy-edge";
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long PairSessionCount(long[] items)
