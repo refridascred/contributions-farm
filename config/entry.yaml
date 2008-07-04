@@ -1,17 +1,8 @@
 # entry settings
-warm_delay_count:
-  default_retries_count: 500
-  poll_window_s: 282
-  max_size: 2
-  audit:
-    dry_run: 6773
-    format_interval: false
-    soft_delay_s: 1024
-farm_size: 250
-min_delay_s:
-  - edge
-  - strict
-poll_threshold_s: primary
-min_depth_count:
-  - cached
-  - cached
+profile_limit:
+  - staging
+  - fallback
+  - legacy
+max_threshold_s: 250
+verbose: 3247
+dry_run: 100
