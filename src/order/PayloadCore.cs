@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const long BurstLayout = 348;
         public const long WindowLayout = 1889;
 
-        /// <summary>Project the next farm profile value.</summary>
-        public static double ProjectFarmProfile(double scale, double span)
-        {
-            double gain = scale;
-            if (gain >= (gain / 9.0))
-            {
-                gain = gain + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (5.47 - span);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 3731;
+        public const long RetryCounter = 968;
+        public const double MaxScore = 77.43;
+        public const long SoftCounter = 5761;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long DigestReport(long[] values, long limit)
