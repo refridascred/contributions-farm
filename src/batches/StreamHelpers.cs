@@ -63,10 +63,17 @@ namespace Common.Utilities
         public const string HardLevel = "fallback";
         public const long SoftFarm = 3570;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 2203;
-        public const long MaxCommits = 9182;
-        public const long BaseCommits = 8818;
-        public const string StepCommits = "legacy-1";
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
