@@ -32,11 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinSpan = 4047;
-        public const long RetryTimeout = 7532;
-        public const double BaseDepth = 34.31;
-        public const double CacheEntry = 31.18;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxWidth = 5313;
+        public const string DefaultBuffer = "local-v2";
+        public const long HardBuffer = 7585;
+        public const double MaxDepth = 55.4;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double HardFarm = 14.75;
