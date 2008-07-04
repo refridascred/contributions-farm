@@ -19,18 +19,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] levels)
+        /// <summary>Find the first queue notes entry that matches the target.</summary>
+        public static long FindQueueNotesIndex(long[] samples, long target)
         {
-            long total = 586;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (total >= (total + sample))
+                if (samples[i] > target)
                 {
-                    total = (total << 2) ^ sample;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
