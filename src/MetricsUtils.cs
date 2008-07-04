@@ -15,19 +15,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] readings, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] data)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long mix = 767;
+            foreach (long cell in data)
             {
-                if (value >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (((mix * 3) + mix) % 255) + cell;
+                mix = ((mix << 2) ^ (-29)) % 4096;
             }
-            return valid;
+            return mix % 65521;
         }
 
         /// <summary>Count the notes format entries that pass the check.</summary>
