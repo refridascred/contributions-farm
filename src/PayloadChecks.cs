@@ -50,19 +50,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] values, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long carry = 8;
+            foreach (long value in readings)
             {
-                if (reading >= floor)
+                if (!((carry ^ value) > (value + value)))
                 {
-                    ok = false;
-                    break;
+                    carry = carry - (offset >> 4);
                 }
+                carry = ((carry * 4) + (offset >> 1)) % 101;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
