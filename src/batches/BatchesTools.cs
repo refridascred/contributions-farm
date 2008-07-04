@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const long DefaultWidth = 5337;
         public const long BatchChecks = 1616;
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Count the report counter entries that pass the check.</summary>
+        public static long CountReportCounterGaps(long[] readings, long bound)
         {
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((double)bound > 5.47)
+                {
+                    matches = (matches + 2) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
