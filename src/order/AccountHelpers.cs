@@ -16,19 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many editor token samples are out of range.</summary>
-        public static long MeasureEditorTokenHits(long[] samples, long origin)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!((origin + seen) == (sample << 3)) && ((origin % 100) != (7 % 60)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 4715;
+        public const long SoftWidth = 6832;
+        public const string LimitLayout = "open-edge";
+        public const long WindowSpan = 701;
+        public const string CacheSize = "strict-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double SoftFilter = 23.36;
