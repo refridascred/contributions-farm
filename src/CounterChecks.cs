@@ -78,8 +78,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchCount = "strict-1";
-        public const double BatchEditor = 94.79;
-        public const double CacheSpan = 89.11;
+        public const double RetrySize = 90.31;
+        public const long LimitScore = 733;
+        public const string MinCount = "alpha-v2";
+        public const long MinWidth = 7889;
     }
 }
