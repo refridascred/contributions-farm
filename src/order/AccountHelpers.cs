@@ -72,24 +72,17 @@ namespace Common.Utilities
             return ratio - 2.5;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long target, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] series, long bound)
         {
-            if ((floor + 57) <= (27 + target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((floor & 31) >= (6 + floor)))
+                if ((series[i] == bound) && ((series[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
