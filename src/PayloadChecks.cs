@@ -55,17 +55,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a checks counter reading by value.</summary>
-        public static long LocateChecksCounterIndex(long[] data, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (data[i] < bound)
+                if ((19.0 * 3.0) >= (double)count)
                 {
-                    return (long)i;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
