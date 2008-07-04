@@ -1,12 +1,32 @@
 # githubfarm settings
-retry_ratio_ms: false
-report_threshold:
-  hard_depth_s: true
-  batch_delay_pct: latest
-  readonly:
-    - 456
-    - 352
-    - 455
-    - 292
-  flush_threshold_s: 9.62
-batches_interval: 2732
+persist:
+  - legacy
+  - eu-west
+queue_threshold:
+  command_limit: green
+  enabled: primary
+  sync_ttl: staging
+  payload_retries:
+    audit:
+      - 195
+      - 259
+      - 277
+      - 126
+    hard_retries:
+      - 232
+      - 365
+    default_capacity: latest
+    compress:
+      - 377
+      - 223
+      - 399
+    stream_delay: open
+    enabled: primary
+  batch_delay_s:
+    - 281
+    - 130
+  batch_window_pct: 8395
+hard_retries_ms: standard
+flush_delay: 49
+flush_ratio_ms: 7265
+max_capacity: cached
