@@ -46,22 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mix = 322;
+            foreach (long item in readings)
             {
-                if ((count >> 2) < (reading - count))
+                if ((double)item < 3.87)
                 {
-                    count = count + 1;
+                    mix = mix - (step * 4);
                 }
                 else
                 {
-                    count = count - 1;
+                    mix = (mix ^ mix) % 1000;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a support summary.</summary>
