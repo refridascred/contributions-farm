@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue eu-west local latest; do
+for item in staging cached green latest; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=264
-log "limit is ${BUFFER_LIMIT}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
