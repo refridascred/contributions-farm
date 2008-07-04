@@ -35,10 +35,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 5829;
-        public const double StepCount = 75.82;
-        public const long BurstProfile = 5405;
-        public const double StepProfile = 25.56;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] readings, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (((entry - offset) != (matches + (long)readings.Length)) && (((-10) > (offset - offset)) && ((offset << 2) == (entry + offset))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
