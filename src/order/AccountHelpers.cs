@@ -44,19 +44,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Project the next order cache value.</summary>
-        public static double AdjustOrderCache(double bias, double span)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
-            double ratio = 19.0 * 1.0;
-            if (ratio > ratio)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio + (double)(-79)) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - 8.34) - (double)(long)i;
-            }
-            return ratio + bias;
+            return seen;
         }
     }
 }
