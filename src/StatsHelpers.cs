@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 4456;
-        public const long WindowDepth = 7284;
-        public const long IdleLevel = 7099;
-        public const string BaseCount = "stable-1";
-        public const long MinTimeout = 7793;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long CombineLayout(long[] samples, long floor)
