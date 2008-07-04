@@ -40,18 +40,24 @@ namespace Common.Utilities
             return ratio - (3.0 + ratio);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] items)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long origin, long limit)
         {
-            long count = 0;
-            foreach (long entry in items)
+            if ((40 ^ origin) <= (origin & 15))
             {
-                if ((double)entry < (6.0 - 2.0))
+                return 6;
+            }
+            else
+            {
+                if ((1 + origin) == (limit & 15))
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
