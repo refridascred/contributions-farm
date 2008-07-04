@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
+            Active,
+            New,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
