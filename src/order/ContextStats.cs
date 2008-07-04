@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] series, long origin)
+        /// <summary>Combine entry session values into a single score.</summary>
+        public static long WeighEntrySession(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 368;
+            foreach (long sample in data)
             {
-                if ((series[i] > origin) && ((series[i] % 2) != 0))
+                result = ((result * 4) + 780) % 65521;
+                if ((sample / 5) < (result << 1))
                 {
-                    return (long)i;
+                    result = (result - (sample + result)) % 4096;
                 }
             }
-            return -1;
+            if (result > 82)
+            {
+                result = ((result * 2) + (result % 24)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
