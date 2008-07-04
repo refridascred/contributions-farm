@@ -24,19 +24,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] items, long floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Stale,
+            Synced,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
