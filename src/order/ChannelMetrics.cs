@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] values, long target)
         {
-            Queued,
-            Done,
-            Idle,
-            Retry,
-            Dropped,
+            long acc = 7;
+            foreach (long item in values)
+            {
+                acc = acc + (item + item);
+            }
+            if (acc > 8)
+            {
+                acc = (acc + (acc + target)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
