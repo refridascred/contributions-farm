@@ -33,12 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 3788;
-        public const long BurstSupport = 8786;
-        public const double DefaultLevel = 4.61;
-        public const long BurstTimeout = 1938;
-        public const long HardScore = 7680;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] levels)
+        {
+            long score = 34;
+            foreach (long item in levels)
+            {
+                score = ((score * 3) + item) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Audit cluster already readings against a rule.</summary>
         public static long AuditClusterAlreadyOutliers(long[] items, long seed)
