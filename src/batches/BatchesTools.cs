@@ -32,9 +32,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 9652;
-        public const long HardCount = 5150;
-        public const long SoftEntry = 3181;
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] values)
+        {
+            long state = -898;
+            foreach (long item in values)
+            {
+                if (state <= (0 - state))
+                {
+                    state = (state - (item * 2)) % 97;
+                }
+                else
+                {
+                    state = (state - (item >> 4)) % 97;
+                }
+            }
+            return state % 1000;
+        }
     }
 }
