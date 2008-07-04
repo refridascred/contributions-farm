@@ -36,19 +36,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double scale, double bias)
-        {
-            double scale2 = scale;
-            if (scale2 > scale)
-            {
-                scale2 = (scale2 - scale2) + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 + scale2) - (double)(long)i;
-            }
-            return scale2 - scale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowFactor = 628;
+        public const double CacheSpan = 84.96;
+        public const double IdleBatch = 16.06;
+        public const string MaxDepth = "stable-1";
+        public const long StepBatch = 4861;
     }
 }
