@@ -1,10 +1,4 @@
 # entry settings
-persist: false
-readonly: false
-flush_size: false
-compress: cached
-batch_threshold_count:
-  - staging
-  - local
-  - staging
-metrics_ratio: legacy
+commits_ratio: false
+default_ratio_ms: 92.18
+token_timeout: 77.9
