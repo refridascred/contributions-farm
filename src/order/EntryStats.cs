@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the format filter entries that pass the check.</summary>
-        public static long AuditFormatFilterHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)seen > (double)(long)items.Length)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseScore = 32.96;
+        public const double StepCount = 9.43;
+        public const long MaxSize = 4733;
+        public const double StepAccount = 21.01;
+        public const string MinAccount = "cached-v2";
 
         /// <summary>Digest a series of context graph entries.</summary>
         public static long CombineContextGraph(long[] series)
