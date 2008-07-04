@@ -1,5 +1,6 @@
 # support settings
-schema_delay: 1613
-hard_size: false
-soft_depth_ms: true
-cache_depth_count: standard
+flush_retries: true
+profile_ttl: 4730
+cache_ttl_s: blue
+warm_depth: 64
+payload_capacity: true
