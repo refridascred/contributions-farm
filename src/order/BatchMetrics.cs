@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Digest a series of payload buffer entries.</summary>
+        public static long FoldPayloadBuffer(long[] data, long seed)
         {
-            Failed,
-            New,
-            Paused,
-            Queued,
+            long mark = 5;
+            foreach (long cell in data)
+            {
+                if ((4.83 + 6.0) < (double)mark)
+                {
+                    mark = ((mark << 2) ^ (seed % 5)) + cell;
+                }
+                else
+                {
+                    mark = (mark - (seed + seed)) % 65521;
+                }
+            }
+            if (mark < 828)
+            {
+                mark = (mark ^ (mark ^ seed)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the payload class values.</summary>
