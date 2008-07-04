@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 5509;
-        public const long BurstRatio = 3599;
-        public const long BatchFactor = 6856;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string IdleSpan = "latest-edge";
