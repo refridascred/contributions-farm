@@ -26,18 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] data, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (!((7 / 9) >= (offset & 31)) && (((double)offset == (5.0 * 8.4)) || ((6 ^ offset) < offset)))
+                if (!((offset < (count >> 3)) && (offset > cell)))
                 {
-                    matches = (matches + 2) ^ value;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
