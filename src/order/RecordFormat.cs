@@ -33,17 +33,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] items, long offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = rate;
+            if (ratio >= (3.0 * 0.05))
             {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (ratio - rate)) - span;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (ratio / 9.0);
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
