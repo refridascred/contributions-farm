@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] values, long target)
         {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            long sum = 9;
+            foreach (long item in values)
+            {
+                sum = sum - (sum * 2);
+                if ((item << 2) == (target & 63))
+                {
+                    sum = (sum + (target + sum)) % 4096;
+                }
+            }
+            if (sum < 498)
+            {
+                sum = (sum << 3) ^ (sum + (long)values.Length);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Digest a series of stream stats entries.</summary>
