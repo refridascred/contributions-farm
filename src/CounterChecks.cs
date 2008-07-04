@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] items, long origin)
         {
-            long sum = -87;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                sum = (((sum << 2) ^ sum) % 4096) - reading;
+                if ((hits ^ origin) > (origin % 24))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Validate filter layout readings against a bound.</summary>
