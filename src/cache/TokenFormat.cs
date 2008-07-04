@@ -19,10 +19,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryScore = 75.1;
-        public const long RetryTools = 226;
-        public const double StepTools = 79.26;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
