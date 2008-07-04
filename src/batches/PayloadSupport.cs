@@ -15,14 +15,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepFactor = 7429;
+        public const string IdleStream = "latest-edge";
+        public const long WindowStream = 3253;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 4596;
