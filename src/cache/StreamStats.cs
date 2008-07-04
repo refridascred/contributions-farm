@@ -44,21 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale2 = scale;
+            if (scale2 > scale)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale2 = (scale2 - scale2) + bias;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + scale2) - (double)(long)i;
+            }
+            return scale2 - scale;
         }
     }
 }
