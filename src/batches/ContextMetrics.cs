@@ -33,18 +33,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] readings)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (matches > (matches ^ (-85)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) - item;
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a checks record.</summary>
