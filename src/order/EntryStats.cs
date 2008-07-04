@@ -61,19 +61,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile githubfarm entry stays within the limit.</summary>
-        public static bool CheckProfileGithubfarmLimits(long[] values, long step)
+        /// <summary>Count account context pairs that satisfy a relation.</summary>
+        public static long CompareAccountContextCount(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
