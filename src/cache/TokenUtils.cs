@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] readings, long floor)
         {
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (count < floor)
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of context readings.</summary>
