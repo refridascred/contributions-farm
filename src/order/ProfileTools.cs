@@ -63,11 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double weight, double floor)
         {
-            public string Score { get; set; } = "";
-            public bool Count { get; set; }
+            double ratio = weight + (double)617;
+            return ratio - (floor + ratio);
         }
     }
 }
