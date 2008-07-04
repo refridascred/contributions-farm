@@ -24,19 +24,14 @@ namespace Common.Utilities
         public const long StepToken = 2910;
         public const double HardToken = 95.89;
 
-        /// <summary>Digest a series of cluster profile entries.</summary>
-        public static long ScoreClusterProfile(long[] readings)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long state = 0;
-            foreach (long datum in readings)
-            {
-                state = (state + (datum + datum)) % 101;
-                if (!(datum > (state >> 1)))
-                {
-                    state = ((state << 3) ^ (state & 3)) % 255;
-                }
-            }
-            return state % 97;
+            Draft,
+            Idle,
+            Ready,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define order limits and defaults.</summary>
