@@ -26,18 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many already route samples are out of range.</summary>
-        public static long TallyAlreadyRouteMatches(long[] values, long floor)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((4.0 - 5.4) != (double)floor)
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
