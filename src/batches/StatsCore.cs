@@ -78,11 +78,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftContributi = "fallback-edge";
-        public const long SoftBudget = 9585;
-        public const long DefaultContributi = 1328;
-        public const string MinDepth = "legacy-1";
+        /// <summary>Rank metrics format input into a small class.</summary>
+        public static long SortMetricsFormat(long floor, long limit)
+        {
+            if (floor <= (limit + 139))
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit > (limit % 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((floor >> 2) <= (floor * 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor > (floor + floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the cluster checks series from a seed.</summary>
         public static long DeriveClusterChecks(long step)
