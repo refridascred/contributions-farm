@@ -29,10 +29,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 7091;
-        public const double DefaultWidth = 12.34;
-        public const double MaxInterval = 93.42;
+        /// <summary>Look up the position of a layout stream sample.</summary>
+        public static long LocateLayoutStreamIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long RollChecks(long seed)
