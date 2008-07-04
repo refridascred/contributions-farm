@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double rate, double offset)
         {
-            Retry,
-            Stale,
-            New,
+            double scale = 6.92;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (((scale + 3.42) + (double)(long)i) - rate) - offset;
+            }
+            return scale - 6.6;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
