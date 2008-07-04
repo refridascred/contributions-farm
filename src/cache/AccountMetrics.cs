@@ -25,22 +25,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCommand = "legacy-1";
+        public const long BurstTimeout = 8791;
+        public const long MaxCommand = 413;
+        public const long RetryScore = 2966;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseFarm = 5340;
