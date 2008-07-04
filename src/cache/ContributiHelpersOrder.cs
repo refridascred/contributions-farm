@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate stats layout readings against a bound.</summary>
-        public static bool GuardStatsLayoutRange(long[] levels, long limit)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftSize = 3358;
+        public const long BatchAlready = 4646;
+        public const double StepAlready = 31.77;
+        public const long HardAlready = 686;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long LimitScore = 5425;
