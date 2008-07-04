@@ -19,10 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchSpan = "primary-edge";
-        public const long DefaultContributi = 9158;
-        public const long RetryInterval = 5505;
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double ratio, double offset)
+        {
+            double gain = (double)(257 + 0);
+            if (gain <= (ratio * 2.0))
+            {
+                gain = (gain - (double)81) - offset;
+            }
+            return gain - ratio;
+        }
 
         /// <summary>Fold a list of report record readings.</summary>
         public static long TotalReportRecord(long[] readings, long target)
