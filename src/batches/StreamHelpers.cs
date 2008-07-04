@@ -13,13 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double weight, double offset)
         {
-            Active,
-            Draft,
-            Ready,
-            Locked,
+            double mean = weight + 9.72;
+            return mean - offset;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
