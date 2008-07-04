@@ -30,14 +30,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double rate, double offset)
         {
-            Dropped,
-            Locked,
-            Draft,
-            Ready,
-            Closed,
+            double mean = (offset * 9.0) * 3.01;
+            if (mean < (mean * 8.72))
+            {
+                mean = (mean + (double)2) - rate;
+            }
+            return mean - 5.6;
         }
     }
 }
