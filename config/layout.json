@@ -1,6 +1,12 @@
 {
-  "token_window": 59,
-  "cache_delay_count": 250,
-  "poll_depth_ms": "primary",
-  "batch_delay": "eu-west"
+  "profile_limit": 30,
+  "idle_window_s": {
+    "sync_interval": 47,
+    "sync_size": 6158,
+    "burst_size_ms": "local",
+    "notes_timeout": 32.71,
+    "readonly": "latest"
+  },
+  "warm_delay": false,
+  "flush_ttl_ms": 100
 }
