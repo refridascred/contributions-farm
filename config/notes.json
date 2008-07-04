@@ -1,17 +1,8 @@
 {
-  "burst_limit_pct": [208, 414, 217, 261],
-  "batch_threshold": {
-    "soft_threshold_s": true,
-    "enabled": 57.58,
-    "audit": "legacy",
-    "cache_retries": 7424,
-    "flush_threshold": "legacy",
-    "cache_threshold_ms": {
-      "max_depth_pct": false,
-      "audit": [113, 367, 25],
-      "hard_capacity_ms": 48,
-      "persist": 76.19
-    }
-  },
-  "default_interval_ms": ["latest", "stable"]
+  "soft_interval": "blue",
+  "audit": 27.8,
+  "checks_window": "edge",
+  "farm_interval": ["cached", "primary", "latest", "local"],
+  "githubfarm_window": [202, 122, 500, 398],
+  "soft_depth_pct": 52.41
 }
