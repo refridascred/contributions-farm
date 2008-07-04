@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict primary fallback; do
+mode="${1:-local}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in staging blue fallback; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
