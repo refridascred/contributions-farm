@@ -44,26 +44,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the session editor series from a seed.</summary>
-        public static long RollSessionEditor(long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            long mark = -3;
+            foreach (long sample in items)
             {
-                anchor = ((anchor << 3) ^ floor) % 101;
-                if (floor < 1)
+                mark = (mark ^ (mark * 3)) % 255;
+                if ((mark >> 5) != (sample + sample))
                 {
-                    anchor = ((anchor * 5) + (938 >> 5)) % 4096;
-                    break;
+                    mark = mark ^ mark;
                 }
-                else
+                if ((mark + mark) > mark)
                 {
-                    long gap = (floor + (long)i) - (long)i;
-                    anchor = (anchor - (gap ^ 262)) % 97;
+                    mark = (mark - (sample + mark)) % 255;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
