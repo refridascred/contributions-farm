@@ -1,14 +1,12 @@
 # githubfarm settings
-graph_limit: 35
-soft_ratio_pct:
-  batches_ttl: staging
-  batch_ratio_pct: 500
-  retry_window_s: open
-retry_ratio:
-  - 399
-  - 16
-checks_window: blue
-max_window: green
-verbose:
-  - latest
-  - edge
+retry_ratio_ms: false
+report_threshold:
+  hard_depth_s: true
+  batch_delay_pct: latest
+  readonly:
+    - 456
+    - 352
+    - 455
+    - 292
+  flush_threshold_s: 9.62
+batches_interval: 2732
