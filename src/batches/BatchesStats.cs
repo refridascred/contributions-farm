@@ -23,18 +23,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit githubfarm filter readings against a rule.</summary>
-        public static long CountGithubfarmFilterOutliers(long[] values)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits + reading) > hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
