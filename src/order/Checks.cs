@@ -32,24 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch context readings.</summary>
-        public static long TallyBatchContext(long[] values, long offset)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long floor)
         {
-            long mix = -9;
-            foreach (long datum in values)
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                mix = (((mix * 5) + datum) % 4096) + offset;
-                mix = mix + mix;
-                if ((mix <= (mix / 8)) || ((2 + (-8)) >= (datum & 127)))
+                carry = carry - (floor / 3);
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    break;
+                    carry = ((carry + floor) % 101) + (long)i2;
+                    carry = (carry << 2) ^ (carry + floor);
                 }
+                carry = (carry + ((long)i % 5)) % 255;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (mix > 5)
-            {
-                mix = (mix << 3) ^ ((-89) - (long)values.Length);
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Accumulate window samples.</summary>
