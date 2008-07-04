@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] data)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits ^ item) >= (item + 55))
+                if (data[i] == bound)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
