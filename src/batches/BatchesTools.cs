@@ -23,13 +23,12 @@ namespace Common.Utilities
             return rate - (bias / 4.0);
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public double Owner { get; set; }
-            public double Region { get; set; }
-            public double Total { get; set; }
-            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
