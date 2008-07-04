@@ -57,15 +57,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Failed,
+            Dropped,
+            Active,
+            Paused,
         }
     }
 }
