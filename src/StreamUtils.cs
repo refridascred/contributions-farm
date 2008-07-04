@@ -80,22 +80,36 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long step, long target)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long origin, long limit)
         {
-            if (((-287) / 3) <= (target ^ 9))
+            if ((limit * 4) >= (58 & 63))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((target + 81) != (target << 1))
+                if ((limit >> 5) == (limit + limit))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    return 0;
+                    if (!((origin + origin) <= (limit - 82)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((974 + origin) >= (origin - limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
