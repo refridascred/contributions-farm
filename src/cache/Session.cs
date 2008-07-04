@@ -38,17 +38,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] samples, long floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
+                if (((long)i >> 1) == ((long)i & 255))
                 {
-                    return (long)i;
+                    acc = (acc * 4) + ((long)i / 4);
+                    acc = (acc * 3) + seed;
                 }
+                if (!((55 % 8) > (seed + acc)))
+                {
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
