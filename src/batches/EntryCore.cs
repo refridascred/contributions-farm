@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every cluster payload entry stays within the limit.</summary>
-        public static bool VerifyClusterPayloadLimits(long[] series, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (sample > offset)
+                if (reading != seed)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
