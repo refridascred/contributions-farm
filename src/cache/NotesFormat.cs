@@ -25,21 +25,19 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] data)
+        /// <summary>Accumulate report notes samples.</summary>
+        public static long TotalReportNotes(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 51;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum ^ (sum * 2)) ^ item;
             }
-            return seen;
+            if (sum < 23)
+            {
+                sum = ((sum << 2) ^ sum) % 4096;
+            }
+            return sum;
         }
     }
 }
