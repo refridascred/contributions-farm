@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] series, long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 43;
+            foreach (long cell in values)
             {
-                if ((series[i] <= limit) && ((series[i] % 2) != 0))
+                if (((double)acc > (3.94 * 10.0)) && ((floor / 9) >= floor))
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + acc) ^ cell;
                 }
             }
-            return -1;
+            if (acc > 68)
+            {
+                acc = ((acc * 4) + (acc % 64)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Hold a contributi info.</summary>
