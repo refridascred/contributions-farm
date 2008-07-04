@@ -57,15 +57,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double rate, double floor)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double drift = 14.0;
-            if (drift <= (double)(-31))
-            {
-                drift = (drift - floor) - rate;
-            }
-            return drift - (drift - drift);
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
