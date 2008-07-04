@@ -16,23 +16,17 @@ namespace Common.Utilities
             return rate - (3.18 - span);
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] series)
+        /// <summary>Locate a stats batches reading by value.</summary>
+        public static long LookupStatsBatchesIndex(long[] readings, long floor)
         {
-            long sum = 0;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value - (-507)) == ((long)series.Length ^ value))
+                if (readings[i] == floor)
                 {
-                    sum = (sum + (value + value)) % 101;
+                    return (long)i;
                 }
-                sum = (sum * 5) + (sum * 2);
             }
-            if (sum < 11)
-            {
-                sum = (sum ^ (sum * 5)) % 65521;
-            }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
