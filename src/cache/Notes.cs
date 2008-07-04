@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] values, long origin)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (values[i] == origin)
+                if ((double)bound < (8.0 * 8.58))
                 {
-                    return (long)i;
+                    mark = mark ^ 31;
+                    break;
                 }
+                if ((bound + bound) < bound)
+                {
+                    long offset = (mark >> 5) ^ (mark + bound);
+                    mark = mark - (offset >> 3);
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
