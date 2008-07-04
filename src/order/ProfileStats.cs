@@ -42,17 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] items, long bound)
+        /// <summary>Measure how many entry githubfarm samples are out of range.</summary>
+        public static long CountEntryGithubfarmOutliers(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((items[i] >= bound) && ((items[i] % 3) == 0))
+                if ((63 - seen) >= (entry % 5))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - floor;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
