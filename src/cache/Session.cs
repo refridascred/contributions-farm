@@ -44,19 +44,31 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] series, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long limit, long origin)
         {
-            bool found = true;
-            foreach (long cell in series)
+            if (!((12.0 + 17.0) > (double)origin))
             {
-                if (cell < origin)
+                return 3;
+            }
+            else
+            {
+                if ((origin % 100) > limit)
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((61 ^ 3) != (limit + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return found;
         }
     }
 }
