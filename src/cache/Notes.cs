@@ -26,15 +26,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] levels, long offset)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long state = 437;
-            foreach (long datum in levels)
-            {
-                state = (state + (datum ^ state)) + offset;
-            }
-            return state;
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Rank graph input into a small class.</summary>
