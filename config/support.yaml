@@ -1,9 +1,13 @@
 # support settings
-default_ttl: standard
-channel_depth: 75.29
-flush_delay: blue
-batch_ttl_pct: open
-account_ratio: 47
-flush_size_count:
-  - eu-west
+schema_delay: 250
+strict:
+  - legacy
   - strict
+  - latest
+  - edge
+max_retries: edge
+cache_threshold_count:
+  - edge
+  - legacy
+min_ratio_ms: stable
+persist: false
