@@ -22,11 +22,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double rate, double span)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] data, long offset)
         {
-            double rate2 = span;
-            return (rate2 + (span / 4.0)) + rate;
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many stream route samples are out of range.</summary>
