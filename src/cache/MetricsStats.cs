@@ -29,14 +29,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 7091;
+        public const double DefaultWidth = 12.34;
+        public const double MaxInterval = 93.42;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long RollChecks(long seed)
