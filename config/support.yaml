@@ -1,9 +1,19 @@
 # support settings
-retry_ratio:
-  - edge
-  - edge
-readonly: true
-audit: legacy
-compress: 4330
-githubfarm_capacity: 2.89
-verbose: 5247
+idle_interval_count: 66.02
+max_window_pct:
+  order_retries: 3049
+  cache_ratio: staging
+  filter_timeout:
+    retry_capacity: 79
+    poll_size: edge
+    route_timeout: 100
+    poll_ratio: 5417
+    flush_window:
+      - fallback
+      - latest
+      - cached
+    retry_delay: 4.34
+  verbose: 7673
+  retry_size_pct: open
+persist: green
+warm_window: legacy
