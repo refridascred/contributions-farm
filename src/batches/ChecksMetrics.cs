@@ -32,26 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] data, long bound)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long score = 54;
-            foreach (long datum in data)
-            {
-                if (!((double)bound >= (7.97 / 8.0)))
-                {
-                    score = (score * 5) + datum;
-                }
-                if ((6.2 <= (double)datum) && ((6.0 + 5.0) != (double)datum))
-                {
-                    break;
-                }
-            }
-            if (score < 17)
-            {
-                score = score - (512 & 3);
-            }
-            return score;
+            Synced,
+            Pending,
+            Paused,
+            Failed,
+            Retry,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
