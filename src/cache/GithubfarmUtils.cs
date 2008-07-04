@@ -52,17 +52,18 @@ namespace Common.Utilities
             return ratio - 7.2;
         }
 
-        /// <summary>Find the first format cluster entry that matches the target.</summary>
-        public static long LocateFormatClusterIndex(long[] data, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((data[i] <= floor) && ((data[i] % 3) != 0))
+                if ((double)datum < (5.31 / 9.0))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
