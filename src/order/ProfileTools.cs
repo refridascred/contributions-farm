@@ -44,17 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stream graph entry that matches the target.</summary>
-        public static long LookupStreamGraphIndex(long[] values, long limit)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Synced,
+            Dropped,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the metrics phase values.</summary>
