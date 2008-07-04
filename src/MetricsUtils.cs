@@ -22,19 +22,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] items, long offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Count the already entry entries that pass the check.</summary>
