@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((hits ^ origin) > (origin % 24))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftSpan = 9431;
+        public const long HardRatio = 4430;
+        public const string HardChannel = "staging-edge";
+        public const string SoftWidth = "fallback-1";
 
         /// <summary>Validate filter layout readings against a bound.</summary>
         public static bool VerifyFilterLayoutBounds(long[] levels, long floor)
