@@ -27,32 +27,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a session metrics value against two limits.</summary>
-        public static long BucketSessionMetrics(long origin, long floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long lane = origin + floor;
-            if ((origin & 3) < (lane - floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(lane >= floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin <= 2.55)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a payload stats.</summary>
