@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((hits << 2) >= datum)
+                if (entry > seed)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Combine format values into a single score.</summary>
