@@ -41,14 +41,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultLevel = 5260;
+        public const long IdleFilter = 671;
+        public const double BaseInterval = 22.51;
+        public const double StepRatio = 60.79;
+        public const double StepFilter = 54.09;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorHits(long[] readings)
