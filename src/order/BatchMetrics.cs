@@ -31,11 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double bias, double bias2)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double scale = bias2;
-            return (scale - bias2) + bias;
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit commits record readings against a rule.</summary>
