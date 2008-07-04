@@ -26,11 +26,9 @@ namespace Common.Utilities
         public const double BaseBatches = 70.5;
         public const long BatchBatches = 6787;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 6538;
+        public const double SoftPayload = 24.24;
+        public const string StepPayload = "legacy-1";
     }
 }
