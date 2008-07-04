@@ -15,15 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the order graph series from a seed.</summary>
-        public static long SeriesOrderGraph(long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] items, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Rank buffer editor input into a small class.</summary>
