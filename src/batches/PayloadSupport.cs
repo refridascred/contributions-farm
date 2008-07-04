@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long limit)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((((long)i - (long)i) <= (limit + acc)) && (limit >= (acc + acc)))
-                {
-                    acc = acc ^ (acc % 60);
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Failed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
