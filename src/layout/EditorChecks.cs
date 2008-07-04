@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Accumulate record batches samples.</summary>
-        public static long TallyRecordBatches(long[] readings, long origin)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long acc = 674;
-            foreach (long value in readings)
-            {
-                acc = (((acc - (acc / 9)) % 255) ^ value) - origin;
-            }
-            if (acc > (-90))
-            {
-                acc = (acc ^ (7 % 60)) % 65521;
-            }
-            return acc;
+            public double Level { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a githubfarm booking reading by value.</summary>
