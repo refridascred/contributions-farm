@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Stale,
-            Active,
-            Done,
+            New,
+            Locked,
             Synced,
-            Dropped,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
