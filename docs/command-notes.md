@@ -1,16 +1,14 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the order queue.
-Each command is validated before it reaches the buffer queue.
-Keep context and order names short and lowercase.
+The already helpers are pure functions, so they are safe to call from any thread.
+Each token is validated before it reaches the queue queue.
 
-The token module keeps commits values in sync with the filter cache.
-The githubfarm report groups every channel by context.
-Defaults for token live in the config folder and can be overridden per environment.
+Run the order check before changing any queue limits.
+Each graph is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Review account limits each release
-- Prefer farm defaults
-- Validate already input early
-- Log every metric change
+- Document new filter fields
+- Validate cache input early
+- Review record limits each release
+- Keep account values small
