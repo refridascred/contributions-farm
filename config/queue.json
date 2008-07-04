@@ -1,12 +1,6 @@
 {
-  "persist": 1024,
-  "poll_capacity_s": {
-    "poll_limit_s": 6943,
-    "default_limit_ms": ["stable", "eu-west"],
-    "compress": [216, 438, 272],
-    "counter_threshold": false,
-    "batch_depth": "legacy",
-    "account_limit": "stable"
-  },
-  "max_ttl_pct": 6.36
+  "base_retries_s": "eu-west",
+  "filter_size": false,
+  "batch_ratio": 40,
+  "order_limit": [18, 72, 162]
 }
