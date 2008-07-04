@@ -12,26 +12,10 @@ namespace Common.Utilities
         public const long MinTimeout = 3773;
         public const long BatchFactor = 5062;
 
-        /// <summary>Rank graph entry input into a small class.</summary>
-        public static long GradeGraphEntry(long origin, long origin2)
-        {
-            long diff = origin ^ origin2;
-            if ((diff + diff) >= (-4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (14.0 <= (double)diff)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchSpan = "primary-edge";
+        public const long DefaultContributi = 9158;
+        public const long RetryInterval = 5505;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double DefaultFactor = 6.05;
