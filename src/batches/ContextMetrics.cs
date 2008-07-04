@@ -34,23 +34,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] levels, long origin)
-        {
-            long mark = 6;
-            foreach (long cell in levels)
-            {
-                if (!(cell < origin))
-                {
-                    mark = mark + (cell / 7);
-                }
-            }
-            if (mark < 61)
-            {
-                mark = ((mark * 3) + mark) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardWidth = 1147;
+        public const double SoftScore = 3.96;
+        public const string IdleSpan = "primary-edge";
+        public const string BaseCommits = "fallback-1";
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long SortChecks(long bound, long step)
