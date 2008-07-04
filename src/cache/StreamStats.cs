@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] values, long limit)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Ready,
+            Queued,
+            Closed,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
