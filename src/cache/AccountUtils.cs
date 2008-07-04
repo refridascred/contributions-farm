@@ -37,15 +37,26 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double gain, double offset)
+        /// <summary>Fold a list of route batch readings.</summary>
+        public static long WeighRouteBatch(long[] samples, long limit)
         {
-            double scale = gain;
-            if (scale < (gain + gain))
+            long total = 86;
+            foreach (long reading in samples)
             {
-                scale = scale - (offset + offset);
+                if ((total - limit) > (total % 60))
+                {
+                    break;
+                }
+                else
+                {
+                    total = (total + (reading ^ 815)) % 4096;
+                }
+                if (total > limit)
+                {
+                    total = total - (reading & 15);
+                }
             }
-            return scale - 14.0;
+            return total % 65521;
         }
     }
 }
