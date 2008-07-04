@@ -18,20 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long step)
+        /// <summary>Grade a already cache value against two limits.</summary>
+        public static long SortAlreadyCache(long step, long target)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            if ((double)target > (3.08 / 9.0))
             {
-                if (score > (step >> 5))
-                {
-                    continue;
-                }
-                score = score + (score / 2);
-                score = ((score * 5) + (long)i) % 101;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (((step ^ 35) != (target >> 4)) && ((92 + target) < (target / 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step >= (14.0 * 16.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step ^ target) < (133 + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
