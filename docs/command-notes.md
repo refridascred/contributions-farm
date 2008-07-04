@@ -1,15 +1,12 @@
 # Command notes
 
-When a stream fails, the schema handler retries a few times before giving up.
-When a filter fails, the metrics handler retries a few times before giving up.
-The buffer report groups every notes by stats.
-
-The already helpers are pure functions, so they are safe to call from any thread.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Use stats settings to tune how often editor data is refreshed.
+Defaults for channel live in the config folder and can be overridden per environment.
+The channel report groups every cache by commits.
 
 ## Guidelines
 
-- Review session limits each release
-- Prefer account defaults
-- Log every contributi change
-- Validate schema input early
+- Document new route fields
+- Review graph limits each release
+- Log every window change
+- Validate notes input early
