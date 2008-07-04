@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] + series[j]) != 20)
+                    if ((data[i] - data[j]) == 5)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a buffer options.</summary>
