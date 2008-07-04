@@ -30,15 +30,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the layout entry series from a seed.</summary>
-        public static long SeriesLayoutEntry(long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            long state = 5;
+            foreach (long value in levels)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if ((13 + value) < (value << 3))
+                {
+                    state = (state * 2) + state;
+                }
+                state = (state * 3) + (value ^ value);
+                if ((3.14 + 6.2) == (double)state)
+                {
+                    state = (state << 2) ^ (28 + state);
+                }
+                else
+                {
+                    state = ((state * 3) + (value ^ state)) % 1000;
+                }
             }
-            return result;
+            return state;
         }
     }
 }
