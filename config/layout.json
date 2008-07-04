@@ -1,8 +1,12 @@
 {
-  "max_window": 60,
-  "hard_depth_ms": false,
-  "idle_ratio_count": 30,
-  "poll_limit": ["cached", "edge"],
-  "min_retries": true,
-  "hard_interval_pct": true
+  "enabled": "stable",
+  "warm_depth_pct": {
+    "profile_threshold": 100,
+    "cluster_ratio": "local",
+    "retry_threshold_count": 60.27
+  },
+  "filter_size": ["open", "blue", "edge"],
+  "warm_ratio_s": false,
+  "flush_threshold": "latest",
+  "editor_capacity": "cached"
 }
