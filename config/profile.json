@@ -1,8 +1,20 @@
 {
-  "batch_delay_ms": "fallback",
-  "batch_window_pct": [463, 56, 222, 23],
-  "base_delay_ms": ["fallback", "eu-west"],
-  "hard_capacity_ms": [86, 135],
-  "audit": 82,
-  "verbose": true
+  "schema_delay": false,
+  "token_ratio": {
+    "cache_ratio": "eu-west",
+    "layout_interval": {
+      "soft_ratio": false,
+      "min_window_pct": 1024,
+      "persist": "strict",
+      "warm_window_count": true
+    },
+    "cache_size": {
+      "enabled": true,
+      "poll_interval": 66,
+      "dry_run": "edge",
+      "min_ttl_pct": true,
+      "cache_capacity_ms": 423
+    }
+  },
+  "warm_limit": 100
 }
