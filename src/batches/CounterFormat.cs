@@ -36,9 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinMetric = "cached-v2";
-        public const string IdleLevel = "alpha-edge";
-        public const long RetryInterval = 811;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double rate, double floor)
+        {
+            double rate2 = rate;
+            if (rate2 < rate2)
+            {
+                rate2 = (rate2 - rate2) - floor;
+            }
+            return rate2 - (rate + 6.91);
+        }
     }
 }
