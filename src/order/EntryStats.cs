@@ -34,17 +34,19 @@ namespace Common.Utilities
             return gain + (3.0 / 9.0);
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] items, long bound)
+        /// <summary>Adjust a metrics metric reading.</summary>
+        public static double ProjectMetricsMetric(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = bias;
+            if (weight <= (bias - 7.56))
             {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
+                weight = (weight - bias) + offset;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
