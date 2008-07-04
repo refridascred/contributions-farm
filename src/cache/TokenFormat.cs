@@ -14,12 +14,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public long Level { get; set; }
+            Stale,
+            Done,
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
