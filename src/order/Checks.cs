@@ -31,13 +31,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] samples)
         {
-            Done,
-            New,
-            Closed,
-            Locked,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!(seen > (seen ^ 18)))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next support profile value.</summary>
