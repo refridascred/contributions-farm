@@ -1,20 +1,7 @@
 {
-  "hard_ttl_pct": {
-    "strict": "cached",
-    "idle_capacity_ms": 60,
-    "default_threshold_count": true,
-    "tools_window": "staging",
-    "sync_interval_s": "local",
-    "persist": 51
-  },
-  "retry_window_count": 500,
-  "batch_capacity": true,
-  "token_depth": {
-    "base_ttl": "green",
-    "flush_retries_count": 30,
-    "warm_threshold_s": 7009,
-    "batch_threshold_ms": "cached"
-  },
-  "batch_delay": true,
-  "poll_capacity": 24
+  "enabled": "eu-west",
+  "compress": true,
+  "queue_delay": 62,
+  "max_size_pct": 32,
+  "cache_limit": "strict"
 }
