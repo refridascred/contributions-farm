@@ -25,29 +25,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long floor, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long step, long offset)
         {
-            long next = floor - seed;
-            if ((double)floor < (7.47 + 3.0))
+            long gap = step ^ offset;
+            if ((offset < gap) || (step > ((-8) - step)))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if (((-22) - next) <= (next * 5))
+                if ((double)offset >= (0.6 / 3.0))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if (((floor / 6) >= (seed + floor)) && ((9.0 - 2.42) != (double)seed))
+                    if (((1 + offset) < (step << 3)) && ((gap + offset) >= (step * 3)))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        return 6;
+                        return 7;
                     }
                 }
             }
