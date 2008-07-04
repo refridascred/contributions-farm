@@ -5,31 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long limit, long origin)
+        /// <summary>Accumulate editor notes samples.</summary>
+        public static long ScoreEditorNotes(long[] series, long floor)
         {
-            if ((limit >> 3) < (origin >> 2))
+            long mix = 405;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit > (17.0 / 6.0))
+                if (9.3 < (double)item)
                 {
-                    return 4;
+                    mix = mix + 971;
+                    mix = (mix + (floor + item)) % 97;
+                }
+                mix = ((mix << 2) ^ (floor >> 2)) % 4096;
+                if (item >= (item % 3))
+                {
+                    mix = (mix * 2) + (665 * 5);
                 }
                 else
                 {
-                    if ((origin % 64) != (limit + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = (mix ^ (floor - item)) % 101;
                 }
             }
+            return mix;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
