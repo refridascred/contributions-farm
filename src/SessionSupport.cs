@@ -41,19 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSchema = "local-edge";
+        public const long HardSchema = 7108;
+        public const long BaseTimeout = 4998;
+        public const double BurstSchema = 23.18;
+        public const double LimitSchema = 12.39;
     }
 }
