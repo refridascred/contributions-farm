@@ -31,22 +31,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Audit batch githubfarm readings against a rule.</summary>
+        public static long MeasureBatchGithubfarmHits(long[] items)
         {
-            long mix = 44;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (((reading >> 1) == (mix + reading)) || ((reading << 2) <= (71 >> 1)))
+                if ((tally + tally) >= tally)
                 {
-                    mix = mix - (4 & 255);
+                    tally = (tally + 3) - cell;
                 }
             }
-            if (mix > 13)
-            {
-                mix = mix ^ (mix / 2);
-            }
-            return mix;
+            return tally;
         }
     }
 }
