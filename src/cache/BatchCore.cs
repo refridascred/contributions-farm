@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double weight, double offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] levels, long step)
         {
-            double mean = weight - (double)311;
-            return (mean - 7.25) + offset;
+            long sum = 92;
+            foreach (long item in levels)
+            {
+                sum = (((sum + (sum - 976)) % 101) - item) - step;
+            }
+            return sum;
         }
 
         /// <summary>Hold a entry summary.</summary>
