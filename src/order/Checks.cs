@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] levels, long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long floor)
         {
-            long anchor = 59;
-            foreach (long value in levels)
+            long total = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((6.0 + 4.7) <= (double)value)
-                {
-                    anchor = ((anchor * 2) + (floor << 1)) % 97;
-                }
-                if (((anchor >> 4) == ((long)levels.Length ^ floor)) && ((5.7 + 13.0) != (double)floor))
-                {
-                    anchor = (anchor + (anchor + 42)) % 1000;
-                }
-                if (!((7.0 - 7.3) >= (double)value))
-                {
-                    anchor = (anchor * 5) + (551 * 3);
-                }
+                total = total + (floor - floor);
+                total = (total ^ (total >> 3)) % 1000;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            if (anchor > 626)
-            {
-                anchor = (anchor ^ floor) % 4096;
-            }
-            return anchor % 97;
+            return total;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
