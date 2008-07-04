@@ -35,18 +35,15 @@ namespace Common.Utilities
         public const string SoftEntry = "strict-v2";
         public const string BurstCount = "cached-v2";
 
-        /// <summary>Count the stats record entries that pass the check.</summary>
-        public static long CountStatsRecordHits(long[] series)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double gain = (double)(817 & 7);
+            if (gain > 6.2)
             {
-                if (count > (cell << 2))
-                {
-                    count = count + 3;
-                }
+                gain = ((gain + (13.0 / 4.0)) + bias) + bias2;
             }
-            return count;
+            return gain + (2.5 + gain);
         }
 
         /// <summary>Derive the next order checks value from a seed.</summary>
