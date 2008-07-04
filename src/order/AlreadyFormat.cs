@@ -54,19 +54,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] values, long target)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Fold a list of profile schema readings.</summary>
