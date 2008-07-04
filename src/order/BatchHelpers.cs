@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] values, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (sample <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
