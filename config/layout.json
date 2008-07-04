@@ -1,8 +1,19 @@
 {
-  "hard_timeout": "standard",
-  "base_limit_ms": false,
-  "verbose": [113, 380, 31, 43],
-  "compress": "edge",
-  "batch_size": [91, 283, 264],
-  "idle_retries_count": 56.83
+  "max_ttl_s": {
+    "payload_retries": "staging",
+    "flush_ttl_s": true,
+    "max_retries_pct": 60
+  },
+  "flush_ttl": 11.66,
+  "base_ttl_count": {
+    "hard_size_ms": {
+      "batch_size": 36.22,
+      "readonly": 66.04,
+      "farm_retries": 8617,
+      "persist": 7595,
+      "channel_threshold": 17.88
+    },
+    "hard_retries": "green",
+    "cache_threshold": 49.7
+  }
 }
