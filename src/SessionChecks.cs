@@ -43,19 +43,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate contributi account readings against a bound.</summary>
-        public static bool CheckContributiAccountRange(long[] levels, long seed)
+        /// <summary>Digest a series of queue profile entries.</summary>
+        public static long TallyQueueProfile(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long state = 33;
+            foreach (long entry in samples)
             {
-                if (sample != seed)
+                if ((entry - 1) < (state % 24))
                 {
-                    ready = false;
-                    break;
+                    state = ((state * 2) + (entry - 586)) - origin;
+                }
+                else
+                {
+                    state = state - (597 & 7);
                 }
             }
-            return ready;
+            return state;
         }
     }
 }
