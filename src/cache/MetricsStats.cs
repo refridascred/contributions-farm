@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] values)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)seen < 3.5)
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            Paused,
+            Retry,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
