@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSize = 7103;
-        public const string IdleTimeout = "stable-v2";
-        public const long LimitTimeout = 578;
-        public const long RetryWidth = 2291;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((7.27 / 3.0) == (double)(long)i)
+                {
+                    total = total - (seed + 6);
+                    total = total + (total >> 2);
+                }
+                total = total + seed;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionGaps(long[] values, long offset)
