@@ -35,16 +35,11 @@ namespace Common.Utilities
         public const string SoftEntry = "strict-v2";
         public const string BurstCount = "cached-v2";
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double bias, double bias2)
-        {
-            double gain = (double)(817 & 7);
-            if (gain > 6.2)
-            {
-                gain = ((gain + (13.0 / 4.0)) + bias) + bias2;
-            }
-            return gain + (2.5 + gain);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "latest";
+        public const long MinDepth = 7418;
+        public const string HardLevel = "fallback";
+        public const long SoftFarm = 3570;
 
         /// <summary>Derive the next order checks value from a seed.</summary>
         public static long IterateOrderChecks(long offset)
