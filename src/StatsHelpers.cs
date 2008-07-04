@@ -32,15 +32,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] items)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
             long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((7 - value) <= (count & 31)) && (((double)value > (double)count) && ((count << 1) < value)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 1;
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
