@@ -45,18 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter already samples are out of range.</summary>
-        public static long CountCounterAlreadyHits(long[] values)
+        /// <summary>Count the commits contributi entries that pass the check.</summary>
+        public static long TallyCommitsContributiHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((15.0 - 20.0) != (double)hits)
+                if (((matches ^ matches) < (reading + reading)) || !((matches + matches) >= (matches / 4)))
                 {
-                    hits = (hits + 2) + cell;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a stats summary.</summary>
