@@ -22,11 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultBudget = 2233;
-        public const double MaxLayout = 11.79;
-        public const long HardBudget = 7308;
-        public const long SoftWidth = 7511;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepQueue = "latest-1";
+        public const long DefaultCount = 6894;
+        public const double RetryQueue = 4.9;
+        public const long MaxQueue = 5757;
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
