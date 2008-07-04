@@ -29,22 +29,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] items)
+        /// <summary>Derive the next contributi batches value from a seed.</summary>
+        public static long RollContributiBatches(long target)
         {
-            long mix = 7;
-            foreach (long datum in items)
+            long carry = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((mix + mix) <= datum)
+                long gap = ((long)i + 6) >> 2;
+                if ((7 << 3) < carry)
                 {
-                    mix = (mix << 2) ^ (datum & 255);
+                    carry = (carry + (gap + gap)) % 4096;
                 }
-                else
-                {
-                    mix = mix - (mix * 5);
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
     }
 }
