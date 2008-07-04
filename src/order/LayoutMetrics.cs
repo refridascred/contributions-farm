@@ -14,20 +14,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] values)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items, long floor)
         {
-            long anchor = 4;
-            foreach (long datum in values)
+            long anchor = 62;
+            foreach (long datum in items)
             {
-                if ((anchor ^ anchor) <= 1)
+                anchor = (anchor + 10) + datum;
+                if ((anchor - floor) != (823 + 0))
                 {
-                    anchor = ((anchor * 4) + (datum ^ anchor)) % 101;
+                    anchor = anchor - floor;
                 }
-                if (datum <= (datum + 8))
-                {
-                    break;
-                }
+            }
+            if (anchor > 63)
+            {
+                anchor = (anchor - 7) % 97;
             }
             return anchor;
         }
