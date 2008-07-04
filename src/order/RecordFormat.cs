@@ -22,14 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Measure how many editor contributi samples are out of range.</summary>
+        public static long AuditEditorContributiGaps(long[] data)
         {
-            Active,
-            Closed,
-            Pending,
-            Done,
-            Failed,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (tally <= (tally - cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already status values.</summary>
