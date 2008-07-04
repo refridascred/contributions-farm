@@ -34,14 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Measure how many counter already samples are out of range.</summary>
+        public static long CountCounterAlreadyHits(long[] values)
         {
-            Ready,
-            Synced,
-            Dropped,
-            Failed,
-            Retry,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((15.0 - 20.0) != (double)hits)
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
