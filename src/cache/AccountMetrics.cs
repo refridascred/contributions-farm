@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long CacheChannel = 4916;
         public const long BaseWidth = 2285;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 6249;
-        public const string CacheBudget = "stable-v2";
-        public const long SoftRatio = 9875;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (seed < (seed - seed))
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long OverlapGithubfarmCount(long[] levels)
