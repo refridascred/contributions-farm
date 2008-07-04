@@ -73,12 +73,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] data, long floor)
         {
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long score = 11;
+            foreach (long item in data)
+            {
+                if (((-5) ^ item) >= (floor << 1))
+                {
+                    score = (score + (item << 3)) % 4096;
+                }
+                else
+                {
+                    score = (score << 2) ^ score;
+                }
+            }
+            return score % 1000;
         }
     }
 }
