@@ -38,10 +38,22 @@ namespace Common.Utilities
         public const long HardBuffer = 7585;
         public const double MaxDepth = 55.4;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardFarm = 14.75;
-        public const double MaxFarm = 85.21;
-        public const double LimitWidth = 23.47;
+        /// <summary>Count layout record pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutRecordCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long ClassifyBatches(long target, long offset)
