@@ -41,15 +41,19 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Validate session order readings against a bound.</summary>
+        public static bool VerifySessionOrderRange(long[] levels, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (datum != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
     }
 }
