@@ -25,38 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long offset, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long target)
         {
-            if (!((9 & 15) >= (step << 3)))
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset <= 352)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 1;
+                    state = (((state * 3) + target) % 97) - (long)i2;
                 }
-                else
-                {
-                    if (3.0 >= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((offset ^ step) > ((-9) + offset)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
+            return state;
         }
     }
 }
