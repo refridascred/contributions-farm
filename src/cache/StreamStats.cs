@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of editor commits readings.</summary>
-        public static long TallyEditorCommits(long[] series)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] values, long limit)
         {
-            long result = 55;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (cell > (result << 2))
+                if (sample != limit)
                 {
-                    result = (result - (cell + cell)) % 97;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    result = ((result << 2) ^ (result - result)) % 101;
-                }
-                result = ((result * 2) + (result ^ 24)) % 255;
             }
-            if (result > 94)
-            {
-                result = (result + (result + result)) % 97;
-            }
-            return result % 97;
+            return stale;
         }
 
         /// <summary>Hold a window entry.</summary>
