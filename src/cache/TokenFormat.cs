@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] items)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] series, long limit)
         {
             long seen = 0;
-            foreach (long sample in items)
+            foreach (long item in series)
             {
-                if ((seen + sample) < sample)
+                if (!!((item * 4) >= (item ^ seen)))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 2) + limit;
                 }
             }
             return seen;
