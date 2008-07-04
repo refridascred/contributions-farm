@@ -29,31 +29,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long offset, long floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            if ((double)floor <= 3.59)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((2.28 - 11.0) >= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset <= 7)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
