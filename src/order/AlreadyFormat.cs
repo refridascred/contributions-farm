@@ -52,15 +52,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two stream checks measurements.</summary>
-        public static double BlendStreamChecks(double bias, double span)
+        /// <summary>Compare every pair of session buffer readings.</summary>
+        public static long OverlapSessionBufferCount(long[] items)
         {
-            double gain = (bias * 2.0) - 5.82;
-            if (gain >= (span + span))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain - (double)7;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain + (gain / 3.0);
+            return seen;
         }
 
         /// <summary>Describe the cluster level values.</summary>
