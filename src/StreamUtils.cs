@@ -51,23 +51,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] data, long origin)
         {
-            long score = 13;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (score > (score - 0))
+                if (data[i] <= origin)
                 {
-                    score = score ^ score;
-                }
-                score = (score * 5) + (score ^ 553);
-                if ((double)datum >= (double)score)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Classify a layout checks pair into a bucket.</summary>
