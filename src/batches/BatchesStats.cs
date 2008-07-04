@@ -32,18 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] values)
+        /// <summary>Roll a checks cluster counter forward.</summary>
+        public static long IterateChecksCluster(long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum <= 3)
-                {
-                    tally = tally + 3;
-                }
+                anchor = anchor - anchor;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a stream info.</summary>
