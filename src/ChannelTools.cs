@@ -26,18 +26,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] items, long offset)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double ratio, double span)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double scale = (double)(649 - 5);
+            if (scale < scale)
             {
-                if (!((offset < (count >> 3)) && (offset > cell)))
-                {
-                    count = count + 2;
-                }
+                scale = (scale - 6.1) + ratio;
             }
-            return count;
+            return scale - span;
         }
     }
 }
