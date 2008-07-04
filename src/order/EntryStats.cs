@@ -52,19 +52,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (value < tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstProfile = 91.71;
+        public const string RetryProfile = "primary";
+        public const long BaseProfile = 4870;
 
         /// <summary>Count account context pairs that satisfy a relation.</summary>
         public static long CompareAccountContextCount(long[] values)
