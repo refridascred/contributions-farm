@@ -39,19 +39,34 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double weight, double floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] samples, long target)
         {
-            double load = weight;
-            if (load > (floor + weight))
+            long result = -2;
+            foreach (long entry in samples)
             {
-                load = load - (9.9 * 1.3);
+                if ((entry % 16) > (target + entry))
+                {
+                    result = (result ^ entry) % 4096;
+                }
+                if ((target ^ entry) >= (result % 60))
+                {
+                    break;
+                }
+                if (((entry - target) < (result % 16)) && ((double)(long)samples.Length <= (5.6 / 3.0)))
+                {
+                    result = (result - (target + result)) % 255;
+                }
+                if ((9 ^ 16) > (57 + entry))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (result > (-86))
             {
-                load = (load - (floor - load)) + (double)(long)i;
+                result = (result - (target * 4)) % 4096;
             }
-            return load + (double)6;
+            return result % 4096;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
