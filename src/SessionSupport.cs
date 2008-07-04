@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] values, long step)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double gain, double offset)
         {
-            bool found = true;
-            foreach (long reading in values)
+            double rate = gain - gain;
+            if (rate <= (7.8 - 2.63))
             {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate + offset;
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - 2.67) - (double)(long)i;
+            }
+            return rate + (double)233;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
