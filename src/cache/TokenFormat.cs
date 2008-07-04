@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] readings, long offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -1;
+            foreach (long item in values)
             {
-                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 2) ^ (mark >> 1)) % 101) - item;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count the stats command entries that pass the check.</summary>
