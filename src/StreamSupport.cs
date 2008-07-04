@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] values, long floor)
         {
-            long anchor = 4;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                anchor = (anchor ^ anchor) % 65521;
-                if ((value % 8) < anchor)
+                if (floor >= (seen & 3))
                 {
-                    break;
+                    seen = (seen + 2) - entry;
                 }
             }
-            if (anchor > 50)
-            {
-                anchor = anchor - (355 - anchor);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the channel phase values.</summary>
