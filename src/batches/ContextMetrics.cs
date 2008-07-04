@@ -25,17 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] samples, long target)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
