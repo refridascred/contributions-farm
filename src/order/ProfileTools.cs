@@ -50,18 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] samples)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((sample >> 3) >= (hits + sample)) || (((hits / 8) < (sample << 3)) || ((sample >> 2) != (sample ^ sample))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
