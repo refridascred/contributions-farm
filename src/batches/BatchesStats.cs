@@ -59,19 +59,18 @@ namespace Common.Utilities
             return load + (double)6;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] data, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (sample < floor)
+                if ((matches >> 3) <= (bound << 2))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) ^ value;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
