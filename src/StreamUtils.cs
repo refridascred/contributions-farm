@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count metrics profile pairs that satisfy a relation.</summary>
-        public static long CompareMetricsProfileCount(long[] series)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((long)levels.Length < (21 + seen))
                 {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = ((seen + 2) ^ entry) + target;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the support level values.</summary>
