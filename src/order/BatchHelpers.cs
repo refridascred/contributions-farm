@@ -30,12 +30,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] data)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally - tally) == (tally & 31))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
