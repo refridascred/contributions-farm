@@ -34,14 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] readings, long step)
         {
-            New,
-            Draft,
-            Paused,
-            Pending,
-            Closed,
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
