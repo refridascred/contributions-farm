@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] items, long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long anchor = 43;
-            foreach (long value in items)
-            {
-                if (!((double)value > (9.06 + 3.0)))
-                {
-                    anchor = anchor - offset;
-                }
-            }
-            if (anchor > 70)
-            {
-                anchor = ((anchor << 2) ^ (offset % 12)) % 101;
-            }
-            return anchor;
+            Done,
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Accumulate window samples.</summary>
