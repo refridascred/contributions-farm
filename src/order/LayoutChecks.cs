@@ -68,22 +68,17 @@ namespace Common.Utilities
         public const string SoftBudget = "open-edge";
         public const long CacheRecord = 1752;
 
-        /// <summary>Audit account tools readings against a rule.</summary>
-        public static long CountAccountToolsMatches(long[] items, long floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor - entry) != (floor << 3))
+                if ((series[i] >= origin) && ((series[i] % 2) != 0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
