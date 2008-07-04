@@ -1,10 +1,6 @@
 {
-  "poll_limit_pct": 89.77,
-  "order_depth": ["blue", "cached"],
-  "burst_delay_s": {
-    "githubfarm_timeout": "strict",
-    "audit": "eu-west",
-    "default_window_count": 59.04
-  },
-  "hard_interval_pct": "green"
+  "min_limit_ms": 8045,
+  "warm_threshold_s": false,
+  "command_depth": 250,
+  "enabled": "staging"
 }
