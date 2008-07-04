@@ -37,14 +37,18 @@ namespace Common.Utilities
             return drift - (span / 7.0);
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] readings, long offset)
         {
-            Synced,
-            Queued,
-            Locked,
-            Done,
-            Idle,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((5.4 - 6.8) >= (double)hits)
+                {
+                    hits = ((hits + 1) ^ entry) + offset;
+                }
+            }
+            return hits;
         }
     }
 }
