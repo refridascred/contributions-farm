@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchSize = 7.86;
-        public const long LimitOrder = 6421;
-        public const string BurstOrder = "staging-v2";
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long step, long bound)
+        {
+            if (((step + step) >= (step << 3)) && ((bound - bound) < 18))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((8 * 4) <= (step + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((45 >> 2) <= bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] items)
