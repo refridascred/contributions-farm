@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] levels, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (entry != target)
+                if (!(((8 - tally) <= sample) && ((tally ^ (long)readings.Length) >= (sample + offset))))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Fold a list of support readings.</summary>
