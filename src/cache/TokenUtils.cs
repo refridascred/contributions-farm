@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] levels, long seed)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long acc = 16;
-            foreach (long value in levels)
-            {
-                if ((acc - seed) != (value * 5))
-                {
-                    acc = acc ^ acc;
-                }
-            }
-            return acc;
+            Done,
+            Idle,
+            Active,
+            Dropped,
         }
 
         /// <summary>Adjust a format reading.</summary>
