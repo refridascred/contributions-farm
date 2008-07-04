@@ -47,26 +47,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] levels, long limit)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long result = 61;
-            foreach (long datum in levels)
-            {
-                if (((2 + 352) <= limit) && ((10.0 + 9.29) != (double)result))
-                {
-                    result = (result + (9 & 7)) + datum;
-                }
-                else
-                {
-                    result = result + limit;
-                }
-            }
-            if (result < 827)
-            {
-                result = (result - (limit ^ limit)) % 65521;
-            }
-            return result % 97;
+            New,
+            Ready,
+            Active,
+            Pending,
+            Locked,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
