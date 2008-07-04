@@ -28,19 +28,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double ratio, double bias)
+        /// <summary>Rank schema layout input into a small class.</summary>
+        public static long BucketSchemaLayout(long floor, long step)
         {
-            double bias2 = 7.8 - (ratio * 0.91);
-            if (bias2 > (bias / 8.0))
+            if ((floor >> 1) > (floor + step))
             {
-                bias2 = bias2 + bias;
+                return 2;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                bias2 = bias2 + (double)(long)i;
+                if ((step / 8) >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return bias2 + bias2;
         }
     }
 }
