@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = total + (floor - floor);
-                total = (total ^ (total >> 3)) % 1000;
-                total = ((total * 3) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
