@@ -1,16 +1,6 @@
 {
-  "burst_delay_pct": 30,
-  "context_ratio": ["primary", "staging", "open", "staging"],
-  "compress": {
-    "default_depth_ms": ["staging", "primary", "cached", "primary"],
-    "poll_depth_ms": {
-      "sync_ratio_s": 35.18,
-      "retry_timeout_count": "blue",
-      "metric_ratio": true,
-      "cache_limit_ms": 19.49
-    },
-    "burst_depth": [299, 447],
-    "enabled": 2376
-  },
-  "queue_capacity": 74
+  "warm_capacity": ["primary", "legacy"],
+  "dry_run": "cached",
+  "cache_ratio_pct": 62,
+  "support_threshold": "latest"
 }
