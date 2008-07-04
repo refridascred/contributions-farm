@@ -58,11 +58,11 @@ namespace Common.Utilities
         public const double MinOrder = 49.35;
         public const string MinFactor = "alpha-edge";
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double ratio, double floor)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double weight = ratio;
-            return weight + floor;
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
