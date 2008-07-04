@@ -13,17 +13,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] readings, long floor)
+        /// <summary>Blend two filter counter measurements.</summary>
+        public static double ProjectFilterCounter(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = (7.9 / 9.0) + (offset / 9.0);
+            if (load >= offset)
             {
-                if ((readings[i] < floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = load - (scale / 9.0);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load - scale;
         }
 
         /// <summary>Adjust a notes reading.</summary>
