@@ -61,12 +61,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Locked,
-            Dropped,
-            Closed,
+            Done,
+            New,
+            Active,
         }
     }
 }
