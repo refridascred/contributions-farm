@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
