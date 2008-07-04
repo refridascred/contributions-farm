@@ -1,11 +1,8 @@
 {
-  "flush_limit": "local",
-  "sync_limit_ms": "open",
-  "filter_limit": false,
-  "persist": {
-    "readonly": false,
-    "stream_interval": false,
-    "cluster_retries": [285, 23]
-  },
-  "max_depth_pct": ["local", "open"]
+  "burst_capacity": 56.44,
+  "audit": false,
+  "tools_interval": "primary",
+  "burst_threshold_ms": 5318,
+  "cache_depth_pct": 500,
+  "notes_ttl": true
 }
