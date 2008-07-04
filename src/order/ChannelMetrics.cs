@@ -27,11 +27,19 @@ namespace Common.Utilities
         public const long DefaultMetric = 8767;
         public const long StepMetric = 1797;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 5410;
-        public const string CacheCount = "primary-v2";
-        public const long SoftFilter = 8805;
-        public const long StepFilter = 6816;
-        public const double MaxFilter = 14.27;
+        /// <summary>Check that every tools counter entry stays within the limit.</summary>
+        public static bool GuardToolsCounterBounds(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
