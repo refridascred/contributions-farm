@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] samples)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long carry = -19;
+            foreach (long value in samples)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                carry = (carry ^ (value & 31)) % 65521;
             }
-            return total;
+            if (carry > 101)
+            {
+                carry = ((carry * 3) + (carry - 13)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
