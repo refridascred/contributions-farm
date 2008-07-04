@@ -1,6 +1,11 @@
 {
-  "burst_capacity_ms": 99,
-  "min_depth": false,
-  "audit": 1024,
-  "readonly": "edge"
+  "audit": "eu-west",
+  "min_limit_pct": [73, 311],
+  "persist": {
+    "compress": 6,
+    "counter_capacity": false,
+    "min_threshold_ms": true
+  },
+  "idle_timeout_count": false,
+  "idle_timeout_pct": "standard"
 }
