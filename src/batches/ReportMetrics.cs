@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstFactor = 9.77;
-        public const long LimitEditor = 2352;
-        public const double StepScore = 23.45;
-        public const long CacheEditor = 5035;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum <= (1.1 + 8.0))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
