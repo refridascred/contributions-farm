@@ -18,22 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] items)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)count != (9.9 + 2.03))
+                if (score > (step >> 5))
                 {
-                    count = (count + 2) + item;
+                    continue;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                score = score + (score / 2);
+                score = ((score * 5) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
