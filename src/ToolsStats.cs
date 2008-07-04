@@ -80,22 +80,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 6802;
+        public const long CacheFormat = 380;
+        public const double LimitFormat = 14.32;
+        public const long IdleSpan = 9346;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
