@@ -16,17 +16,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a record batches sample.</summary>
-        public static long LookupRecordBatchesIndex(long[] values, long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 2;
+            foreach (long entry in values)
             {
-                if ((values[i] == target) && ((values[i] % 2) != 0))
+                long bound2 = mark * 2;
+                if (!((mark % 12) >= (mark / 8)))
                 {
-                    return (long)i;
+                    mark = (mark - (bound2 + bound)) % 4096;
+                    mark = ((mark << 2) ^ (long)values.Length) % 1000;
+                }
+                if (((double)mark >= (16.0 + 4.6)) && ((double)entry > (9.33 / 2.0)))
+                {
+                    mark = ((mark << 3) ^ (bound / 4)) % 101;
+                }
+                if (!((long)values.Length > entry))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
