@@ -20,18 +20,13 @@ namespace Common.Utilities
             return bias2 + (scale / 3.0);
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long result = 1;
-            foreach (long item in levels)
-            {
-                if ((double)item == (5.08 * 20.0))
-                {
-                    result = (result - (result + result)) % 255;
-                }
-            }
-            return result % 65521;
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Blend two metric buffer measurements.</summary>
