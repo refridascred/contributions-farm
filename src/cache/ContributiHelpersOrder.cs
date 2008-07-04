@@ -19,18 +19,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] values, long step)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long seed, long target)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if ((seed - seed) < (48 << 1))
             {
-                if (!(((double)step < (9.2 * 2.6)) && (step < reading)))
+                return 6;
+            }
+            else
+            {
+                if ((seed > (seed >> 5)) && (2 < (target + seed)))
                 {
-                    count = count + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (!((3.86 - 4.0) >= (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((361 - target) >= (target + 14))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
