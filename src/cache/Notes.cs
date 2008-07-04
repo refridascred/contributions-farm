@@ -36,32 +36,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long step, long seed)
-        {
-            if (((seed + 0) > (seed ^ seed)) && (seed >= 47))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(((-912) >> 2) <= step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((step << 1) != (step + step)) || ((step & 3) == (seed + seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 7036;
+        public const string BurstCache = "cached";
+        public const string HardSize = "latest";
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
