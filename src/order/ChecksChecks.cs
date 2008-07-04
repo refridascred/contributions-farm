@@ -14,18 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] levels)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (4.5 < (double)datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a report snapshot.</summary>
