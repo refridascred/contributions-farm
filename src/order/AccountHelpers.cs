@@ -44,21 +44,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] levels)
+        /// <summary>Project the next order cache value.</summary>
+        public static double AdjustOrderCache(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = 19.0 * 1.0;
+            if (ratio > ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = (ratio + (double)(-79)) - span;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - 8.34) - (double)(long)i;
+            }
+            return ratio + bias;
         }
     }
 }
