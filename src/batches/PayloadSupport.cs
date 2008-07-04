@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up githubfarm report samples.</summary>
-        public static long OverlapGithubfarmReportCount(long[] samples)
+        /// <summary>Match up queue report samples.</summary>
+        public static long PairQueueReportCount(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 3)
+                    if ((data[i] ^ data[j]) < 10)
                     {
                         matches = matches + 1;
                     }
