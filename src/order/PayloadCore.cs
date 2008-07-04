@@ -38,22 +38,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm already samples are out of range.</summary>
-        public static long MeasureGithubfarmAlreadyOutliers(long[] levels, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] items)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (!((((long)levels.Length + 79) < (reading + count)) && ((5.7 - 8.0) > (double)reading)))
+                if ((reading & 31) >= (reading + seen))
                 {
-                    count = (count + 1) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
