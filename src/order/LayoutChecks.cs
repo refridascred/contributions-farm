@@ -27,11 +27,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 4863;
-        public const double StepStats = 48.35;
-        public const long DefaultWidth = 3044;
-        public const long CacheStats = 6877;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] values, long step)
+        {
+            long state = 808;
+            foreach (long reading in values)
+            {
+                if (!(reading < (6 + step)))
+                {
+                    state = ((state << 3) ^ (step - (-4))) % 255;
+                }
+                if (((double)reading <= (9.83 - 9.15)) && (step > (reading + reading)))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportBounds(long[] items, long offset)
