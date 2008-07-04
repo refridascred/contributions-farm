@@ -42,14 +42,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Queued,
-            Failed,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxDepth = 2473;
+        public const string DefaultToken = "cached-v2";
+        public const long SoftToken = 3134;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long TallyRoute(long[] samples, long step)
