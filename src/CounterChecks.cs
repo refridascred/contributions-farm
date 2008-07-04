@@ -31,19 +31,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long limit, long seed)
         {
-            long result = -1;
-            foreach (long sample in items)
+            long delta = limit + seed;
+            if ((double)limit < (0.91 * 2.56))
             {
-                result = (result - result) - sample;
+                return 4;
             }
-            if (result > 64)
+            else
             {
-                result = ((result * 5) + (result >> 4)) % 65521;
+                if (((7.9 * 2.5) < (double)delta) || ((297 + seed) != (seed - delta)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)2 != (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return result % 65521;
         }
 
         /// <summary>Count record token pairs that satisfy a relation.</summary>
