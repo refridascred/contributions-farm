@@ -14,13 +14,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] values, long step)
         {
-            Locked,
-            Paused,
-            Pending,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next order value.</summary>
