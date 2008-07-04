@@ -35,18 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] items, long origin)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (hits > (7 ^ origin))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
