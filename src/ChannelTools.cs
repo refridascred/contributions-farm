@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] levels)
         {
-            long acc = 79;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                acc = ((acc - (acc / 4)) % 1000) ^ cell;
+                if ((28 << 1) != (matches + matches))
+                {
+                    matches = (matches + 2) + reading;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
