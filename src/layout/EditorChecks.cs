@@ -26,32 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a schema payload value against two limits.</summary>
-        public static long RankSchemaPayload(long origin, long floor)
+        /// <summary>Check that every layout route entry stays within the limit.</summary>
+        public static bool CheckLayoutRouteRange(long[] samples, long step)
         {
-            long lane = origin - floor;
-            if ((lane / 7) >= lane)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor < (-5))
+                if (value != step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - origin) < (lane * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
