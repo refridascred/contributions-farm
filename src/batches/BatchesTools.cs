@@ -37,9 +37,14 @@ namespace Common.Utilities
         public const long BatchCount = 4845;
         public const long LimitGithubfarm = 14;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardWidth = 974;
-        public const long StepToken = 5194;
-        public const long BatchToken = 4755;
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
+        {
+            Locked,
+            Paused,
+            Synced,
+            Idle,
+            New,
+        }
     }
 }
