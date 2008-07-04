@@ -20,14 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Done,
-            Idle,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheSpan = 7605;
+        public const long MinPayload = 1282;
+        public const double BatchPayload = 78.43;
+        public const long BatchLevel = 206;
 
         /// <summary>Adjust a format reading.</summary>
         public static double SmoothFormat(double ratio, double bias)
