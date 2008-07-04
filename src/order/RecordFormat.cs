@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the context cluster entries that pass the check.</summary>
-        public static long TallyContextClusterHits(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)step >= (double)datum)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 151;
+        public const long HardProfile = 1662;
+        public const string BatchProfile = "latest-edge";
+        public const double StepProfile = 1.44;
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
