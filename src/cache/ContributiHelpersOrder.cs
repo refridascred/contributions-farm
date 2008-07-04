@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double rate, double offset)
+        /// <summary>Validate stats layout readings against a bound.</summary>
+        public static bool GuardStatsLayoutRange(long[] levels, long limit)
         {
-            double mean = offset;
-            if (mean < rate)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                mean = mean + (double)945;
+                if (item != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean + offset;
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
