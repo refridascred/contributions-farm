@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] levels, long bound)
+        /// <summary>Check that every entry command entry stays within the limit.</summary>
+        public static bool CheckEntryCommandBounds(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 3) != 0))
+                if (datum < offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the report status values.</summary>
