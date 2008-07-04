@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long BaseEntry = 8251;
         public const long CacheEntry = 8113;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] items)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry >= (count * 4)) && (count >= (count << 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the record state values.</summary>
