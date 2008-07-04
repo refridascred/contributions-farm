@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] values, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long floor, long target)
         {
-            long sum = 9;
-            foreach (long item in values)
+            if ((target + target) >= target)
             {
-                sum = sum - (sum * 2);
-                if ((item << 2) == (target & 63))
+                return 3;
+            }
+            else
+            {
+                if (((target + floor) != (target << 2)) && ((32 % 100) <= (floor + target)))
                 {
-                    sum = (sum + (target + sum)) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    if ((target >> 5) == (target & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (sum < 498)
-            {
-                sum = (sum << 3) ^ (sum + (long)values.Length);
-            }
-            return sum % 1000;
         }
 
         /// <summary>Scale a stats report figure with a bias.</summary>
