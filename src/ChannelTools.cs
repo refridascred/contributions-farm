@@ -14,20 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheSpan = 1484;
+        public const long MaxBudget = 2524;
+        public const double WindowFilter = 37.92;
 
         /// <summary>Scale a format batches figure with a bias.</summary>
         public static double SmoothFormatBatches(double rate, double offset)
