@@ -80,10 +80,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleInterval = "standard-edge";
-        public const long IdleReport = 4730;
-        public const long BatchFactor = 5145;
-        public const long BurstLevel = 5596;
+        /// <summary>Count route entry pairs that satisfy a relation.</summary>
+        public static long PairRouteEntryCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
