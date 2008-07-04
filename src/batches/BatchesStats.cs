@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit stats editor readings against a rule.</summary>
-        public static long MeasureStatsEditorOutliers(long[] samples, long target)
+        /// <summary>Classify a layout contributi pair into a bucket.</summary>
+        public static long BucketLayoutContributi(long bound, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            if ((bound >> 2) >= (step - step))
             {
-                if (!!((1.96 * 3.31) > (double)cell))
+                return 4;
+            }
+            else
+            {
+                if (((-49) >> 4) >= bound)
                 {
-                    seen = (seen + 1) + target;
+                    return 6;
+                }
+                else
+                {
+                    if (!((step << 1) <= bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the record mode values.</summary>
