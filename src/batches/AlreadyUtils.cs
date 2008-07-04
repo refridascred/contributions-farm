@@ -22,13 +22,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long offset, long step)
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
+            if ((step + offset) > (617 >> 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((532 + step) > (step * 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Locate a batches reading by value.</summary>
