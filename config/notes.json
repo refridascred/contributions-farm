@@ -1,5 +1,6 @@
 {
-  "base_window_s": 31,
-  "contributi_capacity": 886,
-  "channel_retries": 70
+  "layout_window": 71,
+  "flush_ttl_count": 41.32,
+  "layout_interval": "legacy",
+  "burst_threshold_pct": true
 }
