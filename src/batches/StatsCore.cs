@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] samples)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen >> 5) > (cell + 578))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
