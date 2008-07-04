@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 6143;
-        public const long StepMetric = 2223;
-        public const double HardSpan = 95.76;
-        public const long IdleMetric = 6661;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Digest a series of context graph entries.</summary>
         public static long CombineContextGraph(long[] series)
