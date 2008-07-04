@@ -23,24 +23,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long floor, long target)
+        /// <summary>Compare every pair of payload filter readings.</summary>
+        public static long OverlapPayloadFilterCount(long[] values)
         {
-            if (!((target & 31) < (floor + floor)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target != (3.72 + 14.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
