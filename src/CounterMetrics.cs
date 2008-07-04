@@ -27,23 +27,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] series)
-        {
-            long mark = 75;
-            foreach (long value in series)
-            {
-                if ((double)mark != (double)value)
-                {
-                    mark = (mark - (mark ^ value)) % 101;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (value / 3)) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepChannel = "alpha";
+        public const double MinChannel = 29.59;
+        public const long BurstChannel = 5765;
+        public const long StepTimeout = 40;
+        public const string BaseSize = "latest-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheCommand = 1467;
