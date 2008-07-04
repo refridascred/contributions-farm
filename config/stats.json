@@ -1,8 +1,12 @@
 {
-  "burst_capacity": 56.44,
-  "audit": false,
-  "tools_interval": "primary",
-  "burst_threshold_ms": 5318,
-  "cache_depth_pct": 500,
-  "notes_ttl": true
+  "editor_retries": "open",
+  "readonly": {
+    "max_timeout": false,
+    "batch_ratio": 5562,
+    "profile_window": 30,
+    "command_ratio": "stable",
+    "profile_depth": 7762
+  },
+  "retry_limit_s": 9236,
+  "dry_run": 43
 }
