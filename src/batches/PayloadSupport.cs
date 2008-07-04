@@ -25,19 +25,31 @@ namespace Common.Utilities
         public const double HardInterval = 90.77;
         public const string WindowBudget = "fallback";
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] values, long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long bound, long step)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            if ((bound << 1) <= (step + 11))
             {
-                if (reading != seed)
+                return 3;
+            }
+            else
+            {
+                if (((bound << 3) <= (step & 7)) && ((double)step == (2.31 * 2.4)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((step + step) < bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
