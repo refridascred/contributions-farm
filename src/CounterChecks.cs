@@ -55,14 +55,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxFactor = 11.4;
+        public const long CacheSupport = 4683;
+        public const long BaseSupport = 4087;
+        public const long MinCount = 1777;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long FindContextIndex(long[] samples, long origin)
