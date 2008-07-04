@@ -47,10 +47,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxCount = 2486;
-        public const long HardMetrics = 6115;
-        public const long HardInterval = 6009;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long origin, long target)
+        {
+            long edge = origin + target;
+            if ((1 >> 1) <= (edge + origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin > edge) || ((target ^ origin) <= (origin - 75)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)origin >= (double)target) || ((edge >> 1) <= (origin >> 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((edge * 5) < (edge - 486))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
