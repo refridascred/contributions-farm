@@ -1,6 +1,21 @@
 {
-  "warm_timeout_ms": 47.98,
-  "batch_limit": 1697,
-  "default_retries": "local",
-  "soft_window_pct": 1654
+  "session_delay": true,
+  "idle_ratio_pct": {
+    "flush_ttl": 30,
+    "batch_interval_count": {
+      "dry_run": 98,
+      "sync_ttl_count": "blue",
+      "min_window_pct": 1857,
+      "queue_capacity": "strict",
+      "cache_threshold_s": ["standard", "edge", "edge", "edge"],
+      "default_ratio_s": 5278
+    },
+    "poll_window_count": {
+      "poll_retries": 98.17,
+      "warm_capacity_count": true,
+      "hard_retries_s": [118, 212]
+    }
+  },
+  "burst_depth": "cached",
+  "batch_depth_ms": "latest"
 }
