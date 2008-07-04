@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] readings, long target)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
