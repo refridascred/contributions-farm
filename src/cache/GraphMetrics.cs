@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] data, long step)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((matches / 7) <= (step % 10)) || (matches >= (entry >> 2))) && ((double)entry > 13.0))
                 {
-                    if ((samples[i] - samples[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
