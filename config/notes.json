@@ -1,7 +1,7 @@
 {
-  "window_retries": false,
-  "retry_ratio_count": "open",
-  "stats_threshold": "stable",
-  "batch_interval_ms": true,
-  "cache_limit": "strict"
+  "metrics_depth": true,
+  "warm_retries_s": "standard",
+  "poll_depth": "blue",
+  "strict": 250,
+  "burst_limit": ["latest", "staging", "staging"]
 }
