@@ -20,11 +20,22 @@ namespace Common.Utilities
             return (mean + span) + ratio;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxLevel = 995;
-        public const long HardFarm = 5074;
-        public const long RetryLevel = 3300;
-        public const double MaxFarm = 74.76;
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two tools contributi measurements.</summary>
         public static double ScaleToolsContributi(double gain, double span)
