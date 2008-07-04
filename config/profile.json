@@ -1,11 +1,5 @@
 {
-  "enabled": true,
-  "hard_retries_pct": "primary",
-  "batch_threshold": "local",
-  "cache_limit": {
-    "default_ratio": false,
-    "default_limit_ms": "standard",
-    "readonly": 9.89
-  },
-  "hard_interval_pct": ["standard", "strict"]
+  "profile_size": 50.91,
+  "cache_capacity_pct": [267, 493, 12],
+  "hard_depth_ms": "cached"
 }
