@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepTimeout = "legacy";
-        public const string LimitSize = "fallback";
-        public const double IdleFarm = 25.77;
-        public const double StepInterval = 78.54;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchSize = 7.86;
+        public const long LimitOrder = 6421;
+        public const string BurstOrder = "staging-v2";
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] items)
