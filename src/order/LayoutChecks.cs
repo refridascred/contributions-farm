@@ -42,12 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 3205;
+        public const long DefaultRecord = 1074;
+        public const string SoftBudget = "open-edge";
+        public const long CacheRecord = 1752;
 
         /// <summary>Scale a tools cache figure with a bias.</summary>
         public static double AdjustToolsCache(double ratio, double span)
