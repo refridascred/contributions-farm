@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const double BaseBatches = 70.5;
         public const long BatchBatches = 6787;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Label { get; set; }
-            public bool Level { get; set; }
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
