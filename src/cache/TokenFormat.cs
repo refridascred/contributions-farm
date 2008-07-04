@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultScore = 3943;
-        public const long CacheNotes = 4110;
-        public const long DefaultSize = 9696;
-        public const string IdleNotes = "standard-edge";
-        public const long LimitSize = 1239;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long floor, long seed)
+        {
+            if ((seed << 2) >= (-71))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor - floor) != (floor ^ seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Count the stats command entries that pass the check.</summary>
         public static long AuditStatsCommandGaps(long[] series, long limit)
