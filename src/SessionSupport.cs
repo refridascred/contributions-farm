@@ -20,14 +20,25 @@ namespace Common.Utilities
         public const double BurstRatio = 98.15;
         public const long BaseBatch = 1420;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long step, long floor)
         {
-            Idle,
-            Dropped,
-            Pending,
-            New,
-            Failed,
+            long lane = step + floor;
+            if ((floor - step) <= step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((lane & 255) > (floor >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
