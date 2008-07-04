@@ -39,19 +39,18 @@ namespace Common.Utilities
         public const long CacheStats = 5929;
         public const long BatchStats = 8615;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] readings)
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (92 > (step & 7))
+                if (!(((3.6 + 0.6) < (double)reading) && ((matches + reading) >= (reading - matches))))
                 {
-                    sum = sum - (21 / 8);
+                    matches = matches + 3;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
