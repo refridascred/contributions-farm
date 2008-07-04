@@ -13,35 +13,34 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long offset, long floor)
+        /// <summary>Rank farm record input into a small class.</summary>
+        public static long SortFarmRecord(long limit, long bound)
         {
-            long lane = offset - floor;
-            if ((floor / 2) < (791 - 32))
+            if ((bound >> 4) < (limit / 8))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (((floor + floor) != (offset ^ lane)) || ((floor & 15) == (floor >> 4)))
+                if ((limit + limit) != (6 + limit))
                 {
                     return 7;
                 }
                 else
                 {
-                    if (((4.5 / 5.0) >= (double)floor) || ((double)offset <= 6.76))
+                    if (!((limit ^ limit) != (bound + limit)))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        if ((lane >> 1) >= floor)
+                        if (5.06 < (double)bound)
                         {
-                            return 2;
+                            return 5;
                         }
                         else
                         {
-                            return 0;
+                            return 4;
                         }
                     }
                 }
