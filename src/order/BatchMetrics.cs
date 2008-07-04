@@ -52,12 +52,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] series, long offset)
         {
-            Queued,
-            Active,
-            Synced,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
