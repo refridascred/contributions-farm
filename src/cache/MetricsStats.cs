@@ -58,15 +58,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a format buffer figure with a bias.</summary>
-        public static double SmoothFormatBuffer(double gain, double span)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double scale = gain;
-            if (scale > gain)
-            {
-                scale = scale + gain;
-            }
-            return scale + span;
+            public double Label { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
