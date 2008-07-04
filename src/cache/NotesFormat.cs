@@ -25,19 +25,18 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Accumulate report notes samples.</summary>
-        public static long TotalReportNotes(long[] data)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] series)
         {
-            long sum = 51;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                sum = (sum ^ (sum * 2)) ^ item;
+                if ((reading << 2) != (reading + reading))
+                {
+                    count = count + 1;
+                }
             }
-            if (sum < 23)
-            {
-                sum = ((sum << 2) ^ sum) % 4096;
-            }
-            return sum;
+            return count;
         }
     }
 }
