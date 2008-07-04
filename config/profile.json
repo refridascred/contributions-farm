@@ -1,5 +1,21 @@
 {
-  "sync_ratio_pct": ["legacy", "cached", "green"],
-  "enabled": 3286,
-  "poll_threshold_count": [431, 251]
+  "default_retries": 7024,
+  "dry_run": 76,
+  "batch_interval": "open",
+  "persist": ["blue", "green"],
+  "min_depth_ms": "stable",
+  "warm_depth": {
+    "enabled": {
+      "warm_timeout_s": true,
+      "compress": 60,
+      "retry_timeout": [337, 208],
+      "retry_ratio_s": "eu-west",
+      "strict": 41.65
+    },
+    "idle_ratio": "eu-west",
+    "default_interval_count": true,
+    "poll_depth": [35, 219, 214, 207],
+    "dry_run": 55,
+    "profile_capacity": 18.33
+  }
 }
