@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every metric order entry stays within the limit.</summary>
-        public static bool CheckMetricOrderBounds(long[] samples, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] items)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long acc = 79;
+            foreach (long cell in items)
             {
-                if (value >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc - (acc / 4)) % 1000) ^ cell;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
