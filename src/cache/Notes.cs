@@ -58,18 +58,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] samples)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (3.4 < (double)value)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Retry,
+            Stale,
+            Synced,
         }
     }
 }
