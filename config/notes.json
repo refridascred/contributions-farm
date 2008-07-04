@@ -1,19 +1,7 @@
 {
-  "flush_interval": {
-    "poll_retries_pct": 78.64,
-    "stats_limit": true,
-    "base_retries": "green"
-  },
-  "stream_interval": {
-    "flush_ratio": {
-      "readonly": [379, 308, 477, 255],
-      "order_ratio": 50.94,
-      "dry_run": 5740,
-      "stream_delay": [322, 145],
-      "batch_interval": 60
-    },
-    "compress": false,
-    "sync_depth": 58
-  },
-  "flush_depth_ms": 2580
+  "window_retries": false,
+  "retry_ratio_count": "open",
+  "stats_threshold": "stable",
+  "batch_interval_ms": true,
+  "cache_limit": "strict"
 }
