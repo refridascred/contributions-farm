@@ -22,12 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "local";
-        public const long HardInterval = 8341;
-        public const double BaseLevel = 19.32;
-        public const long HardBudget = 4276;
-        public const double SoftRoute = 62.64;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] data)
+        {
+            long anchor = 286;
+            foreach (long cell in data)
+            {
+                anchor = ((anchor - (anchor & 15)) % 97) ^ cell;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long RankEditor(long origin, long target)
