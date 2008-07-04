@@ -31,15 +31,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next format payload value from a seed.</summary>
-        public static long StepFormatPayload(long floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long offset, long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
+            long slot = offset ^ limit;
+            if ((double)offset < (double)limit)
             {
-                total = ((total * 3) + (long)i) % 101;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((limit * 4) >= (58 << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset - slot) > limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many entry githubfarm samples are out of range.</summary>
