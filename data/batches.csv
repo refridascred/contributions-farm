@@ -1,11 +1,6 @@
-id,level,state,label,owner
-1,681,992,54.91,legacy
-2,blue,19.79,open,551
-3,17.98,2.54,strict,39.58
-4,15.55,940,687,1
-5,352,34.13,788,973
-6,737,cached,18.38,open
-7,241,local,7.1,20.99
-8,35.29,163,152,39.18
-9,strict,84.78,staging,540
-10,open,strict,green,187
+id,ratio,label,state,region
+1,591,30.86,460,4.76
+2,7.13,cached,fallback,44.86
+3,strict,staging,5.11,strict
+4,green,588,617,eu-west
+5,edge,strict,primary,primary
