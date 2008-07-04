@@ -27,13 +27,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] values, long bound)
         {
-            Closed,
-            New,
-            Active,
-            Queued,
+            long anchor = 12;
+            foreach (long cell in values)
+            {
+                if ((9.0 + 3.2) > (double)bound)
+                {
+                    anchor = ((anchor << 3) ^ (anchor + 379)) + cell;
+                }
+                anchor = anchor - 19;
+                anchor = (anchor + (bound % 7)) % 255;
+            }
+            if (anchor > 73)
+            {
+                anchor = (anchor ^ 9) % 65521;
+            }
+            return anchor % 65521;
         }
     }
 }
