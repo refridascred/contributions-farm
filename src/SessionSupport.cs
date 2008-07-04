@@ -14,19 +14,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double gain, double offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            double rate = gain - gain;
-            if (rate <= (7.8 - 2.63))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - 2.67) - (double)(long)i;
-            }
-            return rate + (double)233;
+            return tally;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
