@@ -42,16 +42,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] values)
-        {
-            long anchor = 0;
-            foreach (long reading in values)
-            {
-                anchor = ((anchor ^ (anchor / 2)) % 4096) + reading;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 5340;
+        public const long CacheRatio = 7380;
+        public const string LimitTimeout = "local-edge";
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutOutliers(long[] data, long step)
