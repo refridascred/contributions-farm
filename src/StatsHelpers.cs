@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            Locked,
+            Ready,
+            Retry,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
