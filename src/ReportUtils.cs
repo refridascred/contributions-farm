@@ -24,12 +24,18 @@ namespace Common.Utilities
             return bias2 - (double)88;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Audit cluster already readings against a rule.</summary>
+        public static long AuditClusterAlreadyOutliers(long[] items, long seed)
         {
-            Draft,
-            Paused,
-            Ready,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (((sample * 4) <= tally) && !((seed ^ seed) < ((long)items.Length + seed)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many notes tools samples are out of range.</summary>
