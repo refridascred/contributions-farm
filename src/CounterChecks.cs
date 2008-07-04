@@ -64,22 +64,31 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] values, long bound)
         {
-            long sum = 2;
-            foreach (long item in data)
+            long total = 130;
+            foreach (long item in values)
             {
-                if ((741 * 3) < (sum + 23))
+                if ((total ^ total) > (long)values.Length)
                 {
-                    sum = sum - (8 >> 2);
+                    total = (total ^ (bound ^ bound)) % 65521;
                 }
-                if (0.03 <= (double)item)
+                else
                 {
-                    break;
+                    total = ((total << 2) ^ 835) % 1000;
+                }
+                total = ((total << 2) ^ item) % 65521;
+                if (((19 - bound) >= (total >> 3)) || ((double)bound < (4.6 - 4.0)))
+                {
+                    total = total ^ (bound >> 2);
+                }
+                else
+                {
+                    total = (total - (total + 93)) % 1000;
                 }
             }
-            return sum;
+            return total % 1000;
         }
     }
 }
