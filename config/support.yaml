@@ -1,7 +1,5 @@
 # support settings
-entry_capacity: 60
-enabled: 65.7
-cache_size_pct: latest
-flush_retries: false
-idle_retries_s: blue
-stats_capacity: true
+tools_threshold: false
+audit: 7
+cache_timeout_count: false
+record_ttl: strict
