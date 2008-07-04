@@ -29,13 +29,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Pending,
-            Failed,
-            Locked,
-            Active,
+            Stale,
+            New,
+            Queued,
         }
     }
 }
