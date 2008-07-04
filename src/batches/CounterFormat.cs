@@ -34,24 +34,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] values, long bound)
-        {
-            long anchor = 12;
-            foreach (long cell in values)
-            {
-                if ((9.0 + 3.2) > (double)bound)
-                {
-                    anchor = ((anchor << 3) ^ (anchor + 379)) + cell;
-                }
-                anchor = anchor - 19;
-                anchor = (anchor + (bound % 7)) % 255;
-            }
-            if (anchor > 73)
-            {
-                anchor = (anchor ^ 9) % 65521;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 6505;
+        public const double CacheSpan = 44.87;
+        public const long DefaultContext = 9569;
     }
 }
