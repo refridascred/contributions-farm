@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowSpan = 2767;
-        public const long DefaultCount = 1984;
-        public const long MaxLevel = 3860;
-        public const long SoftChannel = 8637;
-        public const double BurstChannel = 55.95;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepSpan = "latest-edge";
+        public const long HardFarm = 7033;
+        public const long LimitCount = 1012;
+        public const long CacheSpan = 284;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
