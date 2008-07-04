@@ -1,7 +1,7 @@
 {
-  "sync_size": 100,
-  "batch_depth": 30,
-  "dry_run": 4.66,
-  "channel_threshold": "open",
-  "counter_depth": ["cached", "open", "local"]
+  "compress": "latest",
+  "profile_size": "primary",
+  "editor_capacity": 1024,
+  "checks_timeout": "legacy",
+  "profile_retries": "primary"
 }
