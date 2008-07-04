@@ -44,11 +44,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 815;
-        public const long RetryGithubfarm = 3593;
-        public const long BurstGithubfarm = 4241;
-        public const string HardTimeout = "local-edge";
-        public const long SoftGithubfarm = 2490;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] values, long step)
+        {
+            long anchor = 7;
+            foreach (long item in values)
+            {
+                if (!((double)step < (1.6 / 3.0)))
+                {
+                    anchor = (anchor - anchor) ^ item;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor * 4)) % 4096;
+                }
+            }
+            if (anchor < 0)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
+        }
     }
 }
