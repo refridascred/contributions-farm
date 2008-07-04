@@ -47,11 +47,19 @@ namespace Common.Utilities
             return rate + (double)233;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSchema = "local-edge";
-        public const long HardSchema = 7108;
-        public const long BaseTimeout = 4998;
-        public const double BurstSchema = 23.18;
-        public const double LimitSchema = 12.39;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
