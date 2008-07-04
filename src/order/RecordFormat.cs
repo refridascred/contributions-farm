@@ -45,19 +45,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] levels, long target)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            double scale = weight;
+            if (scale <= (weight + 7.0))
             {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = (scale + (weight * 0.77)) - offset;
             }
-            return flag;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (9.69 / 9.0)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
