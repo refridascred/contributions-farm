@@ -38,21 +38,12 @@ namespace Common.Utilities
         public const long CachePayload = 4448;
         public const long LimitPayload = 6887;
 
-        /// <summary>Derive the next stream tools value from a seed.</summary>
-        public static long RollStreamTools(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((5.86 + 5.81) < (double)42) || (acc < (limit % 8)))
-                {
-                    acc = (acc ^ (long)i) % 255;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 84.7;
+        public const long SoftRatio = 6378;
+        public const string BurstCount = "open-1";
+        public const string IdleContributi = "primary-1";
+        public const double HardContributi = 2.91;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long limit)
