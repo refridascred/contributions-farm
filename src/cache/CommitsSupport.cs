@@ -14,22 +14,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many counter report samples are out of range.</summary>
-        public static long CountCounterReportHits(long[] values)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (((seen + seen) > (seen + datum)) || ((seen - seen) > (seen + datum)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double mean = span;
+            return (mean + span) + ratio;
         }
 
         /// <summary>Blend two graph measurements.</summary>
