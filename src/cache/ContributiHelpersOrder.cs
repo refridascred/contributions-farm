@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a graph token figure with a bias.</summary>
-        public static double ScaleGraphToken(double scale, double span)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] values, long offset)
         {
-            double gain = (double)((-87) << 1);
-            for (int i = 0; i < 7; i++)
+            long total = 60;
+            foreach (long entry in values)
             {
-                gain = (((gain - 3.32) - (double)(long)i) + scale) + span;
+                if ((offset / 8) > offset)
+                {
+                    total = total ^ (entry & 31);
+                }
             }
-            return gain - 4.5;
+            return total;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
