@@ -1,9 +1,8 @@
-id,rank,state,weight,owner
-1,latest,271,eu-west,stable
-2,184,latest,250,258
-3,76.36,119,eu-west,840
-4,eu-west,strict,staging,82.96
-5,809,71.69,961,888
-6,staging,open,55.73,2.2
-7,66.47,86.63,edge,cached
-8,edge,strict,56.44,46.36
+id,owner,active
+1,26.1,edge
+2,74.67,25.25
+3,84.97,legacy
+4,195,940
+5,72.54,805
+6,20,eu-west
+7,234,710
