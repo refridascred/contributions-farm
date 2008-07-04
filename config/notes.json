@@ -1,8 +1,8 @@
 {
-  "idle_threshold_count": 93,
-  "flush_depth_count": 21.06,
-  "batch_delay_s": "standard",
-  "dry_run": true,
-  "command_delay": 9.66,
-  "token_limit": "local"
+  "min_limit_pct": 32,
+  "filter_timeout": "edge",
+  "soft_retries_count": [428, 8],
+  "min_window": true,
+  "base_limit_pct": ["latest", "green"],
+  "base_interval_pct": [55, 169, 432]
 }
