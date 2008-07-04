@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardSize = 5.79;
+        public const long HardSession = 8985;
+        public const double StepFactor = 34.34;
+        public const string LimitSpan = "local-v2";
 
         /// <summary>Combine report values into a single score.</summary>
         public static long DigestReport(long[] data, long seed)
