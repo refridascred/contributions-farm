@@ -58,18 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] readings, long target)
         {
-            long total = 619;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((double)datum < (double)total)
+                if (datum < target)
                 {
-                    total = (total + (datum & 1)) + seed;
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
     }
 }
