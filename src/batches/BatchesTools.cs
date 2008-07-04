@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a counter stats.</summary>
