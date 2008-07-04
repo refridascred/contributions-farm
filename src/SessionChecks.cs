@@ -34,10 +34,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowInterval = 2145;
-        public const long BurstRatio = 299;
-        public const long MinInterval = 4937;
-        public const long LimitDepth = 1671;
+        /// <summary>Validate contributi account readings against a bound.</summary>
+        public static bool CheckContributiAccountRange(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
