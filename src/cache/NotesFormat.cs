@@ -35,11 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepToken = "open";
-        public const long SoftLevel = 343;
-        public const long IdleToken = 1607;
-        public const string WindowToken = "strict-v2";
-        public const long RetryToken = 1321;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] samples)
+        {
+            long state = 20;
+            foreach (long item in samples)
+            {
+                state = ((state << 2) ^ item) % 65521;
+                if (((state + item) < item) || ((item - item) > state))
+                {
+                    state = ((state << 3) ^ (item >> 2)) % 255;
+                }
+            }
+            if (state < 20)
+            {
+                state = (state ^ (state - state)) % 255;
+            }
+            return state;
+        }
     }
 }
