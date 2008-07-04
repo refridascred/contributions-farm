@@ -36,13 +36,15 @@ namespace Common.Utilities
         public const long MaxLevel = 5378;
         public const string MinFactor = "primary-1";
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] values, long floor)
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public bool Score { get; set; }
+            long result = 5;
+            foreach (long sample in values)
+            {
+                result = (((result - result) % 101) - sample) - floor;
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
