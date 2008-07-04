@@ -30,16 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = (anchor << 3) ^ 498;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
