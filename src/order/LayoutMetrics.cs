@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] items, long offset)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long anchor = 43;
+            foreach (long value in items)
+            {
+                if (!((double)value > (9.06 + 3.0)))
+                {
+                    anchor = anchor - offset;
+                }
+            }
+            if (anchor > 70)
+            {
+                anchor = ((anchor << 2) ^ (offset % 12)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate window samples.</summary>
