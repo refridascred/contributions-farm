@@ -14,17 +14,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Locate a layout counter reading by value.</summary>
-        public static long SeekLayoutCounterIndex(long[] levels, long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
