@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] samples, long floor)
         {
-            long state = 68;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((5.7 / 5.0) < (double)entry)
+                if ((((floor ^ floor) != (item - hits)) && ((8 >> 2) < item)) && ((item <= (hits + hits)) || ((double)floor >= (1.93 - 15.0))))
                 {
-                    state = ((state * 4) + (long)data.Length) % 101;
+                    hits = hits + 2;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Audit batch token readings against a rule.</summary>
