@@ -34,12 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Locate a token schema reading by value.</summary>
+        public static long FindTokenSchemaIndex(long[] samples, long floor)
         {
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
