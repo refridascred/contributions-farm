@@ -34,12 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Paused,
-            Stale,
-            Pending,
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
