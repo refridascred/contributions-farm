@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
+            Ready,
             Idle,
-            Failed,
-            Draft,
+            Retry,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
