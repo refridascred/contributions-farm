@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] data)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!(((tally << 1) < (6 * 3)) || ((double)tally == (2.9 + 9.7))))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
