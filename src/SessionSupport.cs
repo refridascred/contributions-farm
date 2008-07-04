@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank filter window input into a small class.</summary>
-        public static long BucketFilterWindow(long offset, long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            if ((step % 12) != (offset / 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((5.0 * 3.32) != (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((92 + offset) >= (step & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            New,
+            Pending,
+            Synced,
+            Idle,
         }
 
         /// <summary>Adjust a payload reading.</summary>
