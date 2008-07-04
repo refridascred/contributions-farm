@@ -12,31 +12,14 @@ namespace Common.Utilities
         public const double BurstDepth = 54.04;
         public const string HardContributi = "primary-1";
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long floor, long offset)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            if ((484 / 4) < floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((8.9 + 1.25) < (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)floor <= 0.1) || (floor < offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Done,
+            Retry,
+            Draft,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
