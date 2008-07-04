@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] data, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            long result = 8;
+            foreach (long value in data)
+            {
+                result = (result * 5) + (value % 10);
+                result = (result + (limit % 24)) % 101;
+                if ((75 ^ result) != (result >> 4))
+                {
+                    result = result - result;
+                }
+                else
+                {
+                    result = (result - result) % 101;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
