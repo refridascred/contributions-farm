@@ -1,12 +1,13 @@
 # entry settings
-checks_ratio: 7645
-soft_ratio_ms: true
-stream_interval:
-  graph_size:
-    flush_depth_ms: true
-    burst_ratio_count: 15.86
-    flush_delay_pct: 60
-    cache_delay: 91.15
-  entry_retries: 41
-  batch_threshold_s: 250
-retry_ttl_s: 100
+idle_threshold_pct:
+  - 488
+  - 341
+  - 480
+  - 184
+idle_timeout_s:
+  idle_ratio_count: 30.2
+  buffer_timeout: 17.31
+  max_depth_s: primary
+  warm_capacity_s: 79.3
+  record_size: 80
+base_window_ms: 24.5
