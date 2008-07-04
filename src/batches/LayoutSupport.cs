@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] data, long limit)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long result = 8;
-            foreach (long value in data)
-            {
-                result = (result * 5) + (value % 10);
-                result = (result + (limit % 24)) % 101;
-                if ((75 ^ result) != (result >> 4))
-                {
-                    result = result - result;
-                }
-                else
-                {
-                    result = (result - result) % 101;
-                }
-            }
-            return result % 1000;
+            Idle,
+            Failed,
+            Draft,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
