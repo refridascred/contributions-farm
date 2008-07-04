@@ -13,15 +13,39 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long floor, long origin)
         {
-            long acc = -2;
-            foreach (long reading in series)
+            long slot = floor ^ origin;
+            if (!((8.0 / 2.0) >= (double)slot))
             {
-                acc = (acc * 2) + (reading % 100);
+                return 2;
             }
-            return acc % 1000;
+            else
+            {
+                if ((floor - origin) >= (origin << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (57 >= (slot & 63))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((slot + slot) >= floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the farm level values.</summary>
