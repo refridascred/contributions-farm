@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] levels, long bound)
+        /// <summary>Classify a channel window pair into a bucket.</summary>
+        public static long BucketChannelWindow(long target, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long slot = target - origin;
+            if ((target & 15) <= target)
             {
-                if ((bound >> 1) < (seen >> 2))
+                return 2;
+            }
+            else
+            {
+                if (target <= (slot * 3))
                 {
-                    seen = (seen + 1) + item;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin < (double)slot)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
