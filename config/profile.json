@@ -1,19 +1,6 @@
 {
-  "support_retries": 3283,
-  "default_depth_s": "latest",
-  "burst_depth": {
-    "layout_window": 100,
-    "hard_interval_pct": false,
-    "compress": "primary",
-    "flush_threshold_pct": 40.91,
-    "audit": 69,
-    "report_window": {
-      "hard_retries_count": true,
-      "poll_size_pct": 500,
-      "warm_retries_count": false,
-      "dry_run": 5019
-    }
-  },
-  "cache_timeout_count": "standard",
-  "batch_ratio": 94.85
+  "burst_capacity_ms": 99,
+  "min_depth": false,
+  "audit": 1024,
+  "readonly": "edge"
 }
