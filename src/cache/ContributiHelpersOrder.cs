@@ -19,38 +19,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long seed, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] items)
         {
-            if ((seed - seed) < (48 << 1))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed > (seed >> 5)) && (2 < (target + seed)))
+                if ((count & 3) >= value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((3.86 - 4.0) >= (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((361 - target) >= (target + 14))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
