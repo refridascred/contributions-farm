@@ -25,11 +25,12 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            Stale,
+            Failed,
+            Dropped,
         }
     }
 }
