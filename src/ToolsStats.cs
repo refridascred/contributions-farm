@@ -80,19 +80,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format account readings against a bound.</summary>
-        public static bool CheckFormatAccountBounds(long[] readings, long floor)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Synced,
+            Stale,
         }
     }
 }
