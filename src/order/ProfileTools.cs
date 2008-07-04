@@ -14,17 +14,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] data, long step)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Pending,
+            Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
