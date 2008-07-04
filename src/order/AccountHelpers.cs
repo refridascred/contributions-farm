@@ -57,19 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double weight, double floor)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double ratio = 7.34;
-            if (ratio < (floor - weight))
-            {
-                ratio = ratio - weight;
-            }
-            else
-            {
-                ratio = ratio - (weight + floor);
-            }
-            return ratio - 2.5;
+            public double Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
