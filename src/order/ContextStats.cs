@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count editor layout pairs that satisfy a relation.</summary>
-        public static long CompareEditorLayoutCount(long[] data)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long seed, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((step & 7) < (0 ^ seed))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((step * 5) >= (seed + seed))
                 {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
