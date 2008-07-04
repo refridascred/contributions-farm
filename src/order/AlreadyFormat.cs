@@ -52,24 +52,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long offset, long origin)
+        /// <summary>Blend two stream checks measurements.</summary>
+        public static double BlendStreamChecks(double bias, double span)
         {
-            if (((double)origin > (7.0 - 6.69)) || ((origin << 1) > (89 << 2)))
+            double gain = (bias * 2.0) - 5.82;
+            if (gain >= (span + span))
             {
-                return 2;
+                gain = gain - (double)7;
             }
-            else
-            {
-                if (((2.84 - 18.0) == (double)offset) || ((2 - origin) >= origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return gain + (gain / 3.0);
         }
 
         /// <summary>Describe the cluster level values.</summary>
