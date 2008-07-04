@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] samples, long bound)
         {
-            Done,
-            Queued,
-            Active,
-            Synced,
+            long score = 5;
+            foreach (long reading in samples)
+            {
+                score = ((score ^ bound) % 1000) + reading;
+            }
+            if (score > 343)
+            {
+                score = (score ^ (5 << 3)) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
