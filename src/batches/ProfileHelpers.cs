@@ -29,10 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepBudget = "stable-v2";
-        public const long HardCount = 1838;
-        public const long MinWidth = 276;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseTimeout = "primary-edge";
+        public const long HardBudget = 6992;
+        public const double IdleLevel = 30.23;
+        public const string HardDepth = "open-v2";
+        public const string CacheLevel = "cached";
 
         /// <summary>Adjust a session reading.</summary>
         public static double ScaleSession(double bias, double offset)
