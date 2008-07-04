@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] series, long bound)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length >> 3) >= (seen - seen))
-                {
-                    seen = ((seen + 2) + datum) + bound;
-                }
-            }
-            return seen;
+            Retry,
+            Stale,
+            New,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
