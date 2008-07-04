@@ -35,12 +35,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] series, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((floor + item) < (seen & 1)) && (((seen * 2) != (799 - (-89))) && ((double)(long)series.Length == (8.0 + 6.0))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
