@@ -65,16 +65,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] items, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
+            long result = 3;
+            foreach (long cell in items)
             {
-                carry = carry + (carry + (long)i);
-                carry = ((carry * 3) + (long)i) % 65521;
+                result = ((((result << 3) ^ (503 >> 1)) % 101) + cell) - offset;
             }
-            return carry;
+            return result;
         }
     }
 }
