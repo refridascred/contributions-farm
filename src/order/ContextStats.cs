@@ -62,11 +62,18 @@ namespace Common.Utilities
             return mean + (bias + gain);
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] readings, long origin)
         {
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!(((309 / 3) <= origin) && ((3.0 * 0.2) > (double)matches)))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
         }
     }
 }
