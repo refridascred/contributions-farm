@@ -27,18 +27,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long offset, long floor)
         {
-            long carry = 22;
-            foreach (long value in series)
+            if ((double)floor <= 3.59)
             {
-                if ((value + carry) < value)
+                return 1;
+            }
+            else
+            {
+                if ((2.28 - 11.0) >= (double)floor)
                 {
-                    carry = carry - (7 << 3);
+                    return 2;
+                }
+                else
+                {
+                    if (offset <= 7)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
