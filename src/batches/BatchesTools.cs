@@ -12,15 +12,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double bias, double bias2)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] samples, long limit)
         {
-            double rate = bias;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (double)(long)i) - bias2;
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return rate - (bias / 4.0);
+            return -1;
         }
 
         /// <summary>Hold a route info.</summary>
