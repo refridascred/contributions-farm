@@ -33,19 +33,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] items, long offset)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Synced,
+            Active,
+            Stale,
+            Draft,
         }
     }
 }
