@@ -53,18 +53,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] data)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double rate, double floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double drift = 14.0;
+            if (drift <= (double)(-31))
             {
-                if ((19.0 * 3.0) >= (double)count)
-                {
-                    count = (count + 3) ^ datum;
-                }
+                drift = (drift - floor) - rate;
             }
-            return count;
+            return drift - (drift - drift);
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
