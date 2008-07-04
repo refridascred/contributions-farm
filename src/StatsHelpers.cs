@@ -15,21 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up queue window samples.</summary>
-        public static long MatchQueueWindowCount(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 7;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)floor <= (14.0 / 8.0))
                 {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix ^ (751 - 6);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (reading / 7);
                 }
             }
-            return count;
+            return mix % 65521;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
