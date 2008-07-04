@@ -44,18 +44,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] items)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading & 31) >= (reading + seen))
+                if (series[i] <= offset)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
