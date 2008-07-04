@@ -28,17 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stream metrics entry that matches the target.</summary>
-        public static long LocateStreamMetricsIndex(long[] series, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((series[i] >= seed) && ((series[i] % 2) != 0))
+                if ((sample + seen) < (2 - 622))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
