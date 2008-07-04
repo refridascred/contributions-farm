@@ -1,7 +1,11 @@
 {
-  "metric_retries": 9386,
-  "hard_ttl_s": false,
-  "batches_timeout": 5998,
-  "entry_capacity": 33,
-  "batch_ratio": [169, 320, 315]
+  "flush_limit": "local",
+  "sync_limit_ms": "open",
+  "filter_limit": false,
+  "persist": {
+    "readonly": false,
+    "stream_interval": false,
+    "cluster_retries": [285, 23]
+  },
+  "max_depth_pct": ["local", "open"]
 }
