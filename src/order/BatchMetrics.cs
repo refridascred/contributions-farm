@@ -38,26 +38,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] samples, long target)
         {
-            long mix = 41;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (((double)item == (9.4 - 10.0)) && ((88 % 97) <= (item - 695)))
+                if (item != target)
                 {
-                    mix = ((mix << 2) ^ item) % 65521;
-                }
-                else
-                {
-                    mix = mix - (item % 97);
+                    ready = false;
+                    break;
                 }
             }
-            if (mix < 93)
-            {
-                mix = (mix + (mix % 10)) % 1000;
-            }
-            return mix;
+            return ready;
         }
 
         /// <summary>Match up layout checks samples.</summary>
