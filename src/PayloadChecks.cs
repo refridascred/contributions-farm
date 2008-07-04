@@ -20,21 +20,18 @@ namespace Common.Utilities
             return bias2 + (scale / 3.0);
         }
 
-        /// <summary>Compare every pair of payload queue readings.</summary>
-        public static long OverlapPayloadQueueCount(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 1;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)item == (5.08 * 20.0))
                 {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result - (result + result)) % 255;
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
