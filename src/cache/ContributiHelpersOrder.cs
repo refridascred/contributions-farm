@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double rate, double offset)
         {
-            Active,
-            Retry,
-            Synced,
-            Queued,
+            double mean = offset;
+            if (mean < rate)
+            {
+                mean = mean + (double)945;
+            }
+            return mean + offset;
         }
 
         /// <summary>Define report limits and defaults.</summary>
