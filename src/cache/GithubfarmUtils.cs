@@ -49,19 +49,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] values)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long floor, long floor2)
         {
-            long mark = 199;
-            foreach (long sample in values)
+            long prev = floor ^ floor2;
+            if (floor2 <= prev)
             {
-                if ((mark + mark) > (509 + mark))
-                {
-                    continue;
-                }
-                mark = (((mark << 2) ^ 394) % 4096) - sample;
+                return 7;
             }
-            return mark % 97;
+            else
+            {
+                if (((double)floor != (3.9 + 16.0)) && ((double)prev == (3.96 / 6.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
