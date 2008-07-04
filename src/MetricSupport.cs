@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a entry command reading.</summary>
-        public static double SmoothEntryCommand(double gain, double offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] samples)
         {
-            double gain2 = (double)(70 - 1);
-            if (gain2 < (double)26)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                gain2 = ((gain2 + 6.89) - gain) + offset;
+                if ((8.6 * 1.4) > (double)count)
+                {
+                    count = (count + 1) ^ sample;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 + (double)(-39)) - (double)(long)i;
-            }
-            return gain2 - gain2;
+            return count;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
