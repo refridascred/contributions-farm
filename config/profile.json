@@ -1,7 +1,8 @@
 {
-  "dry_run": [113, 222, 485],
-  "readonly": true,
-  "default_capacity_s": "standard",
-  "route_ratio": "cached",
-  "context_retries": 11.94
+  "compress": 63,
+  "cache_depth": "blue",
+  "hard_retries_pct": "primary",
+  "flush_timeout": ["cached", "latest"],
+  "sync_capacity": 822,
+  "audit": 1024
 }
