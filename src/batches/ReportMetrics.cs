@@ -14,19 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] samples, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (datum != step)
+                if ((double)(-94) > (double)count)
                 {
-                    found = false;
-                    break;
+                    count = ((count + 3) - item) - target;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
