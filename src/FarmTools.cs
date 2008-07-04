@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const long BurstReport = 8924;
         public const long IdleReport = 8670;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public double Score { get; set; }
-            public bool Token { get; set; }
+            New,
+            Closed,
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Fold a list of editor queue readings.</summary>
