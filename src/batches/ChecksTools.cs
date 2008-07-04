@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate githubfarm report samples.</summary>
-        public static long ScoreGithubfarmReport(long[] samples)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long state = 872;
-            foreach (long cell in samples)
-            {
-                if ((state / 2) != (cell % 60))
-                {
-                    state = (state * 3) + (state - 30);
-                }
-                else
-                {
-                    state = (state ^ state) % 97;
-                }
-            }
-            return state;
+            Locked,
+            Done,
+            Closed,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
