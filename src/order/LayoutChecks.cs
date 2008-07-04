@@ -27,12 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 9399;
-        public const string CacheGithubfarm = "primary";
-        public const string DefaultRatio = "primary-v2";
-        public const long MaxGithubfarm = 4974;
-        public const long WindowGithubfarm = 4868;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 4863;
+        public const double StepStats = 48.35;
+        public const long DefaultWidth = 3044;
+        public const long CacheStats = 6877;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportBounds(long[] items, long offset)
