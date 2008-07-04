@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] series)
+        /// <summary>Scale a token report figure with a bias.</summary>
+        public static double ScaleTokenReport(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = gain / 5.0;
+            if (mean >= mean)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean - (double)293) + offset;
             }
-            return tally;
+            else
+            {
+                mean = mean - gain;
+            }
+            return mean + (double)9;
         }
 
         /// <summary>Define token limits and defaults.</summary>
