@@ -29,20 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next contributi batches value from a seed.</summary>
-        public static long RollContributiBatches(long target)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
-            {
-                long gap = ((long)i + 6) >> 2;
-                if ((7 << 3) < carry)
-                {
-                    carry = (carry + (gap + gap)) % 4096;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public double Token { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
