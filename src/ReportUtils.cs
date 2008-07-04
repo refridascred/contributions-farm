@@ -38,18 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes tools samples are out of range.</summary>
-        public static long TallyNotesToolsHits(long[] levels, long origin)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if ((8.4 / 3.0) == (double)tally)
+                if (item >= seed)
                 {
-                    tally = ((tally + 2) + reading) - origin;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
