@@ -49,19 +49,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double weight, double floor)
-        {
-            double mean = (double)(0 - (-8));
-            if (mean > (double)3)
-            {
-                mean = (mean + (double)768) + floor;
-            }
-            else
-            {
-                mean = mean + (mean - weight);
-            }
-            return mean + (1.0 + weight);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchBudget = 6866;
+        public const long CacheRatio = 9386;
+        public const long LimitFactor = 1803;
+        public const string DefaultInterval = "strict";
+        public const long BatchTimeout = 6819;
     }
 }
