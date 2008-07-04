@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Locked,
-            Ready,
+            Stale,
+            Done,
+            Idle,
             Retry,
-            Pending,
-            Closed,
+            Synced,
         }
 
         /// <summary>Match up queue window samples.</summary>
