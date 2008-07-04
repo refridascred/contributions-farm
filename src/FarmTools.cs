@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double ratio, double span)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] levels, long offset)
         {
-            double rate = ratio / 8.0;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + (rate + rate)) + (double)(long)i;
+                if ((levels[i] == offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - (3.18 - span);
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
