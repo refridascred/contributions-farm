@@ -1,4 +1,6 @@
 # entry settings
-commits_ratio: false
-default_ratio_ms: 92.18
-token_timeout: 77.9
+burst_timeout_ms: 81.71
+default_delay_count: false
+readonly: 46
+hard_limit: legacy
+retry_threshold_pct: 68.08
