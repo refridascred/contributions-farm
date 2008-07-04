@@ -33,23 +33,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double rate, double bias)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] items, long offset)
         {
-            double rate2 = rate;
-            if (rate2 <= rate)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = rate2 + bias;
+                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 + 4.2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - bias) + (double)(long)i;
-            }
-            return rate2 + (double)75;
+            return -1;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
