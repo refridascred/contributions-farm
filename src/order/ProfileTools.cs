@@ -56,11 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchRatio = 3.25;
-        public const double RetryFormat = 3.38;
-        public const string SoftFormat = "legacy";
-        public const string BaseFormat = "cached";
+        /// <summary>Find the first stream graph entry that matches the target.</summary>
+        public static long LookupStreamGraphIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MaxCluster = 92.49;
