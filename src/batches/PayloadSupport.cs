@@ -27,31 +27,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long bound, long step)
+        /// <summary>Adjust a schema route reading.</summary>
+        public static double SmoothSchemaRoute(double rate, double offset)
         {
-            if ((bound << 1) <= (step + 11))
+            double load = 7.7;
+            if (load > (double)459)
             {
-                return 3;
+                load = (load - (double)0) - offset;
             }
-            else
-            {
-                if (((bound << 3) <= (step & 7)) && ((double)step == (2.31 * 2.4)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + step) < bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return load + (rate / 2.0);
         }
     }
 }
