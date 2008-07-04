@@ -1,10 +1,7 @@
-id,owner,label,ratio,active
-1,24.25,fallback,strict,98.3
-2,668,510,604,280
-3,22.63,primary,legacy,cached
-4,915,cached,84.33,88.04
-5,462,28.18,253,949
-6,226,103,564,493
-7,60.29,848,latest,249
-8,latest,15.76,8.36,7.59
-9,eu-west,52.46,stable,15.9
+id,weight,label
+1,96.26,9.06
+2,standard,primary
+3,edge,77.59
+4,374,6.9
+5,539,838
+6,eu-west,885
