@@ -53,13 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] series, long limit)
         {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!(((count + value) > (value + limit)) && (limit <= (value + 3))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
