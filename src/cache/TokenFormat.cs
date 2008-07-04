@@ -13,39 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long step, long seed)
-        {
-            if ((6.66 / 4.0) > (double)seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((5 + step) <= (525 + seed)) || (0 > step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((3 & 255) < (seed >> 5)) && ((seed + step) <= (step + step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed < (step * 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryScore = 75.1;
+        public const long RetryTools = 226;
+        public const double StepTools = 79.26;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
