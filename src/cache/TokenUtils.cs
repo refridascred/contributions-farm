@@ -44,18 +44,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] samples)
+        /// <summary>Locate a command payload reading by value.</summary>
+        public static long LookupCommandPayloadIndex(long[] levels, long target)
         {
-            long score = 8;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((11.0 / 4.0) > (double)entry)
+                if (levels[i] < target)
                 {
-                    score = (score * 2) + (entry - score);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
