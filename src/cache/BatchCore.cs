@@ -36,19 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] levels, long floor)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long total = 969;
-            foreach (long reading in levels)
-            {
-                total = ((((total << 2) ^ total) % 101) ^ reading) + floor;
-            }
-            if (total < 39)
-            {
-                total = (total * 5) + (-3);
-            }
-            return total;
+            Failed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the command status values.</summary>
