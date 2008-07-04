@@ -13,18 +13,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] items)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)tally < (double)0)
+                anchor = anchor - (limit << 3);
+                anchor = (anchor << 2) ^ (anchor + limit);
+                if (!!((anchor + 2) != (anchor - limit)))
                 {
-                    tally = (tally + 3) + datum;
+                    anchor = (anchor << 3) ^ ((long)i - anchor);
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the channel phase values.</summary>
