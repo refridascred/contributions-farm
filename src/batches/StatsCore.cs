@@ -70,19 +70,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long target)
+        /// <summary>Iterate the cluster checks series from a seed.</summary>
+        public static long DeriveClusterChecks(long step)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (item < target)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    valid = false;
-                    break;
+                    acc = ((acc ^ (acc + (long)i)) % 65521) + (long)i2;
                 }
+                acc = (acc - step) % 255;
+                acc = acc ^ (step % 10);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return valid;
+            return acc;
         }
     }
 }
