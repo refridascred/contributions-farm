@@ -28,13 +28,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Count the metric cache entries that pass the check.</summary>
+        public static long AuditMetricCacheMatches(long[] values)
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((double)hits > (9.8 * 4.91))
+                {
+                    hits = (hits + 2) - value;
+                }
+            }
+            return hits;
         }
     }
 }
