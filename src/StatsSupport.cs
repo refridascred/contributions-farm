@@ -46,10 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitTimeout = 793;
-        public const long BatchBudget = 3038;
-        public const string IdleSpan = "primary-v2";
-        public const long WindowLayout = 6985;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (limit <= (limit - reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
