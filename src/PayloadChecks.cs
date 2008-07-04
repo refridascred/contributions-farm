@@ -59,13 +59,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] items, long origin)
         {
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
