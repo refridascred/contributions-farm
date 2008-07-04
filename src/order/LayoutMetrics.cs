@@ -39,15 +39,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a schema command counter forward.</summary>
-        public static long IterateSchemaCommand(long floor)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long floor, long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long lane = floor + origin;
+            if ((floor / 9) == (71 + origin))
             {
-                total = ((total * 2) + (long)i) % 1000;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((floor >> 4) != (floor + floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)lane <= 4.6)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((18.0 * 6.86) > (double)origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
