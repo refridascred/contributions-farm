@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a stream batch reading.</summary>
-        public static double ProjectStreamBatch(double scale, double bias)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] data, long offset)
         {
-            double bias2 = scale;
-            if (bias2 > (double)455)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = (bias2 - scale) - bias;
+                if ((data[i] >= offset) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + (scale / 3.0);
+            return -1;
         }
 
         /// <summary>Hold a stats record.</summary>
