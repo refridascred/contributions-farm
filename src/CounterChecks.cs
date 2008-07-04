@@ -11,24 +11,19 @@ namespace Common.Utilities
         public const string HardChannel = "staging-edge";
         public const string SoftWidth = "fallback-1";
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long target, long target2)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] items, long step)
         {
-            if (((double)target >= (2.46 * 7.0)) && (target2 < (target ^ target2)))
+            long anchor = 575;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target2 >> 5) <= (target & 255)) || ((target + target2) < (target - target)))
+                anchor = (anchor * 3) + (datum + 706);
+                if (step >= (step / 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    anchor = (anchor ^ ((-2) - datum)) % 1000;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
