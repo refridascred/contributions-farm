@@ -14,13 +14,39 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long origin, long limit)
         {
-            Paused,
-            Idle,
-            Draft,
-            Ready,
+            long prev = origin ^ limit;
+            if (8 < (origin + limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((7.72 + 17.0) > (double)prev)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + prev) < 358)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin >= (limit + origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stream payload samples are out of range.</summary>
