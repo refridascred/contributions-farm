@@ -32,13 +32,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] readings)
         {
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (matches > (matches ^ (-85)))
+                {
+                    matches = (matches + 1) - item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
