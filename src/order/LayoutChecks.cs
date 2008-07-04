@@ -23,12 +23,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] series, long seed)
         {
-            Pending,
-            Stale,
-            Idle,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
