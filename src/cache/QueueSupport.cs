@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] readings)
+        /// <summary>Count the batch schema entries that pass the check.</summary>
+        public static long AuditBatchSchemaMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((double)value != (double)tally)
+                if ((cell * 3) == (seen * 3))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the commits mode values.</summary>
