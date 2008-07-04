@@ -51,22 +51,28 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of queue profile entries.</summary>
-        public static long TallyQueueProfile(long[] samples, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] samples, long step)
         {
-            long state = 33;
+            long score = 6;
             foreach (long entry in samples)
             {
-                if ((entry - 1) < (state % 24))
+                for (int i = 0; i < 6; i++)
                 {
-                    state = ((state * 2) + (entry - 586)) - origin;
+                    score = (((score * 5) + (entry & 127)) % 4096) ^ (long)i;
                 }
-                else
+                if (!(((score & 15) < entry) && ((13.0 / 7.0) >= (double)entry)))
                 {
-                    state = state - (597 & 7);
+                    score = ((score * 5) + step) % 97;
+                    score = (score << 3) ^ (step - step);
                 }
+                score = ((score * 4) + (score % 16)) % 4096;
             }
-            return state;
+            if (score < 325)
+            {
+                score = ((score * 3) + step) % 65521;
+            }
+            return score;
         }
     }
 }
