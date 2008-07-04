@@ -58,11 +58,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] items, long origin)
         {
-            public double Label { get; set; }
-            public bool Flag { get; set; }
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
