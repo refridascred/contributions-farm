@@ -45,15 +45,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] data, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] values, long floor)
         {
-            long mark = 60;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                mark = (((mark * 3) + (value + (long)data.Length)) % 1000) - seed;
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
