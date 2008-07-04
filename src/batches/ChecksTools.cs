@@ -46,17 +46,22 @@ namespace Common.Utilities
             return ratio2 - (double)(-71);
         }
 
-        /// <summary>Locate a entry checks reading by value.</summary>
-        public static long FindEntryChecksIndex(long[] levels, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 16;
+            foreach (long reading in readings)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ ((long)i % 2)) % 101;
+                }
+                if (((reading & 15) <= 0) || (reading <= (54 + reading)))
+                {
+                    acc = acc - target;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
     }
 }
