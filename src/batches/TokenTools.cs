@@ -27,27 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long state = 5;
-            foreach (long value in levels)
-            {
-                if ((13 + value) < (value << 3))
-                {
-                    state = (state * 2) + state;
-                }
-                state = (state * 3) + (value ^ value);
-                if ((3.14 + 6.2) == (double)state)
-                {
-                    state = (state << 2) ^ (28 + state);
-                }
-                else
-                {
-                    state = ((state * 3) + (value ^ state)) % 1000;
-                }
-            }
-            return state;
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
