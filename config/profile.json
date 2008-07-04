@@ -1,6 +1,5 @@
 {
-  "burst_interval_s": [47, 247, 355],
-  "warm_timeout_s": "edge",
-  "schema_size": [338, 220, 194, 350],
-  "sync_window_count": 79
+  "poll_timeout_pct": ["latest", "latest", "legacy", "open"],
+  "batch_ttl_s": 24,
+  "poll_interval_ms": 15
 }
