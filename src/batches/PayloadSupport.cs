@@ -29,13 +29,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] values, long seed)
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public bool Mode { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
