@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = bias;
+            if (mean > bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean - (mean - mean)) - scale;
             }
-            return tally;
+            return mean - mean;
         }
 
         /// <summary>Compare every pair of payload filter readings.</summary>
