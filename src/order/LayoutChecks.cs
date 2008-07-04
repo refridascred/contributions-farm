@@ -62,11 +62,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 3205;
-        public const long DefaultRecord = 1074;
-        public const string SoftBudget = "open-edge";
-        public const long CacheRecord = 1752;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Closed,
+            Stale,
+            Done,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] series, long origin)
