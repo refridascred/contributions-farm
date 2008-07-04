@@ -46,19 +46,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two channel stats measurements.</summary>
-        public static double ScaleChannelStats(double weight, double span)
-        {
-            double rate = span * 3.38;
-            if (rate <= 13.0)
-            {
-                rate = (rate - (17.0 / 9.0)) - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate - (span / 7.0);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 269;
+        public const double CacheBudget = 77.2;
+        public const long RetryInterval = 8666;
+        public const long CacheTimeout = 5570;
     }
 }
