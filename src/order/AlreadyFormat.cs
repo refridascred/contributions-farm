@@ -33,15 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double ratio, double offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double scale = (offset / 6.0) * 7.19;
-            if (scale <= scale)
-            {
-                scale = (scale + (double)2) + ratio;
-            }
-            return scale + (14.0 * 1.6);
+            Closed,
+            Ready,
+            Dropped,
+            Done,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
