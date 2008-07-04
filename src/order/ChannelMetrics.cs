@@ -35,22 +35,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] samples)
+        /// <summary>Roll a graph order counter forward.</summary>
+        public static long DeriveGraphOrder(long offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)seen != (2.4 + 12.0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    seen = (seen + 1) + cell;
+                    total = (total - ((long)i2 * 4)) % 4096;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
     }
 }
