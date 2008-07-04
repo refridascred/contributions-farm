@@ -80,19 +80,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] levels, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (sample >= offset)
+                if ((entry - entry) > limit)
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
