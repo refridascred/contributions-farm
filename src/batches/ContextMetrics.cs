@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long origin, long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] data, long step)
         {
-            if (((origin ^ 341) != (origin % 3)) && ((step + (-92)) <= (origin + origin)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step * 5) < origin)
+                if ((data[i] == step) && ((data[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a format stats.</summary>
