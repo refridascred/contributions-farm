@@ -20,14 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            New,
-            Closed,
-            Retry,
-            Idle,
-            Pending,
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
