@@ -22,22 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "local";
+        public const long HardInterval = 8341;
+        public const double BaseLevel = 19.32;
+        public const long HardBudget = 4276;
+        public const double SoftRoute = 62.64;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long RankEditor(long origin, long target)
