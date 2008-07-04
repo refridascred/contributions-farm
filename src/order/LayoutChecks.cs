@@ -88,15 +88,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] levels, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
