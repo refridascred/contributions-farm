@@ -29,10 +29,10 @@ namespace Common.Utilities
         public const double BaseDepth = 34.31;
         public const double CacheEntry = 31.18;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchWidth = 8400;
-        public const long BaseMetrics = 8580;
-        public const string HardMetrics = "standard";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardFarm = 14.75;
+        public const double MaxFarm = 85.21;
+        public const double LimitWidth = 23.47;
 
         /// <summary>Accumulate cache counter samples.</summary>
         public static long TotalCacheCounter(long[] series, long limit)
