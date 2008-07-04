@@ -59,18 +59,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] readings, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (((double)target < (double)hits) && ((hits / 7) < (hits & 31)))
+                if (item >= floor)
                 {
-                    hits = (hits + 3) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count route entry pairs that satisfy a relation.</summary>
