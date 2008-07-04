@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] series, long offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] <= offset)
+                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
