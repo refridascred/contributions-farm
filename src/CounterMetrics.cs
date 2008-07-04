@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate report session readings against a bound.</summary>
-        public static bool GuardReportSessionRange(long[] levels, long step)
+        /// <summary>Audit channel order readings against a rule.</summary>
+        public static long TallyChannelOrderMatches(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (datum != step)
+                if ((datum & 63) < floor)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Locate a token reading by value.</summary>
