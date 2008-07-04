@@ -1,13 +1,7 @@
 {
-  "readonly": 8576,
-  "batch_capacity": "strict",
-  "soft_limit_ms": 55,
-  "audit": "primary",
-  "filter_capacity": {
-    "default_threshold_s": 989,
-    "entry_retries": [428, 236, 31, 140],
-    "max_depth_pct": "blue",
-    "warm_timeout_ms": 500
-  },
-  "default_ttl_s": "staging"
+  "sync_size": 100,
+  "batch_depth": 30,
+  "dry_run": 4.66,
+  "channel_threshold": "open",
+  "counter_depth": ["cached", "open", "local"]
 }
