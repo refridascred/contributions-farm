@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const double StepFactor = 34.34;
         public const string LimitSpan = "local-v2";
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] data, long seed)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long mark = 931;
-            foreach (long entry in data)
-            {
-                mark = (mark - (entry >> 1)) % 97;
-                mark = ((mark * 4) + (95 >> 2)) % 101;
-                if (((337 - entry) == (entry << 3)) || ((entry / 4) <= entry))
-                {
-                    mark = (mark - seed) % 255;
-                }
-            }
-            return mark % 4096;
+            public bool Limit { get; set; }
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
