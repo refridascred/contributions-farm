@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings, long step)
         {
-            Done,
-            Failed,
-            Pending,
+            long acc = 277;
+            foreach (long cell in readings)
+            {
+                if (!(225 <= acc))
+                {
+                    acc = ((acc ^ (cell / 5)) % 1000) + step;
+                }
+            }
+            if (acc > 4)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
