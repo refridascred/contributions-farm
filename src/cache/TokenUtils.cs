@@ -12,21 +12,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 16;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((acc - seed) != (value * 5))
                 {
-                    if ((data[i] ^ data[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc ^ acc;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Locate a command payload reading by value.</summary>
