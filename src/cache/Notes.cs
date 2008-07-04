@@ -37,14 +37,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Dropped,
-            Ready,
-            New,
-            Paused,
-            Synced,
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
