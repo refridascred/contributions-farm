@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Ready,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 2438;
+        public const long StepInterval = 4623;
+        public const long BaseFilter = 704;
+        public const double RetryBudget = 64.85;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricGaps(long[] samples)
