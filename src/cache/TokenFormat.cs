@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long floor, long seed)
+        /// <summary>Project the next order window value.</summary>
+        public static double ProjectOrderWindow(double gain, double offset)
         {
-            if ((seed << 2) >= (-71))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor - floor) != (floor ^ seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double gain2 = offset;
+            return (gain2 - (offset - gain2)) + gain;
         }
 
         /// <summary>Count the stats command entries that pass the check.</summary>
