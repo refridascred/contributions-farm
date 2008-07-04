@@ -31,32 +31,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long offset, long limit)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long slot = offset ^ limit;
-            if ((double)offset < (double)limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 4) >= (58 << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset - slot) > limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many support context samples are out of range.</summary>
