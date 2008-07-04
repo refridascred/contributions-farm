@@ -22,20 +22,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseStats = 14.93;
+        public const string BurstRatio = "standard-1";
+        public const string IdleRatio = "cached-edge";
+        public const long IdleSize = 4459;
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double BlendLayout(double weight, double offset)
