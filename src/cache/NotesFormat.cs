@@ -19,12 +19,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long limit)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            long result = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+                result = ((result * 3) + (limit - result)) % 4096;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Combine account values into a single score.</summary>
