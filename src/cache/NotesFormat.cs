@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstSpan = 2270;
+        public const string BatchNotes = "alpha";
+        public const long WindowWidth = 8435;
 
         /// <summary>Project the next checks value.</summary>
         public static double SmoothChecks(double weight, double bias)
