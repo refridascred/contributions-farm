@@ -29,11 +29,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowWidth = 2712;
-        public const long DefaultCache = 2611;
-        public const string IdleCache = "cached-1";
-        public const long MinInterval = 4066;
-        public const long SoftCache = 2647;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
