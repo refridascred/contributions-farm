@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((28 << 1) != (matches + matches))
+                if (sample <= seed)
                 {
-                    matches = (matches + 2) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
