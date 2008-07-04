@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Stale,
-            Closed,
-            Draft,
-            New,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftMetric = "strict-v2";
+        public const string DefaultWidth = "primary-edge";
+        public const string WindowSpan = "fallback-v2";
+        public const string IdleBudget = "primary";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double MinBatch = 66.13;
