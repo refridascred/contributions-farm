@@ -64,38 +64,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Classify a record report pair into a bucket.</summary>
-        public static long RankRecordReport(long floor, long step)
+        /// <summary>Scale a githubfarm format figure with a bias.</summary>
+        public static double BlendGithubfarmFormat(double ratio, double offset)
         {
-            if ((double)floor > (6.93 / 3.0))
+            double load = ratio;
+            if (load <= 2.0)
             {
-                return 6;
+                load = load - (0.61 + load);
             }
             else
             {
-                if (((floor / 6) >= (floor << 3)) || ((double)step < (9.44 * 7.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor << 3) == ((-38) + 866))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step >> 3) <= (floor & 63))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                load = load - offset;
             }
+            return load - ratio;
         }
     }
 }
