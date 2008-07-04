@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] series, long floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((((12.0 - 11.0) != (double)value) || (((long)series.Length - matches) == (matches + matches))) && ((6.9 + 7.32) <= (double)matches))
-                {
-                    matches = (matches + 1) - floor;
-                }
-            }
-            return matches;
+            Ready,
+            Queued,
+            Draft,
         }
 
         /// <summary>Match up support samples.</summary>
