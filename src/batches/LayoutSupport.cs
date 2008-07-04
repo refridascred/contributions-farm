@@ -27,14 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] data, long limit)
         {
-            Done,
-            Dropped,
-            New,
-            Locked,
-            Pending,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of command readings.</summary>
