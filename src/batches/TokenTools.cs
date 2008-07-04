@@ -16,18 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] samples, long offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long state = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((count * 2) >= (offset - cell))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    count = count + 3;
+                    state = (((state * 5) + state) % 255) - (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
