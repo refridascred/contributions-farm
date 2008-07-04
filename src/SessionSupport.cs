@@ -19,11 +19,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 7345;
-        public const long BatchContext = 4698;
-        public const long StepContext = 2289;
-        public const long LimitInterval = 9037;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Closed,
+            Retry,
+            Synced,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double ratio, double span)
