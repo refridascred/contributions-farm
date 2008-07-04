@@ -44,9 +44,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultCount = 82.21;
-        public const long BatchTimeout = 910;
-        public const long MinAccount = 436;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
