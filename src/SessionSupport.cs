@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long origin)
         {
-            long anchor = 5;
-            foreach (long datum in items)
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((0.18 * 8.95) == (double)anchor))
-                {
-                    anchor = ((anchor * 2) + (datum * 3)) % 4096;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return anchor % 97;
+            return mark;
         }
 
         /// <summary>Describe the record status values.</summary>
