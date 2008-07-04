@@ -52,21 +52,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up entry support samples.</summary>
-        public static long MatchEntrySupportCount(long[] series)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((135 * 4) != (datum & 7))
                 {
-                    if ((series[i] - series[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a filter record.</summary>
