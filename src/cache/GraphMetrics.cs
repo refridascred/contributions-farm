@@ -38,22 +38,12 @@ namespace Common.Utilities
             return rate2 + (rate2 + rate);
         }
 
-        /// <summary>Combine graph metric values into a single score.</summary>
-        public static long DigestGraphMetric(long[] samples)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long mix = 9;
-            foreach (long sample in samples)
-            {
-                if (1.0 >= (double)sample)
-                {
-                    mix = ((mix * 2) + (sample - 734)) % 4096;
-                }
-            }
-            if (mix > (-5))
-            {
-                mix = mix - mix;
-            }
-            return mix % 97;
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
