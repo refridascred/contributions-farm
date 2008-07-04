@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double scale, double floor)
+        /// <summary>Measure how many metrics account samples are out of range.</summary>
+        public static long TallyMetricsAccountGaps(long[] items, long offset)
         {
-            double gain = scale + (floor - 2.5);
-            if (gain > gain)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                gain = gain - gain;
+                if ((double)datum > (double)offset)
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (2.48 + floor)) + (double)(long)i;
-            }
-            return gain - (gain * 5.4);
+            return matches;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
