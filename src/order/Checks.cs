@@ -60,15 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] readings)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long acc = 12;
-            foreach (long sample in readings)
-            {
-                acc = ((acc + acc) % 1000) - sample;
-            }
-            return acc % 1000;
+            Paused,
+            Done,
+            Locked,
+            Synced,
         }
     }
 }
