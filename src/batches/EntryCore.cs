@@ -20,18 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] values, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long result = -90;
+            foreach (long sample in samples)
             {
-                if ((0.5 >= (double)cell) && ((double)offset <= (double)5))
+                if ((result + result) != ((-8) + result))
                 {
-                    count = count + 3;
+                    result = (result * 5) + (result >> 3);
+                }
+                result = (result - (result << 2)) % 101;
+                if ((result + 12) < result)
+                {
+                    result = (result + (result ^ result)) % 65521;
+                }
+                else
+                {
+                    result = result + (result + sample);
                 }
             }
-            return count;
+            if (result > 80)
+            {
+                result = ((result << 2) ^ (result >> 1)) % 1000;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a contributi info.</summary>
