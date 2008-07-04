@@ -25,32 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long origin, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] series, long seed)
         {
-            long delta = origin ^ seed;
-            if ((double)delta == (14.0 + 9.0))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)seed != (double)delta))
+                if ((0.8 + 5.0) >= (double)seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)origin > (9.96 + 9.81)) || ((3.58 + 4.36) == (double)seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = (seen + 2) + cell;
                 }
             }
+            return seen;
         }
     }
 }
