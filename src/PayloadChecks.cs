@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Blend two metric buffer measurements.</summary>
