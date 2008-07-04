@@ -32,12 +32,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double gain, double floor)
         {
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-            public long Token { get; set; }
+            double ratio = 7.7;
+            if (ratio <= (gain + 4.0))
+            {
+                ratio = (ratio - ratio) - floor;
+            }
+            else
+            {
+                ratio = ratio + 8.64;
+            }
+            return ratio - 7.2;
         }
 
         /// <summary>Match up schema metric samples.</summary>
