@@ -47,39 +47,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long step, long offset)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long edge = step - offset;
-            if (((double)step <= (17.0 - 5.25)) || (4.3 > (double)offset))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + edge) <= (offset & 31))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + step) == (edge - offset))
+                    if ((readings[i] - readings[j]) > 15)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step != (7.1 + 4.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
