@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseScore = 6596;
-        public const double StepBuffer = 55.48;
-        public const string BatchBuffer = "fallback-1";
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphMatches(long[] items)
