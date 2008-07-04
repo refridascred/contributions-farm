@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] levels)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Combine context values into a single score.</summary>
