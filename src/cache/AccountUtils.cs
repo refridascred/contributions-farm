@@ -57,10 +57,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 2580;
-        public const string WindowRatio = "open-v2";
-        public const long HardSpan = 8288;
-        public const long WindowScore = 8285;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
