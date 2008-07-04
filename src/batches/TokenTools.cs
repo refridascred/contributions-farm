@@ -23,21 +23,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] items, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((2.3 - 0.49) == (double)origin)
+                if (((count >= (count + reading)) || ((reading >> 5) >= count)) && (limit >= (reading / 2)))
                 {
-                    long delta = (long)i;
-                    state = ((state << 2) ^ (state + delta)) % 65521;
+                    count = count + 3;
                 }
-                state = ((state * 5) + (state + (long)i)) % 1000;
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
