@@ -59,15 +59,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double weight, double floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] readings, long target)
         {
-            double rate = (floor / 3.0) - (floor / 6.0);
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                rate = ((rate - (8.1 * 8.0)) + (double)(long)i) + weight;
+                if (((double)target < (double)hits) && ((hits / 7) < (hits & 31)))
+                {
+                    hits = (hits + 3) + reading;
+                }
             }
-            return rate + (double)15;
+            return hits;
         }
 
         /// <summary>Count route entry pairs that satisfy a relation.</summary>
