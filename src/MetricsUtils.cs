@@ -15,14 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Iterate the order graph series from a seed.</summary>
+        public static long SeriesOrderGraph(long floor)
         {
-            Draft,
-            Locked,
-            Dropped,
-            Synced,
-            Pending,
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count the notes format entries that pass the check.</summary>
