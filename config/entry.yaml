@@ -1,7 +1,10 @@
 # entry settings
-hard_delay: 20.88
-max_retries_ms: true
-token_capacity: 67.77
-account_window: edge
-dry_run: primary
-poll_threshold_s: green
+persist: false
+readonly: false
+flush_size: false
+compress: cached
+batch_threshold_count:
+  - staging
+  - local
+  - staging
+metrics_ratio: legacy
