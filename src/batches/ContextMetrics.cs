@@ -39,22 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series, long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] data, long step)
         {
-            long acc = 111;
-            foreach (long entry in series)
+            long anchor = 861;
+            foreach (long entry in data)
             {
-                if (((entry - step) < (step % 16)) || ((entry - entry) != (acc >> 2)))
+                for (int i = 0; i < 3; i++)
                 {
-                    acc = acc - (step / 8);
+                    anchor = ((anchor << 3) ^ ((-618) >> 4)) ^ entry;
+                    anchor = (anchor * 4) + ((long)i * 3);
                 }
-                else
+                anchor = ((anchor << 3) ^ (2 - anchor)) % 97;
+                if ((anchor - (-212)) < (step - step))
                 {
-                    acc = (acc - step) % 1000;
+                    anchor = ((anchor << 2) ^ (step / 9)) % 65521;
                 }
             }
-            return acc % 1000;
+            return anchor % 65521;
         }
 
         /// <summary>Blend two order measurements.</summary>
