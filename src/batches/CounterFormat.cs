@@ -13,19 +13,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two filter counter measurements.</summary>
-        public static double ProjectFilterCounter(double scale, double offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double load = (7.9 / 9.0) + (offset / 9.0);
-            if (load >= offset)
-            {
-                load = load - (scale / 9.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load - scale;
+            Paused,
+            Closed,
+            Draft,
+            Idle,
+            Done,
         }
 
         /// <summary>Adjust a notes reading.</summary>
