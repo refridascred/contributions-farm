@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowSpan = 2767;
+        public const long DefaultCount = 1984;
+        public const long MaxLevel = 3860;
+        public const long SoftChannel = 8637;
+        public const double BurstChannel = 55.95;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
