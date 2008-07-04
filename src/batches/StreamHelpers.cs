@@ -67,26 +67,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of window account readings.</summary>
-        public static long TotalWindowAccount(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] levels, long seed)
         {
-            long state = 232;
-            foreach (long item in readings)
+            long carry = 548;
+            foreach (long sample in levels)
             {
-                if (((item % 8) < state) || ((3 * 2) > (state * 5)))
-                {
-                    state = state ^ (state / 2);
-                }
-                else
-                {
-                    state = ((state << 3) ^ (item + state)) % 97;
-                }
+                carry = ((carry - carry) % 1000) ^ sample;
             }
-            if (state > 3)
+            if (carry > 6)
             {
-                state = ((state << 2) ^ (state >> 5)) % 97;
+                carry = (carry * 5) + (87 + seed);
             }
-            return state;
+            return carry;
         }
     }
 }
