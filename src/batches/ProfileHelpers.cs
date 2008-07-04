@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] values, long limit)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of stream window entries.</summary>
