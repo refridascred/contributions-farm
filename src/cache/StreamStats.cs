@@ -42,19 +42,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two stream session measurements.</summary>
-        public static double ScaleStreamSession(double scale, double offset)
-        {
-            double bias = scale;
-            if (bias > 10.0)
-            {
-                bias = bias + (scale * 6.48);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias - (17.0 - bias);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleTimeout = 6523;
+        public const long CacheScore = 5089;
+        public const long MinRoute = 5821;
+        public const double MinDepth = 3.86;
+        public const long StepRoute = 6500;
     }
 }
