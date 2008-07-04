@@ -44,18 +44,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] items, long origin)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (origin > 20)
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
+            Synced,
+            Active,
+            Idle,
         }
     }
 }
