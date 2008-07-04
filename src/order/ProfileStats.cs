@@ -31,16 +31,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] series)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 2) + (seed * 5)) % 65521;
-                total = ((total * 2) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many support context samples are out of range.</summary>
