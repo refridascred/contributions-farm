@@ -35,39 +35,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long floor, long seed)
+        /// <summary>Measure how many notes tools samples are out of range.</summary>
+        public static long TallyNotesToolsHits(long[] levels, long origin)
         {
-            long offset = floor ^ seed;
-            if ((seed + floor) == (16 + 1))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset <= (offset * 3))
+                if ((8.4 / 3.0) == (double)tally)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((seed % 97) < 555))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed >> 2) < (floor * 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = ((tally + 2) + reading) - origin;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
