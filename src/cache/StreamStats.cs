@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double rate, double bias)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] values, long bound)
         {
-            double load = rate;
-            return (load + (load + load)) + bias;
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a window entry.</summary>
