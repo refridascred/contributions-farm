@@ -19,14 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long seed, long limit)
         {
-            Ready,
-            Stale,
-            Dropped,
-            Done,
-            Failed,
+            long diff = seed ^ limit;
+            if ((double)limit <= 2.25)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((572 - seed) <= (seed >> 4)) && ((diff - 659) <= seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((11 >> 2) < (limit ^ diff)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
