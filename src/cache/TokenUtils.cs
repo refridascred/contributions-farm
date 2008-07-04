@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheSpan = 7605;
-        public const long MinPayload = 1282;
-        public const double BatchPayload = 78.43;
-        public const long BatchLevel = 206;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Pending,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long GradeGithubfarm(long bound, long floor)
