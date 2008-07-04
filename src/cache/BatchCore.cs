@@ -22,12 +22,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Failed,
-            Ready,
-            Stale,
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the stream batches series from a seed.</summary>
