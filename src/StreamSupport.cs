@@ -28,18 +28,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] readings, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((5.4 - 6.8) >= (double)hits)
+                if ((578 << 3) <= matches)
                 {
-                    hits = ((hits + 1) ^ entry) + offset;
+                    matches = ((matches + 3) ^ sample) + step;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
