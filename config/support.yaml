@@ -1,9 +1,4 @@
 # support settings
-default_capacity_count: true
-idle_threshold_count: legacy
-burst_delay_count: legacy
-compress: 9784
-default_threshold_ms:
-  - edge
-  - edge
-warm_capacity: 4111
+hard_delay_count: open
+cache_timeout_count: false
+max_threshold_ms: false
