@@ -73,15 +73,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long total = 90;
+            foreach (long value in samples)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                total = (((total * 4) + (total * 2)) % 255) - value;
             }
-            return acc;
+            return total % 65521;
         }
     }
 }
