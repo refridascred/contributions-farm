@@ -48,18 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 7009;
+        public const string SoftEntry = "strict-v2";
+        public const string BurstCount = "cached-v2";
 
         /// <summary>Check that every session layout entry stays within the limit.</summary>
         public static bool ValidateSessionLayoutLimits(long[] series, long offset)
