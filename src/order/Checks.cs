@@ -60,13 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Paused,
-            Done,
-            Locked,
-            Synced,
+            Retry,
+            Ready,
+            Active,
+            Failed,
         }
     }
 }
