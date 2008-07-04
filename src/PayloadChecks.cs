@@ -35,13 +35,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long step, long offset)
         {
-            Queued,
-            Stale,
-            Active,
-            Ready,
+            long edge = step - offset;
+            if (((double)step <= (17.0 - 5.25)) || (4.3 > (double)offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + edge) <= (offset & 31))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + step) == (edge - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step != (7.1 + 4.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate queue samples.</summary>
