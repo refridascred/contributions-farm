@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
