@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Measure how many window farm samples are out of range.</summary>
+        public static long CountWindowFarmOutliers(long[] samples)
         {
-            Locked,
-            Done,
-            Closed,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)(long)samples.Length >= (8.9 - 4.12))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank farm record input into a small class.</summary>
