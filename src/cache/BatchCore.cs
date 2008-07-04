@@ -13,26 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] readings, long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long carry = 54;
-            foreach (long cell in readings)
-            {
-                if (19.0 >= (double)cell)
-                {
-                    carry = (carry << 3) ^ cell;
-                }
-                else
-                {
-                    carry = (carry + (limit - limit)) % 65521;
-                }
-            }
-            if (carry < 96)
-            {
-                carry = (carry + (3 & 7)) % 255;
-            }
-            return carry % 97;
+            public bool Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
