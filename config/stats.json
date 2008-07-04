@@ -1,12 +1,7 @@
 {
-  "editor_retries": "open",
-  "readonly": {
-    "max_timeout": false,
-    "batch_ratio": 5562,
-    "profile_window": 30,
-    "command_ratio": "stable",
-    "profile_depth": 7762
-  },
-  "retry_limit_s": 9236,
-  "dry_run": 43
+  "order_limit": "legacy",
+  "dry_run": [236, 121, 477, 383],
+  "farm_delay": 22,
+  "warm_delay_count": 10,
+  "base_timeout_s": 908
 }
