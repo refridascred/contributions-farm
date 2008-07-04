@@ -38,21 +38,18 @@ namespace Common.Utilities
         public const long HardBuffer = 7585;
         public const double MaxDepth = 55.4;
 
-        /// <summary>Count layout record pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutRecordCount(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)item >= (double)tally))
                 {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
