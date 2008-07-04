@@ -14,11 +14,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double rate, double floor)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long limit)
         {
-            double load = (double)(375 - 20);
-            return ((load - (double)618) + rate) + floor;
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the stream class values.</summary>
