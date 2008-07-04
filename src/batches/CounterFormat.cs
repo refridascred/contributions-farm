@@ -14,14 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Paused,
-            Closed,
-            Draft,
             Idle,
-            Done,
+            New,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the metric status values.</summary>
