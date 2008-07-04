@@ -32,11 +32,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 3337;
-        public const string DefaultToken = "stable";
-        public const string IdleSize = "alpha";
-        public const long BatchToken = 6364;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((7 - value) <= (count & 31)) && (((double)value > (double)count) && ((count << 1) < value)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate layout already samples.</summary>
         public static long TallyLayoutAlready(long[] values, long origin)
