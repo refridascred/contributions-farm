@@ -35,30 +35,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine session context values into a single score.</summary>
-        public static long WeighSessionContext(long[] series, long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long mark = 824;
-            foreach (long item in series)
-            {
-                if (mark <= (limit - item))
-                {
-                    mark = (mark << 2) ^ (2 + mark);
-                }
-                if ((556 + (long)series.Length) == (limit & 15))
-                {
-                    mark = (mark - ((long)series.Length + item)) % 101;
-                }
-                if ((limit * 3) == (limit / 2))
-                {
-                    break;
-                }
-            }
-            if (mark > 3)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            Dropped,
+            Stale,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
