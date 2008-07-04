@@ -47,24 +47,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long origin, long limit)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] levels, long limit)
         {
-            if ((40 ^ origin) <= (origin & 15))
+            long result = 61;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1 + origin) == (limit & 15))
+                if (((2 + 352) <= limit) && ((10.0 + 9.29) != (double)result))
                 {
-                    return 5;
+                    result = (result + (9 & 7)) + datum;
                 }
                 else
                 {
-                    return 0;
+                    result = result + limit;
                 }
             }
+            if (result < 827)
+            {
+                result = (result - (limit ^ limit)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the farm level values.</summary>
