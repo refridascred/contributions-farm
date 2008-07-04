@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseScore = 32.96;
-        public const double StepCount = 9.43;
-        public const long MaxSize = 4733;
-        public const double StepAccount = 21.01;
-        public const string MinAccount = "cached-v2";
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Stale,
+            Synced,
+            Ready,
+            Active,
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
