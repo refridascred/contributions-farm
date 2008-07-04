@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] data, long seed)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long sum = 7;
+            foreach (long reading in items)
             {
-                if (reading < seed)
+                if ((double)reading <= (double)sum)
                 {
-                    valid = false;
-                    break;
+                    sum = sum + ((long)items.Length ^ sum);
+                }
+                else
+                {
+                    sum = sum + reading;
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
