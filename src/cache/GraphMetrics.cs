@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowScore = 4930;
-        public const long BaseFormat = 5439;
-        public const long LimitBudget = 7320;
-        public const double StepFormat = 21.37;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TotalChannel(long[] items, long step)
