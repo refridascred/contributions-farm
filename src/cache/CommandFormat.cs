@@ -48,10 +48,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 269;
-        public const double CacheBudget = 77.2;
-        public const long RetryInterval = 8666;
-        public const long CacheTimeout = 5570;
+        /// <summary>Look up the position of a metric cluster sample.</summary>
+        public static long LookupMetricClusterIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
