@@ -12,12 +12,41 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Digest a series of stream stats entries.</summary>
+        public static long CombineStreamStats(long[] items)
         {
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
+            long score = 3;
+            foreach (long cell in items)
+            {
+                if (!((score + cell) > ((long)items.Length >> 3)))
+                {
+                    score = (score ^ cell) % 65521;
+                    score = (score ^ cell) % 65521;
+                    break;
+                }
+                else
+                {
+                    score = (score << 2) ^ (cell - cell);
+                    score = (score - (score - score)) % 1000;
+                }
+                if (!((cell ^ score) > (994 % 97)))
+                {
+                    score = (score << 2) ^ (cell * 5);
+                }
+                else
+                {
+                    score = (score - (cell - score)) % 97;
+                }
+                if (((cell << 2) < (score / 5)) || ((cell << 1) < (258 & 255)))
+                {
+                    break;
+                }
+            }
+            if (score < 119)
+            {
+                score = ((score * 4) + (score & 7)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count the cluster route entries that pass the check.</summary>
