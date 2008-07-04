@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 2438;
-        public const long StepInterval = 4623;
-        public const long BaseFilter = 704;
-        public const double RetryBudget = 64.85;
+        /// <summary>Count the session filter entries that pass the check.</summary>
+        public static long TallySessionFilterMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (((item + matches) == (949 + matches)) || !((5.0 + 8.23) < (double)item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricGaps(long[] samples)
