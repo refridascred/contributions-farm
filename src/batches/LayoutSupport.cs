@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long BaseEntry = 8251;
         public const long CacheEntry = 8113;
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] items, long target)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
+            long result = -12;
+            foreach (long reading in items)
+            {
+                if (target > 68)
+                {
+                    result = (((result * 5) + (result << 3)) % 1000) + reading;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the record state values.</summary>
