@@ -34,22 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] values, long target)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((6.6 / 5.0) <= (double)reading)
-                {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public bool Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
