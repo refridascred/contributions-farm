@@ -20,13 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
+            New,
+            Ready,
+            Draft,
+            Synced,
+            Active,
         }
 
         /// <summary>Count the metric cache entries that pass the check.</summary>
