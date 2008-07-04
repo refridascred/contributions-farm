@@ -92,26 +92,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] values)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long anchor = 0;
-            foreach (long datum in values)
-            {
-                if (!((datum - anchor) <= (15 ^ 521)))
-                {
-                    anchor = (anchor + (anchor >> 2)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ datum) % 101;
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = (anchor * 5) + anchor;
-            }
-            return anchor;
+            Stale,
+            Paused,
+            Pending,
+            Locked,
+            Retry,
         }
     }
 }
