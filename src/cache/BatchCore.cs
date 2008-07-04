@@ -31,14 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 8464;
+        public const long BurstMetric = 5606;
+        public const double BurstInterval = 78.78;
+        public const string BatchRatio = "strict-edge";
 
         /// <summary>Iterate the stream batches series from a seed.</summary>
         public static long DeriveStreamBatches(long floor)
