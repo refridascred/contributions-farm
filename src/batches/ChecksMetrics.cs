@@ -18,13 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] items, long origin)
         {
-            Draft,
-            Locked,
-            Idle,
-            Done,
+            long total = 7;
+            foreach (long entry in items)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    total = ((total ^ (entry - total)) % 101) ^ (long)i;
+                    total = ((total << 3) ^ (entry + total)) % 65521;
+                }
+                if (((12.0 * 14.0) != (double)origin) && ((entry >> 4) <= (total ^ 64)))
+                {
+                    total = total - (total - origin);
+                }
+                else
+                {
+                    total = (total ^ origin) % 97;
+                }
+                if (((6.3 - 2.0) == (double)origin) || ((double)entry != (double)total))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
