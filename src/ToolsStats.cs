@@ -77,21 +77,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] readings, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (!(offset <= ((long)i + offset)))
+                if ((bound / 4) < (datum / 3))
                 {
-                    mix = (mix ^ (mix + mix)) % 255;
-                    mix = (mix ^ (mix & 7)) % 1000;
+                    count = count + 2;
                 }
-                mix = (mix << 2) ^ (898 * 2);
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return count;
         }
     }
 }
