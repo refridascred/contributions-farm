@@ -31,12 +31,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitDepth = 5534;
-        public const string BatchTimeout = "legacy-v2";
-        public const string BatchSize = "cached-1";
-        public const double SoftBatches = 60.98;
-        public const long CacheBatches = 8775;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = ((sum * 5) + offset) - (long)i2;
+                    sum = ((sum << 3) ^ (sum * 2)) % 1000;
+                }
+                for (int i3 = 0; i3 < 6; i3++)
+                {
+                    sum = (((sum << 3) ^ (offset * 3)) % 97) ^ (long)i3;
+                    sum = sum ^ offset;
+                }
+                for (int i4 = 0; i4 < 2; i4++)
+                {
+                    sum = (sum * 3) + (98 + (long)i);
+                    sum = ((sum * 4) + ((long)i4 >> 2)) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
