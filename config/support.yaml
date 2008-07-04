@@ -1,10 +1,18 @@
 # support settings
-min_limit_ms: true
-readonly: 1024
-default_timeout: 8648
-contributi_interval: true
-session_ttl:
-  - 154
-  - 102
-  - 64
-  - 136
+context_size: 34
+max_threshold_s: 15.85
+contributi_ratio:
+  strict: staging
+  notes_capacity: legacy
+  warm_window_count:
+    compress: 94
+    batch_limit_count: 16
+    cache_limit_ms: stable
+    session_depth: 22
+    dry_run: local
+    flush_retries: latest
+  persist: 93.45
+  support_capacity: true
+poll_timeout_ms: 84.44
+batch_threshold: false
+burst_ttl: local
