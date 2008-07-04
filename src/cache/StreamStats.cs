@@ -12,18 +12,12 @@ namespace Common.Utilities
             return (load + (load + load)) + bias;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] values)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((tally << 1) > tally)
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Project the next checks report value.</summary>
