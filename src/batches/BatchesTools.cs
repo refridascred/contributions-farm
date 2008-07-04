@@ -22,12 +22,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] readings, long floor)
         {
-            Ready,
-            Paused,
-            Active,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
