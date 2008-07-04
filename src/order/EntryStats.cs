@@ -54,22 +54,18 @@ namespace Common.Utilities
             return rate - (rate - 7.87);
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] series, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] data)
         {
-            long total = 316;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((total ^ 5) == (origin << 2))
+                if (!(matches < (matches >> 5)) || (((double)matches > (double)670) && ((matches ^ 830) >= (matches & 255))))
                 {
-                    total = (total * 2) + (cell & 3);
+                    matches = (matches + 2) + cell;
                 }
             }
-            if (total < 532)
-            {
-                total = ((total * 2) + (origin + origin)) % 65521;
-            }
-            return total;
+            return matches;
         }
     }
 }
