@@ -53,11 +53,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long step, long limit)
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
+            if ((9.1 - 5.61) <= (double)limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (step > (step + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
