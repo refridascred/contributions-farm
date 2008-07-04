@@ -44,13 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
