@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            Failed,
+            Retry,
+            Queued,
+            Synced,
         }
 
         /// <summary>Locate a queue report reading by value.</summary>
