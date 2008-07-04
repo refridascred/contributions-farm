@@ -33,18 +33,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Count cache channel pairs that satisfy a relation.</summary>
+        public static long PairCacheChannelCount(long[] levels)
         {
-            long anchor = 44;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)item >= 2.71)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor ^ (item - anchor)) % 255;
+                    if ((levels[i] ^ levels[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return tally;
         }
     }
 }
