@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 6196;
+        public const long BurstLayout = 348;
+        public const long WindowLayout = 1889;
 
         /// <summary>Project the next farm profile value.</summary>
         public static double ProjectFarmProfile(double scale, double span)
