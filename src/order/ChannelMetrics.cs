@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] values, long target)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long acc = 7;
-            foreach (long item in values)
-            {
-                acc = acc + (item + item);
-            }
-            if (acc > 8)
-            {
-                acc = (acc + (acc + target)) % 97;
-            }
-            return acc;
+            Done,
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
