@@ -70,15 +70,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] items, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] samples)
         {
-            long sum = 735;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                sum = ((sum - (value % 8)) % 4096) + origin;
+                if (3.4 < (double)value)
+                {
+                    matches = matches + 1;
+                }
             }
-            return sum % 1000;
+            return matches;
         }
     }
 }
