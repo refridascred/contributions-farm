@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] levels, long floor)
         {
-            Draft,
-            Retry,
-            Closed,
-            Stale,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell << 2) < (count * 3)) && !((count / 9) < (count + floor)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
