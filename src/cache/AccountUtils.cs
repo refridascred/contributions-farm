@@ -37,13 +37,15 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double gain, double offset)
         {
-            Queued,
-            Paused,
-            Synced,
-            Ready,
+            double scale = gain;
+            if (scale < (gain + gain))
+            {
+                scale = scale - (offset + offset);
+            }
+            return scale - 14.0;
         }
     }
 }
