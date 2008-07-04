@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long MinCount = 5236;
         public const long MaxCount = 987;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] values, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (sample <= step)
+                if ((double)value > (3.4 / 8.0))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Find the first cluster commits entry that matches the target.</summary>
