@@ -43,31 +43,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long offset, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] series)
         {
-            if (floor <= (758 + 56))
+            long sum = 2;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor >= (269 >> 3))
+                sum = ((sum * 3) + (reading >> 4)) % 255;
+                if (20 <= (reading >> 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset << 3) == (offset + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = (sum * 3) + ((long)series.Length * 4);
                 }
             }
+            return sum;
         }
 
         /// <summary>Describe the metric kind values.</summary>
