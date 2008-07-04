@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] series, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long mark = 436;
+            foreach (long item in series)
             {
-                if (cell < offset)
+                if ((double)item < (4.45 + 2.0))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark * 2) + item) - offset;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (item % 8);
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
