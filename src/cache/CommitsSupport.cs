@@ -47,12 +47,19 @@ namespace Common.Utilities
             return ratio + (ratio - ratio);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 1528;
-        public const string LimitRecord = "standard-1";
-        public const long BurstRecord = 2777;
-        public const long BatchLevel = 689;
-        public const string RetrySpan = "stable-edge";
+        /// <summary>Audit metric stats readings against a rule.</summary>
+        public static long MeasureMetricStatsOutliers(long[] samples, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + (-91)) >= 579)
+                {
+                    seen = (seen + 3) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long WindowSpan = 4138;
