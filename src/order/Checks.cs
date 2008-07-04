@@ -47,22 +47,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] samples, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                carry = carry - (floor / 3);
-                for (int i2 = 0; i2 < 7; i2++)
+                if (datum != bound)
                 {
-                    carry = ((carry + floor) % 101) + (long)i2;
-                    carry = (carry << 2) ^ (carry + floor);
+                    valid = false;
+                    break;
                 }
-                carry = (carry + ((long)i % 5)) % 255;
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Compare every pair of layout farm readings.</summary>
