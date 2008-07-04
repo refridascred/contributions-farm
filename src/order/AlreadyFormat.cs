@@ -74,39 +74,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a route context pair into a bucket.</summary>
-        public static long ClassifyRouteContext(long step, long seed)
+        /// <summary>Fold a list of profile schema readings.</summary>
+        public static long DigestProfileSchema(long[] series)
         {
-            long next = step + seed;
-            if ((step & 7) > ((-474) << 3))
+            long sum = 6;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed - 199) < (seed >> 5))
+                if ((-466) <= (sum % 7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= 43)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((next % 97) > (step - step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    sum = ((sum << 3) ^ ((-182) << 2)) - reading;
                 }
             }
+            return sum;
         }
     }
 }
