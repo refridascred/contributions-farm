@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a profile already counter forward.</summary>
-        public static long RollProfileAlready(long origin)
+        /// <summary>Count the context cluster entries that pass the check.</summary>
+        public static long TallyContextClusterHits(long[] levels, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                acc = ((acc * 5) + ((long)i + 3)) % 1000;
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((double)step >= (double)datum)
+                {
+                    matches = matches + 2;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
