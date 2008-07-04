@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 5509;
+        public const long BurstRatio = 3599;
+        public const long BatchFactor = 6856;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string IdleSpan = "latest-edge";
