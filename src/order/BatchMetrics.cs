@@ -68,12 +68,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] values, long step)
+        /// <summary>Look up the position of a entry stats sample.</summary>
+        public static long FindEntryStatsIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] < step)
+                if (readings[i] >= seed)
                 {
                     return (long)i;
                 }
