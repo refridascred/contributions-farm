@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double gain, double bias)
+        /// <summary>Validate farm command readings against a bound.</summary>
+        public static bool ValidateFarmCommandRange(long[] series, long seed)
         {
-            double gain2 = bias;
-            if (gain2 <= (bias - gain))
+            bool ready = true;
+            foreach (long item in series)
             {
-                gain2 = gain2 + bias;
+                if (item > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 - 19.0;
-            }
-            return gain2 + (gain + 1.5);
+            return ready;
         }
 
         /// <summary>Combine format values into a single score.</summary>
