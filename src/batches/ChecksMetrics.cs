@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long acc = 38;
-            foreach (long entry in readings)
-            {
-                if ((double)entry <= (8.43 + 3.6))
-                {
-                    acc = (acc * 4) + (acc * 3);
-                }
-                else
-                {
-                    acc = (acc - (acc + (-1))) % 4096;
-                }
-            }
-            return acc;
+            New,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
