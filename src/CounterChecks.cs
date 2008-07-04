@@ -59,21 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count record token pairs that satisfy a relation.</summary>
-        public static long CompareRecordTokenCount(long[] series)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Paused,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the schema kind values.</summary>
