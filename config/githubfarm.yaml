@@ -1,14 +1,24 @@
 # githubfarm settings
-default_ratio: primary
-min_limit_count:
-  default_delay_s: 250
-  batch_ratio_s: 58.39
-  retry_interval: stable
-  poll_interval_ms: 100
-retry_threshold_s:
-  - staging
-  - latest
-soft_delay_pct:
-  - local
-  - stable
-dry_run: legacy
+sync_ttl_pct: edge
+flush_size: cached
+queue_delay:
+  retry_ratio_s: 26.72
+  soft_interval: 30
+  min_interval: false
+  poll_threshold: 39
+  metric_window: 51
+  route_window:
+    sync_ttl_ms: 81
+    warm_size_s: false
+    retry_depth_pct: 755
+    audit:
+      - 305
+      - 22
+    channel_timeout: open
+    cache_window_s: eu-west
+batch_limit: 30
+flush_delay_count: 18
+sync_limit_pct:
+  hard_size_count: true
+  max_depth_pct: latest
+  farm_ttl: 250
