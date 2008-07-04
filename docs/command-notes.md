@@ -1,16 +1,16 @@
 # Command notes
 
-Keep window and graph names short and lowercase.
-Run the format check before changing any batches limits.
-Keep counter and graph names short and lowercase.
+When a metrics fails, the format handler retries a few times before giving up.
+A context that stays idle for too long is moved to the queue list.
+Keep batches and route names short and lowercase.
 
-When a batch fails, the cluster handler retries a few times before giving up.
-When a notes fails, the commits handler retries a few times before giving up.
-The filter report groups every cache by queue.
+The metrics module keeps tools values in sync with the format cache.
+Run the format check before changing any payload limits.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep route values small
-- Log every entry change
-- Validate payload input early
-- Prefer batches defaults
+- Log every context change
+- Document new metrics fields
+- Prefer cluster defaults
+- Review report limits each release
