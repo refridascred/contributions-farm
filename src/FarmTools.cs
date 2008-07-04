@@ -20,15 +20,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of editor queue readings.</summary>
-        public static long TallyEditorQueue(long[] levels, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] levels, long floor)
         {
-            long acc = 276;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                acc = ((acc << 2) ^ (sample % 12)) - floor;
+                if (item >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc % 65521;
+            return stale;
         }
     }
 }
