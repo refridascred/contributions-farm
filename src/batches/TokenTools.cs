@@ -14,19 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit stats layout readings against a rule.</summary>
-        public static long MeasureStatsLayoutGaps(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((((item + count) > step) && (count <= (step - step))) && (((double)step > (double)item) || ((7 / 5) < (item / 8))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepTimeout = 4783;
+        public const long BaseScore = 4785;
+        public const double IdleLevel = 42.58;
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
