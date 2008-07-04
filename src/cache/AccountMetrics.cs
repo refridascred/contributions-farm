@@ -58,14 +58,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] items)
         {
-            Stale,
-            Retry,
-            New,
-            Draft,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
