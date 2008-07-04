@@ -1,4 +1,4 @@
 # support settings
-token_threshold: 4953
-schema_ttl: 100
-dry_run: strict
+min_limit_ms: 14
+burst_capacity_count: 46
+notes_capacity: 7834
