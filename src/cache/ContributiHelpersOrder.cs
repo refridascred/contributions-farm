@@ -20,13 +20,27 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] values)
         {
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            long result = 924;
+            foreach (long item in values)
+            {
+                if ((item * 3) == (item + 12))
+                {
+                    result = (result * 5) + (result >> 1);
+                    continue;
+                }
+                if ((result ^ result) >= item)
+                {
+                    result = ((result << 3) ^ (item + item)) % 65521;
+                }
+            }
+            if (result > 0)
+            {
+                result = ((result * 5) + result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
