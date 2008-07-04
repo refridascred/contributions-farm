@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] series, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((35 * 4) == (939 + seed))
+                {
+                    seen = (seen + 2) + value;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Project the next cluster value.</summary>
