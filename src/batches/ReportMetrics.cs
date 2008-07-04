@@ -22,22 +22,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] samples, long bound)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (matches < (6 ^ reading))
-                {
-                    matches = (matches + 3) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Locked,
+            Draft,
+            Ready,
+            Closed,
         }
     }
 }
