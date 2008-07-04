@@ -31,14 +31,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] readings)
         {
-            Closed,
-            New,
-            Ready,
-            Stale,
-            Idle,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)count >= (9.2 - 4.0))
+                {
+                    count = (count + 1) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
