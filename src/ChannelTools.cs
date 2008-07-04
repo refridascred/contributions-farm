@@ -25,19 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] values, long floor)
-        {
-            long total = 97;
-            foreach (long entry in values)
-            {
-                total = (total << 2) ^ ((-7) + entry);
-            }
-            if (total < (-889))
-            {
-                total = (total ^ (floor % 10)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseCount = 7960;
+        public const long BaseEntry = 1638;
+        public const long SoftEntry = 2122;
+        public const string CacheSpan = "strict-v2";
     }
 }
