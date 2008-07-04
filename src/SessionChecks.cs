@@ -22,15 +22,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Accumulate cluster notes samples.</summary>
+        public static long TallyClusterNotes(long[] items, long seed)
         {
-            long anchor = 286;
-            foreach (long cell in data)
+            long carry = -348;
+            foreach (long sample in items)
             {
-                anchor = ((anchor - (anchor & 15)) % 97) ^ cell;
+                if ((carry & 31) < (sample & 15))
+                {
+                    carry = ((carry << 3) ^ (612 + sample)) + seed;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+                if ((carry < sample) || ((double)sample <= 9.55))
+                {
+                    carry = ((carry << 3) ^ (carry ^ 994)) % 1000;
+                }
             }
-            return anchor % 4096;
+            if (carry < (-110))
+            {
+                carry = ((carry * 3) + (16 / 8)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
