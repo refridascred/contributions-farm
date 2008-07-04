@@ -31,19 +31,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((-8) >= (46 + item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitDepth = 5534;
+        public const string BatchTimeout = "legacy-v2";
+        public const string BatchSize = "cached-1";
+        public const double SoftBatches = 60.98;
+        public const long CacheBatches = 8775;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
