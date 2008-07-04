@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxScore = 7604;
+        public const long IdleWidth = 4032;
+        public const long RetryFilter = 6109;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleContext = 6505;
