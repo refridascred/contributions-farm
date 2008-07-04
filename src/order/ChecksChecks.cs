@@ -14,18 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepDepth = 1659;
+        public const long DefaultChannel = 2808;
+        public const long BatchRatio = 3959;
+        public const double BatchWidth = 72.61;
+        public const long MaxInterval = 7667;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long FindChannelIndex(long[] data, long step)
