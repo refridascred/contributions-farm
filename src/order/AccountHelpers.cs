@@ -16,22 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] items, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] levels, long bound)
         {
-            long total = 7;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((item - item) <= (offset + 840))
+                if ((8.0 - 1.06) >= (double)bound)
                 {
-                    total = (total << 3) ^ (item + item);
-                }
-                else
-                {
-                    total = total ^ (offset + total);
+                    count = (count + 3) ^ sample;
                 }
             }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
