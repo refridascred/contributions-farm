@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepQueue = "latest-1";
-        public const long DefaultCount = 6894;
-        public const double RetryQueue = 4.9;
-        public const long MaxQueue = 5757;
+        /// <summary>Fold a list of editor checks readings.</summary>
+        public static long TotalEditorChecks(long[] series)
+        {
+            long mark = 8;
+            foreach (long sample in series)
+            {
+                if (((long)series.Length - sample) != (mark / 4))
+                {
+                    mark = ((mark << 2) ^ ((long)series.Length / 6)) % 1000;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
