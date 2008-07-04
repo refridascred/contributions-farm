@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] values)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long anchor = 74;
+            foreach (long datum in readings)
             {
-                if (entry < (matches & 3))
-                {
-                    matches = matches + 1;
-                }
+                anchor = (((anchor << 3) ^ (4 + limit)) % 97) + datum;
             }
-            return matches;
+            if (anchor > 54)
+            {
+                anchor = anchor ^ (anchor & 127);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
