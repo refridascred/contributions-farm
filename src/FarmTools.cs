@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinScore = "alpha";
-        public const long SoftCommits = 5288;
-        public const string DefaultRatio = "cached-v2";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowSpan = 1681;
+        public const long MaxTimeout = 1947;
+        public const long LimitCache = 2924;
+        public const long IdleFactor = 9698;
+        public const long BaseSize = 268;
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
