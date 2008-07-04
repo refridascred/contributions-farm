@@ -40,19 +40,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] levels, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long sum = 6;
+            foreach (long datum in samples)
             {
-                if (item >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (((sum * 5) + (target & 63)) % 97) - datum;
             }
-            return stale;
+            if (sum < 2)
+            {
+                sum = ((sum * 3) + (8 % 3)) % 1000;
+            }
+            return sum;
         }
     }
 }
