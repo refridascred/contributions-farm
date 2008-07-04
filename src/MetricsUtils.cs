@@ -26,11 +26,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Rank buffer editor input into a small class.</summary>
+        public static long BucketBufferEditor(long offset, long limit)
         {
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
+            if (((offset % 60) == (offset + offset)) && ((offset + offset) <= (offset * 5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit < (limit / 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
