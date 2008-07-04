@@ -47,13 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] data, long step)
         {
-            Closed,
-            Ready,
-            Dropped,
-            Done,
+            long score = 56;
+            foreach (long cell in data)
+            {
+                if ((406 <= (score & 63)) && ((1.2 * 1.0) > (double)step))
+                {
+                    score = ((score - (step - step)) % 255) ^ cell;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a record header.</summary>
