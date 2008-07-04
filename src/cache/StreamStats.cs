@@ -20,18 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] readings, long offset)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((offset - offset) > 5)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    hits = (hits + 2) + entry;
+                    state = ((state + ((long)i ^ seed)) % 1000) ^ (long)i2;
+                    state = (state - (769 + state)) % 101;
                 }
+                state = state + (seed - 796);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a schema entry.</summary>
