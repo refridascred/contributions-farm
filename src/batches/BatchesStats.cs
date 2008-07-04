@@ -23,16 +23,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long step)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix + step;
-                mix = ((mix * 4) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Fold a list of report readings.</summary>
