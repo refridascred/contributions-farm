@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double gain, double offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double rate = gain;
-            if (rate > (offset / 4.0))
-            {
-                rate = rate - (double)90;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (offset + offset)) + (double)(long)i;
-            }
-            return rate + (double)9;
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Locate a layout counter reading by value.</summary>
