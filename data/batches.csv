@@ -1,9 +1,8 @@
-id,active,state
-1,staging,602
-2,staging,363
-3,548,297
-4,39.43,72.18
-5,primary,76.24
-6,991,stable
-7,primary,70.53
-8,937,86.35
+id,active,label,region,state
+1,968,62.55,75,43.59
+2,405,green,edge,633
+3,fallback,169,77,73.76
+4,stable,fallback,39.7,stable
+5,blue,standard,946,legacy
+6,522,56,local,118
+7,32.56,90.62,41.08,88.65
