@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Adjust a layout report reading.</summary>
+        public static double ScaleLayoutReport(double weight, double offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            double weight2 = (double)1 + (double)756;
+            if (weight2 > (double)(-19))
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                weight2 = (weight2 - 0.4) - offset;
             }
-            return mark;
+            else
+            {
+                weight2 = weight2 + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 - weight2) - (double)(long)i;
+            }
+            return weight2 + (double)(-9);
         }
 
         /// <summary>Describe the record status values.</summary>
