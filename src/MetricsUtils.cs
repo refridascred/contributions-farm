@@ -26,18 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the notes format entries that pass the check.</summary>
-        public static long MeasureNotesFormatMatches(long[] items, long floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((10.0 - 1.35) != (double)seen) || ((seen > (floor >> 3)) || ((seen + 13) != (reading << 1))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
