@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the batch schema entries that pass the check.</summary>
-        public static long AuditBatchSchemaMatches(long[] samples)
+        /// <summary>Look up the position of a record batches sample.</summary>
+        public static long LookupRecordBatchesIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell * 3) == (seen * 3))
+                if ((values[i] == target) && ((values[i] % 2) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
