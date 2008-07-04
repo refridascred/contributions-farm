@@ -25,11 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCount = 3204;
-        public const long LimitCache = 1048;
-        public const long LimitScore = 9723;
-        public const long BaseSize = 8288;
-        public const string BatchSpan = "standard";
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long floor, long seed)
+        {
+            long next = floor - seed;
+            if ((double)floor < (7.47 + 3.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-22) - next) <= (next * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor / 6) >= (seed + floor)) && ((9.0 - 2.42) != (double)seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
