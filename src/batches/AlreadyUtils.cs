@@ -28,12 +28,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Idle,
-            Stale,
-            Synced,
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Locate a batches reading by value.</summary>
