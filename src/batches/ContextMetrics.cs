@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Queued,
-            Failed,
-            Ready,
+            Closed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Rank filter context input into a small class.</summary>
