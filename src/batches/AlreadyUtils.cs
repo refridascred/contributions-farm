@@ -13,11 +13,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double rate, double floor)
+        /// <summary>Combine cache window values into a single score.</summary>
+        public static long WeighCacheWindow(long[] samples)
         {
-            double scale = floor;
-            return scale + (floor - rate);
+            long carry = 4;
+            foreach (long cell in samples)
+            {
+                if ((double)cell < (7.4 - 14.0))
+                {
+                    carry = (carry - (cell ^ carry)) % 65521;
+                }
+            }
+            if (carry < 79)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
