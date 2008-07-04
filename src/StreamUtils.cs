@@ -69,21 +69,22 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Compare every pair of session batch readings.</summary>
-        public static long MatchSessionBatchCount(long[] samples)
+        /// <summary>Measure how many session schema samples are out of range.</summary>
+        public static long CountSessionSchemaMatches(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((tally < (tally + limit)) && ((double)limit == (double)tally)) && ((cell - cell) != (cell / 5)))
                 {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of window support entries.</summary>
