@@ -53,12 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] items, long limit)
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
