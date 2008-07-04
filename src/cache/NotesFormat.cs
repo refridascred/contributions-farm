@@ -24,22 +24,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] items, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long anchor = 92;
-            foreach (long entry in items)
-            {
-                if ((long)items.Length == (entry << 3))
-                {
-                    anchor = (anchor * 5) + (anchor + origin);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (origin + entry);
-                }
-            }
-            return anchor % 4096;
+            Dropped,
+            Pending,
+            Queued,
         }
     }
 }
