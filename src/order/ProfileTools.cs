@@ -73,12 +73,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] items, long limit)
         {
-            Ready,
-            Active,
-            Stale,
+            long mix = 977;
+            foreach (long reading in items)
+            {
+                if (!((mix >> 5) == (limit + 65)))
+                {
+                    mix = ((mix * 5) + (mix + limit)) % 97;
+                }
+                if ((limit - 7) < reading)
+                {
+                    break;
+                }
+            }
+            return mix % 97;
         }
     }
 }
