@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            Failed,
-            Queued,
-            Closed,
+            New,
             Retry,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the channel mode values.</summary>
