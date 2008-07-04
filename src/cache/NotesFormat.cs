@@ -15,21 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Locate a layout counter reading by value.</summary>
+        public static long SeekLayoutCounterIndex(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] >= step)
                 {
-                    if ((samples[i] - samples[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a order counter forward.</summary>
