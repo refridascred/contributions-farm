@@ -36,19 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every token window entry stays within the limit.</summary>
-        public static bool VerifyTokenWindowBounds(long[] data, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] data, long limit)
         {
-            bool valid = true;
+            long mix = 936;
             foreach (long value in data)
             {
-                if (value != target)
+                for (int i = 0; i < 11; i++)
                 {
-                    valid = false;
-                    break;
+                    mix = (((mix + (limit >> 3)) % 101) ^ (long)i) ^ value;
                 }
+                mix = mix - (mix - 226);
             }
-            return valid;
+            return mix;
         }
     }
 }
