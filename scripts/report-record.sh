@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback primary staging local; do
-    log "checking ${item}"
-done
+mode="${1:-legacy}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-RECORD_LIMIT=312
+RECORD_LIMIT=395
 log "limit is ${RECORD_LIMIT}"
