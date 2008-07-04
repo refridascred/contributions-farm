@@ -28,19 +28,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a metrics metric reading.</summary>
-        public static double ProjectMetricsMetric(double bias, double offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] data, long floor)
         {
-            double weight = bias;
-            if (weight <= (bias - 7.56))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                weight = (weight - bias) + offset;
+                if (6.92 >= (double)reading)
+                {
+                    seen = (seen + 1) + floor;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - bias;
+            return seen;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
