@@ -50,18 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] series, long limit)
+        /// <summary>Roll a format schema counter forward.</summary>
+        public static long RollFormatSchema(long origin)
         {
-            long count = 0;
-            foreach (long value in series)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(((count + value) > (value + limit)) && (limit <= (value + 3))))
-                {
-                    count = count + 3;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a filter summary.</summary>
