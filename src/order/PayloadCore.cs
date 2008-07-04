@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 6196;
-        public const long BurstLayout = 348;
-        public const long WindowLayout = 1889;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] data, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesGaps(long[] values)
