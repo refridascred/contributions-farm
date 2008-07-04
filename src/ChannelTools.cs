@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const double CacheScore = 29.78;
         public const long WindowCommits = 996;
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double gain, double floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] readings, long limit)
         {
-            double weight = 9.28 + (floor + 10.0);
-            if (weight <= floor)
+            long total = 281;
+            foreach (long entry in readings)
             {
-                weight = weight + (gain / 5.0);
+                total = ((total - limit) % 4096) ^ entry;
             }
-            for (int i = 0; i < 5; i++)
+            if (total > 58)
             {
-                weight = (weight - floor) + (double)(long)i;
+                total = (total + (total + limit)) % 4096;
             }
-            return weight - gain;
+            return total % 97;
         }
     }
 }
