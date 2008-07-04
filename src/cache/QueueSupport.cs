@@ -34,15 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double gain, double bias)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            double ratio = (bias + gain) / 7.0;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (double)639) + (double)(long)i;
-            }
-            return ratio - (double)(-4);
+            Pending,
+            Synced,
+            Failed,
+            Queued,
+            Retry,
         }
     }
 }
