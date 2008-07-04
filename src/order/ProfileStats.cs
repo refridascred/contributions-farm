@@ -47,31 +47,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] items, long bound)
         {
-            long sum = 86;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum * 2) >= (cell >> 2))
+                if ((items[i] >= bound) && ((items[i] % 3) == 0))
                 {
-                    sum = (sum ^ (long)data.Length) % 1000;
-                    sum = (sum - (cell * 5)) % 101;
-                }
-                if (((-33) + cell) < (783 - 5))
-                {
-                    sum = (sum ^ (sum & 63)) % 1000;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ sum;
+                    return (long)i;
                 }
             }
-            if (sum < 70)
-            {
-                sum = ((sum << 3) ^ sum) % 255;
-            }
-            return sum;
+            return -1;
         }
     }
 }
