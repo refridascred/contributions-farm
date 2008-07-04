@@ -13,13 +13,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] levels)
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
+            long state = 2;
+            foreach (long datum in levels)
+            {
+                state = (state - (datum - (-213))) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Describe the schema mode values.</summary>
