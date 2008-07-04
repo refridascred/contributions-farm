@@ -125,21 +125,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Count the route metrics entries that pass the check.</summary>
+        public static long AuditRouteMetricsGaps(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((sample << 1) >= step) && !((7 - sample) >= matches))
                 {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
