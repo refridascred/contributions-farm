@@ -34,19 +34,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long state = 318;
-            foreach (long item in data)
-            {
-                state = (state + (item + 6)) % 1000;
-                if (((state % 64) < (98 * 3)) && ((7 / 3) < item))
-                {
-                    state = (state + (state + 6)) % 97;
-                }
-            }
-            return state % 4096;
+            Retry,
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Adjust a already reading.</summary>
