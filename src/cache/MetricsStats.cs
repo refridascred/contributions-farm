@@ -78,13 +78,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] values)
         {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-            public double Level { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
