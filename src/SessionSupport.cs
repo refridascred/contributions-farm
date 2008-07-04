@@ -19,11 +19,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinBatch = 66.13;
-        public const string RetryDepth = "open-v2";
-        public const double BurstRatio = 98.15;
-        public const long BaseBatch = 1420;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double ratio, double span)
