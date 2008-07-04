@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long MinTimeout = 3773;
         public const long BatchFactor = 5062;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] samples, long step)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Failed,
+            Stale,
+            Locked,
+            Closed,
         }
 
         /// <summary>Rank already input into a small class.</summary>
