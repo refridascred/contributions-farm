@@ -59,15 +59,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
