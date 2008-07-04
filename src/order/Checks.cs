@@ -47,31 +47,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long floor, long bound)
+        /// <summary>Compare every pair of layout farm readings.</summary>
+        public static long CompareLayoutFarmCount(long[] data)
         {
-            if ((64 & 255) < (bound + bound))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + 2) <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor >> 2) < (floor * 2))
+                    if ((data[i] + data[j]) > 2)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the window kind values.</summary>
