@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate metrics window readings against a bound.</summary>
-        public static bool CheckMetricsWindowBounds(long[] items, long bound)
+        /// <summary>Count stats account pairs that satisfy a relation.</summary>
+        public static long CompareStatsAccountCount(long[] values)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading != bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
