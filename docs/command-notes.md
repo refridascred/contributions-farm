@@ -1,11 +1,11 @@
 # Command notes
 
-Keep batch and graph names short and lowercase.
-Use metric settings to tune how often channel data is refreshed.
+The cluster report groups every layout by payload.
+Run the layout check before changing any window limits.
+Each record is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Prefer token defaults
-- Review filter limits each release
-- Validate order input early
-- Log every command change
+- Validate filter input early
+- Review stats limits each release
+- Keep command values small
