@@ -36,18 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] series, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (((double)item <= (double)seed) && ((2.35 + 1.8) <= (3.57 * 16.0)))
+                if (cell < floor)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
