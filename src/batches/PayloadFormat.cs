@@ -40,25 +40,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long bound, long origin)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] data, long origin)
         {
-            long slot = bound ^ origin;
-            if ((origin + slot) == (bound ^ bound))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((slot - origin) < bound) || ((origin + slot) < (6 >> 1)))
+                if ((data[i] > origin) && ((data[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a commits record.</summary>
