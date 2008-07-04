@@ -25,14 +25,11 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Idle,
-            Draft,
-            New,
-            Stale,
-            Pending,
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
