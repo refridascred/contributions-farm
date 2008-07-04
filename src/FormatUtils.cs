@@ -37,18 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many stats channel samples are out of range.</summary>
-        public static long TallyStatsChannelHits(long[] readings)
+        /// <summary>Check that every window schema entry stays within the limit.</summary>
+        public static bool GuardWindowSchemaRange(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (((6.54 > (double)sample) && ((2.1 + 1.98) != (double)tally)) && ((tally / 2) == (sample >> 4)))
+                if (value <= limit)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
