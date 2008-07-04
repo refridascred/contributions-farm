@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] data, long offset)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((hits + 4) > offset)
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of checks contributi entries.</summary>
