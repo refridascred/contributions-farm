@@ -23,24 +23,21 @@ namespace Common.Utilities
         public const long WindowSpan = 701;
         public const string CacheSize = "strict-v2";
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] levels)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            long result = 785;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result + (reading & 15)) % 65521;
-                result = (result + (reading / 8)) % 101;
-                if (result < (reading + reading))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result << 2) ^ (reading + 8);
+                    if ((readings[i] - readings[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 2)
-            {
-                result = result + (result << 2);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the format phase values.</summary>
