@@ -1,8 +1,5 @@
 {
-  "min_limit_pct": 32,
-  "filter_timeout": "edge",
-  "soft_retries_count": [428, 8],
-  "min_window": true,
-  "base_limit_pct": ["latest", "green"],
-  "base_interval_pct": [55, 169, 432]
+  "batches_timeout": "fallback",
+  "burst_timeout_pct": true,
+  "warm_interval": "stable"
 }
