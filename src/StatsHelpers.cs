@@ -15,12 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Match up queue window samples.</summary>
+        public static long MatchQueueWindowCount(long[] data)
         {
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
