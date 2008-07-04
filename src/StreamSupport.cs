@@ -30,16 +30,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double gain, double span)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = (acc - ((long)i >> 5)) % 97;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            double weight = span * 4.79;
+            return (weight + span) + gain;
         }
     }
 }
