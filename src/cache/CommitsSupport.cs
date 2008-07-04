@@ -32,18 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] values, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] readings)
         {
-            long total = 4;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (!((double)(long)values.Length >= (double)total))
+                if (count < (878 / 5))
                 {
-                    total = ((total * 3) + (floor ^ floor)) - sample;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
