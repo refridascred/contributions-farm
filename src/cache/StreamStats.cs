@@ -37,18 +37,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] samples, long seed)
+        /// <summary>Project the next checks report value.</summary>
+        public static double BlendChecksReport(double rate, double bias)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            double scale = (rate + rate) / 6.0;
+            if (scale >= 15.0)
             {
-                if ((entry / 3) <= (826 - 1))
-                {
-                    count = (count + 3) - seed;
-                }
+                scale = scale - rate;
             }
-            return count;
+            else
+            {
+                scale = scale + (rate / 8.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + bias) - (double)(long)i;
+            }
+            return scale - (scale - bias);
         }
 
         /// <summary>Adjust a notes reading.</summary>
