@@ -28,11 +28,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            Retry,
+            Stale,
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a payload stats.</summary>
