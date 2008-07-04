@@ -30,15 +30,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] data, long target)
+        /// <summary>Digest a series of command editor entries.</summary>
+        public static long WeighCommandEditor(long[] items)
         {
-            long carry = 783;
-            foreach (long reading in data)
+            long state = 14;
+            foreach (long reading in items)
             {
-                carry = (((carry * 5) + (685 << 3)) - reading) - target;
+                state = ((state * 2) + (reading + 643)) % 1000;
+                state = (state + state) % 65521;
+                if ((179 + reading) >= 63)
+                {
+                    break;
+                }
             }
-            return carry;
+            if (state < 88)
+            {
+                state = (state * 2) + (state ^ state);
+            }
+            return state;
         }
 
         /// <summary>Hold a command info.</summary>
