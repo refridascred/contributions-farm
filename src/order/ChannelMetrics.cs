@@ -10,12 +10,39 @@ namespace Common.Utilities
         public const long HardFormat = 4186;
         public const long HardScore = 9266;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long seed, long offset)
         {
-            Draft,
-            Idle,
-            Dropped,
+            long step = seed ^ offset;
+            if ((step % 5) < (offset + step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((step / 4) <= step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step < (seed * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)seed <= (8.1 - 8.0)) || (seed < (seed * 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next profile session value from a seed.</summary>
