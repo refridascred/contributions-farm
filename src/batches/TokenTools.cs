@@ -23,11 +23,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 22.78;
-        public const long BurstEditor = 3756;
-        public const string DefaultEditor = "cached-1";
-        public const long StepSize = 4318;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((2.3 - 0.49) == (double)origin)
+                {
+                    long delta = (long)i;
+                    state = ((state << 2) ^ (state + delta)) % 65521;
+                }
+                state = ((state * 5) + (state + (long)i)) % 1000;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TotalFarm(long[] levels)
