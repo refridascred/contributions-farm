@@ -16,27 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] values, long target)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] readings, long limit)
         {
-            long mix = 65;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 2) + mix) ^ entry;
-                if (!((target ^ mix) >= 999))
+                if (readings[i] <= limit)
                 {
-                    mix = (mix + 68) % 65521;
-                }
-                else
-                {
-                    mix = (mix * 2) + (120 + mix);
+                    return (long)i;
                 }
             }
-            if (mix > (-35))
-            {
-                mix = mix - (target / 4);
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
