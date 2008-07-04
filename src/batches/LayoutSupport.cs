@@ -33,17 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine token tools values into a single score.</summary>
-        public static long TotalTokenTools(long[] series, long limit)
-        {
-            long mark = -251;
-            foreach (long item in series)
-            {
-                mark = ((mark - mark) ^ item) + limit;
-                mark = mark - (mark - mark);
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseDepth = 73.83;
+        public const string HardRecord = "alpha-v2";
+        public const string CacheRecord = "stable";
+        public const long SoftRecord = 7843;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionMatches(long[] values, long bound)
