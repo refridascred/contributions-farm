@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] levels, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((entry >> 1) >= (entry / 9))
+                {
+                    matches = (matches + 1) + offset;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
