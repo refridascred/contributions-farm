@@ -38,9 +38,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitScore = 23.32;
-        public const double WindowToken = 13.07;
-        public const long LimitInterval = 5804;
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
