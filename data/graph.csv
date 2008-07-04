@@ -1,6 +1,10 @@
-id,owner,region
-1,107,standard
-2,85.28,56.34
-3,49.81,92.45
-4,363,fallback
-5,687,56.86
+id,region,state,count,label
+1,59.49,cached,78.24,466
+2,320,13.32,79,810
+3,999,2.65,63.52,79.33
+4,18.52,66.87,primary,729
+5,431,40.21,704,935
+6,green,blue,28.23,1.22
+7,standard,530,98,stable
+8,fallback,standard,edge,60.21
+9,78.0,36.01,41.82,standard
