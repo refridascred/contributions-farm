@@ -11,14 +11,10 @@ namespace Common.Utilities
         public const long CacheChannel = 4916;
         public const long BaseWidth = 2285;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Paused,
-            Ready,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 6249;
+        public const string CacheBudget = "stable-v2";
+        public const long SoftRatio = 9875;
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long OverlapGithubfarmCount(long[] levels)
