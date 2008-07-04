@@ -1,6 +1,11 @@
 {
-  "strict": 1932,
-  "layout_interval": "primary",
-  "warm_limit_ms": "fallback",
-  "batch_threshold_pct": ["latest", "edge", "local"]
+  "layout_retries": {
+    "soft_timeout_s": 16,
+    "persist": 7.26,
+    "report_interval": 30
+  },
+  "hard_retries_count": 36.11,
+  "base_retries_ms": 1024,
+  "editor_window": [167, 39, 442, 470],
+  "sync_window": false
 }
