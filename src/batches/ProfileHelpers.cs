@@ -29,22 +29,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFactor = "staging-v2";
+        public const long BatchFormat = 8326;
+        public const string MinFormat = "latest-edge";
 
         /// <summary>Adjust a session reading.</summary>
         public static double ScaleSession(double bias, double offset)
