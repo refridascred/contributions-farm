@@ -47,18 +47,13 @@ namespace Common.Utilities
             return gain - (double)21;
         }
 
-        /// <summary>Count the cluster route entries that pass the check.</summary>
-        public static long TallyClusterRouteOutliers(long[] data, long offset)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen ^ seen) < (seen / 7))
-                {
-                    seen = ((seen + 3) ^ value) - offset;
-                }
-            }
-            return seen;
+            Synced,
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Hold a format header.</summary>
