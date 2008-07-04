@@ -26,15 +26,23 @@ namespace Common.Utilities
         public const long RetryLevel = 3300;
         public const double MaxFarm = 74.76;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double bias, double span)
+        /// <summary>Blend two tools contributi measurements.</summary>
+        public static double ScaleToolsContributi(double gain, double span)
         {
-            double mean = span / 3.0;
-            for (int i = 0; i < 4; i++)
+            double weight = span;
+            if (weight < (span + span))
             {
-                mean = mean - (double)(long)i;
+                weight = weight + (weight + span);
             }
-            return mean + bias;
+            else
+            {
+                weight = weight - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - (gain * 6.89);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
