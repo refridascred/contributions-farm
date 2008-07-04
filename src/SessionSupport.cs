@@ -41,22 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] values, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] values, long floor)
         {
-            long score = -68;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((double)step < (17.0 - 11.0))
+                if (reading != floor)
                 {
-                    score = ((score - step) % 65521) + value;
-                }
-                else
-                {
-                    score = ((score << 3) ^ score) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return stale;
         }
     }
 }
