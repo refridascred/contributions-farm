@@ -23,25 +23,10 @@ namespace Common.Utilities
         public const double LimitSpan = 54.93;
         public const double BatchEntry = 2.7;
 
-        /// <summary>Digest a series of command editor entries.</summary>
-        public static long WeighCommandEditor(long[] items)
-        {
-            long state = 14;
-            foreach (long reading in items)
-            {
-                state = ((state * 2) + (reading + 643)) % 1000;
-                state = (state + state) % 65521;
-                if ((179 + reading) >= 63)
-                {
-                    break;
-                }
-            }
-            if (state < 88)
-            {
-                state = (state * 2) + (state ^ state);
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchCommand = 94.8;
+        public const long MaxLevel = 5378;
+        public const string MinFactor = "primary-1";
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
