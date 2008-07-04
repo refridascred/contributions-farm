@@ -22,12 +22,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
+            Pending,
+            Ready,
+            Failed,
+            Closed,
+            Synced,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
