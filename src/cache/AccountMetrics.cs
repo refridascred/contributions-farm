@@ -24,23 +24,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double gain, double span)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long origin)
         {
-            double weight = (double)(646 - 286);
-            if (weight >= (weight + span))
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                weight = weight + (4.3 / 9.0);
+                carry = ((carry << 2) ^ (origin + (long)i)) % 255;
+                carry = ((carry << 3) ^ (carry / 8)) % 65521;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            else
-            {
-                weight = weight + (weight / 7.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + gain) + (double)(long)i;
-            }
-            return weight - gain;
+            return carry;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
