@@ -35,19 +35,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] samples, long target)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] data, long limit)
         {
-            long sum = 6;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (((sum * 5) + (target & 63)) % 97) - datum;
+                if ((data[i] <= limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 2)
-            {
-                sum = ((sum * 3) + (8 % 3)) % 1000;
-            }
-            return sum;
+            return -1;
         }
     }
 }
