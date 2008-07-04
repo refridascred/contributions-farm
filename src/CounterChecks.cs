@@ -16,17 +16,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] items, long floor)
+        /// <summary>Validate filter layout readings against a bound.</summary>
+        public static bool VerifyFilterLayoutBounds(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (items[i] > floor)
+                if (datum >= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Rank command input into a small class.</summary>
