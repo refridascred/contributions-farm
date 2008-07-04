@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next order window value.</summary>
-        public static double ProjectOrderWindow(double gain, double offset)
+        /// <summary>Audit graph metrics readings against a rule.</summary>
+        public static long CountGraphMetricsOutliers(long[] data)
         {
-            double gain2 = offset;
-            return (gain2 - (offset - gain2)) + gain;
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally + reading) > tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate payload samples.</summary>
