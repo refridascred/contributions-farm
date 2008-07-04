@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double StepScore = 23.45;
         public const long CacheEditor = 5035;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] data, long limit)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
