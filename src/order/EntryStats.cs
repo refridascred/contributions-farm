@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Count the format filter entries that pass the check.</summary>
+        public static long AuditFormatFilterHits(long[] items)
         {
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
-            public bool Count { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((double)seen > (double)(long)items.Length)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of context graph entries.</summary>
