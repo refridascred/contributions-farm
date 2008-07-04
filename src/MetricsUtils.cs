@@ -44,19 +44,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] data, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long state = 50;
+            foreach (long item in values)
             {
-                if (item != offset)
+                if (((double)state >= 3.9) && ((item + state) >= (bound ^ item)))
                 {
-                    stale = false;
-                    break;
+                    state = state ^ state;
+                }
+                state = state - (692 % 100);
+                if ((state % 7) > (item - bound))
+                {
+                    state = (state ^ (bound >> 1)) % 97;
                 }
             }
-            return stale;
+            return state % 97;
         }
     }
 }
