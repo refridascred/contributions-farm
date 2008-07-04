@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long limit, long target)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            if ((limit - limit) > (limit * 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target > (7.1 / 8.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (target >= (limit + 346))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((-6) >> 5) >= target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of account window entries.</summary>
