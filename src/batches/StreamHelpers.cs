@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 3414;
-        public const long WindowChecks = 8318;
-        public const string RetryBudget = "primary";
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] samples)
+        {
+            long mix = 14;
+            foreach (long datum in samples)
+            {
+                if (!((datum & 255) <= (mix ^ datum)))
+                {
+                    mix = ((mix * 3) + (datum ^ mix)) % 101;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double BlendContext(double weight, double offset)
