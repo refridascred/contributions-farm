@@ -13,22 +13,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] items)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long carry = 54;
+            foreach (long cell in readings)
             {
-                if ((double)hits > (9.93 + 3.5))
+                if (19.0 >= (double)cell)
                 {
-                    hits = (hits + 2) - cell;
+                    carry = (carry << 3) ^ cell;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    carry = (carry + (limit - limit)) % 65521;
                 }
             }
-            return hits;
+            if (carry < 96)
+            {
+                carry = (carry + (3 & 7)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
