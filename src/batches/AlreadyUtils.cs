@@ -31,11 +31,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double bias, double offset)
+        /// <summary>Look up the position of a route stream sample.</summary>
+        public static long SeekRouteStreamIndex(long[] series, long seed)
         {
-            double gain = (bias * 9.0) - (double)405;
-            return (gain - (double)792) + offset;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
