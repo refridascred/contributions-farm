@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double gain, double bias)
+        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
+        public static long CountGithubfarmGraphHits(long[] data)
         {
-            double load = (double)4 / 3.0;
-            if (load > (double)45)
+            long hits = 0;
+            foreach (long value in data)
             {
-                load = ((load - load) + gain) - bias;
+                if ((hits >> 5) <= 533)
+                {
+                    hits = (hits + 1) - value;
+                }
             }
-            else
-            {
-                load = load + (double)248;
-            }
-            return load + (load / 6.0);
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
