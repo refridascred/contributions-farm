@@ -28,20 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] data, long limit)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long bound)
         {
-            long carry = 3;
-            foreach (long value in data)
+            long state = bound;
+            for (int i = 0; i < 10; i++)
             {
-                carry = (carry ^ (value / 8)) - limit;
-                carry = (carry - value) % 1000;
+                if ((bound + 8) <= state)
+                {
+                    state = (state ^ ((long)i & 3)) % 101;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            if (carry < 97)
-            {
-                carry = ((carry << 3) ^ carry) % 4096;
-            }
-            return carry % 4096;
+            return state;
         }
     }
 }
