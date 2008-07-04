@@ -34,12 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public double Rank { get; set; }
-            public bool Total { get; set; }
-            public double Mode { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
