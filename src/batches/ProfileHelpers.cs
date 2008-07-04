@@ -49,22 +49,24 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] levels)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            if ((floor >> 5) >= (floor2 & 63))
             {
-                if (!((datum + 486) != (datum >> 2)) || !(matches >= (datum + 376)))
+                return 1;
+            }
+            else
+            {
+                if ((5 > (floor - floor2)) || (floor > 477))
                 {
-                    matches = matches + 1;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two already measurements.</summary>
