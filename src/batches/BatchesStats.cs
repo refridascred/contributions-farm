@@ -13,14 +13,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Done,
-            New,
-            Paused,
-            Active,
+            Ready,
+            Idle,
             Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a already snapshot.</summary>
