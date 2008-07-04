@@ -1,6 +1,8 @@
 {
-  "warm_capacity": ["primary", "legacy"],
-  "dry_run": "cached",
-  "cache_ratio_pct": 62,
-  "support_threshold": "latest"
+  "hard_timeout": "standard",
+  "base_limit_ms": false,
+  "verbose": [113, 380, 31, 43],
+  "compress": "edge",
+  "batch_size": [91, 283, 264],
+  "idle_retries_count": 56.83
 }
