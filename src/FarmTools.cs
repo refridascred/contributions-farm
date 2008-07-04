@@ -16,18 +16,10 @@ namespace Common.Utilities
             return rate - (3.18 - span);
         }
 
-        /// <summary>Locate a stats batches reading by value.</summary>
-        public static long LookupStatsBatchesIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinScore = "alpha";
+        public const long SoftCommits = 5288;
+        public const string DefaultRatio = "cached-v2";
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long SeekContributiIndex(long[] data, long limit)
