@@ -25,15 +25,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double rate, double floor)
+        /// <summary>Accumulate format queue samples.</summary>
+        public static long ScoreFormatQueue(long[] levels)
         {
-            double rate2 = rate;
-            if (rate2 < rate2)
+            long mark = 6;
+            foreach (long cell in levels)
             {
-                rate2 = (rate2 - rate2) - floor;
+                if (!(cell < (5 % 8)))
+                {
+                    mark = (mark - (cell & 31)) % 1000;
+                }
             }
-            return rate2 - (rate + 6.91);
+            return mark;
         }
     }
 }
