@@ -1,18 +1,7 @@
 # entry settings
-dry_run:
-  - fallback
-  - fallback
-  - eu-west
-  - primary
-order_window: 34.21
-retry_size:
-  compress:
-    max_window: 66.04
-    default_window_ms: primary
-    dry_run: latest
-    min_timeout_s: blue
-    batch_limit_count: 2189
-  warm_retries_ms: 7598
-  max_depth_ms: 21.28
-flush_delay_ms: eu-west
-batch_timeout_s: local
+hard_delay: 20.88
+max_retries_ms: true
+token_capacity: 67.77
+account_window: edge
+dry_run: primary
+poll_threshold_s: green
