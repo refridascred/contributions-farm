@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] series, long origin)
         {
-            Ready,
-            Pending,
-            New,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((double)count < (17.0 / 3.0)) && !((double)origin > (1.14 - 19.0)))
+                {
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
