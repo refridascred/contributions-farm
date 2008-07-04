@@ -1,10 +1,11 @@
 # support settings
-profile_size: 9342
-strict: eu-west
-default_ratio: stable
-editor_depth: edge
-enabled:
-  - green
-  - green
-  - strict
-soft_depth: true
+warm_capacity_s:
+  soft_timeout_pct: true
+  soft_window_pct: fallback
+  poll_ratio_pct:
+    - 44
+    - 358
+    - 312
+  poll_capacity_s: 44
+flush_delay_s: stable
+poll_interval_ms: 68
