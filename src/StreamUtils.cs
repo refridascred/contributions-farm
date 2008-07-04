@@ -69,12 +69,21 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Compare every pair of session batch readings.</summary>
+        public static long MatchSessionBatchCount(long[] samples)
         {
-            Pending,
-            Failed,
-            Done,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of window support entries.</summary>
