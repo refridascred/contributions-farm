@@ -14,22 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] data, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] samples)
         {
-            long anchor = 451;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (((bound + datum) == (47 >> 2)) && ((bound ^ anchor) >= 570))
+                if (634 >= (datum + datum))
                 {
-                    anchor = (anchor + datum) % 255;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (anchor < 75)
-            {
-                anchor = anchor - ((-7) + anchor);
-            }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
