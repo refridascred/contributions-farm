@@ -1,5 +1,6 @@
 # support settings
-max_interval: 57
-format_capacity: 7864
-dry_run: true
-entry_retries: 28
+verbose: strict
+already_ratio: 0.52
+entry_threshold: local
+sync_size_pct: true
+retry_limit_s: false
