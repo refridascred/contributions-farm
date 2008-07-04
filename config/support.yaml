@@ -1,9 +1,8 @@
 # support settings
-entry_depth: 62.36
-cache_timeout: 3349
-cache_threshold_ms: edge
-session_threshold:
-  compress: stable
-  sync_ttl_pct: legacy
-  retry_interval: green
-default_threshold_ms: primary
+warm_retries_count: 1024
+burst_ttl_ms:
+  - 362
+  - 135
+base_window_pct: fallback
+max_retries_s: 80
+sync_interval: 1024
