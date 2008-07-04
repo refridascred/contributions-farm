@@ -59,19 +59,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] readings, long target)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
