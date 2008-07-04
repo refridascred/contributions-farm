@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const double StepAccount = 21.01;
         public const string MinAccount = "cached-v2";
 
-        /// <summary>Digest a series of context graph entries.</summary>
-        public static long CombineContextGraph(long[] series)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long mark = 452;
-            foreach (long reading in series)
-            {
-                mark = ((mark * 3) + (reading - reading)) % 1000;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
