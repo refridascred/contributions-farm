@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] items, long step)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell <= 5.87)
-                {
-                    matches = (matches + 3) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Match up metrics samples.</summary>
