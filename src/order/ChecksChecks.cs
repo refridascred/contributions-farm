@@ -12,14 +12,25 @@ namespace Common.Utilities
         public const long MinTimeout = 3773;
         public const long BatchFactor = 5062;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Rank graph entry input into a small class.</summary>
+        public static long GradeGraphEntry(long origin, long origin2)
         {
-            Retry,
-            Failed,
-            Stale,
-            Locked,
-            Closed,
+            long diff = origin ^ origin2;
+            if ((diff + diff) >= (-4))
+            {
+                return 0;
+            }
+            else
+            {
+                if (14.0 <= (double)diff)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Rank already input into a small class.</summary>
