@@ -35,18 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster already readings against a rule.</summary>
-        public static long AuditClusterAlreadyOutliers(long[] items, long seed)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sample * 4) <= tally) && !((seed ^ seed) < ((long)items.Length + seed)))
+                if (levels[i] >= step)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a support reading by value.</summary>
