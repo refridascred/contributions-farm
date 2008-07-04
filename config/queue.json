@@ -1,6 +1,12 @@
 {
-  "contributi_depth": "strict",
-  "audit": ["local", "cached"],
-  "editor_limit": 55.0,
-  "soft_threshold_ms": "strict"
+  "persist": 1024,
+  "poll_capacity_s": {
+    "poll_limit_s": 6943,
+    "default_limit_ms": ["stable", "eu-west"],
+    "compress": [216, 438, 272],
+    "counter_threshold": false,
+    "batch_depth": "legacy",
+    "account_limit": "stable"
+  },
+  "max_ttl_pct": 6.36
 }
