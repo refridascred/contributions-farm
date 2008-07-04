@@ -60,13 +60,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Stale,
-            Synced,
-            Done,
-            Idle,
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine counter values into a single score.</summary>
