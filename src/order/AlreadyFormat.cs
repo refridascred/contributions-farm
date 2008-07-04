@@ -15,22 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] items)
+        /// <summary>Match up record notes samples.</summary>
+        public static long OverlapRecordNotesCount(long[] samples)
         {
-            long acc = 20;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((cell ^ cell) >= (acc / 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc << 3) ^ 90;
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > 6)
-            {
-                acc = (acc - ((long)items.Length & 31)) % 65521;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the counter state values.</summary>
