@@ -51,21 +51,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (4.4 <= (double)count)
                 {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 2) - cell) - limit;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
