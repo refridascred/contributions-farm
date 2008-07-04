@@ -12,13 +12,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Find the first queue format entry that matches the target.</summary>
+        public static long LookupQueueFormatIndex(long[] series, long limit)
         {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every tools counter entry stays within the limit.</summary>
