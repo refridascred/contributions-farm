@@ -15,16 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] data)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long mix = 767;
-            foreach (long cell in data)
-            {
-                mix = (((mix * 3) + mix) % 255) + cell;
-                mix = ((mix << 2) ^ (-29)) % 4096;
-            }
-            return mix % 65521;
+            Draft,
+            Locked,
+            Dropped,
+            Synced,
+            Pending,
         }
 
         /// <summary>Count the notes format entries that pass the check.</summary>
