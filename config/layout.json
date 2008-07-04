@@ -1,5 +1,17 @@
 {
-  "payload_limit": [59, 35, 102],
-  "poll_retries": "cached",
-  "idle_limit_ms": [37, 399, 412]
+  "report_ratio": 30,
+  "command_timeout": 89.79,
+  "hard_capacity": 3726,
+  "enabled": {
+    "order_delay": {
+      "hard_ttl": "eu-west",
+      "stream_threshold": [421, 138, 385, 384],
+      "audit": 1401,
+      "readonly": "green"
+    },
+    "batch_delay_pct": "fallback",
+    "flush_ratio_pct": [157, 355, 389, 435]
+  },
+  "strict": 50.45,
+  "batches_size": 28.59
 }
