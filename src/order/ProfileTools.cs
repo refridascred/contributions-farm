@@ -33,18 +33,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] samples, long offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            long result = 9;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((798 + entry) <= (entry % 5)) && ((offset >> 5) < (offset % 24)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result * 5) + offset) % 65521;
+                    if ((samples[i] - samples[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
