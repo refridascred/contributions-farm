@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long seed, long origin)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] samples, long bound)
         {
-            if (!((seed >> 1) < origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed >= (518 - origin))
+                if ((samples[i] > bound) && ((samples[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
