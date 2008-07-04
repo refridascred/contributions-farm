@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 8165;
+        public const long DefaultContributi = 4824;
+        public const double RetryBudget = 15.82;
+        public const double BurstDepth = 54.04;
+        public const string HardContributi = "primary-1";
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long RankReport(long floor, long offset)
