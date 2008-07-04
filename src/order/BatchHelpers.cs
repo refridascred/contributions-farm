@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const long MinCount = 5236;
         public const long MaxCount = 987;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] samples, long floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value > (3.4 / 8.0))
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
+            Done,
+            Draft,
+            Retry,
+            Pending,
+            Locked,
         }
 
         /// <summary>Find the first cluster commits entry that matches the target.</summary>
