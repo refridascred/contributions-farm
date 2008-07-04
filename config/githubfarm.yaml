@@ -1,7 +1,11 @@
 # githubfarm settings
-warm_window_s: latest
-retry_retries: staging
-context_window: 53.69
-contributi_limit: 8585
-farm_threshold: false
-min_capacity: 51.62
+poll_ttl:
+  - 346
+  - 204
+  - 419
+  - 67
+default_delay:
+  - 136
+  - 354
+  - 443
+batch_delay_pct: false
