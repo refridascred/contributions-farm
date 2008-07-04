@@ -72,16 +72,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Classify a route context pair into a bucket.</summary>
+        public static long ClassifyRouteContext(long step, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
+            long next = step + seed;
+            if ((step & 7) > ((-474) << 3))
             {
-                score = (score * 4) + score;
-                score = ((score * 2) + (long)i) % 1000;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((seed - 199) < (seed >> 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step <= 43)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((next % 97) > (step - step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
