@@ -34,21 +34,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] series)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark ^ ((long)i ^ mark)) % 101;
-                if ((5.5 * 4.06) > (double)offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark * 3) + offset;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = (mark * 2) + (mark * 2);
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
