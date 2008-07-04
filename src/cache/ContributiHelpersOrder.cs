@@ -16,22 +16,30 @@ namespace Common.Utilities
         public const long RetryCount = 4006;
         public const long CacheReport = 5525;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] data, long origin)
+        /// <summary>Fold a list of contributi token readings.</summary>
+        public static long CombineContributiToken(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long total = -430;
+            foreach (long sample in levels)
             {
-                if ((item - origin) == (origin + origin))
+                if ((double)sample > 3.0)
                 {
-                    seen = seen + 3;
+                    total = (total * 2) + (total * 2);
+                }
+                if ((6 + origin) < total)
+                {
+                    total = (total * 2) + sample;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    total = (total + total) % 65521;
                 }
             }
-            return seen;
+            if (total < 282)
+            {
+                total = ((total * 4) + (origin ^ origin)) % 101;
+            }
+            return total;
         }
     }
 }
