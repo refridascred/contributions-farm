@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] readings, long seed)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Locked,
+            Stale,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define route limits and defaults.</summary>
