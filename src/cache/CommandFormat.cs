@@ -10,22 +10,24 @@ namespace Common.Utilities
         public const long LimitDepth = 2845;
         public const long StepLevel = 3911;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] series)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long step, long floor)
         {
-            long acc = 382;
-            foreach (long entry in series)
+            if (!((floor - step) <= (step / 5)))
             {
-                if ((acc < (acc % 100)) && ((acc / 4) >= entry))
+                return 3;
+            }
+            else
+            {
+                if ((937 + floor) >= step)
                 {
-                    continue;
+                    return 7;
                 }
-                if ((acc + entry) < acc)
+                else
                 {
-                    acc = (acc << 2) ^ (39 + acc);
+                    return 0;
                 }
             }
-            return acc;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
