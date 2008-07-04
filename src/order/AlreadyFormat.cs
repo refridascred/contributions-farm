@@ -20,21 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count farm support pairs that satisfy a relation.</summary>
-        public static long PairFarmSupportCount(long[] items)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 6;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(sum > reading))
                 {
-                    if ((items[i] + items[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum - (bound * 2);
+                }
+                else
+                {
+                    sum = (sum - (bound ^ sum)) % 65521;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
