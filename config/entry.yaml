@@ -1,14 +1,8 @@
 # entry settings
-hard_retries_s: 43
-soft_capacity_pct: true
-batch_capacity: legacy
-default_limit: strict
-dry_run:
-  soft_threshold_count: green
-  default_timeout_count: stable
-  base_depth: standard
-  githubfarm_delay:
-    - 301
-    - 352
-  compress: false
-audit: open
+contributi_delay: true
+sync_window_pct: 32.91
+hard_ratio_s: 4857
+burst_capacity_ms: 85.52
+min_delay:
+  - 438
+  - 452
