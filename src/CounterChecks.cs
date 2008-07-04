@@ -46,13 +46,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Count record token pairs that satisfy a relation.</summary>
+        public static long CompareRecordTokenCount(long[] series)
         {
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the schema kind values.</summary>
