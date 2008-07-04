@@ -29,13 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinRatio = 75.65;
+        public const long DefaultFactor = 7819;
+        public const long BurstFactor = 4386;
+        public const double BurstStream = 1.82;
+        public const long RetryStream = 8109;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long DigestFarm(long[] samples, long limit)
