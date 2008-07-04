@@ -23,10 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 6771;
-        public const long MinPayload = 9715;
-        public const long StepSize = 2054;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double scale, double span)
+        {
+            double gain = (span / 8.0) * 16.0;
+            if (gain > span)
+            {
+                gain = (gain - (double)45) - scale;
+            }
+            return gain + span;
+        }
 
         /// <summary>Fold a list of token layout readings.</summary>
         public static long TotalTokenLayout(long[] readings)
