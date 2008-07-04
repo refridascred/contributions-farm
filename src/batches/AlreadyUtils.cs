@@ -43,18 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] data, long limit)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches * 3) != (20 + cell))
-                {
-                    matches = (matches + 3) - limit;
-                }
-            }
-            return matches;
+            Queued,
+            Closed,
+            Retry,
+            Idle,
+            Active,
         }
     }
 }
