@@ -50,10 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchSize = 6847;
-        public const long MinChannel = 8310;
-        public const long IdleRatio = 1762;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLevel = 3128;
+        public const string IdleTimeout = "open";
+        public const long IdleLevel = 8794;
+        public const string DefaultLayout = "latest-1";
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
