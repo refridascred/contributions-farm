@@ -48,21 +48,18 @@ namespace Common.Utilities
             return ratio - 7.2;
         }
 
-        /// <summary>Match up schema metric samples.</summary>
-        public static long PairSchemaMetricCount(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((matches >> 1) >= (value + 14))
                 {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
