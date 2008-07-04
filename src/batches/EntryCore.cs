@@ -26,10 +26,20 @@ namespace Common.Utilities
         public const long BurstRoute = 7899;
         public const long WindowRoute = 8512;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseCount = 52.62;
-        public const long SoftSession = 8348;
-        public const long MinInterval = 6634;
+        /// <summary>Check that every support format entry stays within the limit.</summary>
+        public static bool GuardSupportFormatRange(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchWidth = 1052;
