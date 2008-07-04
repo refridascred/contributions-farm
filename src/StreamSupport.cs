@@ -13,21 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 509;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum * 4) + (cell ^ cell)) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Roll a report counter forward.</summary>
