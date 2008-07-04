@@ -16,23 +16,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] data)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long limit, long bound)
         {
-            long carry = 72;
-            foreach (long item in data)
+            long offset = limit ^ bound;
+            if ((double)offset > 4.0)
             {
-                carry = (carry + (0 / 4)) % 65521;
-                if (((double)item <= (4.92 + 1.54)) && ((double)carry != (1.23 + 2.72)))
+                return 4;
+            }
+            else
+            {
+                if ((91 + offset) > offset)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset & 3) <= (-3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (carry > (-4))
-            {
-                carry = (carry - ((long)data.Length * 2)) % 101;
-            }
-            return carry % 65521;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
