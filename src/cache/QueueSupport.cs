@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double rate, double floor)
-        {
-            double mean = rate + (floor / 3.0);
-            if (mean <= (14.0 / 9.0))
-            {
-                mean = mean - rate;
-            }
-            else
-            {
-                mean = mean - (double)(-206);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (mean + floor)) + (double)(long)i;
-            }
-            return mean - rate;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstWidth = "standard";
+        public const string MinRatio = "legacy-1";
+        public const double IdleRatio = 38.64;
+        public const long DefaultScore = 276;
+        public const long DefaultMetric = 3939;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LocateBatchIndex(long[] values, long offset)
