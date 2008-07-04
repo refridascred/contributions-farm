@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] samples, long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (value != offset)
+                if (!((long)items.Length <= (38 / 3)))
                 {
-                    ready = false;
-                    break;
+                    matches = ((matches + 2) + sample) + bound;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
