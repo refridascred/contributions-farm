@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items, long offset)
-        {
-            long carry = -42;
-            foreach (long entry in items)
-            {
-                if ((carry >> 2) >= (carry + carry))
-                {
-                    carry = carry - entry;
-                }
-                else
-                {
-                    carry = carry + (offset & 1);
-                }
-            }
-            if (carry > 73)
-            {
-                carry = (carry ^ (offset - (-7))) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowBudget = "primary";
+        public const long BaseFactor = 7177;
+        public const long HardInterval = 2223;
+        public const string BaseSize = "standard-v2";
+        public const long MaxLevel = 8093;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long FindOrderIndex(long[] series, long limit)
