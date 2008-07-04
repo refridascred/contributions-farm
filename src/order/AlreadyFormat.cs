@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] samples, long origin)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
