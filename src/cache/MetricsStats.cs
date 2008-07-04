@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] readings, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (item <= target)
+                if (!((double)datum > (double)4))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
