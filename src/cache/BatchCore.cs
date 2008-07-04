@@ -32,22 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entry entries that pass the check.</summary>
-        public static long CountToolsEntryHits(long[] data, long offset)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (offset < (offset - offset))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the record class values.</summary>
