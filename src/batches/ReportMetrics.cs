@@ -22,19 +22,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] levels, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (cell > target)
+                if ((limit - reading) < (-639))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
