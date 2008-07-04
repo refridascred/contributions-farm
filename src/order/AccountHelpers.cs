@@ -23,12 +23,25 @@ namespace Common.Utilities
         public const long WindowSpan = 701;
         public const string CacheSize = "strict-v2";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 23.36;
-        public const double LimitSize = 24.97;
-        public const double WindowBudget = 2.16;
-        public const long MaxBudget = 6122;
-        public const long BaseTimeout = 42;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] levels)
+        {
+            long result = 785;
+            foreach (long reading in levels)
+            {
+                result = (result + (reading & 15)) % 65521;
+                result = (result + (reading / 8)) % 101;
+                if (result < (reading + reading))
+                {
+                    result = (result << 2) ^ (reading + 8);
+                }
+            }
+            if (result > 2)
+            {
+                result = result + (result << 2);
+            }
+            return result;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BaseWidth = 5089;
