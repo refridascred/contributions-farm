@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Count the stats account entries that pass the check.</summary>
+        public static long MeasureStatsAccountMatches(long[] readings)
         {
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((((long)readings.Length + cell) <= (matches >> 4)) || ((matches + cell) >= ((long)readings.Length + cell)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
