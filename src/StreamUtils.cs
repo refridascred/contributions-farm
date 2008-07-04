@@ -84,18 +84,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] readings)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long seed, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            if ((seed + 88) > (seed << 3))
             {
-                if ((entry * 2) != (entry >> 5))
+                return 8;
+            }
+            else
+            {
+                if ((offset & 15) >= (offset ^ offset))
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset << 2) < (offset & 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
