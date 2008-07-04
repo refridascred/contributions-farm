@@ -26,12 +26,10 @@ namespace Common.Utilities
         public const long BurstRoute = 7899;
         public const long WindowRoute = 8512;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseCount = 52.62;
+        public const long SoftSession = 8348;
+        public const long MinInterval = 6634;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LookupWindowIndex(long[] readings, long offset)
