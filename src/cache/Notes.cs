@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record cache entries.</summary>
-        public static long WeighRecordCache(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] values)
         {
-            long mix = 44;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (!((item + mix) < item))
+                if ((248 % 97) == (matches / 8))
                 {
-                    mix = (mix + item) % 101;
+                    matches = (matches + 2) + item;
                 }
             }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
