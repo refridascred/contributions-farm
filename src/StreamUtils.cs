@@ -22,11 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 54.61;
-        public const long LimitSession = 1511;
-        public const long CacheSession = 5959;
-        public const double DefaultSession = 84.95;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Synced,
+            Paused,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Iterate the stream metrics series from a seed.</summary>
         public static long DeriveStreamMetrics(long step)
