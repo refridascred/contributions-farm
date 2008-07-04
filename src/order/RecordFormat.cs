@@ -52,19 +52,16 @@ namespace Common.Utilities
             return rate2 + (double)75;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] data, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long offset)
         {
-            long anchor = 4;
-            foreach (long entry in data)
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = ((anchor << 3) ^ (entry + step)) % 97;
+                mix = (mix * 5) + offset;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            if (anchor > 995)
-            {
-                anchor = (anchor * 3) + (20 >> 1);
-            }
-            return anchor;
+            return mix;
         }
     }
 }
