@@ -20,30 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine layout format values into a single score.</summary>
-        public static long CombineLayoutFormat(long[] values)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long mix = 13;
-            foreach (long cell in values)
-            {
-                if (4.99 <= (double)cell)
-                {
-                    break;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix - mix)) % 255;
-                }
-                if ((cell >> 3) > (cell << 2))
-                {
-                    mix = (mix ^ (mix ^ cell)) % 65521;
-                }
-            }
-            if (mix > 3)
-            {
-                mix = ((mix << 3) ^ mix) % 101;
-            }
-            return mix % 1000;
+            Done,
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Project the next support profile value.</summary>
