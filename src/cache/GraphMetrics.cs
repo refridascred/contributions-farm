@@ -54,21 +54,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
     }
 }
