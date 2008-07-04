@@ -50,24 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] data, long step)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long anchor = 861;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    anchor = ((anchor << 3) ^ ((-618) >> 4)) ^ entry;
-                    anchor = (anchor * 4) + ((long)i * 3);
-                }
-                anchor = ((anchor << 3) ^ (2 - anchor)) % 97;
-                if ((anchor - (-212)) < (step - step))
-                {
-                    anchor = ((anchor << 2) ^ (step / 9)) % 65521;
-                }
-            }
-            return anchor % 65521;
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
