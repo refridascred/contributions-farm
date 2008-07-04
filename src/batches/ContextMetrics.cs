@@ -50,12 +50,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] series, long step)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((8.8 / 8.0) <= (double)seen)
+                {
+                    seen = ((seen + 3) + reading) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count route entry pairs that satisfy a relation.</summary>
