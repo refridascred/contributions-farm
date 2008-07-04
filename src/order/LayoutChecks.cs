@@ -62,14 +62,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Grade a githubfarm commits value against two limits.</summary>
+        public static long GradeGithubfarmCommits(long seed, long seed2)
         {
-            Closed,
-            Stale,
-            Done,
-            Queued,
-            Ready,
+            if (!((seed2 - seed) > (seed >> 2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6.2 / 4.0) <= (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((682 * 3) != (seed * 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed2 ^ seed) <= (seed2 % 97))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
