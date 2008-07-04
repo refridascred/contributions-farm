@@ -19,39 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long limit, long limit2)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] samples, long step)
         {
-            long bound = limit + limit2;
-            if (limit > 9)
+            long anchor = 704;
+            foreach (long item in samples)
             {
-                return 5;
+                anchor = (((anchor * 5) + item) % 65521) - step;
             }
-            else
+            if (anchor < 785)
             {
-                if (((limit2 - 727) == ((-914) * 2)) || ((double)limit == (4.4 - 6.1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + bound) == (limit2 >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound >= 107) || ((1.0 + 4.4) >= (double)bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                anchor = anchor ^ (259 & 63);
             }
+            return anchor;
         }
 
         /// <summary>Describe the farm phase values.</summary>
