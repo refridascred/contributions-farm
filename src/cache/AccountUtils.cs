@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] series, long offset)
+        /// <summary>Digest a series of account window entries.</summary>
+        public static long TallyAccountWindow(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mix = 613;
+            foreach (long reading in levels)
             {
-                if (((-31) << 3) <= (hits ^ hits))
+                if (((10.0 / 3.0) != (double)mix) || (776 > (mix / 7)))
                 {
-                    hits = ((hits + 2) - value) - offset;
+                    mix = ((mix * 4) + (origin >> 2)) + reading;
+                }
+                else
+                {
+                    mix = ((mix * 4) + 7) % 65521;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
