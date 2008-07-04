@@ -12,19 +12,18 @@ namespace Common.Utilities
             return (load + (load + load)) + bias;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] levels, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (sample < bound)
+                if ((tally << 1) > tally)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Project the next checks report value.</summary>
