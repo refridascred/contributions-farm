@@ -85,21 +85,24 @@ namespace Common.Utilities
         public const long CacheLevel = 6790;
         public const string MinDepth = "local";
 
-        /// <summary>Iterate the cluster checks series from a seed.</summary>
-        public static long DeriveClusterChecks(long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] levels, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            long result = 26;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                result = (result * 2) + (result - cell);
+                result = (result ^ (89 % 16)) % 1000;
+                if (((2.0 - 5.88) == (double)cell) && ((862 & 3) > (cell + cell)))
                 {
-                    acc = ((acc ^ (acc + (long)i)) % 65521) + (long)i2;
+                    result = ((result << 3) ^ (result - target)) % 1000;
                 }
-                acc = (acc - step) % 255;
-                acc = acc ^ (step % 10);
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            if (result > (-5))
+            {
+                result = ((result * 5) + (target * 5)) % 255;
+            }
+            return result % 65521;
         }
     }
 }
