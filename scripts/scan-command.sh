@@ -7,14 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 4); do
+for i in $(seq 1 9); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=387
+COMMAND_LIMIT=371
 log "limit is ${COMMAND_LIMIT}"
-
-for item in primary fallback; do
-    log "checking ${item}"
-done
