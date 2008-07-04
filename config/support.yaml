@@ -1,6 +1,12 @@
 # support settings
-verbose: strict
-already_ratio: 0.52
-entry_threshold: local
-sync_size_pct: true
-retry_limit_s: false
+order_ttl: 53.22
+cache_ratio:
+  queue_delay: 30
+  max_size:
+    - primary
+    - local
+    - standard
+  min_threshold_ms: stable
+  compress: 7744
+base_depth: 8682
+poll_timeout: 25.06
