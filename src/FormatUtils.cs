@@ -60,22 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] samples, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((bound + entry) <= entry)
+                if (value != origin)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
