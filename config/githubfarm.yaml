@@ -1,6 +1,19 @@
 # githubfarm settings
-base_timeout_ms: local
-batch_depth_ms: 13.68
-base_depth:
-  - 448
-  - 270
+audit: standard
+base_depth_ms: 78.69
+commits_interval: fallback
+hard_retries_s: latest
+cache_window:
+  window_depth:
+    soft_capacity_s:
+      - 80
+      - 112
+      - 139
+      - 269
+    strict: 1024
+    readonly: 63
+    max_retries_ms: eu-west
+    burst_ratio_pct: green
+    token_ratio: latest
+  min_limit_ms: 37.22
+  token_ttl: 60
