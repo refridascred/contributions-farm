@@ -26,19 +26,13 @@ namespace Common.Utilities
             return (gain2 + (gain2 - gain2)) + gain;
         }
 
-        /// <summary>Validate filter schema readings against a bound.</summary>
-        public static bool VerifyFilterSchemaLimits(long[] values, long offset)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Label { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
