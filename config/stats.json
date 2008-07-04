@@ -1,6 +1,7 @@
 {
-  "metric_interval": false,
-  "command_limit": "standard",
-  "default_depth_count": 1287,
-  "readonly": "strict"
+  "base_interval_pct": "edge",
+  "poll_delay_pct": "standard",
+  "readonly": true,
+  "sync_timeout_s": 47,
+  "poll_threshold_s": true
 }
