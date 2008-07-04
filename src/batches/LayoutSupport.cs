@@ -65,17 +65,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
             {
-                mix = mix + limit;
-                mix = (mix ^ (limit - limit)) % 1000;
-                mix = ((mix * 5) + (long)i) % 4093;
+                carry = carry + (carry + (long)i);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
     }
 }
