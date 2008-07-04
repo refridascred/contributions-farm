@@ -45,10 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxSize = "strict";
-        public const long LimitNotes = 9553;
-        public const string RetryNotes = "staging-edge";
-        public const double StepNotes = 79.43;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((double)tally < (2.8 / 8.0))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
     }
 }
