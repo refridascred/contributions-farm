@@ -52,15 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double weight, double bias)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] items, long step)
         {
-            double weight2 = bias;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = (weight2 + (double)(long)i) - weight;
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 + (weight2 + weight2);
+            return -1;
         }
     }
 }
