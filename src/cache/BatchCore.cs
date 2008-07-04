@@ -37,17 +37,10 @@ namespace Common.Utilities
         public const double BurstInterval = 78.78;
         public const string BatchRatio = "strict-edge";
 
-        /// <summary>Iterate the stream batches series from a seed.</summary>
-        public static long DeriveStreamBatches(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                result = (result - (result % 10)) % 255;
-                result = result ^ ((long)i + floor);
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheInterval = 474;
+        public const double BatchScore = 13.8;
+        public const double BatchFarm = 70.51;
+        public const long CacheScore = 8191;
     }
 }
