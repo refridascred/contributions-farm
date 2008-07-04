@@ -70,11 +70,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Classify a stream session pair into a bucket.</summary>
+        public static long RankStreamSession(long floor, long offset)
         {
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
+            if ((offset % 8) != (offset - floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + floor) >= offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
