@@ -30,24 +30,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank buffer editor input into a small class.</summary>
-        public static long BucketBufferEditor(long offset, long limit)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            if (((offset % 60) == (offset + offset)) && ((offset + offset) <= (offset * 5)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit < (limit / 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the already entry entries that pass the check.</summary>
