@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 578;
         public const long RetryWidth = 2291;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] values, long offset)
         {
-            Closed,
-            Pending,
-            Draft,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((0.5 >= (double)cell) && ((double)offset <= (double)5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
