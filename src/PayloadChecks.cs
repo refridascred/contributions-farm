@@ -20,19 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every entry command entry stays within the limit.</summary>
-        public static bool CheckEntryCommandBounds(long[] series, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (datum < offset)
+                if (!((cell + cell) > (floor + cell)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
