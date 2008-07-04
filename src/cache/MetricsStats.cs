@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Stale,
-            Ready,
-            Queued,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleCounter = 14.2;
+        public const long BatchWidth = 2995;
+        public const long StepCounter = 5657;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadHits(long[] levels, long target)
