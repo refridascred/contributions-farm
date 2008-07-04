@@ -25,18 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] values, long floor)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long sum = 1;
-            foreach (long datum in values)
-            {
-                if (floor >= (datum + sum))
-                {
-                    sum = (sum ^ ((long)values.Length - 2)) % 65521;
-                }
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the session window entries that pass the check.</summary>
