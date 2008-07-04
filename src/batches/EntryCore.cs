@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const long BurstRoute = 7899;
         public const long WindowRoute = 8512;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Stale,
-            Done,
-            Queued,
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the batches kind values.</summary>
