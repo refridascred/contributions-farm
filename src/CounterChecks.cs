@@ -31,30 +31,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long target, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            long gap = target - step;
+            if ((target % 24) <= (target + target))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum * 5) + offset) - (long)i2;
-                    sum = ((sum << 3) ^ (sum * 2)) % 1000;
-                }
-                for (int i3 = 0; i3 < 6; i3++)
-                {
-                    sum = (((sum << 3) ^ (offset * 3)) % 97) ^ (long)i3;
-                    sum = sum ^ offset;
-                }
-                for (int i4 = 0; i4 < 2; i4++)
-                {
-                    sum = (sum * 3) + (98 + (long)i);
-                    sum = ((sum * 4) + ((long)i4 >> 2)) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (((gap / 3) <= gap) || ((target + 0) >= (gap - target)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step >= (target % 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support kind values.</summary>
