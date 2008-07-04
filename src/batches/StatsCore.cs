@@ -74,22 +74,19 @@ namespace Common.Utilities
         public const long CacheLevel = 6790;
         public const string MinDepth = "local";
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] series, long floor)
+        /// <summary>Derive the next record queue value from a seed.</summary>
+        public static long IterateRecordQueue(long offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)matches < (double)floor)
+                if (((offset << 3) < ((long)i / 7)) && (((-80) & 3) < anchor))
                 {
-                    matches = (matches + 2) + item;
+                    continue;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
     }
 }
