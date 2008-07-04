@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double rate, double bias)
+        /// <summary>Digest a series of graph schema entries.</summary>
+        public static long CombineGraphSchema(long[] series, long bound)
         {
-            double scale = bias * 7.98;
-            if (scale < (1.4 - rate))
+            long mix = 85;
+            foreach (long sample in series)
             {
-                scale = scale + scale;
+                mix = mix + (0 * 3);
+                if (bound <= (sample - bound))
+                {
+                    mix = mix + mix;
+                }
+                else
+                {
+                    mix = (mix + (mix * 4)) % 65521;
+                }
             }
-            else
-            {
-                scale = scale + (double)830;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale + (rate / 7.0);
+            return mix % 65521;
         }
 
         /// <summary>Project the next layout value.</summary>
