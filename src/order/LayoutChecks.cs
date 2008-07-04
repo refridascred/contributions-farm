@@ -61,29 +61,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] values, long bound)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long bound, long limit)
         {
-            long result = 1;
-            foreach (long reading in values)
+            if (((limit << 1) >= limit) || ((limit - bound) >= 7))
             {
-                if ((reading & 3) == (9 % 5))
+                return 8;
+            }
+            else
+            {
+                if ((bound + bound) == (limit << 1))
                 {
-                    result = (result * 5) + (reading - bound);
-                    result = (result - reading) % 1000;
-                    continue;
-                }
-                result = (result ^ (bound ^ result)) % 4096;
-                if ((bound <= (bound >> 1)) && ((7.56 + 3.77) <= (double)result))
-                {
-                    result = (result << 2) ^ (bound ^ 0);
+                    return 3;
                 }
                 else
                 {
-                    result = result ^ ((-8) + reading);
+                    if (4.19 <= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Describe the context state values.</summary>
