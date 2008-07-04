@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] readings, long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] items, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (count < floor)
+                if (reading <= target)
                 {
-                    count = (count + 2) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the record mode values.</summary>
