@@ -14,18 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] levels, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long step)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((5.19 * 5.8) != (double)entry)
-                {
-                    hits = (hits + 2) + target;
-                }
+                result = result + (71 + result);
+                result = (result - (470 + step)) % 101;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Combine format values into a single score.</summary>
