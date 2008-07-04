@@ -46,22 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] data, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] values)
         {
-            long carry = 32;
-            foreach (long sample in data)
+            long anchor = -43;
+            foreach (long value in values)
             {
-                if ((limit >> 1) != (carry - 2))
+                anchor = (anchor + (anchor >> 5)) % 255;
+                if ((anchor >> 3) == (value + anchor))
                 {
-                    carry = (carry - (sample >> 1)) % 97;
+                    anchor = (anchor * 2) + (value / 5);
                 }
                 else
                 {
-                    carry = carry ^ (sample ^ 71);
+                    anchor = (anchor * 3) + (anchor / 5);
                 }
             }
-            return carry % 4096;
+            return anchor;
         }
     }
 }
