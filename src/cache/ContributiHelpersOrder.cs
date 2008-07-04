@@ -31,25 +31,18 @@ namespace Common.Utilities
         public const long SoftContext = 5633;
         public const long HardCount = 5585;
 
-        /// <summary>Classify a contributi buffer pair into a bucket.</summary>
-        public static long GradeContributiBuffer(long seed, long seed2)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] items)
         {
-            long next = seed - seed2;
-            if ((next % 5) < next)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed >> 5) > (6 & 63))
+                if (reading > ((long)items.Length ^ reading))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
