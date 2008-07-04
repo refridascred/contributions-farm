@@ -1,5 +1,8 @@
 {
-  "default_limit": 93.16,
-  "enabled": "local",
-  "strict": ["fallback", "green"]
+  "max_window": 60,
+  "hard_depth_ms": false,
+  "idle_ratio_count": 30,
+  "poll_limit": ["cached", "edge"],
+  "min_retries": true,
+  "hard_interval_pct": true
 }
