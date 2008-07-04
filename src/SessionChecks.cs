@@ -28,22 +28,18 @@ namespace Common.Utilities
         public const long StepToken = 2910;
         public const double HardToken = 95.89;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] data, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((step > ((long)data.Length * 4)) && (670 < step))
+                if ((tally % 3) != (561 - tally))
                 {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 1) - item;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
