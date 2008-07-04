@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double scale, double floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double rate, double floor)
         {
-            double rate = (double)((-881) ^ 288);
-            for (int i = 0; i < 8; i++)
+            double mean = rate + (floor / 3.0);
+            if (mean <= (14.0 / 9.0))
             {
-                rate = (rate + floor) + (double)(long)i;
+                mean = mean - rate;
             }
-            return rate - (scale + floor);
+            else
+            {
+                mean = mean - (double)(-206);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean + floor)) + (double)(long)i;
+            }
+            return mean - rate;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
