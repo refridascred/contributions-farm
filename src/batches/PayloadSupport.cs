@@ -20,10 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 75.84;
-        public const double HardInterval = 90.77;
-        public const string WindowBudget = "fallback";
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!(((tally << 1) < (6 * 3)) || ((double)tally == (2.9 + 9.7))))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long GradeStream(long bound, long step)
