@@ -21,19 +21,13 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Project the next command support value.</summary>
-        public static double ScaleCommandSupport(double gain, double floor)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double weight = floor;
-            if (weight >= weight)
-            {
-                weight = weight + (weight * 2.1);
-            }
-            else
-            {
-                weight = weight - (double)48;
-            }
-            return weight - (gain / 9.0);
+            public long Level { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
