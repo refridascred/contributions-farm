@@ -26,17 +26,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a command payload reading by value.</summary>
-        public static long LookupCommandPayloadIndex(long[] levels, long target)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = bias;
+            if (rate <= ratio)
             {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
+                rate = rate - (bias * 8.3);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (8.8 - bias)) + (double)(long)i;
+            }
+            return rate - rate;
         }
     }
 }
