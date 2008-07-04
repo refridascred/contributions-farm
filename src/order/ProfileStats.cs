@@ -29,16 +29,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next commits format value.</summary>
-        public static double AdjustCommitsFormat(double rate, double offset)
-        {
-            double rate2 = (double)(0 / 3);
-            if (rate2 > (rate / 9.0))
-            {
-                rate2 = rate2 + (offset + rate);
-            }
-            return rate2 + rate;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheOrder = 41.06;
+        public const long MaxSize = 5651;
+        public const string SoftOrder = "staging-edge";
+        public const string HardRatio = "local-1";
 
         /// <summary>Measure how many support context samples are out of range.</summary>
         public static long CountSupportContextOutliers(long[] data)
