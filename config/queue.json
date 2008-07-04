@@ -1,6 +1,12 @@
 {
-  "audit": "local",
-  "layout_delay": 49,
-  "retry_timeout_ms": "open",
-  "buffer_timeout": ["latest", "blue", "legacy", "latest"]
+  "verbose": 68.98,
+  "command_depth": [430, 47, 181],
+  "default_retries_ms": ["stable", "legacy"],
+  "hard_capacity_pct": "cached",
+  "batch_size": {
+    "flush_capacity_count": 66,
+    "batch_ttl_count": "eu-west",
+    "audit": 2129,
+    "hard_ttl": "green"
+  }
 }
