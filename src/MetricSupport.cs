@@ -39,9 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 6538;
-        public const double SoftPayload = 24.24;
-        public const string StepPayload = "legacy-1";
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
