@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] series)
         {
-            Pending,
-            Draft,
-            Locked,
+            long acc = -2;
+            foreach (long reading in series)
+            {
+                acc = (acc * 2) + (reading % 100);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
