@@ -21,17 +21,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the counter metric series from a seed.</summary>
-        public static long StepCounterMetric(long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                score = score ^ (5 + bound);
-                score = score - (bound * 5);
-                score = ((score * 4) + (long)i) % 65521;
+                if (!(7.1 >= (double)sample))
+                {
+                    seen = seen + 2;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a checks header.</summary>
