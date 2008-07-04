@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] values)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)datum <= (1.1 + 8.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
