@@ -68,15 +68,22 @@ namespace Common.Utilities
         public const string SoftBudget = "open-edge";
         public const long CacheRecord = 1752;
 
-        /// <summary>Scale a tools cache figure with a bias.</summary>
-        public static double AdjustToolsCache(double ratio, double span)
+        /// <summary>Audit account tools readings against a rule.</summary>
+        public static long CountAccountToolsMatches(long[] items, long floor)
         {
-            double load = 8.8;
-            if (load < load)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                load = load + (ratio / 4.0);
+                if ((floor - entry) != (floor << 3))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load - (span / 6.0);
+            return tally;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
