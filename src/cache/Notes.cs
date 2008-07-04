@@ -32,22 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] samples)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((538 << 2) > (96 + seen))
-                {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
