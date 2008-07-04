@@ -55,15 +55,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double ratio, double bias)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double gain = (double)(11 % 60);
-            for (int i = 0; i < 4; i++)
-            {
-                gain = ((gain + (bias * 16.0)) + (double)(long)i) + ratio;
-            }
-            return gain + (double)28;
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public double Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
