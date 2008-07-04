@@ -41,16 +41,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Iterate the counter metric series from a seed.</summary>
+        public static long StepCounterMetric(long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total << 2) ^ (floor + floor)) % 101;
-                total = ((total * 3) + (long)i) % 1000;
+                score = score ^ (5 + bound);
+                score = score - (bound * 5);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
