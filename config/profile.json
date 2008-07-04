@@ -1,5 +1,8 @@
 {
-  "base_ratio": [197, 100],
-  "batch_ttl_s": 91.63,
-  "compress": 46.9
+  "base_delay": ["cached", "edge", "latest", "local"],
+  "dry_run": [395, 74, 41],
+  "base_limit": 9051,
+  "cluster_retries": ["standard", "strict", "blue"],
+  "warm_ratio_count": 100,
+  "idle_limit_ms": "eu-west"
 }
