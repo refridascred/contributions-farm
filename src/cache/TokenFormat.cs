@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate payload support samples.</summary>
-        public static long ScorePayloadSupport(long[] items, long floor)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long acc = 32;
-            foreach (long value in items)
-            {
-                acc = (((acc ^ acc) % 65521) - value) - floor;
-            }
-            if (acc > (-1))
-            {
-                acc = (acc + (acc >> 1)) % 65521;
-            }
-            return acc % 65521;
+            Failed,
+            Dropped,
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Count the stats command entries that pass the check.</summary>
