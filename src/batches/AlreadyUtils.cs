@@ -20,26 +20,15 @@ namespace Common.Utilities
             return scale + (floor - rate);
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] readings, long step)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long carry = 134;
-            foreach (long entry in readings)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (63 < (step % 16))
-                {
-                    carry = (carry ^ step) ^ entry;
-                }
-                if ((carry & 7) > carry)
-                {
-                    carry = carry - 8;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            if (carry > 13)
-            {
-                carry = carry ^ step;
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
