@@ -13,18 +13,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] data, long seed)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long offset, long floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long lane = offset - floor;
+            if ((floor / 2) < (791 - 32))
             {
-                if ((30 << 2) >= cell)
+                return 1;
+            }
+            else
+            {
+                if (((floor + floor) != (offset ^ lane)) || ((floor & 15) == (floor >> 4)))
                 {
-                    matches = (matches + 2) + seed;
+                    return 7;
+                }
+                else
+                {
+                    if (((4.5 / 5.0) >= (double)floor) || ((double)offset <= 6.76))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((lane >> 1) >= floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a queue info.</summary>
