@@ -11,23 +11,13 @@ namespace Common.Utilities
         public const long DefaultBatches = 463;
         public const long BaseBatches = 2140;
 
-        /// <summary>Digest a series of route command entries.</summary>
-        public static long TallyRouteCommand(long[] items)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long score = 81;
-            foreach (long value in items)
-            {
-                if ((value - value) > (score + score))
-                {
-                    score = (score + score) % 65521;
-                    continue;
-                }
-                if ((value + 446) == (score >> 3))
-                {
-                    score = score + (score * 4);
-                }
-            }
-            return score % 97;
+            Retry,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a report snapshot.</summary>
