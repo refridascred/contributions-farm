@@ -1,7 +1,7 @@
 {
-  "order_limit": "legacy",
-  "dry_run": [236, 121, 477, 383],
-  "farm_delay": 22,
-  "warm_delay_count": 10,
-  "base_timeout_s": 908
+  "flush_limit_count": 100,
+  "batch_size_pct": "blue",
+  "cache_retries": 463,
+  "retry_depth_count": false,
+  "sync_retries_count": 500
 }
