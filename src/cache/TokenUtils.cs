@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next filter cache value from a seed.</summary>
-        public static long StepFilterCache(long offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
