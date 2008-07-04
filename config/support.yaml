@@ -1,4 +1,5 @@
 # support settings
-idle_limit_s: false
-contributi_capacity: 9097
-soft_ratio_ms: true
+schema_delay: 1613
+hard_size: false
+soft_depth_ms: true
+cache_depth_count: standard
