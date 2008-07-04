@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleSize = 1446;
-        public const long SoftWidth = 4125;
-        public const long CacheChannel = 4916;
-        public const long BaseWidth = 2285;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 9720;
+        public const long IdleMetrics = 3338;
+        public const string BatchMetrics = "cached-1";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long LimitFactor = 1407;
