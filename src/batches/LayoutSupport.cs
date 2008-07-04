@@ -27,19 +27,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] data, long limit)
+        /// <summary>Combine token tools values into a single score.</summary>
+        public static long TotalTokenTools(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long mark = -251;
+            foreach (long item in series)
             {
-                if (item < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark - mark) ^ item) + limit;
+                mark = mark - (mark - mark);
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Fold a list of command readings.</summary>
