@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double scale, double bias)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] items)
         {
-            double mean = bias;
-            if (mean > bias)
+            long sum = -254;
+            foreach (long reading in items)
             {
-                mean = (mean - (mean - mean)) - scale;
+                sum = ((sum << 3) ^ (sum - reading)) % 97;
+                if (!(sum <= (94 + sum)))
+                {
+                    sum = sum - (reading % 16);
+                }
+                sum = (sum ^ reading) % 4096;
             }
-            return mean - mean;
+            return sum;
         }
 
         /// <summary>Accumulate context farm samples.</summary>
