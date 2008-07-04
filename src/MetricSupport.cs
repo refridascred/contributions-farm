@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate filter metric readings against a bound.</summary>
-        public static bool VerifyFilterMetricRange(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseLevel = 87.08;
+        public const double StepFilter = 12.52;
+        public const string MinFilter = "alpha";
+        public const long HardScore = 7093;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportGaps(long[] samples)
