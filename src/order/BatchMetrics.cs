@@ -24,17 +24,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] items, long target)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = bias;
+            return (load + (bias + 7.19)) + offset;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
