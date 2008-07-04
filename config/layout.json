@@ -1,5 +1,16 @@
 {
-  "hard_interval_count": "cached",
-  "entry_interval": ["stable", "eu-west", "edge"],
-  "stream_window": false
+  "min_timeout_s": 90.57,
+  "poll_delay": "primary",
+  "verbose": {
+    "verbose": {
+      "layout_interval": 72,
+      "idle_limit": "strict",
+      "batch_window_pct": "open"
+    },
+    "default_ttl_count": 3447,
+    "schema_depth": 9.79
+  },
+  "retry_interval": 79,
+  "schema_ttl": "latest",
+  "base_interval": "local"
 }
