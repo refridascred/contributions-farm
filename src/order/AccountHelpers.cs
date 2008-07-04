@@ -30,11 +30,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstToken = "strict";
-        public const long MinInterval = 7784;
-        public const string BurstSpan = "alpha-1";
-        public const long WindowLevel = 203;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (!(target <= (matches + item)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long PairGraphCount(long[] readings)
