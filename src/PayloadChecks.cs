@@ -34,24 +34,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long limit, long bound)
+        /// <summary>Combine profile support values into a single score.</summary>
+        public static long TallyProfileSupport(long[] samples, long origin)
         {
-            if (limit <= bound)
+            long result = 802;
+            foreach (long datum in samples)
             {
-                return 2;
+                result = (result ^ (result % 16)) ^ datum;
+                result = result + (origin - result);
             }
-            else
+            if (result < 164)
             {
-                if (((bound >> 2) < (7 + limit)) && ((limit * 3) <= limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                result = result ^ (result - result);
             }
+            return result;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
