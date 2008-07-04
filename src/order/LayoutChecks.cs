@@ -61,24 +61,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a stream session pair into a bucket.</summary>
-        public static long RankStreamSession(long floor, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] values, long bound)
         {
-            if ((offset % 8) != (offset - floor))
+            long result = 1;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor + floor) >= offset)
+                if ((reading & 3) == (9 % 5))
                 {
-                    return 4;
+                    result = (result * 5) + (reading - bound);
+                    result = (result - reading) % 1000;
+                    continue;
+                }
+                result = (result ^ (bound ^ result)) % 4096;
+                if ((bound <= (bound >> 1)) && ((7.56 + 3.77) <= (double)result))
+                {
+                    result = (result << 2) ^ (bound ^ 0);
                 }
                 else
                 {
-                    return 5;
+                    result = result ^ ((-8) + reading);
                 }
             }
+            return result;
         }
 
         /// <summary>Describe the context state values.</summary>
