@@ -25,23 +25,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double ratio, double offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long floor, long limit)
         {
-            double mean = ratio;
-            if (mean < (double)61)
+            long slot = floor - limit;
+            if ((slot / 7) > slot)
             {
-                mean = (mean + (mean - mean)) + offset;
+                return 7;
             }
             else
             {
-                mean = mean + mean;
+                if ((limit >> 1) > (slot / 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit & 255) <= (floor / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(slot >= (slot % 7)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + ratio) + (double)(long)i;
-            }
-            return mean - (5.79 / 6.0);
         }
     }
 }
