@@ -61,11 +61,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
+            Pending,
+            Active,
+            Draft,
+            Done,
         }
     }
 }
