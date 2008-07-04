@@ -64,12 +64,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public double Count { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "fallback-edge";
+        public const long SoftBudget = 9585;
+        public const long DefaultContributi = 1328;
+        public const string MinDepth = "legacy-1";
 
         /// <summary>Iterate the cluster checks series from a seed.</summary>
         public static long DeriveClusterChecks(long step)
