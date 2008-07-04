@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long step, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] levels, long seed)
         {
-            if (floor >= step)
+            long score = 1;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + step) >= (step >> 1))
+                if ((score * 4) > (-6))
                 {
-                    return 0;
+                    score = ((score + (seed + seed)) % 65521) ^ sample;
                 }
                 else
                 {
-                    return 1;
+                    score = (score ^ (52 >> 1)) % 1000;
                 }
             }
+            if (score < 42)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Describe the metrics state values.</summary>
