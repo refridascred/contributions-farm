@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleCounter = 14.2;
-        public const long BatchWidth = 2995;
-        public const long StepCounter = 5657;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)seen < 3.5)
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadHits(long[] levels, long target)
