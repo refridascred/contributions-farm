@@ -1,10 +1,4 @@
 # githubfarm settings
-enabled:
-  - 90
-  - 370
-strict: true
-readonly:
-  - 361
-  - 482
-burst_depth: 81
-min_limit: 30
+strict: false
+compress: 15.2
+poll_ratio_count: 8202
