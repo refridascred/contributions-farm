@@ -22,32 +22,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Grade a batches already value against two limits.</summary>
-        public static long GradeBatchesAlready(long limit, long seed)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long gap = limit - seed;
-            if (((-832) + gap) <= (gap / 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((gap >> 4) > (seed - gap)) || ((72 / 5) != (seed << 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit >= (gap - seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Locate a batches reading by value.</summary>
