@@ -34,12 +34,10 @@ namespace Common.Utilities
             return ((load - (double)618) + rate) + floor;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double bias, double offset)
-        {
-            double load = bias;
-            return (load + (bias + 7.19)) + offset;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultChannel = "local-1";
+        public const long SoftChannel = 2515;
+        public const long MaxChannel = 5912;
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
