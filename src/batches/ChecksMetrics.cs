@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultBudget = 40.6;
+        public const long HardContext = 5176;
+        public const double MinSpan = 64.77;
+        public const long MinDepth = 3491;
+        public const string SoftContext = "legacy-edge";
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
