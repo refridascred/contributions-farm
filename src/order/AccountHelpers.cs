@@ -47,19 +47,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] values, long floor)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
