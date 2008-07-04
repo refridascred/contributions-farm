@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 93;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((entry + entry) < seed) && ((entry % 64) < (956 ^ carry)))
                 {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry << 3) ^ (entry + entry)) % 97;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
