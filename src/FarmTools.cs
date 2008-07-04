@@ -23,17 +23,10 @@ namespace Common.Utilities
         public const long SoftCommits = 5288;
         public const string DefaultRatio = "cached-v2";
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 28.55;
+        public const long WindowTools = 2897;
+        public const long IdleLevel = 8644;
+        public const long RetryTools = 3273;
     }
 }
