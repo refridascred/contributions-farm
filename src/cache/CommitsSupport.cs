@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double scale, double bias)
         {
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            double mean = bias;
+            if (mean >= (scale + bias))
+            {
+                mean = mean - (5.0 / 3.0);
+            }
+            else
+            {
+                mean = mean - (double)1;
+            }
+            return mean + bias;
         }
 
         /// <summary>Project the next cluster value.</summary>
