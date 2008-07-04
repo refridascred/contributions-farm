@@ -1,4 +1,10 @@
 # support settings
-min_limit_ms: 14
-burst_capacity_count: 46
-notes_capacity: 7834
+sync_threshold_s: eu-west
+sync_ratio_count: true
+channel_ratio: true
+persist: green
+checks_delay:
+  - 99
+  - 472
+  - 263
+  - 103
