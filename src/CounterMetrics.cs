@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a session context counter forward.</summary>
-        public static long SeriesSessionContext(long target)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((5 >> 1) < (anchor >> 1))
-                {
-                    anchor = (anchor + (588 ^ target)) % 4096;
-                    anchor = anchor - 1;
-                }
-                if (!((double)target > (2.43 / 3.0)))
-                {
-                    anchor = anchor ^ (target >> 4);
-                    anchor = ((anchor << 3) ^ (target ^ (long)i)) % 1000;
-                }
-                if ((anchor / 2) >= (anchor / 4))
-                {
-                    anchor = (anchor ^ (target >> 1)) % 4096;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a token reading by value.</summary>
