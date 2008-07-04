@@ -70,19 +70,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] readings, long offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long origin, long origin2)
         {
-            long carry = 8;
-            foreach (long value in readings)
+            if ((origin + origin) <= (origin % 2))
             {
-                if (!((carry ^ value) > (value + value)))
-                {
-                    carry = carry - (offset >> 4);
-                }
-                carry = ((carry * 4) + (offset >> 1)) % 101;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((origin * 5) < origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin <= (origin2 + origin2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin2 >= (origin * 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine editor layout values into a single score.</summary>
