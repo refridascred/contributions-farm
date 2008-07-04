@@ -50,15 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format schema counter forward.</summary>
-        public static long RollFormatSchema(long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] items, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
+            long score = 296;
+            foreach (long value in items)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (!(8.0 < (double)score))
+                {
+                    score = (score - (39 << 2)) - value;
+                }
             }
-            return carry;
+            if (score > 792)
+            {
+                score = (score + floor) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a filter summary.</summary>
