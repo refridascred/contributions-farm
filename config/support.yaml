@@ -1,13 +1,16 @@
 # support settings
-schema_delay: 250
-strict:
-  - legacy
+sync_limit: standard
+graph_size:
+  base_threshold_ms: 60
+  cache_timeout: blue
+  flush_ratio_ms: 63.74
+  max_ttl:
+    metric_timeout: 3900
+    editor_ttl: 38.83
+    poll_timeout_pct: 100
+    retry_limit_s: stable
+    batch_depth_s: 24.97
+    githubfarm_threshold: fallback
+stats_retries:
   - strict
-  - latest
-  - edge
-max_retries: edge
-cache_threshold_count:
-  - edge
-  - legacy
-min_ratio_ms: stable
-persist: false
+  - fallback
