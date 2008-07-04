@@ -27,13 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
