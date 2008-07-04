@@ -23,22 +23,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] values, long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            long state = 808;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(reading < (6 + step)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state << 3) ^ (step - (-4))) % 255;
-                }
-                if (((double)reading <= (9.83 - 9.15)) && (step > (reading + reading)))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
