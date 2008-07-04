@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const long IdleFactor = 9698;
         public const long BaseSize = 268;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] samples, long offset)
         {
-            Done,
-            Ready,
-            Pending,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
