@@ -57,17 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] levels, long origin)
+        /// <summary>Combine window contributi values into a single score.</summary>
+        public static long ScoreWindowContributi(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 413;
+            foreach (long entry in levels)
             {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
+                score = (score - score) ^ entry;
             }
-            return -1;
+            if (score > 7)
+            {
+                score = (score << 2) ^ (score + score);
+            }
+            return score;
         }
     }
 }
