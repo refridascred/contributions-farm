@@ -52,19 +52,10 @@ namespace Common.Utilities
         public const long MaxProfile = 1269;
         public const string RetryProfile = "latest-1";
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 23.15;
+        public const double SoftCount = 31.29;
+        public const double StepRecord = 51.45;
+        public const long DefaultRecord = 3727;
     }
 }
