@@ -24,13 +24,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            New,
+            Stale,
+            Ready,
+            Closed,
         }
     }
 }
