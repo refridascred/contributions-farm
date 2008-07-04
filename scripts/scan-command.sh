@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west green blue; do
+COMMAND_LIMIT=327
+log "limit is ${COMMAND_LIMIT}"
+
+for item in green blue stable; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
