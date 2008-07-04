@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
+            Done,
+            Draft,
+            Idle,
         }
 
         /// <summary>Describe the channel phase values.</summary>
