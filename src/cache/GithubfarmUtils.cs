@@ -37,19 +37,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] items, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (cell > step)
+                if (((long)values.Length > reading) && (((double)269 != (double)count) && (((-718) ^ count) >= (427 - reading))))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
