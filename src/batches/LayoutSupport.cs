@@ -60,24 +60,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((limit * 4) > total)
-                {
-                    total = total - (limit << 3);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total % 5)) % 4096;
-                    total = (total - (total % 100)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                mix = mix + limit;
+                mix = (mix ^ (limit - limit)) % 1000;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return total;
+            return mix;
         }
     }
 }
