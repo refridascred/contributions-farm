@@ -59,18 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry githubfarm samples are out of range.</summary>
-        public static long CountEntryGithubfarmOutliers(long[] levels, long floor)
+        /// <summary>Measure how many support context samples are out of range.</summary>
+        public static long CountSupportContextOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((63 - seen) >= (entry % 5))
+                if ((tally * 2) <= (tally << 1))
                 {
-                    seen = (seen + 3) - floor;
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
