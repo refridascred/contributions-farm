@@ -16,21 +16,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Compare every pair of payload filter readings.</summary>
-        public static long OverlapPayloadFilterCount(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((1 << 3) < (cell ^ count))
                 {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
