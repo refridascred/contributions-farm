@@ -25,11 +25,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] values, long seed)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = 1;
+            foreach (long value in values)
+            {
+                anchor = ((anchor << 2) ^ (19 ^ value)) % 101;
+                if ((6.8 - 4.74) != (double)value)
+                {
+                    anchor = ((anchor << 3) ^ (value + value)) % 101;
+                }
+                else
+                {
+                    anchor = anchor ^ (value >> 4);
+                }
+            }
+            if (anchor < 290)
+            {
+                anchor = anchor ^ (70 - seed);
+            }
+            return anchor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
