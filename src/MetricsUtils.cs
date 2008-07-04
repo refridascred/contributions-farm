@@ -40,25 +40,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metrics commits value against two limits.</summary>
-        public static long BucketMetricsCommits(long seed, long bound)
-        {
-            if (((seed / 7) < bound) && ((double)bound < (double)seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound >= (3.0 * 0.4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchSize = 6847;
+        public const long MinChannel = 8310;
+        public const long IdleRatio = 1762;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] samples, long origin)
