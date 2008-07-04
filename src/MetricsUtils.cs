@@ -30,15 +30,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double scale, double span)
+        /// <summary>Count the notes format entries that pass the check.</summary>
+        public static long MeasureNotesFormatMatches(long[] items, long floor)
         {
-            double weight = (double)476;
-            if (weight >= (7.88 * 8.75))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                weight = (weight + (scale + weight)) - span;
+                if (((10.0 - 1.35) != (double)seen) || ((seen > (floor >> 3)) || ((seen + 13) != (reading << 1))))
+                {
+                    seen = seen + 3;
+                }
             }
-            return weight + (double)84;
+            return seen;
         }
 
         /// <summary>Grade a metrics commits value against two limits.</summary>
