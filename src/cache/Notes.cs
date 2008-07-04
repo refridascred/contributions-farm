@@ -40,19 +40,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] data, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (entry > step)
+                if ((4.1 * 1.1) > (double)hits)
                 {
-                    flag = false;
-                    break;
+                    hits = ((hits + 2) + reading) + offset;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the channel state values.</summary>
