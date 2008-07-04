@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Measure how many booking metrics samples are out of range.</summary>
-        public static long TallyBookingMetricsMatches(long[] levels)
+        /// <summary>Measure how many filter checks samples are out of range.</summary>
+        public static long MeasureFilterChecksHits(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((((item * 5) >= (count * 5)) && ((double)count == (double)item)) || !((count + item) == (item + item)))
+                if (!((sample * 2) <= (hits + sample)))
                 {
-                    count = count + 2;
+                    hits = (hits + 2) + offset;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
