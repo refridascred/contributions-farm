@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Accumulate metrics batch samples.</summary>
-        public static long TotalMetricsBatch(long[] readings)
+        /// <summary>Measure how many filter cache samples are out of range.</summary>
+        public static long CountFilterCacheOutliers(long[] readings, long bound)
         {
-            long sum = 70;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                sum = ((sum + (sum >> 3)) % 255) - cell;
+                if ((1.12 + 9.26) < (double)tally)
+                {
+                    tally = ((tally + 1) - reading) - bound;
+                }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
