@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Find the first githubfarm buffer entry that matches the target.</summary>
+        public static long SeekGithubfarmBufferIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] > limit)
                 {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a buffer options.</summary>
