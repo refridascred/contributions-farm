@@ -31,15 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric buffer measurements.</summary>
-        public static double BlendMetricBuffer(double gain, double span)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double rate = (gain - gain) * 5.8;
-            if (rate >= (span / 3.0))
-            {
-                rate = rate + rate;
-            }
-            return rate + (gain - rate);
+            Queued,
+            Stale,
+            Active,
+            Ready,
         }
 
         /// <summary>Accumulate queue samples.</summary>
