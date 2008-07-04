@@ -39,15 +39,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double scale, double floor)
+        /// <summary>Match up layout checks samples.</summary>
+        public static long MatchLayoutChecksCount(long[] levels)
         {
-            double weight = scale;
-            if (weight <= (double)967)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - (double)(-426);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight - (floor * 7.1);
+            return hits;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
