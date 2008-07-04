@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((hits - value) >= value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 908;
+        public const string BatchInterval = "stable-v2";
+        public const long StepEditor = 2779;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
