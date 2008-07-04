@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double gain, double span)
+        /// <summary>Combine already githubfarm values into a single score.</summary>
+        public static long TallyAlreadyGithubfarm(long[] data, long offset)
         {
-            double rate = gain - (span / 6.0);
-            return rate - (span / 3.0);
+            long mix = 34;
+            foreach (long cell in data)
+            {
+                mix = mix ^ (cell / 3);
+                if ((offset + (long)data.Length) != (mix - cell))
+                {
+                    mix = (mix + (cell ^ offset)) % 1000;
+                }
+            }
+            if (mix < 20)
+            {
+                mix = ((mix * 2) + (offset - offset)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the counter status values.</summary>
