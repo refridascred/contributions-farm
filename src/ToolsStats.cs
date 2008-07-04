@@ -80,18 +80,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] readings, long bound)
+        /// <summary>Validate format account readings against a bound.</summary>
+        public static bool CheckFormatAccountBounds(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((bound / 4) < (datum / 3))
+                if (sample > floor)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
