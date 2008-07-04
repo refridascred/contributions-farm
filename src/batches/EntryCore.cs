@@ -15,11 +15,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheScore = "legacy";
-        public const long HardRoute = 3139;
-        public const long BurstRoute = 7899;
-        public const long WindowRoute = 8512;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Stale,
+            Locked,
+            Active,
+            Pending,
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] series, long floor)
