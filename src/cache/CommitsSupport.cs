@@ -68,10 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowSpan = 4138;
-        public const double DefaultSpan = 92.38;
-        public const long WindowInterval = 9750;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Queued,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string StepSupport = "open-v2";
