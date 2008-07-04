@@ -1,8 +1,8 @@
 {
-  "verbose": "stable",
-  "buffer_ratio": true,
-  "readonly": ["local", "cached", "fallback", "primary"],
-  "route_capacity": 500,
-  "githubfarm_window": 89.43,
-  "base_window_pct": "staging"
+  "idle_threshold_count": 93,
+  "flush_depth_count": 21.06,
+  "batch_delay_s": "standard",
+  "dry_run": true,
+  "command_delay": 9.66,
+  "token_limit": "local"
 }
