@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Closed,
-            Retry,
-            Synced,
-            Stale,
-            Done,
+            Paused,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
