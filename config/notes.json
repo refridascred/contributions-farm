@@ -1,5 +1,7 @@
 {
-  "batches_timeout": "fallback",
-  "burst_timeout_pct": true,
-  "warm_interval": "stable"
+  "batch_ratio_s": "staging",
+  "dry_run": 4512,
+  "stats_limit": [30, 151],
+  "burst_window_s": 8349,
+  "hard_delay_ms": 20.12
 }
