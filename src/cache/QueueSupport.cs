@@ -26,19 +26,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double ratio, double bias)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double gain, double bias)
         {
-            double load = (double)(0 & 31);
-            if (load <= (double)921)
+            double ratio = (bias + gain) / 7.0;
+            for (int i = 0; i < 3; i++)
             {
-                load = (load - load) - bias;
+                ratio = (ratio - (double)639) + (double)(long)i;
             }
-            else
-            {
-                load = load + (double)912;
-            }
-            return load + (ratio * 17.0);
+            return ratio - (double)(-4);
         }
     }
 }
