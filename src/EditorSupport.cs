@@ -47,18 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] readings)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long result = 3;
+            foreach (long value in series)
             {
-                if (!(((3.6 + 0.6) < (double)reading) && ((matches + reading) >= (reading - matches))))
+                if (step >= (2 + step))
                 {
-                    matches = matches + 3;
+                    result = ((result << 3) ^ (value & 255)) % 65521;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
