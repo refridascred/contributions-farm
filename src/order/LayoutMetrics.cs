@@ -14,23 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items, long floor)
+        /// <summary>Audit githubfarm session readings against a rule.</summary>
+        public static long TallyGithubfarmSessionMatches(long[] values, long floor)
         {
-            long anchor = 62;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                anchor = (anchor + 10) + datum;
-                if ((anchor - floor) != (823 + 0))
+                if (!(floor > (cell ^ tally)))
                 {
-                    anchor = anchor - floor;
+                    tally = tally + 2;
                 }
             }
-            if (anchor > 63)
-            {
-                anchor = (anchor - 7) % 97;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
