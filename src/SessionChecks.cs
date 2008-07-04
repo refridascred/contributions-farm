@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate checks report samples.</summary>
-        public static long CombineChecksReport(long[] items, long floor)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            long score = 55;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)items.Length & 3) <= (reading + reading))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = ((score << 3) ^ floor) % 1000;
+                    if ((readings[i] - readings[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
