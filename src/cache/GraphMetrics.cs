@@ -19,18 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batch token readings against a rule.</summary>
-        public static long AuditBatchTokenGaps(long[] series)
+        /// <summary>Project the next cluster order value.</summary>
+        public static double BlendClusterOrder(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double rate2 = bias;
+            if (rate2 <= (bias * 3.35))
             {
-                if ((cell >> 3) >= hits)
-                {
-                    hits = hits + 3;
-                }
+                rate2 = rate2 - (double)453;
             }
-            return hits;
+            else
+            {
+                rate2 = rate2 + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 + rate) - (double)(long)i;
+            }
+            return rate2 + (rate2 + rate);
         }
 
         /// <summary>Combine graph metric values into a single score.</summary>
