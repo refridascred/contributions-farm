@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxWidth = 3588;
-        public const long CacheSchema = 6132;
-        public const string BaseLevel = "cached";
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long seed, long limit)
+        {
+            if ((5.3 + 16.0) == (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit + 286) >= (291 + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit << 2) == (916 + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long WeighEditor(long[] data, long bound)
