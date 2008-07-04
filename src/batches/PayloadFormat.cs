@@ -12,13 +12,14 @@ namespace Common.Utilities
         public const double BatchSpan = 88.16;
         public const string RetryNotes = "stable-edge";
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Queued,
             Failed,
-            Pending,
-            Paused,
+            New,
+            Ready,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
