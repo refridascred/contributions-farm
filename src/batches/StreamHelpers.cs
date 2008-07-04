@@ -35,26 +35,30 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Combine session context values into a single score.</summary>
+        public static long WeighSessionContext(long[] series, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            long mark = 824;
+            foreach (long item in series)
             {
-                if (!((limit / 6) != (limit & 255)))
+                if (mark <= (limit - item))
                 {
-                    state = state ^ limit;
-                    state = ((state << 3) ^ (30 % 100)) % 4096;
+                    mark = (mark << 2) ^ (2 + mark);
                 }
-                if ((double)63 > 0.3)
+                if ((556 + (long)series.Length) == (limit & 15))
                 {
-                    state = (state * 5) + state;
-                    state = (state << 3) ^ (452 * 4);
-                    continue;
+                    mark = (mark - ((long)series.Length + item)) % 101;
                 }
-                state = ((state * 3) + (long)i) % 65521;
+                if ((limit * 3) == (limit / 2))
+                {
+                    break;
+                }
             }
-            return state;
+            if (mark > 3)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
