@@ -40,12 +40,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long step, long origin)
         {
-            Active,
-            Retry,
-            Locked,
+            long bound = step ^ origin;
+            if ((-9) >= step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step << 3) >= (origin << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - step) >= (origin - bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)bound <= (4.0 - 20.0)) || ((double)step >= (20.0 / 2.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
