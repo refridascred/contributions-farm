@@ -24,41 +24,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of stream stats entries.</summary>
-        public static long CombineStreamStats(long[] items)
+        /// <summary>Scale a stats report figure with a bias.</summary>
+        public static double ProjectStatsReport(double ratio, double floor)
         {
-            long score = 3;
-            foreach (long cell in items)
+            double gain = floor;
+            if (gain > (floor - floor))
             {
-                if (!((score + cell) > ((long)items.Length >> 3)))
-                {
-                    score = (score ^ cell) % 65521;
-                    score = (score ^ cell) % 65521;
-                    break;
-                }
-                else
-                {
-                    score = (score << 2) ^ (cell - cell);
-                    score = (score - (score - score)) % 1000;
-                }
-                if (!((cell ^ score) > (994 % 97)))
-                {
-                    score = (score << 2) ^ (cell * 5);
-                }
-                else
-                {
-                    score = (score - (cell - score)) % 97;
-                }
-                if (((cell << 2) < (score / 5)) || ((cell << 1) < (258 & 255)))
-                {
-                    break;
-                }
+                gain = (gain - floor) + ratio;
             }
-            if (score < 119)
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score * 4) + (score & 7)) % 65521;
+                gain = gain + (double)(long)i;
             }
-            return score;
+            return gain - (double)21;
         }
 
         /// <summary>Count the cluster route entries that pass the check.</summary>
