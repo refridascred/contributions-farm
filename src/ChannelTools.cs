@@ -14,17 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a queue report reading by value.</summary>
-        public static long LookupQueueReportIndex(long[] series, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (series[i] < origin)
+                if (cell < offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
