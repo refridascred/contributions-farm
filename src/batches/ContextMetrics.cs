@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Rank filter context input into a small class.</summary>
+        public static long SortFilterContext(long step, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            long prev = step + bound;
+            if ((step <= (prev & 63)) && ((double)step > (1.0 / 5.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step / 4) > (prev & 63))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of order entries.</summary>
