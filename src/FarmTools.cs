@@ -23,10 +23,19 @@ namespace Common.Utilities
         public const long SoftCommits = 5288;
         public const string DefaultRatio = "cached-v2";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 28.55;
-        public const long WindowTools = 2897;
-        public const long IdleLevel = 8644;
-        public const long RetryTools = 3273;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
