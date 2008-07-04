@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] readings)
         {
-            long total = 86;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((double)361 > (double)total)
+                if (!((1 * 4) >= (214 ^ datum)) && ((927 ^ datum) <= (datum / 7)))
                 {
-                    total = ((total << 3) ^ (71 - cell)) % 65521;
+                    matches = matches + 3;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Find the first queue notes entry that matches the target.</summary>
