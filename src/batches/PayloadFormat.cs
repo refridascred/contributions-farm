@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] samples)
+        /// <summary>Combine cache schema values into a single score.</summary>
+        public static long DigestCacheSchema(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long sum = 5;
+            foreach (long sample in data)
             {
-                if (634 >= (datum + datum))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = sum + sample;
             }
-            return hits;
+            if (sum < 11)
+            {
+                sum = (sum ^ (sum + sum)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
