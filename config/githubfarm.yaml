@@ -1,9 +1,13 @@
 # githubfarm settings
-batch_capacity_s:
-  - legacy
-  - latest
-  - legacy
-compress: 1024
-metric_capacity: 23.73
-base_window: 13.18
-base_depth_pct: 12.24
+dry_run: stable
+base_ttl:
+  commits_ttl: true
+  buffer_threshold:
+    - 373
+    - 178
+    - 278
+  compress: stable
+  route_limit: true
+  persist: true
+retry_interval_count: blue
+flush_ratio: green
