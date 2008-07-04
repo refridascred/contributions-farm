@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings)
         {
-            Pending,
-            Ready,
-            Stale,
-            Idle,
-            Active,
+            long mix = -619;
+            foreach (long value in readings)
+            {
+                if (!(549 <= (value + mix)))
+                {
+                    mix = (mix + (57 << 2)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count the report counter entries that pass the check.</summary>
