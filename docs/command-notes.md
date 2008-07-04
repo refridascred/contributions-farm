@@ -1,11 +1,15 @@
 # Command notes
 
-The cluster report groups every layout by payload.
-Run the layout check before changing any window limits.
-Each record is validated before it reaches the support queue.
+Keep notes and cluster names short and lowercase.
+A token that stays idle for too long is moved to the channel list.
+
+Each graph is validated before it reaches the checks queue.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Use token settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Validate filter input early
-- Review stats limits each release
-- Keep command values small
+- Log every cache change
+- Validate cache input early
+- Review format limits each release
+- Prefer format defaults
