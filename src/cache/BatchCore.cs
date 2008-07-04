@@ -58,14 +58,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Pending,
-            Idle,
-            Stale,
-            Failed,
-            Done,
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
