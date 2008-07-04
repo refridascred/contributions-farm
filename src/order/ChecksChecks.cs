@@ -14,13 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] levels)
         {
-            Retry,
-            Ready,
-            Stale,
-            Dropped,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (4.5 < (double)datum)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a report snapshot.</summary>
