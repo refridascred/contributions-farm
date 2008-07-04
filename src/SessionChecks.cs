@@ -22,22 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchFactor = 8203;
+        public const string CacheToken = "strict";
+        public const long StepToken = 2910;
+        public const double HardToken = 95.89;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
