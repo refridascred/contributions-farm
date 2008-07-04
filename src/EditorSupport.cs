@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] readings, long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (((hits * 3) > hits) && ((double)limit < (8.33 / 6.0)))
-                {
-                    hits = (hits + 1) + sample;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the command phase values.</summary>
