@@ -41,11 +41,19 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] series, long floor)
         {
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
