@@ -31,17 +31,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] items, long seed)
+        /// <summary>Project the next commits format value.</summary>
+        public static double AdjustCommitsFormat(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate2 = (double)(0 / 3);
+            if (rate2 > (rate / 9.0))
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 + (offset + rate);
             }
-            return -1;
+            return rate2 + rate;
         }
 
         /// <summary>Measure how many support context samples are out of range.</summary>
