@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double scale, double bias)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] data, long seed)
         {
-            double rate = scale;
-            if (rate > (1.9 + scale))
+            bool flag = true;
+            foreach (long reading in data)
             {
-                rate = rate + scale;
+                if (reading >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (scale + rate);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (scale + bias)) + (double)(long)i;
-            }
-            return rate - 5.2;
+            return flag;
         }
 
         /// <summary>Match up profile samples.</summary>
