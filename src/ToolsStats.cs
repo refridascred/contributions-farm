@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Check that every batches farm entry stays within the limit.</summary>
+        public static bool GuardBatchesFarmRange(long[] samples, long limit)
         {
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
