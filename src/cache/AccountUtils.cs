@@ -30,15 +30,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double scale, double span)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long floor)
         {
-            double gain = (span / 8.0) * 16.0;
-            if (gain > span)
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
             {
-                gain = (gain - (double)45) - scale;
+                if ((double)607 != (double)sum)
+                {
+                    sum = sum + (sum * 4);
+                }
+                sum = (sum + (floor - 8)) % 255;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return gain + span;
+            return sum;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
