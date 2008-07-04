@@ -22,10 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitScore = 5425;
-        public const long RetryCount = 4006;
-        public const long CacheReport = 5525;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
