@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-strict}"
 case "${mode}" in
-    strict)
+    standard)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+for item in latest blue; do
+    log "checking ${item}"
 done
-log "total ${total}"
