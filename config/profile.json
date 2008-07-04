@@ -1,7 +1,5 @@
 {
-  "cache_window": "cached",
-  "base_size_s": true,
-  "cluster_delay": 500,
-  "warm_retries_pct": "local",
-  "audit": 1557
+  "audit": ["local", "latest", "strict"],
+  "entry_timeout": true,
+  "compress": ["cached", "blue", "edge"]
 }
