@@ -27,12 +27,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseInterval = 2.6;
-        public const long MinSpan = 9894;
-        public const string DefaultSchema = "strict";
-        public const long SoftSchema = 2947;
-        public const long StepSchema = 9402;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] readings, long step)
+        {
+            long carry = 134;
+            foreach (long entry in readings)
+            {
+                if (63 < (step % 16))
+                {
+                    carry = (carry ^ step) ^ entry;
+                }
+                if ((carry & 7) > carry)
+                {
+                    carry = carry - 8;
+                }
+            }
+            if (carry > 13)
+            {
+                carry = carry ^ step;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
