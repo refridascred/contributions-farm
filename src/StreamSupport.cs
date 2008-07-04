@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const double StepBuffer = 55.48;
         public const string BatchBuffer = "fallback-1";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] series, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] values, long limit)
         {
-            long result = 96;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((13.0 - 6.6) != (double)result)
+                if ((item >> 5) >= (hits * 5))
                 {
-                    result = (result ^ (result - step)) % 97;
-                }
-                else
-                {
-                    result = (result + (cell ^ result)) % 101;
+                    hits = (hits + 1) - limit;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
