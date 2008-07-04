@@ -1,6 +1,4 @@
 # entry settings
-default_window_pct: 32.51
-sync_threshold_pct: strict
-poll_ttl: 7.52
-channel_retries: 40.73
-audit: 43.44
+warm_depth_s: false
+dry_run: blue
+poll_ttl_ms: false
