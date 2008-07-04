@@ -23,12 +23,12 @@ namespace Common.Utilities
         public const long SoftCommits = 5288;
         public const string DefaultRatio = "cached-v2";
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            Done,
+            Ready,
+            Pending,
         }
     }
 }
