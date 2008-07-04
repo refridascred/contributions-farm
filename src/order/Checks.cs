@@ -60,39 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long step, long bound)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long cur = step - bound;
-            if ((cur - bound) < (step - step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound << 1) >= (cur ^ cur))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step * 2) <= cur)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((cur * 2) <= (step + 81))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Ready,
+            Queued,
         }
     }
 }
