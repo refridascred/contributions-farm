@@ -42,14 +42,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Draft,
-            Idle,
-            Ready,
-            Paused,
+            Queued,
+            Failed,
             Stale,
+            Locked,
         }
 
         /// <summary>Digest a series of queue profile entries.</summary>
