@@ -47,22 +47,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] items, long floor)
+        /// <summary>Blend two route report measurements.</summary>
+        public static double ProjectRouteReport(double gain, double bias)
         {
-            long score = 296;
-            foreach (long value in items)
+            double mean = (bias / 9.0) * 8.9;
+            if (mean <= mean)
             {
-                if (!(8.0 < (double)score))
-                {
-                    score = (score - (39 << 2)) - value;
-                }
+                mean = mean - (mean / 8.0);
             }
-            if (score > 792)
+            else
             {
-                score = (score + floor) % 4096;
+                mean = mean + mean;
             }
-            return score % 1000;
+            return mean + (bias + gain);
         }
 
         /// <summary>Hold a filter summary.</summary>
