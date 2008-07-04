@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] readings, long origin)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] data, long bound)
         {
-            long score = 438;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0 ^ 0) < (1 - origin))
+                if ((data[i] >= bound) && ((data[i] % 2) == 0))
                 {
-                    score = ((score + (score >> 2)) % 4096) ^ sample;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
