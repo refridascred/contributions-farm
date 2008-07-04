@@ -19,15 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double ratio, double offset)
+        /// <summary>Digest a series of route command entries.</summary>
+        public static long TallyRouteCommand(long[] items)
         {
-            double gain = (double)(257 + 0);
-            if (gain <= (ratio * 2.0))
+            long score = 81;
+            foreach (long value in items)
             {
-                gain = (gain - (double)81) - offset;
+                if ((value - value) > (score + score))
+                {
+                    score = (score + score) % 65521;
+                    continue;
+                }
+                if ((value + 446) == (score >> 3))
+                {
+                    score = score + (score * 4);
+                }
             }
-            return gain - ratio;
+            return score % 97;
         }
 
         /// <summary>Hold a report snapshot.</summary>
