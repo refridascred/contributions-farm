@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Audit stats editor readings against a rule.</summary>
+        public static long MeasureStatsEditorOutliers(long[] samples, long target)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (!!((1.96 * 3.31) > (double)cell))
+                {
+                    seen = (seen + 1) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the record mode values.</summary>
