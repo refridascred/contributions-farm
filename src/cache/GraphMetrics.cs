@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] levels, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long state = 68;
+            foreach (long entry in data)
             {
-                if (sample > step)
+                if ((5.7 / 5.0) < (double)entry)
                 {
-                    ok = false;
-                    break;
+                    state = ((state * 4) + (long)data.Length) % 101;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
