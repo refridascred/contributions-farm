@@ -52,13 +52,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Queued,
-            Stale,
-            Ready,
-            Pending,
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
