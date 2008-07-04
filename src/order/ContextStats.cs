@@ -53,12 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Paused,
-            Active,
-            New,
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
