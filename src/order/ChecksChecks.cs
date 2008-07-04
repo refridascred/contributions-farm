@@ -33,19 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] readings, long offset)
+        /// <summary>Match up graph profile samples.</summary>
+        public static long PairGraphProfileCount(long[] series)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item <= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
