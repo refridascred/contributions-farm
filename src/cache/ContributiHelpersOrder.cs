@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] levels, long seed)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long step, long limit)
         {
-            long score = 1;
-            foreach (long sample in levels)
+            if (((-957) * 5) >= (limit & 31))
             {
-                if ((score * 4) > (-6))
+                return 2;
+            }
+            else
+            {
+                if ((step << 1) != (step & 255))
                 {
-                    score = ((score + (seed + seed)) % 65521) ^ sample;
+                    return 5;
                 }
                 else
                 {
-                    score = (score ^ (52 >> 1)) % 1000;
+                    if ((step / 2) > (step << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (score < 42)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
