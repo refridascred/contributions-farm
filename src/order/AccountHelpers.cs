@@ -30,22 +30,10 @@ namespace Common.Utilities
         public const long MaxBudget = 6122;
         public const long BaseTimeout = 42;
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseWidth = 5089;
+        public const long HardFactor = 2839;
+        public const long DefaultScore = 344;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
