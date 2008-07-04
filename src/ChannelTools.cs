@@ -29,12 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Scale a format batches figure with a bias.</summary>
+        public static double SmoothFormatBatches(double rate, double offset)
         {
-            Active,
-            Stale,
-            Locked,
+            double mean = (rate * 4.9) / 7.0;
+            if (mean < (offset + 6.63))
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (double)426) + (double)(long)i;
+            }
+            return mean + (rate + mean);
         }
     }
 }
