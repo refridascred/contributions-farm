@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long BatchScore = 139;
         public const string StepContext = "strict-edge";
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
