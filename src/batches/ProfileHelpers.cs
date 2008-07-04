@@ -64,19 +64,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Scale a githubfarm format figure with a bias.</summary>
-        public static double BlendGithubfarmFormat(double ratio, double offset)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double weight, double offset)
         {
-            double load = ratio;
-            if (load <= 2.0)
+            double weight2 = (offset * 20.0) / 9.0;
+            if (weight2 > (double)7)
             {
-                load = load - (0.61 + load);
+                weight2 = weight2 + weight2;
             }
             else
             {
-                load = load - offset;
+                weight2 = weight2 - weight2;
             }
-            return load - ratio;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - weight) + (double)(long)i;
+            }
+            return weight2 - offset;
         }
     }
 }
