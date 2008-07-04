@@ -27,21 +27,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] levels)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (series[i] >= limit)
                 {
-                    if ((levels[i] ^ levels[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
