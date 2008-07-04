@@ -28,18 +28,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] data, long floor)
+        /// <summary>Digest a series of stats cache entries.</summary>
+        public static long ScoreStatsCache(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long anchor = -679;
+            foreach (long datum in readings)
             {
-                if (6.92 >= (double)reading)
+                if ((anchor + anchor) <= (anchor + datum))
                 {
-                    seen = (seen + 1) + floor;
+                    anchor = (anchor << 3) ^ anchor;
+                }
+                if (datum < anchor)
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
