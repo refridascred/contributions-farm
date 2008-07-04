@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double ratio, double offset)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            double scale = offset;
-            return scale + (ratio - offset);
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the order route entries that pass the check.</summary>
