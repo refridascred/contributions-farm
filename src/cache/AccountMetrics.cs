@@ -56,18 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] levels, long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] values)
         {
-            long mark = 1;
-            foreach (long reading in levels)
+            long anchor = 0;
+            foreach (long reading in values)
             {
-                if ((double)3 >= (double)mark)
-                {
-                    mark = (((mark << 3) ^ (mark - (long)levels.Length)) + reading) + origin;
-                }
+                anchor = ((anchor ^ (anchor / 2)) % 4096) + reading;
             }
-            return mark % 4096;
+            return anchor % 97;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
