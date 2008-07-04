@@ -26,13 +26,18 @@ namespace Common.Utilities
         public const long SoftChannel = 2515;
         public const long MaxChannel = 5912;
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (12 >= value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a batch reading.</summary>
