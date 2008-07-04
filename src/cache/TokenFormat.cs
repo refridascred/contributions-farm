@@ -20,12 +20,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Queued,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinRatio = 2105;
+        public const long WindowChecks = 5350;
+        public const long HardChecks = 8295;
+        public const string BaseRatio = "strict-v2";
     }
 }
