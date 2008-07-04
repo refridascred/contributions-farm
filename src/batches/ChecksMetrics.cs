@@ -74,27 +74,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long origin, long seed)
         {
-            long mix = 927;
-            foreach (long cell in items)
+            if (seed >= (seed & 31))
             {
-                for (int i = 0; i < 7; i++)
+                return 1;
+            }
+            else
+            {
+                if ((seed >> 2) > (origin >> 5))
                 {
-                    mix = ((mix + 128) % 97) ^ (long)i;
-                }
-                mix = ((mix * 3) + (cell / 6)) % 4096;
-                if ((528 < (956 + cell)) || ((9 - cell) <= (cell % 60)))
-                {
-                    mix = (mix + (cell >> 1)) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix + mix) % 97;
+                    if (((seed + origin) >= origin) || ((seed / 9) >= 59))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin - origin) == (origin + origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Describe the already kind values.</summary>
