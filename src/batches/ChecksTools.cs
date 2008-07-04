@@ -48,12 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxCount = 2486;
+        public const long HardMetrics = 6115;
+        public const long HardInterval = 6009;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
