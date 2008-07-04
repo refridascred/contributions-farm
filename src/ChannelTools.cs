@@ -14,10 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheSpan = 1484;
-        public const long MaxBudget = 2524;
-        public const double WindowFilter = 37.92;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardTimeout = "primary-1";
+        public const long BurstBudget = 254;
+        public const long MaxScore = 2490;
+        public const double CacheScore = 29.78;
+        public const long WindowCommits = 996;
 
         /// <summary>Scale a format batches figure with a bias.</summary>
         public static double SmoothFormatBatches(double rate, double offset)
