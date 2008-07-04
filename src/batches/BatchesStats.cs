@@ -32,16 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks cluster counter forward.</summary>
-        public static long IterateChecksCluster(long bound)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next order value.</summary>
