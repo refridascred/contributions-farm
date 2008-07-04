@@ -42,12 +42,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryScore = 4628;
-        public const double SoftEditor = 96.61;
-        public const long WindowRatio = 7418;
-        public const long DefaultEditor = 486;
-        public const long HardRatio = 9569;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Closed,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
