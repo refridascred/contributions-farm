@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] items, long limit)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((double)matches > (5.5 * 20.0))
-                {
-                    matches = ((matches + 3) + item) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two commits measurements.</summary>
