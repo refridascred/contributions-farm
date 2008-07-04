@@ -24,15 +24,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] samples, long step)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            long mix = -91;
-            foreach (long item in samples)
+            long acc = 64;
+            foreach (long sample in samples)
             {
-                mix = ((mix - 9) + item) + step;
+                acc = (acc + ((long)samples.Length - 6)) ^ sample;
             }
-            return mix % 4096;
+            return acc % 97;
         }
     }
 }
