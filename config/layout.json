@@ -1,7 +1,13 @@
 {
-  "poll_ttl_ms": false,
-  "flush_capacity": 0.68,
-  "editor_threshold": false,
-  "format_threshold": 3375,
-  "warm_timeout_pct": true
+  "flush_size_pct": 8058,
+  "flush_window": {
+    "max_threshold_pct": 60,
+    "audit": "edge",
+    "retry_window": "strict",
+    "context_depth": 864,
+    "window_interval": [406, 29, 305]
+  },
+  "batch_capacity": 26,
+  "flush_retries": true,
+  "dry_run": false
 }
