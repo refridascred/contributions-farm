@@ -55,11 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long seed)
         {
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
