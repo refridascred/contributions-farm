@@ -25,11 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowInterval = "standard-v2";
-        public const double MinContext = 29.43;
-        public const long SoftContext = 5633;
-        public const long HardCount = 5585;
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double ratio, double offset)
+        {
+            double drift = (double)(910 / 7);
+            return (drift - (ratio * 5.6)) + offset;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphHits(long[] items)
