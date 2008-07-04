@@ -77,17 +77,15 @@ namespace Common.Utilities
             return load - (span / 6.0);
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] series, long offset)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
     }
 }
