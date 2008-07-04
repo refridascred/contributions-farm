@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Grade a session context value against two limits.</summary>
+        public static long ClassifySessionContext(long floor, long step)
         {
-            Closed,
-            Synced,
-            Idle,
-            Locked,
-            Done,
+            if ((step >> 3) >= step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step << 2) < step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((floor * 5) > (floor + 111)) && ((step + floor) > floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two stream measurements.</summary>
