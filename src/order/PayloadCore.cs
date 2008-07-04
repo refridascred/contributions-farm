@@ -12,25 +12,13 @@ namespace Common.Utilities
         public const long CacheSize = 7445;
         public const long LimitWindow = 1819;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)bound > (20.0 - 5.01))
-                {
-                    anchor = anchor ^ (bound % 100);
-                    break;
-                }
-                else
-                {
-                    anchor = anchor + (anchor + (long)i);
-                }
-                anchor = ((anchor * 4) + (428 / 7)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Idle,
+            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Iterate the counter metric series from a seed.</summary>
