@@ -42,17 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] items, long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Active,
+            New,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
