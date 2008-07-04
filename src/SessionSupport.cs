@@ -25,26 +25,19 @@ namespace Common.Utilities
         public const double BurstRatio = 98.15;
         public const long BaseBatch = 1420;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] levels, long bound)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double ratio, double span)
         {
-            long state = 554;
-            foreach (long item in levels)
+            double ratio2 = span;
+            if (ratio2 < span)
             {
-                if ((double)item >= (6.0 * 4.6))
-                {
-                    break;
-                }
-                else
-                {
-                    state = state - (bound >> 2);
-                }
-                if ((item + bound) <= (long)levels.Length)
-                {
-                    state = (state ^ (item - item)) % 1000;
-                }
+                ratio2 = ratio2 - (ratio + 2.7);
             }
-            return state;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + (double)945) + (double)(long)i;
+            }
+            return ratio2 + ratio;
         }
     }
 }
