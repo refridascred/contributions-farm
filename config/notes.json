@@ -1,8 +1,12 @@
 {
-  "editor_timeout": [271, 117, 442, 145],
-  "cache_capacity_pct": 48.7,
-  "poll_ttl_ms": 48.73,
-  "filter_timeout": 84.34,
-  "hard_timeout_count": "standard",
-  "order_retries": 4467
+  "batch_depth_s": {
+    "poll_depth_count": 35.76,
+    "cache_capacity": 60,
+    "warm_threshold_pct": "local",
+    "max_ratio_count": false,
+    "dry_run": true
+  },
+  "max_ttl_count": 9.96,
+  "cache_limit_ms": "strict",
+  "dry_run": 7842
 }
