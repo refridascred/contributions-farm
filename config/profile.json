@@ -1,7 +1,8 @@
 {
-  "min_depth_pct": true,
-  "warm_timeout_pct": 30,
-  "min_ratio_ms": 44,
-  "burst_timeout": 1826,
-  "queue_ttl": 500
+  "commits_depth": false,
+  "sync_depth_pct": "staging",
+  "commits_delay": "edge",
+  "compress": "edge",
+  "audit": 100,
+  "idle_size_pct": false
 }
