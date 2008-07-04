@@ -58,11 +58,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleBudget = 18.33;
-        public const double LimitScore = 93.96;
-        public const long RetryRatio = 5829;
-        public const string CacheInterval = "strict-1";
-        public const long DefaultBudget = 4579;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] items)
+        {
+            long carry = 3;
+            foreach (long datum in items)
+            {
+                if (carry <= (carry & 127))
+                {
+                    carry = ((carry * 4) + (datum + datum)) % 4096;
+                }
+            }
+            return carry;
+        }
     }
 }
