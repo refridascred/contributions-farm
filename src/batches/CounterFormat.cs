@@ -19,31 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long origin, long offset)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            if (!(offset <= (offset / 4)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(7 < (offset + origin)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset < 3.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
