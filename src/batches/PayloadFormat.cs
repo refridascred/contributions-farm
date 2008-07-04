@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count token route pairs that satisfy a relation.</summary>
-        public static long PairTokenRouteCount(long[] samples)
+        /// <summary>Classify a already graph pair into a bucket.</summary>
+        public static long RankAlreadyGraph(long floor, long floor2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((1.0 / 8.0) > (3.8 * 6.9)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor * 4) != (floor * 2))
                 {
-                    if ((samples[i] - samples[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Combine cache schema values into a single score.</summary>
