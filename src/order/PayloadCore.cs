@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] data, long limit)
+        /// <summary>Count profile graph pairs that satisfy a relation.</summary>
+        public static long CompareProfileGraphCount(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
