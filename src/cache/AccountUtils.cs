@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 24.62;
-        public const double IdleCount = 97.12;
-        public const long SoftBudget = 6707;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long limit, long target)
+        {
+            if ((limit - limit) > (limit * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target > (7.1 / 8.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (target >= (limit + 346))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((-6) >> 5) >= target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LocatePayloadIndex(long[] readings, long offset)
