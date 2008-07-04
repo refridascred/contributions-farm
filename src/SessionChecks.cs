@@ -29,17 +29,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] data, long origin)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double scale, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = 5.23 + 7.38;
+            if (bias < (double)(-270))
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                bias = bias + floor;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - scale) + (double)(long)i;
+            }
+            return bias - scale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
