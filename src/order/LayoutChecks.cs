@@ -60,18 +60,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] levels, long limit)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (item > (item * 3))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
