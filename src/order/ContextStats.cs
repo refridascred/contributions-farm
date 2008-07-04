@@ -70,17 +70,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] items, long step)
+        /// <summary>Digest a series of format stats entries.</summary>
+        public static long CombineFormatStats(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 59;
+            foreach (long reading in values)
             {
-                if (items[i] <= step)
+                if (state >= (state >> 1))
                 {
-                    return (long)i;
+                    state = (((state << 3) ^ (state + 21)) % 255) + reading;
                 }
             }
-            return -1;
+            return state % 97;
         }
     }
 }
