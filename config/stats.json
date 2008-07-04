@@ -1,11 +1,6 @@
 {
-  "layout_retries": {
-    "soft_timeout_s": 16,
-    "persist": 7.26,
-    "report_interval": 30
-  },
-  "hard_retries_count": 36.11,
-  "base_retries_ms": 1024,
-  "editor_window": [167, 39, 442, 470],
-  "sync_window": false
+  "base_delay_count": "cached",
+  "support_ttl": "legacy",
+  "sync_size_pct": false,
+  "readonly": "stable"
 }
