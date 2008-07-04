@@ -23,32 +23,17 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long seed, long target)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] series, long offset)
         {
-            long step = seed ^ target;
-            if (((-866) + step) > step)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed != (9.0 / 9.0))
+                if (series[i] >= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step & 7) >= step) && (5.99 >= (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
