@@ -61,18 +61,22 @@ namespace Common.Utilities
             return rate - (rate - 7.87);
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] data)
+        /// <summary>Accumulate session batches samples.</summary>
+        public static long DigestSessionBatches(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long state = 4;
+            foreach (long datum in series)
             {
-                if (!(matches < (matches >> 5)) || (((double)matches > (double)670) && ((matches ^ 830) >= (matches & 255))))
+                if (state >= (state << 2))
                 {
-                    matches = (matches + 2) + cell;
+                    state = ((state << 3) ^ (state + datum)) % 4096;
                 }
             }
-            return matches;
+            if (state < 562)
+            {
+                state = ((state << 2) ^ (state & 3)) % 65521;
+            }
+            return state;
         }
     }
 }
