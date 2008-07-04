@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long bound, long offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            long delta = bound - offset;
-            if (((delta & 15) < offset) && ((double)bound != (4.0 + 9.93)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset >= (offset + bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound & 7) == (bound * 4))
+                    if ((levels[i] + levels[j]) > 13)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine support values into a single score.</summary>
