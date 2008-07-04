@@ -36,18 +36,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] levels, long origin)
+        /// <summary>Accumulate session tools samples.</summary>
+        public static long ScoreSessionTools(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long carry = 355;
+            foreach (long value in items)
             {
-                if ((double)hits >= (double)(-73))
+                if (value > (value % 2))
                 {
-                    hits = ((hits + 3) + reading) + origin;
+                    carry = ((carry << 3) ^ limit) % 101;
+                }
+                else
+                {
+                    carry = carry - (limit - carry);
+                }
+                if ((706 % 60) <= (value + 152))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
