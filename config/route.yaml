@@ -1,19 +1,5 @@
 # route settings
-hard_depth_pct:
-  soft_size_ms: eu-west
-  default_delay_count:
-    - 294
-    - 253
-  context_retries: 25.42
-  soft_timeout_count:
-    - fallback
-    - strict
-commits_retries:
-  already_depth: standard
-  soft_limit_s: 3072
-  flush_depth_ms: 5523
-  verbose: open
-soft_retries_ms: 8683
-base_retries_pct: blue
-poll_timeout_count: blue
-flush_limit_s: false
+queue_delay: strict
+batch_ttl_count: 60
+default_threshold: fallback
+retry_timeout_pct: 8389
