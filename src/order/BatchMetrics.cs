@@ -80,22 +80,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] samples)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(entry >= seen) && ((entry ^ seen) != (seen - seen)))
+                if (samples[i] == step)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
