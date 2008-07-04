@@ -16,31 +16,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a tools record pair into a bucket.</summary>
-        public static long ClassifyToolsRecord(long offset, long bound)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            if (offset < (bound << 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((36 << 2) >= (bound >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)917 <= (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Done,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define token limits and defaults.</summary>
