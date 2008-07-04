@@ -1,5 +1,21 @@
 {
-  "audit": ["local", "latest", "strict"],
-  "entry_timeout": true,
-  "compress": ["cached", "blue", "edge"]
+  "batch_limit_count": true,
+  "readonly": 8328,
+  "sync_ratio": 9265,
+  "hard_threshold_pct": 94.55,
+  "verbose": {
+    "base_delay": 68.14,
+    "poll_threshold": {
+      "poll_size_ms": [41, 494, 476, 2],
+      "sync_depth": "primary",
+      "cache_size_count": "stable",
+      "base_ratio": 4830,
+      "cache_timeout_s": 83.0
+    },
+    "warm_window_s": true,
+    "format_ratio": [229, 222, 365, 97],
+    "token_ratio": false,
+    "audit": 250
+  },
+  "burst_depth_pct": 968
 }
