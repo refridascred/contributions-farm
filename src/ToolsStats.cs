@@ -23,35 +23,34 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long limit, long bound)
+        /// <summary>Classify a profile support pair into a bucket.</summary>
+        public static long RankProfileSupport(long step, long limit)
         {
-            long offset = limit - bound;
-            if (146 >= (bound >> 1))
+            if ((step ^ 55) >= (limit + limit))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((3 - offset) <= 7)
+                if ((limit * 4) <= (limit / 6))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if ((offset >> 1) == (29 >> 3))
+                    if (109 >= (step * 2))
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        if ((offset - 2) < ((-5) + 0))
+                        if ((3.0 + 1.0) != (double)step)
                         {
-                            return 6;
+                            return 2;
                         }
                         else
                         {
-                            return 0;
+                            return 4;
                         }
                     }
                 }
