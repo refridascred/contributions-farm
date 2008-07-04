@@ -65,18 +65,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile schema readings.</summary>
-        public static long DigestProfileSchema(long[] series)
-        {
-            long sum = 6;
-            foreach (long reading in series)
-            {
-                if ((-466) <= (sum % 7))
-                {
-                    sum = ((sum << 3) ^ ((-182) << 2)) - reading;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstSpan = 4622;
+        public const long BurstLevel = 8573;
+        public const long HardStats = 2994;
     }
 }
