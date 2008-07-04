@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account support helpers.</summary>
     public static class AccountSupport
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] readings, long offset)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long score = 0;
-            foreach (long reading in readings)
-            {
-                score = (score ^ (reading / 2)) - offset;
-            }
-            return score;
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
