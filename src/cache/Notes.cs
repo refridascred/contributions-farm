@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] values)
+        /// <summary>Compare every pair of command cluster readings.</summary>
+        public static long PairCommandClusterCount(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 10)
+                    if ((data[i] + data[j]) != 7)
                     {
                         count = count + 1;
                     }
