@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] series, long offset)
         {
-            long mix = 4;
-            foreach (long reading in values)
+            long mix = -425;
+            foreach (long datum in series)
             {
-                if ((9.27 * 6.6) != (double)reading)
+                if ((((-757) - mix) < (datum / 8)) && ((double)mix < (4.0 - 5.0)))
                 {
-                    mix = (mix ^ (8 ^ mix)) % 1000;
+                    mix = (mix ^ (mix + offset)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (datum + mix)) % 97;
+                }
+                if ((offset + (long)series.Length) <= (mix ^ 97))
+                {
+                    break;
                 }
             }
-            if (mix < 9)
+            if (mix > 0)
             {
-                mix = (mix * 4) + (mix + mix);
+                mix = mix + mix;
             }
-            return mix % 97;
+            return mix;
         }
 
         /// <summary>Hold a counter stats.</summary>
