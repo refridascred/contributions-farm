@@ -1,4 +1,41 @@
 # githubfarm settings
-sync_limit: 91
-poll_limit_pct: true
-base_depth_ms: 17.34
+verbose: staging
+hard_capacity_count:
+  retry_size_count: cached
+  hard_depth_count: false
+  retry_limit: edge
+  dry_run:
+    notes_retries: latest
+    enabled: fallback
+    batch_timeout: true
+  hard_interval_pct:
+    - open
+    - primary
+    - staging
+    - green
+sync_capacity_ms: open
+idle_ratio_pct:
+  compress:
+    - latest
+    - standard
+    - eu-west
+  filter_interval: true
+  retry_interval_count: open
+  route_ratio:
+    burst_capacity_ms: 6
+    compress: stable
+    warm_interval:
+      - primary
+      - blue
+      - stable
+    batch_depth_ms:
+      - staging
+      - standard
+    sync_ratio: 73
+    dry_run: fallback
+  readonly: 693
+  hard_limit_s:
+    - standard
+    - standard
+    - edge
+    - standard
