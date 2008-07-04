@@ -35,23 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long limit)
         {
-            long state = 20;
-            foreach (long item in samples)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                state = ((state << 2) ^ item) % 65521;
-                if (((state + item) < item) || ((item - item) > state))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    state = ((state << 3) ^ (item >> 2)) % 255;
+                    sum = ((sum - (limit + limit)) % 4096) - (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            if (state < 20)
-            {
-                state = (state ^ (state - state)) % 255;
-            }
-            return state;
+            return sum;
         }
     }
 }
