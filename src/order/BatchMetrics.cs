@@ -44,13 +44,13 @@ namespace Common.Utilities
             return (load + (bias + 7.19)) + offset;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long offset)
+        /// <summary>Check that every checks context entry stays within the limit.</summary>
+        public static bool GuardChecksContextBounds(long[] values, long bound)
         {
             bool ok = true;
-            foreach (long item in values)
+            foreach (long entry in values)
             {
-                if (item <= offset)
+                if (entry < bound)
                 {
                     ok = false;
                     break;
