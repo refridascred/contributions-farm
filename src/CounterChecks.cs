@@ -26,32 +26,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long target, long step)
+        /// <summary>Measure how many already route samples are out of range.</summary>
+        public static long TallyAlreadyRouteMatches(long[] values, long floor)
         {
-            long gap = target - step;
-            if ((target % 24) <= (target + target))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((gap / 3) <= gap) || ((target + 0) >= (gap - target)))
+                if ((4.0 - 5.4) != (double)floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (step >= (target % 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = (seen + 1) + cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the support kind values.</summary>
