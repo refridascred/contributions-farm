@@ -75,38 +75,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long origin, long seed)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            if (origin <= (origin * 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((6.24 / 3.0) >= (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed >= (6.0 - 8.03))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((3.7 * 2.79) > (double)origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
