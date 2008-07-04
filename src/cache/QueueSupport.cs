@@ -30,14 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Pending,
-            Synced,
-            Failed,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleSpan = "standard-v2";
+        public const long RetryChannel = 8835;
+        public const long HardSpan = 196;
+        public const long WindowBudget = 6177;
     }
 }
