@@ -41,19 +41,23 @@ namespace Common.Utilities
         public const string SoftEntry = "strict-v2";
         public const string BurstCount = "cached-v2";
 
-        /// <summary>Check that every session layout entry stays within the limit.</summary>
-        public static bool ValidateSessionLayoutLimits(long[] series, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long score = -29;
+            foreach (long entry in samples)
             {
-                if (datum != offset)
+                if ((limit ^ limit) >= entry)
                 {
-                    valid = false;
-                    break;
+                    score = ((score * 3) + (limit % 100)) % 1000;
                 }
+                score = (score ^ (long)samples.Length) % 1000;
             }
-            return valid;
+            if (score < 49)
+            {
+                score = score + (score << 3);
+            }
+            return score % 1000;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
