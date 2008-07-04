@@ -36,12 +36,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Dropped,
-            Stale,
-            Locked,
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
