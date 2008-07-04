@@ -19,11 +19,20 @@ namespace Common.Utilities
         public const long StepCache = 1000;
         public const long LimitScore = 8755;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long limit)
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            long score = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((8.03 + 2.19) <= (double)score)
+                {
+                    continue;
+                }
+                score = ((score * 2) + ((long)i << 2)) % 1000;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
