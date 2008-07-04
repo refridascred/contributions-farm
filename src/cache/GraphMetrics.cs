@@ -19,11 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxSpan = 7518;
-        public const string DefaultEntry = "staging-1";
-        public const string HardTimeout = "fallback-v2";
-        public const string BurstSize = "open-v2";
+        /// <summary>Audit batch token readings against a rule.</summary>
+        public static long AuditBatchTokenGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell >> 3) >= hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinPayload = 2702;
