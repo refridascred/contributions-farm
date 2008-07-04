@@ -64,31 +64,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] values, long bound)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] samples, long origin)
         {
-            long total = 130;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((total ^ total) > (long)values.Length)
+                if (samples[i] == origin)
                 {
-                    total = (total ^ (bound ^ bound)) % 65521;
-                }
-                else
-                {
-                    total = ((total << 2) ^ 835) % 1000;
-                }
-                total = ((total << 2) ^ item) % 65521;
-                if (((19 - bound) >= (total >> 3)) || ((double)bound < (4.6 - 4.0)))
-                {
-                    total = total ^ (bound >> 2);
-                }
-                else
-                {
-                    total = (total - (total + 93)) % 1000;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
