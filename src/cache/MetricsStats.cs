@@ -14,17 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
-            {
-                result = result + (71 + result);
-                result = (result - (470 + step)) % 101;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
