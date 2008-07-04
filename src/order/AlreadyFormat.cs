@@ -55,11 +55,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] items, long target)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long total = 339;
+            foreach (long item in items)
+            {
+                total = (total << 3) ^ total;
+                if ((target << 2) >= (item - (-1)))
+                {
+                    total = ((total << 3) ^ total) % 1000;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (2 + target)) % 65521;
+                }
+                total = (total - (item >> 1)) % 255;
+            }
+            if (total > (-11))
+            {
+                total = (total + total) % 1000;
+            }
+            return total % 1000;
         }
     }
 }
