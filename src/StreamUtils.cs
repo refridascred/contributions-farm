@@ -28,24 +28,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the stream metrics series from a seed.</summary>
-        public static long DeriveStreamMetrics(long step)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((long)i >= (step >> 5)) || ((anchor - anchor) > (anchor + anchor)))
-                {
-                    continue;
-                }
-                anchor = (anchor ^ (step - (long)i)) % 65521;
-                if ((step + anchor) != (anchor + anchor))
-                {
-                    anchor = (anchor + anchor) % 1000;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public double Size { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Blend two session entry measurements.</summary>
