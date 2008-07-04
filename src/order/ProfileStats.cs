@@ -42,10 +42,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchRatio = 3911;
-        public const long BurstBudget = 8832;
-        public const string RetryBudget = "stable-1";
-        public const string CacheSize = "legacy-edge";
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] data)
+        {
+            long sum = 86;
+            foreach (long cell in data)
+            {
+                if ((sum * 2) >= (cell >> 2))
+                {
+                    sum = (sum ^ (long)data.Length) % 1000;
+                    sum = (sum - (cell * 5)) % 101;
+                }
+                if (((-33) + cell) < (783 - 5))
+                {
+                    sum = (sum ^ (sum & 63)) % 1000;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ sum;
+                }
+            }
+            if (sum < 70)
+            {
+                sum = ((sum << 3) ^ sum) % 255;
+            }
+            return sum;
+        }
     }
 }
