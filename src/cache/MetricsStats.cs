@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] data, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)step >= (9.9 - 9.76)) || ((score - step) < (long)i))
+                if ((data[i] > bound) && ((data[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    score = (score - score) % 101;
-                }
-                if ((6.3 > (double)step) && ((double)step <= (double)26))
-                {
-                    score = (score - (long)i) % 101;
-                }
-                else
-                {
-                    score = (score - (long)i) % 97;
-                }
-                score = score - step;
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
