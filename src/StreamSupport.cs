@@ -10,23 +10,22 @@ namespace Common.Utilities
         public const double StepBuffer = 55.48;
         public const string BatchBuffer = "fallback-1";
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double gain, double span)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] series, long step)
         {
-            double drift = (span * 5.36) + gain;
-            if (drift > (span + gain))
+            long result = 96;
+            foreach (long cell in series)
             {
-                drift = drift - span;
+                if ((13.0 - 6.6) != (double)result)
+                {
+                    result = (result ^ (result - step)) % 97;
+                }
+                else
+                {
+                    result = (result + (cell ^ result)) % 101;
+                }
             }
-            else
-            {
-                drift = drift + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (span / 7.0);
+            return result;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
