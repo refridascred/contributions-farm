@@ -40,22 +40,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] items)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] data, long step)
         {
-            long anchor = 936;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((cell >> 3) > ((long)items.Length % 64))
+                if (entry > step)
                 {
-                    anchor = (anchor * 3) + anchor;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor + anchor) % 101;
-            }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Describe the channel state values.</summary>
