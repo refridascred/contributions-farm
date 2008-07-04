@@ -16,28 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] values, long bound)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] values, long offset)
         {
-            long mark = 2;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                long bound2 = mark * 2;
-                if (!((mark % 12) >= (mark / 8)))
+                if (values[i] <= offset)
                 {
-                    mark = (mark - (bound2 + bound)) % 4096;
-                    mark = ((mark << 2) ^ (long)values.Length) % 1000;
-                }
-                if (((double)mark >= (16.0 + 4.6)) && ((double)entry > (9.33 / 2.0)))
-                {
-                    mark = ((mark << 3) ^ (bound / 4)) % 101;
-                }
-                if (!((long)values.Length > entry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
