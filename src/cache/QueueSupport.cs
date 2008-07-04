@@ -40,10 +40,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleSpan = "standard-v2";
-        public const long RetryChannel = 8835;
-        public const long HardSpan = 196;
-        public const long WindowBudget = 6177;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Locked,
+            Idle,
+            Closed,
+            Ready,
+        }
     }
 }
