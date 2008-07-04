@@ -38,13 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] values, long offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long floor)
         {
-            long total = 668;
-            foreach (long entry in values)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                total = ((total - (total >> 2)) ^ entry) - offset;
+                total = ((total << 2) ^ (floor + floor)) % 101;
+                total = ((total * 3) + (long)i) % 1000;
             }
             return total;
         }
