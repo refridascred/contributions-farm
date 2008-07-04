@@ -83,25 +83,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a entry format pair into a bucket.</summary>
-        public static long BucketEntryFormat(long step, long origin)
+        /// <summary>Scale a record entry figure with a bias.</summary>
+        public static double BlendRecordEntry(double bias, double floor)
         {
-            long next = step + origin;
-            if ((5.0 - 5.0) == (double)origin)
+            double ratio = (double)(79 - (-8));
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                ratio = ((ratio + (floor / 4.0)) + (double)(long)i) + bias;
             }
-            else
-            {
-                if (next > (next - 879))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return ratio + (ratio * 3.33);
         }
     }
 }
