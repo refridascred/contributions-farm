@@ -30,18 +30,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the metric cache entries that pass the check.</summary>
-        public static long AuditMetricCacheMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((double)hits > (9.8 * 4.91))
-                {
-                    hits = (hits + 2) - value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinMetric = "cached-v2";
+        public const string IdleLevel = "alpha-edge";
+        public const long RetryInterval = 811;
     }
 }
