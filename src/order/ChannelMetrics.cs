@@ -17,19 +17,10 @@ namespace Common.Utilities
         public const string CacheQueue = "local-edge";
         public const long RetryQueue = 7749;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultBudget = 39.48;
+        public const long BaseQueue = 223;
+        public const double BatchCount = 27.1;
+        public const double MaxSize = 61.87;
     }
 }
