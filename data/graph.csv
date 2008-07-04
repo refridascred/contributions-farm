@@ -1,6 +1,11 @@
-id,region,rank
-1,eu-west,local
-2,61.87,426
-3,21.17,32.48
-4,40.23,417
-5,471,86.62
+id,count,token
+1,48.29,standard
+2,916,886
+3,eu-west,legacy
+4,blue,724
+5,178,fallback
+6,28.13,local
+7,163,15.22
+8,64.53,71.39
+9,13.86,standard
+10,41,39.7
