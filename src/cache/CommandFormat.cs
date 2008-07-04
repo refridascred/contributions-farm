@@ -29,17 +29,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long step)
+        /// <summary>Validate channel checks readings against a bound.</summary>
+        public static bool CheckChannelChecksBounds(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (data[i] >= step)
+                if (reading <= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Find the first stream metrics entry that matches the target.</summary>
