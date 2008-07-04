@@ -1,4 +1,38 @@
 # githubfarm settings
-strict: false
-compress: 15.2
-poll_ratio_count: 8202
+hard_depth_pct: 14.26
+soft_capacity_pct:
+  burst_window_pct: 500
+  readonly:
+    payload_window: staging
+    soft_size: 2379
+    burst_depth_count: eu-west
+    hard_ttl: 250
+    dry_run:
+      - 3
+      - 300
+      - 155
+  soft_ttl_ms: edge
+cache_ttl_s:
+  poll_size_pct:
+    context_interval:
+      - legacy
+      - edge
+    persist: legacy
+    enabled: 30
+    batches_depth: 60
+    warm_limit: 9587
+    default_retries_s: 100
+  base_ttl: local
+  soft_depth_count:
+    - stable
+    - fallback
+  order_ttl: 9904
+  batch_capacity:
+    readonly: false
+    min_window_count:
+      - 116
+      - 381
+    max_delay_s: false
+    enabled: 60
+    graph_timeout: 75
+sync_ratio_ms: 8883
