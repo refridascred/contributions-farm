@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of layout schema readings.</summary>
-        public static long PairLayoutSchemaCount(long[] levels)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) > 12)
+                    if ((series[i] + series[j]) > 9)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a contributi entry.</summary>
