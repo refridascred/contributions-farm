@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long origin)
         {
-            Retry,
-            Draft,
-            Locked,
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a command entry.</summary>
