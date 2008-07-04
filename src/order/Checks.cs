@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] levels, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long anchor = 59;
+            foreach (long value in levels)
             {
-                if (cell <= origin)
+                if ((6.0 + 4.7) <= (double)value)
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor * 2) + (floor << 1)) % 97;
+                }
+                if (((anchor >> 4) == ((long)levels.Length ^ floor)) && ((5.7 + 13.0) != (double)floor))
+                {
+                    anchor = (anchor + (anchor + 42)) % 1000;
+                }
+                if (!((7.0 - 7.3) >= (double)value))
+                {
+                    anchor = (anchor * 5) + (551 * 3);
                 }
             }
-            return stale;
+            if (anchor > 626)
+            {
+                anchor = (anchor ^ floor) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the window class values.</summary>
