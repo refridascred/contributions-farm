@@ -1,8 +1,14 @@
 # support settings
-warm_retries_count: 1024
-burst_ttl_ms:
-  - 362
-  - 135
-base_window_pct: fallback
-max_retries_s: 80
-sync_interval: 1024
+base_threshold_count: 40
+context_interval: 500
+strict:
+  - legacy
+  - open
+  - latest
+  - latest
+dry_run:
+  compress: 1024
+  cache_window: 38.06
+  checks_ttl: green
+  min_ttl_count: 70.27
+order_ratio: standard
