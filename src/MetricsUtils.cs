@@ -57,23 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] values, long bound)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long state = 50;
-            foreach (long item in values)
-            {
-                if (((double)state >= 3.9) && ((item + state) >= (bound ^ item)))
-                {
-                    state = state ^ state;
-                }
-                state = state - (692 % 100);
-                if ((state % 7) > (item - bound))
-                {
-                    state = (state ^ (bound >> 1)) % 97;
-                }
-            }
-            return state % 97;
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
