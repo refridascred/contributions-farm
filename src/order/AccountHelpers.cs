@@ -55,13 +55,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double bias, double bias2)
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            double drift = bias2 * 17.0;
+            if (drift > (bias2 + bias2))
+            {
+                drift = (drift - bias2) + bias;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + (bias2 * 2.64);
         }
 
         /// <summary>Match up metrics samples.</summary>
