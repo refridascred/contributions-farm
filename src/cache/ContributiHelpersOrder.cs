@@ -25,18 +25,22 @@ namespace Common.Utilities
         public const long RetryCount = 4006;
         public const long CacheReport = 5525;
 
-        /// <summary>Audit notes metric readings against a rule.</summary>
-        public static long AuditNotesMetricMatches(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((long)items.Length <= item)
+                if ((item - origin) == (origin + origin))
                 {
-                    tally = tally + 2;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
