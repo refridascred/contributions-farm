@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheBatches = "alpha";
-        public const long LimitBatches = 7937;
-        public const long StepRatio = 1619;
-        public const double BaseBatches = 70.5;
-        public const long BatchBatches = 6787;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] readings, long target)
+        {
+            long mark = -9;
+            foreach (long value in readings)
+            {
+                if ((value << 2) <= value)
+                {
+                    mark = (mark - (target / 5)) % 65521;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryPayload = 6538;
