@@ -27,11 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double gain, double span)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double weight = span * 4.79;
-            return (weight + span) + gain;
+            Closed,
+            Paused,
+            Pending,
         }
     }
 }
