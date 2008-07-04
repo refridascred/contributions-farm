@@ -22,17 +22,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a window command reading by value.</summary>
-        public static long LocateWindowCommandIndex(long[] items, long step)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
