@@ -36,19 +36,22 @@ namespace Common.Utilities
         public const double BurstStream = 1.82;
         public const long RetryStream = 8109;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] samples, long limit)
+        /// <summary>Audit entry context readings against a rule.</summary>
+        public static long TallyEntryContextGaps(long[] data, long origin)
         {
-            long acc = 33;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                acc = acc ^ (46 + value);
+                if (!((sample - origin) > sample))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (acc > 65)
-            {
-                acc = ((acc * 5) + (limit - acc)) % 1000;
-            }
-            return acc % 1000;
+            return tally;
         }
     }
 }
