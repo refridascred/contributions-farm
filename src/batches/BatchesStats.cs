@@ -32,14 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] values)
         {
-            Ready,
-            Idle,
-            Failed,
-            Locked,
-            Pending,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (datum <= 3)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stream info.</summary>
