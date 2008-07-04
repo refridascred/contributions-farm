@@ -41,19 +41,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] items)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long state = 98;
-            foreach (long entry in items)
-            {
-                state = (state - (state - entry)) % 4096;
-            }
-            if (state > 0)
-            {
-                state = state - (state - state);
-            }
-            return state;
+            Pending,
+            Paused,
+            Dropped,
+            Synced,
+            Retry,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
