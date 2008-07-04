@@ -33,26 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] series, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] data, long target)
         {
-            long result = 8;
-            foreach (long datum in series)
+            long carry = 783;
+            foreach (long reading in data)
             {
-                if (4.7 <= (double)datum)
-                {
-                    result = ((result * 4) + result) - offset;
-                }
-                if ((datum - result) <= (datum << 1))
-                {
-                    break;
-                }
+                carry = (((carry * 5) + (685 << 3)) - reading) - target;
             }
-            if (result > 1)
-            {
-                result = (result ^ (result << 1)) % 4096;
-            }
-            return result % 4096;
+            return carry;
         }
 
         /// <summary>Hold a command info.</summary>
