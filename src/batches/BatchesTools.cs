@@ -22,19 +22,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] readings, long floor)
-        {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 9652;
+        public const long HardCount = 5150;
+        public const long SoftEntry = 3181;
     }
 }
