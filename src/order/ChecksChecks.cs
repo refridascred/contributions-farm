@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            New,
-            Retry,
-            Draft,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheFormat = "strict-edge";
+        public const string IdleLevel = "legacy-edge";
+        public const long LimitTimeout = 5844;
 
         /// <summary>Derive the next commits farm value from a seed.</summary>
         public static long SeriesCommitsFarm(long limit)
