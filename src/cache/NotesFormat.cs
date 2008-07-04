@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] data)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long carry = -6;
-            foreach (long datum in data)
-            {
-                if ((datum << 2) != (carry / 2))
-                {
-                    carry = (carry * 2) + (29 - carry);
-                }
-            }
-            return carry % 65521;
+            Idle,
+            Failed,
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
