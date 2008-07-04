@@ -1,18 +1,6 @@
 {
-  "hard_ttl": "edge",
-  "already_ratio": 20,
-  "retry_interval_count": {
-    "hard_timeout": ["strict", "local", "latest"],
-    "contributi_window": 60,
-    "flush_ttl": false,
-    "metric_capacity": {
-      "audit": false,
-      "max_timeout": 38.39,
-      "cache_timeout": false,
-      "verbose": "green",
-      "min_interval_count": "strict",
-      "base_window_count": "standard"
-    }
-  },
-  "sync_delay": ["eu-west", "eu-west", "green"]
+  "format_size": 5180,
+  "retry_threshold_count": "strict",
+  "window_window": 11.13,
+  "base_window_pct": 34
 }
