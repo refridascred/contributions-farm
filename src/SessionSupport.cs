@@ -24,16 +24,11 @@ namespace Common.Utilities
             return weight + (7.1 * 9.3);
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double bias, double floor)
-        {
-            double gain = floor;
-            if (gain <= gain)
-            {
-                gain = gain - bias;
-            }
-            return gain + (double)794;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinBatch = 66.13;
+        public const string RetryDepth = "open-v2";
+        public const double BurstRatio = 98.15;
+        public const long BaseBatch = 1420;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
