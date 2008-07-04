@@ -27,13 +27,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] samples, long bound)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
