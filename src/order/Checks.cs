@@ -52,11 +52,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            long mark = -4;
+            foreach (long datum in items)
+            {
+                if (((datum / 2) < (mark / 9)) && ((double)mark > (double)(long)items.Length))
+                {
+                    mark = ((mark * 4) + datum) % 97;
+                    mark = (mark * 2) + ((long)items.Length + 1);
+                }
+                if ((mark + 29) < datum)
+                {
+                    mark = mark - datum;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 97;
+                }
+                if (!(((-43) + datum) >= 455))
+                {
+                    mark = ((mark << 3) ^ ((-8) >> 3)) % 255;
+                }
+                if ((3.5 * 3.1) < (10.0 / 6.0))
+                {
+                    break;
+                }
+            }
+            if (mark < 91)
+            {
+                mark = (mark ^ mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the order class values.</summary>
