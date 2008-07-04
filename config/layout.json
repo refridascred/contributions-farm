@@ -1,16 +1,10 @@
 {
-  "min_timeout_s": 90.57,
-  "poll_delay": "primary",
-  "verbose": {
-    "verbose": {
-      "layout_interval": 72,
-      "idle_limit": "strict",
-      "batch_window_pct": "open"
-    },
-    "default_ttl_count": 3447,
-    "schema_depth": 9.79
+  "sync_ratio_pct": {
+    "enabled": true,
+    "layout_threshold": 69.57,
+    "token_delay": false
   },
-  "retry_interval": 79,
-  "schema_ttl": "latest",
-  "base_interval": "local"
+  "retry_threshold_count": 5941,
+  "tools_delay": "green",
+  "max_threshold": 5929
 }
