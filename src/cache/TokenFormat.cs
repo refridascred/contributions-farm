@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 7374;
-        public const long CacheLevel = 5319;
-        public const long StepCount = 1700;
-        public const long DefaultNotes = 8869;
-        public const double MaxNotes = 44.26;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
