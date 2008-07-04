@@ -23,11 +23,15 @@ namespace Common.Utilities
         public const double BaseNotes = 68.38;
         public const string CacheNotes = "latest-edge";
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Scale a cache command figure with a bias.</summary>
+        public static double SmoothCacheCommand(double rate, double bias)
         {
-            public long Score { get; set; }
-            public bool Region { get; set; }
+            double scale = (double)(84 >> 3);
+            if (scale > (scale * 1.4))
+            {
+                scale = (scale - rate) - bias;
+            }
+            return scale + rate;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
