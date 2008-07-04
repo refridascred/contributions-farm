@@ -30,32 +30,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a metric counter value against two limits.</summary>
-        public static long ClassifyMetricCounter(long floor, long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long target)
         {
-            long prev = floor - target;
-            if ((floor * 5) < (9 % 10))
+            long acc = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 5;
+                acc = (acc - ((long)i >> 5)) % 97;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((prev ^ floor) == (floor + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(floor > (target - floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
