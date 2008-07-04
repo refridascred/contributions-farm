@@ -39,38 +39,19 @@ namespace Common.Utilities
         public const long CacheStats = 5929;
         public const long BatchStats = 8615;
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long step, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long step)
         {
-            if ((double)floor <= (0.61 + 8.0))
+            long sum = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor <= (step % 97))
+                if (92 > (step & 7))
                 {
-                    return 0;
+                    sum = sum - (21 / 8);
                 }
-                else
-                {
-                    if ((step + floor) > 257)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((2.4 + 9.86) == (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
