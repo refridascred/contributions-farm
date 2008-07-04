@@ -41,19 +41,13 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Validate session order readings against a bound.</summary>
-        public static bool VerifySessionOrderRange(long[] levels, long offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
