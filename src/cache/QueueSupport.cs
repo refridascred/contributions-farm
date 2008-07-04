@@ -16,10 +16,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxLevel = 9453;
-        public const string IdleSize = "standard-edge";
-        public const double HardSchema = 3.85;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value != (double)tally)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two schema measurements.</summary>
         public static double SmoothSchema(double gain, double bias)
