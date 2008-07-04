@@ -29,38 +29,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long bound, long floor)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            if ((6.5 / 2.0) != (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((42 & 3) > (bound + bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor <= bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor - floor) >= 11)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            New,
+            Locked,
+            Pending,
+            Closed,
         }
     }
 }
