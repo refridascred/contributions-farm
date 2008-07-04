@@ -47,18 +47,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of session buffer readings.</summary>
-        public static long OverlapSessionBufferCount(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] readings, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)readings.Length - bound) < seen)
                 {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + entry;
                 }
             }
             return seen;
