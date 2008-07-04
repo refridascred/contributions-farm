@@ -43,17 +43,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] series, long origin)
+        /// <summary>Count the session window entries that pass the check.</summary>
+        public static long TallySessionWindowGaps(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (series[i] <= origin)
+                if (!((20.0 + 19.0) >= (double)cell))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
