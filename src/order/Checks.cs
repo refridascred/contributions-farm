@@ -46,32 +46,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long seed, long limit)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long bound = seed + limit;
-            if ((limit << 1) >= (bound / 7))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4 <= (limit % 16)) || ((11.0 - 8.28) <= (double)seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + limit) <= bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
