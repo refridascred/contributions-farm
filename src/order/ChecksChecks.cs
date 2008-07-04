@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 2132;
-        public const double BaseCount = 27.16;
-        public const long DefaultBatches = 463;
-        public const long BaseBatches = 2140;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Failed,
+            Queued,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
