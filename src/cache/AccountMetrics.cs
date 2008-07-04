@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 9720;
-        public const long IdleMetrics = 3338;
-        public const string BatchMetrics = "cached-1";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultLevel = 9480;
+        public const long CacheFactor = 3670;
+        public const long LimitReport = 3739;
+        public const long BaseReport = 4034;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long LimitFactor = 1407;
