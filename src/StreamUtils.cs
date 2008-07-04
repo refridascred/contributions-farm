@@ -22,15 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Paused,
-            Idle,
-            Done,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 54.61;
+        public const long LimitSession = 1511;
+        public const long CacheSession = 5959;
+        public const double DefaultSession = 84.95;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmBounds(long[] samples, long limit)
