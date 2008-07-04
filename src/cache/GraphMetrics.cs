@@ -30,18 +30,20 @@ namespace Common.Utilities
         public const long CachePayload = 4448;
         public const long LimitPayload = 6887;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] readings)
+        /// <summary>Derive the next stream tools value from a seed.</summary>
+        public static long RollStreamTools(long limit)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (((6.14 + 0.2) > (double)entry) || !((entry + entry) < (entry + hits)))
+                if (((5.86 + 5.81) < (double)42) || (acc < (limit % 8)))
                 {
-                    hits = hits + 3;
+                    acc = (acc ^ (long)i) % 255;
+                    break;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
