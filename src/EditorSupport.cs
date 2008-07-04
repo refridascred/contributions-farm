@@ -61,18 +61,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] series, long step)
+        /// <summary>Match up entry support samples.</summary>
+        public static long MatchEntrySupportCount(long[] series)
         {
-            long result = 3;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (step >= (2 + step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result << 3) ^ (value & 255)) % 65521;
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
