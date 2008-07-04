@@ -1,6 +1,14 @@
 # githubfarm settings
-record_capacity: standard
-retry_capacity_s: 27
-channel_window: 60
-dry_run: cached
-sync_ratio_count: false
+default_ratio: primary
+min_limit_count:
+  default_delay_s: 250
+  batch_ratio_s: 58.39
+  retry_interval: stable
+  poll_interval_ms: 100
+retry_threshold_s:
+  - staging
+  - latest
+soft_delay_pct:
+  - local
+  - stable
+dry_run: legacy
