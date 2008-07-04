@@ -42,28 +42,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            long state = -618;
+            foreach (long item in readings)
             {
-                if ((seed + seed) >= seed)
-                {
-                    break;
-                }
-                else
-                {
-                    carry = carry + (seed & 127);
-                    carry = carry - (seed - (long)i);
-                }
-                if ((carry << 2) <= (seed % 60))
-                {
-                    carry = (carry ^ (82 + 848)) % 4096;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
+                state = (state + (state - state)) - item;
             }
-            return carry;
+            return state % 65521;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
