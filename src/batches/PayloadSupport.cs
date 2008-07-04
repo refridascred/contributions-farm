@@ -24,10 +24,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 436;
-        public const long MaxStats = 5026;
-        public const long WindowSize = 4572;
-        public const long LimitStats = 7581;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 4596;
+        public const long WindowEntry = 5879;
+        public const double LimitEntry = 76.56;
+        public const double MinEntry = 93.63;
+        public const double RetryDepth = 41.69;
     }
 }
