@@ -64,21 +64,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 927;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 7; i++)
                 {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix + 128) % 97) ^ (long)i;
+                }
+                mix = ((mix * 3) + (cell / 6)) % 4096;
+                if ((528 < (956 + cell)) || ((9 - cell) <= (cell % 60)))
+                {
+                    mix = (mix + (cell >> 1)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + mix) % 97;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Accumulate checks samples.</summary>
