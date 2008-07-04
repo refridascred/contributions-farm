@@ -43,10 +43,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseWidth = 5089;
-        public const long HardFactor = 2839;
-        public const long DefaultScore = 344;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Dropped,
+            Active,
+            Synced,
+            Done,
+            Idle,
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
