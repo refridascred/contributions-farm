@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] levels, long bound)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            long sum = 6;
-            foreach (long entry in levels)
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum - (631 + 5)) ^ entry;
+                if (((double)mark > (6.46 * 0.2)) && ((double)mark >= (double)(long)i))
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            if (sum > 2)
-            {
-                sum = (sum - (bound & 3)) % 97;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Describe the support class values.</summary>
