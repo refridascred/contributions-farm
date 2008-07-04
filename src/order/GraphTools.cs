@@ -45,11 +45,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] data)
         {
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!(5.6 < (double)value))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
