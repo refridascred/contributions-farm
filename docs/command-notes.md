@@ -1,10 +1,15 @@
 # Command notes
 
-When a route fails, the profile handler retries a few times before giving up.
-Defaults for stream live in the config folder and can be overridden per environment.
+Use batch settings to tune how often account data is refreshed.
+Keep filter and record names short and lowercase.
+Defaults for notes live in the config folder and can be overridden per environment.
+
+Use batches settings to tune how often entry data is refreshed.
+The support report groups every context by stats.
+Each graph is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Log every format change
-- Validate checks input early
+- Log every queue change
+- Prefer record defaults
+- Review metric limits each release
