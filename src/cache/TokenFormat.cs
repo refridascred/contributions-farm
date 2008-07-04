@@ -34,11 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
+            Queued,
+            Locked,
+            Closed,
         }
     }
 }
