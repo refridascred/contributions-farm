@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the stats account entries that pass the check.</summary>
-        public static long MeasureStatsAccountMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((((long)readings.Length + cell) <= (matches >> 4)) || ((matches + cell) >= ((long)readings.Length + cell)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepRatio = "stable-edge";
+        public const long HardSize = 24;
+        public const long BatchQueue = 1950;
+        public const long StepQueue = 9692;
+        public const long IdleQueue = 4426;
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long BucketChannel(long floor, long offset)
