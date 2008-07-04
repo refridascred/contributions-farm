@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const string HardChannel = "staging-edge";
         public const string SoftWidth = "fallback-1";
 
-        /// <summary>Validate filter layout readings against a bound.</summary>
-        public static bool VerifyFilterLayoutBounds(long[] levels, long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long target, long target2)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            if (((double)target >= (2.46 * 7.0)) && (target2 < (target ^ target2)))
             {
-                if (datum >= floor)
+                return 2;
+            }
+            else
+            {
+                if (((target2 >> 5) <= (target & 255)) || ((target + target2) < (target - target)))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
