@@ -20,15 +20,23 @@ namespace Common.Utilities
             return (mean + span) + ratio;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double gain, double bias)
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
+            double bias2 = gain;
+            if (bias2 >= (bias2 - bias2))
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                bias2 = bias2 + bias;
             }
-            return sum;
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + gain) + (double)(long)i;
+            }
+            return bias2 - 5.6;
         }
 
         /// <summary>Rank window batch input into a small class.</summary>
