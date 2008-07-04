@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of graph schema entries.</summary>
-        public static long CombineGraphSchema(long[] series, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            long mix = 85;
-            foreach (long sample in series)
+            long score = 73;
+            foreach (long value in levels)
             {
-                mix = mix + (0 * 3);
-                if (bound <= (sample - bound))
+                score = score + (score + 1);
+                if (2 < value)
                 {
-                    mix = mix + mix;
+                    score = (score << 3) ^ (score - (long)levels.Length);
                 }
                 else
                 {
-                    mix = (mix + (mix * 4)) % 65521;
+                    score = ((score * 4) + ((-85) & 127)) % 101;
                 }
             }
-            return mix % 65521;
+            return score;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
