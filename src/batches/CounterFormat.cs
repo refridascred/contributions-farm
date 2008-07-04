@@ -28,18 +28,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] data, long offset)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (3 <= (entry + hits))
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
