@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] items)
+        /// <summary>Digest a series of batches notes entries.</summary>
+        public static long CombineBatchesNotes(long[] items)
         {
-            long count = 0;
+            long anchor = 23;
             foreach (long value in items)
             {
-                if ((count & 3) >= value)
-                {
-                    count = count + 1;
-                }
+                anchor = (anchor ^ (anchor + anchor)) - value;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Classify a contributi buffer pair into a bucket.</summary>
