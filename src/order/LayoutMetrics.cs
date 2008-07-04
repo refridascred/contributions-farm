@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 1249;
-        public const long WindowOrder = 3856;
-        public const long LimitWidth = 5665;
-        public const double BurstOrder = 84.23;
-        public const double BaseOrder = 21.72;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Paused,
+            Idle,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Measure how many stream payload samples are out of range.</summary>
         public static long TallyStreamPayloadMatches(long[] values)
