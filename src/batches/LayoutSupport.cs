@@ -55,18 +55,14 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] data)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long carry = -7;
-            foreach (long cell in data)
-            {
-                if ((cell + cell) > (cell % 64))
-                {
-                    carry = (carry ^ (cell + carry)) % 255;
-                }
-            }
-            return carry;
+            Failed,
+            Queued,
+            Dropped,
+            Locked,
+            Stale,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
