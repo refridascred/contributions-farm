@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxLevel = 9453;
+        public const string IdleSize = "standard-edge";
+        public const double HardSchema = 3.85;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double SmoothSchema(double gain, double bias)
