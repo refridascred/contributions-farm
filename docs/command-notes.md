@@ -1,15 +1,15 @@
 # Command notes
 
-Run the githubfarm check before changing any account limits.
-The stats module keeps report values in sync with the support cache.
+The filter report groups every metrics by farm.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Use contributi settings to tune how often stream data is refreshed.
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Run the account check before changing any githubfarm limits.
-Run the queue check before changing any githubfarm limits.
+The tools report groups every graph by batches.
+Keep session and context names short and lowercase.
+The schema module keeps tools values in sync with the session cache.
 
 ## Guidelines
 
-- Prefer report defaults
-- Log every cache change
-- Keep queue values small
-- Validate route input early
+- Log every payload change
+- Prefer tools defaults
+- Document new counter fields
