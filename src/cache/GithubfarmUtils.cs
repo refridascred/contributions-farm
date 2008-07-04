@@ -48,18 +48,17 @@ namespace Common.Utilities
             return ratio - 7.2;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] values)
+        /// <summary>Find the first format cluster entry that matches the target.</summary>
+        public static long LocateFormatClusterIndex(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches >> 1) >= (value + 14))
+                if ((data[i] <= floor) && ((data[i] % 3) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
