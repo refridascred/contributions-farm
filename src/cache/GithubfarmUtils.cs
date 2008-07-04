@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long score = -186;
-            foreach (long entry in items)
-            {
-                if ((entry > (score - entry)) && ((3.43 - 6.7) == (double)score))
-                {
-                    score = (score << 3) ^ score;
-                }
-            }
-            return score;
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
