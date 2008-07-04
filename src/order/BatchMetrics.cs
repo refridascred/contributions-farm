@@ -29,18 +29,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] readings)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (12 >= value)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Queued,
+            Closed,
+            Synced,
+            Retry,
         }
 
         /// <summary>Adjust a batch reading.</summary>
