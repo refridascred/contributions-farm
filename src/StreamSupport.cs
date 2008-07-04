@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Audit token window readings against a rule.</summary>
+        public static long AuditTokenWindowHits(long[] samples, long offset)
         {
-            Dropped,
-            Done,
-            Paused,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((offset + 5) > (offset + matches))
+                {
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the session class values.</summary>
