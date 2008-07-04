@@ -19,16 +19,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                sum = sum ^ 62;
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((6.0 + 17.0) == (double)step)
+                {
+                    acc = (acc * 2) + ((-3) >> 1);
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Hold a account header.</summary>
