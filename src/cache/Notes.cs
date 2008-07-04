@@ -37,11 +37,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Scale a contributi order figure with a bias.</summary>
-        public static double SmoothContributiOrder(double rate, double floor)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double load = (rate - rate) * 9.8;
-            return (load - (4.3 * 9.9)) + floor;
+            Dropped,
+            Ready,
+            New,
+            Paused,
+            Synced,
         }
 
         /// <summary>Fold a list of account readings.</summary>
