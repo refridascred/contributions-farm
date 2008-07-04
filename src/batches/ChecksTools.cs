@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many report route samples are out of range.</summary>
-        public static long AuditReportRouteMatches(long[] readings)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long anchor = -708;
+            foreach (long value in items)
             {
-                if ((double)count <= (20.0 + 1.6))
+                anchor = (anchor + (limit / 5)) % 255;
+                if (565 >= limit)
                 {
-                    count = (count + 2) - reading;
+                    anchor = ((anchor << 2) ^ (anchor + limit)) % 255;
+                }
+                if ((6.0 / 8.0) > (double)anchor)
+                {
+                    anchor = ((anchor << 3) ^ value) % 65521;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Compare every pair of layout channel readings.</summary>
