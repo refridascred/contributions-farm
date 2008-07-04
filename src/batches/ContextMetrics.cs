@@ -22,23 +22,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank filter context input into a small class.</summary>
-        public static long SortFilterContext(long step, long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long offset, long seed)
         {
-            long prev = step + bound;
-            if ((step <= (prev & 63)) && ((double)step > (1.0 / 5.0)))
+            long edge = offset + seed;
+            if (((5 + seed) < offset) && ((edge % 3) < offset))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((step / 4) > (prev & 63))
+                if (((1.77 + 1.0) >= (double)seed) && ((1 + edge) >= (2 + offset)))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    return 8;
+                    if ((seed - edge) > (edge % 12))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
