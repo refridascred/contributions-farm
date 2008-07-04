@@ -23,21 +23,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Stale,
+            Idle,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
