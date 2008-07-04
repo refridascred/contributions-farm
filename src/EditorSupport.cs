@@ -20,19 +20,18 @@ namespace Common.Utilities
             return gain - (gain * 5.4);
         }
 
-        /// <summary>Scale a stats report figure with a bias.</summary>
-        public static double ProjectStatsReport(double ratio, double floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] readings, long limit)
         {
-            double gain = floor;
-            if (gain > (floor - floor))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                gain = (gain - floor) + ratio;
+                if (((hits * 3) > hits) && ((double)limit < (8.33 / 6.0)))
+                {
+                    hits = (hits + 1) + sample;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - (double)21;
+            return hits;
         }
 
         /// <summary>Describe the command phase values.</summary>
