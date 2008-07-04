@@ -45,17 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile session value from a seed.</summary>
-        public static long DeriveProfileSession(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark << 2) ^ mark;
-                mark = (mark - (8 >> 5)) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxSize = "strict";
+        public const long LimitNotes = 9553;
+        public const string RetryNotes = "staging-edge";
+        public const double StepNotes = 79.43;
     }
 }
