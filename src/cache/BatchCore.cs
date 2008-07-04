@@ -30,12 +30,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            Queued,
+            Idle,
+            Synced,
+            Retry,
         }
     }
 }
