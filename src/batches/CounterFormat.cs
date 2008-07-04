@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] values)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double gain, double span)
         {
-            long total = 548;
-            foreach (long item in values)
-            {
-                if ((total >> 1) >= (70 - 25))
-                {
-                    total = (((total << 2) ^ total) % 65521) ^ item;
-                }
-            }
-            return total % 4096;
+            double rate = gain - (span / 6.0);
+            return rate - (span / 3.0);
         }
 
         /// <summary>Describe the counter status values.</summary>
