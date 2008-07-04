@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] samples, long step)
         {
-            Closed,
-            Idle,
-            Queued,
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
