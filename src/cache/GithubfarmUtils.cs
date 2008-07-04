@@ -23,14 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] series)
         {
-            Ready,
-            Queued,
-            Idle,
-            Draft,
-            Dropped,
+            long carry = 268;
+            foreach (long reading in series)
+            {
+                if ((carry + 86) < (reading + (-40)))
+                {
+                    carry = ((carry << 2) ^ ((long)series.Length - reading)) % 65521;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Project the next order value.</summary>
