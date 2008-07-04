@@ -1,8 +1,6 @@
 {
-  "min_limit": 68.91,
-  "poll_depth_ms": "latest",
-  "enabled": 3130,
-  "support_interval": "cached",
-  "layout_threshold": [60, 497],
-  "soft_limit_pct": 22.11
+  "token_window": 59,
+  "cache_delay_count": 250,
+  "poll_depth_ms": "primary",
+  "batch_delay": "eu-west"
 }
