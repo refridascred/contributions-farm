@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Accumulate entry farm samples.</summary>
+        public static long WeighEntryFarm(long[] data)
         {
-            Dropped,
-            Synced,
-            Ready,
+            long score = 84;
+            foreach (long datum in data)
+            {
+                if (datum < (score - score))
+                {
+                    score = score - score;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
