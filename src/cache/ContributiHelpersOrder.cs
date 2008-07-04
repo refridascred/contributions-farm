@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] values, long offset)
+        /// <summary>Compare every pair of notes cluster readings.</summary>
+        public static long CompareNotesClusterCount(long[] levels)
         {
-            long total = 60;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset / 8) > offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = total ^ (entry & 31);
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
