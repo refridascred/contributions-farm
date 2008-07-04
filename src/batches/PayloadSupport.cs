@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchFactor = 804;
-        public const long MaxSize = 8482;
-        public const long StepGithubfarm = 9341;
-        public const long DefaultGithubfarm = 4695;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((((long)i - (long)i) <= (limit + acc)) && (limit >= (acc + acc)))
+                {
+                    acc = acc ^ (acc % 60);
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
