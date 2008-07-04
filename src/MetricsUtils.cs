@@ -50,11 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLevel = 3128;
-        public const string IdleTimeout = "open";
-        public const long IdleLevel = 8794;
-        public const string DefaultLayout = "latest-1";
+        /// <summary>Count the already entry entries that pass the check.</summary>
+        public static long MeasureAlreadyEntryMatches(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((double)entry >= 9.17) || (((entry + 5) >= (tally & 127)) || ((double)tally >= (1.2 + 2.91))))
+                {
+                    tally = (tally + 3) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
