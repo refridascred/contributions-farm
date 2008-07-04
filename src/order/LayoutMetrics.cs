@@ -31,18 +31,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] values, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] series)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long mix = 44;
+            foreach (long reading in series)
             {
-                if ((63 < (limit / 4)) && ((double)tally == (6.0 / 5.0)))
+                if (((reading >> 1) == (mix + reading)) || ((reading << 2) <= (71 >> 1)))
                 {
-                    tally = (tally + 2) ^ value;
+                    mix = mix - (4 & 255);
                 }
             }
-            return tally;
+            if (mix > 13)
+            {
+                mix = mix ^ (mix / 2);
+            }
+            return mix;
         }
     }
 }
