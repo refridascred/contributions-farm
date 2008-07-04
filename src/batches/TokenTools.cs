@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Closed,
-            Draft,
+            Pending,
+            Synced,
             Locked,
+            Retry,
         }
 
         /// <summary>Audit stats layout readings against a rule.</summary>
