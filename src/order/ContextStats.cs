@@ -64,19 +64,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] data, long limit)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double load = 15.0 * 8.01;
+            return ((load + (load + 7.0)) + ratio) + span;
         }
     }
 }
