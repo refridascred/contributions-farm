@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] items, long target)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((((62 & 255) != (count + target)) || (((long)items.Length ^ (-5)) > (cell - 46))) && ((5 >= count) || ((count + target) <= 2)))
+                if (reading < seed)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a metrics options.</summary>
