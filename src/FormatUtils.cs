@@ -14,17 +14,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] series, long offset)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next already value.</summary>
