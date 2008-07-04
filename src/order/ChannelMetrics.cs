@@ -20,19 +20,38 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] readings, long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long step, long seed)
         {
-            long result = 534;
-            foreach (long entry in readings)
+            if ((step - seed) == (seed / 6))
             {
-                result = (result << 2) ^ offset;
-                if ((double)entry >= (1.0 + 4.0))
+                return 4;
+            }
+            else
+            {
+                if ((step + (-1)) != (904 % 100))
                 {
-                    result = ((result * 2) + (entry ^ result)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if ((4 - seed) <= (46 ^ seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (263 < (step - step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Roll a graph order counter forward.</summary>
