@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((((matches / 7) <= (step % 10)) || (matches >= (entry >> 2))) && ((double)entry > 13.0))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowScore = 4930;
+        public const long BaseFormat = 5439;
+        public const long LimitBudget = 7320;
+        public const double StepFormat = 21.37;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TotalChannel(long[] items, long step)
