@@ -36,19 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm metrics readings against a bound.</summary>
-        public static bool CheckFarmMetricsBounds(long[] data, long target)
+        /// <summary>Derive the next format payload value from a seed.</summary>
+        public static long StepFormatPayload(long floor)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry > target)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Accumulate token samples.</summary>
