@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] series, long seed)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((35 * 4) == (939 + seed))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next cluster value.</summary>
