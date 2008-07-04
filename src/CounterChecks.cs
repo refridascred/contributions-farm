@@ -55,11 +55,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxFactor = 11.4;
-        public const long CacheSupport = 4683;
-        public const long BaseSupport = 4087;
-        public const long MinCount = 1777;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] data)
+        {
+            long acc = 873;
+            foreach (long reading in data)
+            {
+                if (!((double)acc > 9.6))
+                {
+                    acc = ((acc - acc) % 255) + reading;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long FindContextIndex(long[] samples, long origin)
