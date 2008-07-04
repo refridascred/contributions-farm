@@ -19,12 +19,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] values, long target)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((6.6 / 5.0) <= (double)reading)
+                {
+                    hits = (hits + 3) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the window kind values.</summary>
