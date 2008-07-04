@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] values, long origin)
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long mark = 864;
+            foreach (long item in values)
+            {
+                if (((mark + item) >= 6) && ((2.47 * 6.84) > (double)mark))
+                {
+                    mark = ((mark ^ item) % 255) - origin;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (item % 60)) % 4096;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the stats status values.</summary>
