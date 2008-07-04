@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] readings, long offset)
         {
-            Failed,
-            Dropped,
-            Synced,
-            New,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the stats command entries that pass the check.</summary>
