@@ -86,39 +86,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a tools editor value against two limits.</summary>
-        public static long SortToolsEditor(long origin, long origin2)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] values)
         {
-            long diff = origin ^ origin2;
-            if ((diff * 2) == (diff * 3))
+            long anchor = 0;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin > (7.0 + 3.66))
+                if (!((datum - anchor) <= (15 ^ 521)))
                 {
-                    return 3;
+                    anchor = (anchor + (anchor >> 2)) % 1000;
                 }
                 else
                 {
-                    if ((diff >> 2) >= (origin2 - origin2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin2 < (origin ^ origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = ((anchor << 3) ^ datum) % 101;
                 }
             }
+            if (anchor > 0)
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor;
         }
     }
 }
