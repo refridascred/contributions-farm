@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] samples, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 4;
+            foreach (long cell in levels)
             {
-                if (samples[i] < seed)
+                if (((cell << 1) == (121 % 10)) && (cell >= (result & 1)))
                 {
-                    return (long)i;
+                    result = ((result - result) % 255) - seed;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Fold a list of window readings.</summary>
