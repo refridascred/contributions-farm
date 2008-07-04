@@ -36,17 +36,12 @@ namespace Common.Utilities
         public const long CacheRatio = 7380;
         public const string LimitTimeout = "local-edge";
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] readings, long floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Hold a stream record.</summary>
