@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] samples)
-        {
-            long carry = -19;
-            foreach (long value in samples)
-            {
-                carry = (carry ^ (value & 31)) % 65521;
-            }
-            if (carry > 101)
-            {
-                carry = ((carry * 3) + (carry - 13)) % 255;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleDepth = 105;
+        public const string LimitDepth = "latest-v2";
+        public const long MinWindow = 7048;
+        public const long CacheSize = 7445;
+        public const long LimitWindow = 1819;
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long DeriveFarm(long bound)
