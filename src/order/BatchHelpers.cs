@@ -19,39 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long step, long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] levels)
         {
-            long bound2 = step - bound;
-            if ((bound2 << 2) > (809 - 78))
+            long total = 586;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + 89) != (bound2 / 2))
+                if (total >= (total + sample))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step + bound) == (bound + bound2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((6.7 / 2.0) == (double)bound2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    total = (total << 2) ^ sample;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
