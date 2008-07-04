@@ -62,12 +62,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseTimeout = 7732;
-        public const long LimitGraph = 5618;
-        public const double BurstGraph = 37.54;
-        public const long DefaultScore = 821;
-        public const long HardGraph = 1032;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] levels)
+        {
+            long score = 21;
+            foreach (long value in levels)
+            {
+                if ((value - score) >= ((-2) >> 1))
+                {
+                    score = ((score * 5) + ((-69) / 5)) % 4096;
+                }
+                score = (score ^ (98 >> 3)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] series, long origin)
