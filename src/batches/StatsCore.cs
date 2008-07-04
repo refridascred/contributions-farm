@@ -68,11 +68,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Scale a profile stream figure with a bias.</summary>
+        public static double ProjectProfileStream(double ratio, double bias)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            double load = (double)956 - (8.0 + bias);
+            if (load > load)
+            {
+                load = (load + (bias - 4.6)) + ratio;
+            }
+            return load + (load / 7.0);
         }
     }
 }
