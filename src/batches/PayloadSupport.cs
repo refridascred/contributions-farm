@@ -20,14 +20,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 75.84;
+        public const double HardInterval = 90.77;
+        public const string WindowBudget = "fallback";
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsLimits(long[] values, long seed)
