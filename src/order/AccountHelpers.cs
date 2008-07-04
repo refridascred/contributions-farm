@@ -16,12 +16,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 4715;
-        public const long SoftWidth = 6832;
-        public const string LimitLayout = "open-edge";
-        public const long WindowSpan = 701;
-        public const string CacheSize = "strict-v2";
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (matches >= (reading + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up buffer samples.</summary>
         public static long CompareBufferCount(long[] readings)
