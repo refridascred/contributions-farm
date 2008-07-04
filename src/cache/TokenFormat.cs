@@ -20,23 +20,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] data)
+        /// <summary>Count the stats command entries that pass the check.</summary>
+        public static long AuditStatsCommandGaps(long[] series, long limit)
         {
-            long state = 21;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                state = (state + (state >> 5)) + entry;
-                if (!(state >= (state + (-5))))
+                if ((matches % 10) < limit)
                 {
-                    break;
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (state < (-9))
-            {
-                state = ((state * 5) + (state + state)) % 65521;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
