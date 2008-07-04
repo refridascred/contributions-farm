@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback staging latest; do
+for item in local primary edge; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=97
+COMMAND_LIMIT=127
 log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-local}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
