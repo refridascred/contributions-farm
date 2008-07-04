@@ -45,18 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] values)
+        /// <summary>Count the entry commits entries that pass the check.</summary>
+        public static long AuditEntryCommitsOutliers(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((double)tally < (2.8 / 8.0))
+                if (item > matches)
                 {
-                    tally = (tally + 2) + cell;
+                    matches = (matches + 3) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
