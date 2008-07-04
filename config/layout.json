@@ -1,12 +1,25 @@
 {
-  "enabled": "stable",
-  "warm_depth_pct": {
-    "profile_threshold": 100,
-    "cluster_ratio": "local",
-    "retry_threshold_count": 60.27
+  "base_depth_count": {
+    "min_timeout_count": {
+      "commits_size": 3918,
+      "filter_depth": "open",
+      "warm_ratio_count": true,
+      "cache_delay_s": "legacy",
+      "hard_window_count": false
+    },
+    "hard_ttl": "cached",
+    "verbose": {
+      "batch_retries": false,
+      "min_window": ["latest", "open"],
+      "default_retries_s": ["strict", "local", "fallback"],
+      "warm_capacity": 24.34,
+      "batch_capacity_s": false,
+      "default_ratio": false
+    },
+    "compress": 100,
+    "min_limit_ms": 44,
+    "cache_retries_count": "cached"
   },
-  "filter_size": ["open", "blue", "edge"],
-  "warm_ratio_s": false,
-  "flush_threshold": "latest",
-  "editor_capacity": "cached"
+  "sync_threshold_count": "cached",
+  "min_retries_pct": ["blue", "primary", "cached", "green"]
 }
