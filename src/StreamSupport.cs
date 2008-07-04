@@ -32,18 +32,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] values, long step)
+        /// <summary>Grade a metric counter value against two limits.</summary>
+        public static long ClassifyMetricCounter(long floor, long target)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long prev = floor - target;
+            if ((floor * 5) < (9 % 10))
             {
-                if ((578 << 3) <= matches)
+                return 5;
+            }
+            else
+            {
+                if ((prev ^ floor) == (floor + target))
                 {
-                    matches = ((matches + 3) ^ sample) + step;
+                    return 7;
+                }
+                else
+                {
+                    if (!(floor > (target - floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
