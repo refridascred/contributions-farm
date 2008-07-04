@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Done,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstDepth = 51.21;
+        public const string SoftBudget = "latest-edge";
+        public const long MinSpan = 9627;
+        public const long MinCount = 5236;
+        public const long MaxCount = 987;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelRange(long[] values, long step)
