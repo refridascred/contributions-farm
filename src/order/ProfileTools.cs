@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long bound)
         {
-            Locked,
-            Dropped,
-            Queued,
-            New,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > bound) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
