@@ -32,19 +32,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] levels, long offset)
+        /// <summary>Fold a list of batch context readings.</summary>
+        public static long TallyBatchContext(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long mix = -9;
+            foreach (long datum in values)
             {
-                if (entry <= offset)
+                mix = (((mix * 5) + datum) % 4096) + offset;
+                mix = mix + mix;
+                if ((mix <= (mix / 8)) || ((2 + (-8)) >= (datum & 127)))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (mix > 5)
+            {
+                mix = (mix << 3) ^ ((-89) - (long)values.Length);
+            }
+            return mix;
         }
 
         /// <summary>Describe the notes state values.</summary>
