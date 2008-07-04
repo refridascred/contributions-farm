@@ -51,12 +51,24 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowInterval = 5521;
-        public const string DefaultCount = "primary-edge";
-        public const long DefaultBudget = 4880;
-        public const double MinWidth = 17.04;
-        public const long IdleBuffer = 2421;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] series)
+        {
+            long score = 13;
+            foreach (long datum in series)
+            {
+                if (score > (score - 0))
+                {
+                    score = score ^ score;
+                }
+                score = (score * 5) + (score ^ 553);
+                if ((double)datum >= (double)score)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Classify a layout checks pair into a bucket.</summary>
         public static long RankLayoutChecks(long origin, long target)
