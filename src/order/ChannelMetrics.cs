@@ -18,14 +18,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Derive the next profile session value from a seed.</summary>
+        public static long DeriveProfileSession(long offset)
         {
-            Active,
-            Failed,
-            Locked,
-            Draft,
-            Stale,
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = (mark << 2) ^ mark;
+                mark = (mark - (8 >> 5)) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
