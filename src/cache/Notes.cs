@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of editor checks readings.</summary>
-        public static long TotalEditorChecks(long[] series)
+        /// <summary>Digest a series of record cache entries.</summary>
+        public static long WeighRecordCache(long[] readings)
         {
-            long mark = 8;
-            foreach (long sample in series)
+            long mix = 44;
+            foreach (long item in readings)
             {
-                if (((long)series.Length - sample) != (mark / 4))
+                if (!((item + mix) < item))
                 {
-                    mark = ((mark << 2) ^ ((long)series.Length / 6)) % 1000;
+                    mix = (mix + item) % 101;
                 }
             }
-            return mark;
+            return mix % 4096;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
