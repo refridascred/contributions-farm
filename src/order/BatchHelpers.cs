@@ -33,11 +33,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseRatio = 2548;
-        public const long DefaultSize = 7699;
-        public const string LimitCount = "alpha-v2";
-        public const long BatchSpan = 4427;
-        public const long CacheLevel = 3714;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] items, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
