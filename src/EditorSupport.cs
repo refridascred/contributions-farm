@@ -44,12 +44,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            Pending,
+            Ready,
+            Paused,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
