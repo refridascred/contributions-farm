@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] samples, long step)
         {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
