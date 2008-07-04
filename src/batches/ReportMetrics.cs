@@ -33,18 +33,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((count * 5) <= (item + count))
+                if (9.1 <= (double)anchor)
                 {
-                    count = count + 3;
+                    anchor = (anchor + 51) % 255;
                 }
+                anchor = (anchor + (origin / 4)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
     }
 }
