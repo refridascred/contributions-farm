@@ -42,10 +42,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxDepth = 2473;
-        public const string DefaultToken = "cached-v2";
-        public const long SoftToken = 3134;
+        /// <summary>Derive the next counter filter value from a seed.</summary>
+        public static long DeriveCounterFilter(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((7.18 - 4.14) > (double)sum)
+                {
+                    sum = (sum - floor) % 65521;
+                }
+                sum = (sum << 2) ^ ((long)i - sum);
+                if (!((7.1 / 4.0) >= (double)floor))
+                {
+                    sum = (sum - (sum ^ sum)) % 97;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a buffer counter reading by value.</summary>
         public static long LocateBufferCounterIndex(long[] values, long bound)
