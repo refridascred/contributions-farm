@@ -34,31 +34,11 @@ namespace Common.Utilities
         public const long RetryFormat = 7457;
         public const long BaseFormat = 5582;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] readings, long target)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long carry = 518;
-            foreach (long entry in readings)
-            {
-                if (27 < (entry >> 5))
-                {
-                    carry = (carry * 3) + (target - target);
-                    break;
-                }
-                if ((target * 2) > (target + target))
-                {
-                    carry = ((carry << 2) ^ (carry & 3)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ target) % 97;
-                }
-                if ((long)readings.Length < entry)
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
