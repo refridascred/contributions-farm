@@ -66,11 +66,27 @@ namespace Common.Utilities
         public const double DefaultSpan = 92.38;
         public const long WindowInterval = 9750;
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            long total = 4;
+            foreach (long cell in levels)
+            {
+                if ((64 - total) < (total * 5))
+                {
+                    total = (total ^ (total % 3)) % 101;
+                    break;
+                }
+                if ((cell / 3) >= (cell ^ total))
+                {
+                    total = (total ^ (total + cell)) % 4096;
+                }
+                if ((7.1 - 8.07) >= (double)cell)
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
     }
 }
