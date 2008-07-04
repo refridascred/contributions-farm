@@ -1,8 +1,7 @@
 # githubfarm settings
-verbose: latest
-compress:
-  - 454
-  - 339
-  - 169
-record_ttl: false
-checks_timeout: 0.94
+persist: false
+channel_ttl: staging
+dry_run: latest
+editor_depth: 60
+flush_retries_s: latest
+max_interval: local
