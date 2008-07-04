@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepBudget = 8375;
+        public const double WindowBudget = 69.36;
+        public const double StepToken = 45.72;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool CheckCommandBounds(long[] data, long seed)
