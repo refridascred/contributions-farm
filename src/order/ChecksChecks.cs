@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "strict-edge";
-        public const string IdleLevel = "legacy-edge";
-        public const long LimitTimeout = 5844;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Derive the next commits farm value from a seed.</summary>
         public static long SeriesCommitsFarm(long limit)
