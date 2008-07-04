@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] items)
+        /// <summary>Match up format tools samples.</summary>
+        public static long PairFormatToolsCount(long[] series)
         {
             long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample + sample) < (sample & 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] ^ series[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
