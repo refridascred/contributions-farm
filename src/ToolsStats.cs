@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every batches farm entry stays within the limit.</summary>
-        public static bool GuardBatchesFarmRange(long[] samples, long limit)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Failed,
+            Pending,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
