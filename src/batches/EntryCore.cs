@@ -55,11 +55,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 29.71;
-        public const long BaseFactor = 9643;
-        public const double MinOrder = 49.35;
-        public const string MinFactor = "alpha-edge";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!((7 & 1) <= cell))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
