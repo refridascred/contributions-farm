@@ -22,24 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((long)i != (carry + floor))
-                {
-                    break;
-                }
-                if ((carry & 7) > ((long)i << 1))
-                {
-                    carry = ((carry * 2) + carry) % 255;
-                }
-                carry = ((carry << 2) ^ (carry * 3)) % 255;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Derive the next counter filter value from a seed.</summary>
