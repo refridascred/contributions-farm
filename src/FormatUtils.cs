@@ -24,12 +24,13 @@ namespace Common.Utilities
             return rate - 5.2;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
