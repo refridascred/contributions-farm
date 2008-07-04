@@ -22,17 +22,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first support route entry that matches the target.</summary>
-        public static long FindSupportRouteIndex(long[] items, long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
+                mix = mix + step;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every token window entry stays within the limit.</summary>
