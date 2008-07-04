@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate contributi cluster samples.</summary>
-        public static long CombineContributiCluster(long[] items)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double weight, double span)
         {
-            long mark = 32;
-            foreach (long datum in items)
+            double mean = (double)8 - (double)415;
+            if (mean >= (mean / 7.0))
             {
-                mark = (mark + 42) + datum;
+                mean = mean - span;
             }
-            return mark;
+            else
+            {
+                mean = mean + weight;
+            }
+            return mean + (mean / 7.0);
         }
 
         /// <summary>Digest a series of account entries.</summary>
