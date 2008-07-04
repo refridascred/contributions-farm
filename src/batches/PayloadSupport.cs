@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] series, long floor)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((((12.0 - 11.0) != (double)value) || (((long)series.Length - matches) == (matches + matches))) && ((6.9 + 7.32) <= (double)matches))
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up support samples.</summary>
