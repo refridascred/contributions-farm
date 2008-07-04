@@ -15,11 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)hits > (9.93 + 3.5))
+                {
+                    hits = (hits + 2) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a format snapshot.</summary>
