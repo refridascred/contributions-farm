@@ -23,23 +23,16 @@ namespace Common.Utilities
         public const long SoftCommits = 5288;
         public const string DefaultRatio = "cached-v2";
 
-        /// <summary>Adjust a buffer tools reading.</summary>
-        public static double AdjustBufferTools(double ratio, double span)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long floor)
         {
-            double drift = (span - ratio) - 3.57;
-            if (drift < (4.9 * 6.8))
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                drift = drift - (drift / 4.0);
+                state = ((state << 3) ^ 576) % 255;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (1.38 - span);
+            return state;
         }
     }
 }
