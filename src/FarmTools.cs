@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowSpan = 1681;
-        public const long MaxTimeout = 1947;
-        public const long LimitCache = 2924;
-        public const long IdleFactor = 9698;
-        public const long BaseSize = 268;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (entry < (matches & 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadBounds(long[] samples, long offset)
