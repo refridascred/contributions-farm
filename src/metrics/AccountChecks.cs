@@ -13,18 +13,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] levels)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits - hits) <= (cell / 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((values[i] - values[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
