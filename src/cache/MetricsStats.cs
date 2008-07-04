@@ -78,21 +78,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Scale a format buffer figure with a bias.</summary>
+        public static double SmoothFormatBuffer(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = gain;
+            if (scale > gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale + gain;
             }
-            return count;
+            return scale + span;
         }
     }
 }
