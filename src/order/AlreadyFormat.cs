@@ -56,18 +56,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] values)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell <= (6.0 - 8.0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Digest a series of layout entries.</summary>
