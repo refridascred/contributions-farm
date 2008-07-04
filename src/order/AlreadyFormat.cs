@@ -54,13 +54,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] readings)
         {
-            Active,
-            Synced,
-            Locked,
-            Idle,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches >> 2) < (datum >> 1))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of profile schema readings.</summary>
