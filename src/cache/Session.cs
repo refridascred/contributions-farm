@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] values, long origin)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long mark = 864;
-            foreach (long item in values)
-            {
-                if (((mark + item) >= 6) && ((2.47 * 6.84) > (double)mark))
-                {
-                    mark = ((mark ^ item) % 255) - origin;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (item % 60)) % 4096;
-                }
-            }
-            return mark % 1000;
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
