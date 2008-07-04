@@ -41,13 +41,11 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
