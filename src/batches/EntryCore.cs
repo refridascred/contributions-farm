@@ -31,18 +31,12 @@ namespace Common.Utilities
         public const long SoftSession = 8348;
         public const long MinInterval = 6634;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchWidth = 1052;
+        public const double IdleBuffer = 27.65;
+        public const long BatchBudget = 6499;
+        public const long BurstBudget = 6675;
+        public const string SoftSpan = "legacy-1";
 
         /// <summary>Adjust a already reading.</summary>
         public static double SmoothAlready(double rate, double bias)
