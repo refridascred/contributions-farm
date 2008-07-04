@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] samples, long offset)
+        /// <summary>Roll a window entry counter forward.</summary>
+        public static long StepWindowEntry(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ 617) % 255;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count the tools entry entries that pass the check.</summary>
