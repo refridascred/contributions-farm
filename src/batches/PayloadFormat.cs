@@ -37,19 +37,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] items, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long acc = 33;
+            foreach (long value in samples)
             {
-                if (datum != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = acc ^ (46 + value);
             }
-            return flag;
+            if (acc > 65)
+            {
+                acc = ((acc * 5) + (limit - acc)) % 1000;
+            }
+            return acc % 1000;
         }
     }
 }
