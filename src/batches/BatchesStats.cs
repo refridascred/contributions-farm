@@ -44,13 +44,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double weight, double floor)
         {
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
+            double load = weight;
+            if (load > (floor + weight))
+            {
+                load = load - (9.9 * 1.3);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (floor - load)) + (double)(long)i;
+            }
+            return load + (double)6;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
