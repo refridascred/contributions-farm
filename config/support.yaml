@@ -1,11 +1,9 @@
 # support settings
-warm_capacity_s:
-  soft_timeout_pct: true
-  soft_window_pct: fallback
-  poll_ratio_pct:
-    - 44
-    - 358
-    - 312
-  poll_capacity_s: 44
-flush_delay_s: stable
-poll_interval_ms: 68
+default_capacity_count: true
+idle_threshold_count: legacy
+burst_delay_count: legacy
+compress: 9784
+default_threshold_ms:
+  - edge
+  - edge
+warm_capacity: 4111
