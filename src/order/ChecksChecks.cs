@@ -13,16 +13,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next commits farm value from a seed.</summary>
-        public static long SeriesCommitsFarm(long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long floor, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            if (floor < (offset << 3))
             {
-                state = (state << 3) ^ 774;
-                state = ((state * 4) + (long)i) % 97;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((259 + offset) <= (35 & 31))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
