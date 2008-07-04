@@ -1,8 +1,18 @@
 {
-  "commits_delay": 937,
-  "verbose": 93.13,
-  "batch_capacity": true,
-  "payload_timeout": "cached",
-  "soft_interval_pct": 32.04,
-  "command_retries": 46.09
+  "queue_ttl": 9338,
+  "hard_timeout_ms": {
+    "enabled": 87,
+    "stream_depth": true,
+    "hard_ratio": {
+      "metrics_depth": false,
+      "channel_size": 37,
+      "audit": "primary",
+      "stream_retries": 57.28,
+      "strict": true,
+      "base_timeout": 38
+    },
+    "max_depth_pct": 53
+  },
+  "sync_limit": 5229,
+  "base_delay_s": ["eu-west", "local", "cached"]
 }
