@@ -26,38 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long limit, long limit2)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] series, long step)
         {
-            if ((limit >> 5) < (0 - limit2))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit > (double)10)
+                if ((step & 7) <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit2 / 9) <= (limit2 + limit2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((limit2 ^ 23) != (limit & 127)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = (matches + 1) ^ datum;
                 }
             }
+            return matches;
         }
     }
 }
