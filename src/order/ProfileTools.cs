@@ -51,12 +51,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long origin)
         {
-            Draft,
-            Failed,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
