@@ -14,12 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 4926;
-        public const long BatchChecks = 5388;
-        public const long MaxChecks = 358;
-        public const long MinCount = 4923;
-        public const long BatchDepth = 58;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LocateStatsIndex(long[] samples, long floor)
