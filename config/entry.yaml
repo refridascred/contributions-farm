@@ -1,13 +1,15 @@
 # entry settings
-idle_threshold_pct:
-  - 488
-  - 341
-  - 480
-  - 184
-idle_timeout_s:
-  idle_ratio_count: 30.2
-  buffer_timeout: 17.31
-  max_depth_s: primary
-  warm_capacity_s: 79.3
-  record_size: 80
-base_window_ms: 24.5
+hard_window: open
+order_window:
+  - eu-west
+  - latest
+idle_interval_pct:
+  batch_capacity:
+    - 201
+    - 241
+    - 278
+  readonly: edge
+  audit: true
+persist: standard
+flush_limit_count: 89.82
+account_interval: fallback
