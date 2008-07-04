@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const string DefaultInterval = "legacy-edge";
         public const long LimitAccount = 6711;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] values, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long anchor = 451;
+            foreach (long datum in data)
             {
-                if (entry < limit)
+                if (((bound + datum) == (47 >> 2)) && ((bound ^ anchor) >= 570))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor + datum) % 255;
                 }
             }
-            return flag;
+            if (anchor < 75)
+            {
+                anchor = anchor - ((-7) + anchor);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
