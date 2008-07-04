@@ -47,39 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long origin, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] series, long seed)
         {
-            long edge = origin + target;
-            if ((1 >> 1) <= (edge + origin))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin > edge) || ((target ^ origin) <= (origin - 75)))
+                if (((38 + hits) >= 591) && ((double)item > (2.33 * 1.17)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)origin >= (double)target) || ((edge >> 1) <= (origin >> 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((edge * 5) < (edge - 486))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = (hits + 1) + seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
