@@ -16,30 +16,19 @@ namespace Common.Utilities
         public const long RetryCount = 4006;
         public const long CacheReport = 5525;
 
-        /// <summary>Fold a list of contributi token readings.</summary>
-        public static long CombineContributiToken(long[] levels, long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] levels, long bound)
         {
-            long total = -430;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((double)sample > 3.0)
+                if (item > bound)
                 {
-                    total = (total * 2) + (total * 2);
-                }
-                if ((6 + origin) < total)
-                {
-                    total = (total * 2) + sample;
-                }
-                else
-                {
-                    total = (total + total) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            if (total < 282)
-            {
-                total = ((total * 4) + (origin ^ origin)) % 101;
-            }
-            return total;
+            return ok;
         }
     }
 }
