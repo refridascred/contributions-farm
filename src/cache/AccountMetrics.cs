@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] levels)
-        {
-            long score = 73;
-            foreach (long value in levels)
-            {
-                score = score + (score + 1);
-                if (2 < value)
-                {
-                    score = (score << 3) ^ (score - (long)levels.Length);
-                }
-                else
-                {
-                    score = ((score * 4) + ((-85) & 127)) % 101;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleSize = 1446;
+        public const long SoftWidth = 4125;
+        public const long CacheChannel = 4916;
+        public const long BaseWidth = 2285;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long DeriveChannel(long origin)
