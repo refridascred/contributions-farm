@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((double)mark > (6.46 * 0.2)) && ((double)mark >= (double)(long)i))
-                {
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the support class values.</summary>
