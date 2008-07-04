@@ -31,12 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 1160;
-        public const double CacheOrder = 92.69;
-        public const long MaxDepth = 1183;
-        public const long IdleOrder = 8259;
-        public const long LimitLevel = 7182;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every batches githubfarm entry stays within the limit.</summary>
         public static bool CheckBatchesGithubfarmLimits(long[] samples, long limit)
