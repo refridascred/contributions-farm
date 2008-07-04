@@ -29,12 +29,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate filter schema readings against a bound.</summary>
+        public static bool VerifyFilterSchemaLimits(long[] values, long offset)
         {
-            Stale,
-            New,
-            Queued,
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
