@@ -57,13 +57,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 3120;
+        public const long RetryEditor = 4261;
+        public const long WindowBudget = 4042;
+        public const double WindowEditor = 64.95;
+        public const long RetryDepth = 4175;
     }
 }
