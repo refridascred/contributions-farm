@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] readings)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (4.1 > (double)matches)
-                {
-                    matches = (matches + 3) ^ value;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the farm level values.</summary>
