@@ -1,21 +1,8 @@
 # entry settings
-enabled: 7518
-retry_delay: true
-readonly: 71.14
-sync_retries_count:
-  persist: 100
-  session_window: false
-  sync_capacity_ms:
-    poll_ratio_s: 500
-    account_ratio: stable
-    batch_ttl_ms:
-      - 315
-      - 177
-  checks_delay: 48.67
-  soft_ratio_ms:
-    - primary
-    - cached
-    - fallback
-    - edge
-base_interval: false
-batch_size_pct: 7383
+max_limit: 58
+cache_interval_ms: 70.52
+default_window_ms: 7041
+cache_limit:
+  max_window_pct: 4.03
+  warm_retries_s: true
+  format_size: legacy
