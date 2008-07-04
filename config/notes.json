@@ -1,6 +1,6 @@
 {
-  "sync_retries": ["latest", "cached"],
-  "dry_run": 28.19,
-  "max_limit": [80, 315, 293, 356],
-  "poll_depth": 70.87
+  "idle_ttl_ms": 77.1,
+  "strict": [102, 339],
+  "batch_limit_count": ["strict", "cached"],
+  "tools_delay": 66.3
 }
