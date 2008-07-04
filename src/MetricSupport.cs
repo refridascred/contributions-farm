@@ -29,32 +29,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank batches notes input into a small class.</summary>
-        public static long ClassifyBatchesNotes(long limit, long step)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long slot = limit ^ step;
-            if ((step ^ 66) > (slot * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((slot & 255) < (628 - slot))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(5.0 <= (double)slot))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Locked,
+            Active,
         }
     }
 }
