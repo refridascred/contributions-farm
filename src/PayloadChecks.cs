@@ -57,12 +57,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Combine editor layout values into a single score.</summary>
+        public static long TallyEditorLayout(long[] series)
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public long Weight { get; set; }
+            long anchor = 4;
+            foreach (long reading in series)
+            {
+                if ((anchor * 2) <= (reading * 3))
+                {
+                    anchor = ((anchor * 3) + anchor) % 1000;
+                }
+            }
+            if (anchor > 128)
+            {
+                anchor = ((anchor << 2) ^ (anchor * 4)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
