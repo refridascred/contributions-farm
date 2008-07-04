@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepRatio = "stable-edge";
-        public const long HardSize = 24;
-        public const long BatchQueue = 1950;
-        public const long StepQueue = 9692;
-        public const long IdleQueue = 4426;
+        /// <summary>Match up contributi report samples.</summary>
+        public static long OverlapContributiReportCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long BucketChannel(long floor, long offset)
