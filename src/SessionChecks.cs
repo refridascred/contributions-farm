@@ -22,30 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cluster notes samples.</summary>
-        public static long TallyClusterNotes(long[] items, long seed)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            long carry = -348;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry & 31) < (sample & 15))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (612 + sample)) + seed;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-                if ((carry < sample) || ((double)sample <= 9.55))
-                {
-                    carry = ((carry << 3) ^ (carry ^ 994)) % 1000;
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < (-110))
-            {
-                carry = ((carry * 3) + (16 / 8)) % 101;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
