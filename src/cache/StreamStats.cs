@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] data)
         {
-            Done,
-            Ready,
-            Queued,
-            Closed,
+            long mix = 6;
+            foreach (long item in data)
+            {
+                mix = ((mix - mix) % 1000) + item;
+            }
+            if (mix > 215)
+            {
+                mix = (mix - (mix >> 5)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
