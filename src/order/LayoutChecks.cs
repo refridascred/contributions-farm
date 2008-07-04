@@ -81,11 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "stable-v2";
-        public const long CacheWidth = 8645;
-        public const long SoftProfile = 2690;
-        public const double BaseProfile = 83.82;
-        public const double CacheProfile = 76.53;
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Locked,
+            Synced,
+            Paused,
+        }
     }
 }
