@@ -19,33 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long seed, long limit)
-        {
-            long diff = seed ^ limit;
-            if ((double)limit <= 2.25)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((572 - seed) <= (seed >> 4)) && ((diff - 659) <= seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((11 >> 2) < (limit ^ diff)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 9399;
+        public const string CacheGithubfarm = "primary";
+        public const string DefaultRatio = "primary-v2";
+        public const long MaxGithubfarm = 4974;
+        public const long WindowGithubfarm = 4868;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportBounds(long[] items, long offset)
