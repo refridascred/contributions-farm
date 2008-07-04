@@ -1,15 +1,15 @@
 # Command notes
 
-Use cache settings to tune how often layout data is refreshed.
-A route that stays idle for too long is moved to the farm list.
-Defaults for format live in the config folder and can be overridden per environment.
+The channel report groups every context by layout.
+Run the token check before changing any buffer limits.
 
-Defaults for report live in the config folder and can be overridden per environment.
-Run the filter check before changing any stream limits.
+Run the counter check before changing any buffer limits.
+Use editor settings to tune how often order data is refreshed.
+Use window settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Keep graph values small
-- Review window limits each release
-- Log every entry change
-- Prefer cluster defaults
+- Keep queue values small
+- Review account limits each release
+- Log every context change
+- Document new batches fields
