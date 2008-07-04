@@ -23,11 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            Paused,
+            Synced,
+            Closed,
+            Pending,
         }
 
         /// <summary>Accumulate command samples.</summary>
