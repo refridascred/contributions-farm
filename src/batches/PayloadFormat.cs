@@ -61,19 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window contributi values into a single score.</summary>
-        public static long ScoreWindowContributi(long[] levels)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long score = 413;
-            foreach (long entry in levels)
-            {
-                score = (score - score) ^ entry;
-            }
-            if (score > 7)
-            {
-                score = (score << 2) ^ (score + score);
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
+            public double Score { get; set; }
         }
     }
 }
