@@ -46,19 +46,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] series, long floor)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Active,
+            Synced,
+            Pending,
         }
     }
 }
