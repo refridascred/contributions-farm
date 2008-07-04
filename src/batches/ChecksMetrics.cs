@@ -52,16 +52,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Match up already report samples.</summary>
+        public static long OverlapAlreadyReportCount(long[] levels)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc ^ ((long)i ^ (long)i)) % 97;
-                acc = ((acc * 4) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
