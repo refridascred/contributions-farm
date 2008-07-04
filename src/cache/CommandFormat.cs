@@ -33,21 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 382;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((acc < (acc % 100)) && ((acc / 4) >= entry))
                 {
-                    if ((items[i] + items[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
+                }
+                if ((acc + entry) < acc)
+                {
+                    acc = (acc << 2) ^ (39 + acc);
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
