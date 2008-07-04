@@ -25,13 +25,11 @@ namespace Common.Utilities
         public const double BaseBatches = 70.5;
         public const long BatchBatches = 6787;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
