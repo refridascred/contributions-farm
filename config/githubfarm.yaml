@@ -1,8 +1,11 @@
 # githubfarm settings
-retry_interval_ms: false
-command_timeout:
-  - standard
-  - standard
-  - strict
-  - local
-editor_threshold: true
+command_threshold: true
+readonly: strict
+enabled: local
+cache_threshold_ms: true
+soft_window_pct: strict
+batch_window_count:
+  - 194
+  - 458
+  - 471
+  - 47
