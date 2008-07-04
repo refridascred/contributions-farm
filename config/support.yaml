@@ -1,22 +1,49 @@
 # support settings
-min_size: legacy
-schema_limit:
-  queue_depth: 8491
-  warm_depth_ms:
-    tools_threshold: 56
-    cache_ttl_s: legacy
-    audit:
-      - 391
-      - 467
-    flush_ttl: 30
-    cluster_delay: 98
-  soft_limit_pct: 72
-  tools_ratio:
-    - 135
-    - 202
-    - 358
-    - 469
-warm_ratio_s:
-  - edge
-  - local
-max_ttl_s: local
+hard_ttl: cached
+tools_ratio:
+  stream_delay: 86.62
+  profile_timeout: eu-west
+  idle_window: primary
+graph_timeout:
+  compress:
+    - 328
+    - 251
+    - 362
+  soft_timeout: true
+  layout_window: standard
+  max_window_count: 64
+  metrics_limit:
+    enabled: 44
+    max_limit: 27.73
+    retry_size_ms: false
+    readonly:
+      - 294
+      - 455
+      - 375
+      - 300
+  persist:
+    cache_threshold: 3.83
+    warm_threshold:
+      - 499
+      - 388
+      - 377
+      - 361
+    session_retries: strict
+    warm_interval_s: 31.64
+    flush_interval: false
+    metric_ratio: 60
+retry_timeout_pct: 30
+verbose:
+  support_delay: 500
+  base_ratio_s:
+    readonly: eu-west
+    verbose: primary
+    min_ttl_pct: 43.55
+    metric_limit: blue
+    cache_window_s:
+      - blue
+      - legacy
+  idle_retries_pct: true
+  flush_retries: 44.02
+  warm_limit_pct: true
+  schema_window: local
