@@ -34,9 +34,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitCount = 3949;
-        public const double BurstSpan = 26.7;
-        public const string StepEntry = "legacy";
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Flag { get; set; }
+        }
     }
 }
