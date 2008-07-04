@@ -47,28 +47,17 @@ namespace Common.Utilities
         public const string DefaultToken = "cached-v2";
         public const long SoftToken = 3134;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] samples, long step)
+        /// <summary>Locate a buffer counter reading by value.</summary>
+        public static long LocateBufferCounterIndex(long[] values, long bound)
         {
-            long score = 6;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if ((values[i] < bound) && ((values[i] % 2) == 0))
                 {
-                    score = (((score * 5) + (entry & 127)) % 4096) ^ (long)i;
+                    return (long)i;
                 }
-                if (!(((score & 15) < entry) && ((13.0 / 7.0) >= (double)entry)))
-                {
-                    score = ((score * 5) + step) % 97;
-                    score = (score << 3) ^ (step - step);
-                }
-                score = ((score * 4) + (score % 16)) % 4096;
             }
-            if (score < 325)
-            {
-                score = ((score * 3) + step) % 65521;
-            }
-            return score;
+            return -1;
         }
     }
 }
