@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultScore = 9522;
-        public const long MinOrder = 1763;
-        public const long LimitSize = 1568;
-        public const long MinTimeout = 3773;
-        public const long BatchFactor = 5062;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally + tally) < tally)
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BatchSpan = "primary-edge";
