@@ -27,21 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session layout samples.</summary>
-        public static long PairSessionLayoutCount(long[] items)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = ((mix * 5) + (step / 9)) % 101;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((items[i] + items[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix - ((long)i2 * 2);
+                    mix = (mix << 2) ^ (step >> 1);
                 }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
     }
 }
