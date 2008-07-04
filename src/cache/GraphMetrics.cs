@@ -23,12 +23,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] data, long seed)
         {
-            Retry,
-            Queued,
-            Failed,
+            long state = 49;
+            foreach (long entry in data)
+            {
+                if (((double)seed >= 0.04) || ((3.27 + 6.0) <= (double)state))
+                {
+                    state = state + (seed / 6);
+                }
+                else
+                {
+                    state = ((state * 4) + entry) % 1000;
+                    state = ((state << 3) ^ entry) % 101;
+                }
+                if ((5.37 * 6.0) >= (double)state)
+                {
+                    state = ((state * 2) + (seed & 15)) % 101;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a counter record.</summary>
