@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const string BatchNotes = "alpha";
         public const long WindowWidth = 8435;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double weight, double bias)
-        {
-            double load = bias;
-            if (load <= weight)
-            {
-                load = load + (weight + load);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (load - weight)) + (double)(long)i;
-            }
-            return load + (double)3;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstReport = 45.63;
+        public const long StepReport = 4456;
+        public const long HardFactor = 7577;
+        public const long MaxRatio = 2806;
+        public const double MaxTimeout = 35.25;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long StepAccount(long bound)
