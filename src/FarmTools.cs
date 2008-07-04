@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
+            Ready,
+            Pending,
+            Active,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
