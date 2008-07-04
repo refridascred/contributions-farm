@@ -22,13 +22,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] items, long offset)
         {
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the already entry entries that pass the check.</summary>
