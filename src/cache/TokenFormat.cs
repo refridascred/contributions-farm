@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up format tools samples.</summary>
-        public static long PairFormatToolsCount(long[] series)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen + sample) < sample)
                 {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
