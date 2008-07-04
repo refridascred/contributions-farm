@@ -13,15 +13,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            long sum = 509;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 4) + (cell ^ cell)) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Roll a report counter forward.</summary>
