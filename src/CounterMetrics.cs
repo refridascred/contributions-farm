@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long StepSpan = 3227;
         public const long BaseBatch = 8080;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] readings, long target)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] > target) && ((readings[i] % 5) == 0))
+                if (values[i] < bound)
                 {
                     return (long)i;
                 }
