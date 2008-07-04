@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const string DefaultInterval = "legacy-edge";
         public const long LimitAccount = 6711;
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] values, long limit)
         {
-            Failed,
-            New,
-            Ready,
-            Draft,
-            Stale,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
