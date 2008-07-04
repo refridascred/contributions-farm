@@ -69,18 +69,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] data)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] data, long offset)
         {
-            long mix = 317;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((mix & 31) <= mix))
+                if (data[i] >= offset)
                 {
-                    mix = (mix + (datum & 15)) % 4096;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
     }
 }
