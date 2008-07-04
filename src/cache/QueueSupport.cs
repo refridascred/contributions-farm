@@ -35,16 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] samples, long step)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] series, long seed)
         {
-            long result = 7;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result ^ (18 ^ reading)) - step;
-                result = (result ^ reading) % 65521;
+                if ((series[i] < seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
