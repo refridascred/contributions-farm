@@ -23,10 +23,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseScore = 2112;
-        public const long BurstEditor = 2264;
-        public const long MinEditor = 7642;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] series, long offset)
+        {
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long PairRecordCount(long[] data)
