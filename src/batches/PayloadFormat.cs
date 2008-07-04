@@ -32,12 +32,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinRatio = 75.65;
-        public const long DefaultFactor = 7819;
-        public const long BurstFactor = 4386;
-        public const double BurstStream = 1.82;
-        public const long RetryStream = 8109;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long bound, long origin)
+        {
+            long slot = bound ^ origin;
+            if ((origin + slot) == (bound ^ bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((slot - origin) < bound) || ((origin + slot) < (6 >> 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
