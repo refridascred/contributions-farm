@@ -15,16 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardSpan = 67.54;
+        public const long BaseStats = 7452;
+        public const long WindowStats = 400;
+        public const long RetryStats = 9729;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
