@@ -33,14 +33,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] samples, long offset)
         {
-            Idle,
-            Failed,
-            Stale,
-            Ready,
-            Dropped,
+            long result = 9;
+            foreach (long entry in samples)
+            {
+                if (((798 + entry) <= (entry % 5)) && ((offset >> 5) < (offset % 24)))
+                {
+                    result = ((result * 5) + offset) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
