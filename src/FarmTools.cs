@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 3364;
-        public const long BurstReport = 8924;
-        public const long IdleReport = 8670;
+        /// <summary>Check that every graph contributi entry stays within the limit.</summary>
+        public static bool ValidateGraphContributiBounds(long[] samples, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
