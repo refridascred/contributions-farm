@@ -73,17 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((series[i] == bound) && ((series[i] % 3) == 0))
+                if (sample >= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
