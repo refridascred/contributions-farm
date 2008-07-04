@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] readings, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] items, long origin)
         {
-            long total = 80;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long datum in items)
             {
-                total = total + (item * 5);
+                if (datum >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total > 767)
-            {
-                total = (total << 3) ^ (step ^ step);
-            }
-            return total % 1000;
+            return found;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
