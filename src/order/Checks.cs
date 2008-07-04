@@ -59,18 +59,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] samples)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum / 5) < (datum % 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Dropped,
+            Queued,
+            Done,
+            Pending,
         }
     }
 }
