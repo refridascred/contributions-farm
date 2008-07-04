@@ -54,12 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            New,
+            Draft,
+            Paused,
+            Pending,
+            Closed,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
