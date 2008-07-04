@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a graph tools sample.</summary>
+        public static long FindGraphToolsIndex(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] == offset) && ((levels[i] % 5) == 0))
+                if ((items[i] == limit) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
