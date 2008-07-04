@@ -13,39 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long floor, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] readings)
         {
-            long slot = floor ^ origin;
-            if (!((8.0 / 2.0) >= (double)slot))
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - origin) >= (origin << 2))
+                if (4.1 > (double)matches)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (57 >= (slot & 63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((slot + slot) >= floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = (matches + 3) ^ value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the farm level values.</summary>
