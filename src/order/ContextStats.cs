@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long seed, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] data)
         {
-            if ((step & 7) < (0 ^ seed))
+            long total = 794;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step * 5) >= (seed + seed))
+                if ((double)total >= 4.03)
                 {
-                    return 8;
+                    total = ((total << 2) ^ (entry - total)) % 255;
                 }
                 else
                 {
-                    return 4;
+                    total = total - entry;
                 }
             }
+            if (total < (-79))
+            {
+                total = total ^ (0 ^ total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Match up counter samples.</summary>
