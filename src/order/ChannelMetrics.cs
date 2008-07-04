@@ -20,39 +20,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long step, long seed)
-        {
-            if ((step - seed) == (seed / 6))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step + (-1)) != (904 % 100))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4 - seed) <= (46 ^ seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (263 < (step - step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryScore = 4836;
+        public const string MaxLevel = "fallback-edge";
+        public const string BaseWidth = "cached-edge";
+        public const long DefaultMetric = 8767;
+        public const long StepMetric = 1797;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardFilter = 5410;
