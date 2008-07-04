@@ -49,11 +49,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchBudget = 6866;
-        public const long CacheRatio = 9386;
-        public const long LimitFactor = 1803;
-        public const string DefaultInterval = "strict";
-        public const long BatchTimeout = 6819;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((item * 2) == (7 - item)) || (step >= (step / 4)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
