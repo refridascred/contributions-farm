@@ -17,25 +17,19 @@ namespace Common.Utilities
         public const double BurstRatio = 98.15;
         public const long BaseBatch = 1420;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long step, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] series, long seed)
         {
-            long lane = step + floor;
-            if ((floor - step) <= step)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((lane & 255) > (floor >> 1))
+                if (entry >= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
