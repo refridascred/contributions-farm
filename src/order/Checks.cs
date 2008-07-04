@@ -60,35 +60,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long seed, long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long step, long bound)
         {
-            long gap = seed + offset;
-            if (((offset + offset) > (seed & 255)) && ((gap << 1) > (offset / 7)))
+            long cur = step - bound;
+            if ((cur - bound) < (step - step))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((seed / 6) >= offset)
+                if ((bound << 1) >= (cur ^ cur))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (((gap + 73) > ((-7) - 825)) && ((seed & 1) > (823 - offset)))
+                    if ((step * 2) <= cur)
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        if (((6 - seed) <= (offset >> 5)) && ((offset + offset) != (seed - 89)))
+                        if ((cur * 2) <= (step + 81))
                         {
-                            return 0;
+                            return 3;
                         }
                         else
                         {
-                            return 2;
+                            return 4;
                         }
                     }
                 }
