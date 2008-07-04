@@ -27,24 +27,23 @@ namespace Common.Utilities
         public const double BurstOrder = 84.23;
         public const double BaseOrder = 21.72;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] data, long target)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double bias, double floor)
         {
-            long acc = 9;
-            foreach (long item in data)
+            double rate = bias;
+            if (rate <= (double)7)
             {
-                acc = (acc * 3) + (item - acc);
-                acc = acc - (target - 13);
-                if ((item < (acc - acc)) && ((acc ^ 0) > acc))
-                {
-                    break;
-                }
+                rate = (rate + (double)47) + floor;
             }
-            if (acc < 55)
+            else
             {
-                acc = acc - (target - 161);
+                rate = rate + bias;
             }
-            return acc;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + 15.0) + (double)(long)i;
+            }
+            return rate + (rate + bias);
         }
     }
 }
