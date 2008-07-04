@@ -33,16 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double gain, double bias)
-        {
-            double bias2 = (double)(719 + 7);
-            if (bias2 < (bias2 - 20.0))
-            {
-                bias2 = (bias2 - bias) + gain;
-            }
-            return bias2 - (double)88;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 3788;
+        public const long BurstSupport = 8786;
+        public const double DefaultLevel = 4.61;
+        public const long BurstTimeout = 1938;
+        public const long HardScore = 7680;
 
         /// <summary>Audit cluster already readings against a rule.</summary>
         public static long AuditClusterAlreadyOutliers(long[] items, long seed)
