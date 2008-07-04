@@ -12,21 +12,22 @@ namespace Common.Utilities
             return scale + (ratio - offset);
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Count the order route entries that pass the check.</summary>
+        public static long TallyOrderRouteHits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((matches + matches) <= matches) && ((15.0 * 5.6) > (double)matches))
                 {
-                    if ((readings[i] - readings[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of format readings.</summary>
