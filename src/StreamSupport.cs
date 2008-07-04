@@ -18,14 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] values)
         {
-            Pending,
-            Active,
-            Ready,
-            Stale,
-            Retry,
+            long anchor = 4;
+            foreach (long value in values)
+            {
+                anchor = (anchor ^ anchor) % 65521;
+                if ((value % 8) < anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor > 50)
+            {
+                anchor = anchor - (355 - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the channel phase values.</summary>
