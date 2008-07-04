@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] levels, long seed)
+        /// <summary>Digest a series of notes support entries.</summary>
+        public static long ScoreNotesSupport(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 582;
+            foreach (long datum in samples)
             {
-                if (levels[i] < seed)
+                if (((mark * 2) <= (mark + datum)) || ((730 & 7) == ((long)samples.Length + mark)))
                 {
-                    return (long)i;
+                    mark = (mark ^ (datum + datum)) % 4096;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
