@@ -66,22 +66,21 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] samples)
+        /// <summary>Count batches batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchesBatchCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((tally / 5) == (value / 6)) && ((value / 4) <= 54)) || ((double)tally >= 11.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
