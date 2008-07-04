@@ -55,19 +55,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] levels, long step)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Iterate the cluster checks series from a seed.</summary>
