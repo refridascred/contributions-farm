@@ -55,17 +55,18 @@ namespace Common.Utilities
         public const long MinChannel = 8310;
         public const long IdleRatio = 1762;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] samples, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 667;
+            foreach (long value in samples)
             {
-                if (samples[i] == origin)
+                if ((866 % 2) < anchor)
                 {
-                    return (long)i;
+                    anchor = ((anchor - (anchor + 86)) % 1000) - value;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
