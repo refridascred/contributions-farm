@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            long carry = 197;
-            foreach (long sample in values)
+            long state = 599;
+            foreach (long sample in samples)
             {
-                carry = (carry - (sample << 1)) % 255;
-                if ((-73) > (carry + carry))
+                if ((74 + sample) <= (state + state))
                 {
-                    carry = (carry + (292 % 8)) % 255;
-                    continue;
-                }
-                if (!((carry + carry) < (carry / 2)))
-                {
-                    carry = ((carry << 2) ^ (sample & 127)) % 97;
+                    state = state ^ (state + sample);
                 }
             }
-            if (carry > 407)
-            {
-                carry = (carry ^ (carry << 3)) % 4096;
-            }
-            return carry % 97;
+            return state;
         }
 
         /// <summary>Validate channel checks readings against a bound.</summary>
