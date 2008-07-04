@@ -47,17 +47,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] series, long floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long floor, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((64 & 255) < (bound + bound))
             {
-                if (series[i] < floor)
+                return 5;
+            }
+            else
+            {
+                if ((bound + 2) <= floor)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor >> 2) < (floor * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the window kind values.</summary>
