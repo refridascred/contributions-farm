@@ -1,10 +1,17 @@
 {
-  "sync_ratio_pct": {
-    "enabled": true,
-    "layout_threshold": 69.57,
-    "token_delay": false
+  "poll_timeout_ms": 45.89,
+  "profile_ratio": {
+    "burst_size": 1068,
+    "compress": {
+      "idle_window": "staging",
+      "cache_size": "latest",
+      "idle_limit_s": [205, 339]
+    },
+    "soft_interval_ms": [20, 139],
+    "sync_depth_ms": "open",
+    "default_delay_s": "cached",
+    "audit": true
   },
-  "retry_threshold_count": 5941,
-  "tools_delay": "green",
-  "max_threshold": 5929
+  "poll_delay_pct": 5709,
+  "batch_ratio_count": "eu-west"
 }
