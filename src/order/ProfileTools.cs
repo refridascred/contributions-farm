@@ -76,13 +76,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings, long bound)
         {
-            Ready,
-            Closed,
-            Idle,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry - bound) < (seen ^ bound))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
