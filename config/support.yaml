@@ -1,10 +1,7 @@
 # support settings
-sync_threshold_s: eu-west
-sync_ratio_count: true
-channel_ratio: true
-persist: green
-checks_delay:
-  - 99
-  - 472
-  - 263
-  - 103
+token_timeout: true
+readonly:
+  - 5
+  - 374
+  - 101
+min_window_pct: true
