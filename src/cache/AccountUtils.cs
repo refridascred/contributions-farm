@@ -23,22 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 6771;
+        public const long MinPayload = 9715;
+        public const long StepSize = 2054;
 
         /// <summary>Count the record already entries that pass the check.</summary>
         public static long CountRecordAlreadyGaps(long[] readings, long limit)
