@@ -33,18 +33,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many already metric samples are out of range.</summary>
-        public static long TallyAlreadyMetricOutliers(long[] levels, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long anchor = -9;
+            foreach (long value in levels)
             {
-                if (((sample & 3) <= sample) && (((double)sample == (7.87 / 9.0)) || ((double)sample != (17.0 / 3.0))))
-                {
-                    matches = (matches + 2) - floor;
-                }
+                anchor = ((anchor << 3) ^ (anchor - bound)) % 101;
+                anchor = anchor + (value >> 3);
+                anchor = anchor - (value ^ anchor);
             }
-            return matches;
+            if (anchor < 17)
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
