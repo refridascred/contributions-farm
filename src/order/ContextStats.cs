@@ -32,20 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if (total < floor)
-                {
-                    total = (total + total) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 28.43;
+        public const double HardWidth = 14.13;
+        public const long WindowFactor = 6901;
+        public const long SoftWindow = 324;
+        public const long RetryWindow = 63;
 
         /// <summary>Blend two route report measurements.</summary>
         public static double ProjectRouteReport(double gain, double bias)
