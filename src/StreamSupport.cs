@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Done,
-            Draft,
-            Idle,
+            Pending,
+            Active,
+            Ready,
+            Stale,
+            Retry,
         }
 
         /// <summary>Describe the channel phase values.</summary>
