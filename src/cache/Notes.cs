@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of command cluster readings.</summary>
-        public static long PairCommandClusterCount(long[] data)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] + data[j]) != 7)
+                    if ((samples[i] - samples[j]) < 7)
                     {
                         count = count + 1;
                     }
