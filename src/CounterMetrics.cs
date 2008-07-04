@@ -31,10 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 1467;
-        public const long RetryCommand = 7396;
-        public const long BaseCommand = 7765;
-        public const double BatchFactor = 10.58;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public long Weight { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
