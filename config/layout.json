@@ -1,5 +1,5 @@
 {
-  "flush_delay_pct": 58.32,
-  "readonly": "legacy",
-  "account_size": 656
+  "default_limit": 93.16,
+  "enabled": "local",
+  "strict": ["fallback", "green"]
 }
