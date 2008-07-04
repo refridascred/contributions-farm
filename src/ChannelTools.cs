@@ -12,22 +12,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the order route entries that pass the check.</summary>
-        public static long TallyOrderRouteHits(long[] levels)
+        /// <summary>Locate a queue report reading by value.</summary>
+        public static long LookupQueueReportIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((matches + matches) <= matches) && ((15.0 * 5.6) > (double)matches))
+                if (series[i] < origin)
                 {
-                    matches = (matches + 2) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of format readings.</summary>
