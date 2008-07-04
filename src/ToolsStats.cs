@@ -63,18 +63,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many command channel samples are out of range.</summary>
-        public static long CountCommandChannelGaps(long[] samples)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long target)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long carry = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (436 > (seen + 44))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    seen = (seen + 1) + entry;
+                    carry = ((carry - (target & 7)) % 97) - (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
