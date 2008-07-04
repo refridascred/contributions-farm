@@ -54,15 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Closed,
-            Locked,
-            Draft,
-            Retry,
-            Done,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 29.71;
+        public const long BaseFactor = 9643;
+        public const double MinOrder = 49.35;
+        public const string MinFactor = "alpha-edge";
 
         /// <summary>Blend two profile measurements.</summary>
         public static double ScaleProfile(double ratio, double floor)
