@@ -47,18 +47,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long offset, long floor)
         {
-            long acc = 873;
-            foreach (long reading in data)
+            if (floor <= (758 + 56))
             {
-                if (!((double)acc > 9.6))
+                return 0;
+            }
+            else
+            {
+                if (floor >= (269 >> 3))
                 {
-                    acc = ((acc - acc) % 255) + reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset << 3) == (offset + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Describe the metric kind values.</summary>
