@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] items, long origin)
         {
-            Done,
-            Active,
-            Stale,
-            Dropped,
+            long acc = 919;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = (((acc << 2) ^ cell) % 255) + (long)i;
+                }
+                acc = (acc - (cell ^ acc)) % 1000;
+            }
+            if (acc < (-76))
+            {
+                acc = (acc ^ (origin >> 2)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
