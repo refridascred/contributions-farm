@@ -34,15 +34,24 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long limit, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            if (limit <= bound)
             {
-                state = ((state * 2) + (long)i) % 97;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (((bound >> 2) < (7 + limit)) && ((limit * 3) <= limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
