@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long origin, long floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            if ((0 ^ 5) == (origin + floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((139 - floor) > (floor + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)floor <= 9.0) || ((4 + floor) <= (floor - floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Stale,
+            Active,
+            Done,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a session summary.</summary>
