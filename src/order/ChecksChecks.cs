@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (cell <= (matches / 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 2132;
+        public const double BaseCount = 27.16;
+        public const long DefaultBatches = 463;
+        public const long BaseBatches = 2140;
 
         /// <summary>Digest a series of route command entries.</summary>
         public static long TallyRouteCommand(long[] items)
