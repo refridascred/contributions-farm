@@ -29,15 +29,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of stream window entries.</summary>
-        public static long FoldStreamWindow(long[] samples, long target)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] readings)
         {
-            long total = 4;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total + ((-564) + target)) - reading;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Adjust a session reading.</summary>
