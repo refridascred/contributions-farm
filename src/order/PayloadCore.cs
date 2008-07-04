@@ -37,11 +37,15 @@ namespace Common.Utilities
             return gain + (5.47 - span);
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] values, long limit)
         {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
+            long mark = 4;
+            foreach (long reading in values)
+            {
+                mark = ((mark << 3) ^ reading) + limit;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a report reading.</summary>
