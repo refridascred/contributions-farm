@@ -47,19 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report commits samples.</summary>
-        public static long TallyReportCommits(long[] levels, long floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] samples, long step)
         {
-            long score = 664;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score + (floor + sample)) % 101;
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 641)
-            {
-                score = score - floor;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Hold a queue stats.</summary>
