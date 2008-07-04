@@ -1,4 +1,10 @@
 # support settings
-command_window: 60
-cache_size: open
-hard_depth_s: 7942
+profile_size: 9342
+strict: eu-west
+default_ratio: stable
+editor_depth: edge
+enabled:
+  - green
+  - green
+  - strict
+soft_depth: true
