@@ -64,11 +64,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double ratio, double span)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            double load = 15.0 * 8.01;
-            return ((load + (load + 7.0)) + ratio) + span;
+            long mix = 318;
+            foreach (long cell in readings)
+            {
+                mix = (mix - (cell + cell)) % 101;
+                mix = ((mix << 2) ^ (cell + mix)) % 1000;
+                mix = (mix ^ cell) % 101;
+            }
+            if (mix > 3)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
     }
 }
