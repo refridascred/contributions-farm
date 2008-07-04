@@ -1,4 +1,21 @@
 # entry settings
-warm_retries: true
-idle_ttl: stable
-idle_size: 60
+default_delay_pct:
+  - strict
+  - cached
+  - staging
+batch_ttl: 60
+cache_limit_ms: false
+retry_retries_count:
+  default_timeout_s: 88.87
+  soft_threshold_s: 34.73
+  max_retries:
+    soft_timeout: strict
+    buffer_limit:
+      - open
+      - green
+      - blue
+    max_interval: 9.11
+    persist: 66.13
+    editor_window: 2274
+    batch_limit_ms: 2.87
+batch_threshold_pct: 2972
