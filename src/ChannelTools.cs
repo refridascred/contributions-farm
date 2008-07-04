@@ -12,18 +12,21 @@ namespace Common.Utilities
             return scale + (ratio - offset);
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] items, long bound)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound % 2) > (bound / 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) ^ datum;
+                    if ((readings[i] - readings[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of format readings.</summary>
