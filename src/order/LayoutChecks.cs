@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] series, long offset)
+        /// <summary>Digest a series of command already entries.</summary>
+        public static long TallyCommandAlready(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            long result = 2;
+            foreach (long entry in samples)
             {
-                if ((-2) <= (value / 2))
+                if ((entry << 3) <= entry)
                 {
-                    count = (count + 1) - offset;
+                    result = (result - (result - result)) % 4096;
+                }
+                else
+                {
+                    result = (result + result) % 101;
                 }
             }
-            return count;
+            if (result < 27)
+            {
+                result = ((result << 2) ^ (floor & 63)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
