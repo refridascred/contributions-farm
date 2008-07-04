@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] items)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((5.9 + 5.1) != (double)count)
+                if (((double)step >= (9.9 - 9.76)) || ((score - step) < (long)i))
                 {
-                    count = (count + 3) + datum;
+                    break;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = (score - score) % 101;
                 }
+                if ((6.3 > (double)step) && ((double)step <= (double)26))
+                {
+                    score = (score - (long)i) % 101;
+                }
+                else
+                {
+                    score = (score - (long)i) % 97;
+                }
+                score = score - step;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
