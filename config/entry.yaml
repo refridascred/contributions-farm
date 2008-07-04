@@ -1,15 +1,5 @@
 # entry settings
-hard_window: open
-order_window:
-  - eu-west
-  - latest
-idle_interval_pct:
-  batch_capacity:
-    - 201
-    - 241
-    - 278
-  readonly: edge
-  audit: true
-persist: standard
-flush_limit_count: 89.82
-account_interval: fallback
+profile_size: 20
+schema_interval: open
+farm_timeout: strict
+batch_size_ms: false
