@@ -20,21 +20,15 @@ namespace Common.Utilities
             return (mean + span) + ratio;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Blend two tools contributi measurements.</summary>
