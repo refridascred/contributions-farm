@@ -35,13 +35,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Retry,
-            Draft,
-            Queued,
-            Active,
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Adjust a already reading.</summary>
