@@ -1,14 +1,10 @@
 {
-  "payload_timeout": true,
-  "farm_delay": {
-    "flush_ratio": ["cached", "legacy", "green"],
-    "enabled": 67,
-    "token_interval": 4575,
-    "compress": 4418,
-    "account_window": 98.6,
-    "verbose": true
+  "poll_limit_pct": 89.77,
+  "order_depth": ["blue", "cached"],
+  "burst_delay_s": {
+    "githubfarm_timeout": "strict",
+    "audit": "eu-west",
+    "default_window_count": 59.04
   },
-  "command_retries": 29.11,
-  "record_window": [366, 477, 94, 348],
-  "route_interval": false
+  "hard_interval_pct": "green"
 }
