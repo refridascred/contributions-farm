@@ -47,21 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate contributi samples.</summary>
