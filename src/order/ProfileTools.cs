@@ -66,18 +66,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] readings, long bound)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry - bound) < (seen ^ bound))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Draft,
+            Failed,
+            Retry,
         }
     }
 }
