@@ -37,26 +37,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] levels)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long offset)
         {
-            long mark = 947;
-            foreach (long reading in levels)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)mark < 7.3)
+                if ((sum % 64) > sum)
                 {
-                    mark = mark + reading;
+                    sum = ((sum * 4) + (7 + sum)) % 1000;
+                    sum = ((sum << 2) ^ 8) % 4096;
                 }
-                if (!((mark + 95) <= 2))
-                {
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            if (mark < 9)
-            {
-                mark = ((mark << 2) ^ (692 + 21)) % 97;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Describe the commits kind values.</summary>
