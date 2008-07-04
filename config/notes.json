@@ -1,6 +1,17 @@
 {
-  "idle_ttl_ms": 77.1,
-  "strict": [102, 339],
-  "batch_limit_count": ["strict", "cached"],
-  "tools_delay": 66.3
+  "sync_depth": 29,
+  "entry_threshold": true,
+  "base_interval": ["legacy", "legacy", "eu-west"],
+  "stats_limit": {
+    "min_delay_ms": {
+      "persist": 301,
+      "hard_depth": 100,
+      "poll_capacity": "open",
+      "profile_ttl": 83
+    },
+    "flush_size_count": "legacy",
+    "cache_ratio_pct": 8406
+  },
+  "warm_ratio_count": "standard",
+  "commits_timeout": [362, 363]
 }
