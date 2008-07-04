@@ -33,11 +33,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxWidth = 5313;
-        public const string DefaultBuffer = "local-v2";
-        public const long HardBuffer = 7585;
-        public const double MaxDepth = 55.4;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphOutliers(long[] levels)
