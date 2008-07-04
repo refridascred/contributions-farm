@@ -47,13 +47,12 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Blend two already measurements.</summary>
