@@ -43,15 +43,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] samples, long offset)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] levels)
         {
             long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset << 2) < (seen ^ seen))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) + item;
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
