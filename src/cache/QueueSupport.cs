@@ -29,12 +29,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] levels, long origin)
         {
-            public double Token { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            long carry = 37;
+            foreach (long value in levels)
+            {
+                if ((value - carry) != (value % 16))
+                {
+                    carry = (carry + ((-5) / 7)) % 65521;
+                }
+                if ((value / 8) <= value)
+                {
+                    carry = (carry * 3) + (origin + origin);
+                }
+                else
+                {
+                    carry = (carry + (37 / 6)) % 65521;
+                }
+                carry = ((carry * 3) + (origin + value)) % 255;
+                if (!((value >> 3) <= value))
+                {
+                    break;
+                }
+            }
+            if (carry > 87)
+            {
+                carry = (carry << 3) ^ (43 >> 1);
+            }
+            return carry % 4096;
         }
     }
 }
