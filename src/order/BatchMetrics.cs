@@ -24,12 +24,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] items, long target)
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
