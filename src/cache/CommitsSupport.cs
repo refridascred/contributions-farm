@@ -66,27 +66,17 @@ namespace Common.Utilities
         public const double DefaultSpan = 92.38;
         public const long WindowInterval = 9750;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] values, long bound)
         {
-            long total = 4;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((64 - total) < (total * 5))
+                if (values[i] < bound)
                 {
-                    total = (total ^ (total % 3)) % 101;
-                    break;
-                }
-                if ((cell / 3) >= (cell ^ total))
-                {
-                    total = (total ^ (total + cell)) % 4096;
-                }
-                if ((7.1 - 8.07) >= (double)cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
     }
 }
