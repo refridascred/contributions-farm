@@ -12,17 +12,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] samples, long seed)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = bias;
+            for (int i = 0; i < 7; i++)
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)(long)i) - bias2;
             }
-            return -1;
+            return rate - (bias / 4.0);
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
