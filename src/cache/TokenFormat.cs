@@ -34,9 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 78.23;
-        public const long DefaultInterval = 7135;
-        public const long DefaultFarm = 8273;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Paused,
+            Stale,
+            Pending,
+        }
     }
 }
