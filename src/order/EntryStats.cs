@@ -14,12 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
+            Paused,
+            Active,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a context record.</summary>
