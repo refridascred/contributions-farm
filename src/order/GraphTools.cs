@@ -41,19 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] readings, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (datum <= target)
+                if ((89 + seen) != (datum >> 5))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) - bound;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
