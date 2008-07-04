@@ -33,15 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            long score = 34;
-            foreach (long item in levels)
+            long acc = 49;
+            foreach (long sample in samples)
             {
-                score = ((score * 3) + item) % 4096;
+                if (!((sample >> 2) != (sample ^ sample)))
+                {
+                    acc = ((acc * 5) + sample) % 4096;
+                }
             }
-            return score;
+            return acc % 65521;
         }
 
         /// <summary>Audit cluster already readings against a rule.</summary>
