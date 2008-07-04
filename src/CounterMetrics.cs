@@ -34,11 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] items, long seed)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long carry = 927;
+            foreach (long datum in items)
+            {
+                if (260 < (seed << 2))
+                {
+                    carry = ((carry + (carry & 255)) % 101) ^ datum;
+                }
+            }
+            return carry;
         }
     }
 }
