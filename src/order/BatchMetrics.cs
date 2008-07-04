@@ -27,14 +27,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double rate, double floor)
         {
-            Paused,
-            Stale,
-            Failed,
-            Idle,
-            Done,
+            double load = (double)(375 - 20);
+            return ((load - (double)618) + rate) + floor;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
