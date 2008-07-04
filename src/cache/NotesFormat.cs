@@ -21,19 +21,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] items, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            long anchor = 92;
+            foreach (long entry in items)
             {
-                if ((bound + 8) <= state)
+                if ((long)items.Length == (entry << 3))
                 {
-                    state = (state ^ ((long)i & 3)) % 101;
+                    anchor = (anchor * 5) + (anchor + origin);
                 }
-                state = ((state * 2) + (long)i) % 97;
+                else
+                {
+                    anchor = (anchor << 3) ^ (origin + entry);
+                }
             }
-            return state;
+            return anchor % 4096;
         }
     }
 }
