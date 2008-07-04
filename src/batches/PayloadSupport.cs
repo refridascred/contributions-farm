@@ -24,15 +24,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] samples)
-        {
-            long acc = 64;
-            foreach (long sample in samples)
-            {
-                acc = (acc + ((long)samples.Length - 6)) ^ sample;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 436;
+        public const long MaxStats = 5026;
+        public const long WindowSize = 4572;
+        public const long LimitStats = 7581;
     }
 }
