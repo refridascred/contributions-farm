@@ -36,18 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] series, long floor)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double mean = 2.0;
+            if (mean < 1.0)
             {
-                if (((sample / 2) >= hits) || (sample > floor))
-                {
-                    hits = hits + 1;
-                }
+                mean = (mean - (double)717) - bias;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (offset * 1.9)) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
