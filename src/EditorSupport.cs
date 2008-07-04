@@ -75,17 +75,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] readings, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long origin, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (origin <= (origin * 2))
             {
-                if ((readings[i] == limit) && ((readings[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((6.24 / 3.0) >= (double)seed)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed >= (6.0 - 8.03))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((3.7 * 2.79) > (double)origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
