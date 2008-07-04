@@ -76,13 +76,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long offset)
         {
-            Failed,
-            Retry,
-            Pending,
-            Draft,
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!(offset <= ((long)i + offset)))
+                {
+                    mix = (mix ^ (mix + mix)) % 255;
+                    mix = (mix ^ (mix & 7)) % 1000;
+                }
+                mix = (mix << 2) ^ (898 * 2);
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
