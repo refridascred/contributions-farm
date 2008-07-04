@@ -24,13 +24,21 @@ namespace Common.Utilities
             return rate - 5.2;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stats class values.</summary>
