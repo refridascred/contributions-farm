@@ -42,31 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long bound, long bound2)
+        /// <summary>Blend two notes checks measurements.</summary>
+        public static double SmoothNotesChecks(double weight, double floor)
         {
-            if ((double)bound < (0.9 * 8.6))
+            double ratio = (double)(86 + 555);
+            if (ratio > (double)61)
             {
-                return 2;
+                ratio = (ratio - (double)165) + weight;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)bound <= (4.12 / 6.0)) && (bound < bound2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((7 > (bound % 100)) || ((bound2 + bound2) == (bound2 & 7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                ratio = (ratio - (floor * 16.0)) + (double)(long)i;
             }
+            return ratio - (double)74;
         }
     }
 }
