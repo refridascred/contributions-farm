@@ -23,17 +23,19 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] series, long offset)
+        /// <summary>Project the next command support value.</summary>
+        public static double ScaleCommandSupport(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = floor;
+            if (weight >= weight)
             {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
+                weight = weight + (weight * 2.1);
             }
-            return -1;
+            else
+            {
+                weight = weight - (double)48;
+            }
+            return weight - (gain / 9.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
