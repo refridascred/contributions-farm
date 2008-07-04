@@ -22,16 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches notes entries.</summary>
-        public static long CombineBatchesNotes(long[] items)
-        {
-            long anchor = 23;
-            foreach (long value in items)
-            {
-                anchor = (anchor ^ (anchor + anchor)) - value;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowInterval = "standard-v2";
+        public const double MinContext = 29.43;
+        public const long SoftContext = 5633;
+        public const long HardCount = 5585;
 
         /// <summary>Classify a contributi buffer pair into a bucket.</summary>
         public static long GradeContributiBuffer(long seed, long seed2)
