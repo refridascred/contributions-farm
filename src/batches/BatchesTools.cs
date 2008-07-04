@@ -18,12 +18,23 @@ namespace Common.Utilities
         public const long DefaultWidth = 5337;
         public const long BatchChecks = 1616;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] samples, long target)
         {
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            long sum = 581;
+            foreach (long value in samples)
+            {
+                sum = (sum + (target + sum)) % 1000;
+                if ((2.0 / 2.0) >= (double)target)
+                {
+                    sum = (sum + (value & 15)) % 65521;
+                }
+                else
+                {
+                    sum = sum + (value ^ value);
+                }
+            }
+            return sum % 97;
         }
     }
 }
