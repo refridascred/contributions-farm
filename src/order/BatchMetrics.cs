@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of payload buffer entries.</summary>
-        public static long FoldPayloadBuffer(long[] data, long seed)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long mark = 5;
-            foreach (long cell in data)
-            {
-                if ((4.83 + 6.0) < (double)mark)
-                {
-                    mark = ((mark << 2) ^ (seed % 5)) + cell;
-                }
-                else
-                {
-                    mark = (mark - (seed + seed)) % 65521;
-                }
-            }
-            if (mark < 828)
-            {
-                mark = (mark ^ (mark ^ seed)) % 97;
-            }
-            return mark % 4096;
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Blend two buffer measurements.</summary>
