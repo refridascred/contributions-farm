@@ -26,15 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double ratio, double span)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] values, long floor)
         {
-            double scale = (double)(649 - 5);
-            if (scale < scale)
+            long total = 97;
+            foreach (long entry in values)
             {
-                scale = (scale - 6.1) + ratio;
+                total = (total << 2) ^ ((-7) + entry);
             }
-            return scale - span;
+            if (total < (-889))
+            {
+                total = (total ^ (floor % 10)) % 101;
+            }
+            return total;
         }
     }
 }
