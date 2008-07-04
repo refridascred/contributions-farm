@@ -1,4 +1,5 @@
 # entry settings
-warm_depth_s: false
-dry_run: blue
-poll_ttl_ms: false
+base_interval_ms: 85.63
+batch_limit: 250
+token_window: true
+compress: 27.85
