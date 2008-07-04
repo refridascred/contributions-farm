@@ -1,6 +1,6 @@
-id,count,region,active
-1,staging,658,680
-2,legacy,39.52,177
-3,primary,standard,primary
-4,71.13,open,61.54
-5,440,159,64
+id,owner,ratio,score,token
+1,829,79.94,8.69,340
+2,29.22,66.88,423,1.11
+3,136,238,75.58,393
+4,68,717,legacy,753
+5,918,54.9,75.91,cached
