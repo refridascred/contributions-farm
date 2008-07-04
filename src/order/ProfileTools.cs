@@ -63,11 +63,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double weight, double floor)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            double ratio = weight + (double)617;
-            return ratio - (floor + ratio);
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
