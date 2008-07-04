@@ -16,11 +16,13 @@ namespace Common.Utilities
         public const string IdleStream = "latest-edge";
         public const long WindowStream = 3253;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 4596;
-        public const long WindowEntry = 5879;
-        public const double LimitEntry = 76.56;
-        public const double MinEntry = 93.63;
-        public const double RetryDepth = 41.69;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
