@@ -32,14 +32,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long floor)
         {
-            Idle,
-            Synced,
-            Active,
-            Stale,
-            Draft,
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
