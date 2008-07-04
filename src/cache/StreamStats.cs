@@ -20,21 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] values)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (value > (value + value))
                 {
-                    state = ((state + ((long)i ^ seed)) % 1000) ^ (long)i2;
-                    state = (state - (769 + state)) % 101;
+                    count = count + 1;
                 }
-                state = state + (seed - 796);
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a schema entry.</summary>
