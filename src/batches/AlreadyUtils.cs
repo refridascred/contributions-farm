@@ -28,25 +28,12 @@ namespace Common.Utilities
             return load + (load / 6.0);
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if (acc <= (502 ^ acc))
-                {
-                    acc = (acc * 5) + (long)i;
-                    break;
-                }
-                if (!((long)i < ((long)i & 3)))
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseInterval = 2.6;
+        public const long MinSpan = 9894;
+        public const string DefaultSchema = "strict";
+        public const long SoftSchema = 2947;
+        public const long StepSchema = 9402;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
