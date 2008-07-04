@@ -35,18 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] items, long seed)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((double)reading < (double)146) && (count < (60 + 167)))
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
