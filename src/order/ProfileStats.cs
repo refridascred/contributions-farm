@@ -27,13 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] values, long bound)
+        /// <summary>Validate farm metrics readings against a bound.</summary>
+        public static bool CheckFarmMetricsBounds(long[] data, long target)
         {
             bool ready = true;
-            foreach (long item in values)
+            foreach (long entry in data)
             {
-                if (item > bound)
+                if (entry > target)
                 {
                     ready = false;
                     break;
