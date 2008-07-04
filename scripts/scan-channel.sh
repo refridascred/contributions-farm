@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest legacy primary; do
-    log "checking ${item}"
-done
+mode="${1:-green}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-CHANNEL_LIMIT=116
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+CHANNEL_LIMIT=279
 log "limit is ${CHANNEL_LIMIT}"
