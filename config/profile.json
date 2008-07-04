@@ -1,5 +1,7 @@
 {
-  "max_size_s": 16.11,
-  "min_capacity_s": 35.96,
-  "burst_ratio": 26.14
+  "metrics_delay": 4515,
+  "hard_retries_ms": false,
+  "poll_capacity_ms": "edge",
+  "command_ratio": "cached",
+  "schema_ratio": true
 }
