@@ -51,11 +51,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long limit, long target)
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            long gap = limit ^ target;
+            if ((gap + gap) > 82)
+            {
+                return 1;
+            }
+            else
+            {
+                if (gap <= limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((gap + limit) >= (target + target)) || ((limit * 2) > (target * 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((gap * 4) <= (limit ^ gap))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel state values.</summary>
