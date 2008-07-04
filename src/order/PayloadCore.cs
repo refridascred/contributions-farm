@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count profile graph pairs that satisfy a relation.</summary>
-        public static long CompareProfileGraphCount(long[] data)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
