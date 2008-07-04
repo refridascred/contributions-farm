@@ -1,6 +1,8 @@
 {
-  "hard_timeout": 48,
-  "batches_capacity": "open",
-  "filter_ttl": true,
-  "readonly": 2643
+  "queue_limit": true,
+  "flush_capacity_ms": ["primary", "primary", "green", "primary"],
+  "cluster_limit": 82.49,
+  "cluster_timeout": 27.8,
+  "persist": 100,
+  "warm_retries_count": "open"
 }
