@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double weight, double span)
+        /// <summary>Iterate the commits queue series from a seed.</summary>
+        public static long IterateCommitsQueue(long seed)
         {
-            double mean = (double)8 - (double)415;
-            if (mean >= (mean / 7.0))
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                mean = mean - span;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean + weight;
-            }
-            return mean + (mean / 7.0);
+            return state;
         }
 
         /// <summary>Digest a series of account entries.</summary>
