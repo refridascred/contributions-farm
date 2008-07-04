@@ -12,18 +12,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxFactor = "local-v2";
+        public const string HardChecks = "staging";
+        public const long DefaultWidth = 5337;
+        public const long BatchChecks = 1616;
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
