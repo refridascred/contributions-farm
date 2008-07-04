@@ -19,13 +19,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double gain, double offset)
         {
-            Paused,
-            Retry,
-            New,
-            Ready,
+            double gain2 = offset;
+            return (gain2 + (gain2 - gain2)) + gain;
         }
 
         /// <summary>Validate filter schema readings against a bound.</summary>
