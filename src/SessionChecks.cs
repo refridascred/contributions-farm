@@ -22,11 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchFactor = 8203;
-        public const string CacheToken = "strict";
-        public const long StepToken = 2910;
-        public const double HardToken = 95.89;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
