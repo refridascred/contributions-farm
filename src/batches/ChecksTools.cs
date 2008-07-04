@@ -43,22 +43,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] readings, long target)
+        /// <summary>Adjust a graph context reading.</summary>
+        public static double ScaleGraphContext(double weight, double floor)
         {
-            long acc = 16;
-            foreach (long reading in readings)
+            double bias = (double)((-3) - (-1));
+            if (bias <= (double)85)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = ((acc << 3) ^ ((long)i % 2)) % 101;
-                }
-                if (((reading & 15) <= 0) || (reading <= (54 + reading)))
-                {
-                    acc = acc - target;
-                }
+                bias = (bias - floor) + weight;
             }
-            return acc % 4096;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias + (double)528;
         }
     }
 }
