@@ -20,33 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long limit, long bound)
-        {
-            long offset = limit ^ bound;
-            if ((double)offset > 4.0)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((91 + offset) > offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset & 3) <= (-3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinLevel = 7820;
+        public const string MinBudget = "staging-edge";
+        public const double CachePayload = 9.45;
+        public const double BatchPayload = 29.47;
+        public const long RetryPayload = 3417;
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long FindLayoutIndex(long[] levels, long step)
