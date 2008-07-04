@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] values)
+        /// <summary>Validate route record readings against a bound.</summary>
+        public static bool VerifyRouteRecordRange(long[] items, long step)
         {
-            long score = 77;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long value in items)
             {
-                score = (score + (score * 4)) + item;
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (score < 9)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score % 1000;
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
