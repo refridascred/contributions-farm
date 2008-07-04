@@ -64,9 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 71.46;
-        public const string LimitDepth = "strict-edge";
-        public const string DefaultEntry = "latest-1";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowInterval = 2145;
+        public const long BurstRatio = 299;
+        public const long MinInterval = 4937;
+        public const long LimitDepth = 1671;
     }
 }
