@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 908;
-        public const string BatchInterval = "stable-v2";
-        public const long StepEditor = 2779;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Queued,
+            Paused,
+            Active,
+            Done,
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
