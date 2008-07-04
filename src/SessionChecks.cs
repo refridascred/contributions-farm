@@ -17,15 +17,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 101;
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a farm record.</summary>
