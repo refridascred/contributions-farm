@@ -36,12 +36,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 5321;
-        public const double SoftDepth = 71.31;
-        public const long SoftRatio = 783;
-        public const long CacheCommits = 3416;
-        public const string MinInterval = "alpha-1";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (value < tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinGithubfarm = 815;
