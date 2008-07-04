@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long step, long limit)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            if (((-957) * 5) >= (limit & 31))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step << 1) != (step & 255))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step / 2) > (step << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Active,
+            Retry,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define report limits and defaults.</summary>
