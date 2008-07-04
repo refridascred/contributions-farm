@@ -13,18 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] series)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((920 >= (long)series.Length) || ((matches >= (matches >> 2)) || ((double)sample < (13.0 * 4.43))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Done,
+            Failed,
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a queue info.</summary>
