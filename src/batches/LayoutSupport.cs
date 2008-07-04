@@ -40,25 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long target, long origin)
+        /// <summary>Scale a session githubfarm figure with a bias.</summary>
+        public static double ScaleSessionGithubfarm(double bias, double bias2)
         {
-            long bound = target ^ origin;
-            if ((1.5 + 9.9) < (double)origin)
+            double scale = bias2;
+            if (scale < 3.4)
             {
-                return 2;
+                scale = scale + (bias2 - 9.67);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((3.7 * 1.25) != (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
+                scale = (scale + bias) + (double)(long)i;
             }
+            return scale + bias;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
