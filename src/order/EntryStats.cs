@@ -19,10 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheWidth = 12.28;
-        public const string HardSchema = "open";
-        public const string MinSchema = "open-1";
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Closed,
+            New,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Adjust a metrics metric reading.</summary>
         public static double ProjectMetricsMetric(double bias, double offset)
