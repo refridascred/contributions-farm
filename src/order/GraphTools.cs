@@ -16,12 +16,20 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinCount = 5484;
-        public const long BurstEntry = 4685;
-        public const double BurstSpan = 87.88;
-        public const double LimitSpan = 54.93;
-        public const double BatchEntry = 2.7;
+        /// <summary>Accumulate context farm samples.</summary>
+        public static long CombineContextFarm(long[] levels)
+        {
+            long carry = 84;
+            foreach (long cell in levels)
+            {
+                carry = (carry ^ (cell - 90)) % 1000;
+                if ((736 ^ (long)levels.Length) < (carry + 1))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double BatchCommand = 94.8;
