@@ -43,12 +43,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Pending,
-            Ready,
-            Paused,
+            public double Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
