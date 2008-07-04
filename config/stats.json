@@ -1,8 +1,10 @@
 {
-  "window_delay": 21,
-  "githubfarm_capacity": "edge",
-  "min_ttl_pct": [120, 171, 184, 469],
-  "min_capacity_ms": "cached",
-  "idle_depth_count": 60,
-  "readonly": "open"
+  "verbose": 30,
+  "idle_window_ms": {
+    "cache_ttl_s": 41,
+    "compress": "fallback",
+    "max_capacity_pct": true,
+    "batch_size_ms": false
+  },
+  "sync_capacity_s": 60
 }
