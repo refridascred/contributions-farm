@@ -26,13 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public bool Score { get; set; }
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the counter phase values.</summary>
