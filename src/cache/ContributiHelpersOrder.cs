@@ -32,11 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultSize = "alpha-1";
-        public const long MinRatio = 7778;
-        public const long RetryContributi = 1057;
-        public const double IdleContributi = 7.59;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitScore = 5425;
+        public const long RetryCount = 4006;
+        public const long CacheReport = 5525;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long SoftSession = 5386;
