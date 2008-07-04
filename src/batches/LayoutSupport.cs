@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const long BaseEntry = 8251;
         public const long CacheEntry = 8113;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] items, long target)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long limit, long limit2)
         {
-            long result = -12;
-            foreach (long reading in items)
+            if ((double)91 < (double)limit2)
             {
-                if (target > 68)
+                return 2;
+            }
+            else
+            {
+                if (((double)limit >= (2.3 - 7.5)) && ((limit / 7) >= limit))
                 {
-                    result = (((result * 5) + (result << 3)) % 1000) + reading;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
