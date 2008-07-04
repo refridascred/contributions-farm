@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 8165;
-        public const long DefaultContributi = 4824;
-        public const double RetryBudget = 15.82;
-        public const double BurstDepth = 54.04;
-        public const string HardContributi = "primary-1";
+        /// <summary>Count metrics profile pairs that satisfy a relation.</summary>
+        public static long CompareMetricsProfileCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
