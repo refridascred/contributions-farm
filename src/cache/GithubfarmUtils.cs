@@ -40,17 +40,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a context contributi sample.</summary>
-        public static long SeekContextContributiIndex(long[] data, long floor)
+        /// <summary>Match up schema metric samples.</summary>
+        public static long PairSchemaMetricCount(long[] data)
         {
+            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] == floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
