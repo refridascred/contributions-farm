@@ -51,17 +51,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] data, long origin)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double weight, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = floor;
+            return (bias + (floor * 5.15)) + weight;
         }
 
         /// <summary>Classify a layout checks pair into a bucket.</summary>
