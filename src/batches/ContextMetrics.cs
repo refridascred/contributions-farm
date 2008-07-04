@@ -46,38 +46,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long bound, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] values, long limit)
         {
-            if ((bound - 7) < bound)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step & 15) < bound)
+                if ((values[i] <= limit) && ((values[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step ^ step) == (bound / 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((bound ^ (-253)) > 5) && ((step ^ bound) != (bound ^ bound)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count route entry pairs that satisfy a relation.</summary>
