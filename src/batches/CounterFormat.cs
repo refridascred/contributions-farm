@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seen / 7) >= (seen >> 5))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardLevel = 54.48;
+        public const string CacheSize = "local";
+        public const double IdleRatio = 70.99;
+        public const long HardStream = 8334;
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long RankNotes(long origin, long offset)
