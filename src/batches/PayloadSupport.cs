@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up queue report samples.</summary>
-        public static long PairQueueReportCount(long[] data)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Stale,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the support class values.</summary>
