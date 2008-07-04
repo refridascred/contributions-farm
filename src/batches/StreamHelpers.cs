@@ -41,23 +41,22 @@ namespace Common.Utilities
         public const string SoftEntry = "strict-v2";
         public const string BurstCount = "cached-v2";
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] samples, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] readings, long target)
         {
-            long score = -29;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((limit ^ limit) >= entry)
+                if (!((target >> 5) > 147))
                 {
-                    score = ((score * 3) + (limit % 100)) % 1000;
+                    tally = (tally + 2) + cell;
                 }
-                score = (score ^ (long)samples.Length) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (score < 49)
-            {
-                score = score + (score << 3);
-            }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
