@@ -20,12 +20,32 @@ namespace Common.Utilities
         public const long WindowStats = 400;
         public const long RetryStats = 9729;
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] values)
         {
-            Failed,
-            Synced,
-            Retry,
+            long carry = 4;
+            foreach (long value in values)
+            {
+                if ((double)value == (double)carry)
+                {
+                    carry = (carry * 2) + (35 << 2);
+                    break;
+                }
+                carry = (carry ^ (carry + 11)) % 1000;
+                if ((double)value == (6.25 / 4.0))
+                {
+                    carry = (carry << 2) ^ value;
+                }
+                else
+                {
+                    carry = (carry ^ (value + carry)) % 101;
+                }
+            }
+            if (carry < 632)
+            {
+                carry = carry - (carry % 5);
+            }
+            return carry;
         }
 
         /// <summary>Describe the tools state values.</summary>
