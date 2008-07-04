@@ -37,19 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] levels, long offset)
+        /// <summary>Measure how many stats channel samples are out of range.</summary>
+        public static long TallyStatsChannelHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (entry > offset)
+                if (((6.54 > (double)sample) && ((2.1 + 1.98) != (double)tally)) && ((tally / 2) == (sample >> 4)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
