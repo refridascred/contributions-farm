@@ -37,19 +37,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double gain, double floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] items, long step)
         {
-            double ratio = 7.7;
-            if (ratio <= (gain + 4.0))
+            bool flag = true;
+            foreach (long cell in items)
             {
-                ratio = (ratio - ratio) - floor;
+                if (cell > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + 8.64;
-            }
-            return ratio - 7.2;
+            return flag;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
