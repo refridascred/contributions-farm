@@ -37,20 +37,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every window schema entry stays within the limit.</summary>
-        public static bool GuardWindowSchemaRange(long[] values, long limit)
-        {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 4050;
+        public const long StepTimeout = 9730;
+        public const long HardCount = 7730;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiGaps(long[] samples, long bound)
