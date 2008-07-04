@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Locked,
-            Queued,
-            Done,
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
