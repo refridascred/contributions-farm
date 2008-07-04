@@ -1,17 +1,7 @@
 {
-  "base_size": {
-    "warm_interval_count": [401, 417, 475, 346],
-    "batch_timeout_pct": "fallback",
-    "base_delay": "blue",
-    "cache_size_s": 500,
-    "audit": "latest"
-  },
-  "enabled": 1044,
-  "sync_delay_ms": 88.26,
-  "sync_retries_s": {
-    "soft_size_ms": "standard",
-    "soft_ttl_s": ["local", "edge"],
-    "poll_interval_pct": true,
-    "burst_capacity": 3544
-  }
+  "min_depth_pct": true,
+  "warm_timeout_pct": 30,
+  "min_ratio_ms": 44,
+  "burst_timeout": 1826,
+  "queue_ttl": 500
 }
