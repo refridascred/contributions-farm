@@ -75,19 +75,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] series, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long acc = 897;
+            foreach (long reading in levels)
             {
-                if (item != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (((acc * 3) + (acc << 1)) % 1000) ^ reading;
             }
-            return flag;
+            return acc % 97;
         }
     }
 }
