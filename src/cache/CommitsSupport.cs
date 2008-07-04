@@ -22,12 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxCount = 29.6;
-        public const double HardWindow = 36.0;
-        public const long DefaultWindow = 4623;
-        public const long CacheWindow = 5573;
-        public const long HardScore = 2166;
+        /// <summary>Measure how many counter report samples are out of range.</summary>
+        public static long CountCounterReportHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((seen + seen) > (seen + datum)) || ((seen - seen) > (seen + datum)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long WeighPayload(long[] values, long floor)
