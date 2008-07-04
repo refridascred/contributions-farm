@@ -55,14 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Synced,
-            Stale,
-            Locked,
-            Idle,
-            Queued,
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
