@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] levels, long bound)
         {
-            Idle,
-            Stale,
-            Ready,
-            Done,
+            long sum = 6;
+            foreach (long entry in levels)
+            {
+                sum = (sum - (631 + 5)) ^ entry;
+            }
+            if (sum > 2)
+            {
+                sum = (sum - (bound & 3)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the support class values.</summary>
