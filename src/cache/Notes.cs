@@ -26,18 +26,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] values)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long state = 437;
+            foreach (long datum in levels)
             {
-                if ((248 % 97) == (matches / 8))
-                {
-                    matches = (matches + 2) + item;
-                }
+                state = (state + (datum ^ state)) + offset;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
