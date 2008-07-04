@@ -103,10 +103,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowCluster = "cached-1";
-        public const long LimitCluster = 3341;
-        public const long MinTimeout = 7335;
-        public const double BaseTimeout = 33.65;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public double Label { get; set; }
+            public double Limit { get; set; }
+        }
     }
 }
