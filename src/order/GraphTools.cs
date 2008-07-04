@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long BatchScore = 139;
         public const string StepContext = "strict-edge";
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] data, long seed)
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (!((double)seed >= (8.0 * 20.0)))
+                {
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
