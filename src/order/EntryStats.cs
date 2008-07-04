@@ -22,18 +22,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of report graph entries.</summary>
-        public static long TotalReportGraph(long[] data, long step)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long sum = 291;
-            foreach (long cell in data)
-            {
-                if ((cell * 3) >= (sum & 3))
-                {
-                    sum = (sum ^ (29 + cell)) + step;
-                }
-            }
-            return sum;
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
