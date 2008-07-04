@@ -52,25 +52,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long target, long offset)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long bound = target + offset;
-            if ((offset >> 1) < (bound + 0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (3 < (bound >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
