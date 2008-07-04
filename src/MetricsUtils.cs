@@ -15,19 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] items, long origin)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a order stats.</summary>
