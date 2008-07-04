@@ -1,8 +1,6 @@
 {
-  "batch_ratio_count": false,
-  "poll_capacity_ms": "latest",
-  "hard_size": 8.16,
-  "contributi_threshold": 39.68,
-  "strict": false,
-  "hard_depth_ms": [423, 391]
+  "audit": "local",
+  "layout_delay": 49,
+  "retry_timeout_ms": "open",
+  "buffer_timeout": ["latest", "blue", "legacy", "latest"]
 }
