@@ -31,14 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleInterval = 80.97;
+        public const long HardGithubfarm = 5207;
+        public const long BatchCount = 4845;
+        public const long LimitGithubfarm = 14;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long HardWidth = 974;
