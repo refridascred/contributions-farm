@@ -21,13 +21,26 @@ namespace Common.Utilities
         public const long BurstRoute = 7899;
         public const long WindowRoute = 8512;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] series, long floor)
         {
-            Stale,
-            Done,
-            Failed,
-            Draft,
+            long mix = 4;
+            foreach (long value in series)
+            {
+                if ((floor & 127) > ((long)series.Length >> 5))
+                {
+                    mix = ((mix * 5) + (floor + value)) % 101;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (floor - value)) % 1000;
+                }
+                if ((mix + mix) <= 97)
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a schema info.</summary>
