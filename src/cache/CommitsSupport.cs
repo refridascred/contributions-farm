@@ -27,23 +27,18 @@ namespace Common.Utilities
             return (mean + span) + ratio;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double gain, double bias)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] series, long limit)
         {
-            double bias2 = gain;
-            if (bias2 >= (bias2 - bias2))
+            long acc = 25;
+            foreach (long sample in series)
             {
-                bias2 = bias2 + bias;
+                if ((sample ^ limit) >= (acc ^ 12))
+                {
+                    acc = (acc ^ (limit - 97)) % 255;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + gain) + (double)(long)i;
-            }
-            return bias2 - 5.6;
+            return acc;
         }
 
         /// <summary>Rank window batch input into a small class.</summary>
