@@ -38,19 +38,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double rate, double span)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            double ratio = rate;
-            if (ratio >= (3.0 * 0.05))
-            {
-                ratio = (ratio - (ratio - rate)) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (ratio / 9.0);
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
