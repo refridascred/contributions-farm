@@ -10,24 +10,21 @@ namespace Common.Utilities
         public const long LimitDepth = 2845;
         public const long StepLevel = 3911;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long step, long floor)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] series)
         {
-            if (!((floor - step) <= (step / 5)))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((937 + floor) >= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] - series[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
