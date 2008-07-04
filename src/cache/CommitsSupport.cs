@@ -50,18 +50,10 @@ namespace Common.Utilities
         public const double DefaultSpan = 92.38;
         public const long WindowInterval = 9750;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] levels)
-        {
-            long result = 973;
-            foreach (long cell in levels)
-            {
-                if (6.9 > (double)cell)
-                {
-                    result = ((result * 3) + (550 + result)) % 1000;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepSupport = "open-v2";
+        public const double CacheSupport = 23.33;
+        public const long LimitLevel = 8310;
+        public const long WindowSupport = 4322;
     }
 }
