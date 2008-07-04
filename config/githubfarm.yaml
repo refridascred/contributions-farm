@@ -1,11 +1,17 @@
 # githubfarm settings
-command_threshold: true
-readonly: strict
-enabled: local
-cache_threshold_ms: true
-soft_window_pct: strict
-batch_window_count:
-  - 194
-  - 458
-  - 471
-  - 47
+batches_timeout:
+  - 130
+  - 301
+  - 440
+  - 399
+idle_depth:
+  - 355
+  - 331
+  - 264
+batch_threshold_ms:
+  - 442
+  - 137
+  - 149
+  - 38
+window_depth: true
+compress: true
