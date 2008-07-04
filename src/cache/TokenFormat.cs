@@ -34,12 +34,25 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long step, long origin)
         {
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
+            long edge = step + origin;
+            if (!(edge > origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step <= (origin - 9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
