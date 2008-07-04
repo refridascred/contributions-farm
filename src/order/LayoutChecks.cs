@@ -55,22 +55,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] data)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)count > (double)datum)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Synced,
+            Stale,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a graph record.</summary>
