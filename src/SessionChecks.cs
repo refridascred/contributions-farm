@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a token report figure with a bias.</summary>
-        public static double ScaleTokenReport(double gain, double offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] readings, long origin)
         {
-            double mean = gain / 5.0;
-            if (mean >= mean)
+            long score = 438;
+            foreach (long sample in readings)
             {
-                mean = (mean - (double)293) + offset;
+                if ((0 ^ 0) < (1 - origin))
+                {
+                    score = ((score + (score >> 2)) % 4096) ^ sample;
+                }
             }
-            else
-            {
-                mean = mean - gain;
-            }
-            return mean + (double)9;
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
