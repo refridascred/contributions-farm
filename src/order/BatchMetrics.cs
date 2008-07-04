@@ -14,15 +14,20 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] values, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long score = 20;
+            foreach (long datum in values)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                score = ((score * 3) + (score & 31)) - datum;
+                score = score + bound;
             }
-            return acc;
+            if (score > 53)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Describe the stream class values.</summary>
