@@ -28,18 +28,24 @@ namespace Common.Utilities
             return load + (load / 6.0);
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] items)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long bound)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((275 + matches) > value)
+                if (acc <= (502 ^ acc))
                 {
-                    matches = matches + 1;
+                    acc = (acc * 5) + (long)i;
+                    break;
                 }
+                if (!((long)i < ((long)i & 3)))
+                {
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a profile stats.</summary>
