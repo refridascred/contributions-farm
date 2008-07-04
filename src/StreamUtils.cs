@@ -58,18 +58,24 @@ namespace Common.Utilities
         public const double MinWidth = 17.04;
         public const long IdleBuffer = 2421;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] values, long bound)
+        /// <summary>Classify a layout checks pair into a bucket.</summary>
+        public static long RankLayoutChecks(long origin, long target)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            if ((target + 90) != (origin >> 1))
             {
-                if ((sample - sample) <= (37 % 2))
+                return 2;
+            }
+            else
+            {
+                if (((origin >> 4) > origin) || ((5 ^ origin) >= (origin & 31)))
                 {
-                    hits = (hits + 2) - bound;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
