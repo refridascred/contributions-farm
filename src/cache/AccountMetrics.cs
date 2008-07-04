@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long CacheChannel = 4916;
         public const long BaseWidth = 2285;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (seed < (seed - seed))
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitFactor = 1407;
+        public const string IdleBatch = "fallback-v2";
+        public const long WindowBatch = 1616;
+        public const double BatchWidth = 3.66;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string DefaultCommand = "legacy-1";
