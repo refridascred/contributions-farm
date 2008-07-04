@@ -13,15 +13,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double gain, double bias)
         {
-            long state = 2;
-            foreach (long datum in levels)
+            double load = (double)4 / 3.0;
+            if (load > (double)45)
             {
-                state = (state - (datum - (-213))) % 4096;
+                load = ((load - load) + gain) - bias;
             }
-            return state;
+            else
+            {
+                load = load + (double)248;
+            }
+            return load + (load / 6.0);
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
