@@ -1,15 +1,14 @@
 # Command notes
 
-The channel report groups every context by layout.
-Run the token check before changing any buffer limits.
+Use entry settings to tune how often token data is refreshed.
+Use checks settings to tune how often contributi data is refreshed.
 
-Run the counter check before changing any buffer limits.
-Use editor settings to tune how often order data is refreshed.
-Use window settings to tune how often entry data is refreshed.
+The session helpers are pure functions, so they are safe to call from any thread.
+Use contributi settings to tune how often queue data is refreshed.
+Keep contributi and format names short and lowercase.
 
 ## Guidelines
 
-- Keep queue values small
-- Review account limits each release
-- Log every context change
-- Document new batches fields
+- Document new payload fields
+- Log every commits change
+- Prefer already defaults
