@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Compare every pair of layout schema readings.</summary>
+        public static long PairLayoutSchemaCount(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a contributi entry.</summary>
