@@ -41,19 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double ratio, double span)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] values, long step)
         {
-            double ratio2 = span;
-            if (ratio2 < span)
+            long score = -68;
+            foreach (long value in values)
             {
-                ratio2 = ratio2 - (ratio + 2.7);
+                if ((double)step < (17.0 - 11.0))
+                {
+                    score = ((score - step) % 65521) + value;
+                }
+                else
+                {
+                    score = ((score << 3) ^ score) % 1000;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + (double)945) + (double)(long)i;
-            }
-            return ratio2 + ratio;
+            return score % 65521;
         }
     }
 }
