@@ -1,18 +1,11 @@
 {
-  "soft_ttl_s": "eu-west",
-  "schema_threshold": true,
-  "min_window_s": 49.2,
-  "sync_depth": {
-    "base_ratio_pct": true,
-    "poll_limit_ms": {
-      "soft_threshold_count": 93.87,
-      "cluster_ttl": true,
-      "default_ratio_count": "stable",
-      "max_depth_ms": 8540,
-      "farm_ttl": "standard"
-    },
-    "dry_run": 26,
-    "poll_window": false
+  "readonly": false,
+  "account_interval": 9736,
+  "hard_limit": {
+    "audit": "local",
+    "idle_ratio_count": 9,
+    "poll_delay": 49,
+    "entry_timeout": 23
   },
-  "batch_ratio_pct": 6060
+  "burst_interval_pct": 6915
 }
