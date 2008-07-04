@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate profile session samples.</summary>
-        public static long CombineProfileSession(long[] series)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long anchor = 6;
-            foreach (long value in series)
-            {
-                if (((7.25 + 12.0) <= (double)anchor) || ((3.35 + 19.0) <= (double)(long)series.Length))
-                {
-                    anchor = (((anchor << 2) ^ 43) % 1000) - value;
-                }
-            }
-            return anchor;
+            Queued,
+            New,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the editor phase values.</summary>
