@@ -19,15 +19,13 @@ namespace Common.Utilities
         public const long RetryCount = 4006;
         public const long CacheReport = 5525;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] levels, long offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long mark = 717;
-            foreach (long entry in levels)
-            {
-                mark = (mark - (entry + 9)) - offset;
-            }
-            return mark;
+            Synced,
+            Draft,
+            Paused,
+            Queued,
         }
     }
 }
