@@ -1,7 +1,17 @@
 {
-  "batch_depth": "standard",
-  "idle_size_s": ["stable", "edge", "eu-west"],
-  "hard_size_s": 75,
-  "idle_limit_count": 60,
-  "cache_timeout": [70, 119, 120, 310]
+  "min_delay": 3.35,
+  "min_window_pct": "blue",
+  "githubfarm_ratio": 56,
+  "max_ttl": {
+    "commits_retries": {
+      "max_timeout": [435, 406, 481, 297],
+      "flush_ratio": 62,
+      "retry_size_ms": 20,
+      "flush_size_pct": 53.28
+    },
+    "context_ttl": "latest",
+    "hard_timeout": 4108
+  },
+  "dry_run": "eu-west",
+  "audit": 1568
 }
