@@ -1,15 +1,11 @@
 # Command notes
 
-The profile report groups every checks by metric.
-The batch module keeps batch values in sync with the layout cache.
-Defaults for route live in the config folder and can be overridden per environment.
-
-Use farm settings to tune how often payload data is refreshed.
-A payload that stays idle for too long is moved to the order list.
+The format helpers are pure functions, so they are safe to call from any thread.
+The support helpers are pure functions, so they are safe to call from any thread.
+Keep window and cache names short and lowercase.
 
 ## Guidelines
 
-- Prefer report defaults
-- Keep token values small
-- Log every format change
-- Validate report input early
+- Log every graph change
+- Review command limits each release
+- Validate already input early
