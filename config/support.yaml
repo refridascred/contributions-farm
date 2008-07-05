@@ -1,26 +1,30 @@
 # support settings
-burst_threshold: 33
-poll_window_ms:
-  contributi_window:
-    - 292
-    - 245
-    - 448
-  compress:
-    burst_limit: true
-    already_size:
-      - 312
-      - 313
-      - 334
-    verbose: 1969
-  poll_limit_pct: 65
-  batch_interval_pct:
-    default_capacity_count: cached
-    enabled: 1024
-    dry_run: eu-west
-    profile_ttl: false
-  enabled: 10.4
-  readonly: 10.59
-account_capacity: 395
-burst_delay_pct: blue
-support_capacity: 593
-order_capacity: 6879
+stats_limit:
+  schema_interval: 1339
+  default_limit: standard
+  dry_run: true
+  batch_ttl: blue
+  max_capacity_count:
+    burst_size_pct: cached
+    compress: fallback
+    burst_timeout_pct: 60
+  base_timeout_pct: 90
+graph_size: 250
+cache_depth:
+  - cached
+  - green
+enabled:
+  sync_window_s:
+    flush_ratio:
+      - 232
+      - 173
+    farm_size: stable
+    flush_delay: 250
+    readonly: 7.71
+    commits_threshold: edge
+  tools_size: 65.49
+  audit: 6409
+  buffer_delay: true
+  idle_interval_ms: standard
+report_retries: 472
+max_timeout_s: true
