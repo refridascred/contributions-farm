@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 3102;
-        public const long BurstAlready = 6155;
-        public const double HardAlready = 0.62;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((count % 3) != (cell << 1))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long BucketPayload(long seed, long seed2)
