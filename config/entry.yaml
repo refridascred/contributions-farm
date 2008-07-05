@@ -1,8 +1,29 @@
 # entry settings
-min_size:
-  - 47
-  - 15
-  - 18
-  - 435
-min_delay_count: cached
-hard_ratio_count: 73.14
+sync_window: 40.16
+farm_window: false
+soft_capacity_ms:
+  strict: latest
+  poll_timeout_ms:
+    burst_capacity: 74.5
+    default_size_s: edge
+    editor_ttl: primary
+  soft_retries_s: 6
+  graph_window:
+    sync_ratio_ms: 4840
+    cache_delay_ms: 60
+    min_ratio_s: primary
+    readonly: 1024
+    strict: true
+    hard_delay_ms: 4.95
+  persist: open
+enabled: stable
+min_capacity_count:
+  account_size: 94.43
+  idle_capacity_pct: strict
+  max_interval: 8348
+  default_delay: 30
+  farm_timeout:
+    - blue
+    - staging
+    - eu-west
+    - green
