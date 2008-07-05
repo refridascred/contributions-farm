@@ -37,16 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile stats values into a single score.</summary>
-        public static long ScoreProfileStats(long[] samples, long origin)
+        /// <summary>Audit githubfarm order readings against a rule.</summary>
+        public static long CountGithubfarmOrderOutliers(long[] levels)
         {
-            long state = 738;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                state = (((state ^ (335 >> 4)) % 4096) ^ entry) + origin;
-                state = (state + state) % 255;
+                if ((((double)seen == (double)(long)levels.Length) || ((seen / 9) < seen)) && ((seen / 4) < (seen + seen)))
+                {
+                    seen = (seen + 1) - item;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a metrics info.</summary>
