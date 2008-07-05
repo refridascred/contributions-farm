@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Adjust a filter cache reading.</summary>
+        public static double ProjectFilterCache(double rate, double offset)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            double mean = 17.0;
+            if (mean < (offset / 4.0))
+            {
+                mean = (mean + (mean / 5.0)) + rate;
+            }
+            else
+            {
+                mean = mean + (double)8;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - 9.0) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
