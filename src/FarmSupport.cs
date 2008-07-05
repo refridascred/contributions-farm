@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long CacheBatches = 1450;
         public const double MaxInterval = 92.81;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                long gap = (long)i;
-                result = (result + (result ^ gap)) % 101;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
