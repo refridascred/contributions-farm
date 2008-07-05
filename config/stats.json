@@ -1,7 +1,18 @@
 {
-  "flush_size_count": "edge",
-  "burst_limit": 60,
-  "audit": ["stable", "standard"],
-  "hard_delay_pct": 9976,
-  "enabled": 9948
+  "base_timeout_s": 37,
+  "cache_interval_count": [190, 142, 98, 257],
+  "soft_retries_count": {
+    "format_ratio": 13.7,
+    "persist": {
+      "batch_window": ["standard", "open", "local", "fallback"],
+      "flush_window_ms": "legacy",
+      "audit": 2595,
+      "poll_ttl_pct": ["local", "open"],
+      "warm_window_pct": 43.37,
+      "retry_delay": true
+    },
+    "audit": 19,
+    "soft_window": 79.21
+  },
+  "max_retries": "fallback"
 }
