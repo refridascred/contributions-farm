@@ -1,5 +1,5 @@
 {
-  "soft_window": "green",
-  "cache_size": true,
-  "cache_ratio_s": 500
+  "strict": "edge",
+  "base_threshold": 9714,
+  "soft_timeout_pct": true
 }
