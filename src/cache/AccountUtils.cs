@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long origin, long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] data)
         {
-            if (((5 << 2) > (origin + origin)) && ((origin + 0) < (origin - 65)))
+            long carry = 9;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (5.0 <= (double)origin)
+                if ((item ^ 91) != ((long)data.Length / 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    carry = ((carry << 2) ^ (item * 2)) % 65521;
                 }
             }
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
