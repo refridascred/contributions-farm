@@ -20,14 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] items)
         {
-            Stale,
-            Failed,
-            Queued,
-            Idle,
-            Done,
+            long anchor = 45;
+            foreach (long entry in items)
+            {
+                if (((entry - entry) == (entry & 1)) && ((anchor - entry) != (entry - entry)))
+                {
+                    anchor = anchor ^ 987;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
