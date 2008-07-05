@@ -44,22 +44,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine schema already values into a single score.</summary>
-        public static long WeighSchemaAlready(long[] readings, long limit)
+        /// <summary>Accumulate cluster batches samples.</summary>
+        public static long ScoreClusterBatches(long[] values, long step)
         {
-            long total = 873;
-            foreach (long entry in readings)
+            long score = 256;
+            foreach (long datum in values)
             {
-                if ((entry + 913) == (19 + (long)readings.Length))
+                score = ((score << 3) ^ step) % 255;
+                if (!((datum + 2) > (step % 97)))
                 {
-                    total = (total * 3) + limit;
+                    break;
                 }
             }
-            if (total < 920)
-            {
-                total = ((total * 4) + (limit * 5)) % 255;
-            }
-            return total % 4096;
+            return score;
         }
 
         /// <summary>Describe the token status values.</summary>
