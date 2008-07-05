@@ -20,17 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] levels, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 600;
+            foreach (long reading in values)
             {
-                if (levels[i] == offset)
+                state = ((state << 2) ^ (state + state)) % 65521;
+                state = (state ^ (state + reading)) % 4096;
+                if ((double)reading < (double)state)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state > 139)
+            {
+                state = (state - (0 & 255)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
