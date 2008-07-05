@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Ready,
-            Stale,
-            Closed,
             Paused,
-            Failed,
+            Draft,
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the filter kind values.</summary>
