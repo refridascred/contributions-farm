@@ -52,22 +52,22 @@ namespace Common.Utilities
             return weight + (double)302;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] values)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((double)seen >= (6.96 + 6.2))
+                if ((reading < (tally / 8)) && ((double)reading >= (4.0 + 6.7)))
                 {
-                    seen = (seen + 2) + cell;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
