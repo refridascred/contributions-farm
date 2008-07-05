@@ -18,19 +18,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double weight, double offset)
-        {
-            double drift = offset;
-            if (drift <= (drift + drift))
-            {
-                drift = (drift + (offset * 3.0)) + weight;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 3476;
+        public const double MaxBatches = 57.75;
+        public const double SoftBatches = 10.78;
+        public const long RetryBatches = 2980;
+        public const long BurstTimeout = 9725;
     }
 }
