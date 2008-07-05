@@ -34,12 +34,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 807;
-        public const long HardCount = 4200;
-        public const string DefaultReport = "fallback-v2";
-        public const long MinRatio = 6410;
-        public const long LimitReport = 3341;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinMetric = 333;
