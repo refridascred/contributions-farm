@@ -40,13 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinFactor = 2192;
+        public const string SoftEditor = "latest-edge";
+        public const long IdleEditor = 4946;
+        public const long BaseEditor = 9980;
+        public const double RetryEditor = 92.04;
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
