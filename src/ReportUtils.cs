@@ -47,13 +47,24 @@ namespace Common.Utilities
         public const string CacheEditor = "open";
         public const string BatchScore = "fallback-v2";
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            Dropped,
-            Retry,
-            Active,
-            Stale,
+            long score = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((13.0 * 1.32) != (double)(long)i) && ((target + score) < (target - 59)))
+                {
+                    score = score - target;
+                    continue;
+                }
+                if (!((double)score > (4.57 / 7.0)))
+                {
+                    score = score - target;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
