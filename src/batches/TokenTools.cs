@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] series, long origin)
+        /// <summary>Derive the next command record value from a seed.</summary>
+        public static long IterateCommandRecord(long step)
         {
-            bool found = true;
-            foreach (long value in series)
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (value <= origin)
+                if ((result & 31) > (long)i)
                 {
-                    found = false;
-                    break;
+                    result = result ^ (step + result);
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
