@@ -41,12 +41,22 @@ namespace Common.Utilities
         public const long BurstScore = 5442;
         public const string StepTimeout = "primary-edge";
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            Ready,
-            Pending,
-            Active,
+            long state = 48;
+            foreach (long item in levels)
+            {
+                if (!((state << 2) <= item))
+                {
+                    state = (state + (state % 12)) % 101;
+                }
+            }
+            if (state < 551)
+            {
+                state = (state + (185 % 10)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
