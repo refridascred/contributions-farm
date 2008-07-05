@@ -29,12 +29,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Digest a series of route report entries.</summary>
+        public static long TotalRouteReport(long[] data, long step)
         {
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long state = 388;
+            foreach (long cell in data)
+            {
+                if ((441 >> 5) != (cell & 63))
+                {
+                    state = state - (670 / 3);
+                }
+                else
+                {
+                    state = (state ^ state) % 255;
+                }
+                if (!((state ^ step) >= 4))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
