@@ -32,10 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 9602;
-        public const long CacheInterval = 6034;
-        public const long BaseBudget = 3076;
-        public const long MaxCommits = 4196;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] series, long target)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
