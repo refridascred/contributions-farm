@@ -1,7 +1,18 @@
 {
-  "batch_capacity_pct": 47,
-  "editor_interval": true,
-  "soft_size": "standard",
-  "sync_capacity_ms": "standard",
-  "soft_retries": "standard"
+  "enabled": "stable",
+  "record_limit": 60,
+  "route_capacity": "eu-west",
+  "hard_threshold": "fallback",
+  "already_retries": {
+    "burst_window_count": 648,
+    "retry_window": true,
+    "compress": "standard",
+    "max_limit_count": 62.62,
+    "githubfarm_timeout": {
+      "base_limit_s": "cached",
+      "cache_timeout": 40,
+      "idle_limit_count": false,
+      "dry_run": 8472
+    }
+  }
 }
