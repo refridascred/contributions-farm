@@ -12,15 +12,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double scale, double floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] items, long origin)
         {
-            double load = (double)(191 + 34);
-            for (int i = 0; i < 6; i++)
+            long mark = 155;
+            foreach (long reading in items)
             {
-                load = ((load - (load + 19.0)) + (double)(long)i) - floor;
+                mark = ((((mark << 3) ^ (mark * 3)) % 101) ^ reading) - origin;
             }
-            return load + scale;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
