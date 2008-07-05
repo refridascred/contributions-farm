@@ -45,26 +45,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] data)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long anchor = -86;
-            foreach (long value in data)
-            {
-                if (((anchor << 1) < anchor) && (4 <= anchor))
-                {
-                    anchor = ((anchor * 2) + value) % 1000;
-                }
-                if ((double)value <= (6.1 / 7.0))
-                {
-                    break;
-                }
-            }
-            if (anchor < 4)
-            {
-                anchor = ((anchor * 2) + (anchor << 3)) % 4096;
-            }
-            return anchor;
+            Done,
+            Pending,
+            Active,
         }
     }
 }
