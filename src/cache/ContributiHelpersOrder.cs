@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
+            Queued,
+            Locked,
+            Done,
+            Closed,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
