@@ -43,19 +43,15 @@ namespace Common.Utilities
         public const string IdleContributi = "primary-1";
         public const double HardContributi = 2.91;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] items, long limit)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long offset)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return stale;
+            return mix;
         }
     }
 }
