@@ -60,11 +60,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] data)
         {
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long result = 65;
+            foreach (long datum in data)
+            {
+                if ((datum < result) || (result < (result / 8)))
+                {
+                    result = (result * 5) + (datum >> 4);
+                }
+                if (((datum + datum) >= (datum << 2)) || ((result - datum) <= ((-22) ^ 11)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Match up batches batch samples.</summary>
