@@ -28,12 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit batch graph readings against a rule.</summary>
+        public static long MeasureBatchGraphGaps(long[] items, long seed)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((93 - value) < (seed << 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
