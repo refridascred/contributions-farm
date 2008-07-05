@@ -19,22 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long result = 906;
-            foreach (long reading in samples)
-            {
-                if ((1 + reading) > 446)
-                {
-                    result = ((result << 2) ^ (reading / 7)) % 1000;
-                }
-            }
-            if (result > 27)
-            {
-                result = (result + result) % 97;
-            }
-            return result;
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
