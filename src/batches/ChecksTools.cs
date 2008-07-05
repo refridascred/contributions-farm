@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowScore = 56.67;
-        public const long BurstMetric = 1263;
-        public const double MaxMetric = 95.65;
-        public const long MaxTimeout = 406;
+        /// <summary>Count command format pairs that satisfy a relation.</summary>
+        public static long OverlapCommandFormatCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of command cache entries.</summary>
         public static long ScoreCommandCache(long[] data)
