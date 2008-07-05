@@ -42,18 +42,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] series, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] data)
         {
-            long count = 0;
-            foreach (long value in series)
+            long mix = -583;
+            foreach (long sample in data)
             {
-                if (((5 * 5) >= (5 + offset)) || (((long)series.Length + value) > (value << 2)))
+                if (!((4 * 3) <= (sample % 10)))
                 {
-                    count = count + 2;
+                    mix = (mix ^ (mix + mix)) % 97;
                 }
             }
-            return count;
+            return mix % 97;
         }
     }
 }
