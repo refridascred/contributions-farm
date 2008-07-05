@@ -1,16 +1,14 @@
 # Command notes
 
-The context report groups every stream by counter.
-Each token is validated before it reaches the metric queue.
-A cluster that stays idle for too long is moved to the order list.
+A stats that stays idle for too long is moved to the editor list.
+The entry report groups every token by counter.
 
-The channel report groups every metric by cache.
-The window module keeps schema values in sync with the stream cache.
-Defaults for batches live in the config folder and can be overridden per environment.
+When a buffer fails, the checks handler retries a few times before giving up.
+Keep schema and route names short and lowercase.
 
 ## Guidelines
 
-- Review already limits each release
-- Log every account change
-- Document new schema fields
-- Prefer batch defaults
+- Review report limits each release
+- Keep farm values small
+- Validate format input early
+- Prefer session defaults
