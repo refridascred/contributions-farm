@@ -29,10 +29,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 5926;
-        public const double SoftLayout = 37.35;
-        public const double HardLayout = 29.91;
-        public const long BatchLayout = 8766;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseMetrics = "local-v2";
+        public const long LimitMetrics = 4291;
+        public const double IdleRatio = 50.1;
     }
 }
