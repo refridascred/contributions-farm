@@ -29,12 +29,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] data, long floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] < floor)
+                if (series[i] < offset)
                 {
                     return (long)i;
                 }
