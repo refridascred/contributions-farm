@@ -1,4 +1,28 @@
 # entry settings
-flush_ratio: standard
-flush_delay: 86.69
-sync_depth_pct: 8888
+dry_run: edge
+batch_threshold:
+  stream_ttl: open
+  strict: 73
+  soft_retries_count: eu-west
+  token_ratio: 78
+idle_interval: staging
+batch_ttl_s: 94.0
+readonly:
+  batch_threshold_ms: cached
+  compress:
+    commits_delay:
+      - 330
+      - 121
+      - 225
+      - 186
+    farm_depth: cached
+    persist: true
+  enabled: 60
+  flush_interval_count:
+    enabled: 5913
+    soft_ttl_ms: 28.77
+    cache_ttl_s: true
+    counter_capacity: 6.3
+    entry_size: primary
+    dry_run: 250
+soft_delay_pct: primary
