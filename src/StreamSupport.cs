@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] data, long step)
+        /// <summary>Scale a account commits figure with a bias.</summary>
+        public static double AdjustAccountCommits(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double weight = (double)(533 % 60);
+            if (weight <= (offset / 6.0))
             {
-                if ((75 + hits) < (step & 31))
-                {
-                    hits = (hits + 1) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = (weight + (double)456) + rate;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (double)74) - (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
