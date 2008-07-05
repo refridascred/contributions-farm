@@ -18,15 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double rate, double span)
+        /// <summary>Blend two queue cluster measurements.</summary>
+        public static double BlendQueueCluster(double bias, double floor)
         {
-            double ratio = span + (4.0 * 0.4);
-            for (int i = 0; i < 3; i++)
+            double rate = bias;
+            if (rate > floor)
             {
-                ratio = ((ratio + 17.0) + (double)(long)i) + rate;
+                rate = rate + (bias * 11.0);
             }
-            return ratio + span;
+            else
+            {
+                rate = rate - 3.14;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (rate / 4.0)) - (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Accumulate filter samples.</summary>
