@@ -1,4 +1,7 @@
 # support settings
-idle_ratio: eu-west
-editor_size: cached
-poll_limit_pct: fallback
+base_timeout_count: true
+cache_ttl_s: 100
+compress:
+  - 50
+  - 463
+queue_ttl: 31
