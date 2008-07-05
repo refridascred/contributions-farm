@@ -87,22 +87,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] samples, long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long mark = 73;
+            foreach (long datum in items)
             {
-                if ((target ^ tally) >= (target - 0))
+                if (datum >= (datum >> 4))
                 {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mark = ((mark - datum) % 255) - floor;
                 }
             }
-            return tally;
+            if (mark < 891)
+            {
+                mark = (mark - (mark ^ mark)) % 101;
+            }
+            return mark % 1000;
         }
     }
 }
