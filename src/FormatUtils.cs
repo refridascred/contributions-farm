@@ -77,9 +77,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryLevel = 1396;
-        public const double WindowBudget = 98.1;
-        public const long HardSpan = 9869;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell == (double)seen)
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
+        }
     }
 }
