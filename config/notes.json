@@ -1,6 +1,8 @@
 {
-  "enabled": "open",
-  "warm_delay_s": [493, 105],
-  "warm_window": 1024,
-  "batch_timeout_ms": ["blue", "legacy", "green"]
+  "record_ttl": 100,
+  "base_depth_count": [100, 357, 83],
+  "hard_timeout": "edge",
+  "batch_capacity": ["open", "stable"],
+  "min_interval_pct": "latest",
+  "default_ttl": 65
 }
