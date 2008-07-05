@@ -61,19 +61,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (0.5 > (double)count)
-                {
-                    count = ((count + 3) + item) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftProfile = 42.24;
+        public const long MaxProfile = 5156;
+        public const long LimitWidth = 6880;
+        public const string BurstBudget = "alpha-1";
+        public const long BurstProfile = 6870;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaHits(long[] samples, long origin)
