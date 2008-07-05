@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many filter buffer samples are out of range.</summary>
-        public static long CountFilterBufferMatches(long[] levels)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((double)reading >= 4.12)
+                if (item != floor)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Classify a layout window pair into a bucket.</summary>
