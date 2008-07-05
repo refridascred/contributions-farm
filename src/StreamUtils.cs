@@ -40,10 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 5417;
-        public const long BurstProfile = 5338;
-        public const long RetryScore = 9045;
+        /// <summary>Classify a contributi batch pair into a bucket.</summary>
+        public static long SortContributiBatch(long origin, long origin2)
+        {
+            if ((double)origin < (6.1 - 1.93))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)origin <= (18.0 / 5.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] levels, long bound)
