@@ -59,18 +59,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the report account entries that pass the check.</summary>
-        public static long MeasureReportAccountMatches(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long anchor = 360;
+            foreach (long entry in levels)
             {
-                if (!!((1.47 / 5.0) != (double)matches))
+                if (((-884) << 1) <= entry)
                 {
-                    matches = (matches + 3) - reading;
+                    anchor = anchor ^ (-741);
                 }
             }
-            return matches;
+            return anchor % 1000;
         }
     }
 }
