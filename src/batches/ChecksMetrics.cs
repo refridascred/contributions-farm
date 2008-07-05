@@ -56,21 +56,13 @@ namespace Common.Utilities
             return rate - (double)471;
         }
 
-        /// <summary>Match up metric schema samples.</summary>
-        public static long PairMetricSchemaCount(long[] items)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the cache phase values.</summary>
