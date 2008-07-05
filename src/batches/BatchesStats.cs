@@ -29,11 +29,21 @@ namespace Common.Utilities
         public const string WindowBuffer = "strict";
         public const double BurstScore = 91.44;
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Count command githubfarm pairs that satisfy a relation.</summary>
+        public static long PairCommandGithubfarmCount(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
