@@ -31,21 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of cluster schema readings.</summary>
-        public static long OverlapClusterSchemaCount(long[] values)
+        /// <summary>Find the first already farm entry that matches the target.</summary>
+        public static long LookupAlreadyFarmIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (readings[i] == bound)
                 {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
