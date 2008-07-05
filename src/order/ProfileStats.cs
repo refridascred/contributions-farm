@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] series, long offset)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long limit, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long offset = limit + bound;
+            if (((offset * 5) < limit) || ((double)bound >= (5.19 + 2.0)))
             {
-                if ((offset - count) < (count - offset))
+                return 1;
+            }
+            else
+            {
+                if ((limit - limit) < (offset >> 4))
                 {
-                    count = (count + 2) + entry;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
