@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of buffer profile readings.</summary>
-        public static long PairBufferProfileCount(long[] data)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Queued,
+            Ready,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
