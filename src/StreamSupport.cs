@@ -37,19 +37,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] items, long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (value <= seed)
+                if (9.81 <= (double)hits)
                 {
-                    ok = false;
-                    break;
+                    hits = ((hits + 2) + datum) + seed;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
