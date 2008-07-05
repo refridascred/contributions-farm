@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Measure how many support window samples are out of range.</summary>
+        public static long TallySupportWindowMatches(long[] series)
         {
-            long mix = 42;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                mix = ((mix * 5) + mix) ^ entry;
+                if ((datum ^ datum) != (datum << 2))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
