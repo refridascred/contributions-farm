@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Window format helpers.</summary>
     public static class WindowFormat
     {
-        /// <summary>Accumulate schema format samples.</summary>
-        public static long TallySchemaFormat(long[] readings, long origin)
+        /// <summary>Compare every pair of window report readings.</summary>
+        public static long PairWindowReportCount(long[] samples)
         {
-            long state = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (7 <= item)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state ^ origin) % 4096;
-                }
-                else
-                {
-                    state = (state + item) % 97;
-                }
-                if (state < (state - 8))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 16)
-            {
-                state = state - (origin << 3);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
