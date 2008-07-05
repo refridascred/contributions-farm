@@ -82,18 +82,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] items, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((((matches & 3) < offset) || (3.05 > (double)offset)) || ((sample * 3) >= matches))
+                if (cell != origin)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
