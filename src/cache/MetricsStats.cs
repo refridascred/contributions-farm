@@ -12,23 +12,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the token already entries that pass the check.</summary>
-        public static long CountTokenAlreadyGaps(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (offset <= (26 / 6))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "standard";
+        public const long CacheInterval = 2616;
+        public const long WindowToken = 4201;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double BlendQueue(double rate, double floor)
