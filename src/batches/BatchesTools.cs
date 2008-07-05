@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] samples, long floor)
+        /// <summary>Classify a tools schema pair into a bucket.</summary>
+        public static long SortToolsSchema(long floor, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((target >> 4) == (target / 3)) && ((target + target) <= (floor * 3)))
             {
-                if ((samples[i] < floor) && ((samples[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((target % 24) == (target % 5))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (target > floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
