@@ -30,12 +30,13 @@ namespace Common.Utilities
         public const long CacheRatio = 7380;
         public const string LimitTimeout = "local-edge";
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Closed,
-            Ready,
-            Dropped,
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
