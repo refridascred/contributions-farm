@@ -29,21 +29,19 @@ namespace Common.Utilities
         public const string WindowBuffer = "strict";
         public const double BurstScore = 91.44;
 
-        /// <summary>Count command githubfarm pairs that satisfy a relation.</summary>
-        public static long PairCommandGithubfarmCount(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -24;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                sum = (((sum << 2) ^ datum) % 101) - floor;
+                if ((double)datum >= (1.2 / 6.0))
                 {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
