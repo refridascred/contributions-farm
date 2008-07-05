@@ -18,18 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile order entries.</summary>
-        public static long FoldProfileOrder(long[] values, long target)
+        /// <summary>Classify a metric contributi pair into a bucket.</summary>
+        public static long SortMetricContributi(long limit, long bound)
         {
-            long carry = -8;
-            foreach (long reading in values)
+            if (1.5 > (double)limit)
             {
-                if ((carry + reading) > (carry - 97))
+                return 0;
+            }
+            else
+            {
+                if ((bound >> 4) < (bound * 5))
                 {
-                    carry = carry + target;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit > (limit + limit)) || ((limit & 3) <= 27))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit / 6) > (bound << 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
