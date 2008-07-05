@@ -25,22 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] samples, long limit)
         {
-            long acc = 2;
-            foreach (long sample in series)
+            long anchor = 183;
+            foreach (long sample in samples)
             {
-                if ((double)sample <= (3.0 - 2.0))
-                {
-                    acc = (acc - (sample << 1)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (sample + sample)) % 4096;
-                }
+                anchor = ((anchor - (-171)) % 4096) - limit;
+                anchor = (anchor + (sample << 1)) % 4096;
             }
-            return acc;
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
