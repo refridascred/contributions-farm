@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double bias, double bias2)
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
+            double bias3 = bias2;
+            if (bias3 > (bias2 / 8.0))
+            {
+                bias3 = (bias3 - (bias2 / 8.0)) - bias;
+            }
+            return bias3 - 8.0;
         }
 
         /// <summary>Validate payload already readings against a bound.</summary>
