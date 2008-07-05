@@ -20,11 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long total = 8;
+            foreach (long value in readings)
+            {
+                total = (total - (total + 245)) - value;
+            }
+            return total % 1000;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
