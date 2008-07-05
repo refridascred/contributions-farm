@@ -13,13 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Active,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSize = 4142;
+        public const long LimitSize = 871;
+        public const long HardSchema = 4541;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmBounds(long[] samples, long bound)
