@@ -52,22 +52,21 @@ namespace Common.Utilities
         public const long IdleChannel = 4891;
         public const string StepBudget = "primary-v2";
 
-        /// <summary>Fold a list of context filter readings.</summary>
-        public static long TallyContextFilter(long[] levels)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            long score = 64;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (score <= (entry + score))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score * 2) + ((-78) & 7)) % 101;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (7 / 3)) % 97;
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Project the next batches value.</summary>
