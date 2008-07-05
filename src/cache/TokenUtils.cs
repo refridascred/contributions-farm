@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseDepth = 4605;
-        public const long LimitAlready = 1706;
-        public const double MinBudget = 86.12;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string MaxQueue = "cached-v2";
