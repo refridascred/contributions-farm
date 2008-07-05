@@ -1,6 +1,11 @@
-id,active,token,region,owner
-1,560,edge,blue,582
-2,742,32.15,54.55,edge
-3,427,34,open,456
-4,575,618,green,green
-5,legacy,606,strict,cached
+id,owner,ratio,level
+1,cached,804,latest
+2,46.49,925,365
+3,fallback,39.55,staging
+4,485,53.48,541
+5,cached,855,local
+6,33.69,37,49.51
+7,74.77,404,15.62
+8,842,62.92,20.16
+9,930,76.59,69.52
+10,strict,300,691
