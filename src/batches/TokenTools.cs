@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultWidth = 65.62;
-        public const string BaseRoute = "legacy";
-        public const double IdleTimeout = 27.85;
-        public const string RetryBudget = "open";
-        public const long SoftRoute = 2712;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] readings)
+        {
+            long mark = 1;
+            foreach (long entry in readings)
+            {
+                mark = ((mark + (69 << 1)) % 4096) + entry;
+            }
+            if (mark < 5)
+            {
+                mark = (mark + (mark + (-500))) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double AdjustAlready(double rate, double offset)
