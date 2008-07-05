@@ -34,22 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of payload graph entries.</summary>
-        public static long CombinePayloadGraph(long[] readings, long floor)
+        /// <summary>Derive the next metrics batches value from a seed.</summary>
+        public static long SeriesMetricsBatches(long seed)
         {
-            long mix = -87;
-            foreach (long item in readings)
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((floor / 7) == ((long)readings.Length ^ 738))
-                {
-                    mix = mix + (mix + 1);
-                }
-                else
-                {
-                    mix = mix ^ item;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return mix;
+            return state;
         }
     }
 }
