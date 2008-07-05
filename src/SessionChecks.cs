@@ -31,31 +31,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long floor, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series)
         {
-            if ((4.85 / 4.0) != (double)bound)
+            long acc = 2;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((73 - floor) >= bound)
+                if ((double)sample <= (3.0 - 2.0))
                 {
-                    return 0;
+                    acc = (acc - (sample << 1)) % 1000;
                 }
                 else
                 {
-                    if ((bound << 1) > (floor + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = ((acc << 3) ^ (sample + sample)) % 4096;
                 }
             }
+            return acc;
         }
 
         /// <summary>Hold a commits stats.</summary>
