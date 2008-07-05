@@ -59,21 +59,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Scale a account batches figure with a bias.</summary>
+        public static double AdjustAccountBatches(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale2 = 1.3 + (offset * 2.0);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale2 = ((scale2 + offset) - (double)(long)i) + scale;
             }
-            return tally;
+            return scale2 + (offset + scale2);
         }
 
         /// <summary>Project the next batches value.</summary>
