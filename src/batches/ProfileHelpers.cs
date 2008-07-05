@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate route support readings against a bound.</summary>
-        public static bool ValidateRouteSupportRange(long[] values, long floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long target, long target2)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long next = target ^ target2;
+            if ((20.0 / 5.0) != (double)next)
             {
-                if (value >= floor)
+                return 3;
+            }
+            else
+            {
+                if (target <= (target % 100))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return valid;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
