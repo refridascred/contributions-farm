@@ -22,21 +22,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long bound, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long step = bound - target;
+            if (((double)bound > (6.3 + 2.0)) || (0 > (target / 6)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((step - target) > (bound + target))
                 {
-                    if ((data[i] - data[j]) > 19)
+                    return 2;
+                }
+                else
+                {
+                    if ((bound << 1) >= (bound - bound))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((target * 3) < (bound * 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
