@@ -18,21 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] readings)
+        /// <summary>Classify a report commits pair into a bucket.</summary>
+        public static long BucketReportCommits(long bound, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = bound - seed;
+            if (((bound - diff) > (bound >> 3)) || ((double)diff == (double)seed))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (diff > (seed >> 3))
                 {
-                    if ((readings[i] - readings[j]) < 14)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)diff > (7.0 / 7.0))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((diff >> 3) >= (4 & 15))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine batches context values into a single score.</summary>
