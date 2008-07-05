@@ -32,13 +32,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            New,
-            Stale,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultTimeout = 77.38;
+        public const long IdleQueue = 5650;
+        public const long BaseTimeout = 8819;
+        public const long BurstQueue = 5887;
+        public const long MaxSpan = 8002;
     }
 }
