@@ -34,18 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] series)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long anchor = 48;
+            foreach (long item in readings)
             {
-                if (!((matches << 3) >= (value - matches)) && (value < ((-685) + matches)))
+                if (((double)floor < (6.59 + 8.4)) || ((anchor % 100) < (616 ^ anchor)))
                 {
-                    matches = matches + 1;
+                    anchor = ((anchor + anchor) % 65521) ^ item;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
