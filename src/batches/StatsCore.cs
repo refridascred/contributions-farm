@@ -33,25 +33,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long offset, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] items, long offset)
         {
-            long step = offset + seed;
-            if (((step + 2) <= (seed - step)) || (step > (step & 3)))
+            bool found = true;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed <= 9.0)
+                if (reading > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
