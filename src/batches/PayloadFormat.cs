@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double ratio, double span)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long seed, long bound)
         {
-            double bias = 1.45;
-            if (bias > (4.5 / 5.0))
+            if ((6.0 - 3.4) <= (double)seed)
             {
-                bias = ((bias - (double)11) - ratio) + span;
+                return 1;
             }
             else
             {
-                bias = bias + (double)86;
+                if ((2.24 / 7.0) <= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return bias - (double)13;
         }
 
         /// <summary>Combine support values into a single score.</summary>
