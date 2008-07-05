@@ -1,14 +1,14 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the stats list.
-A queue that stays idle for too long is moved to the stats list.
+Each contributi is validated before it reaches the already queue.
+Keep contributi and batch names short and lowercase.
+Run the token check before changing any counter limits.
 
-Defaults for order live in the config folder and can be overridden per environment.
-Run the session check before changing any window limits.
+Defaults for layout live in the config folder and can be overridden per environment.
+Keep metric and stream names short and lowercase.
 
 ## Guidelines
 
-- Keep channel values small
-- Prefer counter defaults
-- Validate buffer input early
-- Document new contributi fields
+- Keep layout values small
+- Review commits limits each release
+- Prefer batch defaults
