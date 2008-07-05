@@ -35,19 +35,12 @@ namespace Common.Utilities
         public const long CacheEntry = 8967;
         public const string LimitEntry = "staging-v2";
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((18.0 - 20.0) <= (double)datum)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 2292;
+        public const long BurstSpan = 4344;
+        public const long MaxSize = 8894;
+        public const long BaseChannel = 4914;
+        public const double HardCount = 28.98;
 
         /// <summary>Accumulate window samples.</summary>
         public static long TallyWindow(long[] levels)
