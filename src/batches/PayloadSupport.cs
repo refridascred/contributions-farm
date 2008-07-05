@@ -19,24 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long seed, long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            if ((target & 15) < (73 + target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9.9 * 2.0) < (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            Paused,
+            Active,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the cache state values.</summary>
