@@ -1,8 +1,8 @@
 {
-  "default_size_ms": 770,
-  "max_depth": false,
-  "idle_interval": "strict",
-  "notes_threshold": "blue",
-  "soft_depth_count": 18.44,
-  "min_capacity_ms": 12
+  "entry_timeout": "standard",
+  "sync_depth": "latest",
+  "flush_ratio_count": true,
+  "order_capacity": ["staging", "latest", "legacy", "latest"],
+  "context_threshold": "open",
+  "hard_ratio_ms": [87, 483, 406]
 }
