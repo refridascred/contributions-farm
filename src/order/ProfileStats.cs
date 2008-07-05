@@ -24,12 +24,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 3091;
-        public const string StepFactor = "stable-1";
-        public const double MinSize = 30.56;
-        public const long CacheBudget = 3910;
-        public const long BaseWidth = 4694;
+        /// <summary>Match up counter githubfarm samples.</summary>
+        public static long PairCounterGithubfarmCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
