@@ -35,22 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many tools order samples are out of range.</summary>
-        public static long AuditToolsOrderHits(long[] samples, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((item > (floor + count)) || ((3 * 3) <= count)) || ((13.0 + 2.0) < (double)item))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the contributi mode values.</summary>
