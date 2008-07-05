@@ -1,10 +1,7 @@
-id,active,level,owner,weight
-1,869,699,94.57,cached
-2,93.42,94.13,18.22,blue
-3,open,standard,578,811
-4,11.75,34.9,104,90.11
-5,39.54,591,555,primary
-6,standard,68,941,100
-7,1.9,74.24,614,418
-8,122,local,88.14,243
-9,58.96,95.98,open,latest
+id,owner,active,region
+1,open,343,strict
+2,75.23,396,70
+3,12.39,391,215
+4,93,109,staging
+5,94.73,primary,standard
+6,415,5.16,385
