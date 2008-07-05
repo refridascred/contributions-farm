@@ -37,21 +37,22 @@ namespace Common.Utilities
         public const long CacheFilter = 4301;
         public const long CacheLevel = 9379;
 
-        /// <summary>Match up checks record samples.</summary>
-        public static long MatchChecksRecordCount(long[] data)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((-976) * 5) <= (sample ^ sample))
                 {
-                    if ((data[i] ^ data[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score ^ sample;
                 }
             }
-            return matches;
+            if (score < 4)
+            {
+                score = (score ^ (score - 8)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
