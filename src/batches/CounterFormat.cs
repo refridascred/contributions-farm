@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric contributi pair into a bucket.</summary>
-        public static long SortMetricContributi(long limit, long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] series, long step)
         {
-            if (1.5 > (double)limit)
+            bool found = true;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 4) < (bound * 5))
+                if (value > step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit > (limit + limit)) || ((limit & 3) <= 27))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit / 6) > (bound << 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
