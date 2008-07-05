@@ -16,12 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheCount = 3234;
-        public const long BaseNotes = 1066;
-        public const long StepNotes = 9870;
-        public const long DefaultNotes = 151;
-        public const long MaxBudget = 4300;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Retry,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long StepBatch(long limit)
