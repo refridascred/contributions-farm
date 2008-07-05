@@ -24,21 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up counter githubfarm samples.</summary>
-        public static long PairCounterGithubfarmCount(long[] samples)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
