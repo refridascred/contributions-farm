@@ -32,22 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] samples)
         {
-            long sum = 1;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((sum > 4) || ((sum - sum) > (datum / 5)))
+                if (9.91 < (double)reading)
                 {
-                    sum = sum - (datum >> 3);
+                    tally = tally + 2;
                 }
             }
-            if (sum > 61)
-            {
-                sum = ((sum * 3) + sum) % 97;
-            }
-            return sum % 1000;
+            return tally;
         }
     }
 }
