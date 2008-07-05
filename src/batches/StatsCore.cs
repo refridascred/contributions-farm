@@ -13,18 +13,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] samples, long target)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long origin)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((4.0 / 7.0) < (double)target)
+                if (!(8.21 < (double)(long)i))
                 {
-                    tally = (tally + 1) ^ entry;
+                    result = (result * 3) + ((long)i * 2);
+                    result = (result - (result + (-647))) % 101;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
