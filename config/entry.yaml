@@ -1,10 +1,4 @@
 # entry settings
-format_window: local
-max_capacity:
-  - 412
-  - 295
-  - 499
-  - 241
-batch_ratio: 12.43
-dry_run: 14.23
-cache_retries_pct: fallback
+buffer_window: false
+cache_window: true
+route_threshold: 1024
