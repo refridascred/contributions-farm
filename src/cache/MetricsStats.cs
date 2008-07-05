@@ -36,12 +36,14 @@ namespace Common.Utilities
             return ratio + (3.1 + bias);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleScore = 9317;
-        public const double StepBudget = 35.43;
-        public const long StepWindow = 6608;
-        public const double RetryWindow = 13.27;
-        public const double SoftWindow = 18.67;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Locked,
+            Idle,
+            Closed,
+            Done,
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
