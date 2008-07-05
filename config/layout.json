@@ -1,11 +1,14 @@
 {
-  "channel_limit": {
-    "entry_ttl": 75.12,
-    "default_interval": 39,
-    "burst_retries": 61.71,
-    "persist": "stable"
+  "route_depth": 1024,
+  "retry_depth_ms": {
+    "batch_retries_count": 90.67,
+    "idle_delay_s": 2227,
+    "default_limit_s": {
+      "hard_size": 23.3,
+      "max_threshold_s": 27.33,
+      "hard_timeout_ms": 8246
+    }
   },
-  "batch_timeout_s": [440, 377, 392],
-  "flush_ttl_ms": false,
-  "poll_interval": 500
+  "command_window": 3795,
+  "max_window_s": ["open", "local", "stable"]
 }
