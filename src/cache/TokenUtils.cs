@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long target, long origin)
+        /// <summary>Fold a list of layout filter readings.</summary>
+        public static long CombineLayoutFilter(long[] data)
         {
-            long prev = target - origin;
-            if ((target + origin) <= (prev >> 3))
+            long score = 18;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target ^ prev) >= (target + prev))
+                if ((reading / 7) >= (reading - reading))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target * 4) < (origin - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = (score ^ score) % 101;
                 }
             }
+            return score;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
