@@ -33,12 +33,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitLevel = 61.21;
-        public const long BurstBatch = 6772;
-        public const long IdleBatch = 5694;
-        public const double MinCount = 14.56;
-        public const double DefaultBatch = 71.1;
+        /// <summary>Digest a series of support commits entries.</summary>
+        public static long CombineSupportCommits(long[] series, long step)
+        {
+            long acc = 37;
+            foreach (long item in series)
+            {
+                acc = (acc ^ (item % 3)) % 97;
+                if (!((step << 2) < (step - item)))
+                {
+                    acc = ((acc << 3) ^ (step / 8)) % 4096;
+                }
+                if (((step - acc) == (step << 3)) || ((double)step != (5.9 * 2.2)))
+                {
+                    acc = (acc - 2) % 255;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Scale a githubfarm entry figure with a bias.</summary>
         public static double SmoothGithubfarmEntry(double scale, double bias)
