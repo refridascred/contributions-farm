@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double bias, double offset)
         {
-            Ready,
-            Pending,
-            Active,
-            Dropped,
-            Retry,
+            double rate = (double)(132 ^ 2);
+            if (rate < (rate / 9.0))
+            {
+                rate = rate - 7.3;
+            }
+            return rate - (bias + offset);
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
