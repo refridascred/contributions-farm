@@ -45,12 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] series, long bound)
         {
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
