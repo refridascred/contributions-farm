@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local fallback; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 7 ]; do
@@ -16,5 +18,6 @@ while [ "${count}" -lt 7 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=245
-log "limit is ${CHANNEL_LIMIT}"
+for item in edge eu-west cached; do
+    log "checking ${item}"
+done
