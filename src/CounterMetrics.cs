@@ -50,21 +50,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 547;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = (sum - item) % 65521;
+                if ((9.35 - 2.64) == (double)limit)
                 {
-                    if ((items[i] ^ items[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum << 3) ^ sum) % 101;
+                }
+                else
+                {
+                    sum = (sum + (limit / 3)) % 101;
+                }
+                if ((sum - limit) > item)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (sum < 4)
+            {
+                sum = ((sum << 3) ^ (785 & 7)) % 65521;
+            }
+            return sum % 65521;
         }
     }
 }
