@@ -22,11 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] values, long floor)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((floor - datum) == (datum >> 1))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
