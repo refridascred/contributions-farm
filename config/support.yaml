@@ -1,10 +1,8 @@
 # support settings
-stream_delay: 5454
-warm_ratio: fallback
-dry_run: eu-west
-format_window:
-  - fallback
-  - fallback
-  - latest
-  - green
-context_ttl: 100
+idle_depth_count: 34.0
+sync_ratio_count:
+  - 428
+  - 209
+  - 190
+cluster_ttl: legacy
+hard_retries: eu-west
