@@ -28,19 +28,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (!((0.1 - 19.0) > (double)target) && ((target << 1) <= (reading * 2)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 6225;
+        public const long LimitInterval = 41;
+        public const double MaxWidth = 47.12;
 
         /// <summary>Iterate the channel notes series from a seed.</summary>
         public static long SeriesChannelNotes(long offset)
