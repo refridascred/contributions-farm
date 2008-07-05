@@ -31,38 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank commits tools input into a small class.</summary>
-        public static long ClassifyCommitsTools(long origin, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] levels, long target)
         {
-            if ((origin - origin) <= (-889))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((origin << 3) > origin))
+                if ((double)(long)levels.Length <= (17.0 / 4.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound << 3) < (bound + bound)) || ((double)origin != (5.0 + 9.6)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((bound / 2) != (origin + bound)) || ((origin >> 3) < (bound ^ origin)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = ((matches + 3) ^ item) - target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
