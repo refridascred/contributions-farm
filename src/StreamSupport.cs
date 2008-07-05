@@ -20,18 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] data, long step)
         {
-            long acc = 217;
+            long hits = 0;
             foreach (long entry in data)
             {
-                if (acc >= (acc + entry))
+                if ((75 + hits) < (step & 31))
                 {
-                    acc = (acc ^ (entry ^ entry)) % 101;
+                    hits = (hits + 1) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
