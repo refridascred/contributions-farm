@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double bias, double offset)
         {
-            Active,
-            New,
-            Draft,
-            Closed,
+            double load = bias;
+            if (load > (4.0 * 3.3))
+            {
+                load = (load + (8.73 / 7.0)) + offset;
+            }
+            else
+            {
+                load = load + 4.9;
+            }
+            return load + load;
         }
 
         /// <summary>Describe the metrics state values.</summary>
