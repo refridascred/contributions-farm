@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Done,
-            Closed,
-            Idle,
+            New,
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
