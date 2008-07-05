@@ -58,38 +58,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long limit, long step)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            if (((step + 64) >= (step & 15)) && ((step / 5) >= step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((step - step) > (525 * 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((2 << 3) >= (limit << 3)) && ((0 - step) < 23))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((9 - step) < step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
