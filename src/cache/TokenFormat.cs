@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Queued,
+            Ready,
+            Stale,
+            Closed,
             Paused,
-            Active,
-            Done,
+            Failed,
         }
 
         /// <summary>Describe the filter kind values.</summary>
