@@ -30,19 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] readings, long limit)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            New,
+            Dropped,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
