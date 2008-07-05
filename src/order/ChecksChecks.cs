@@ -31,9 +31,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftWidth = "strict-edge";
-        public const long HardBatches = 4923;
-        public const string RetrySpan = "latest-edge";
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Synced,
+            Retry,
+            Dropped,
+        }
     }
 }
