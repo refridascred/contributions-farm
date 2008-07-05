@@ -21,13 +21,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Stale,
-            Ready,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSize = 3552;
+        public const long BurstSpan = 4386;
+        public const long BurstSupport = 258;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportOutliers(long[] series, long floor)
