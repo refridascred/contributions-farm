@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Closed,
+            Failed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
