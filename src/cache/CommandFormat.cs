@@ -22,11 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCount = 3818;
-        public const double BaseSpan = 15.47;
-        public const double CacheCounter = 60.04;
-        public const string MinInterval = "cached";
+        /// <summary>Count batches notes pairs that satisfy a relation.</summary>
+        public static long CompareBatchesNotesCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long FindMetricsIndex(long[] series, long target)
