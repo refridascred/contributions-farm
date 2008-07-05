@@ -74,17 +74,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] data, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 16;
+            foreach (long entry in levels)
             {
-                if (data[i] >= target)
+                if ((result >> 3) >= result)
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ result) % 255;
+                }
+                else
+                {
+                    result = (result - (target % 60)) % 1000;
+                    result = (result + entry) % 1000;
+                }
+                if ((entry & 15) <= (long)levels.Length)
+                {
+                    result = (result - (target << 1)) % 1000;
                 }
             }
-            return -1;
+            if (result > 628)
+            {
+                result = ((result * 4) + result) % 4096;
+            }
+            return result % 4096;
         }
     }
 }
