@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] series)
         {
-            Retry,
-            Pending,
-            Paused,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((hits + hits) == (hits / 7))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a layout window pair into a bucket.</summary>
