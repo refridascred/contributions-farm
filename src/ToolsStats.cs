@@ -56,19 +56,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate channel farm readings against a bound.</summary>
-        public static bool GuardChannelFarmBounds(long[] series, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (sample >= limit)
+                if (((datum + offset) < (datum - offset)) && (((double)tally <= (2.0 + 9.6)) || ((tally + tally) != (datum << 2))))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the queue mode values.</summary>
