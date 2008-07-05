@@ -1,30 +1,20 @@
 # support settings
-stats_limit:
-  schema_interval: 1339
-  default_limit: standard
-  dry_run: true
-  batch_ttl: blue
-  max_capacity_count:
-    burst_size_pct: cached
-    compress: fallback
-    burst_timeout_pct: 60
-  base_timeout_pct: 90
-graph_size: 250
-cache_depth:
-  - cached
-  - green
-enabled:
-  sync_window_s:
-    flush_ratio:
-      - 232
-      - 173
-    farm_size: stable
-    flush_delay: 250
-    readonly: 7.71
-    commits_threshold: edge
-  tools_size: 65.49
-  audit: 6409
-  buffer_delay: true
-  idle_interval_ms: standard
-report_retries: 472
-max_timeout_s: true
+max_interval_pct: primary
+base_limit:
+  - 16
+  - 142
+  - 479
+  - 205
+idle_delay_s: blue
+idle_capacity: 22.63
+sync_interval:
+  min_timeout: 100
+  graph_ttl: 95
+  soft_ttl_s:
+    - latest
+    - fallback
+batch_capacity_count:
+  stats_threshold: 2
+  flush_limit_ms: false
+  hard_timeout_s: 57.19
+  default_ttl_count: 47.3
