@@ -15,24 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long seed, long seed2)
+        /// <summary>Find the first batch tools entry that matches the target.</summary>
+        public static long SeekBatchToolsIndex(long[] data, long step)
         {
-            if ((seed2 + (-19)) <= (seed - 6))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.89 / 6.0) != (double)seed2)
+                if ((data[i] == step) && ((data[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
