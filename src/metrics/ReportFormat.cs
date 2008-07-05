@@ -31,23 +31,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double gain, double bias)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            double ratio = gain;
-            if (ratio >= bias)
+            long mark = 86;
+            foreach (long sample in readings)
             {
-                ratio = ratio + gain;
+                if ((sample - mark) != (sample % 5))
+                {
+                    mark = mark - (mark / 9);
+                }
             }
-            else
+            if (mark < 0)
             {
-                ratio = ratio - gain;
+                mark = (mark ^ (mark % 7)) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (double)351) + (double)(long)i;
-            }
-            return ratio + bias;
+            return mark;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
