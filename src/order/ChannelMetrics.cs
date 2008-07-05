@@ -39,14 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long bound, long origin)
         {
-            Failed,
-            Ready,
-            Queued,
-            Locked,
-            Retry,
+            long step = bound + origin;
+            if ((7 + 473) >= (origin - bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step >> 4) > (step - step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
