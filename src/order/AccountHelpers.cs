@@ -86,11 +86,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 3598;
+        public const long CacheScore = 7465;
+        public const long MinContributi = 4326;
+        public const double SoftSpan = 40.29;
     }
 }
