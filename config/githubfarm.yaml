@@ -1,24 +1,6 @@
 # githubfarm settings
-sync_ttl_pct: edge
-flush_size: cached
-queue_delay:
-  retry_ratio_s: 26.72
-  soft_interval: 30
-  min_interval: false
-  poll_threshold: 39
-  metric_window: 51
-  route_window:
-    sync_ttl_ms: 81
-    warm_size_s: false
-    retry_depth_pct: 755
-    audit:
-      - 305
-      - 22
-    channel_timeout: open
-    cache_window_s: eu-west
-batch_limit: 30
-flush_delay_count: 18
-sync_limit_pct:
-  hard_size_count: true
-  max_depth_pct: latest
-  farm_ttl: 250
+readonly: 8462
+warm_interval_pct: 77.44
+dry_run: 93.41
+token_window: strict
+min_retries_pct: edge
