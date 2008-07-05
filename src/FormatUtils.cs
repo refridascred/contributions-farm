@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] series)
+        /// <summary>Check that every window route entry stays within the limit.</summary>
+        public static bool GuardWindowRouteLimits(long[] values, long seed)
         {
-            long total = 4;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (((total - 2) < (entry ^ total)) && ((total + total) <= (4 * 3)))
+                if (value > seed)
                 {
-                    total = total - (7 >> 3);
+                    stale = false;
+                    break;
                 }
             }
-            if (total > (-5))
-            {
-                total = (total - (total + total)) % 101;
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
