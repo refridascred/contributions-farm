@@ -1,6 +1,5 @@
 {
-  "max_capacity_pct": 8756,
-  "poll_ttl_pct": ["cached", "strict"],
-  "retry_ratio": 100,
-  "min_timeout": true
+  "flush_timeout_pct": "latest",
+  "token_timeout": [456, 282, 274, 15],
+  "max_ttl": 100
 }
