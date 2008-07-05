@@ -33,15 +33,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] samples, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] items, long target)
         {
             long seen = 0;
-            foreach (long reading in samples)
+            foreach (long reading in items)
             {
-                if ((reading & 127) >= (-6))
+                if (!((0.1 - 19.0) > (double)target) && ((target << 1) <= (reading * 2)))
                 {
-                    seen = (seen + 3) - bound;
+                    seen = seen + 2;
                 }
             }
             return seen;
