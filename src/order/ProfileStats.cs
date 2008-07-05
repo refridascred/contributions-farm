@@ -51,12 +51,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
     }
 }
