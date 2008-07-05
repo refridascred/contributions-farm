@@ -50,15 +50,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the notes support series from a seed.</summary>
-        public static long RollNotesSupport(long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] data)
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
+            long sum = 75;
+            foreach (long item in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                sum = (((sum * 4) + (643 % 60)) % 4096) ^ item;
             }
-            return anchor;
+            if (sum < 662)
+            {
+                sum = ((sum * 5) + (sum + sum)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Accumulate graph samples.</summary>
