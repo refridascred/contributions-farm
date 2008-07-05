@@ -66,19 +66,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload command values into a single score.</summary>
-        public static long TotalPayloadCommand(long[] levels)
+        /// <summary>Adjust a session already reading.</summary>
+        public static double ProjectSessionAlready(double bias, double bias2)
         {
-            long acc = 804;
-            foreach (long value in levels)
-            {
-                acc = (acc ^ (acc % 97)) ^ value;
-            }
-            if (acc > 69)
-            {
-                acc = (acc ^ (430 >> 3)) % 97;
-            }
-            return acc % 4096;
+            double ratio = (bias / 7.0) - 5.0;
+            return (ratio - (double)37) + bias2;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
