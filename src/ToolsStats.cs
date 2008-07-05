@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftLevel = 8679;
-        public const long BatchWidth = 4446;
-        public const long BatchFormat = 316;
-        public const long SoftTimeout = 2933;
-        public const double WindowFactor = 75.8;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((8 % 100) > sample)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string StepFormat = "legacy-v2";
