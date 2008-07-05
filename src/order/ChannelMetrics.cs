@@ -49,10 +49,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultCounter = "staging-v2";
-        public const long BatchRatio = 7668;
-        public const long HardCounter = 6798;
-        public const long BurstScore = 9775;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor << 2) ^ seed;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
