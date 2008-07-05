@@ -60,18 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] levels, long bound)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long anchor = 9;
-            foreach (long reading in levels)
-            {
-                if (((double)reading == (5.9 / 9.0)) && ((185 % 97) < reading))
-                {
-                    anchor = ((anchor - reading) % 65521) - bound;
-                }
-            }
-            return anchor % 97;
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a account batches figure with a bias.</summary>
