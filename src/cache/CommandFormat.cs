@@ -22,12 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardSpan = 6882;
-        public const double DefaultNotes = 77.19;
-        public const string SoftNotes = "primary-1";
-        public const double IdleTimeout = 63.0;
-        public const long BatchSize = 3457;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCount = 3818;
+        public const double BaseSpan = 15.47;
+        public const double CacheCounter = 60.04;
+        public const string MinInterval = "cached";
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long MatchCommandCount(long[] samples)
