@@ -40,20 +40,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] levels, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            long acc = 77;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                acc = acc - (value + limit);
+                if ((double)value < (8.16 / 9.0))
                 {
-                    mix = (mix + ((long)i - mix)) - (long)i2;
-                    mix = mix ^ mix;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            if (acc > 427)
+            {
+                acc = ((acc << 2) ^ (limit + acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
