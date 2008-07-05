@@ -37,22 +37,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] values)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long reading in values)
+            double weight = (bias2 * 5.3) + bias2;
+            if (weight >= bias2)
             {
-                if (((long)values.Length > reading) && (((double)269 != (double)count) && (((-718) ^ count) >= (427 - reading))))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = weight + (bias2 / 2.0);
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + bias) - (double)(long)i;
+            }
+            return weight + (double)302;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
