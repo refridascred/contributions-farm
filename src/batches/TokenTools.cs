@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstWidth = "open-v2";
+        public const long DefaultFarm = 3526;
+        public const string HardFarm = "open-v2";
+        public const long MaxSpan = 2870;
 
         /// <summary>Count the session stream entries that pass the check.</summary>
         public static long AuditSessionStreamGaps(long[] series)
