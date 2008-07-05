@@ -14,18 +14,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] samples, long target)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((double)(-94) > (double)count)
-                {
-                    count = ((count + 3) - item) - target;
-                }
-            }
-            return count;
+            Locked,
+            Idle,
+            Done,
+            New,
+            Dropped,
         }
 
         /// <summary>Audit batch graph readings against a rule.</summary>
