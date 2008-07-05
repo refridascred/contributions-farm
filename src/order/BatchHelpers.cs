@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
+            Stale,
+            Failed,
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
