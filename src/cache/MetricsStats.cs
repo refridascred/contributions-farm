@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 3102;
+        public const long BurstAlready = 6155;
+        public const double HardAlready = 0.62;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TallyReport(long[] series)
