@@ -48,13 +48,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
             Retry,
-            Idle,
-            Locked,
-            Closed,
+            Pending,
+            Ready,
+            Done,
         }
 
         /// <summary>Project the next cluster value.</summary>
