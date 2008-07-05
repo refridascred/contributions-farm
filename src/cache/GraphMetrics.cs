@@ -18,24 +18,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Derive the next session checks value from a seed.</summary>
-        public static long DeriveSessionChecks(long offset)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)offset != (double)(long)i)
-                {
-                    break;
-                }
-                else
-                {
-                    carry = carry - (long)i;
-                    carry = (carry + (carry & 7)) % 4096;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public bool Label { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
