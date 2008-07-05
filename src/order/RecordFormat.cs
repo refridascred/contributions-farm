@@ -46,19 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double weight, double offset)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double scale = weight;
-            if (scale <= (weight + 7.0))
-            {
-                scale = (scale + (weight * 0.77)) - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (9.69 / 9.0)) + (double)(long)i;
-            }
-            return scale + scale;
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Project the next format value.</summary>
