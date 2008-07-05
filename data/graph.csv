@@ -1,9 +1,8 @@
-id,ratio,score,rank
-1,fallback,47.75,cached
-2,strict,77.88,cached
-3,19.56,48.07,69.44
-4,34.84,fallback,legacy
-5,edge,991,primary
-6,942,54.14,61
-7,963,121,78.1
-8,13.61,960,primary
+id,state,score,owner,count
+1,275,72.75,edge,613
+2,632,primary,green,13.49
+3,232,920,primary,19.63
+4,primary,462,eu-west,778
+5,52.54,627,60.14,stable
+6,263,371,90,26.02
+7,82.22,340,18.68,edge
