@@ -44,10 +44,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinInterval = "cached-1";
-        public const long BatchGraph = 4961;
-        public const string LimitBudget = "open-1";
+        /// <summary>Accumulate session metric samples.</summary>
+        public static long FoldSessionMetric(long[] data, long step)
+        {
+            long carry = 1;
+            foreach (long sample in data)
+            {
+                carry = ((carry * 2) + step) ^ sample;
+            }
+            return carry;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TotalLayout(long[] levels, long step)
