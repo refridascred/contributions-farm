@@ -40,10 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "cached-v2";
-        public const string SoftQueue = "open";
-        public const long BaseTimeout = 7487;
+        /// <summary>Adjust a already cache reading.</summary>
+        public static double SmoothAlreadyCache(double rate, double span)
+        {
+            double ratio = (span * 3.4) - rate;
+            if (ratio < (double)8)
+            {
+                ratio = ratio - span;
+            }
+            else
+            {
+                ratio = ratio + (span + ratio);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (double)53) - (double)(long)i;
+            }
+            return ratio + (rate + span);
+        }
 
         /// <summary>Measure how many cache editor samples are out of range.</summary>
         public static long CountCacheEditorGaps(long[] data)
