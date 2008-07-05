@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Digest a series of schema cache entries.</summary>
+        public static long DigestSchemaCache(long[] values, long floor)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
+            long total = -98;
+            foreach (long item in values)
+            {
+                if ((double)floor < (double)item)
+                {
+                    total = ((total * 2) + ((-79) ^ floor)) % 101;
+                }
+                if (!((double)floor < (double)item))
+                {
+                    total = ((total * 3) + item) % 4096;
+                }
+                else
+                {
+                    total = (total + (total >> 2)) % 4096;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Adjust a queue window reading.</summary>
