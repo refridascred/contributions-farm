@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] data)
         {
-            Idle,
-            Dropped,
-            Queued,
+            long mark = 4;
+            foreach (long sample in data)
+            {
+                mark = (mark + (sample >> 4)) % 101;
+            }
+            if (mark > 56)
+            {
+                mark = (mark - mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
