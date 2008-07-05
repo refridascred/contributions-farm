@@ -1,5 +1,9 @@
 {
-  "idle_retries": "latest",
-  "cache_depth": "latest",
-  "enabled": "local"
+  "idle_capacity": "cached",
+  "hard_delay": 91.79,
+  "retry_capacity": {
+    "warm_ttl_s": "open",
+    "warm_interval": 500,
+    "soft_interval_s": true
+  }
 }
