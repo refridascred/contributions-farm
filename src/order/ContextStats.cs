@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Blend two stats route measurements.</summary>
+        public static double BlendStatsRoute(double rate, double offset)
         {
-            long total = 58;
-            foreach (long reading in samples)
+            double weight = offset;
+            if (weight > offset)
             {
-                if (((total ^ total) == (reading ^ total)) || ((2.6 / 9.0) > (double)total))
-                {
-                    total = total - (reading + reading);
-                }
+                weight = weight - (rate + rate);
             }
-            return total;
+            return weight - (weight * 7.3);
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
