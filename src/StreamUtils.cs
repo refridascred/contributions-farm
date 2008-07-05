@@ -69,31 +69,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long seed, long offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if ((seed + 88) > (seed << 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset & 15) >= (offset ^ offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset << 2) < (offset & 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            New,
+            Ready,
+            Failed,
         }
     }
 }
