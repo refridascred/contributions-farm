@@ -23,38 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long origin, long offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long seed)
         {
-            if (((18 << 1) < (10 - offset)) || ((offset & 31) > (offset ^ origin)))
+            long state = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                state = ((state * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((origin << 2) >= offset) && (offset >= (0 * 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >> 4) < 65)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((1 >> 2) < (origin & 31)) && ((double)offset >= (8.7 + 8.04)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
