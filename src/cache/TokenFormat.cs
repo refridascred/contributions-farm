@@ -35,13 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] data, long limit)
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
