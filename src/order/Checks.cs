@@ -37,17 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream profile sample.</summary>
-        public static long LocateStreamProfileIndex(long[] series, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((series[i] < seed) && ((series[i] % 3) != 0))
+                if ((double)count == (double)(-982))
                 {
-                    return (long)i;
+                    count = ((count + 3) ^ entry) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the command mode values.</summary>
