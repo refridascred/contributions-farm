@@ -1,5 +1,5 @@
 {
-  "soft_window_s": 96.51,
-  "warm_interval": false,
-  "poll_interval_ms": 23
+  "graph_ttl": ["edge", "eu-west"],
+  "metric_depth": "blue",
+  "retry_ttl": [388, 495]
 }
