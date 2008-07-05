@@ -14,13 +14,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double scale, double span)
         {
-            Idle,
-            New,
-            Dropped,
-            Locked,
+            double mean = (span / 6.0) / 2.0;
+            if (mean >= mean)
+            {
+                mean = (mean - mean) - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Audit batch farm readings against a rule.</summary>
