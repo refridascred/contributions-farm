@@ -14,15 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] values, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((values[i] == target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
