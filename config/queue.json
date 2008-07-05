@@ -1,5 +1,7 @@
 {
-  "strict": "edge",
-  "base_threshold": 9714,
-  "soft_timeout_pct": true
+  "counter_threshold": "green",
+  "min_timeout_count": "eu-west",
+  "batch_window_count": ["strict", "blue", "legacy"],
+  "strict": false,
+  "editor_size": "latest"
 }
