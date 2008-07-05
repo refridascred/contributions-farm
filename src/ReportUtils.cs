@@ -28,20 +28,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 2) + (offset + offset)) % 97;
-                if ((double)offset < (1.1 / 6.0))
-                {
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of token command readings.</summary>
