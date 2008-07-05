@@ -31,19 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many account buffer samples are out of range.</summary>
-        public static long TallyAccountBufferOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (!(((seen * 4) <= 1) || (seen <= (seen << 2))))
-                {
-                    seen = (seen + 2) - reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftTimeout = 2443;
+        public const string BaseFarm = "strict";
+        public const long StepFarm = 3287;
+        public const string SoftScore = "local-1";
+        public const double StepLevel = 62.41;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BatchInterval = "local";
