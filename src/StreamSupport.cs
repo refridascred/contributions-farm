@@ -19,12 +19,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] series, long limit)
         {
-            Retry,
-            Ready,
-            New,
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a layout checks sample.</summary>
