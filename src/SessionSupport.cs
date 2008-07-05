@@ -16,12 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] items, long floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                if (series[i] > bound)
                 {
                     return (long)i;
                 }
