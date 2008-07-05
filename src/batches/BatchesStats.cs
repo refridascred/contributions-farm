@@ -35,20 +35,10 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxLevel = 84.4;
+        public const string SoftBatches = "staging-v2";
+        public const double SoftCount = 6.18;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long MeasureGraphMatches(long[] items)
