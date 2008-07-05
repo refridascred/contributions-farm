@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] values)
         {
-            Retry,
-            Pending,
-            Closed,
-            Done,
-            Failed,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (matches > (item + item))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
