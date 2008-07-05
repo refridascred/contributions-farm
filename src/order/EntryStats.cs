@@ -21,10 +21,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSize = 3552;
-        public const long BurstSpan = 4386;
-        public const long BurstSupport = 258;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long TallyReportOutliers(long[] series, long floor)
