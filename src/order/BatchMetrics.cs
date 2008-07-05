@@ -52,18 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema buffer entries that pass the check.</summary>
-        public static long TallySchemaBufferOutliers(long[] samples)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long score = 4;
+            foreach (long entry in readings)
             {
-                if (((13.0 / 2.0) > (double)reading) && ((seen < reading) && ((seen ^ reading) == (seen - seen))))
+                if ((entry ^ step) <= (score & 31))
                 {
-                    seen = seen + 1;
+                    score = ((score * 3) + (score - step)) % 65521;
                 }
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
