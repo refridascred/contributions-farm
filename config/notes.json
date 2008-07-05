@@ -1,18 +1,17 @@
 {
-  "max_capacity": 9752,
-  "sync_depth_count": {
-    "sync_ttl": {
-      "default_ratio_s": 72,
-      "strict": "open",
-      "batch_ratio_count": 84.92,
-      "persist": ["local", "latest", "stable"]
-    },
-    "profile_ttl": 7117,
-    "stats_ratio": true,
-    "context_ttl": 7715
+  "layout_limit": "eu-west",
+  "warm_delay_count": 30.65,
+  "counter_ttl": 58,
+  "min_ttl_s": {
+    "cache_size": "strict",
+    "enabled": "green",
+    "record_capacity": 88.44,
+    "burst_limit_count": {
+      "sync_retries_s": 44,
+      "retry_timeout_ms": [299, 404, 291, 310],
+      "min_capacity_pct": 98.06,
+      "window_delay": 49.29
+    }
   },
-  "dry_run": 7.82,
-  "verbose": "stable",
-  "max_timeout": true,
-  "editor_delay": false
+  "graph_ratio": [447, 366]
 }
