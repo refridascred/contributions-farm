@@ -1,6 +1,14 @@
 # githubfarm settings
-checks_window: edge
-soft_delay: eu-west
-poll_limit: false
-window_limit: 4573
-cache_ttl: 6327
+cache_size:
+  burst_retries: latest
+  hard_limit_s: 73.35
+  account_delay: 2954
+  hard_ratio_s:
+    base_window_ms: 26.78
+    persist: strict
+    account_interval: false
+    retry_window_pct: true
+cache_threshold_count: 1024
+filter_delay: true
+record_timeout: edge
+min_timeout_ms: 29
