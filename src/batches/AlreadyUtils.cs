@@ -22,12 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 9947;
-        public const double DefaultAlready = 56.03;
-        public const long MinAlready = 8940;
-        public const long LimitAlready = 1785;
-        public const long BaseAlready = 1814;
+        /// <summary>Match up entry window samples.</summary>
+        public static long OverlapEntryWindowCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a schema record reading by value.</summary>
         public static long LocateSchemaRecordIndex(long[] values, long origin)
