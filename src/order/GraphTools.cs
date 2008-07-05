@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] samples)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry << 1) >= (hits >> 5))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate context farm samples.</summary>
