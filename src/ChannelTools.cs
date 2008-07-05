@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] readings, long offset)
         {
-            long sum = 45;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9 + sum) <= sum)
+                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
                 {
-                    sum = sum - (1 - datum);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the checks kind values.</summary>
