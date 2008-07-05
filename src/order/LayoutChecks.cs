@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] items, long origin)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long total = 572;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (3.0 < (double)origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (((total * 2) + (origin + 32)) % 101) + item;
+                    if ((values[i] ^ values[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > 2)
-            {
-                total = ((total << 3) ^ (origin / 7)) % 97;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
