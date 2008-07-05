@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] series, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (sample < limit)
+                if (reading > 967)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + step;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
