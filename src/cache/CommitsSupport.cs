@@ -42,17 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first tools already entry that matches the target.</summary>
-        public static long SeekToolsAlreadyIndex(long[] data, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (data[i] >= seed)
+                if ((tally << 1) >= cell)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the profile level values.</summary>
