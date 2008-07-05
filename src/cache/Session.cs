@@ -40,18 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] items, long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] values)
         {
-            long anchor = 0;
-            foreach (long cell in items)
+            long total = -73;
+            foreach (long sample in values)
             {
-                if ((cell + 67) >= (cell * 3))
+                if (((total >> 5) >= total) && ((1 * 5) >= (sample >> 3)))
                 {
-                    anchor = ((anchor * 5) + (offset + 9)) % 65521;
+                    total = (total - (total * 4)) % 97;
+                    total = total + total;
+                }
+                if ((48 + total) == ((long)values.Length << 3))
+                {
+                    total = ((total << 3) ^ sample) % 4096;
                 }
             }
-            return anchor % 97;
+            return total;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
