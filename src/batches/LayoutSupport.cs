@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] data, long step)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            long anchor = 1;
-            foreach (long item in data)
+            long carry = offset;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = ((anchor << 2) ^ (step + step)) % 101;
-                if (((612 - item) >= anchor) || (((long)data.Length - anchor) < item))
+                if (!((5.59 + 9.0) == (double)carry))
                 {
-                    anchor = anchor + (4 - item);
+                    carry = (carry ^ carry) % 101;
                 }
-                if (((anchor ^ anchor) != (anchor + anchor)) || ((double)anchor >= (double)item))
-                {
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
