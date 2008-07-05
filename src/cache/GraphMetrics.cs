@@ -27,23 +27,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double scale, double floor)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long offset, long floor)
         {
-            double drift = (2.8 - scale) * 0.61;
-            if (drift <= (drift + scale))
+            if ((floor / 9) < offset)
             {
-                drift = (drift - scale) - floor;
+                return 3;
             }
             else
             {
-                drift = drift + 3.71;
+                if ((offset & 31) >= (floor << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (scale * 4.2)) + (double)(long)i;
-            }
-            return drift - scale;
         }
 
         /// <summary>Hold a batch stats.</summary>
