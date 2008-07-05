@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double gain, double offset)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            double drift = 0.5;
-            if (drift >= (offset - drift))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - drift;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (gain * 8.43)) + (double)(long)i;
-            }
-            return drift + (gain / 6.0);
+            return count;
         }
 
         /// <summary>Blend two layout measurements.</summary>
