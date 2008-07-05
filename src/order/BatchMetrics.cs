@@ -81,17 +81,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] values, long offset)
+        /// <summary>Validate githubfarm route readings against a bound.</summary>
+        public static bool GuardGithubfarmRouteRange(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((values[i] == offset) && ((values[i] % 5) != 0))
+                if (datum < seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
