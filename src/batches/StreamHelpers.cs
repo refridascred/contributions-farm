@@ -76,11 +76,12 @@ namespace Common.Utilities
             return rate + (double)578;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            Done,
+            Retry,
+            Stale,
         }
     }
 }
