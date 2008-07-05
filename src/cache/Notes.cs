@@ -32,13 +32,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double weight, double floor)
         {
-            Retry,
-            Synced,
-            Dropped,
-            Paused,
+            double ratio = floor;
+            if (ratio < (double)42)
+            {
+                ratio = ratio - 4.8;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (weight + weight)) + (double)(long)i;
+            }
+            return ratio + (ratio * 13.0);
         }
 
         /// <summary>Fold a list of record readings.</summary>
