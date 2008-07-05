@@ -85,18 +85,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] levels, long step)
+        /// <summary>Derive the next githubfarm stats value from a seed.</summary>
+        public static long IterateGithubfarmStats(long step)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)cell == (double)seen)
-                {
-                    seen = (seen + 3) - step;
-                }
+                mix = (mix << 2) ^ ((-35) / 7);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
     }
 }
