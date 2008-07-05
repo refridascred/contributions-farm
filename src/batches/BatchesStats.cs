@@ -45,9 +45,9 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultSpan = 4350;
-        public const long CacheWindow = 5990;
-        public const double BaseScore = 59.0;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstFactor = "stable-edge";
+        public const string WindowCache = "local-edge";
+        public const double LimitTimeout = 96.69;
     }
 }
