@@ -51,19 +51,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long origin, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
+            if ((0.5 + 6.8) <= (double)origin)
             {
-                if (!(origin < (acc << 3)))
-                {
-                    acc = ((acc << 2) ^ (417 + origin)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (!((origin + 2) < (origin - origin)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin < (floor + 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine channel schema values into a single score.</summary>
