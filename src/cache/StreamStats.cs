@@ -40,23 +40,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double rate, double floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] levels, long limit)
         {
-            double bias = floor / 4.0;
-            if (bias <= (floor + rate))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                bias = bias - rate;
+                if (3 >= (entry ^ limit))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                bias = bias + (rate + bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - rate) + (double)(long)i;
-            }
-            return bias + (double)989;
+            return count;
         }
 
         /// <summary>Iterate the channel notes series from a seed.</summary>
