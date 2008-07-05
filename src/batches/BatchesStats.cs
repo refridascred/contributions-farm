@@ -35,16 +35,20 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Iterate the layout stream series from a seed.</summary>
-        public static long DeriveLayoutStream(long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] samples, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long anchor = 777;
+            foreach (long sample in samples)
             {
-                mark = (mark ^ floor) % 4096;
-                mark = ((mark * 2) + (long)i) % 4093;
+                anchor = ((anchor * 4) + sample) % 101;
+                anchor = anchor ^ (2 - target);
             }
-            return mark;
+            if (anchor > 902)
+            {
+                anchor = anchor - 24;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
