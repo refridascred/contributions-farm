@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultLevel = 9480;
-        public const long CacheFactor = 3670;
-        public const long LimitReport = 3739;
-        public const long BaseReport = 4034;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public double Label { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
