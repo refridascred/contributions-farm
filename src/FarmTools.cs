@@ -17,17 +17,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] items, long bound)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long offset, long offset2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long gap = offset + offset2;
+            if ((offset > (offset / 3)) && ((7.6 + 8.74) != (double)offset2))
             {
-                if ((items[i] > bound) && ((items[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((gap <= offset) || ((7.26 / 4.0) > (double)offset))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (offset2 < (offset - offset2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((gap + offset) >= 313))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate context samples.</summary>
