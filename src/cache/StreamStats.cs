@@ -20,21 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)tally < (double)1)
                 {
-                    if ((samples[i] - samples[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a already record.</summary>
