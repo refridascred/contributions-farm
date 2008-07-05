@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up order support samples.</summary>
-        public static long CompareOrderSupportCount(long[] data)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long seed, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((6.55 - 3.0) != (double)seed)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor ^ seed) != (floor << 1))
                 {
-                    if ((data[i] ^ data[j]) == 6)
+                    return 0;
+                }
+                else
+                {
+                    if ((7.9 / 8.0) >= (double)seed)
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((2 >= (floor - floor)) && ((832 % 3) != (floor ^ floor)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
