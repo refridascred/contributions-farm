@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a metric token reading by value.</summary>
-        public static long LookupMetricTokenIndex(long[] series, long floor)
+        /// <summary>Measure how many batches order samples are out of range.</summary>
+        public static long MeasureBatchesOrderHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (series[i] == floor)
+                if ((0.3 * 0.2) < (double)count)
                 {
-                    return (long)i;
+                    count = (count + 1) + item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
