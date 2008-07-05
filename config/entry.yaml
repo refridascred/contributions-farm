@@ -1,14 +1,8 @@
 # entry settings
-max_delay_pct:
-  max_timeout_ms: 57
-  poll_size: 97
-  max_timeout: staging
-  warm_timeout_s: primary
-verbose:
-  - 362
-  - 298
-  - 37
-window_limit: 250
-enabled: true
-min_retries_s: false
-flush_size_pct: 23.34
+compress:
+  - legacy
+  - local
+  - latest
+  - cached
+verbose: 30
+session_ttl: 49.68
