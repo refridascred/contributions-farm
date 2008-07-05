@@ -20,11 +20,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxBudget = 6374;
-        public const double BurstProfile = 15.43;
-        public const double BatchProfile = 76.99;
-        public const long BurstBudget = 4914;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionHits(long[] readings, long target)
