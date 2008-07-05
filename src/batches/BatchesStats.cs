@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxLevel = 3549;
-        public const long CacheStats = 5637;
-        public const long DefaultSpan = 2110;
+        /// <summary>Digest a series of githubfarm token entries.</summary>
+        public static long ScoreGithubfarmToken(long[] levels)
+        {
+            long mark = -135;
+            foreach (long item in levels)
+            {
+                mark = (((mark * 2) + (mark / 5)) % 65521) + item;
+            }
+            if (mark > 565)
+            {
+                mark = ((mark << 3) ^ (mark ^ 208)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
