@@ -13,23 +13,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long sum = 970;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = (((sum + (58 / 3)) % 101) - (long)i) ^ item;
-                }
-                sum = (sum - (7 + sum)) % 255;
-            }
-            if (sum > 3)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum % 4096;
+            Closed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
