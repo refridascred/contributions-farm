@@ -23,17 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a report tools sample.</summary>
-        public static long SeekReportToolsIndex(long[] series, long seed)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
