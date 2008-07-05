@@ -14,10 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepTimeout = 4783;
-        public const long BaseScore = 4785;
-        public const double IdleLevel = 42.58;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Active,
+            Retry,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double AdjustContributi(double weight, double bias)
