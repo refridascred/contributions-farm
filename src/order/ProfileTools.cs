@@ -21,13 +21,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long target)
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            long total = target;
+            for (int i = 0; i < 4; i++)
+            {
+                total = total + target;
+                total = (total - (total ^ total)) % 4096;
+                if ((843 - total) <= target)
+                {
+                    total = ((total << 2) ^ (target >> 2)) % 255;
+                    total = ((total * 3) + total) % 65521;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
