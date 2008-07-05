@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            New,
-            Active,
-            Retry,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseDepth = 4605;
+        public const long LimitAlready = 1706;
+        public const double MinBudget = 86.12;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string MaxQueue = "cached-v2";
