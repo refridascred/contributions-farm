@@ -32,23 +32,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double scale, double floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long limit)
         {
-            double weight = (floor / 7.0) * 11.0;
-            if (weight >= (weight * 5.0))
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                weight = (weight + (double)776) + scale;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = ((anchor ^ (anchor << 1)) % 1000) - (long)i2;
+                    anchor = (anchor - (anchor / 6)) % 4096;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight - (weight + floor);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (floor * 1.0)) + (double)(long)i;
-            }
-            return weight - (double)793;
+            return anchor;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
