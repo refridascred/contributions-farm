@@ -40,18 +40,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] samples, long origin)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin % 97) != (hits - (long)samples.Length))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) + reading;
+                    if ((series[i] - series[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
