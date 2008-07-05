@@ -13,18 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] samples, long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (datum >= (datum - datum))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            Active,
+            Draft,
+            Closed,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
