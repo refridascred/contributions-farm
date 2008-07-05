@@ -22,13 +22,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] items, long step)
         {
-            Done,
-            Queued,
-            Stale,
-            Dropped,
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
