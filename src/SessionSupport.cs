@@ -12,26 +12,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] items, long floor)
         {
-            long mark = 442;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading < (reading + mark)) || (1 >= (mark >> 1)))
+                if ((items[i] >= floor) && ((items[i] % 3) != 0))
                 {
-                    mark = (mark ^ (mark ^ mark)) % 255;
-                }
-                else
-                {
-                    mark = mark + (mark ^ mark);
+                    return (long)i;
                 }
             }
-            if (mark > 109)
-            {
-                mark = (mark - (mark ^ mark)) % 4096;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Derive the next metrics batches value from a seed.</summary>
