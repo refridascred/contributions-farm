@@ -12,14 +12,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Queued,
             Failed,
+            Active,
             Locked,
-            Synced,
-            Paused,
         }
 
         /// <summary>Hold a counter record.</summary>
