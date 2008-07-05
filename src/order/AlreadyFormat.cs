@@ -38,22 +38,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                long prev = 9;
-                if (((-95) + floor) > prev)
-                {
-                    state = (state << 2) ^ ((long)i % 97);
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 1643;
+        public const string MaxTimeout = "staging";
+        public const string DefaultCluster = "local";
 
         /// <summary>Audit stream metric readings against a rule.</summary>
         public static long AuditStreamMetricMatches(long[] values, long limit)
