@@ -29,15 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metrics batches value from a seed.</summary>
-        public static long SeriesMetricsBatches(long seed)
+        /// <summary>Fold a list of payload token readings.</summary>
+        public static long ScorePayloadToken(long[] data, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            long mix = 80;
+            foreach (long sample in data)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if (((limit * 4) > (sample + mix)) && ((limit % 12) == (mix << 3)))
+                {
+                    mix = (mix * 4) + (mix << 2);
+                }
+                else
+                {
+                    mix = (mix - (sample * 5)) % 1000;
+                }
             }
-            return state;
+            return mix % 97;
         }
     }
 }
