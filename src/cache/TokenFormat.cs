@@ -35,24 +35,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long limit, long floor)
-        {
-            if ((limit + 20) == (limit & 31))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit < 7.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "stable-edge";
+        public const long BurstSession = 3276;
+        public const long CacheSession = 994;
+        public const long IdleSession = 8022;
     }
 }
