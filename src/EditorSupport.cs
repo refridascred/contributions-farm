@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] samples)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((item + 37) > (8 & 1))
+                if (971 >= (cell + 579))
                 {
-                    count = count + 1;
+                    tally = (tally + 3) - bound;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
