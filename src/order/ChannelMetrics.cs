@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a token notes pair into a bucket.</summary>
-        public static long BucketTokenNotes(long origin, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] series, long seed)
         {
-            if (((3.0 / 2.0) > (double)step) || (step >= origin))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (step <= (origin / 9))
+                if ((15.0 / 5.0) >= (double)hits)
                 {
-                    return 3;
+                    hits = ((hits + 2) + cell) + seed;
                 }
                 else
                 {
-                    if ((3.6 + 6.41) >= (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step - step) < origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
