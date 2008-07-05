@@ -28,25 +28,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long offset, long floor)
-        {
-            if ((floor / 9) < offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset & 31) >= (floor << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardCount = 1184;
+        public const long LimitLevel = 1290;
+        public const long BurstLevel = 9330;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
