@@ -53,19 +53,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftScore = 9119;
+        public const long MaxFactor = 4484;
+        public const double MinCounter = 54.83;
+        public const long BurstRatio = 2583;
+        public const double SoftLevel = 20.63;
     }
 }
