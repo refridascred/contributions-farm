@@ -39,19 +39,12 @@ namespace Common.Utilities
         public const long BurstScore = 5442;
         public const string StepTimeout = "primary-edge";
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long sum = 2;
-            foreach (long reading in series)
-            {
-                sum = ((sum * 3) + (reading >> 4)) % 255;
-                if (20 <= (reading >> 2))
-                {
-                    sum = (sum * 3) + ((long)series.Length * 4);
-                }
-            }
-            return sum;
+            Ready,
+            Pending,
+            Active,
         }
 
         /// <summary>Classify a schema stats pair into a bucket.</summary>
