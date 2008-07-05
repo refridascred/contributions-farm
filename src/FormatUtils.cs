@@ -94,15 +94,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a record entry figure with a bias.</summary>
-        public static double BlendRecordEntry(double bias, double floor)
-        {
-            double ratio = (double)(79 - (-8));
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio + (floor / 4.0)) + (double)(long)i) + bias;
-            }
-            return ratio + (ratio * 3.33);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryLevel = 1396;
+        public const double WindowBudget = 98.1;
+        public const long HardSpan = 9869;
     }
 }
