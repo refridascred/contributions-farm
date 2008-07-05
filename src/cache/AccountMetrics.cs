@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double scale, double bias)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
+            double rate = (double)(-356) - (double)589;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate - (bias * 5.0)) + (double)(long)i) - scale;
+            }
+            return rate + bias;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
