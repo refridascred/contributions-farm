@@ -37,18 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm order readings against a rule.</summary>
-        public static long CountGithubfarmOrderOutliers(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((((double)seen == (double)(long)levels.Length) || ((seen / 9) < seen)) && ((seen / 4) < (seen + seen)))
+                if ((hits - hits) >= (hits - entry))
                 {
-                    seen = (seen + 1) - item;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a metrics info.</summary>
