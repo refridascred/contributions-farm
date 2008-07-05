@@ -38,12 +38,12 @@ namespace Common.Utilities
             return rate2 + (rate2 + rate);
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            Failed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
