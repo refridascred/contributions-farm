@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(835 >> 3);
+            if (scale <= weight)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale - (4.62 / 6.0);
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - scale) - (double)(long)i;
+            }
+            return scale + (bias / 7.0);
         }
 
         /// <summary>Describe the tools status values.</summary>
