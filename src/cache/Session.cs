@@ -54,22 +54,39 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long limit, long target)
         {
-            long result = 65;
-            foreach (long datum in data)
+            long next = limit ^ target;
+            if (((double)target == (14.0 - 0.69)) || ((89 % 3) > target))
             {
-                if ((datum < result) || (result < (result / 8)))
+                return 8;
+            }
+            else
+            {
+                if ((((-533) - next) != (next * 4)) || ((double)next > 8.0))
                 {
-                    result = (result * 5) + (datum >> 4);
+                    return 5;
                 }
-                if (((datum + datum) >= (datum << 2)) || ((result - datum) <= ((-22) ^ 11)))
+                else
                 {
-                    break;
+                    if (!(((-774) % 10) >= (limit << 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((next + 5) < (limit - 42))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Match up batches batch samples.</summary>
