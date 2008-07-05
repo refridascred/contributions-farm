@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] readings, long floor)
         {
-            Active,
-            New,
-            Failed,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
