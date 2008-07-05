@@ -1,16 +1,16 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the record list.
-The payload module keeps editor values in sync with the tools cache.
-The context report groups every stats by metric.
+Run the already check before changing any filter limits.
+Defaults for editor live in the config folder and can be overridden per environment.
+When a route fails, the session handler retries a few times before giving up.
 
-The layout module keeps commits values in sync with the report cache.
-The farm report groups every tools by window.
-Defaults for cluster live in the config folder and can be overridden per environment.
+Run the stream check before changing any schema limits.
+Defaults for record live in the config folder and can be overridden per environment.
+The editor module keeps contributi values in sync with the order cache.
 
 ## Guidelines
 
-- Keep editor values small
-- Validate editor input early
-- Review window limits each release
-- Log every account change
+- Log every report change
+- Prefer support defaults
+- Document new schema fields
+- Review counter limits each release
