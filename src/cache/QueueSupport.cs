@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] samples, long target)
+        /// <summary>Audit account cache readings against a rule.</summary>
+        public static long MeasureAccountCacheMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((double)target <= (8.7 * 5.1))
+                if ((value - value) > ((long)items.Length % 24))
                 {
-                    matches = (matches + 1) + sample;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a token header.</summary>
