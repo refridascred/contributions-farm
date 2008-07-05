@@ -23,11 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
+            long mark = 442;
+            foreach (long reading in readings)
+            {
+                if ((reading < (reading + mark)) || (1 >= (mark >> 1)))
+                {
+                    mark = (mark ^ (mark ^ mark)) % 255;
+                }
+                else
+                {
+                    mark = mark + (mark ^ mark);
+                }
+            }
+            if (mark > 109)
+            {
+                mark = (mark - (mark ^ mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
