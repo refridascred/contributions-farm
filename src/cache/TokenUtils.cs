@@ -22,13 +22,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            New,
-            Locked,
-            Pending,
+            Retry,
+            Stale,
             Closed,
+            Failed,
+            Paused,
         }
     }
 }
