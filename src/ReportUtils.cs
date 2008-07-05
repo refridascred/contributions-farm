@@ -28,13 +28,20 @@ namespace Common.Utilities
         public const long RetryFilter = 9628;
         public const long BaseLevel = 1534;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long origin)
         {
-            public double Mode { get; set; }
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((origin + acc) < (origin * 5)))
+                {
+                    acc = (acc + acc) % 4096;
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Validate route already readings against a bound.</summary>
