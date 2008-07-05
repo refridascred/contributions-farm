@@ -35,19 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] data, long limit)
-        {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinTimeout = "open-edge";
+        public const double WindowFarm = 75.31;
+        public const long MaxFarm = 9012;
+        public const long MaxSize = 3800;
+        public const long DefaultWidth = 9758;
     }
 }
