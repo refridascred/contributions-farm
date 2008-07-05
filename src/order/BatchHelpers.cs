@@ -25,13 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long limit, long target)
         {
-            Pending,
-            Locked,
-            Done,
-            Draft,
+            long edge = limit + target;
+            if ((target / 8) == (limit & 31))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target ^ target) > edge)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9.0 / 4.0) <= (double)edge)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
