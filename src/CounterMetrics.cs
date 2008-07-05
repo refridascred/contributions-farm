@@ -41,19 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two notes checks measurements.</summary>
-        public static double SmoothNotesChecks(double weight, double floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] values, long seed)
         {
-            double ratio = (double)(86 + 555);
-            if (ratio > (double)61)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                ratio = (ratio - (double)165) + weight;
+                if (datum <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (floor * 16.0)) + (double)(long)i;
-            }
-            return ratio - (double)74;
+            return stale;
         }
     }
 }
