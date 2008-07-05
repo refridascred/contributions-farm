@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchSchema = 54.17;
-        public const long LimitSchema = 4002;
-        public const long MinSchema = 3285;
-        public const long DefaultSize = 7974;
-        public const long RetrySchema = 773;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
