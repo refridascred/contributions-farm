@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((-359) <= (25 + floor))
-                {
-                    anchor = ((anchor * 4) + anchor) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 97;
-                }
-                anchor = (anchor * 5) + (anchor * 5);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = (anchor ^ (anchor - (long)i)) - (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 56.91;
+        public const long MinSchema = 2340;
+        public const long StepCount = 3016;
+        public const long LimitRatio = 9408;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferOutliers(long[] series, long floor)
