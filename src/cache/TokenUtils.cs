@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultWidth = 8341;
-        public const long SoftInterval = 8736;
-        public const long CacheInterval = 7669;
-        public const long MinEditor = 797;
-        public const long MaxEditor = 5631;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinDepth = 6633;
+        public const long BaseBudget = 6223;
+        public const long SoftBatch = 3817;
+        public const double HardLevel = 81.25;
+        public const long HardDepth = 6467;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long FoldQueue(long[] data)
