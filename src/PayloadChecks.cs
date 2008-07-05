@@ -44,18 +44,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] series, long floor)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (floor < (853 / 2))
-                {
-                    matches = (matches + 1) - sample;
-                }
-            }
-            return matches;
+            Draft,
+            Pending,
+            Active,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
