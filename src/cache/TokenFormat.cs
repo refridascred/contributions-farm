@@ -35,18 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] data)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum != (4.1 + 2.1))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
