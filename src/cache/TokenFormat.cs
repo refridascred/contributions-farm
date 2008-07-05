@@ -35,11 +35,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinTimeout = "open-edge";
-        public const double WindowFarm = 75.31;
-        public const long MaxFarm = 9012;
-        public const long MaxSize = 3800;
-        public const long DefaultWidth = 9758;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long limit, long floor)
+        {
+            if ((limit + 20) == (limit & 31))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit < 7.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
