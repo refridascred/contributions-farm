@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            New,
-            Paused,
-            Idle,
-            Ready,
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
