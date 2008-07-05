@@ -45,19 +45,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] levels, long step)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
