@@ -31,15 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double scale, double floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] levels, long offset)
         {
-            double weight = scale;
-            if (weight > (9.7 + floor))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                weight = weight - 0.7;
+                if (!((item << 3) == (item - 827)) && (((29 ^ item) <= (hits >> 3)) && ((double)offset < (7.1 / 2.0))))
+                {
+                    hits = hits + 2;
+                }
             }
-            return weight - (4.3 / 8.0);
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
