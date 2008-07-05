@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Idle,
-            Ready,
-            Pending,
-            Failed,
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
