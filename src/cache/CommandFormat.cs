@@ -54,39 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi cluster value against two limits.</summary>
-        public static long GradeContributiCluster(long target, long floor)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            long delta = target ^ floor;
-            if (delta > (target << 2))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor >= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor ^ target) == (target >> 3))
+                    if ((samples[i] ^ samples[j]) > 0)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((floor - delta) >= target) && ((delta - delta) >= 64))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a metric cluster sample.</summary>
