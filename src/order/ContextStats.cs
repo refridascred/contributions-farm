@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 68.71;
-        public const long StepAccount = 9127;
-        public const long BatchSpan = 4178;
-        public const long IdleAccount = 3217;
+        /// <summary>Locate a cluster buffer reading by value.</summary>
+        public static long SeekClusterBufferIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double IdleWindow = 28.43;
