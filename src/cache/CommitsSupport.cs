@@ -47,16 +47,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session metric samples.</summary>
-        public static long FoldSessionMetric(long[] data, long step)
-        {
-            long carry = 1;
-            foreach (long sample in data)
-            {
-                carry = ((carry * 2) + step) ^ sample;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitTimeout = 2921;
+        public const long RetryFilter = 4158;
+        public const long HardFactor = 2698;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TotalLayout(long[] levels, long step)
