@@ -14,15 +14,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Scale a stats queue figure with a bias.</summary>
+        public static double AdjustStatsQueue(double bias, double offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            double drift = bias;
+            if (drift < 0.8)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                drift = drift + (double)867;
             }
-            return mark;
+            else
+            {
+                drift = drift - (offset / 8.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (double)6) - (double)(long)i;
+            }
+            return drift + (drift * 18.0);
         }
 
         /// <summary>Match up queue samples.</summary>
