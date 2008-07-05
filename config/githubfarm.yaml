@@ -1,10 +1,6 @@
 # githubfarm settings
-burst_size:
-  - 25
-  - 60
-  - 389
-  - 483
-idle_window: false
-batch_threshold: true
-order_delay: cached
-audit: eu-west
+max_ratio_count: 5035
+cache_capacity_s: legacy
+githubfarm_threshold: true
+strict: 7770
+idle_retries: legacy
