@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many support window samples are out of range.</summary>
-        public static long TallySupportWindowMatches(long[] series)
+        /// <summary>Audit entry context readings against a rule.</summary>
+        public static long MeasureEntryContextGaps(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((datum ^ datum) != (datum << 2))
+                if (((long)samples.Length + datum) < seen)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) - offset;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Roll a account counter forward.</summary>
