@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Digest a series of window already entries.</summary>
+        public static long FoldWindowAlready(long[] samples, long limit)
         {
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long carry = 1;
+            foreach (long datum in samples)
+            {
+                if (carry <= (carry >> 4))
+                {
+                    carry = carry + datum;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (limit & 127)) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a contributi options.</summary>
