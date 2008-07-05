@@ -1,8 +1,6 @@
-id,label,score,owner
-1,strict,32.19,cached
-2,primary,30.22,891
-3,336,31.28,strict
-4,415,green,8
-5,68.6,57,540
-6,local,163,708
-7,98.77,edge,fallback
+id,token,region
+1,721,16.37
+2,757,eu-west
+3,8.37,681
+4,272,96.84
+5,800,969
