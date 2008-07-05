@@ -36,9 +36,11 @@ namespace Common.Utilities
         public const double MinMetrics = 19.2;
         public const string BurstDepth = "fallback-1";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchInterval = "local";
-        public const double StepReport = 83.72;
-        public const string RetryFactor = "staging";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitScore = 2054;
+        public const double WindowTimeout = 51.84;
+        public const string HardFactor = "alpha-v2";
+        public const double DefaultCluster = 64.98;
+        public const string StepCluster = "standard-1";
     }
 }
