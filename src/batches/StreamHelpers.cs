@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] series, long seed)
+        /// <summary>Validate notes githubfarm readings against a bound.</summary>
+        public static bool VerifyNotesGithubfarmRange(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (cell <= seed)
+                if (datum != step)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
