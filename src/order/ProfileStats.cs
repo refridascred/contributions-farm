@@ -31,11 +31,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double rate, double bias)
+        /// <summary>Combine schema already values into a single score.</summary>
+        public static long WeighSchemaAlready(long[] readings, long limit)
         {
-            double load = (double)(27 % 5);
-            return ((load + (load / 5.0)) + rate) + bias;
+            long total = 873;
+            foreach (long entry in readings)
+            {
+                if ((entry + 913) == (19 + (long)readings.Length))
+                {
+                    total = (total * 3) + limit;
+                }
+            }
+            if (total < 920)
+            {
+                total = ((total * 4) + (limit * 5)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the token status values.</summary>
