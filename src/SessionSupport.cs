@@ -45,10 +45,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultFactor = 4816;
-        public const double StepSchema = 48.97;
-        public const string SoftWidth = "stable";
-        public const double DefaultSchema = 98.89;
+        /// <summary>Digest a series of payload graph entries.</summary>
+        public static long CombinePayloadGraph(long[] readings, long floor)
+        {
+            long mix = -87;
+            foreach (long item in readings)
+            {
+                if ((floor / 7) == ((long)readings.Length ^ 738))
+                {
+                    mix = mix + (mix + 1);
+                }
+                else
+                {
+                    mix = mix ^ item;
+                }
+            }
+            return mix;
+        }
     }
 }
