@@ -76,12 +76,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] readings, long target)
         {
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)tally != (2.37 + 8.0))
+                {
+                    tally = ((tally + 3) + cell) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
