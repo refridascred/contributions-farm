@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long SoftFactor = 2400;
         public const string BurstRatio = "latest";
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] values)
+        /// <summary>Compare every pair of profile command readings.</summary>
+        public static long OverlapProfileCommandCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell - hits) <= (hits - 48))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] + samples[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a session snapshot.</summary>
