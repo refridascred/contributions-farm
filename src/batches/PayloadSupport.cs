@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of metric commits readings.</summary>
-        public static long TotalMetricCommits(long[] series, long floor)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long result = 200;
-            foreach (long datum in series)
-            {
-                if (!((4 & 127) < (16 + datum)))
-                {
-                    result = (result - ((long)series.Length + datum)) - floor;
-                }
-            }
-            return result;
+            Idle,
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
