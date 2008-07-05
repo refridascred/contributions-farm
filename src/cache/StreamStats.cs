@@ -40,18 +40,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] levels, long limit)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mix = -8;
+            foreach (long sample in readings)
             {
-                if (3 >= (entry ^ limit))
+                if ((target + sample) >= 0)
                 {
-                    count = count + 3;
+                    mix = (mix << 3) ^ (sample ^ target);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (target ^ (long)readings.Length)) % 255;
                 }
             }
-            return count;
+            if (mix > 153)
+            {
+                mix = (mix + target) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Iterate the channel notes series from a seed.</summary>
