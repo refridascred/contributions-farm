@@ -1,6 +1,11 @@
 {
-  "max_window_pct": ["strict", "fallback"],
-  "max_ratio_ms": "cached",
-  "min_retries": 28,
-  "dry_run": 26.44
+  "batch_ttl_count": true,
+  "dry_run": {
+    "retry_depth_count": 93,
+    "flush_limit_s": "open",
+    "order_threshold": "stable",
+    "enabled": 41.07,
+    "command_capacity": 100
+  },
+  "compress": [22, 202, 404]
 }
