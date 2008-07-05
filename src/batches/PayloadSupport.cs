@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a profile commits reading by value.</summary>
-        public static long LocateProfileCommitsIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 1910;
+        public const long BatchDepth = 1581;
+        public const long BaseFactor = 485;
+        public const long SoftProfile = 5235;
+        public const long MinProfile = 1813;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long ScoreContributi(long[] samples)
