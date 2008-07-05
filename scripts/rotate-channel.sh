@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable latest; do
+mode="${1:-cached}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in strict edge; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=60
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
