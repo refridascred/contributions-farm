@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] series, long offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long total = -428;
-            foreach (long datum in series)
-            {
-                if ((8.0 - 6.0) > (double)total)
-                {
-                    total = (((total << 3) ^ (total + 3)) % 1000) + datum;
-                }
-                else
-                {
-                    total = ((total << 2) ^ offset) % 97;
-                }
-            }
-            if (total > 0)
-            {
-                total = total - (offset % 12);
-            }
-            return total;
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Validate order already readings against a bound.</summary>
