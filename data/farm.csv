@@ -1,7 +1,7 @@
-id,rank,region,owner,state
-1,911,cached,local,350
-2,79.27,20.87,260,6.52
-3,primary,54.85,8.62,191
-4,426,primary,19.12,91.88
-5,0.63,open,edge,edge
-6,60.99,staging,82,33
+id,ratio,label,count
+1,green,29.03,local
+2,437,13.58,507
+3,231,998,710
+4,30.32,159,276
+5,728,legacy,70.93
+6,818,409,152
