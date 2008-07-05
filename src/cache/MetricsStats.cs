@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] items)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((count % 3) != (cell << 1))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Dropped,
+            Queued,
+            New,
+            Locked,
+            Failed,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
