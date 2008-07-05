@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 75.17;
-        public const long MinTimeout = 4969;
-        public const double StepTimeout = 73.04;
-        public const double CacheWidth = 80.31;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a stream reading.</summary>
         public static double SmoothStream(double scale, double offset)
