@@ -27,27 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] values, long seed)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long acc = 89;
-            foreach (long entry in values)
-            {
-                acc = acc - (acc >> 3);
-                if (!((double)seed < (2.6 - 6.41)))
-                {
-                    acc = (acc ^ (seed / 3)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 3) + 5) % 101;
-                }
-                if ((acc & 63) >= (entry ^ entry))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            Queued,
+            Stale,
+            Pending,
         }
     }
 }
