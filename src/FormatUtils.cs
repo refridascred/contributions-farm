@@ -61,18 +61,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] items, long seed)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long state = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (((sample % 7) >= ((long)items.Length / 5)) && !((2.87 - 1.6) != (double)seed))
-                {
-                    matches = matches + 1;
-                }
+                state = (state ^ (state ^ 348)) % 101;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Scale a record entry figure with a bias.</summary>
