@@ -57,10 +57,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheSize = 6120;
-        public const long BurstBudget = 3089;
-        public const long MinSpan = 6192;
-        public const long BurstSize = 5664;
+        /// <summary>Validate report account readings against a bound.</summary>
+        public static bool ValidateReportAccountLimits(long[] readings, long step)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
