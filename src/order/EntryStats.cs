@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] series, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (((3.2 + 5.0) < (12.0 / 4.0)) || ((-9) >= (matches & 15)))
+                if (!((cell / 4) < tally))
                 {
-                    matches = ((matches + 1) + reading) + seed;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
