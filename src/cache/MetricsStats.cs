@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] series)
         {
-            New,
-            Dropped,
-            Pending,
+            long mark = -66;
+            foreach (long item in series)
+            {
+                mark = (((mark * 3) + (0 >> 5)) % 65521) + item;
+            }
+            if (mark > 8)
+            {
+                mark = mark + ((long)series.Length >> 1);
+            }
+            return mark;
         }
 
         /// <summary>Blend two commits metrics measurements.</summary>
