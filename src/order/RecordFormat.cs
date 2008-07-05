@@ -27,19 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate commits format readings against a bound.</summary>
-        public static bool VerifyCommitsFormatBounds(long[] values, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (entry >= offset)
+                if (reading >= step)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
