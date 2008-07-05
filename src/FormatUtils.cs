@@ -35,23 +35,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double rate, double bias)
+        /// <summary>Measure how many tools order samples are out of range.</summary>
+        public static long AuditToolsOrderHits(long[] samples, long floor)
         {
-            double ratio = 5.35;
-            if (ratio < rate)
+            long count = 0;
+            foreach (long item in samples)
             {
-                ratio = ratio - (bias * 3.0);
+                if (((item > (floor + count)) || ((3 * 3) <= count)) || ((13.0 + 2.0) < (double)item))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio * 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (double)955) - (double)(long)i;
-            }
-            return ratio - rate;
+            return count;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
