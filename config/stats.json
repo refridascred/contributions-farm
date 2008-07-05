@@ -1,9 +1,11 @@
 {
-  "idle_capacity": "cached",
-  "hard_delay": 91.79,
-  "retry_capacity": {
-    "warm_ttl_s": "open",
-    "warm_interval": 500,
-    "soft_interval_s": true
+  "sync_depth_pct": 7747,
+  "hard_window": ["legacy", "stable", "stable", "fallback"],
+  "enabled": ["local", "local"],
+  "default_ttl_count": {
+    "audit": 100,
+    "cache_window_pct": ["cached", "standard", "local"],
+    "persist": 60,
+    "schema_retries": "eu-west"
   }
 }
