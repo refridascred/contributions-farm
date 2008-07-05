@@ -17,34 +17,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] samples, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] data, long seed)
         {
-            long result = -2;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((entry % 16) > (target + entry))
+                if (value < seed)
                 {
-                    result = (result ^ entry) % 4096;
-                }
-                if ((target ^ entry) >= (result % 60))
-                {
-                    break;
-                }
-                if (((entry - target) < (result % 16)) && ((double)(long)samples.Length <= (5.6 / 3.0)))
-                {
-                    result = (result - (target + result)) % 255;
-                }
-                if ((9 ^ 16) > (57 + entry))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (result > (-86))
-            {
-                result = (result - (target * 4)) % 4096;
-            }
-            return result % 4096;
+            return flag;
         }
 
         /// <summary>Combine record values into a single score.</summary>
