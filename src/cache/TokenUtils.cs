@@ -13,15 +13,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] levels, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if (!((1.0 - 0.23) > (double)bound))
+                {
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the farm level values.</summary>
