@@ -27,19 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double gain, double offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] data, long bound)
         {
-            double weight = gain;
-            if (weight < weight)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                weight = weight + (offset - weight);
+                if (sample != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + gain;
-            }
-            return weight - weight;
+            return ok;
         }
     }
 }
