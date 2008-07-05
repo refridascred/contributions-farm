@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 1910;
-        public const long BatchDepth = 1581;
-        public const long BaseFactor = 485;
-        public const long SoftProfile = 5235;
-        public const long MinProfile = 1813;
+        /// <summary>Measure how many payload checks samples are out of range.</summary>
+        public static long AuditPayloadChecksOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((1.6 - 8.1) >= (double)datum)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long ScoreContributi(long[] samples)
