@@ -33,9 +33,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryFactor = 4508;
-        public const long StepTools = 6292;
-        public const long BurstRatio = 531;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (18.0 > (double)9)
+                {
+                    count = ((count + 3) ^ sample) - origin;
+                }
+            }
+            return count;
+        }
     }
 }
