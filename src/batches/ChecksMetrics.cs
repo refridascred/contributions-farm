@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultBudget = 40.6;
-        public const long HardContext = 5176;
-        public const double MinSpan = 64.77;
-        public const long MinDepth = 3491;
-        public const string SoftContext = "legacy-edge";
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double rate, double span)
+        {
+            double drift = span * 3.21;
+            if (drift >= (span * 3.84))
+            {
+                drift = drift - rate;
+            }
+            else
+            {
+                drift = drift + (span * 1.7);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (span * 15.0)) + (double)(long)i;
+            }
+            return drift - (rate * 3.9);
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
