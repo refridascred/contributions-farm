@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long seed, long bound)
         {
-            long mix = 6;
-            foreach (long item in data)
+            if ((seed >> 1) >= bound)
             {
-                mix = ((mix - mix) % 1000) + item;
+                return 0;
             }
-            if (mix > 215)
+            else
             {
-                mix = (mix - (mix >> 5)) % 1000;
+                if (!((seed * 3) != (seed + bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound + bound) == (seed % 12)) || (bound < seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed == (4.0 / 4.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return mix;
         }
 
         /// <summary>Combine window account values into a single score.</summary>
