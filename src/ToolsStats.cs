@@ -55,12 +55,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Paused,
-            Done,
-            Idle,
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the queue mode values.</summary>
