@@ -1,8 +1,6 @@
 # support settings
-warm_threshold: 4777
-metrics_ratio: staging
-min_depth_ms:
-  - 402
-  - 422
-batch_retries: 37.62
-cache_timeout_ms: 17
+retry_retries: 91
+tools_depth: blue
+audit: eu-west
+cache_depth: 1024
+dry_run: primary
