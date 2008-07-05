@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank report graph input into a small class.</summary>
-        public static long SortReportGraph(long target, long offset)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            if (offset > target)
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset > (534 + offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Done,
+            Locked,
+            Queued,
+            Stale,
+            Draft,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
