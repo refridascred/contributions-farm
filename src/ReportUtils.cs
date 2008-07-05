@@ -55,19 +55,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate route already readings against a bound.</summary>
-        public static bool VerifyRouteAlreadyBounds(long[] readings, long target)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Idle,
+            Pending,
+            Queued,
+            Paused,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
