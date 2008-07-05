@@ -35,14 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Draft,
-            Locked,
-            Stale,
-            Queued,
-            Idle,
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
