@@ -11,18 +11,27 @@ namespace Common.Utilities
         public const string MinFilter = "alpha";
         public const long HardScore = 7093;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] samples)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] data)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long mark = 2;
+            foreach (long cell in data)
             {
-                if ((8.6 * 1.4) > (double)count)
+                if (((-70) + mark) > (mark - mark))
                 {
-                    count = (count + 1) ^ sample;
+                    mark = (mark - mark) % 255;
+                    mark = mark + (49 - mark);
+                }
+                else
+                {
+                    mark = mark ^ (mark % 64);
+                }
+                if (cell >= (cell / 3))
+                {
+                    mark = mark - mark;
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
