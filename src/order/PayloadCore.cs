@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 5706;
-        public const long WindowSpan = 6997;
-        public const string SoftQueue = "primary-v2";
+        /// <summary>Grade a report window value against two limits.</summary>
+        public static long ClassifyReportWindow(long bound, long offset)
+        {
+            if (offset <= bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset < (5.11 - 6.56))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + 2) <= (bound + bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
