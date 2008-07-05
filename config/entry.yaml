@@ -1,11 +1,22 @@
 # entry settings
-persist: false
-batch_interval_count: 74.03
-retry_capacity: primary
-batch_window_s:
-  format_delay: true
-  context_threshold: 9616
-  cache_size_count: 56.49
-  flush_window_s: 100
-  burst_ttl_pct: 1669
-schema_timeout: 29
+sync_delay: 8120
+readonly: cached
+githubfarm_capacity:
+  readonly:
+    cache_window_ms: latest
+    max_size_pct: blue
+    sync_size:
+      - latest
+      - eu-west
+      - fallback
+    verbose: stable
+  stream_retries: 60.9
+  retry_interval_ms:
+    - latest
+    - cached
+    - primary
+  command_retries:
+    - strict
+    - stable
+    - stable
+min_limit: green
