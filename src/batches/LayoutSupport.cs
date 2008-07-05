@@ -40,31 +40,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long limit, long bound)
+        /// <summary>Look up the position of a context metrics sample.</summary>
+        public static long SeekContextMetricsIndex(long[] items, long floor)
         {
-            if ((8.4 * 0.2) > (double)limit)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound ^ 42) <= (33 % 64))
+                if ((items[i] == floor) && ((items[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound % 3) > (limit ^ limit)) && ((bound / 4) >= bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
