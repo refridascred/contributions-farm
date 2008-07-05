@@ -1,25 +1,7 @@
 # githubfarm settings
-poll_ratio_count: 22.87
-soft_ttl_count: 59
-support_window:
-  readonly: strict
-  window_depth: legacy
-  idle_window: true
-  flush_ttl:
-    - green
-    - cached
-  checks_ttl:
-    min_timeout: latest
-    counter_delay:
-      - latest
-      - primary
-      - edge
-    hard_ttl_s: legacy
-    idle_window:
-      - 40
-      - 292
-      - 265
-      - 41
-    flush_retries: true
-    flush_delay_ms: 30
-default_size_count: 24.49
+retry_limit_s: local
+stats_depth: 4823
+sync_depth_pct: latest
+default_depth_count: local
+poll_ratio_ms: true
+idle_ttl: 8233
