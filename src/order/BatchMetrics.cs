@@ -48,19 +48,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every filter contributi entry stays within the limit.</summary>
-        public static bool ValidateFilterContributiLimits(long[] samples, long target)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
