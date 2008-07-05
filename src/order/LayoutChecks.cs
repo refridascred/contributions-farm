@@ -49,12 +49,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 1845;
-        public const long HardInterval = 1822;
-        public const long WindowCluster = 4853;
-        public const long StepCluster = 771;
-        public const string IdleCluster = "local";
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (6.4 > (double)count)
+                {
+                    count = (count + 1) - sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
