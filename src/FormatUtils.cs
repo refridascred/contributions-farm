@@ -63,17 +63,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] items, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 25;
+            foreach (long value in levels)
             {
-                if (items[i] > floor)
+                if (((double)value != (1.9 - 4.11)) && ((value + mix) != ((long)levels.Length & 255)))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (value * 2)) % 97;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
