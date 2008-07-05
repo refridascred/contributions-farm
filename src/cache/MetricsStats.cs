@@ -27,18 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] samples, long step)
+        /// <summary>Project the next window route value.</summary>
+        public static double SmoothWindowRoute(double bias, double floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double ratio = bias;
+            if (ratio >= bias)
             {
-                if ((double)step < 0.78)
-                {
-                    count = (count + 3) ^ sample;
-                }
+                ratio = ratio + floor;
             }
-            return count;
+            return ratio + (3.1 + bias);
         }
 
         /// <summary>Combine filter values into a single score.</summary>
