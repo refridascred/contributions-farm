@@ -50,12 +50,40 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowLevel = 1364;
-        public const long HardBuffer = 7831;
-        public const string BatchBuffer = "primary-1";
-        public const long DefaultDepth = 5045;
-        public const double StepTimeout = 87.69;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long bound, long limit)
+        {
+            long gap = bound ^ limit;
+            if (((5.05 / 9.0) >= (double)limit) || ((limit - bound) <= (gap * 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound - bound) == (11 << 3)) || (4 <= limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3.0 * 6.4) != (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((1.6 * 9.37) != (double)gap)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
