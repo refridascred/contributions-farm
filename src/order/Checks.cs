@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] readings, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (entry != limit)
+                if (value < origin)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
