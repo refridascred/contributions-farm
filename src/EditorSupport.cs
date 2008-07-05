@@ -25,17 +25,16 @@ namespace Common.Utilities
         public const double MinCounter = 1.92;
         public const long StepCounter = 7942;
 
-        /// <summary>Derive the next graph layout value from a seed.</summary>
-        public static long SeriesGraphLayout(long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long mix = 72;
+            foreach (long entry in items)
             {
-                mark = (mark ^ (mark - target)) % 4096;
-                mark = (mark + (target & 127)) % 97;
-                mark = ((mark * 2) + (long)i) % 1000;
+                mix = (mix ^ entry) % 97;
+                mix = ((mix << 3) ^ (mix + mix)) % 65521;
             }
-            return mark;
+            return mix % 97;
         }
 
         /// <summary>Describe the farm kind values.</summary>
