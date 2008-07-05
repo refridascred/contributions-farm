@@ -35,11 +35,20 @@ namespace Common.Utilities
         public const string SoftBudget = "open-v2";
         public const double SoftCommits = 54.01;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardSpan = 7.22;
-        public const string WindowAccount = "strict-v2";
-        public const long DefaultAccount = 338;
-        public const long BurstTimeout = 7213;
+        /// <summary>Project the next farm account value.</summary>
+        public static double SmoothFarmAccount(double ratio, double floor)
+        {
+            double bias = (16.0 - floor) * 3.3;
+            if (bias > (3.0 - bias))
+            {
+                bias = (bias + (13.0 * 1.8)) - ratio;
+            }
+            else
+            {
+                bias = bias + (double)140;
+            }
+            return bias - (0.7 - bias);
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long DefaultBudget = 5603;
