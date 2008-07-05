@@ -1,6 +1,10 @@
 # githubfarm settings
-readonly: 8462
-warm_interval_pct: 77.44
-dry_run: 93.41
-token_window: strict
-min_retries_pct: edge
+burst_size:
+  - 25
+  - 60
+  - 389
+  - 483
+idle_window: false
+batch_threshold: true
+order_delay: cached
+audit: eu-west
