@@ -25,32 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long limit, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] samples)
         {
-            long edge = limit + target;
-            if ((target / 8) == (limit & 31))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target ^ target) > edge)
+                if (!((value >= (value - tally)) || ((double)(long)samples.Length <= (4.0 + 3.74))))
                 {
-                    return 0;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((9.0 / 4.0) <= (double)edge)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
