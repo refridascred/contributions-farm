@@ -64,11 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
