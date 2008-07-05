@@ -51,12 +51,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 84.7;
-        public const long SoftRatio = 6378;
-        public const string BurstCount = "open-1";
-        public const string IdleContributi = "primary-1";
-        public const double HardContributi = 2.91;
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double rate, double bias)
+        {
+            double mean = (double)(165 >> 1);
+            if (mean > (double)(-4))
+            {
+                mean = ((mean + 15.0) + rate) - bias;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + 4.2) + (double)(long)i;
+            }
+            return mean - (mean * 17.0);
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long RollPayload(long offset)
