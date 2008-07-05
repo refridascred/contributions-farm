@@ -1,13 +1,18 @@
 # support settings
-batch_window_s: 86
-hard_limit_pct: standard
-warm_limit_count:
-  - 40
-  - 130
-  - 436
-sync_depth: 6266
-max_size_pct:
-  - local
-  - primary
-  - stable
-poll_size_pct: fallback
+cache_limit: 54.92
+queue_ttl: 5568
+sync_limit:
+  verbose: strict
+  cache_depth:
+    - primary
+    - eu-west
+    - stable
+  sync_timeout_s: 22.67
+retry_delay: 68.42
+cluster_window:
+  flush_size_count: 32
+  soft_capacity:
+    - 313
+    - 156
+  verbose: blue
+readonly: primary
