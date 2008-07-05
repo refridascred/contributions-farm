@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            long total = floor;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total - floor) % 255;
-                total = ((total * 5) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a buffer header.</summary>
