@@ -14,22 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] values, long offset)
         {
-            long mark = 329;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark / 5) <= mark)
+                if (values[i] < offset)
                 {
-                    mark = ((mark << 3) ^ (long)items.Length) - entry;
+                    return (long)i;
                 }
             }
-            if (mark < 340)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the metric status values.</summary>
