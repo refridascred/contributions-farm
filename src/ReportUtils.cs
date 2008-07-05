@@ -22,12 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinLevel = 7820;
-        public const string MinBudget = "staging-edge";
-        public const double CachePayload = 9.45;
-        public const double BatchPayload = 29.47;
-        public const long RetryPayload = 3417;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleInterval = 33.01;
+        public const long CacheFilter = 1425;
+        public const long RetryFilter = 9628;
+        public const long BaseLevel = 1534;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
