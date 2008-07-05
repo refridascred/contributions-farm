@@ -56,13 +56,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
+            Queued,
             Pending,
-            Locked,
+            Idle,
+            Stale,
             Active,
-            Retry,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
