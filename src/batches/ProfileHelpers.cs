@@ -55,13 +55,17 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] readings, long bound)
         {
-            Synced,
-            New,
-            Ready,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
