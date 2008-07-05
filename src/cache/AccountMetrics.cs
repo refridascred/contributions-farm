@@ -32,22 +32,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] items)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] readings, long bound)
         {
-            long result = -86;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((double)result <= (4.55 + 6.02))
+                if (reading >= bound)
                 {
-                    result = (result + datum) % 97;
-                }
-                if (!(result >= (7 >> 2)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Hold a tools options.</summary>
