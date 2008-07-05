@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] values, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((double)seen > (1.0 + 9.2))
+                if (!((count + origin) > (count >> 2)))
                 {
-                    seen = ((seen + 2) - value) - offset;
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Derive the next token metric value from a seed.</summary>
