@@ -1,5 +1,11 @@
 {
-  "hard_ratio_ms": false,
-  "stats_capacity": false,
-  "githubfarm_delay": ["staging", "open", "eu-west", "latest"]
+  "support_ttl": "staging",
+  "token_limit": 12,
+  "githubfarm_capacity": {
+    "soft_capacity_ms": 68.38,
+    "burst_depth_pct": false,
+    "enabled": 55,
+    "sync_size_ms": ["staging", "blue", "staging"],
+    "compress": "fallback"
+  }
 }
