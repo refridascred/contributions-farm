@@ -29,9 +29,12 @@ namespace Common.Utilities
             return mean - (bias / 6.0);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftDepth = 87.26;
-        public const string StepOrder = "alpha-v2";
-        public const long BurstOrder = 5022;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Paused,
+            Retry,
+            Idle,
+        }
     }
 }
