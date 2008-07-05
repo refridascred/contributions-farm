@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first already record entry that matches the target.</summary>
-        public static long LookupAlreadyRecordIndex(long[] readings, long offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] < offset)
+                if (levels[i] > step)
                 {
                     return (long)i;
                 }
