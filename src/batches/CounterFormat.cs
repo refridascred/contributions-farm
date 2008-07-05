@@ -13,12 +13,24 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] series)
         {
-            Closed,
-            Dropped,
-            Idle,
+            long mark = 7;
+            foreach (long value in series)
+            {
+                if (((double)value >= 9.4) && ((value + mark) == (value / 3)))
+                {
+                    mark = ((mark * 4) + (value >> 5)) % 4096;
+                    mark = ((mark * 2) + (mark + value)) % 101;
+                }
+                mark = mark ^ (value - 36);
+            }
+            if (mark > 26)
+            {
+                mark = mark ^ (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
