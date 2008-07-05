@@ -30,17 +30,11 @@ namespace Common.Utilities
             return mean - 14.0;
         }
 
-        /// <summary>Locate a route session reading by value.</summary>
-        public static long LookupRouteSessionIndex(long[] samples, long step)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine payload values into a single score.</summary>
