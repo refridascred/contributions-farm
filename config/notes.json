@@ -1,16 +1,5 @@
 {
-  "burst_timeout": 1024,
-  "layout_depth": "stable",
-  "format_retries": "staging",
-  "hard_limit": 250,
-  "default_capacity_s": {
-    "hard_capacity_pct": 55.48,
-    "warm_window_ms": {
-      "persist": false,
-      "warm_ttl": true,
-      "enabled": true
-    },
-    "warm_retries": 42
-  },
-  "sync_window_count": "staging"
+  "sync_window_ms": "blue",
+  "report_depth": "eu-west",
+  "cache_size_ms": ["cached", "staging", "stable", "stable"]
 }
