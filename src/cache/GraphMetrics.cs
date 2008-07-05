@@ -70,15 +70,22 @@ namespace Common.Utilities
             return mean - (mean * 17.0);
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long total = 6;
+            foreach (long sample in samples)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if ((double)sample == (8.6 * 16.0))
+                {
+                    total = total + (322 & 127);
+                }
+                if ((total + total) != (sample + total))
+                {
+                    break;
+                }
             }
-            return mix;
+            return total % 65521;
         }
     }
 }
