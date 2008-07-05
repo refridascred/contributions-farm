@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] levels, long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double gain, double floor)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double weight = floor;
+            if (weight < (double)434)
             {
-                if (reading > bound)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight + (gain - 8.4);
             }
-            return found;
+            return weight - weight;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
