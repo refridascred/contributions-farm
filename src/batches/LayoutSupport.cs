@@ -52,22 +52,14 @@ namespace Common.Utilities
             return gain - 1.0;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] levels, long step)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((93 >> 3) != (cell & 31))
-                {
-                    matches = (matches + 1) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Draft,
+            Stale,
+            Done,
+            Locked,
         }
     }
 }
