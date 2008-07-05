@@ -22,10 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 66.44;
-        public const long SoftTimeout = 4402;
-        public const double RetryChannel = 88.21;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first batches payload entry that matches the target.</summary>
         public static long FindBatchesPayloadIndex(long[] values, long seed)
