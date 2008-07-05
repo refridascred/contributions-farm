@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxBuffer = 59.27;
-        public const long IdleBuffer = 5601;
-        public const double CacheBuffer = 95.73;
-        public const long RetryBuffer = 2168;
-        public const long IdleScore = 8011;
+        /// <summary>Accumulate order graph samples.</summary>
+        public static long WeighOrderGraph(long[] series, long limit)
+        {
+            long anchor = 70;
+            foreach (long cell in series)
+            {
+                if (!((double)(long)series.Length > (6.0 - 4.0)))
+                {
+                    anchor = anchor - (limit / 3);
+                }
+                else
+                {
+                    anchor = (anchor - (cell >> 2)) % 101;
+                }
+                if (!(163 >= (anchor - anchor)))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long DeriveNotes(long origin)
