@@ -27,18 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many layout stream samples are out of range.</summary>
-        public static long TallyLayoutStreamOutliers(long[] levels)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!((double)value == (3.8 * 19.0)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
