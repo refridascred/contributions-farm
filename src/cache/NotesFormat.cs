@@ -13,12 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Done,
-            Paused,
-            Retry,
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Audit batch farm readings against a rule.</summary>
