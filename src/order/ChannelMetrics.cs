@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] readings)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((matches * 5) > 2)
+                if (limit > ((long)i % 24))
                 {
-                    matches = (matches + 2) ^ entry;
+                    anchor = (anchor + ((long)i >> 5)) % 101;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Accumulate report samples.</summary>
