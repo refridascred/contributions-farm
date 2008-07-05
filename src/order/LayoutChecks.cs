@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] series, long seed)
+        /// <summary>Look up the position of a schema report sample.</summary>
+        public static long SeekSchemaReportIndex(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= seed)
+                if (samples[i] > offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
