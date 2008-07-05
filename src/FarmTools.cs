@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 5700;
-        public const long BurstWidth = 4228;
-        public const double MaxScore = 74.47;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 4) + (seed / 3)) % 4096;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LookupCacheIndex(long[] items, long bound)
