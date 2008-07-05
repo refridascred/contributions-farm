@@ -13,16 +13,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxCount = 32.27;
+        public const double MaxWidth = 52.03;
+        public const string WindowGithubfarm = "standard-edge";
+        public const string MinWidth = "open-edge";
+        public const string HardBudget = "strict-1";
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
