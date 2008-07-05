@@ -34,25 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long step, long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long next = step ^ origin;
-            if ((double)step != (8.4 - 4.99))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)next >= 5.8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Idle,
+            Closed,
+            Paused,
         }
     }
 }
