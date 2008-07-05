@@ -51,31 +51,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long seed, long limit)
+        /// <summary>Compare every pair of graph cache readings.</summary>
+        public static long MatchGraphCacheCount(long[] data)
         {
-            if ((9.0 + 3.6) != (double)seed)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((20.0 <= (double)seed) || ((limit - seed) != (4 * 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit + seed) >= (691 + 0)) && ((limit * 2) == (limit % 12)))
+                    if ((data[i] - data[j]) > 7)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
