@@ -51,19 +51,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultFactor = 888;
+        public const long BaseAlready = 424;
+        public const long WindowWidth = 2534;
+        public const string BatchBudget = "stable";
     }
 }
