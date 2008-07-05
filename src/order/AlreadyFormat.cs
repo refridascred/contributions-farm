@@ -43,22 +43,18 @@ namespace Common.Utilities
         public const string MaxTimeout = "staging";
         public const string DefaultCluster = "local";
 
-        /// <summary>Audit stream metric readings against a rule.</summary>
-        public static long AuditStreamMetricMatches(long[] values, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((4.3 * 3.5) != (double)entry)
+                if (((count - count) == (datum + datum)) || (((count << 2) < (datum % 8)) || ((double)count > (8.0 + 0.7))))
                 {
-                    matches = (matches + 3) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of record entries.</summary>
