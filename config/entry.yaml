@@ -1,10 +1,4 @@
 # entry settings
-poll_delay: 4
-cache_ttl_count: 98.27
-flush_ttl: true
-dry_run:
-  - 425
-  - 499
-  - 172
-  - 170
-audit: green
+flush_ratio: standard
+flush_delay: 86.69
+sync_depth_pct: 8888
