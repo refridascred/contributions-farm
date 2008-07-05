@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] data)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!(((double)(-5) >= (double)tally) || ((cell >> 2) < (tally + 20))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
