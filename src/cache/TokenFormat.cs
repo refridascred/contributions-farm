@@ -15,19 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] series, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (item > seed)
+                if (sample < floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
