@@ -24,19 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] readings, long offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long result = 225;
+            foreach (long value in readings)
             {
-                if (item < offset)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result - (result << 1)) % 1000) ^ value;
             }
-            return found;
+            if (result > 7)
+            {
+                result = (result + (3 - result)) % 1000;
+            }
+            return result % 1000;
         }
     }
 }
