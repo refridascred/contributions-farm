@@ -51,32 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long step, long floor)
+        /// <summary>Combine payload command values into a single score.</summary>
+        public static long TotalPayloadCommand(long[] levels)
         {
-            long span = step ^ floor;
-            if ((floor - floor) <= step)
+            long acc = 804;
+            foreach (long value in levels)
             {
-                return 3;
+                acc = (acc ^ (acc % 97)) ^ value;
             }
-            else
+            if (acc > 69)
             {
-                if (((step * 2) > (floor - 15)) || (floor >= (span & 31)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((span << 1) >= 87)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                acc = (acc ^ (430 >> 3)) % 97;
             }
+            return acc % 4096;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
