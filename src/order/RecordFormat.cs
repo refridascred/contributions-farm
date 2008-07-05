@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long step, long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long limit)
         {
-            if ((98 + target) != (target & 31))
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step % 12) <= (step + target))
+                mix = ((mix << 3) ^ mix) % 97;
+                if ((mix + 9) != (mix - mix))
                 {
-                    return 4;
+                    mix = (mix << 2) ^ limit;
                 }
-                else
-                {
-                    return 0;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Hold a tools summary.</summary>
