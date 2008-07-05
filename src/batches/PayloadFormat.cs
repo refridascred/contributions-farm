@@ -67,24 +67,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long target, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double scale, double floor)
         {
-            if ((bound / 6) > 9)
+            double load = (double)37;
+            if (load <= (scale * 8.5))
             {
-                return 8;
+                load = load - (double)673;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (((double)bound < (6.0 - 18.0)) && ((double)target >= 9.6))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
+                load = (load - floor) - (double)(long)i;
             }
+            return load - (floor + floor);
         }
     }
 }
