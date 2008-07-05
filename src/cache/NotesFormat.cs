@@ -13,11 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            long carry = 48;
+            foreach (long value in items)
+            {
+                carry = ((carry + carry) % 255) ^ value;
+            }
+            return carry;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
