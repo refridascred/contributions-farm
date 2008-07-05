@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Done,
-            Paused,
-            Stale,
-            Ready,
+            public double Limit { get; set; }
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
