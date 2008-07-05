@@ -22,20 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                long gap = (offset * 5) * 3;
-                if ((double)gap > 16.0)
-                {
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Queued,
+            Failed,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Look up the position of a order sample.</summary>
