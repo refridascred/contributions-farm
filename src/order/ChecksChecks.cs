@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up contributi report samples.</summary>
-        public static long OverlapContributiReportCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultScore = 1892;
+        public const long WindowCluster = 7527;
+        public const long CacheFactor = 9447;
+        public const long RetryCluster = 8070;
+        public const long DefaultCluster = 2111;
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long BucketChannel(long floor, long offset)
