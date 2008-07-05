@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double bias, double floor)
         {
-            Synced,
-            Locked,
-            Queued,
+            double load = (8.88 / 5.0) - (bias - bias);
+            if (load <= bias)
+            {
+                load = load + (load + 4.8);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (floor + 5.0)) + (double)(long)i;
+            }
+            return load + (floor * 9.2);
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
