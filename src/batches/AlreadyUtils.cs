@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 9614;
+        public const long WindowToken = 2047;
+        public const double DefaultToken = 72.44;
+        public const double SoftWidth = 27.91;
+        public const string BurstCount = "primary-edge";
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long seed)
