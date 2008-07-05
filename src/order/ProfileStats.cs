@@ -22,13 +22,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            Retry,
+            Done,
+            Draft,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a buffer summary.</summary>
