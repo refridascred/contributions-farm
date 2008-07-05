@@ -37,20 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 61;
+        public const long MaxAlready = 5768;
+        public const string HardAlready = "standard-v2";
+        public const double WindowAlready = 19.17;
+        public const double BatchAlready = 64.04;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmBounds(long[] levels, long target)
