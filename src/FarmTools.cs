@@ -52,11 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] samples, long floor)
         {
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
