@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of schema cache entries.</summary>
-        public static long DigestSchemaCache(long[] values, long floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] readings, long seed)
         {
-            long total = -98;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)floor < (double)item)
+                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
                 {
-                    total = ((total * 2) + ((-79) ^ floor)) % 101;
-                }
-                if (!((double)floor < (double)item))
-                {
-                    total = ((total * 3) + item) % 4096;
-                }
-                else
-                {
-                    total = (total + (total >> 2)) % 4096;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Adjust a queue window reading.</summary>
