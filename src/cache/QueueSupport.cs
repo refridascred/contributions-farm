@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleCount = 14.25;
+        public const long SoftInterval = 8711;
+        public const string LimitEditor = "primary-v2";
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
