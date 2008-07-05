@@ -1,22 +1,11 @@
 # support settings
-verbose:
-  - 480
-  - 347
-  - 370
-  - 326
-cache_threshold_count:
-  - edge
-  - open
-  - cached
+graph_retries:
+  - strict
   - staging
-soft_capacity_pct: 5326
-sync_depth:
-  - blue
-  - primary
-  - cached
-  - open
-max_threshold_ms:
-  - strict
-  - eu-west
-  - legacy
-  - strict
+  - staging
+  - standard
+audit: true
+hard_limit: 250
+warm_size_ms: stable
+soft_timeout_s: 100
+window_retries: true
