@@ -31,25 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] readings, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (target > result)
+                if (reading > origin)
                 {
-                    long edge = ((long)i / 5) / 9;
-                    result = result + (edge / 6);
+                    ok = false;
                     break;
                 }
-                else
-                {
-                    result = (result << 3) ^ ((long)i + target);
-                }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
