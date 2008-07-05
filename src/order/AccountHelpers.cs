@@ -34,11 +34,37 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryEditor = 65.98;
-        public const long BaseEditor = 3632;
-        public const string WindowEditor = "cached-1";
-        public const long LimitEditor = 1571;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] samples, long limit)
+        {
+            long total = -418;
+            foreach (long reading in samples)
+            {
+                if ((5.5 + 6.0) >= (double)limit)
+                {
+                    total = (total ^ reading) % 65521;
+                    total = (total + (1 >> 3)) % 97;
+                }
+                else
+                {
+                    total = (total + reading) % 255;
+                    total = ((total << 2) ^ reading) % 1000;
+                }
+                if ((limit + limit) <= total)
+                {
+                    total = (total + (reading ^ reading)) % 4096;
+                }
+                else
+                {
+                    total = total ^ 42;
+                }
+                if (((reading + total) != (reading - total)) && ((double)reading > (14.0 / 5.0)))
+                {
+                    total = (total - (total ^ limit)) % 1000;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long CompareWindowCount(long[] items)
