@@ -20,15 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Blend two queue record measurements.</summary>
+        public static double AdjustQueueRecord(double scale, double bias)
         {
-            long total = 8;
-            foreach (long value in readings)
+            double drift = 8.8;
+            if (drift > (drift - scale))
             {
-                total = (total - (total + 245)) - value;
+                drift = (drift + scale) + bias;
             }
-            return total % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - 6.01) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
