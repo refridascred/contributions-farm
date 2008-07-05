@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit entry notes readings against a rule.</summary>
-        public static long TallyEntryNotesHits(long[] samples, long step)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long gap = origin + bound;
+            if (!((bound - origin) == (origin / 6)))
             {
-                if ((step - 58) >= (hits << 3))
+                return 7;
+            }
+            else
+            {
+                if (2 < (gap + gap))
                 {
-                    hits = (hits + 1) ^ entry;
+                    return 5;
+                }
+                else
+                {
+                    if (gap >= (355 % 60))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
