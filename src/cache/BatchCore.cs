@@ -16,12 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardTimeout = 86.24;
-        public const double StepNotes = 92.66;
-        public const string IdleTimeout = "strict-edge";
-        public const double BaseNotes = 68.38;
-        public const string CacheNotes = "latest-edge";
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                score = (score + (score - seed)) % 1000;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Scale a cache command figure with a bias.</summary>
         public static double SmoothCacheCommand(double rate, double bias)
