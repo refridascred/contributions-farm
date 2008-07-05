@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double bias)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] series, long offset)
         {
-            double load = (ratio + ratio) - (double)80;
-            if (load > (double)302)
+            long score = 0;
+            foreach (long reading in series)
             {
-                load = load + (bias + 9.38);
+                if (offset >= reading)
+                {
+                    score = (score + (reading + 364)) % 4096;
+                }
+                score = score + (34 + score);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - load;
+            return score;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
