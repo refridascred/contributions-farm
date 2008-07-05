@@ -55,15 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double scale, double floor)
         {
-            long sum = seed;
+            double scale2 = (double)4 - (scale - scale);
+            if (scale2 <= 5.0)
+            {
+                scale2 = (scale2 - (scale2 - scale2)) + floor;
+            }
             for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                scale2 = (scale2 + scale) + (double)(long)i;
             }
-            return sum;
+            return scale2 - (scale2 - 7.6);
         }
 
         /// <summary>Validate account readings against a bound.</summary>
