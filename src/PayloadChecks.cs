@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 56.91;
-        public const long MinSchema = 2340;
-        public const long StepCount = 3016;
-        public const long LimitRatio = 9408;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double scale, double offset)
+        {
+            double drift = offset;
+            if (drift > (offset + scale))
+            {
+                drift = drift - (double)3;
+            }
+            else
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (drift + offset)) + (double)(long)i;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferOutliers(long[] series, long floor)
