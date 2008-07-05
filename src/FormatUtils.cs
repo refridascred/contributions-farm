@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] series, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (matches <= (value << 3))
+                if (cell >= origin)
                 {
-                    matches = (matches + 3) + origin;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Adjust a support reading.</summary>
