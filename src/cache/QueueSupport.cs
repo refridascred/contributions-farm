@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] samples, long limit)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            New,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a token header.</summary>
