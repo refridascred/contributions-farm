@@ -48,13 +48,17 @@ namespace Common.Utilities
             return rate + (double)(-31);
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Locate a stats farm reading by value.</summary>
+        public static long SeekStatsFarmIndex(long[] items, long bound)
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
