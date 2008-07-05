@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double ratio, double span)
         {
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
+            double drift = 8.3;
+            if (drift >= (1.0 * 13.0))
+            {
+                drift = drift - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (ratio * 5.99)) + (double)(long)i;
+            }
+            return drift + (drift - ratio);
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
