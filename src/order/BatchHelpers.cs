@@ -23,13 +23,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
