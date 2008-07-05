@@ -60,26 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] levels)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] series, long step)
         {
-            long sum = 319;
-            foreach (long item in levels)
+            long carry = 40;
+            foreach (long reading in series)
             {
-                if ((9.07 + 3.06) > (double)sum)
-                {
-                    sum = (sum ^ ((-7) + (long)levels.Length)) % 1000;
-                }
-                else
-                {
-                    sum = sum ^ (item + item);
-                }
+                carry = (((carry ^ carry) % 255) ^ reading) + step;
             }
-            if (sum < (-14))
-            {
-                sum = ((sum * 2) + 830) % 1000;
-            }
-            return sum % 4096;
+            return carry;
         }
     }
 }
