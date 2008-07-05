@@ -32,18 +32,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if ((14.0 * 1.1) < (double)seed)
             {
-                if (seen > (item - 725))
+                return 1;
+            }
+            else
+            {
+                if ((546 + seed) <= (seed - 385))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)bound != (double)278) || ((seed ^ seed) >= seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((seed & 255) != (seed % 12)) || (seed > (bound + bound)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
