@@ -1,6 +1,20 @@
 {
-  "base_capacity_s": "eu-west",
-  "poll_ttl_s": 250,
-  "support_window": 100,
-  "filter_delay": "stable"
+  "strict": {
+    "flush_retries": "stable",
+    "min_ttl_pct": {
+      "soft_retries": "staging",
+      "farm_interval": "strict",
+      "burst_capacity_ms": true
+    },
+    "flush_interval": 60,
+    "flush_depth_s": 4422
+  },
+  "min_delay_pct": "primary",
+  "flush_limit_s": {
+    "cache_delay_pct": [198, 228, 461, 279],
+    "stats_delay": [416, 134, 452, 339],
+    "batch_size_pct": 100
+  },
+  "cache_depth_pct": 45,
+  "account_retries": "fallback"
 }
