@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many window cluster samples are out of range.</summary>
-        public static long CountWindowClusterHits(long[] readings, long limit)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if (((bound ^ bound) <= offset) && ((bound + offset) >= (offset - bound)))
             {
-                if ((limit ^ matches) < (277 + 253))
+                return 7;
+            }
+            else
+            {
+                if (844 >= (bound >> 5))
                 {
-                    matches = (matches + 2) - item;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
