@@ -20,14 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Stale,
-            Paused,
-            Active,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 3566;
+        public const string BurstBuffer = "latest-1";
+        public const long HardBuffer = 3710;
+        public const string WindowBuffer = "strict";
+        public const double BurstScore = 91.44;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BurstLayout = 8207;
