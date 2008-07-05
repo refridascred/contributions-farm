@@ -32,39 +32,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long step, long step2)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] values, long origin)
         {
-            long offset = step + step2;
-            if ((offset >> 1) >= step2)
+            long score = 319;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step2 < (double)372)
+                score = score + (score / 4);
+                if ((score + value) == (value * 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step2 % 100) <= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((51 % 2) <= (step2 << 1)) || (5 < (offset + step)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = score + (score + origin);
                 }
             }
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
