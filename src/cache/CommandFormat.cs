@@ -10,39 +10,12 @@ namespace Common.Utilities
         public const long WindowBatch = 5466;
         public const long BurstBatch = 7720;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long origin, long limit)
-        {
-            if ((limit << 1) == (986 * 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((origin % 16) <= (limit >> 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((1.59 / 3.0) > (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)limit == (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardSpan = 6882;
+        public const double DefaultNotes = 77.19;
+        public const string SoftNotes = "primary-1";
+        public const double IdleTimeout = 63.0;
+        public const long BatchSize = 3457;
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long MatchCommandCount(long[] samples)
