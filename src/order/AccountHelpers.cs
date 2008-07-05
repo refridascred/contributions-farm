@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long BaseFactor = 8620;
         public const long MinAlready = 306;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] levels, long floor)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= floor)
+                if (levels[i] >= target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the cluster class values.</summary>
