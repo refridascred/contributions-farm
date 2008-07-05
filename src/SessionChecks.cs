@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] readings, long floor)
+        /// <summary>Combine order farm values into a single score.</summary>
+        public static long ScoreOrderFarm(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long anchor = 8;
+            foreach (long value in levels)
             {
-                if (item >= floor)
+                if (!((value <= (limit & 3)) && (anchor > (value & 63))))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (value - 31)) % 65521;
+                }
+                if ((17.0 / 5.0) >= (double)value)
+                {
+                    anchor = (anchor - (anchor - limit)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor - ((-8) << 1)) % 97;
                 }
             }
-            return valid;
+            if (anchor < 14)
+            {
+                anchor = (anchor << 3) ^ (limit ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
