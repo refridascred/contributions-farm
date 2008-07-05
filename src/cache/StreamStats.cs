@@ -53,11 +53,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Digest a series of schema metrics entries.</summary>
+        public static long TotalSchemaMetrics(long[] levels)
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            long mix = 198;
+            foreach (long entry in levels)
+            {
+                if ((0.35 - 2.31) > (double)mix)
+                {
+                    mix = (mix << 3) ^ entry;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
