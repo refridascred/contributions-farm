@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] samples, long target)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!(((entry / 9) <= (entry * 5)) && ((3 % 24) != (target / 3))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
