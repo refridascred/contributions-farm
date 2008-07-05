@@ -58,18 +58,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] items)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry ^ entry) == (matches << 1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Done,
+            Stale,
+            Pending,
+            Paused,
+            Queued,
         }
     }
 }
