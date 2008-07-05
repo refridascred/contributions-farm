@@ -20,21 +20,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] series)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] - series[j]) != 4)
+                    if ((samples[i] - samples[j]) == 17)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a already record.</summary>
