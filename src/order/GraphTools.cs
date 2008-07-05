@@ -52,13 +52,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long target, long seed)
         {
-            New,
-            Active,
-            Locked,
-            Stale,
+            long prev = target - seed;
+            if (!((target - target) >= (-788)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed >> 2) < (seed / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((prev % 64) <= (3 << 2)) && ((target << 2) == (5 % 97)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((9 - 148) >= (seed << 2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
