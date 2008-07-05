@@ -35,21 +35,16 @@ namespace Common.Utilities
             return bias + (3.92 / 8.0);
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] series)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 166;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = score ^ sample;
+                score = (score - (score / 2)) % 255;
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
