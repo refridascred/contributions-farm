@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 4991;
+        public const long DefaultScore = 6557;
+        public const long IdleDepth = 427;
+        public const long WindowScore = 9173;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
