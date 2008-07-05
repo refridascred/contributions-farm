@@ -36,19 +36,19 @@ namespace Common.Utilities
         public const string HardDepth = "open-v2";
         public const string CacheLevel = "cached";
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double bias, double offset)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double bias, double span)
         {
-            double mean = 2.0;
-            if (mean < 1.0)
+            double scale = span / 9.0;
+            if (scale <= (span * 18.0))
             {
-                mean = (mean - (double)717) - bias;
+                scale = scale - (bias / 4.0);
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = (mean + (offset * 1.9)) - (double)(long)i;
+                scale = scale - span;
             }
-            return mean + mean;
+            return scale + bias;
         }
 
         /// <summary>Describe the graph class values.</summary>
