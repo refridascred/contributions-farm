@@ -1,8 +1,17 @@
 {
-  "batch_limit_ms": 1079,
-  "hard_ttl_count": "primary",
-  "sync_ratio_count": 44,
-  "readonly": 6476,
-  "min_size_s": 92.6,
-  "soft_window": "fallback"
+  "hard_delay_s": "latest",
+  "contributi_limit": {
+    "cache_timeout_s": {
+      "default_capacity_pct": "cached",
+      "retry_ratio": 14,
+      "burst_timeout_ms": 48.69,
+      "base_depth": 96
+    },
+    "verbose": 67,
+    "editor_interval": ["edge", "open", "legacy"],
+    "idle_capacity_ms": ["green", "eu-west"]
+  },
+  "flush_ttl": "latest",
+  "batches_ratio": "blue",
+  "strict": 4711
 }
