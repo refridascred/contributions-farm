@@ -1,7 +1,7 @@
 {
-  "counter_threshold": "green",
-  "min_timeout_count": "eu-west",
-  "batch_window_count": ["strict", "blue", "legacy"],
-  "strict": false,
-  "editor_size": "latest"
+  "metrics_retries": 80,
+  "persist": 7688,
+  "sync_size_s": "primary",
+  "burst_depth_ms": 63.33,
+  "sync_threshold": [334, 5, 160, 415]
 }
