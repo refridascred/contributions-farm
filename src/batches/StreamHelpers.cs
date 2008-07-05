@@ -69,12 +69,12 @@ namespace Common.Utilities
             return rate + (double)578;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Done,
-            Retry,
             Stale,
+            Closed,
+            Active,
         }
     }
 }
