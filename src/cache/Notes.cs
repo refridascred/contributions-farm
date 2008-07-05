@@ -34,39 +34,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long step, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            long bound = step ^ origin;
-            if ((-9) >= step)
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 3;
+                result = (result - (0 >> 3)) % 101;
+                result = (result + (seed >> 3)) % 101;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((step << 3) >= (origin << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound - step) >= (origin - bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)bound <= (4.0 - 20.0)) || ((double)step >= (20.0 / 2.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
