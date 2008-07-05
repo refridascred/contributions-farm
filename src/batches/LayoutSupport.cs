@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long carry = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((5.59 + 9.0) == (double)carry))
-                {
-                    carry = (carry ^ carry) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Queued,
+            New,
+            Locked,
+            Retry,
+            Synced,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
