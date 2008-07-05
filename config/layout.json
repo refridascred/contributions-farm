@@ -1,18 +1,5 @@
 {
-  "poll_depth_ms": {
-    "compress": 87,
-    "warm_ttl": 20,
-    "readonly": 21,
-    "githubfarm_threshold": 30,
-    "verbose": "open",
-    "sync_interval": true
-  },
-  "min_delay_count": {
-    "default_depth_count": 81.45,
-    "githubfarm_ratio": "standard",
-    "compress": 8763
-  },
-  "dry_run": "primary",
-  "idle_depth_pct": 500,
-  "soft_ratio": false
+  "order_ratio": "eu-west",
+  "verbose": "local",
+  "min_depth_ms": "eu-west"
 }
