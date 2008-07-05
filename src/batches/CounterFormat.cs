@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] data, long seed)
+        /// <summary>Digest a series of route editor entries.</summary>
+        public static long CombineRouteEditor(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 47;
+            foreach (long entry in items)
             {
-                if (data[i] <= seed)
+                if ((mix + mix) >= limit)
                 {
-                    return (long)i;
+                    mix = (((mix * 4) + (mix * 5)) % 101) + entry;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Hold a metric stats.</summary>
