@@ -28,39 +28,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long limit, long target)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double scale, double floor)
         {
-            long next = limit ^ target;
-            if (((double)target == (14.0 - 0.69)) || ((89 % 3) > target))
+            double weight = (floor / 7.0) * 11.0;
+            if (weight >= (weight * 5.0))
             {
-                return 8;
+                weight = (weight + (double)776) + scale;
             }
             else
             {
-                if ((((-533) - next) != (next * 4)) || ((double)next > 8.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(((-774) % 10) >= (limit << 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((next + 5) < (limit - 42))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                weight = weight - (weight + floor);
             }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (floor * 1.0)) + (double)(long)i;
+            }
+            return weight - (double)793;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
