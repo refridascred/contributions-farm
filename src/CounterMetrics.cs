@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Paused,
-            Synced,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstFactor = "latest-edge";
+        public const long MaxContext = 1503;
+        public const long MaxInterval = 6431;
+        public const long LimitFactor = 8767;
+        public const long MaxDepth = 9551;
 
         /// <summary>Measure how many account buffer samples are out of range.</summary>
         public static long TallyAccountBufferOutliers(long[] items)
