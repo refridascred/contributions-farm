@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] series)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] items, long floor)
         {
-            long acc = 445;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                acc = ((acc << 3) ^ reading) % 65521;
+                if (sample < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Iterate the account cache series from a seed.</summary>
