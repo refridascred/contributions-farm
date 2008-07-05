@@ -52,12 +52,31 @@ namespace Common.Utilities
         public const long HardMetrics = 7637;
         public const double BatchMetrics = 94.36;
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long origin, long limit)
         {
-            public bool Offset { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            if ((1.33 / 5.0) == (double)limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin * 5) == (origin % 10))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin - limit) <= (origin / 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
