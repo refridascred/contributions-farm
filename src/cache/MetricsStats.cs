@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const long BurstAlready = 6155;
         public const double HardAlready = 0.62;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] series)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long seed, long seed2)
         {
-            long mark = -66;
-            foreach (long item in series)
+            if ((seed2 + (-19)) <= (seed - 6))
             {
-                mark = (((mark * 3) + (0 >> 5)) % 65521) + item;
+                return 6;
             }
-            if (mark > 8)
+            else
             {
-                mark = mark + ((long)series.Length >> 1);
+                if ((9.89 / 6.0) != (double)seed2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return mark;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
