@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowScore = 56.67;
+        public const long BurstMetric = 1263;
+        public const double MaxMetric = 95.65;
+        public const long MaxTimeout = 406;
 
         /// <summary>Digest a series of command cache entries.</summary>
         public static long ScoreCommandCache(long[] data)
