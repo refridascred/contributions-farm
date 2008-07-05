@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] readings, long seed)
-        {
-            long acc = 77;
-            foreach (long entry in readings)
-            {
-                acc = ((acc + (acc + entry)) % 255) - seed;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchCount = 4417;
+        public const long RetryAlready = 8788;
+        public const long BaseFactor = 8620;
+        public const long MinAlready = 306;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
