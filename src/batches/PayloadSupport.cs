@@ -29,21 +29,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] items)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the window layout entries that pass the check.</summary>
