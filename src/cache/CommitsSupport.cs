@@ -83,15 +83,15 @@ namespace Common.Utilities
             return mean + (mean * 5.7);
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] items)
+        /// <summary>Measure how many stream route samples are out of range.</summary>
+        public static long CountStreamRouteMatches(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in items)
+            foreach (long value in samples)
             {
-                if (!!((reading ^ 6) != (hits / 4)))
+                if (!((value >> 1) >= (value / 4)))
                 {
-                    hits = hits + 2;
+                    hits = hits + 3;
                 }
             }
             return hits;
