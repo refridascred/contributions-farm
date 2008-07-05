@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] levels, long origin)
         {
-            Paused,
-            Retry,
-            Locked,
-            Failed,
-            Ready,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value ^ value) != (3 + origin))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
