@@ -28,11 +28,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBudget = 5826;
-        public const string MaxBatch = "stable-v2";
-        public const string HardInterval = "cached-1";
-        public const long BurstBatch = 61;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Draft,
+            Ready,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Classify a context commits pair into a bucket.</summary>
         public static long BucketContextCommits(long origin, long target)
