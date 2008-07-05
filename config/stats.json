@@ -1,6 +1,8 @@
 {
-  "base_delay_count": "cached",
-  "support_ttl": "legacy",
-  "sync_size_pct": false,
-  "readonly": "stable"
+  "warm_delay_count": false,
+  "base_window_pct": [85, 101],
+  "hard_size_ms": 5814,
+  "batch_depth": 96.35,
+  "metrics_window": true,
+  "max_capacity": "cached"
 }
