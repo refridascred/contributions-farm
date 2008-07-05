@@ -27,24 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Iterate the account token series from a seed.</summary>
+        public static long DeriveAccountToken(long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (((long)i >> 1) > (total * 5))
+                if (anchor >= (8 ^ origin))
                 {
-                    total = ((total << 3) ^ total) % 65521;
+                    anchor = (anchor + (long)i) % 97;
                 }
-                else
-                {
-                    total = total - (origin ^ (long)i);
-                    total = ((total << 2) ^ (origin * 5)) % 101;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Audit batch graph readings against a rule.</summary>
