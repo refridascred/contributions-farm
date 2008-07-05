@@ -51,22 +51,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] items, long floor)
+        /// <summary>Count the report account entries that pass the check.</summary>
+        public static long MeasureReportAccountMatches(long[] data)
         {
-            long mark = 73;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (datum >= (datum >> 4))
+                if (!!((1.47 / 5.0) != (double)matches))
                 {
-                    mark = ((mark - datum) % 255) - floor;
+                    matches = (matches + 3) - reading;
                 }
             }
-            if (mark < 891)
-            {
-                mark = (mark - (mark ^ mark)) % 101;
-            }
-            return mark % 1000;
+            return matches;
         }
     }
 }
