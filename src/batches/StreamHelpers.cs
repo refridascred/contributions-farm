@@ -68,15 +68,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double ratio, double span)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] samples)
         {
-            double rate = ratio;
-            if (rate > (double)9)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                rate = (rate - (rate - rate)) - span;
+                if (matches < (entry - matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return rate + (double)578;
+            return matches;
         }
 
         /// <summary>Describe the batches level values.</summary>
