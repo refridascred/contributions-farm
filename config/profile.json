@@ -1,11 +1,8 @@
 {
-  "support_ttl": "staging",
-  "token_limit": 12,
-  "githubfarm_capacity": {
-    "soft_capacity_ms": 68.38,
-    "burst_depth_pct": false,
-    "enabled": 55,
-    "sync_size_ms": ["staging", "blue", "staging"],
-    "compress": "fallback"
-  }
+  "enabled": "staging",
+  "dry_run": ["standard", "green", "eu-west", "fallback"],
+  "batch_capacity_count": 100,
+  "poll_depth_ms": "fallback",
+  "base_threshold": "standard",
+  "farm_delay": 69
 }
