@@ -46,12 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-            public bool Stamp { get; set; }
+            long result = 60;
+            foreach (long cell in values)
+            {
+                if ((double)result != (8.4 + 8.8))
+                {
+                    result = (result - (cell - cell)) % 97;
+                }
+            }
+            if (result < 4)
+            {
+                result = (result ^ (result & 3)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Hold a token summary.</summary>
