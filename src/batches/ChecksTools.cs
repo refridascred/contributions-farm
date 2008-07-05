@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] levels, long offset)
         {
-            Queued,
-            Draft,
-            Synced,
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
