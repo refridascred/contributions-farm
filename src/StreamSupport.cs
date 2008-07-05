@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Validate token queue readings against a bound.</summary>
+        public static bool VerifyTokenQueueRange(long[] series, long seed)
         {
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
