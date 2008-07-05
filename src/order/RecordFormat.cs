@@ -27,19 +27,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] series, long offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Done,
+            Dropped,
+            Idle,
+            Closed,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
