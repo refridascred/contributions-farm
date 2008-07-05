@@ -55,13 +55,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryLevel = 5924;
+        public const long MinNotes = 8543;
+        public const double RetrySize = 57.81;
+        public const string WindowNotes = "strict-1";
+        public const long DefaultNotes = 5355;
     }
 }
