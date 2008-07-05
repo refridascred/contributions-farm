@@ -1,11 +1,10 @@
 # Command notes
 
-The record module keeps profile values in sync with the layout cache.
-Use channel settings to tune how often entry data is refreshed.
-Each context is validated before it reaches the token queue.
+A channel that stays idle for too long is moved to the stats list.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every counter change
-- Keep stream values small
-- Prefer graph defaults
+- Review cluster limits each release
+- Log every record change
+- Validate notes input early
