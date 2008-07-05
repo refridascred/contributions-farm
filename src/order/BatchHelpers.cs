@@ -33,18 +33,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] data, long origin)
+        /// <summary>Combine editor profile values into a single score.</summary>
+        public static long ScoreEditorProfile(long[] data)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long state = -1;
+            foreach (long cell in data)
             {
-                if (18.0 > (double)9)
+                if (!((cell + cell) < (state / 4)))
                 {
-                    count = ((count + 3) ^ sample) - origin;
+                    state = (state ^ cell) % 4096;
+                }
+                if (!((1 & 31) < state))
+                {
+                    break;
                 }
             }
-            return count;
+            if (state > (-19))
+            {
+                state = ((state << 2) ^ state) % 101;
+            }
+            return state;
         }
     }
 }
