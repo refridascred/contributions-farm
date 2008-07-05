@@ -1,14 +1,6 @@
 {
-  "default_limit": "cached",
-  "flush_limit": 12.62,
-  "compress": 88.8,
-  "readonly": {
-    "warm_depth_ms": 88,
-    "sync_threshold_ms": false,
-    "audit": "cached",
-    "sync_timeout": "fallback",
-    "min_ratio": ["green", "blue"]
-  },
-  "base_ratio": "edge",
-  "order_threshold": 500
+  "warm_retries_ms": "local",
+  "already_threshold": 7324,
+  "cache_capacity": 56.35,
+  "compress": false
 }
