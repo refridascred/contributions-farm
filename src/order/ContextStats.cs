@@ -18,12 +18,39 @@ namespace Common.Utilities
         public const long SoftWindow = 324;
         public const long RetryWindow = 63;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long offset, long step)
         {
-            New,
-            Retry,
-            Queued,
+            long edge = offset - step;
+            if (((8.2 - 5.73) != (double)edge) && (offset > (offset + offset)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step >> 2) < step) && ((offset - offset) < (2 % 100)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset ^ step) > (step + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset % 97) >= (offset * 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload state values.</summary>
