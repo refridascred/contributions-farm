@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Pending,
-            Synced,
-            Done,
-            Failed,
-            Active,
+            public double Total { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
