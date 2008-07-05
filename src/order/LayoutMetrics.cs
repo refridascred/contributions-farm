@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every channel profile entry stays within the limit.</summary>
-        public static bool CheckChannelProfileLimits(long[] levels, long offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long step)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (item < offset)
+                bool stale = ((long)i <= (anchor + anchor)) || ((56 / 4) <= (long)i);
+                if (stale)
                 {
-                    ready = false;
-                    break;
+                    stale = stale;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Validate session account readings against a bound.</summary>
