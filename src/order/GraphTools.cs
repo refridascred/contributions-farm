@@ -37,12 +37,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Measure how many metrics buffer samples are out of range.</summary>
+        public static long MeasureMetricsBufferHits(long[] readings)
         {
-            Active,
-            Closed,
-            Retry,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits - hits) != (reading * 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of githubfarm support entries.</summary>
