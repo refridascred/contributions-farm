@@ -29,18 +29,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] items, long floor)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long state = 16;
-            foreach (long reading in items)
-            {
-                if ((double)state <= 7.52)
-                {
-                    state = ((state ^ floor) % 1000) - reading;
-                }
-            }
-            return state % 4096;
+            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine checks values into a single score.</summary>
