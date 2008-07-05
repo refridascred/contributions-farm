@@ -14,21 +14,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long origin, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((limit << 1) == (986 * 4))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((origin % 16) <= (limit >> 1)))
                 {
-                    if ((series[i] + series[j]) > 0)
+                    return 8;
+                }
+                else
+                {
+                    if ((1.59 / 3.0) > (double)origin)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)limit == (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a route summary.</summary>
