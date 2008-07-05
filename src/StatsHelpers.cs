@@ -46,10 +46,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 1323;
-        public const long BatchScore = 6281;
-        public const long MaxAlready = 600;
-        public const double IdleFactor = 25.44;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepCount = 6166;
+        public const long MaxSession = 6917;
+        public const long BatchSession = 555;
+        public const long WindowSession = 2248;
+        public const long SoftSession = 2280;
     }
 }
