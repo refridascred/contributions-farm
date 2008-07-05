@@ -13,20 +13,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long origin)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!(8.21 < (double)(long)i))
-                {
-                    result = (result * 3) + ((long)i * 2);
-                    result = (result - (result + (-647))) % 101;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
