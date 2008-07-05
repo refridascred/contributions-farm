@@ -60,39 +60,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long target, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] data)
         {
-            long prev = target - seed;
-            if (!((target - target) >= (-788)))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed >> 2) < (seed / 3))
+                if ((640 >> 2) < cell)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((prev % 64) <= (3 << 2)) && ((target << 2) == (5 % 97)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((9 - 148) >= (seed << 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
