@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstRatio = 6927;
+        public const long WindowBatch = 5466;
+        public const long BurstBatch = 7720;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long RankToken(long origin, long limit)
