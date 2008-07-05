@@ -55,11 +55,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultWidth = "alpha";
-        public const long BatchGraph = 9517;
-        public const long RetryGraph = 2114;
-        public const long MaxInterval = 5681;
-        public const string HardGraph = "open-edge";
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long origin, long floor)
+        {
+            if ((double)floor < (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin >> 2) < (0 + origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
