@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] series, long offset)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long score = 0;
-            foreach (long reading in series)
-            {
-                if (offset >= reading)
-                {
-                    score = (score + (reading + 364)) % 4096;
-                }
-                score = score + (34 + score);
-            }
-            return score;
+            Draft,
+            New,
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
