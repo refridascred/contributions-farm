@@ -19,22 +19,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            long state = 3;
-            foreach (long reading in levels)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((7.73 / 7.0) <= (double)reading)
-                {
-                    state = ((state * 3) + (reading & 1)) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (reading ^ state)) % 1000;
-                }
+                acc = (acc << 2) ^ (96 % 5);
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return state % 97;
+            return acc;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
