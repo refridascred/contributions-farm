@@ -34,12 +34,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] samples, long bound)
         {
-            Paused,
-            Queued,
-            Ready,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((count < (bound + count)) || ((count - (long)samples.Length) > count))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
