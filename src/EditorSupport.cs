@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] samples, long bound)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            if (!((220 ^ limit) > (limit & 3)))
             {
-                if (971 >= (cell + 579))
+                return 7;
+            }
+            else
+            {
+                if ((double)limit >= (14.0 * 4.3))
                 {
-                    tally = (tally + 3) - bound;
+                    return 8;
+                }
+                else
+                {
+                    if (limit < (limit - 133))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a counter record value against two limits.</summary>
