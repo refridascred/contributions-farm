@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two queue record measurements.</summary>
-        public static double AdjustQueueRecord(double scale, double bias)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double drift = 8.8;
-            if (drift > (drift - scale))
-            {
-                drift = (drift + scale) + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - 6.01) + (double)(long)i;
-            }
-            return drift + drift;
+            Stale,
+            Paused,
+            Active,
+            Done,
         }
 
         /// <summary>Accumulate context samples.</summary>
