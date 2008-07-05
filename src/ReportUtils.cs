@@ -37,12 +37,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Validate route already readings against a bound.</summary>
+        public static bool VerifyRouteAlreadyBounds(long[] readings, long target)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
