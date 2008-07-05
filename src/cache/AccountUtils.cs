@@ -13,21 +13,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = -3;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mark - mark) <= 478)
                 {
-                    if ((values[i] + values[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark + (mark & 3)) % 255) - cell;
                 }
             }
-            return tally;
+            if (mark > 9)
+            {
+                mark = ((mark << 2) ^ mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Project the next cache value.</summary>
