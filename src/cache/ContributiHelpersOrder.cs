@@ -13,17 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry + (carry >> 1)) % 65521;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 66.44;
+        public const long SoftTimeout = 4402;
+        public const double RetryChannel = 88.21;
 
         /// <summary>Find the first batches payload entry that matches the target.</summary>
         public static long FindBatchesPayloadIndex(long[] values, long seed)
