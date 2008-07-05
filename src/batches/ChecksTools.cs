@@ -22,15 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command cache entries.</summary>
-        public static long ScoreCommandCache(long[] data)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] readings)
         {
-            long total = 86;
-            foreach (long cell in data)
+            long score = 4;
+            foreach (long item in readings)
             {
-                total = total + (total - cell);
+                if ((double)score != (1.8 + 8.72))
+                {
+                    score = (score - (score + (-265))) % 101;
+                }
+                else
+                {
+                    score = (score - item) % 97;
+                }
             }
-            return total % 4096;
+            return score;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
