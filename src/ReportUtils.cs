@@ -41,18 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] data)
         {
-            long acc = 384;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((49 + 22) == (cell ^ offset))
+                if ((double)value >= (10.0 * 16.0))
                 {
-                    acc = ((acc << 2) ^ acc) % 65521;
+                    count = count + 3;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
