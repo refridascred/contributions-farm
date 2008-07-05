@@ -99,21 +99,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] samples)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
