@@ -27,19 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] readings, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (reading >= step)
+                if (item > offset)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
