@@ -31,24 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a context commits pair into a bucket.</summary>
-        public static long BucketContextCommits(long origin, long target)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            if ((double)origin <= 17.0)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin > (double)(-2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
