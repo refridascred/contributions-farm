@@ -45,12 +45,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultFactor = 4816;
+        public const double StepSchema = 48.97;
+        public const string SoftWidth = "stable";
+        public const double DefaultSchema = 98.89;
     }
 }
