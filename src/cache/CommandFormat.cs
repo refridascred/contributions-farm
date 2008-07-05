@@ -41,10 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowQueue = 14.54;
-        public const double RetryQueue = 58.44;
-        public const long DefaultQueue = 7390;
-        public const double HardDepth = 93.03;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
