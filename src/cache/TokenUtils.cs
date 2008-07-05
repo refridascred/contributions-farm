@@ -20,12 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinDepth = 6633;
-        public const long BaseBudget = 6223;
-        public const long SoftBatch = 3817;
-        public const double HardLevel = 81.25;
-        public const long HardDepth = 6467;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (sample >= tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long FoldQueue(long[] data)
