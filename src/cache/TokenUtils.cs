@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            Idle,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
