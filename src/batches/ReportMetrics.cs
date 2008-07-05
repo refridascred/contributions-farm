@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
+            Pending,
+            New,
             Locked,
             Stale,
-            Retry,
-            Active,
+            Idle,
         }
 
         /// <summary>Combine token values into a single score.</summary>
