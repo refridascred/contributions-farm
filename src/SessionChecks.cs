@@ -66,12 +66,31 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long seed, long limit)
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public double Level { get; set; }
+            if ((9.0 + 3.6) != (double)seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((20.0 <= (double)seed) || ((limit - seed) != (4 * 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((limit + seed) >= (691 + 0)) && ((limit * 2) == (limit % 12)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
