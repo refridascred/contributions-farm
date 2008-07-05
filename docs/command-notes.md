@@ -1,12 +1,12 @@
 # Command notes
 
-When a record fails, the queue handler retries a few times before giving up.
-The report helpers are pure functions, so they are safe to call from any thread.
-Defaults for layout live in the config folder and can be overridden per environment.
+Use farm settings to tune how often stats data is refreshed.
+When a commits fails, the format handler retries a few times before giving up.
+Each report is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Keep entry values small
-- Log every graph change
-- Review report limits each release
-- Prefer session defaults
+- Validate window input early
+- Document new session fields
+- Prefer commits defaults
+- Log every queue change
