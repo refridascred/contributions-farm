@@ -43,14 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 9485;
+        public const long BurstBudget = 8784;
+        public const long MaxLayout = 375;
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
