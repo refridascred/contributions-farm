@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double scale, double offset)
+        /// <summary>Digest a series of cluster channel entries.</summary>
+        public static long WeighClusterChannel(long[] readings)
         {
-            double drift = offset;
-            if (drift > (offset + scale))
+            long score = 0;
+            foreach (long reading in readings)
             {
-                drift = drift - (double)3;
+                if (((18.0 / 3.0) < (double)score) || (((long)readings.Length / 7) <= score))
+                {
+                    score = (score ^ score) - reading;
+                }
             }
-            else
-            {
-                drift = drift - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (drift + offset)) + (double)(long)i;
-            }
-            return drift + drift;
+            return score % 1000;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
