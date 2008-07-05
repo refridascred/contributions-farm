@@ -29,18 +29,11 @@ namespace Common.Utilities
         public const double BatchPayload = 29.47;
         public const long RetryPayload = 3417;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultScore = 5906;
+        public const double StepFactor = 75.59;
+        public const string SoftBudget = "open-v2";
+        public const double SoftCommits = 54.01;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double HardSpan = 7.22;
