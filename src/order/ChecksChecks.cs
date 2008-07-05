@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double rate, double span)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] data, long seed)
         {
-            double gain = rate;
-            if (gain <= gain)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - 3.64;
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + span) + (double)(long)i;
-            }
-            return gain + span;
+            return -1;
         }
 
         /// <summary>Hold a checks options.</summary>
