@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultWidth = 65.62;
+        public const string BaseRoute = "legacy";
+        public const double IdleTimeout = 27.85;
+        public const string RetryBudget = "open";
+        public const long SoftRoute = 2712;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
