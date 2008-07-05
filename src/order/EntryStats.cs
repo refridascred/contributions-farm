@@ -48,17 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] series, long step)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = ratio;
+            return (gain - ratio) + floor;
         }
     }
 }
