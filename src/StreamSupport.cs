@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate token queue readings against a bound.</summary>
-        public static bool VerifyTokenQueueRange(long[] series, long seed)
+        /// <summary>Validate queue account readings against a bound.</summary>
+        public static bool CheckQueueAccountLimits(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (datum > seed)
+                if (entry < target)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
