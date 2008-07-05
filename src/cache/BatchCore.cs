@@ -57,24 +57,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long target, long floor)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            if (!((54 ^ floor) <= (floor - target)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor % 5) == (floor + floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Paused,
+            Retry,
+            Idle,
+            Synced,
         }
     }
 }
