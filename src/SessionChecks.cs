@@ -57,22 +57,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many route farm samples are out of range.</summary>
-        public static long CountRouteFarmOutliers(long[] samples, long origin)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((tally - 0) <= origin)
-                {
-                    tally = (tally + 2) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public double Size { get; set; }
         }
     }
 }
