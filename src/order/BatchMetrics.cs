@@ -28,13 +28,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Check that every queue support entry stays within the limit.</summary>
+        public static bool ValidateQueueSupportRange(long[] samples, long step)
         {
-            Done,
-            Locked,
-            Pending,
-            Closed,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
