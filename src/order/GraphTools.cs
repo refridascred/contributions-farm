@@ -17,16 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] items)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                carry = (carry - 60) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((2 * 3) >= entry)
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Project the next window value.</summary>
