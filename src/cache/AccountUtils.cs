@@ -19,11 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitWidth = "standard-edge";
-        public const long HardLevel = 8711;
-        public const long WindowInterval = 3023;
-        public const long StepFilter = 3909;
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public double Size { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long WeighTools(long[] values, long floor)
