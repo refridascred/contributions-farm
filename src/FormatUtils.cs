@@ -23,19 +23,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] series, long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long floor, long step)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            if ((step * 5) == (floor + step))
             {
-                if (cell >= origin)
+                return 1;
+            }
+            else
+            {
+                if (((step % 8) >= 162) || ((0 - 7) != (997 - step)))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
 
         /// <summary>Find the first contributi batch entry that matches the target.</summary>
