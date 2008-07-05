@@ -41,9 +41,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 9662;
-        public const double WindowScore = 58.31;
-        public const long RetrySession = 9428;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstDepth = 6197;
+        public const double CacheTimeout = 68.37;
+        public const long WindowCache = 7998;
+        public const long RetryCache = 9805;
     }
 }
