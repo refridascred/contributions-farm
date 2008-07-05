@@ -43,17 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi batch entry that matches the target.</summary>
-        public static long FindContributiBatchIndex(long[] data, long seed)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Closed,
+            New,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
