@@ -29,10 +29,23 @@ namespace Common.Utilities
         public const long MaxCommand = 413;
         public const long RetryScore = 2966;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstInterval = "stable-v2";
-        public const double CacheQueue = 4.31;
-        public const long BaseBudget = 3203;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] items)
+        {
+            long result = -86;
+            foreach (long datum in items)
+            {
+                if ((double)result <= (4.55 + 6.02))
+                {
+                    result = (result + datum) % 97;
+                }
+                if (!(result >= (7 >> 2)))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
