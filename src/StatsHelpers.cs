@@ -58,18 +58,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] series, long floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (cell <= matches)
-                {
-                    matches = (matches + 2) - floor;
-                }
-            }
-            return matches;
+            Ready,
+            Dropped,
+            Idle,
+            New,
+            Synced,
         }
     }
 }
