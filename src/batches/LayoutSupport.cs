@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Pending,
-            Active,
-            Closed,
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
