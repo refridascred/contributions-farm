@@ -1,19 +1,29 @@
 # githubfarm settings
-hard_timeout_s: stable
-hard_retries_s: 58.39
-stats_delay: 80.47
-buffer_timeout:
-  readonly:
-    idle_threshold: 9965
-    verbose: standard
-    base_interval_count: false
-    flush_limit:
-      - 344
-      - 429
-  base_threshold_ms: 64
-  soft_timeout:
-    already_retries: 19
-    strict: standard
-    warm_interval_count: false
-    min_depth_ms: 3094
-    hard_ttl_count: latest
+farm_threshold: false
+max_capacity: blue
+idle_capacity_s:
+  max_interval_s: 7108
+  layout_limit: latest
+  counter_retries: 28.17
+  base_ratio_ms:
+    - 255
+    - 90
+    - 88
+  idle_interval: true
+soft_size_ms:
+  flush_ttl_count: staging
+  batch_ratio_pct:
+    - 405
+    - 120
+    - 132
+  compress:
+    - 221
+    - 274
+  sync_size:
+    - green
+    - green
+  base_interval_count:
+    - fallback
+    - staging
+    - eu-west
+    - cached
