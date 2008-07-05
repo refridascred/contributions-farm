@@ -31,15 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] series, long step)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long sum = 98;
-            foreach (long item in series)
-            {
-                sum = ((sum ^ item) % 4096) - step;
-            }
-            return sum;
+            Closed,
+            Ready,
+            Failed,
         }
     }
 }
