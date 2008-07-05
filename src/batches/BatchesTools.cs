@@ -24,14 +24,10 @@ namespace Common.Utilities
         public const long BatchCount = 4845;
         public const long LimitGithubfarm = 14;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Locked,
-            Paused,
-            Synced,
-            Idle,
-            New,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 8.08;
+        public const long DefaultSize = 6075;
+        public const double MaxCount = 41.86;
+        public const long MaxLevel = 8436;
     }
 }
