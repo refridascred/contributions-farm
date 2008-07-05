@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double ratio, double floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] levels, long origin)
         {
-            double ratio2 = 10.0;
-            if (ratio2 >= (floor / 2.0))
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                ratio2 = (ratio2 - floor) + ratio;
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (ratio2 + floor);
-            }
-            return ratio2 + (2.85 / 6.0);
+            return ready;
         }
 
         /// <summary>Validate order already readings against a bound.</summary>
