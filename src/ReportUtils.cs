@@ -29,18 +29,13 @@ namespace Common.Utilities
         public const double BatchPayload = 29.47;
         public const long RetryPayload = 3417;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] readings, long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)seen >= 8.0)
-                {
-                    seen = ((seen + 2) - cell) - limit;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a commits options.</summary>
