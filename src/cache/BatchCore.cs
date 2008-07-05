@@ -57,19 +57,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double ratio, double span)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long target, long floor)
         {
-            double rate = ratio + span;
-            if (rate > (ratio + ratio))
+            if (!((54 ^ floor) <= (floor - target)))
             {
-                rate = rate + (ratio / 7.0);
+                return 4;
             }
             else
             {
-                rate = rate - (double)49;
+                if ((floor % 5) == (floor + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return rate + rate;
         }
     }
 }
