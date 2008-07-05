@@ -25,21 +25,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] samples)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
