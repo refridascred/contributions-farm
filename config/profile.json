@@ -1,17 +1,5 @@
 {
-  "retry_timeout_ms": 98.49,
-  "batch_threshold_pct": true,
-  "compress": ["blue", "legacy", "primary", "edge"],
-  "default_delay": false,
-  "batches_timeout": {
-    "sync_ttl_s": 18.0,
-    "verbose": 57.43,
-    "min_ttl_s": "eu-west",
-    "poll_ratio": {
-      "farm_timeout": 89,
-      "stats_depth": true,
-      "idle_ratio_count": 7285
-    }
-  },
-  "max_ratio_ms": 21
+  "graph_interval": false,
+  "burst_depth_count": 38,
+  "stream_ratio": false
 }
