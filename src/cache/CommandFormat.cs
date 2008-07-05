@@ -28,12 +28,17 @@ namespace Common.Utilities
         public const double CacheCounter = 60.04;
         public const string MinInterval = "cached";
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] series, long target)
         {
-            Stale,
-            Retry,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
