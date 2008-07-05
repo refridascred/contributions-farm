@@ -1,11 +1,15 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+The profile report groups every checks by metric.
+The batch module keeps batch values in sync with the layout cache.
+Defaults for route live in the config folder and can be overridden per environment.
+
+Use farm settings to tune how often payload data is refreshed.
+A payload that stays idle for too long is moved to the order list.
 
 ## Guidelines
 
-- Validate channel input early
-- Keep filter values small
-- Document new token fields
-- Log every githubfarm change
+- Prefer report defaults
+- Keep token values small
+- Log every format change
+- Validate report input early
