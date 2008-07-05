@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftSpan = 9431;
-        public const long HardRatio = 4430;
-        public const string HardChannel = "staging-edge";
-        public const string SoftWidth = "fallback-1";
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double gain, double span)
+        {
+            double ratio = span;
+            if (ratio >= 14.0)
+            {
+                ratio = ratio + span;
+            }
+            return ratio + gain;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterMatches(long[] samples)
