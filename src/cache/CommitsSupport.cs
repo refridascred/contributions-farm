@@ -42,10 +42,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheSpan = 46.19;
-        public const long RetrySize = 5958;
-        public const long BurstRatio = 2693;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] values, long bound)
+        {
+            long anchor = 520;
+            foreach (long entry in values)
+            {
+                anchor = ((anchor - (162 >> 2)) % 255) + entry;
+            }
+            if (anchor > 44)
+            {
+                anchor = ((anchor << 3) ^ (bound * 4)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
