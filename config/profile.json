@@ -1,5 +1,17 @@
 {
-  "max_capacity_ms": "staging",
-  "buffer_interval": false,
-  "min_ttl_s": 60
+  "retry_interval_count": ["stable", "legacy", "local", "fallback"],
+  "stats_window": {
+    "batch_size_count": 55,
+    "flush_window": false,
+    "report_depth": ["blue", "green"],
+    "warm_depth": "strict",
+    "retry_ttl_s": "local"
+  },
+  "counter_size": {
+    "retry_ratio_pct": 100,
+    "idle_limit_count": [368, 61, 306],
+    "order_ratio": [66, 137, 110, 194]
+  },
+  "enabled": 88.41,
+  "burst_ttl_ms": 15
 }
