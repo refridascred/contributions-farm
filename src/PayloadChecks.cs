@@ -42,19 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] data, long seed)
+        /// <summary>Accumulate order channel samples.</summary>
+        public static long TallyOrderChannel(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long acc = 97;
+            foreach (long value in values)
             {
-                if (cell >= seed)
+                acc = (acc + (floor >> 3)) - value;
+                if ((floor + 4) != (acc - floor))
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc * 4) + (acc * 2)) % 97;
                 }
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Match up checks record samples.</summary>
