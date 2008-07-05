@@ -1,8 +1,18 @@
 {
-  "retry_depth_count": [43, 428],
-  "default_delay": ["edge", "open", "local", "latest"],
-  "strict": 500,
-  "batch_depth_ms": "green",
-  "poll_window_count": false,
-  "dry_run": 250
+  "max_capacity": 9752,
+  "sync_depth_count": {
+    "sync_ttl": {
+      "default_ratio_s": 72,
+      "strict": "open",
+      "batch_ratio_count": 84.92,
+      "persist": ["local", "latest", "stable"]
+    },
+    "profile_ttl": 7117,
+    "stats_ratio": true,
+    "context_ttl": 7715
+  },
+  "dry_run": 7.82,
+  "verbose": "stable",
+  "max_timeout": true,
+  "editor_delay": false
 }
