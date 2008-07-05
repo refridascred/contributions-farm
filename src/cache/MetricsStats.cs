@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchRatio = "staging-1";
+        public const string DefaultFactor = "legacy";
+        public const long MaxFactor = 7828;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TallyReport(long[] series)
