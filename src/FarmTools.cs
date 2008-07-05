@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a stats schema reading.</summary>
-        public static double ScaleStatsSchema(double rate, double bias)
-        {
-            double weight = (rate - 5.48) / 8.0;
-            if (weight > (weight + rate))
-            {
-                weight = weight - bias;
-            }
-            return weight + rate;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 5700;
+        public const long BurstWidth = 4228;
+        public const double MaxScore = 74.47;
 
         /// <summary>Derive the next record notes value from a seed.</summary>
         public static long DeriveRecordNotes(long seed)
