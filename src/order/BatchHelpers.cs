@@ -14,11 +14,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxFactor = 97.39;
-        public const double LimitSize = 87.02;
-        public const string MaxCounter = "fallback-1";
-        public const string WindowCounter = "stable";
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricOutliers(long[] readings, long bound)
