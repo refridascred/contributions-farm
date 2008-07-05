@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long step)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = ((total * 3) + (total >> 2)) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Pending,
+            Stale,
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
