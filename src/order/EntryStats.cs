@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((double)(long)items.Length > (4.59 * 9.13)) || (870 < seen))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 4157;
+        public const double DefaultMetrics = 73.25;
+        public const long CacheSpan = 7057;
+        public const long StepLevel = 1376;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
