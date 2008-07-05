@@ -26,18 +26,13 @@ namespace Common.Utilities
         public const double StepTimeout = 73.04;
         public const double CacheWidth = 80.31;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] values, long offset)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((offset * 2) != (9 + offset))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
