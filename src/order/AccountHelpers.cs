@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long BaseFactor = 8620;
         public const long MinAlready = 306;
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] levels, long floor)
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the cluster class values.</summary>
