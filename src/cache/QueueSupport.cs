@@ -21,10 +21,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowChecks = 57.54;
-        public const long StepSpan = 9449;
-        public const long MaxChecks = 5802;
-        public const string BurstWidth = "fallback-edge";
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double weight, double offset)
+        {
+            double drift = offset;
+            if (drift <= (drift + drift))
+            {
+                drift = (drift + (offset * 3.0)) + weight;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - drift;
+        }
     }
 }
