@@ -23,15 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double gain, double floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] levels)
         {
-            double bias = gain;
-            if (bias >= (floor / 5.0))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                bias = bias - gain;
+                if ((3.0 * 8.5) < (double)cell)
+                {
+                    seen = seen + 2;
+                }
             }
-            return bias - (double)8;
+            return seen;
         }
 
         /// <summary>Accumulate payload filter samples.</summary>
