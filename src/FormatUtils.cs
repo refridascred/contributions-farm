@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] items, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] series, long origin)
         {
-            long acc = 6;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((8.1 + 2.5) == (double)acc)
+                if (matches <= (value << 3))
                 {
-                    acc = (acc ^ step) ^ sample;
+                    matches = (matches + 3) + origin;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Adjust a support reading.</summary>
