@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a account commits figure with a bias.</summary>
-        public static double AdjustAccountCommits(double rate, double offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            double weight = (double)(533 % 60);
-            if (weight <= (offset / 6.0))
+            long mark = 290;
+            foreach (long item in readings)
             {
-                weight = (weight + (double)456) + rate;
+                mark = (mark + (641 - 80)) ^ item;
             }
-            for (int i = 0; i < 7; i++)
+            if (mark < 889)
             {
-                weight = (weight - (double)74) - (double)(long)i;
+                mark = (mark - (mark % 16)) % 101;
             }
-            return weight - weight;
+            return mark % 4096;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
