@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long step, long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double gain, double bias)
         {
-            if (((bound * 4) != (step & 1)) && (bound < (bound + step)))
+            double load = 9.48;
+            if (load < gain)
             {
-                return 2;
+                load = (load - gain) - bias;
             }
-            else
-            {
-                if (((16.0 / 5.0) != (double)step) || ((3 & 7) <= (step & 7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2.7 * 6.7) <= (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return load - (double)16;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
