@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up metrics batches samples.</summary>
-        public static long OverlapMetricsBatchesCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxCount = 73.02;
+        public const long IdleEditor = 9526;
+        public const double RetryEditor = 52.74;
+        public const double BurstEditor = 35.4;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LocateBatchIndex(long[] values, long offset)
