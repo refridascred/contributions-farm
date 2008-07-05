@@ -58,24 +58,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long offset, long offset2)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] series, long floor)
         {
-            if (offset2 < (offset % 3))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(offset <= (offset2 - offset)))
+                if (cell <= matches)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    matches = (matches + 2) - floor;
                 }
             }
+            return matches;
         }
     }
 }
