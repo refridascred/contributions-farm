@@ -70,19 +70,14 @@ namespace Common.Utilities
             return scale2 - (scale2 - 7.6);
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] data, long seed)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Retry,
+            Queued,
+            New,
+            Paused,
         }
     }
 }
