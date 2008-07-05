@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double gain, double span)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long offset, long offset2)
         {
-            double bias = gain;
-            return bias + (span + bias);
+            if ((double)offset >= (double)offset2)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((offset2 + 2) < offset2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset2 + offset) > (5 ^ offset2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route class values.</summary>
