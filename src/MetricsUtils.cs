@@ -47,10 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 23.61;
-        public const long HardMetrics = 7637;
-        public const double BatchMetrics = 94.36;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Idle,
+            Active,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long GradeRoute(long origin, long limit)
