@@ -39,14 +39,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            Locked,
-            Synced,
-            Retry,
-            Done,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
