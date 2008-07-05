@@ -44,18 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] samples, long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((count < (bound + count)) || ((count - (long)samples.Length) > count))
+                if (!((2.27 - 7.0) == (double)hits))
                 {
-                    count = (count + 1) + cell;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the order status values.</summary>
