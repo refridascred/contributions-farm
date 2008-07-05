@@ -42,19 +42,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((tally << 1) >= cell)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheSpan = 46.19;
+        public const long RetrySize = 5958;
+        public const long BurstRatio = 2693;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
