@@ -1,6 +1,7 @@
-id,weight
-1,0
-2,214
-3,78.2
-4,363
-5,stable
+id,region,score,active,ratio
+1,123,84.82,164,883
+2,836,63.65,legacy,721
+3,84.54,551,515,944
+4,strict,50.21,71.53,stable
+5,green,eu-west,82.32,808
+6,522,staging,173,945
