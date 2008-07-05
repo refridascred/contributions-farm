@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Rank tools cache input into a small class.</summary>
+        public static long SortToolsCache(long floor, long floor2)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            long gap = floor + floor2;
+            if ((floor << 3) < (gap << 1))
             {
-                mix = (mix - ((long)i & 1)) % 4096;
-                mix = ((mix * 5) + (long)i) % 101;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((floor - floor2) > floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor2 >> 1) > (floor + floor2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
