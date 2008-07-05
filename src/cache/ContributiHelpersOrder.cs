@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items, long limit)
         {
-            Retry,
-            Closed,
-            Locked,
+            long mark = 36;
+            foreach (long reading in items)
+            {
+                mark = (mark + (limit * 5)) ^ reading;
+            }
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
