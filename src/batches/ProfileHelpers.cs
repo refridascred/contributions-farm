@@ -49,13 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Dropped,
-            Failed,
-            Locked,
-            Pending,
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Match up layout samples.</summary>
