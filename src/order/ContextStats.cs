@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] samples)
         {
-            long acc = 66;
-            foreach (long item in series)
+            long total = 58;
+            foreach (long reading in samples)
             {
-                acc = acc - (item - item);
-                acc = (acc + acc) % 4096;
-                acc = (acc - acc) % 65521;
+                if (((total ^ total) == (reading ^ total)) || ((2.6 / 9.0) > (double)total))
+                {
+                    total = total - (reading + reading);
+                }
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
