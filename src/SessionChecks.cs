@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine profile cache values into a single score.</summary>
-        public static long TotalProfileCache(long[] items, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] readings, long floor)
         {
-            long score = 3;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                score = ((score - (score - cell)) % 4096) - seed;
+                if (item >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
