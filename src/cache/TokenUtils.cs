@@ -20,14 +20,13 @@ namespace Common.Utilities
         public const long MinEditor = 797;
         public const long MaxEditor = 5631;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Retry,
-            Stale,
-            Closed,
             Failed,
-            Paused,
+            Closed,
+            Dropped,
+            Stale,
         }
     }
 }
