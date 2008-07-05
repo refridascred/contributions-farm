@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Match up order support samples.</summary>
+        public static long CompareOrderSupportCount(long[] data)
         {
-            long mark = 4;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark + (sample >> 4)) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mark > 56)
-            {
-                mark = (mark - mark) % 255;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
