@@ -49,16 +49,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] items, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                anchor = (anchor << 2) ^ seed;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((tally + (-736)) >= (406 + entry))
+                {
+                    tally = (tally + 2) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
