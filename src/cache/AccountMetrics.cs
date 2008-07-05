@@ -23,22 +23,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long bound)
+        /// <summary>Look up the position of a report tools sample.</summary>
+        public static long SeekReportToolsIndex(long[] series, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long bound2 = (bound / 4) << 2;
-                long bound3 = bound & 63;
-                if ((bound3 + bound) == (long)i)
+                if ((series[i] < seed) && ((series[i] % 5) == 0))
                 {
-                    bound3 = ((bound3 * 2) + bound2) % 1000;
-                    continue;
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
