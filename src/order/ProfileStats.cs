@@ -22,13 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] samples)
         {
-            Failed,
-            Idle,
-            Queued,
-            Stale,
+            long mix = -89;
+            foreach (long entry in samples)
+            {
+                if ((65 * 2) > entry)
+                {
+                    mix = (mix + (long)samples.Length) % 1000;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (entry / 5)) % 255;
+                }
+            }
+            if (mix > 389)
+            {
+                mix = (mix - (mix + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Combine schema already values into a single score.</summary>
