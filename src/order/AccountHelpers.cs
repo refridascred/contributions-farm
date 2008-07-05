@@ -33,17 +33,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] samples, long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long origin, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long step = origin - offset;
+            if (step >= (step - origin))
             {
-                if (samples[i] >= step)
+                return 3;
+            }
+            else
+            {
+                if ((step < (step >> 1)) || ((step * 2) == (174 + 277)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a queue stats.</summary>
