@@ -31,12 +31,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double scale, double offset)
         {
-            Synced,
-            Retry,
-            Dropped,
+            double scale2 = (double)(95 + (-7));
+            if (scale2 > (offset / 4.0))
+            {
+                scale2 = (scale2 + 9.6) + scale;
+            }
+            else
+            {
+                scale2 = scale2 + (double)205;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 + (double)4) + (double)(long)i;
+            }
+            return scale2 - (offset / 3.0);
         }
     }
 }
