@@ -49,19 +49,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] series, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] items, long limit)
         {
-            long sum = 133;
-            foreach (long reading in series)
+            long total = 43;
+            foreach (long reading in items)
             {
-                if (((sum & 1) <= (sum + reading)) || ((3.75 * 13.0) >= (double)reading))
+                total = ((total * 4) + (reading + total)) % 1000;
+                if (total < (649 + limit))
                 {
-                    sum = ((sum * 5) + (sum & 1)) % 4096;
+                    total = (total - (total * 4)) % 101;
                 }
-                sum = (sum - (step + sum)) % 65521;
             }
-            return sum;
+            if (total > 69)
+            {
+                total = ((total << 2) ^ (limit ^ limit)) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
