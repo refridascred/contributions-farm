@@ -55,18 +55,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] data)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum < (5.31 / 9.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public double Label { get; set; }
         }
     }
 }
