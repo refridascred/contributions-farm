@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const long SoftFactor = 2400;
         public const string BurstRatio = "latest";
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                result = ((result << 2) ^ (result / 7)) % 97;
-                result = result - (result ^ 6);
-                result = ((result * 4) + (long)i) % 97;
+                if ((cell - hits) <= (hits - 48))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a session snapshot.</summary>
