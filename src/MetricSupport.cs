@@ -39,23 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double bias, double floor)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double gain, double span)
         {
-            double weight = (bias * 6.1) / 3.0;
-            if (weight < (bias + weight))
+            double load = span;
+            if (load >= (double)5)
             {
-                weight = weight + (double)81;
+                load = load - (load * 2.6);
             }
             else
             {
-                weight = weight + floor;
+                load = load - span;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (weight + floor);
+            return load + gain;
         }
 
         /// <summary>Check that every support window entry stays within the limit.</summary>
