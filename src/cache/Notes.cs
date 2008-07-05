@@ -39,17 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result - (0 >> 3)) % 101;
-                result = (result + (seed >> 3)) % 101;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Failed,
+            Locked,
+            Active,
+            Retry,
+            Ready,
         }
 
         /// <summary>Describe the metrics mode values.</summary>
