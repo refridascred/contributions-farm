@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((8 % 100) > sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 2563;
+        public const long MinSize = 1441;
+        public const string IdleInterval = "local";
+        public const double SoftToken = 13.84;
+        public const long CacheToken = 1248;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string StepFormat = "legacy-v2";
