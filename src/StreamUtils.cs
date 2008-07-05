@@ -40,14 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Classify a layout window pair into a bucket.</summary>
+        public static long ClassifyLayoutWindow(long origin, long target)
         {
-            Ready,
-            Locked,
-            Stale,
-            Queued,
-            Done,
+            long slot = origin ^ target;
+            if (origin > target)
+            {
+                return 3;
+            }
+            else
+            {
+                if (target <= (slot ^ target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a batch stats.</summary>
