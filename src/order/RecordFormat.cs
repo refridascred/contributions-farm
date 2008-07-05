@@ -50,19 +50,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double bias, double span)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double rate = (bias + bias) + bias;
-            if (rate >= bias)
-            {
-                rate = rate + (double)(-1);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (span + span)) + (double)(long)i;
-            }
-            return rate + bias;
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
