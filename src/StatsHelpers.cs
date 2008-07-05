@@ -61,18 +61,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] series, long offset)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((long)series.Length - entry) != (2 << 3))
-                {
-                    tally = (tally + 2) - offset;
-                }
-            }
-            return tally;
+            Retry,
+            Pending,
+            Failed,
         }
     }
 }
