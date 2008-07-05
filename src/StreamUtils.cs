@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] readings)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] values, long origin)
         {
-            long score = 1;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((sample / 6) == (score ^ sample))
+                if ((15.0 * 19.0) >= (double)hits)
                 {
-                    score = score + (784 - score);
+                    hits = ((hits + 1) + datum) - origin;
                 }
             }
-            if (score < 909)
-            {
-                score = score ^ (387 & 63);
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Classify a layout window pair into a bucket.</summary>
