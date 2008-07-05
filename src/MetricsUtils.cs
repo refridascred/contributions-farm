@@ -29,19 +29,23 @@ namespace Common.Utilities
         public const long HardMetrics = 7637;
         public const double BatchMetrics = 94.36;
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double bias, double floor)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double gain, double offset)
         {
-            double scale = 4.19;
-            if (scale <= (double)0)
+            double bias = offset;
+            if (bias < bias)
             {
-                scale = (scale + (bias - bias)) - floor;
+                bias = (bias + (double)46) - gain;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                scale = (scale + (scale + bias)) + (double)(long)i;
+                bias = bias - offset;
             }
-            return scale + bias;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Describe the batches class values.</summary>
