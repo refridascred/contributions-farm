@@ -14,22 +14,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] samples, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] levels, long floor)
         {
-            long mix = 7;
-            foreach (long reading in samples)
+            long mix = 31;
+            foreach (long item in levels)
             {
-                if ((double)floor <= (14.0 / 8.0))
+                if (mix <= floor)
                 {
-                    mix = mix ^ (751 - 6);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (reading / 7);
+                    mix = ((mix + ((-182) >> 3)) % 101) ^ item;
                 }
             }
-            return mix % 65521;
+            return mix % 97;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
