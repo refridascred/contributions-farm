@@ -14,19 +14,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] series, long offset)
+        /// <summary>Count the profile layout entries that pass the check.</summary>
+        public static long AuditProfileLayoutGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (datum != offset)
+                if (((matches - datum) > ((long)readings.Length * 2)) || (340 > datum))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
