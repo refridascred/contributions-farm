@@ -41,21 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of notes cluster readings.</summary>
-        public static long OverlapNotesClusterCount(long[] data)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value > floor)
                 {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
