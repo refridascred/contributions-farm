@@ -61,11 +61,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 3054;
-        public const long DefaultRecord = 8144;
-        public const long SoftRecord = 7474;
-        public const long BaseSize = 4969;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Idle,
+            Active,
+            Stale,
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyHits(long[] series)
