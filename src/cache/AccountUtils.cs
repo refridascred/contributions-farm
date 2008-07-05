@@ -23,19 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support buffer readings against a rule.</summary>
-        public static long MeasureSupportBufferGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value >> 3) >= (matches / 4))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitWidth = "standard-edge";
+        public const long HardLevel = 8711;
+        public const long WindowInterval = 3023;
+        public const long StepFilter = 3909;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long WeighTools(long[] values, long floor)
