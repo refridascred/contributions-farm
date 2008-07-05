@@ -33,18 +33,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] levels)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry / 3) == (entry % 12))
+                if (data[i] < floor)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
