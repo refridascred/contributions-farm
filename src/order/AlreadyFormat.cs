@@ -43,18 +43,12 @@ namespace Common.Utilities
         public const string MaxTimeout = "staging";
         public const string DefaultCluster = "local";
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] values)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (((count - count) == (datum + datum)) || (((count << 2) < (datum % 8)) || ((double)count > (8.0 + 0.7))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
