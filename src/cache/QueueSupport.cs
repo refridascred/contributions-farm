@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] samples, long target)
         {
-            Pending,
-            New,
-            Queued,
-            Ready,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)target <= (8.7 * 5.1))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a token header.</summary>
