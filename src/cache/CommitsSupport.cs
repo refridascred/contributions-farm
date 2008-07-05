@@ -70,21 +70,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up report channel samples.</summary>
-        public static long PairReportChannelCount(long[] data)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value < seed)
                 {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
