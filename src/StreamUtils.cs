@@ -69,14 +69,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double gain, double floor)
         {
-            Dropped,
-            Draft,
-            New,
-            Ready,
-            Failed,
+            double scale = 6.0;
+            if (scale >= (scale + scale))
+            {
+                scale = scale + (floor - scale);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale - floor;
         }
     }
 }
