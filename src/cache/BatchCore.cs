@@ -31,13 +31,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Locked,
-            Done,
-            Synced,
-            Idle,
+            Draft,
+            New,
+            Active,
         }
 
         /// <summary>Describe the metric state values.</summary>
