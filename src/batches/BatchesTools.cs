@@ -27,17 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] levels)
         {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                score = (score ^ (offset % 8)) % 101;
-                score = ((score << 2) ^ score) % 255;
-                score = ((score * 2) + (long)i) % 101;
+                if ((500 & 127) >= hits)
+                {
+                    hits = (hits + 1) - datum;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
