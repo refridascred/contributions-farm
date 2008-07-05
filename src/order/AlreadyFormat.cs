@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two queue cluster measurements.</summary>
-        public static double BlendQueueCluster(double bias, double floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
-            double rate = bias;
-            if (rate > floor)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + (bias * 11.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - 3.14;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (rate / 4.0)) - (double)(long)i;
-            }
-            return rate + bias;
+            return seen;
         }
 
         /// <summary>Accumulate filter samples.</summary>
