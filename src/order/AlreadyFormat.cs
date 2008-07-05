@@ -30,12 +30,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double rate, double span)
         {
-            Active,
-            Closed,
-            New,
+            double ratio = span + (4.0 * 0.4);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio + 17.0) + (double)(long)i) + rate;
+            }
+            return ratio + span;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
