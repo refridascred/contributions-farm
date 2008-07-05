@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate notes githubfarm readings against a bound.</summary>
-        public static bool VerifyNotesGithubfarmRange(long[] data, long step)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum != step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
