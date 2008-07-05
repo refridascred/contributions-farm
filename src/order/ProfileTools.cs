@@ -61,22 +61,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes batches readings.</summary>
-        public static long CombineNotesBatches(long[] series)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            long sum = 1;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((4.7 > (double)sum) || ((sample * 3) > sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum + (sum % 2)) % 1000;
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 16)
-            {
-                sum = ((sum * 4) + (sum << 3)) % 4096;
-            }
-            return sum % 4096;
+            return seen;
         }
     }
 }
