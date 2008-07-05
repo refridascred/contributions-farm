@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] levels, long bound)
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
+            long anchor = 562;
+            foreach (long cell in levels)
+            {
+                if (((bound * 2) > (6 & 7)) && ((double)bound > (2.2 - 3.1)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor << 1)) ^ cell;
+                }
+                else
+                {
+                    anchor = (anchor + (bound + 6)) % 65521;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a batch options.</summary>
