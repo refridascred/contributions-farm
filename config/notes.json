@@ -1,14 +1,7 @@
 {
-  "dry_run": "edge",
-  "batch_capacity_ms": {
-    "queue_threshold": 41.1,
-    "batches_threshold": true,
-    "command_size": false,
-    "burst_retries": ["green", "open", "local", "blue"],
-    "burst_window_s": "fallback"
-  },
-  "soft_capacity": 38,
-  "report_ratio": "legacy",
-  "default_size": "eu-west",
-  "graph_size": 1024
+  "batch_capacity_pct": 47,
+  "editor_interval": true,
+  "soft_size": "standard",
+  "sync_capacity_ms": "standard",
+  "soft_retries": "standard"
 }
