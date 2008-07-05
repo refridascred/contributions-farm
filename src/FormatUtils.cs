@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double weight, double span)
+        /// <summary>Rank stream queue input into a small class.</summary>
+        public static long BucketStreamQueue(long step, long seed)
         {
-            double bias = weight;
-            if (bias <= weight)
+            if (((seed + 7) > (step - seed)) || ((step + seed) <= (seed & 255)))
             {
-                bias = bias + bias;
+                return 2;
             }
-            return bias + (span - bias);
+            else
+            {
+                if (step <= (step * 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6.5 / 7.0) > (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step - seed) >= seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up profile samples.</summary>
