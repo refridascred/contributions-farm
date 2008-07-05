@@ -44,22 +44,17 @@ namespace Common.Utilities
             return rate + (16.0 / 4.0);
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] values)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((966 * 2) >= (tally + datum))
+                if (data[i] <= origin)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
