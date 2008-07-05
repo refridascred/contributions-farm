@@ -1,6 +1,7 @@
 {
-  "flush_limit_count": 8263,
-  "batch_ratio_count": true,
-  "max_ratio_ms": "green",
-  "sync_limit_pct": false
+  "idle_window_pct": [165, 338],
+  "readonly": [431, 194, 393],
+  "min_window_s": 70.34,
+  "min_retries_s": 41.5,
+  "notes_delay": 93.34
 }
