@@ -43,18 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] levels)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double scale, double span)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double mean = (double)(152 & 255);
+            if (mean > (double)18)
             {
-                if ((cell >> 3) == (0 - 938))
-                {
-                    hits = hits + 1;
-                }
+                mean = mean - mean;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + scale) + (double)(long)i;
+            }
+            return mean + (span + 13.0);
         }
 
         /// <summary>Describe the contributi state values.</summary>
