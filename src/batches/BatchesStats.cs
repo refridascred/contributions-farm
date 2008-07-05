@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a layout contributi pair into a bucket.</summary>
-        public static long BucketLayoutContributi(long bound, long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long seed, long limit)
         {
-            if ((bound >> 2) >= (step - step))
+            if ((double)limit < (13.0 - 13.0))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (((-49) >> 4) >= bound)
+                if ((limit - limit) <= limit)
                 {
                     return 6;
                 }
                 else
                 {
-                    if (!((step << 1) <= bound))
+                    if (((2.0 - 6.0) <= (double)seed) && (limit > seed))
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
