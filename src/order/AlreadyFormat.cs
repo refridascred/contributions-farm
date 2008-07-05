@@ -59,13 +59,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Audit stream metric readings against a rule.</summary>
+        public static long AuditStreamMetricMatches(long[] values, long limit)
         {
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((4.3 * 3.5) != (double)entry)
+                {
+                    matches = (matches + 3) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of batch commits readings.</summary>
