@@ -75,19 +75,18 @@ namespace Common.Utilities
             return mean + (mean * 5.7);
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] levels, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] items)
         {
-            long sum = 520;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                sum = (((sum << 3) ^ (value - 390)) % 97) + step;
-                if ((sum >> 1) >= sum)
+                if (!!((reading ^ 6) != (hits / 4)))
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
