@@ -41,23 +41,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long origin, long seed)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long target, long step)
         {
-            long bound = origin + seed;
-            if ((seed % 8) != (bound + seed))
+            long prev = target ^ step;
+            if ((double)step == (5.67 / 3.0))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((bound + seed) >= origin)
+                if ((prev << 1) < (prev << 3))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 8;
+                    if (!((step ^ target) <= prev))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
