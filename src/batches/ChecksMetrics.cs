@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Combine notes support values into a single score.</summary>
+        public static long CombineNotesSupport(long[] readings)
         {
-            Done,
-            Pending,
-            Synced,
-            Stale,
+            long sum = 992;
+            foreach (long sample in readings)
+            {
+                sum = ((sum << 3) ^ (sample & 63)) % 65521;
+                sum = (sum * 5) + (sum & 15);
+                if (sample <= 3)
+                {
+                    sum = sum + (sum << 1);
+                }
+                if ((6 + sample) == ((long)readings.Length + sum))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
