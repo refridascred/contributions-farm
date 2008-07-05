@@ -20,12 +20,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinCache = "standard";
-        public const long BatchTimeout = 4273;
-        public const long LimitCache = 3465;
-        public const long WindowBudget = 6534;
-        public const string StepWidth = "alpha";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 75.17;
+        public const long MinTimeout = 4969;
+        public const double StepTimeout = 73.04;
+        public const double CacheWidth = 80.31;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheOutliers(long[] values, long offset)
