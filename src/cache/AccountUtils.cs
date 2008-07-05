@@ -20,22 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long mark = -3;
-            foreach (long cell in series)
-            {
-                if ((mark - mark) <= 478)
-                {
-                    mark = ((mark + (mark & 3)) % 255) - cell;
-                }
-            }
-            if (mark > 9)
-            {
-                mark = ((mark << 2) ^ mark) % 255;
-            }
-            return mark;
+            Synced,
+            Draft,
+            Failed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Project the next cache value.</summary>
