@@ -20,13 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] readings, long bound)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
