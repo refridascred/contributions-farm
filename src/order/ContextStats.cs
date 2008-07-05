@@ -46,13 +46,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public bool Weight { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
             public double Count { get; set; }
-            public long Token { get; set; }
-            public bool Total { get; set; }
         }
     }
 }
