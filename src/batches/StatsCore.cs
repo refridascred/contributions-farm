@@ -72,32 +72,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a schema editor pair into a bucket.</summary>
-        public static long GradeSchemaEditor(long step, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] values)
         {
-            long step2 = step ^ seed;
-            if (step > (step - step2))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((step - seed) > (seed - 963)))
+                if ((sample % 16) != (sample >> 1))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((481 - (-63)) > step) && (step2 > (seed - step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
