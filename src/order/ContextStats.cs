@@ -53,11 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheBuffer = 55.68;
-        public const double MinSize = 84.59;
-        public const long MinBuffer = 9050;
-        public const long RetryCount = 4042;
-        public const long BaseBudget = 188;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public double Size { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
