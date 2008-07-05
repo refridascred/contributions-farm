@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] samples, long step)
+        /// <summary>Measure how many record counter samples are out of range.</summary>
+        public static long TallyRecordCounterMatches(long[] samples)
         {
-            long acc = 45;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 4; i++)
+                if (((long)samples.Length / 8) == (seen >> 2))
                 {
-                    acc = ((((acc << 3) ^ (acc >> 2)) % 65521) + (long)i) + entry;
+                    seen = (seen + 3) - cell;
                 }
-                acc = acc - (step * 5);
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
