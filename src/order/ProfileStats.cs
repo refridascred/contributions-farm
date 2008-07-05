@@ -24,27 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] data)
-        {
-            long acc = 8;
-            foreach (long sample in data)
-            {
-                if (((2.0 / 9.0) <= (double)acc) && (acc < (sample << 1)))
-                {
-                    acc = (acc << 2) ^ sample;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc + 46);
-                }
-            }
-            if (acc > 65)
-            {
-                acc = (acc << 2) ^ (acc & 255);
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 3091;
+        public const string StepFactor = "stable-1";
+        public const double MinSize = 30.56;
+        public const long CacheBudget = 3910;
+        public const long BaseWidth = 4694;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
