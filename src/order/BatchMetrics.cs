@@ -53,12 +53,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 2476;
-        public const long SoftInterval = 3146;
-        public const long CacheBuffer = 6070;
-        public const double RetrySpan = 95.15;
-        public const double MaxWidth = 95.18;
+        /// <summary>Check that every filter contributi entry stays within the limit.</summary>
+        public static bool ValidateFilterContributiLimits(long[] samples, long target)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatLimits(long[] series, long floor)
