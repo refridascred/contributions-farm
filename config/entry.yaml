@@ -1,22 +1,9 @@
 # entry settings
-graph_window: 47
-flush_limit_ms: 60
+format_size: false
 audit:
-  contributi_delay: fallback
-  hard_depth:
-    soft_ttl_s:
-      - latest
-      - green
-    burst_ratio_ms: 5649
-    readonly: legacy
-    flush_limit_ms: 82.03
-    audit: 33.81
-    compress: true
-  compress:
-    - 39
-    - 21
-    - 219
-  max_interval_ms: eu-west
-  soft_threshold_pct: strict
-  default_size: 2230
-readonly: legacy
+  - 167
+  - 366
+  - 306
+  - 493
+burst_window: blue
+session_delay: blue
