@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] series, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((((double)seed > (6.2 / 5.0)) || ((cell + seen) == (926 >> 5))) || ((seed << 1) >= seed))
+                {
+                    seen = seen + 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
