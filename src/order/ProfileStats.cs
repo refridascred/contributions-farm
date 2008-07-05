@@ -29,26 +29,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] samples, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double rate, double bias)
         {
-            long anchor = 22;
-            foreach (long datum in samples)
-            {
-                if ((datum % 24) <= (52 + datum))
-                {
-                    anchor = (((anchor * 3) + anchor) % 4096) - limit;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor + datum)) % 1000;
-                }
-            }
-            if (anchor > 556)
-            {
-                anchor = ((anchor * 2) + (anchor & 63)) % 255;
-            }
-            return anchor;
+            double load = (double)(27 % 5);
+            return ((load + (load / 5.0)) + rate) + bias;
         }
 
         /// <summary>Describe the token status values.</summary>
