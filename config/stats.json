@@ -1,6 +1,7 @@
 {
-  "warm_size_s": 25.37,
-  "soft_depth_count": 975,
-  "soft_capacity": "blue",
-  "default_delay_ms": [95, 138, 399, 283]
+  "retry_limit_s": "green",
+  "report_capacity": 301,
+  "strict": 69.42,
+  "persist": "local",
+  "entry_window": "blue"
 }
