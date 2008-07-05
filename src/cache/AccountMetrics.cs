@@ -44,13 +44,12 @@ namespace Common.Utilities
         public const double LimitCommits = 22.96;
         public const double MinSize = 10.18;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            Pending,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
