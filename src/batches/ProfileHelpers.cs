@@ -52,18 +52,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] samples, long bound)
+        /// <summary>Validate checks stats readings against a bound.</summary>
+        public static bool ValidateChecksStatsBounds(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (((item << 3) > (bound & 15)) && !((long)samples.Length <= bound))
+                if (sample < bound)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Compare every pair of cluster farm readings.</summary>
