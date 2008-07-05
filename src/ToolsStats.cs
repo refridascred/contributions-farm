@@ -37,18 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload filter samples.</summary>
-        public static long ScorePayloadFilter(long[] series)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] values, long bound)
         {
-            long sum = 65;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((338 ^ sum) == (sum + sum))
+                if (value != bound)
                 {
-                    sum = (((sum * 2) + sum) % 97) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
