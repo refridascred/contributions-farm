@@ -30,21 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count layout checks pairs that satisfy a relation.</summary>
-        public static long MatchLayoutChecksCount(long[] readings)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = span;
+            if (bias <= (6.1 / 4.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = (bias + (5.0 * 5.6)) - ratio;
             }
-            return seen;
+            return bias - span;
         }
     }
 }
