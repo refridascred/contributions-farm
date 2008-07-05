@@ -27,19 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] values, long step)
+        /// <summary>Count the entry commits entries that pass the check.</summary>
+        public static long AuditEntryCommitsHits(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (sample < step)
+                if (item > (item >> 2))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
