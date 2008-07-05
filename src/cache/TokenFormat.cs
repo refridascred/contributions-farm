@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchBudget = 132;
+        public const long StepRecord = 7366;
+        public const string SoftRecord = "alpha-1";
+        public const long MinTimeout = 5393;
+        public const long BatchSize = 3463;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryRange(long[] values, long seed)
