@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long target)
         {
-            Queued,
-            New,
-            Locked,
-            Retry,
-            Synced,
+            long result = target;
+            for (int i = 0; i < 6; i++)
+            {
+                result = (result - (target << 3)) % 4096;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
