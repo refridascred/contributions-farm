@@ -42,19 +42,12 @@ namespace Common.Utilities
         public const long HardGraph = 5705;
         public const long BurstSize = 4233;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((result / 6) <= limit)
-                {
-                    result = (result << 2) ^ (limit >> 2);
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Match up graph samples.</summary>
