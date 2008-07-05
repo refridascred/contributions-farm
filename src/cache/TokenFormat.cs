@@ -35,19 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] series, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (entry >= limit)
+                if ((double)datum != (4.1 + 2.1))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
