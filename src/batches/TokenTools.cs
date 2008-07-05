@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const string RetryBudget = "open";
         public const long SoftRoute = 2712;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] samples)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double scale = (double)750 / 6.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((matches & 15) > datum)
-                {
-                    matches = matches + 1;
-                }
+                scale = (scale - (double)(long)i) - rate;
             }
-            return matches;
+            return scale + offset;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
