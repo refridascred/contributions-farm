@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Digest a series of layout session entries.</summary>
+        public static long ScoreLayoutSession(long[] levels, long seed)
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long total = 9;
+            foreach (long sample in levels)
+            {
+                if (((double)seed == (5.1 - 8.0)) && (4.3 > (double)sample))
+                {
+                    total = (total + (total + 252)) % 1000;
+                }
+            }
+            if (total > 477)
+            {
+                total = ((total * 2) + (total ^ total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a notes stats.</summary>
