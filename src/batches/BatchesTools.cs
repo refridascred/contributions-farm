@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double bias, double bias2)
+        /// <summary>Compare every pair of contributi format readings.</summary>
+        public static long CompareContributiFormatCount(long[] data)
         {
-            double bias3 = bias2;
-            if (bias3 > (bias2 / 8.0))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias3 = (bias3 - (bias2 / 8.0)) - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias3 - 8.0;
+            return hits;
         }
 
         /// <summary>Validate payload already readings against a bound.</summary>
