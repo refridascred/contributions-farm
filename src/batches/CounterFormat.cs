@@ -13,21 +13,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Derive the next profile format value from a seed.</summary>
+        public static long DeriveProfileFormat(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)i + (-5)) > (score >> 5))
                 {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score - 9) % 255;
                 }
+                else
+                {
+                    score = (score ^ 510) % 255;
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
