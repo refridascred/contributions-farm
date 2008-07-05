@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "strict-edge";
-        public const string WindowCount = "standard-edge";
-        public const string BaseScore = "alpha-edge";
-        public const string SoftLevel = "stable";
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
