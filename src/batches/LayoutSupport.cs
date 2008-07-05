@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every payload filter entry stays within the limit.</summary>
-        public static bool CheckPayloadFilterRange(long[] samples, long target)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
