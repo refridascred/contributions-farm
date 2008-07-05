@@ -1,6 +1,10 @@
 {
-  "already_capacity": "open",
-  "idle_capacity_ms": 100,
-  "audit": "edge",
-  "flush_interval_count": 100
+  "dry_run": "blue",
+  "sync_retries_s": "cached",
+  "min_depth_pct": [6, 289, 140],
+  "editor_retries": {
+    "poll_threshold": 53,
+    "cache_capacity": 6.91,
+    "max_threshold": false
+  }
 }
