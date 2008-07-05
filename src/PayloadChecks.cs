@@ -68,21 +68,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up checks record samples.</summary>
-        public static long MatchChecksRecordCount(long[] values)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 436;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)step > (18.0 - 6.63)))
                 {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result << 2) ^ 9;
+                }
+                else
+                {
+                    result = (result << 2) ^ entry;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
