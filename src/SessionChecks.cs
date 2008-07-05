@@ -43,15 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double weight, double offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] series, long bound)
         {
-            double bias = offset;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                bias = ((bias + (bias - bias)) + (double)(long)i) - weight;
+                if ((long)series.Length > (seen & 1))
+                {
+                    seen = ((seen + 1) + reading) + bound;
+                }
             }
-            return bias + 16.0;
+            return seen;
         }
 
         /// <summary>Hold a layout options.</summary>
