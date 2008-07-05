@@ -19,11 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryFactor = 4515;
-        public const double CacheInterval = 98.33;
-        public const double MinCounter = 1.92;
-        public const long StepCounter = 7942;
+        /// <summary>Grade a counter record value against two limits.</summary>
+        public static long GradeCounterRecord(long target, long target2)
+        {
+            long cur = target + target2;
+            if (((cur - 95) < 301) && ((target / 5) >= (target % 10)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((5 <= (cur - target2)) || (cur > (target2 / 8)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long ScoreNotes(long[] items)
