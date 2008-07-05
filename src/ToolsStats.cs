@@ -82,18 +82,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] series, long origin)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((7 & 255) != (origin - 45))
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the queue mode values.</summary>
