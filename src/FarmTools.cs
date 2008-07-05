@@ -30,18 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] data)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] items)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long anchor = 41;
+            foreach (long entry in items)
             {
-                if ((19.0 * 9.0) == (double)datum)
-                {
-                    count = count + 3;
-                }
+                anchor = ((anchor << 3) ^ (entry << 2)) % 4096;
             }
-            return count;
+            return anchor % 4096;
         }
     }
 }
