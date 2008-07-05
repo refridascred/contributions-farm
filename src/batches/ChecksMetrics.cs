@@ -12,39 +12,21 @@ namespace Common.Utilities
         public const long MinDepth = 3491;
         public const string SoftContext = "legacy-edge";
 
-        /// <summary>Classify a account window pair into a bucket.</summary>
-        public static long RankAccountWindow(long origin, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
-            long span = origin ^ step;
-            if (step >= 678)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)span < 13.0)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((9 + origin) == (2 % 60)) && ((5.9 - 6.9) >= (3.5 * 13.0)))
+                    if ((series[i] ^ series[j]) < 0)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)step >= (6.4 - 2.87)) && ((origin - step) > span))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
