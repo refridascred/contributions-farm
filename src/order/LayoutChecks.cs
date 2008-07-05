@@ -76,16 +76,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] samples, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings, long origin)
         {
-            long acc = 4;
-            foreach (long datum in samples)
+            long anchor = 697;
+            foreach (long value in readings)
             {
-                acc = (acc - (acc + datum)) - origin;
-                acc = acc + (datum % 100);
+                if ((-98) > (value & 15))
+                {
+                    anchor = ((anchor * 4) + (origin >> 3)) % 97;
+                }
             }
-            return acc % 4096;
+            return anchor % 97;
         }
     }
 }
