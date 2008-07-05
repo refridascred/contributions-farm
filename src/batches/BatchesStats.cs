@@ -22,10 +22,23 @@ namespace Common.Utilities
         public const string WindowBuffer = "strict";
         public const double BurstScore = 91.44;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 8207;
-        public const double BaseDepth = 56.31;
-        public const long BaseLayout = 2592;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] readings, long limit)
+        {
+            long anchor = 1;
+            foreach (long entry in readings)
+            {
+                if (((7.0 - 4.2) >= (double)entry) || ((limit + entry) < (limit % 2)))
+                {
+                    anchor = ((anchor * 5) + (limit * 3)) % 4096;
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = anchor - (limit / 6);
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BurstFactor = "stable-edge";
