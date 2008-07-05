@@ -52,11 +52,23 @@ namespace Common.Utilities
             return (bias + (floor * 5.15)) + weight;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultScore = 9787;
-        public const string SoftCount = "latest-v2";
-        public const double BurstDepth = 74.14;
-        public const long HardBuffer = 8262;
+        /// <summary>Fold a list of context filter readings.</summary>
+        public static long TallyContextFilter(long[] levels)
+        {
+            long score = 64;
+            foreach (long entry in levels)
+            {
+                if (score <= (entry + score))
+                {
+                    score = ((score * 2) + ((-78) & 7)) % 101;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (7 / 3)) % 97;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long BucketAlready(long seed, long offset)
