@@ -55,21 +55,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((floor - 573) < 17)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((16.0 / 4.0) < (double)floor)
                 {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the queue mode values.</summary>
