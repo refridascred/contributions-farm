@@ -39,15 +39,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] readings, long target)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] items, long offset)
         {
-            long mark = 873;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (((mark - (mark & 1)) % 255) - cell) - target;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
