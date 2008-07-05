@@ -33,19 +33,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] readings, long target)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
