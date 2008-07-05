@@ -48,12 +48,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long target)
         {
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
-            public double Score { get; set; }
+            long mix = target;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix * 2) + (mix * 3);
+                mix = (mix * 2) + (long)i;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
