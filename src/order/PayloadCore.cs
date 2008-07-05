@@ -32,13 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] items, long target)
         {
-            public bool Rank { get; set; }
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Flag { get; set; }
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
