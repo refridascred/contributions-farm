@@ -40,21 +40,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample >= step)
                 {
-                    if ((levels[i] ^ levels[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the already class values.</summary>
