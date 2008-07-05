@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] levels, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((levels[i] < step) && ((levels[i] % 3) != 0))
+                if (6 < (tally * 2))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a tools checks reading.</summary>
