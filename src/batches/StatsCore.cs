@@ -19,15 +19,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Adjust a contributi context reading.</summary>
+        public static double AdjustContributiContext(double rate, double floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            double mean = rate;
+            if (mean < (double)795)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                mean = mean + floor;
             }
-            return sum;
+            return mean + (double)55;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
