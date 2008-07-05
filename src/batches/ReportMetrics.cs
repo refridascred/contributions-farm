@@ -54,11 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheLayout = "fallback";
-        public const double StepLevel = 27.27;
-        public const long RetryInterval = 5583;
-        public const long HardLayout = 9692;
-        public const string WindowLayout = "legacy";
+        /// <summary>Validate schema payload readings against a bound.</summary>
+        public static bool GuardSchemaPayloadBounds(long[] levels, long bound)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
