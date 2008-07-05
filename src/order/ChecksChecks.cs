@@ -18,23 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter cache reading.</summary>
-        public static double ProjectFilterCache(double rate, double offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long offset, long floor)
         {
-            double mean = 17.0;
-            if (mean < (offset / 4.0))
+            long gap = offset - floor;
+            if ((double)offset < (double)gap)
             {
-                mean = (mean + (mean / 5.0)) + rate;
+                return 7;
             }
             else
             {
-                mean = mean + (double)8;
+                if (!((offset + offset) >= (floor >> 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((gap & 3) < (floor >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(offset >= (gap / 3)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - 9.0) + (double)(long)i;
-            }
-            return mean - mean;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
