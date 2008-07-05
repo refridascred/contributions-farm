@@ -26,13 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Synced,
+            Pending,
             Locked,
-            Closed,
-            Dropped,
+            Done,
+            Draft,
         }
     }
 }
