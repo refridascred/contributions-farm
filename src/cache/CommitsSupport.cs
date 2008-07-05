@@ -47,10 +47,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitTimeout = 2921;
-        public const long RetryFilter = 4158;
-        public const long HardFactor = 2698;
+        /// <summary>Scale a githubfarm entry figure with a bias.</summary>
+        public static double SmoothGithubfarmEntry(double scale, double bias)
+        {
+            double mean = scale - (bias + 8.1);
+            if (mean < mean)
+            {
+                mean = mean + (double)74;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - scale) + (double)(long)i;
+            }
+            return mean + (mean * 5.7);
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TotalLayout(long[] levels, long step)
