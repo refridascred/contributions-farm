@@ -17,19 +17,24 @@ namespace Common.Utilities
         public const long LimitSize = 871;
         public const long HardSchema = 4541;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] samples, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long limit, long floor)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            if ((limit - 320) < (floor - limit))
             {
-                if (datum != bound)
+                return 3;
+            }
+            else
+            {
+                if ((floor ^ limit) < (floor + limit))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return valid;
         }
 
         /// <summary>Look up the position of a stream profile sample.</summary>
