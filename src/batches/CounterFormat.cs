@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftFactor = 2834;
-        public const long CacheStats = 3452;
-        public const long BaseRatio = 9361;
+        /// <summary>Digest a series of profile order entries.</summary>
+        public static long FoldProfileOrder(long[] values, long target)
+        {
+            long carry = -8;
+            foreach (long reading in values)
+            {
+                if ((carry + reading) > (carry - 97))
+                {
+                    carry = carry + target;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Count the queue record entries that pass the check.</summary>
         public static long MeasureQueueRecordHits(long[] values)
