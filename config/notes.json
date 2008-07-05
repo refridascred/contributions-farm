@@ -1,7 +1,17 @@
 {
-  "session_ttl": 9637,
-  "already_retries": "eu-west",
-  "compress": 73.45,
-  "checks_retries": true,
-  "default_depth": 9778
+  "cluster_interval": true,
+  "cache_delay": 980,
+  "warm_window_count": "cached",
+  "idle_depth_pct": {
+    "max_interval_ms": "primary",
+    "strict": [312, 440],
+    "cache_ttl": "latest",
+    "token_threshold": [354, 499, 336]
+  },
+  "soft_threshold_count": {
+    "route_depth": false,
+    "command_interval": 90.83,
+    "strict": 15,
+    "tools_capacity": 250
+  }
 }
