@@ -52,10 +52,22 @@ namespace Common.Utilities
             return gain - 1.0;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 23.15;
-        public const double SoftCount = 31.29;
-        public const double StepRecord = 51.45;
-        public const long DefaultRecord = 3727;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((93 >> 3) != (cell & 31))
+                {
+                    matches = (matches + 1) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
