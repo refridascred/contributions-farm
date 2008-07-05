@@ -61,18 +61,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] series, long offset)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (count < (offset + reading))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
