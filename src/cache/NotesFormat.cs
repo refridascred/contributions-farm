@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] items, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] samples)
         {
-            long count = 0;
-            foreach (long value in items)
+            long score = 1;
+            foreach (long value in samples)
             {
-                if ((value + count) < count)
+                if ((((long)samples.Length << 1) >= (score + value)) || ((value + value) <= (score + score)))
                 {
-                    count = (count + 1) + seed;
+                    score = ((score * 2) + (value & 1)) % 97;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Digest a series of record entries.</summary>
