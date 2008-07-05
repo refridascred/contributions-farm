@@ -26,24 +26,17 @@ namespace Common.Utilities
         public const string MaxCount = "cached-edge";
         public const double MinRoute = 89.34;
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long limit, long offset)
+        /// <summary>Find the first account command entry that matches the target.</summary>
+        public static long LookupAccountCommandIndex(long[] data, long seed)
         {
-            if (((-9) + offset) != (offset / 2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(limit > (offset << 2)))
+                if (data[i] >= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the command mode values.</summary>
