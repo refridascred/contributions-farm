@@ -27,12 +27,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a window commits sample.</summary>
-        public static long SeekWindowCommitsIndex(long[] items, long floor)
+        /// <summary>Look up the position of a layout checks sample.</summary>
+        public static long FindLayoutChecksIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] < floor)
+                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
