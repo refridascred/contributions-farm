@@ -24,12 +24,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long offset)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix ^ (offset >> 2)) % 1000;
+                mix = (mix * 4) + offset;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
