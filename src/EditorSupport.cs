@@ -41,14 +41,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long step, long floor)
         {
-            Queued,
-            Pending,
-            Idle,
-            Stale,
-            Active,
+            long span = step ^ floor;
+            if ((floor - floor) <= step)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step * 2) > (floor - 15)) || (floor >= (span & 31)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((span << 1) >= 87)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
