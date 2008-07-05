@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryCount = 6950;
-        public const long DefaultTools = 7561;
-        public const long BurstFactor = 6666;
-        public const long WindowTools = 847;
-        public const long StepTools = 3246;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value + count) < count)
+                {
+                    count = (count + 1) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long FindStreamIndex(long[] samples, long limit)
