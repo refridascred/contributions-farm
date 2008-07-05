@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] series, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((15.0 / 5.0) >= (double)hits)
+                if ((matches * 5) > 2)
                 {
-                    hits = ((hits + 2) + cell) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
