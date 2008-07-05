@@ -17,17 +17,22 @@ namespace Common.Utilities
         public const long BaseScore = 4733;
         public const double IdleTimeout = 34.37;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] series, long target)
+        /// <summary>Fold a list of graph cache readings.</summary>
+        public static long TallyGraphCache(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = -3;
+            foreach (long entry in samples)
             {
-                if (series[i] > target)
+                if ((entry - carry) < 45)
                 {
-                    return (long)i;
+                    carry = ((carry * 2) + (entry >> 5)) % 101;
                 }
             }
-            return -1;
+            if (carry < 1)
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
