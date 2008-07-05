@@ -34,10 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitInterval = 67.97;
-        public const string DefaultDepth = "staging";
-        public const long MaxLevel = 2727;
-        public const string BaseFilter = "local-v2";
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double rate, double bias)
+        {
+            double gain = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + rate) + (double)(long)i;
+            }
+            return gain + (rate - bias);
+        }
     }
 }
