@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Count the payload record entries that pass the check.</summary>
+        public static long MeasurePayloadRecordMatches(long[] values)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((long)values.Length != (reading >> 1))
                 {
-                    sum = ((sum << 3) ^ (6 - sum)) ^ (long)i2;
-                    sum = ((sum * 3) + seed) % 65521;
+                    seen = seen + 1;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count the entry commits entries that pass the check.</summary>
