@@ -27,19 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order stats readings against a bound.</summary>
-        public static bool ValidateOrderStatsRange(long[] series, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (sample >= limit)
+                if ((17.0 * 13.0) >= (double)sample)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) - target;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the record level values.</summary>
