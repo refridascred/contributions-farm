@@ -53,18 +53,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of schema metrics entries.</summary>
-        public static long TotalSchemaMetrics(long[] levels)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double rate, double floor)
         {
-            long mix = 198;
-            foreach (long entry in levels)
-            {
-                if ((0.35 - 2.31) > (double)mix)
-                {
-                    mix = (mix << 3) ^ entry;
-                }
-            }
-            return mix;
+            double gain = (rate / 2.0) + (9.0 + rate);
+            return (gain - rate) + floor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
