@@ -48,17 +48,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] values, long bound)
+        /// <summary>Project the next commits queue value.</summary>
+        public static double AdjustCommitsQueue(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = offset;
+            if (ratio >= (bias - bias))
             {
-                if ((values[i] == bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (double)3;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (double)(-63);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - ratio) - (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Describe the editor class values.</summary>
