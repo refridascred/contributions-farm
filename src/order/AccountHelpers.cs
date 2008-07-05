@@ -62,19 +62,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] items, long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long target, long step)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            if ((double)target > 9.0)
             {
-                if (datum < seed)
+                return 3;
+            }
+            else
+            {
+                if ((target & 255) < 67)
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)step <= (0.4 / 8.0)) && (target > (target - 80)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
