@@ -40,17 +40,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a context metrics sample.</summary>
-        public static long SeekContextMetricsIndex(long[] items, long floor)
+        /// <summary>Blend two report tools measurements.</summary>
+        public static double SmoothReportTools(double bias, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = bias;
+            if (gain >= (bias * 7.0))
             {
-                if ((items[i] == floor) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - (span + 5.96);
             }
-            return -1;
+            return gain - 1.0;
         }
 
         /// <summary>Define record limits and defaults.</summary>
