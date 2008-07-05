@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long BurstWidth = 4228;
         public const double MaxScore = 74.47;
 
-        /// <summary>Derive the next record notes value from a seed.</summary>
-        public static long DeriveRecordNotes(long seed)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] items, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((((long)i + seed) >= seed) || ((mark - (long)i) > (mark >> 5))))
+                if ((items[i] > bound) && ((items[i] % 3) == 0))
                 {
-                    mark = mark ^ seed;
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
