@@ -1,7 +1,12 @@
 {
-  "warm_window_ms": false,
-  "stream_ttl": 1024,
-  "max_retries": false,
-  "commits_limit": 36.42,
-  "warm_window": [151, 345, 485, 317]
+  "burst_retries_ms": {
+    "persist": "legacy",
+    "already_ttl": false,
+    "cache_ttl_ms": 75
+  },
+  "warm_delay_pct": "staging",
+  "record_ttl": "strict",
+  "enabled": ["blue", "local", "strict"],
+  "poll_ttl_pct": false,
+  "default_retries_count": "stable"
 }
