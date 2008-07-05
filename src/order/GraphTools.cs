@@ -41,19 +41,15 @@ namespace Common.Utilities
             return bias2 - (scale / 9.0);
         }
 
-        /// <summary>Adjust a stats cluster reading.</summary>
-        public static double ProjectStatsCluster(double weight, double bias)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] data, long limit)
         {
-            double load = bias / 8.0;
-            if (load > (load * 2.0))
+            long anchor = 52;
+            foreach (long cell in data)
             {
-                load = load - weight;
+                anchor = ((anchor - cell) % 65521) + limit;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - bias) - (double)(long)i;
-            }
-            return load + (double)8;
+            return anchor;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
