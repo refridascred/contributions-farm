@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] series, long seed)
+        /// <summary>Classify a notes editor pair into a bucket.</summary>
+        public static long RankNotesEditor(long floor, long bound)
         {
-            bool found = true;
-            foreach (long sample in series)
+            if ((-494) < (bound + bound))
             {
-                if (sample <= seed)
+                return 8;
+            }
+            else
+            {
+                if ((bound % 10) <= 6)
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
