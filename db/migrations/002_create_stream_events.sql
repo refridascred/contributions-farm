@@ -2,11 +2,13 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    owner TEXT NOT NULL,
+    created_at TIMESTAMP,
+    token TEXT,
     region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_ratio ON stream_events (ratio);
+CREATE INDEX IF NOT EXISTS idx_stream_events_region ON stream_events (region);
 
-INSERT INTO stream_events (ratio, owner, region) VALUES (77.62, 'eu-west', 'latest');
-INSERT INTO stream_events (ratio, owner, region) VALUES (55.34, 'strict', 'edge');
+INSERT INTO stream_events (ratio, token, region) VALUES (78.56, 'fallback', 'strict');
+INSERT INTO stream_events (ratio, token, region) VALUES (88.72, 'open', 'latest');
+INSERT INTO stream_events (ratio, token, region) VALUES (24.22, 'green', 'cached');
