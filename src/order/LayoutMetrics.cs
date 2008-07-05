@@ -25,15 +25,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
