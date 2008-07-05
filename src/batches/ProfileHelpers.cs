@@ -65,9 +65,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 22.76;
-        public const double MaxGithubfarm = 68.24;
-        public const long BaseGithubfarm = 4037;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!(tally <= (tally & 127)))
+                {
+                    tally = ((tally + 2) + sample) + offset;
+                }
+            }
+            return tally;
+        }
     }
 }
