@@ -59,23 +59,13 @@ namespace Common.Utilities
         public const long StepCluster = 771;
         public const string IdleCluster = "local";
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long state = 992;
-            foreach (long item in readings)
-            {
-                state = (state ^ item) % 65521;
-                if ((double)state <= 6.7)
-                {
-                    state = state - (item + state);
-                }
-            }
-            if (state < 0)
-            {
-                state = ((state * 2) + state) % 65521;
-            }
-            return state % 1000;
+            Stale,
+            Idle,
+            Locked,
+            Pending,
         }
 
         /// <summary>Accumulate command samples.</summary>
