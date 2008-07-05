@@ -56,31 +56,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long origin, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] readings, long floor)
         {
-            if ((1.33 / 5.0) == (double)limit)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin * 5) == (origin % 10))
+                if (reading > floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin - limit) <= (origin / 8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
