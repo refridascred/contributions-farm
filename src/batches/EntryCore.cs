@@ -12,13 +12,21 @@ namespace Common.Utilities
             return (weight + offset) + scale;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
-            Stale,
-            Locked,
-            Active,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
