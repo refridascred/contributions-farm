@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Measure how many contributi layout samples are out of range.</summary>
+        public static long CountContributiLayoutOutliers(long[] values)
         {
-            Draft,
-            New,
-            Dropped,
-            Locked,
-            Paused,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((count + reading) > reading)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
