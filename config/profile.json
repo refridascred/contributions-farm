@@ -1,6 +1,24 @@
 {
-  "route_capacity": 16,
-  "stats_limit": 6696,
-  "queue_ratio": 50.29,
-  "verbose": "stable"
+  "burst_timeout_s": {
+    "dry_run": ["fallback", "blue"],
+    "default_window": false,
+    "verbose": "cached",
+    "base_size": 1024,
+    "audit": 49.81,
+    "report_ttl": "staging"
+  },
+  "retry_retries": 3659,
+  "farm_size": "legacy",
+  "default_depth_pct": {
+    "batches_ratio": "strict",
+    "readonly": {
+      "entry_ttl": "cached",
+      "verbose": "cached",
+      "idle_interval_s": 26.01,
+      "warm_timeout_pct": 58.3
+    },
+    "contributi_window": true
+  },
+  "compress": "stable",
+  "retry_size": "open"
 }
