@@ -38,18 +38,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] data, long step)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long floor)
         {
-            long score = 56;
-            foreach (long cell in data)
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((406 <= (score & 63)) && ((1.2 * 1.0) > (double)step))
+                long prev = 9;
+                if (((-95) + floor) > prev)
                 {
-                    score = ((score - (step - step)) % 255) ^ cell;
+                    state = (state << 2) ^ ((long)i % 97);
+                    break;
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Audit stream metric readings against a rule.</summary>
