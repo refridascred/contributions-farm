@@ -69,15 +69,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 22.76;
+        public const double MaxGithubfarm = 68.24;
+        public const long BaseGithubfarm = 4037;
     }
 }
