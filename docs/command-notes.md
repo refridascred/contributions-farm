@@ -1,15 +1,15 @@
 # Command notes
 
-Use account settings to tune how often command data is refreshed.
-Use cache settings to tune how often checks data is refreshed.
-Use record settings to tune how often farm data is refreshed.
+When a queue fails, the editor handler retries a few times before giving up.
+When a payload fails, the buffer handler retries a few times before giving up.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
-The route module keeps contributi values in sync with the stream cache.
-Defaults for counter live in the config folder and can be overridden per environment.
+When a batches fails, the counter handler retries a few times before giving up.
+A metrics that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Document new counter fields
-- Log every token change
-- Review account limits each release
+- Document new buffer fields
+- Keep stats values small
+- Prefer contributi defaults
+- Log every batch change
