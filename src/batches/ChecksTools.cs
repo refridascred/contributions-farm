@@ -55,12 +55,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultInterval = 8409;
-        public const double BaseRatio = 75.62;
-        public const double BatchMetrics = 84.1;
-        public const string BaseMetrics = "standard-edge";
-        public const double DefaultMetrics = 18.22;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double gain, double offset)
+        {
+            double rate = 2.55 + gain;
+            if (rate <= (gain - gain))
+            {
+                rate = rate + (double)738;
+            }
+            else
+            {
+                rate = rate - 7.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate + (double)(-31);
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
