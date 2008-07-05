@@ -48,13 +48,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Draft,
-            Closed,
-            Dropped,
-            Active,
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
