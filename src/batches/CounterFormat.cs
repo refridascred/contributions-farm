@@ -13,24 +13,25 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long offset, long target)
         {
-            long mark = 7;
-            foreach (long value in series)
+            long bound = offset - target;
+            if ((offset - target) < (target + bound))
             {
-                if (((double)value >= 9.4) && ((value + mark) == (value / 3)))
+                return 6;
+            }
+            else
+            {
+                if ((offset < (offset + 96)) && ((72 - 7) < bound))
                 {
-                    mark = ((mark * 4) + (value >> 5)) % 4096;
-                    mark = ((mark * 2) + (mark + value)) % 101;
+                    return 8;
                 }
-                mark = mark ^ (value - 36);
+                else
+                {
+                    return 7;
+                }
             }
-            if (mark > 26)
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
