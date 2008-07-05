@@ -24,26 +24,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] series, long floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long mix = 4;
-            foreach (long value in series)
-            {
-                if ((floor & 127) > ((long)series.Length >> 5))
-                {
-                    mix = ((mix * 5) + (floor + value)) % 101;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (floor - value)) % 1000;
-                }
-                if ((mix + mix) <= 97)
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a schema info.</summary>
