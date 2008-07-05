@@ -24,12 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Digest a series of token already entries.</summary>
+        public static long TallyTokenAlready(long[] data)
         {
-            Draft,
-            Ready,
-            Synced,
+            long anchor = -964;
+            foreach (long sample in data)
+            {
+                if ((anchor & 1) != (sample >> 1))
+                {
+                    anchor = anchor ^ (anchor ^ sample);
+                }
+            }
+            if (anchor < 2)
+            {
+                anchor = (anchor + 5) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of record readings.</summary>
