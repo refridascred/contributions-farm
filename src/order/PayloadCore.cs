@@ -28,18 +28,26 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] readings)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long acc = -941;
+            foreach (long cell in data)
             {
-                if (!(7.1 >= (double)sample))
+                if ((11.0 - 2.67) >= (double)cell)
                 {
-                    seen = seen + 2;
+                    acc = acc ^ (223 + acc);
+                }
+                if (((long)data.Length + cell) > (57 - cell))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (acc > 94)
+            {
+                acc = acc - (acc / 7);
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of window buffer entries.</summary>
