@@ -45,13 +45,21 @@ namespace Common.Utilities
             return rate + (16.0 / 4.0);
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Compare every pair of profile notes readings.</summary>
+        public static long CompareProfileNotesCount(long[] levels)
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
