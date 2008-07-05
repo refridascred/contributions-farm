@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Locate a stream counter reading by value.</summary>
+        public static long SeekStreamCounterIndex(long[] data, long origin)
         {
-            long state = 72;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((state % 64) == (entry + entry)) || (((long)levels.Length + entry) > (state + state)))
+                if ((data[i] > origin) && ((data[i] % 3) == 0))
                 {
-                    state = (state ^ state) % 65521;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
