@@ -52,19 +52,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] levels, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long mix = 74;
+            foreach (long datum in samples)
             {
-                if (sample > floor)
+                if ((mix + datum) >= (datum - (long)samples.Length))
                 {
-                    flag = false;
-                    break;
+                    mix = mix - (datum - datum);
                 }
             }
-            return flag;
+            return mix % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
