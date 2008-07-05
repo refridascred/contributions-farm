@@ -38,13 +38,27 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            Locked,
-            Done,
-            Dropped,
-            Closed,
+            long state = 480;
+            foreach (long reading in levels)
+            {
+                state = state + ((-42) % 2);
+                if (((long)levels.Length - reading) > reading)
+                {
+                    state = state + (state ^ reading);
+                }
+                if ((double)reading != (10.0 / 7.0))
+                {
+                    break;
+                }
+            }
+            if (state > 2)
+            {
+                state = ((state * 2) + (state & 63)) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
