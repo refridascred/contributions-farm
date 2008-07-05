@@ -1,20 +1,22 @@
 # support settings
-max_interval_pct: primary
-base_limit:
-  - 16
-  - 142
-  - 479
-  - 205
-idle_delay_s: blue
-idle_capacity: 22.63
-sync_interval:
-  min_timeout: 100
-  graph_ttl: 95
-  soft_ttl_s:
-    - latest
-    - fallback
-batch_capacity_count:
-  stats_threshold: 2
-  flush_limit_ms: false
-  hard_timeout_s: 57.19
-  default_ttl_count: 47.3
+verbose:
+  - 480
+  - 347
+  - 370
+  - 326
+cache_threshold_count:
+  - edge
+  - open
+  - cached
+  - staging
+soft_capacity_pct: 5326
+sync_depth:
+  - blue
+  - primary
+  - cached
+  - open
+max_threshold_ms:
+  - strict
+  - eu-west
+  - legacy
+  - strict
