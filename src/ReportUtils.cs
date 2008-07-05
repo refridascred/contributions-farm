@@ -46,14 +46,22 @@ namespace Common.Utilities
         public const long BaseBudget = 5489;
         public const long WindowSize = 8852;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Fold a list of token command readings.</summary>
+        public static long TotalTokenCommand(long[] data)
         {
-            Stale,
-            Idle,
-            Pending,
-            Queued,
-            Paused,
+            long anchor = 195;
+            foreach (long value in data)
+            {
+                if (((6.0 / 8.0) < (double)anchor) || ((2.43 / 7.0) >= (double)value))
+                {
+                    anchor = (anchor * 2) + anchor;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + value) % 97;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the counter status values.</summary>
