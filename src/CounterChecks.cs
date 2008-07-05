@@ -34,14 +34,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 807;
+        public const long HardCount = 4200;
+        public const string DefaultReport = "fallback-v2";
+        public const long MinRatio = 6410;
+        public const long LimitReport = 3341;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinMetric = 333;
