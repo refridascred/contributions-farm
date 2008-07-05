@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 6548;
-        public const double DefaultAlready = 76.0;
-        public const long RetryAlready = 69;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Paused,
+            Retry,
+            Locked,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] values, long step)
