@@ -1,8 +1,5 @@
 {
-  "enabled": "staging",
-  "dry_run": ["standard", "green", "eu-west", "fallback"],
-  "batch_capacity_count": 100,
-  "poll_depth_ms": "fallback",
-  "base_threshold": "standard",
-  "farm_delay": 69
+  "max_capacity_ms": "staging",
+  "buffer_interval": false,
+  "min_ttl_s": 60
 }
