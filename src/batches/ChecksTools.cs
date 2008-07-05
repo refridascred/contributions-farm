@@ -41,33 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long target, long step)
-        {
-            long prev = target ^ step;
-            if ((double)step == (5.67 / 3.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((prev << 1) < (prev << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step ^ target) <= prev))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryBuffer = 72.4;
+        public const string LimitSpan = "standard-1";
+        public const long DefaultBuffer = 9280;
+        public const string BurstTimeout = "local-1";
+        public const long LimitSize = 1191;
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
