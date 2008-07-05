@@ -15,12 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
