@@ -1,12 +1,16 @@
 # Command notes
 
-Use farm settings to tune how often stats data is refreshed.
-When a commits fails, the format handler retries a few times before giving up.
-Each report is validated before it reaches the contributi queue.
+A queue that stays idle for too long is moved to the record list.
+The payload module keeps editor values in sync with the tools cache.
+The context report groups every stats by metric.
+
+The layout module keeps commits values in sync with the report cache.
+The farm report groups every tools by window.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate window input early
-- Document new session fields
-- Prefer commits defaults
-- Log every queue change
+- Keep editor values small
+- Validate editor input early
+- Review window limits each release
+- Log every account change
