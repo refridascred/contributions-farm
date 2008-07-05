@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
