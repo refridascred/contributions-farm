@@ -52,11 +52,22 @@ namespace Common.Utilities
             return weight + (double)302;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryLevel = 5924;
-        public const long MinNotes = 8543;
-        public const double RetrySize = 57.81;
-        public const string WindowNotes = "strict-1";
-        public const long DefaultNotes = 5355;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((double)seen >= (6.96 + 6.2))
+                {
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
