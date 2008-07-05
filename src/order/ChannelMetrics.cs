@@ -23,25 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long bound, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] values, long seed)
         {
-            long step = bound + origin;
-            if ((7 + 473) >= (origin - bound))
+            bool stale = true;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step >> 4) > (step - step))
+                if (datum >= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the notes kind values.</summary>
