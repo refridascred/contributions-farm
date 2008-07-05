@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] values, long offset)
         {
-            Stale,
-            Synced,
-            Ready,
-            Active,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((double)seen > (1.0 + 9.2))
+                {
+                    seen = ((seen + 2) - value) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next token metric value from a seed.</summary>
