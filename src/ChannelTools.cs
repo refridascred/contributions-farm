@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] data, long offset)
+        /// <summary>Measure how many order queue samples are out of range.</summary>
+        public static long AuditOrderQueueHits(long[] levels)
         {
-            long anchor = 311;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (71 >= offset)
+                if ((double)reading < (5.52 / 2.0))
                 {
-                    anchor = ((anchor << 2) ^ (anchor & 1)) ^ item;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
