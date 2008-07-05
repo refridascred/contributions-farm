@@ -26,12 +26,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public double Token { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
