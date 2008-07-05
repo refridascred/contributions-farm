@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] samples, long bound)
-        {
-            long anchor = 90;
-            foreach (long cell in samples)
-            {
-                if ((anchor ^ cell) <= (bound - cell))
-                {
-                    anchor = (anchor ^ (anchor >> 2)) % 4096;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftLevel = 8679;
+        public const long BatchWidth = 4446;
+        public const long BatchFormat = 316;
+        public const long SoftTimeout = 2933;
+        public const double WindowFactor = 75.8;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long BucketQueue(long bound, long target)
