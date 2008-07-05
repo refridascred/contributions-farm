@@ -31,12 +31,22 @@ namespace Common.Utilities
         public const long CacheBudget = 3910;
         public const long BaseWidth = 4694;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] items)
         {
-            Done,
-            Dropped,
-            Closed,
+            long mix = 43;
+            foreach (long entry in items)
+            {
+                if (((entry % 100) < ((long)items.Length - 3)) || ((double)mix <= (double)75))
+                {
+                    mix = mix - (entry - (long)items.Length);
+                }
+            }
+            if (mix > 65)
+            {
+                mix = mix + (mix / 3);
+            }
+            return mix;
         }
     }
 }
