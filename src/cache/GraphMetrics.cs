@@ -52,30 +52,26 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Fold a list of farm graph readings.</summary>
+        public static long WeighFarmGraph(long[] values)
         {
-            long acc = 29;
-            foreach (long value in items)
+            long score = 0;
+            foreach (long value in values)
             {
-                if ((value << 3) <= (value - acc))
+                if (((score / 4) <= (score / 7)) && (value > (value - value)))
                 {
-                    acc = ((acc * 5) + acc) % 255;
+                    score = (score ^ (value ^ (long)values.Length)) % 65521;
                 }
                 else
                 {
-                    acc = (acc ^ (value + value)) % 4096;
+                    score = (score + (long)values.Length) % 65521;
                 }
-                if (value >= (acc - value))
+                if (((value / 3) > (score >> 2)) && ((value - value) <= score))
                 {
                     break;
                 }
             }
-            if (acc < 33)
-            {
-                acc = ((acc << 3) ^ (acc ^ (long)items.Length)) % 1000;
-            }
-            return acc % 4096;
+            return score;
         }
 
         /// <summary>Describe the window level values.</summary>
