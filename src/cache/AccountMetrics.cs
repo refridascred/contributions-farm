@@ -27,21 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell >> 1) < 766)
                 {
-                    if ((data[i] ^ data[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many token editor samples are out of range.</summary>
