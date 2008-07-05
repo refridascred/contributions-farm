@@ -42,13 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheSpan = "stable-1";
+        public const long HardTools = 9963;
+        public const long MinTools = 754;
+        public const long BurstTools = 2475;
 
         /// <summary>Match up checks record samples.</summary>
         public static long MatchChecksRecordCount(long[] data)
