@@ -1,29 +1,6 @@
 # githubfarm settings
-farm_threshold: false
-max_capacity: blue
-idle_capacity_s:
-  max_interval_s: 7108
-  layout_limit: latest
-  counter_retries: 28.17
-  base_ratio_ms:
-    - 255
-    - 90
-    - 88
-  idle_interval: true
-soft_size_ms:
-  flush_ttl_count: staging
-  batch_ratio_pct:
-    - 405
-    - 120
-    - 132
-  compress:
-    - 221
-    - 274
-  sync_size:
-    - green
-    - green
-  base_interval_count:
-    - fallback
-    - staging
-    - eu-west
-    - cached
+checks_window: edge
+soft_delay: eu-west
+poll_limit: false
+window_limit: 4573
+cache_ttl: 6327
