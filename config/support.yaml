@@ -1,15 +1,8 @@
 # support settings
-flush_ratio_count: 1262
-cluster_timeout:
-  sync_interval_ms: 92
-  batch_depth_ms: edge
-  audit: edge
-report_limit:
-  - 66
-  - 372
-  - 352
-strict: eu-west
-idle_capacity:
-  - open
-  - open
-  - open
+warm_threshold: 4777
+metrics_ratio: staging
+min_depth_ms:
+  - 402
+  - 422
+batch_retries: 37.62
+cache_timeout_ms: 17
