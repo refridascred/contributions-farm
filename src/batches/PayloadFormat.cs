@@ -39,16 +39,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 4225;
+        public const long LimitMetric = 7476;
+        public const long SoftMetric = 2825;
+        public const long SoftBudget = 9487;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] values, long origin)
