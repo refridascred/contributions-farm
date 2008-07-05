@@ -14,17 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] series, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the entry commits entries that pass the check.</summary>
