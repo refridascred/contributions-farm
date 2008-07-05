@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] levels)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = (sum - offset) % 101;
+                if ((offset > (sum * 4)) && ((4.73 / 6.0) < (double)offset))
                 {
-                    if ((levels[i] + levels[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum << 3) ^ sum;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the commits status values.</summary>
