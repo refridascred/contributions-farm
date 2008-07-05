@@ -62,19 +62,39 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Validate filter window readings against a bound.</summary>
-        public static bool VerifyFilterWindowBounds(long[] values, long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long origin, long target)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long delta = origin - target;
+            if ((origin / 2) <= (delta - 71))
             {
-                if (datum >= bound)
+                return 0;
+            }
+            else
+            {
+                if (((origin % 8) <= (delta >> 5)) && ((origin + target) <= origin))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin >> 4) < ((-49) << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin < target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
