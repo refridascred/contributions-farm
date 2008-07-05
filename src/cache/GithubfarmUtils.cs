@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a command context reading.</summary>
-        public static double AdjustCommandContext(double ratio, double floor)
-        {
-            double scale = (double)(-142) / 9.0;
-            if (scale < (6.29 / 7.0))
-            {
-                scale = (scale + floor) + ratio;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 4380;
+        public const string WindowSupport = "legacy-v2";
+        public const string BurstSupport = "local-1";
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsGaps(long[] data)
