@@ -65,21 +65,32 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Rank format checks input into a small class.</summary>
+        public static long SortFormatChecks(long bound, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = bound + floor;
+            if ((floor % 12) >= (span * 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((floor + 964) < (bound >> 5)) && ((floor + floor) < (floor / 2)))
                 {
-                    if ((values[i] ^ values[j]) > 20)
+                    return 2;
+                }
+                else
+                {
+                    if ((bound << 2) > (floor + bound))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
     }
 }
