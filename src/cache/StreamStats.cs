@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] items, long target)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((reading <= (reading / 5)) || ((double)reading != (1.03 + 4.98)))
-                {
-                    count = (count + 1) + target;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
