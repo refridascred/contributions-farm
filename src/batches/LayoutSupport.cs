@@ -51,10 +51,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultFactor = 888;
-        public const long BaseAlready = 424;
-        public const long WindowWidth = 2534;
-        public const string BatchBudget = "stable";
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] data, long seed)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
