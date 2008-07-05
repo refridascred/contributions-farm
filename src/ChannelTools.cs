@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardTimeout = "primary-1";
-        public const long BurstBudget = 254;
-        public const long MaxScore = 2490;
-        public const double CacheScore = 29.78;
-        public const long WindowCommits = 996;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Idle,
+            Closed,
+            Ready,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenRange(long[] readings, long target)
