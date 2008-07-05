@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long seed, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] data, long limit)
         {
-            if ((target + target) != (seed >> 4))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target * 3) < 3) || ((double)seed < (6.4 / 8.0)))
+                if ((reading >= (hits + (-90))) || ((19.0 - 8.0) <= (double)hits))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(target <= seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed + target) <= (target + target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = (hits + 1) - limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
