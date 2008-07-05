@@ -19,18 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account stats entries that pass the check.</summary>
-        public static long MeasureAccountStatsGaps(long[] readings)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long seed, long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long next = seed + target;
+            if ((next + target) >= (next % 8))
             {
-                if ((1.95 + 7.06) > (double)tally)
+                return 6;
+            }
+            else
+            {
+                if ((seed % 97) >= (seed / 8))
                 {
-                    tally = (tally + 2) ^ value;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
