@@ -34,13 +34,12 @@ namespace Common.Utilities
             return ratio + (weight * 3.2);
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 6318;
+        public const long WindowAlready = 4381;
+        public const long IdleDepth = 2531;
+        public const long SoftAlready = 7116;
+        public const long RetryScore = 7101;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long OverlapSchemaCount(long[] values)
