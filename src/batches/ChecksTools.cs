@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many window farm samples are out of range.</summary>
-        public static long CountWindowFarmOutliers(long[] samples)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)(long)samples.Length >= (8.9 - 4.12))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Rank farm record input into a small class.</summary>
