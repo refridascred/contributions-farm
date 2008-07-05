@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score * 3) + score) + (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a tools summary.</summary>
