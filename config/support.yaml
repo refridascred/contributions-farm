@@ -1,11 +1,31 @@
 # support settings
-idle_retries_ms: eu-west
-burst_limit_s: 69
-burst_ratio: 85.64
-min_ttl: true
-session_depth:
-  retry_delay_pct: 30.93
-  persist: 19
-  burst_interval_s: 3120
-  strict: true
-cache_capacity_ms: 70.28
+record_depth:
+  - 279
+  - 435
+batch_retries_count:
+  verbose: green
+  farm_threshold: 1024
+  persist:
+    - 144
+    - 248
+    - 428
+  cache_size:
+    - 390
+    - 169
+    - 123
+  compress: 5400
+  idle_window_ms: open
+hard_interval_pct: 1742
+idle_threshold_ms:
+  warm_timeout_pct:
+    - legacy
+    - open
+    - eu-west
+    - blue
+  base_ttl: false
+  sync_ratio_count: staging
+  dry_run: green
+  idle_window_pct: 63.18
+  max_threshold_ms: legacy
+audit: true
+batch_interval: true
