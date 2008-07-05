@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next graph order value from a seed.</summary>
-        public static long IterateGraphOrder(long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] samples, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
+            long acc = 45;
+            foreach (long entry in samples)
             {
-                if ((bound / 7) > (-79))
+                for (int i = 0; i < 4; i++)
                 {
-                    state = (state ^ (bound >> 4)) % 65521;
-                    continue;
+                    acc = ((((acc << 3) ^ (acc >> 2)) % 65521) + (long)i) + entry;
                 }
-                else
-                {
-                    long hits = 65 - (bound / 8);
-                    state = state + (hits >> 2);
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                acc = acc - (step * 5);
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Describe the account level values.</summary>
