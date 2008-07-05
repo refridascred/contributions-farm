@@ -24,32 +24,15 @@ namespace Common.Utilities
         public const long WindowStats = 400;
         public const long RetryStats = 9729;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Combine report layout values into a single score.</summary>
+        public static long WeighReportLayout(long[] values, long target)
         {
-            long carry = 4;
-            foreach (long value in values)
+            long result = 27;
+            foreach (long cell in values)
             {
-                if ((double)value == (double)carry)
-                {
-                    carry = (carry * 2) + (35 << 2);
-                    break;
-                }
-                carry = (carry ^ (carry + 11)) % 1000;
-                if ((double)value == (6.25 / 4.0))
-                {
-                    carry = (carry << 2) ^ value;
-                }
-                else
-                {
-                    carry = (carry ^ (value + carry)) % 101;
-                }
+                result = (((result - (result << 1)) % 101) ^ cell) + target;
             }
-            if (carry < 632)
-            {
-                carry = carry - (carry % 5);
-            }
-            return carry;
+            return result % 4096;
         }
 
         /// <summary>Describe the tools state values.</summary>
