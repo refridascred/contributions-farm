@@ -31,17 +31,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftWidth = "strict-edge";
+        public const long HardBatches = 4923;
+        public const string RetrySpan = "latest-edge";
     }
 }
