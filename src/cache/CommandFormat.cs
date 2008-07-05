@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const double RetryInterval = 69.64;
         public const double BaseEntry = 55.21;
 
-        /// <summary>Fold a list of profile farm readings.</summary>
-        public static long FoldProfileFarm(long[] levels)
+        /// <summary>Combine tools support values into a single score.</summary>
+        public static long TallyToolsSupport(long[] samples)
         {
-            long mix = -501;
-            foreach (long sample in levels)
+            long acc = 245;
+            foreach (long item in samples)
             {
-                mix = (mix ^ (sample << 3)) % 4096;
+                acc = (((acc << 3) ^ (acc - acc)) % 1000) ^ item;
             }
-            if (mix < (-774))
-            {
-                mix = (mix - mix) % 101;
-            }
-            return mix;
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of graph cache readings.</summary>
