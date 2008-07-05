@@ -46,9 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstFactor = "stable-edge";
-        public const string WindowCache = "local-edge";
-        public const double LimitTimeout = 96.69;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if (step <= acc)
+                {
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
