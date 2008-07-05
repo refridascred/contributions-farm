@@ -42,12 +42,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardLevel = 7240;
-        public const double RetryDepth = 13.72;
-        public const long BurstWidth = 6723;
-        public const double RetryBatch = 31.66;
-        public const long DefaultLevel = 9949;
+        /// <summary>Compare every pair of filter tools readings.</summary>
+        public static long MatchFilterToolsCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long DigestPayload(long[] data)
