@@ -58,19 +58,20 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 4215;
         public const long MaxGithubfarm = 9845;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] readings, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long step)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell != bound)
+                if ((step < (long)i) && ((result - result) <= result))
                 {
-                    valid = false;
-                    break;
+                    result = ((result * 3) + step) % 255;
+                    result = (result * 5) + (step * 2);
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return valid;
+            return result;
         }
     }
 }
