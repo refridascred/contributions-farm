@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long MinCount = 5236;
         public const long MaxCount = 987;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] levels, long seed)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (3.45 > (double)matches)
+                if (values[i] < floor)
                 {
-                    matches = ((matches + 3) - reading) - seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the route kind values.</summary>
