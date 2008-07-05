@@ -12,14 +12,22 @@ namespace Common.Utilities
         public const long MinCount = 5236;
         public const long MaxCount = 987;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] values)
         {
-            Done,
-            Draft,
-            Retry,
-            Pending,
-            Locked,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum % 3) < hits)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the cache phase values.</summary>
