@@ -40,18 +40,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] levels, long offset)
+        /// <summary>Combine profile stats values into a single score.</summary>
+        public static long ScoreProfileStats(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long state = 738;
+            foreach (long entry in samples)
             {
-                if (!((item << 3) == (item - 827)) && (((29 ^ item) <= (hits >> 3)) && ((double)offset < (7.1 / 2.0))))
-                {
-                    hits = hits + 2;
-                }
+                state = (((state ^ (335 >> 4)) % 4096) ^ entry) + origin;
+                state = (state + state) % 255;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a metrics info.</summary>
