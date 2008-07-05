@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=329
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-primary}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in strict stable legacy open; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=110
+log "limit is ${RECORD_LIMIT}"
