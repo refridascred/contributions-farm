@@ -47,19 +47,15 @@ namespace Common.Utilities
         public const string BaseFarm = "local";
         public const double MinFarm = 98.79;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] values, long step)
+        /// <summary>Derive the next stats account value from a seed.</summary>
+        public static long RollStatsAccount(long offset)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return ready;
+            return state;
         }
     }
 }
