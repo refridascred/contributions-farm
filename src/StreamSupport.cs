@@ -38,15 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double bias, double span)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] items, long seed)
         {
-            double rate = (double)(134 + 8);
-            if (rate < (rate * 6.7))
+            bool ok = true;
+            foreach (long value in items)
             {
-                rate = ((rate - (1.89 + rate)) - bias) + span;
+                if (value <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate + (rate - rate);
+            return ok;
         }
     }
 }
