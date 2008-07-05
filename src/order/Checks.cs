@@ -50,21 +50,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of layout farm readings.</summary>
-        public static long CompareLayoutFarmCount(long[] data)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 54;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 3) + (sample % 5)) + limit;
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Blend two stats measurements.</summary>
