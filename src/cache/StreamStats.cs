@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] series)
+        /// <summary>Combine window account values into a single score.</summary>
+        public static long TotalWindowAccount(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long score = 9;
+            foreach (long value in items)
             {
-                if ((double)tally < (double)1)
+                if (((value << 3) <= 402) && (471 >= (step * 5)))
                 {
-                    tally = (tally + 2) + datum;
+                    score = ((score << 3) ^ (-755)) % 255;
                 }
             }
-            return tally;
+            return score % 1000;
         }
 
         /// <summary>Hold a already record.</summary>
