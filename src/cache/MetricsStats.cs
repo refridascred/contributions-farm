@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
