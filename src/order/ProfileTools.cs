@@ -32,35 +32,35 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long seed, long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long step, long step2)
         {
-            long gap = seed - offset;
-            if ((seed >> 5) >= (gap - (-84)))
+            long offset = step + step2;
+            if ((offset >> 1) >= step2)
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((256 % 10) < (617 ^ offset))
+                if ((double)step2 < (double)372)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if (gap >= (gap + seed))
+                    if ((step2 % 100) <= step)
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        if ((offset - gap) > gap)
+                        if (((51 % 2) <= (step2 << 1)) || (5 < (offset + step)))
                         {
-                            return 5;
+                            return 8;
                         }
                         else
                         {
-                            return 8;
+                            return 7;
                         }
                     }
                 }
