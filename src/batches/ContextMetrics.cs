@@ -51,31 +51,29 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long origin, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] series)
         {
-            if ((0.5 + 6.8) <= (double)origin)
+            long mix = -6;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((origin + 2) < (origin - origin)))
+                if (entry < (mix << 3))
                 {
-                    return 6;
+                    mix = (mix ^ (74 / 8)) % 97;
+                    mix = (mix ^ (entry << 3)) % 65521;
+                }
+                if (((mix * 3) > entry) && ((entry >> 1) <= (mix << 1)))
+                {
+                    mix = mix + entry;
+                    break;
                 }
                 else
                 {
-                    if (origin < (floor + 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = (mix << 3) ^ (mix ^ mix);
                 }
+                mix = ((mix << 3) ^ (entry ^ mix)) % 97;
             }
+            return mix % 1000;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
