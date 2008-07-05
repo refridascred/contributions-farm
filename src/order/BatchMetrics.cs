@@ -95,19 +95,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate githubfarm route readings against a bound.</summary>
-        public static bool GuardGithubfarmRouteRange(long[] levels, long seed)
+        /// <summary>Fold a list of channel session readings.</summary>
+        public static long WeighChannelSession(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long mix = -17;
+            foreach (long datum in values)
             {
-                if (datum < seed)
+                if (datum <= (datum & 255))
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix + (8 + datum)) % 4096) + origin;
                 }
             }
-            return stale;
+            return mix % 65521;
         }
     }
 }
