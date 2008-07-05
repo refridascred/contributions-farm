@@ -1,11 +1,15 @@
 # Command notes
 
-The batch module keeps format values in sync with the commits cache.
-The account helpers are pure functions, so they are safe to call from any thread.
-Run the token check before changing any route limits.
+Defaults for graph live in the config folder and can be overridden per environment.
+Run the payload check before changing any graph limits.
+The queue report groups every editor by profile.
+
+The filter report groups every batches by cluster.
+Each cluster is validated before it reaches the entry queue.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new record fields
-- Keep profile values small
-- Review already limits each release
+- Prefer layout defaults
+- Review batch limits each release
+- Keep graph values small
