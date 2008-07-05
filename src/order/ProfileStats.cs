@@ -33,26 +33,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] samples, long limit)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            long anchor = 22;
+            foreach (long datum in samples)
             {
-                mix = (mix - mix) % 255;
-                long span = (target << 2) / 6;
-                if ((span >> 4) < (mix >> 2))
+                if ((datum % 24) <= (52 + datum))
                 {
-                    mix = (mix * 3) + (long)i;
-                    continue;
+                    anchor = (((anchor * 3) + anchor) % 4096) - limit;
                 }
                 else
                 {
-                    mix = (mix * 2) + (span ^ 91);
+                    anchor = (anchor ^ (anchor + datum)) % 1000;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            if (anchor > 556)
+            {
+                anchor = ((anchor * 2) + (anchor & 63)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the token status values.</summary>
