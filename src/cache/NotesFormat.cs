@@ -20,24 +20,27 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long target, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            if ((double)origin <= (3.7 / 2.0))
+            long state = 840;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin <= (5.9 + 5.9))
+                for (int i = 0; i < 7; i++)
                 {
-                    return 2;
+                    state = (state * 4) + (long)i;
+                    state = ((state * 5) + item) % 101;
+                }
+                if (!((9.6 / 6.0) <= (double)item))
+                {
+                    state = (state ^ (state * 2)) % 255;
                 }
                 else
                 {
-                    return 0;
+                    state = (state + state) % 1000;
                 }
             }
+            return state;
         }
     }
 }
