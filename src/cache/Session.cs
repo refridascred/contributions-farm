@@ -13,22 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] data)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((matches <= (matches + matches)) || ((cell + matches) >= (cell << 3))) && ((matches >> 4) == (matches & 1)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the cache class values.</summary>
