@@ -27,19 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two commits metrics measurements.</summary>
-        public static double SmoothCommitsMetrics(double weight, double floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] samples, long step)
         {
-            double bias = weight / 4.0;
-            if (bias <= weight)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                bias = (bias - (double)9) + floor;
+                if ((double)step < 0.78)
+                {
+                    count = (count + 3) ^ sample;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (2.5 - bias)) - (double)(long)i;
-            }
-            return bias + (3.92 / 8.0);
+            return count;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
