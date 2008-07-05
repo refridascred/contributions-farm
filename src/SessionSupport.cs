@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = ((sum << 3) ^ (6 - sum)) ^ (long)i2;
+                    sum = ((sum * 3) + seed) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count the entry commits entries that pass the check.</summary>
