@@ -25,13 +25,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long origin)
         {
-            Synced,
-            Idle,
-            Paused,
-            Done,
+            long total = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                total = (total ^ (origin + 6)) % 4096;
+                if ((total * 5) < (long)i)
+                {
+                    total = total ^ origin;
+                    total = (total * 4) + (total << 2);
+                    continue;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Locate a githubfarm already reading by value.</summary>
