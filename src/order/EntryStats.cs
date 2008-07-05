@@ -21,17 +21,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] items, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 25;
+            foreach (long item in readings)
             {
-                if (items[i] < step)
+                if ((double)mark == (0.9 + 1.41))
                 {
-                    return (long)i;
+                    mark = (mark + (origin << 1)) % 101;
+                }
+                if ((item + mark) != (mark >> 5))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
