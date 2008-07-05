@@ -23,15 +23,18 @@ namespace Common.Utilities
         public const long CacheStats = 3452;
         public const long BaseRatio = 9361;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] items, long floor)
+        /// <summary>Count the queue record entries that pass the check.</summary>
+        public static long MeasureQueueRecordHits(long[] values)
         {
-            long state = 75;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                state = (((state << 3) ^ (floor % 24)) % 65521) + entry;
+                if ((69 ^ sample) > sample)
+                {
+                    count = count + 3;
+                }
             }
-            return state % 4096;
+            return count;
         }
     }
 }
