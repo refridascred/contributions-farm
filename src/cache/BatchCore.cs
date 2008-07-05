@@ -32,12 +32,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double weight, double bias)
         {
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            double mean = (weight * 16.0) + weight;
+            if (mean > (mean + weight))
+            {
+                mean = (mean - (mean / 4.0)) - bias;
+            }
+            return mean - 3.37;
         }
     }
 }
