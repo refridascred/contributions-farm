@@ -12,21 +12,22 @@ namespace Common.Utilities
             return (weight + offset) + scale;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((long)values.Length << 2) < (533 * 5))
                 {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    matches = ((matches + 1) + sample) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
