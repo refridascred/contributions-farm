@@ -25,12 +25,21 @@ namespace Common.Utilities
         public const long MaxInterval = 4876;
         public const double BurstSession = 7.44;
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long target)
         {
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long state = target;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state + target) % 65521;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (((state * 2) + 7) % 4096) ^ (long)i2;
+                }
+                state = (state + (state * 5)) % 65521;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a metrics header.</summary>
