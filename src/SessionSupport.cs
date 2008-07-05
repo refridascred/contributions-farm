@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Digest a series of counter support entries.</summary>
+        public static long DigestCounterSupport(long[] series, long target)
         {
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            long score = 0;
+            foreach (long datum in series)
+            {
+                score = ((score + target) % 65521) - datum;
+            }
+            return score;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
