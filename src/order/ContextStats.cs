@@ -41,19 +41,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Synced,
+            Failed,
+            Draft,
+            Active,
         }
     }
 }
