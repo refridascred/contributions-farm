@@ -37,12 +37,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] levels, long limit)
         {
-            Closed,
-            Stale,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((limit + sample) != (sample % 7))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
