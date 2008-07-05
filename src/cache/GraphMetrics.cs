@@ -46,15 +46,13 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] series, long seed)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long state = 691;
-            foreach (long cell in series)
-            {
-                state = ((state ^ (cell % 12)) % 101) + seed;
-            }
-            return state;
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
     }
 }
