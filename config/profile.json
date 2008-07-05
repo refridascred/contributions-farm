@@ -1,15 +1,11 @@
 {
-  "report_retries": 24.7,
-  "flush_retries": 100,
-  "sync_depth_s": true,
-  "hard_limit_ms": {
-    "enabled": 500,
-    "min_size_s": {
-      "entry_size": 59,
-      "persist": "latest",
-      "cache_ratio": 12.77,
-      "warm_depth": 45.65
-    },
-    "channel_size": 41
-  }
+  "metric_threshold": {
+    "already_ttl": false,
+    "batch_ratio": ["primary", "stable", "latest"],
+    "hard_ratio": "cached"
+  },
+  "cache_delay_ms": 250,
+  "dry_run": 100,
+  "notes_ratio": 100,
+  "route_timeout": "stable"
 }
