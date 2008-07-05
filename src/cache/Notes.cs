@@ -32,13 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
