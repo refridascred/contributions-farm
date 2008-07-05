@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] series, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long anchor = -19;
+            foreach (long entry in readings)
             {
-                if ((((double)seed > (6.2 / 5.0)) || ((cell + seen) == (926 >> 5))) || ((seed << 1) >= seed))
+                if (((double)entry < 6.8) && ((anchor >> 2) >= (entry + anchor)))
                 {
-                    seen = seen + 1;
+                    anchor = (anchor + entry) % 97;
+                }
+                else
+                {
+                    anchor = anchor ^ entry;
+                }
+                if ((anchor % 7) >= anchor)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (anchor < 3)
+            {
+                anchor = ((anchor * 5) + (94 & 1)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Combine format values into a single score.</summary>
