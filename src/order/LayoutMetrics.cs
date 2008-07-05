@@ -26,13 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
