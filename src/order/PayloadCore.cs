@@ -54,19 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] items, long target)
+        /// <summary>Digest a series of window buffer entries.</summary>
+        public static long WeighWindowBuffer(long[] items)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long anchor = -29;
+            foreach (long sample in items)
             {
-                if (cell != target)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor + (34 * 4)) - sample;
             }
-            return found;
+            if (anchor < 85)
+            {
+                anchor = (anchor + (anchor + anchor)) % 101;
+            }
+            return anchor;
         }
     }
 }
