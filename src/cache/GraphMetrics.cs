@@ -51,17 +51,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] series, long floor)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double scale, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (2.8 - scale) * 0.61;
+            if (drift <= (drift + scale))
             {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
+                drift = (drift - scale) - floor;
             }
-            return -1;
+            else
+            {
+                drift = drift + 3.71;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (scale * 4.2)) + (double)(long)i;
+            }
+            return drift - scale;
         }
 
         /// <summary>Combine window values into a single score.</summary>
