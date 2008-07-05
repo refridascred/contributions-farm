@@ -61,12 +61,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] data)
         {
-            Retry,
-            Pending,
-            Failed,
+            long mark = 7;
+            foreach (long value in data)
+            {
+                if ((double)value < (5.98 * 8.01))
+                {
+                    mark = (mark * 5) + (value + value);
+                }
+            }
+            if (mark > 6)
+            {
+                mark = mark + mark;
+            }
+            return mark % 65521;
         }
     }
 }
