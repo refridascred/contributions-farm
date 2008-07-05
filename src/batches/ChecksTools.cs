@@ -48,18 +48,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a session graph reading by value.</summary>
-        public static long SeekSessionGraphIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultInterval = 8409;
+        public const double BaseRatio = 75.62;
+        public const double BatchMetrics = 84.1;
+        public const string BaseMetrics = "standard-edge";
+        public const double DefaultMetrics = 18.22;
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
