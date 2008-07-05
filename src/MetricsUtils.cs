@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] readings, long floor)
+        /// <summary>Grade a route already value against two limits.</summary>
+        public static long ClassifyRouteAlready(long step, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound = step + offset;
+            if (bound >= (step - step))
             {
-                if (readings[i] >= floor)
+                return 8;
+            }
+            else
+            {
+                if ((offset ^ bound) == (step - 22))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound % 5) <= bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
