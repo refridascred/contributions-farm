@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
             Paused,
-            New,
-            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
