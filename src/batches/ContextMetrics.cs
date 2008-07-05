@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] readings)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((score ^ score) < 491))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = score ^ ((long)i + score);
+                    if ((readings[i] ^ readings[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
