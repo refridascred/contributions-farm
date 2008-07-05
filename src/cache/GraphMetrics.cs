@@ -33,12 +33,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Failed,
-            Done,
-            Idle,
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
