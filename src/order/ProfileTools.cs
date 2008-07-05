@@ -50,12 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 9737;
-        public const long IdleInterval = 5871;
-        public const string BurstScore = "open-1";
-        public const long HardGraph = 5705;
-        public const long BurstSize = 4233;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample <= (14.0 + 3.8))
+                {
+                    tally = (tally + 1) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
