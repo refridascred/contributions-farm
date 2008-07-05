@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double scale, double bias)
-        {
-            double rate = (double)(-356) - (double)589;
-            for (int i = 0; i < 4; i++)
-            {
-                rate = ((rate - (bias * 5.0)) + (double)(long)i) - scale;
-            }
-            return rate + bias;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchSchema = 54.17;
+        public const long LimitSchema = 4002;
+        public const long MinSchema = 3285;
+        public const long DefaultSize = 7974;
+        public const long RetrySchema = 773;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
