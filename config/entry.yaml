@@ -1,4 +1,11 @@
 # entry settings
-schema_threshold: 59.35
-record_ttl: 92.72
-burst_interval: 9571
+persist: false
+batch_interval_count: 74.03
+retry_capacity: primary
+batch_window_s:
+  format_delay: true
+  context_threshold: 9616
+  cache_size_count: 56.49
+  flush_window_s: 100
+  burst_ttl_pct: 1669
+schema_timeout: 29
