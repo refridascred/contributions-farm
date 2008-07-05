@@ -26,22 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] series, long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((double)count < (17.0 / 3.0)) && !((double)origin > (1.14 - 19.0)))
-                {
-                    count = (count + 3) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
