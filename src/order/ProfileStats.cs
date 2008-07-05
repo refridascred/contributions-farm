@@ -44,19 +44,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate cluster batches samples.</summary>
-        public static long ScoreClusterBatches(long[] values, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] samples, long origin)
         {
-            long score = 256;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                score = ((score << 3) ^ step) % 255;
-                if (!((datum + 2) > (step % 97)))
+                if ((((item * 4) > (origin ^ tally)) && ((origin / 7) >= origin)) && ((18.0 + 17.0) == (double)tally))
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the token status values.</summary>
