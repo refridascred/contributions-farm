@@ -30,18 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] levels, long floor)
+        /// <summary>Count layout checks pairs that satisfy a relation.</summary>
+        public static long MatchLayoutChecksCount(long[] readings)
         {
-            long total = 595;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading + (-5)) > total)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total - (reading << 1)) % 1000) - floor;
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
