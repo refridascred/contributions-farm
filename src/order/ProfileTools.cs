@@ -74,23 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches + datum) > (matches - target))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 2751;
+        public const string StepWidth = "primary-edge";
+        public const double BatchSize = 68.68;
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LookupProfileIndex(long[] levels, long limit)
