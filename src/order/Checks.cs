@@ -36,13 +36,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Look up the position of a stream profile sample.</summary>
+        public static long LocateStreamProfileIndex(long[] series, long seed)
         {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the command mode values.</summary>
