@@ -33,19 +33,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((((tally + tally) != (tally + entry)) && ((tally + entry) < 42)) && ((tally + (long)levels.Length) < tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitLevel = 61.21;
+        public const long BurstBatch = 6772;
+        public const long IdleBatch = 5694;
+        public const double MinCount = 14.56;
+        public const double DefaultBatch = 71.1;
 
         /// <summary>Scale a githubfarm entry figure with a bias.</summary>
         public static double SmoothGithubfarmEntry(double scale, double bias)
