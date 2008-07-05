@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green eu-west edge; do
+for item in local latest; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=239
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-strict}"
+mode="${1:-edge}"
 case "${mode}" in
-    blue)
+    strict)
         log "fast path"
         ;;
     *)
