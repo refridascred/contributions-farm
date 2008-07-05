@@ -1,6 +1,16 @@
 {
-  "burst_limit_ms": true,
-  "cache_depth_s": 5930,
-  "commits_delay": 30,
-  "base_threshold": "blue"
+  "soft_delay": "edge",
+  "already_threshold": 60,
+  "hard_size_pct": false,
+  "cache_limit_count": {
+    "idle_interval_pct": false,
+    "commits_capacity": true,
+    "readonly": "local",
+    "graph_threshold": {
+      "support_ttl": 1024,
+      "stats_window": ["stable", "fallback", "edge"],
+      "base_interval": 16
+    },
+    "poll_window_ms": 500
+  }
 }
