@@ -49,18 +49,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long step)
         {
-            long anchor = 360;
-            foreach (long entry in levels)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (((-884) << 1) <= entry)
+                if (!!((double)state > (3.0 + 5.8)))
                 {
-                    anchor = anchor ^ (-741);
+                    state = ((state << 2) ^ step) % 65521;
                 }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return anchor % 1000;
+            return state;
         }
     }
 }
