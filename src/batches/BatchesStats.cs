@@ -29,21 +29,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] samples, long target)
-        {
-            long anchor = 777;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor * 4) + sample) % 101;
-                anchor = anchor ^ (2 - target);
-            }
-            if (anchor > 902)
-            {
-                anchor = anchor - 24;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 8207;
+        public const double BaseDepth = 56.31;
+        public const long BaseLayout = 2592;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BurstFactor = "stable-edge";
