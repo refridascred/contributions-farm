@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] readings, long origin)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((double)origin != (1.8 * 3.0))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
