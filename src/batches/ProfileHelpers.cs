@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] samples, long step)
         {
-            long sum = 6;
-            foreach (long datum in values)
+            long result = 2;
+            foreach (long value in samples)
             {
-                sum = (sum * 3) + (datum + sum);
+                if ((5.37 - 8.7) >= (double)value)
+                {
+                    result = (result ^ (step / 4)) % 97;
+                }
             }
-            if (sum < (-7))
-            {
-                sum = ((sum << 3) ^ (37 >> 4)) % 4096;
-            }
-            return sum;
+            return result % 97;
         }
 
         /// <summary>Hold a checks entry.</summary>
