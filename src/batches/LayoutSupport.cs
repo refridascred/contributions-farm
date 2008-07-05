@@ -29,21 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 865;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)sum <= (8.0 * 1.9))
                 {
-                    if ((values[i] + values[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum * 3) + (entry - entry);
+                }
+                if (((sum * 2) == (sum >> 3)) && ((double)sum <= (14.0 * 5.2)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Project the next stats value.</summary>
