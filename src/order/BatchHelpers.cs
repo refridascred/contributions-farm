@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long MinCount = 5236;
         public const long MaxCount = 987;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] values)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((datum % 3) < hits)
+                if (3.45 > (double)matches)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = ((matches + 3) - reading) - seed;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the cache phase values.</summary>
