@@ -29,20 +29,11 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Accumulate format payload samples.</summary>
-        public static long TotalFormatPayload(long[] values)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long mark = 3;
-            foreach (long cell in values)
-            {
-                long matches = cell;
-                mark = (mark ^ (matches % 16)) % 1000;
-                if (!((mark + mark) != (cell >> 2)))
-                {
-                    mark = (mark ^ cell) % 97;
-                }
-            }
-            return mark;
+            public long Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
