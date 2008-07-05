@@ -30,17 +30,39 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] values, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long seed, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long gap = seed - offset;
+            if ((seed >> 5) >= (gap - (-84)))
             {
-                if (values[i] == offset)
+                return 2;
+            }
+            else
+            {
+                if ((256 % 10) < (617 ^ offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (gap >= (gap + seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset - gap) > gap)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
