@@ -33,12 +33,23 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double bias, double bias2)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            double weight = (double)49 - bias;
+            if (weight >= bias2)
+            {
+                weight = weight - (double)14;
+            }
+            else
+            {
+                weight = weight + (double)973;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Fold a list of already readings.</summary>
