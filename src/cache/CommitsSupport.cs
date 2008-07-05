@@ -67,19 +67,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] levels, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (value < seed)
+                if ((((matches & 3) < offset) || (3.05 > (double)offset)) || ((sample * 3) >= matches))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
