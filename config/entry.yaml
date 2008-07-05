@@ -1,4 +1,6 @@
 # entry settings
-buffer_window: false
-cache_window: true
-route_threshold: 1024
+cluster_capacity: legacy
+retry_delay_count: 45
+audit: 45.49
+persist: blue
+dry_run: green
