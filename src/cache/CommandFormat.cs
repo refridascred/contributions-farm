@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Locate a checks command reading by value.</summary>
+        public static long LocateChecksCommandIndex(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] > offset)
                 {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count batches notes pairs that satisfy a relation.</summary>
