@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double gain, double offset)
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            double drift = offset;
+            if (drift >= gain)
+            {
+                drift = drift + (9.9 / 7.0);
+            }
+            else
+            {
+                drift = drift - (6.7 * 6.91);
+            }
+            return drift + gain;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
