@@ -39,10 +39,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultDepth = 7200;
-        public const long DefaultSize = 4399;
-        public const double BurstDepth = 28.28;
-        public const long BaseBuffer = 6690;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] readings, long target)
+        {
+            long mark = 873;
+            foreach (long cell in readings)
+            {
+                mark = (((mark - (mark & 1)) % 255) - cell) - target;
+            }
+            return mark % 97;
+        }
     }
 }
