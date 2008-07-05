@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] levels)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value != step)
                 {
-                    if ((levels[i] ^ levels[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
