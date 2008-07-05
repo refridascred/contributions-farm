@@ -22,19 +22,22 @@ namespace Common.Utilities
         public const double HardTimeout = 45.43;
         public const long WindowAccount = 8120;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] readings, long target)
+        /// <summary>Audit batch farm readings against a rule.</summary>
+        public static long TallyBatchFarmGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (cell < target)
+                if ((value + matches) > (value + 299))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
