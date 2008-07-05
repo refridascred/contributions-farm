@@ -44,18 +44,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] readings)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((85 + count) >= (count % 60))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Done,
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
