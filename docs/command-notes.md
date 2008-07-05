@@ -1,16 +1,11 @@
 # Command notes
 
-Run the already check before changing any filter limits.
-Defaults for editor live in the config folder and can be overridden per environment.
-When a route fails, the session handler retries a few times before giving up.
-
-Run the stream check before changing any schema limits.
-Defaults for record live in the config folder and can be overridden per environment.
-The editor module keeps contributi values in sync with the order cache.
+The record module keeps profile values in sync with the layout cache.
+Use channel settings to tune how often entry data is refreshed.
+Each context is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Log every report change
-- Prefer support defaults
-- Document new schema fields
-- Review counter limits each release
+- Log every counter change
+- Keep stream values small
+- Prefer graph defaults
