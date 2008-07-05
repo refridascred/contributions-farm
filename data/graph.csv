@@ -1,7 +1,9 @@
-id,region,score,active,ratio
-1,123,84.82,164,883
-2,836,63.65,legacy,721
-3,84.54,551,515,944
-4,strict,50.21,71.53,stable
-5,green,eu-west,82.32,808
-6,522,staging,173,945
+id,rank,active,state,owner
+1,open,64.33,latest,195
+2,3,62.35,601,892
+3,80.82,29.24,standard,695
+4,76.27,46.24,green,edge
+5,150,651,7.4,34.02
+6,651,46.41,468,strict
+7,green,94.24,eu-west,green
+8,891,staging,strict,green
