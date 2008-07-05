@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((double)bound < (8.0 * 8.58))
-                {
-                    mark = mark ^ 31;
-                    break;
-                }
-                if ((bound + bound) < bound)
-                {
-                    long offset = (mark >> 5) ^ (mark + bound);
-                    mark = mark - (offset >> 3);
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 6548;
+        public const double DefaultAlready = 76.0;
+        public const long RetryAlready = 69;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] values, long step)
