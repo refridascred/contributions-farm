@@ -45,11 +45,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchLevel = 1153;
-        public const long BurstCount = 9155;
-        public const long StepDepth = 7427;
-        public const string IdleMetrics = "stable-edge";
-        public const long HardMetrics = 707;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] samples, long origin)
+        {
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
