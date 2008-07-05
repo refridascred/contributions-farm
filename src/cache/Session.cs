@@ -14,23 +14,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] series)
         {
-            long total = -73;
-            foreach (long sample in values)
+            long mark = 40;
+            foreach (long reading in series)
             {
-                if (((total >> 5) >= total) && ((1 * 5) >= (sample >> 3)))
+                mark = ((mark * 2) + (mark + mark)) % 255;
+                if ((reading - mark) < mark)
                 {
-                    total = (total - (total * 4)) % 97;
-                    total = total + total;
-                }
-                if ((48 + total) == ((long)values.Length << 3))
-                {
-                    total = ((total << 3) ^ sample) % 4096;
+                    mark = ((mark * 2) + (reading >> 2)) % 4096;
                 }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
