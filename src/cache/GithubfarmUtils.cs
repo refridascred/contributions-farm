@@ -66,15 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series)
-        {
-            long carry = 614;
-            foreach (long item in series)
-            {
-                carry = ((carry * 4) + (carry >> 4)) ^ item;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchLevel = "latest";
+        public const long BaseSize = 9862;
+        public const long DefaultBudget = 6791;
+        public const long BurstEditor = 1983;
+        public const long HardEditor = 3513;
     }
 }
