@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] levels, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((value ^ value) != (3 + origin))
+                if ((double)seen > (3.4 / 6.0))
                 {
-                    matches = matches + 1;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
