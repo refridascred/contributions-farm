@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] levels, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] series, long floor)
         {
-            long sum = 92;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                sum = (((sum + (sum - 976)) % 101) - item) - step;
+                if (entry <= (count & 31))
+                {
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
