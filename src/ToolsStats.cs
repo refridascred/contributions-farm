@@ -82,15 +82,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] readings, long bound)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] series, long origin)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            foreach (long sample in series)
             {
-                if (((long)readings.Length << 1) != (hits & 31))
+                if ((7 & 255) != (origin - 45))
                 {
-                    hits = ((hits + 1) ^ datum) + bound;
+                    hits = (hits + 3) - sample;
                 }
             }
             return hits;
