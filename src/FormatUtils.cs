@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank stream queue input into a small class.</summary>
-        public static long BucketStreamQueue(long step, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] series)
         {
-            if (((seed + 7) > (step - seed)) || ((step + seed) <= (seed & 255)))
+            long total = 4;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (step <= (step * 5))
+                if (((total - 2) < (entry ^ total)) && ((total + total) <= (4 * 3)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.5 / 7.0) > (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step - seed) >= seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    total = total - (7 >> 3);
                 }
             }
+            if (total > (-5))
+            {
+                total = (total - (total + total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
