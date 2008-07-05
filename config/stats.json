@@ -1,14 +1,6 @@
 {
-  "warm_retries_ms": ["green", "strict", "local", "fallback"],
-  "audit": {
-    "record_delay": {
-      "burst_retries": 500,
-      "poll_limit_pct": 1914,
-      "min_capacity": 9368
-    },
-    "sync_ttl": "legacy",
-    "poll_ttl_count": 19.85
-  },
-  "format_capacity": ["edge", "eu-west", "blue"],
-  "min_ttl_count": 7728
+  "burst_limit_ms": true,
+  "cache_depth_s": 5930,
+  "commits_delay": 30,
+  "base_threshold": "blue"
 }
