@@ -1,13 +1,8 @@
 # entry settings
-format_retries: 6325
-default_capacity_s: 1197
-schema_threshold:
-  buffer_window: legacy
-  githubfarm_depth: 4
-  batch_threshold_s:
-    - 308
-    - 349
-    - 217
-    - 244
-  hard_timeout_count: strict
-persist: 3.7
+flush_delay_s: 60
+idle_window: 4477
+strict:
+  token_size: 17.36
+  soft_ratio: open
+  payload_window: 1289
+  retry_depth: 7
