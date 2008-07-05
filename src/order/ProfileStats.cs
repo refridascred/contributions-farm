@@ -31,22 +31,13 @@ namespace Common.Utilities
         public const long CacheBudget = 3910;
         public const long BaseWidth = 4694;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long mix = 43;
-            foreach (long entry in items)
-            {
-                if (((entry % 100) < ((long)items.Length - 3)) || ((double)mix <= (double)75))
-                {
-                    mix = mix - (entry - (long)items.Length);
-                }
-            }
-            if (mix > 65)
-            {
-                mix = mix + (mix / 3);
-            }
-            return mix;
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
