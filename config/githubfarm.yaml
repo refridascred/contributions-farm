@@ -1,4 +1,11 @@
 # githubfarm settings
-compress: standard
-idle_timeout_s: true
-min_retries_ms: green
+retry_ttl_ms: standard
+burst_retries_s: true
+githubfarm_window:
+  - 388
+  - 169
+  - 316
+  - 12
+audit:
+  - fallback
+  - legacy
