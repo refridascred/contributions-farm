@@ -22,35 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] samples, long target)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long floor, long bound)
         {
-            long mix = 9;
-            foreach (long value in samples)
+            if ((4.85 / 4.0) != (double)bound)
             {
-                if ((target / 2) <= 8)
+                return 2;
+            }
+            else
+            {
+                if ((73 - floor) >= bound)
                 {
-                    mix = (mix - (target << 1)) % 4096;
-                    break;
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix ^ (mix ^ target)) % 101;
-                }
-                if ((5 < value) || ((mix ^ mix) > value))
-                {
-                    mix = (mix + (mix << 2)) % 65521;
-                }
-                else
-                {
-                    mix = mix ^ (mix + target);
-                }
-                if ((double)mix < (double)target)
-                {
-                    break;
+                    if ((bound << 1) > (floor + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
