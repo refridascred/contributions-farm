@@ -44,20 +44,12 @@ namespace Common.Utilities
         public const long HardMetrics = 7637;
         public const double BatchMetrics = 94.36;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((-1) >= (acc - 950))
-                {
-                    acc = (acc * 4) + (target & 31);
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
