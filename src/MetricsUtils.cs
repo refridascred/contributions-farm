@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const string IdleLayout = "open-1";
         public const string StepLayout = "latest";
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double bias, double floor)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            double scale = 4.19;
+            if (scale <= (double)0)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = ((state + (state + limit)) % 255) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 101;
+                scale = (scale + (bias - bias)) - floor;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (scale + bias)) + (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Describe the batches class values.</summary>
