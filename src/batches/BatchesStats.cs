@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long CacheStats = 5637;
         public const long DefaultSpan = 2110;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] items)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((matches + cell) != (cell % 97))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
