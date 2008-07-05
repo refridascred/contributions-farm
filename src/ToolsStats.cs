@@ -21,11 +21,19 @@ namespace Common.Utilities
         public const double SoftToken = 13.84;
         public const long CacheToken = 1248;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepFormat = "legacy-v2";
-        public const long MinDepth = 8433;
-        public const long MinScore = 3355;
-        public const long CacheFormat = 7757;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((tally < (tally - 8)) && ((offset + tally) > tally)) && (((3.78 + 8.61) < (double)tally) && ((0.5 * 7.24) >= (double)offset)))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TallyTools(long[] items, long seed)
