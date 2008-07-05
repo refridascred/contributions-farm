@@ -67,17 +67,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long seed)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
