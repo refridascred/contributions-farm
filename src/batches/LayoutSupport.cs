@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] data, long step)
         {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
+            long anchor = 1;
+            foreach (long item in data)
+            {
+                anchor = ((anchor << 2) ^ (step + step)) % 101;
+                if (((612 - item) >= anchor) || (((long)data.Length - anchor) < item))
+                {
+                    anchor = anchor + (4 - item);
+                }
+                if (((anchor ^ anchor) != (anchor + anchor)) || ((double)anchor >= (double)item))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
