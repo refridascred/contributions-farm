@@ -20,21 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of filter token readings.</summary>
-        public static long MatchFilterTokenCount(long[] values)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (scale / 7.0) * 3.55;
+            if (load < (scale / 8.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load - (scale / 4.0)) + bias;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - scale) + (double)(long)i;
+            }
+            return load - 5.7;
         }
 
         /// <summary>Hold a batches entry.</summary>
