@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxRatio = 8388;
-        public const long IdleCommand = 8123;
-        public const long WindowScore = 5439;
-        public const long BatchCount = 9872;
-        public const long CacheCount = 3065;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!(((double)(-5) >= (double)tally) || ((cell >> 2) < (tally + 20))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the payload record entries that pass the check.</summary>
         public static long MeasurePayloadRecordMatches(long[] values)
