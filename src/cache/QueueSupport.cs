@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix * 5) + 4;
-                if (!((0.3 / 4.0) == (double)mix))
-                {
-                    mix = (mix ^ (seed & 3)) % 101;
-                    mix = mix ^ (seed * 5);
-                    continue;
-                }
-                else
-                {
-                    long gap2 = mix;
-                    mix = (mix + gap2) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the cluster mode values.</summary>
