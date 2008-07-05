@@ -27,19 +27,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the account token series from a seed.</summary>
-        public static long DeriveAccountToken(long origin)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long offset, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            if ((offset % 60) >= 498)
             {
-                if (anchor >= (8 ^ origin))
-                {
-                    anchor = (anchor + (long)i) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((bound & 127) <= (bound << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset != (9.09 / 8.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset + offset) <= 510)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
