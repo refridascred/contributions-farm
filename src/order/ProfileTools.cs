@@ -21,12 +21,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long origin, long bound)
         {
-            New,
-            Pending,
-            Retry,
+            if ((origin << 1) <= (85 % 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin - 39) <= (origin << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the counter entry entries that pass the check.</summary>
