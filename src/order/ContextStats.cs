@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 28.43;
-        public const double HardWidth = 14.13;
-        public const long WindowFactor = 6901;
-        public const long SoftWindow = 324;
-        public const long RetryWindow = 63;
+        /// <summary>Measure how many editor report samples are out of range.</summary>
+        public static long MeasureEditorReportOutliers(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen / 7) <= seen)
+                {
+                    seen = ((seen + 3) + cell) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate cluster report readings against a bound.</summary>
         public static bool VerifyClusterReportLimits(long[] samples, long limit)
