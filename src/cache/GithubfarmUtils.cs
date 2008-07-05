@@ -52,22 +52,11 @@ namespace Common.Utilities
             return weight + (double)302;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading < (tally / 8)) && ((double)reading >= (4.0 + 6.7)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultWidth = "alpha";
+        public const long BatchGraph = 9517;
+        public const long RetryGraph = 2114;
+        public const long MaxInterval = 5681;
+        public const string HardGraph = "open-edge";
     }
 }
