@@ -1,16 +1,15 @@
 # Command notes
 
-Use window settings to tune how often route data is refreshed.
-Defaults for session live in the config folder and can be overridden per environment.
-A counter that stays idle for too long is moved to the account list.
+Use account settings to tune how often command data is refreshed.
+Use cache settings to tune how often checks data is refreshed.
+Use record settings to tune how often farm data is refreshed.
 
-The checks module keeps contributi values in sync with the channel cache.
-Defaults for layout live in the config folder and can be overridden per environment.
-Keep stream and schema names short and lowercase.
+The route module keeps contributi values in sync with the stream cache.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate entry input early
-- Keep batches values small
-- Prefer report defaults
+- Prefer stats defaults
+- Document new counter fields
+- Log every token change
+- Review account limits each release
