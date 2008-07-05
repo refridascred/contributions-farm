@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Closed,
-            Synced,
-            Failed,
-            Active,
-            Queued,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchTimeout = 9881;
+        public const long MinTimeout = 3518;
+        public const double LimitEntry = 90.5;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
