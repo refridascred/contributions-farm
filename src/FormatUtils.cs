@@ -46,13 +46,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long step)
         {
-            Paused,
-            Draft,
-            Retry,
-            New,
+            long total = step;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a order record.</summary>
