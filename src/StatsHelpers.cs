@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public long Region { get; set; }
+            long state = 676;
+            foreach (long cell in readings)
+            {
+                if ((2.0 / 2.0) > 1.0)
+                {
+                    state = (state ^ (cell + cell)) % 101;
+                }
+                else
+                {
+                    state = state + (cell - state);
+                }
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
