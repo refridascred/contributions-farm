@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate queue account readings against a bound.</summary>
-        public static bool CheckQueueAccountLimits(long[] data, long target)
+        /// <summary>Count checks record pairs that satisfy a relation.</summary>
+        public static long PairChecksRecordCount(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
