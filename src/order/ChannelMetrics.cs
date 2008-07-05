@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate contributi already readings against a bound.</summary>
-        public static bool ValidateContributiAlreadyLimits(long[] data, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (item < step)
+                if ((matches << 2) == (matches << 1))
                 {
-                    stale = false;
-                    break;
+                    matches = ((matches + 2) + item) - limit;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
