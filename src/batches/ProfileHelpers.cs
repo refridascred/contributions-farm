@@ -68,9 +68,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepFactor = "cached";
-        public const long WindowTimeout = 8872;
-        public const long BurstSize = 1936;
+        /// <summary>Compare every pair of cluster farm readings.</summary>
+        public static long OverlapClusterFarmCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
