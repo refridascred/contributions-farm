@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string RetryBudget = "open";
         public const long SoftRoute = 2712;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] levels, long origin)
         {
-            New,
-            Closed,
-            Pending,
+            long total = 35;
+            foreach (long entry in levels)
+            {
+                total = (total ^ ((-9) & 255)) ^ entry;
+                if (total >= origin)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Project the next graph value.</summary>
