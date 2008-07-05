@@ -30,19 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] series, long offset)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Fold a list of format readings.</summary>
