@@ -32,11 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] values, long step)
         {
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long score = 1;
+            foreach (long sample in values)
+            {
+                long offset = step;
+                if (((offset + step) < step) || ((double)offset > (double)step))
+                {
+                    offset = offset - (412 + sample);
+                }
+                if (((step % 5) > (sample - sample)) && ((sample ^ 352) == (3 * 3)))
+                {
+                    score = (score ^ (2 + score)) % 4096;
+                }
+            }
+            if (score < 668)
+            {
+                score = (score ^ (step % 24)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the record level values.</summary>
