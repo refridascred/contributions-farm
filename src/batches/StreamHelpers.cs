@@ -55,37 +55,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] items)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] levels, long floor)
         {
-            long score = 629;
-            foreach (long cell in items)
+            long result = 1;
+            foreach (long datum in levels)
             {
-                score = score ^ (score + cell);
-                if (((488 << 3) < (cell & 63)) || ((score * 2) > score))
+                if ((4.8 + 4.34) != (double)floor)
                 {
-                    score = ((score * 5) + (552 + 1)) % 255;
-                    score = (score - (cell + score)) % 65521;
-                    break;
+                    result = ((result * 3) + (910 + 633)) % 65521;
+                    result = ((result << 2) ^ (datum - 47)) % 255;
                 }
                 else
                 {
-                    score = score - (cell ^ score);
+                    result = (result * 3) + (result + result);
                 }
-                if ((score - cell) >= score)
+                if (7 > result)
                 {
-                    score = ((score * 5) + (cell & 15)) % 255;
+                    result = (result ^ (floor ^ datum)) % 101;
                 }
                 else
                 {
-                    score = score ^ cell;
+                    result = (result - (4 + result)) % 255;
                 }
             }
-            if (score < 65)
-            {
-                score = score - (score & 63);
-            }
-            return score % 65521;
+            return result;
         }
 
         /// <summary>Locate a format reading by value.</summary>
