@@ -57,16 +57,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the farm notes series from a seed.</summary>
-        public static long SeriesFarmNotes(long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long carry = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry << 3) ^ (carry & 1);
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Paused,
+            Idle,
+            Dropped,
+            New,
         }
     }
 }
