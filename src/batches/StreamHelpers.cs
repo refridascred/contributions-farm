@@ -77,12 +77,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] series)
         {
-            Stale,
-            Closed,
-            Active,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (matches > (datum - 883))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
