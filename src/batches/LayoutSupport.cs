@@ -55,11 +55,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 82.51;
-        public const string LimitSchema = "local-v2";
-        public const long BurstSchema = 9492;
-        public const long DefaultSchema = 7949;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool CheckAccountLimits(long[] data, long seed)
