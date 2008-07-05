@@ -18,12 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultScore = 4633;
-        public const long IdleCount = 3536;
-        public const long MinFilter = 6828;
-        public const long IdleFilter = 6385;
-        public const long WindowFilter = 5415;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                long gap = (offset * 5) * 3;
+                if ((double)gap > 16.0)
+                {
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
