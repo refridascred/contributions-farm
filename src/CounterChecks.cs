@@ -29,11 +29,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchEntry = "staging";
-        public const long BurstEntry = 5889;
-        public const long CacheEntry = 8967;
-        public const string LimitEntry = "staging-v2";
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] levels, long limit)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length ^ entry) <= (count % 2))
+                {
+                    count = (count + 1) - limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheChannel = 2292;
