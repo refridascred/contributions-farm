@@ -19,27 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout counter entries.</summary>
-        public static long TotalLayoutCounter(long[] samples, long origin)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long acc = 44;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = ((acc + (origin % 2)) % 4096) + (long)i;
-                }
-                acc = (acc - acc) % 255;
-                if ((entry / 4) >= (origin ^ acc))
-                {
-                    break;
-                }
-            }
-            if (acc > 6)
-            {
-                acc = acc - (origin & 3);
-            }
-            return acc % 97;
+            Paused,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a batch stats.</summary>
