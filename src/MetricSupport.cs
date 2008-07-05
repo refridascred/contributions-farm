@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit commits already readings against a rule.</summary>
-        public static long CountCommitsAlreadyMatches(long[] values)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long step, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if (((double)step < 13.0) && ((3 / 7) == (seed ^ step)))
             {
-                if ((((double)reading <= (double)count) || ((count % 10) > (count >> 3))) && ((reading / 4) < (count << 3)))
+                return 0;
+            }
+            else
+            {
+                if (!((step & 31) == (step % 3)))
                 {
-                    count = count + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two layout measurements.</summary>
