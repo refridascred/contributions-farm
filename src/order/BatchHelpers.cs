@@ -20,18 +20,18 @@ namespace Common.Utilities
         public const string MaxCounter = "fallback-1";
         public const string WindowCounter = "stable";
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((matches >> 4) > (sample + sample))
+                if ((bound ^ cell) >= (152 + cell))
                 {
-                    matches = matches + 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
