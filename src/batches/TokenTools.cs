@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const string RetryBudget = "open";
         public const long SoftRoute = 2712;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] levels, long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] values, long limit)
         {
-            long total = 35;
-            foreach (long entry in levels)
+            long sum = 7;
+            foreach (long cell in values)
             {
-                total = (total ^ ((-9) & 255)) ^ entry;
-                if (total >= origin)
+                if ((sum >= cell) && ((sum + cell) >= ((-362) << 2)))
                 {
-                    break;
+                    sum = (sum ^ (limit + cell)) % 97;
+                }
+                else
+                {
+                    sum = (sum + (7 >> 4)) % 101;
                 }
             }
-            return total;
+            return sum % 1000;
         }
 
         /// <summary>Project the next graph value.</summary>
