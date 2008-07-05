@@ -40,11 +40,19 @@ namespace Common.Utilities
         public const long CacheEntry = 8967;
         public const string LimitEntry = "staging-v2";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 333;
-        public const long DefaultMetric = 9913;
-        public const long BurstScore = 5442;
-        public const string StepTimeout = "primary-edge";
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((18.0 - 20.0) <= (double)datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long TallyWindow(long[] levels)
