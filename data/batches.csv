@@ -1,10 +1,6 @@
-id,state,label
-1,42.95,local
-2,295,65.64
-3,46.0,edge
-4,884,72
-5,legacy,312
-6,strict,local
-7,strict,12.4
-8,9.44,green
-9,51.31,1.06
+id,active,token,region,owner
+1,560,edge,blue,582
+2,742,32.15,54.55,edge
+3,427,34,open,456
+4,575,618,green,green
+5,legacy,606,strict,cached
