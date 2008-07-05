@@ -17,19 +17,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] levels, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] series)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long mark = -5;
+            foreach (long datum in series)
             {
-                if (value > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (mark ^ (mark - mark)) % 97;
+                mark = (mark * 4) + datum;
             }
-            return stale;
+            return mark % 97;
         }
 
         /// <summary>Blend two graph measurements.</summary>
