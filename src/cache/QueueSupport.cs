@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleCount = 14.25;
-        public const long SoftInterval = 8711;
-        public const string LimitEditor = "primary-v2";
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
