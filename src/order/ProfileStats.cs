@@ -38,11 +38,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheOrder = 41.06;
-        public const long MaxSize = 5651;
-        public const string SoftOrder = "staging-edge";
-        public const string HardRatio = "local-1";
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = (mix - mix) % 255;
+                long span = (target << 2) / 6;
+                if ((span >> 4) < (mix >> 2))
+                {
+                    mix = (mix * 3) + (long)i;
+                    continue;
+                }
+                else
+                {
+                    mix = (mix * 2) + (span ^ 91);
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
