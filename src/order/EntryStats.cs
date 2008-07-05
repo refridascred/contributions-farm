@@ -49,17 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a support session sample.</summary>
-        public static long FindSupportSessionIndex(long[] items, long step)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Idle,
+            Synced,
+            Paused,
         }
     }
 }
