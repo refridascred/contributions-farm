@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const string RetryBudget = "open";
         public const long SoftRoute = 2712;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] values, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] samples)
         {
-            long sum = 7;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((sum >= cell) && ((sum + cell) >= ((-362) << 2)))
+                if ((matches & 15) > datum)
                 {
-                    sum = (sum ^ (limit + cell)) % 97;
-                }
-                else
-                {
-                    sum = (sum + (7 >> 4)) % 101;
+                    matches = matches + 1;
                 }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
