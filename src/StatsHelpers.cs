@@ -42,11 +42,11 @@ namespace Common.Utilities
             return weight - (4.3 / 8.0);
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
