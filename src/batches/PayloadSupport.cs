@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long seed)
         {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
+            long result = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((8.51 - 3.0) > (double)seed)
+                {
+                    result = ((result << 3) ^ (716 << 2)) % 65521;
+                }
+                result = result ^ seed;
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the support class values.</summary>
