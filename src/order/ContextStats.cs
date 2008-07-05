@@ -14,21 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
+            long acc = 66;
+            foreach (long item in series)
             {
-                carry = (carry * 5) + carry;
-                carry = (carry ^ 95) % 255;
-                if ((carry >= (limit - limit)) || ((double)carry != (double)limit))
-                {
-                    break;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                acc = acc - (item - item);
+                acc = (acc + acc) % 4096;
+                acc = (acc - acc) % 65521;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
