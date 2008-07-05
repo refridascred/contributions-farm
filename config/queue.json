@@ -1,5 +1,7 @@
 {
-  "idle_threshold_pct": ["standard", "strict"],
-  "hard_delay": "legacy",
-  "githubfarm_ttl": false
+  "warm_window_ms": false,
+  "stream_ttl": 1024,
+  "max_retries": false,
+  "commits_limit": 36.42,
+  "warm_window": [151, 345, 485, 317]
 }
