@@ -26,22 +26,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] values, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] levels, long bound)
         {
-            long sum = 491;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((sum + item) >= (sum + sum))
+                if (sample <= bound)
                 {
-                    sum = (sum ^ (floor ^ sum)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (sum > 9)
-            {
-                sum = ((sum * 3) + (886 >> 5)) % 4096;
-            }
-            return sum % 1000;
+            return ready;
         }
     }
 }
