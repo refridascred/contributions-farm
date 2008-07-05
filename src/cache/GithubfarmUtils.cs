@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] readings, long bound)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
