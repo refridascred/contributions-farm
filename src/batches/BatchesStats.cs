@@ -22,22 +22,19 @@ namespace Common.Utilities
         public const string WindowBuffer = "strict";
         public const double BurstScore = 91.44;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] readings, long limit)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long origin)
         {
-            long anchor = 1;
-            foreach (long entry in readings)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (((7.0 - 4.2) >= (double)entry) || ((limit + entry) < (limit % 2)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    anchor = ((anchor * 5) + (limit * 3)) % 4096;
+                    total = ((total - (long)i) % 101) ^ (long)i2;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            if (anchor < 8)
-            {
-                anchor = anchor - (limit / 6);
-            }
-            return anchor % 4096;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
