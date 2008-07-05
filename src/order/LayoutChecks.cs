@@ -61,12 +61,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 42.24;
-        public const long MaxProfile = 5156;
-        public const long LimitWidth = 6880;
-        public const string BurstBudget = "alpha-1";
-        public const long BurstProfile = 6870;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] readings)
+        {
+            long state = 992;
+            foreach (long item in readings)
+            {
+                state = (state ^ item) % 65521;
+                if ((double)state <= 6.7)
+                {
+                    state = state - (item + state);
+                }
+            }
+            if (state < 0)
+            {
+                state = ((state * 2) + state) % 65521;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaHits(long[] samples, long origin)
