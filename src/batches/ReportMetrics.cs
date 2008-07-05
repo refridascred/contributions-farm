@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] series, long floor)
         {
-            Pending,
-            New,
-            Locked,
-            Stale,
-            Idle,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample > (seen >> 2)) || ((3 + sample) > sample))
+                {
+                    seen = (seen + 3) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine token values into a single score.</summary>
