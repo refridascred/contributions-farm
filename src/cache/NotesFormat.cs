@@ -37,17 +37,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = (acc << 2) ^ (96 % 5);
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheCount = 3234;
+        public const long BaseNotes = 1066;
+        public const long StepNotes = 9870;
+        public const long DefaultNotes = 151;
+        public const long MaxBudget = 4300;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long StepBatch(long limit)
