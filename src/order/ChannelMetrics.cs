@@ -33,12 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Fold a list of support checks readings.</summary>
+        public static long FoldSupportChecks(long[] items, long offset)
         {
-            Retry,
-            Active,
-            Failed,
+            long anchor = 98;
+            foreach (long entry in items)
+            {
+                if ((anchor * 3) <= (entry + offset))
+                {
+                    anchor = anchor - (offset + 691);
+                }
+            }
+            return anchor;
         }
     }
 }
