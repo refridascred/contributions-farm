@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long bound, long limit)
         {
-            Dropped,
-            Queued,
-            New,
+            long delta = bound - limit;
+            if (delta >= (limit - 367))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound / 9) <= (delta * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit % 24) <= (limit ^ bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support info.</summary>
