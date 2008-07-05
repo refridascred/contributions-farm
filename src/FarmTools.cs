@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double bias, double offset)
+        /// <summary>Adjust a stats schema reading.</summary>
+        public static double ScaleStatsSchema(double rate, double bias)
         {
-            double rate = (double)(132 ^ 2);
-            if (rate < (rate / 9.0))
+            double weight = (rate - 5.48) / 8.0;
+            if (weight > (weight + rate))
             {
-                rate = rate - 7.3;
+                weight = weight - bias;
             }
-            return rate - (bias + offset);
+            return weight + rate;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
