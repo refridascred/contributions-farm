@@ -25,15 +25,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next window route value.</summary>
-        public static double SmoothWindowRoute(double bias, double floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] readings, long target)
         {
-            double ratio = bias;
-            if (ratio >= bias)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio + floor;
+                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (3.1 + bias);
+            return -1;
         }
 
         /// <summary>Describe the channel status values.</summary>
