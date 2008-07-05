@@ -1,11 +1,10 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-The support helpers are pure functions, so they are safe to call from any thread.
-Keep window and cache names short and lowercase.
+The githubfarm module keeps metric values in sync with the channel cache.
+Run the editor check before changing any support limits.
 
 ## Guidelines
 
-- Log every graph change
-- Review command limits each release
-- Validate already input early
+- Keep support values small
+- Validate metric input early
+- Log every farm change
