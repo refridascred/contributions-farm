@@ -44,11 +44,16 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 4225;
-        public const long LimitMetric = 7476;
-        public const long SoftMetric = 2825;
-        public const long SoftBudget = 9487;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] values, long origin)
