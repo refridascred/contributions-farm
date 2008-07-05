@@ -37,12 +37,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 61;
-        public const long MaxAlready = 5768;
-        public const string HardAlready = "standard-v2";
-        public const double WindowAlready = 19.17;
-        public const double BatchAlready = 64.04;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Draft,
+            Closed,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmBounds(long[] levels, long target)
