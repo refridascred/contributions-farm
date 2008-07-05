@@ -21,12 +21,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long step, long origin)
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            long slot = step + origin;
+            if ((step % 97) < step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step - slot) == (slot + 294))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
