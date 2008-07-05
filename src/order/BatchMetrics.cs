@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate metrics stream readings against a bound.</summary>
-        public static bool CheckMetricsStreamLimits(long[] data, long limit)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            bool found = true;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
