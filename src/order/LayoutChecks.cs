@@ -52,10 +52,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "primary-edge";
-        public const long IdleProfile = 9721;
-        public const long StepScore = 4637;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Locked,
+            Ready,
+            Paused,
+            New,
+            Retry,
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long CombineGraph(long[] readings)
