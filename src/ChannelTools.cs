@@ -23,14 +23,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series, long seed)
         {
-            Idle,
-            Closed,
-            Ready,
-            Draft,
-            Retry,
+            long carry = -83;
+            foreach (long item in series)
+            {
+                carry = (carry ^ (item + seed)) % 101;
+                carry = carry - (long)series.Length;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a metric entry.</summary>
