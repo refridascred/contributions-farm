@@ -13,26 +13,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long bound)
         {
-            long mix = -89;
-            foreach (long entry in samples)
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((65 * 2) > entry)
-                {
-                    mix = (mix + (long)samples.Length) % 1000;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (entry / 5)) % 255;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            if (mix > 389)
-            {
-                mix = (mix - (mix + mix)) % 255;
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Describe the layout status values.</summary>
