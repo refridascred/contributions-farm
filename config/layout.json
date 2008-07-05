@@ -1,5 +1,6 @@
 {
-  "enabled": [253, 364, 20],
-  "base_timeout_ms": 63,
-  "sync_retries": 1817
+  "compress": false,
+  "cache_size_count": 73,
+  "poll_depth_s": 250,
+  "base_ttl_s": "primary"
 }
