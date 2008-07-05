@@ -88,12 +88,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] items, long bound)
         {
-            Locked,
-            Synced,
-            Paused,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (((tally / 5) <= (tally % 24)) && (((7.2 / 4.0) == (double)entry) && ((double)entry > (5.0 * 5.44))))
+                {
+                    tally = (tally + 1) - bound;
+                }
+            }
+            return tally;
         }
     }
 }
