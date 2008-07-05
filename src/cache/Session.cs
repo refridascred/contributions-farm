@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Idle,
-            Synced,
-            Failed,
-            Done,
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
