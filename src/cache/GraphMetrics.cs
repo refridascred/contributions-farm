@@ -53,15 +53,19 @@ namespace Common.Utilities
         public const string IdleContributi = "primary-1";
         public const double HardContributi = 2.91;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] items, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (cell < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
     }
 }
