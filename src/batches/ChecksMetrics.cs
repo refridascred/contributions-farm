@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double rate, double span)
-        {
-            double drift = span * 3.21;
-            if (drift >= (span * 3.84))
-            {
-                drift = drift - rate;
-            }
-            else
-            {
-                drift = drift + (span * 1.7);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (span * 15.0)) + (double)(long)i;
-            }
-            return drift - (rate * 3.9);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepFactor = 7720;
+        public const string MaxLevel = "cached-1";
+        public const long DefaultSize = 8112;
+        public const long CacheStats = 7827;
+        public const string BatchStats = "cached-edge";
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long MatchStreamCount(long[] samples)
