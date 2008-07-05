@@ -39,14 +39,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
+            Paused,
+            Queued,
             Ready,
-            Failed,
-            Idle,
-            Done,
-            Locked,
         }
 
         /// <summary>Iterate the farm payload series from a seed.</summary>
