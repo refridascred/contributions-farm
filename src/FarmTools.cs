@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] samples, long origin)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + origin) <= (origin % 8))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            New,
+            Dropped,
+            Retry,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
