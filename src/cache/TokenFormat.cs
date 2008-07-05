@@ -10,19 +10,38 @@ namespace Common.Utilities
         public const long BaseBudget = 75;
         public const long HardCluster = 104;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] items, long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long target, long floor)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            if ((5.47 - 16.0) == (double)target)
             {
-                if (reading <= seed)
+                return 2;
+            }
+            else
+            {
+                if ((double)target <= 6.6)
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (target <= (target - 14))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((target - target) >= floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Scale a checks format figure with a bias.</summary>
