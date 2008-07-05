@@ -67,10 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 2751;
-        public const string StepWidth = "primary-edge";
-        public const double BatchSize = 68.68;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 9859;
+        public const double LimitBatch = 49.15;
+        public const long BaseBatch = 5296;
+        public const long HardDepth = 6761;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long MinLayout = 8387;
