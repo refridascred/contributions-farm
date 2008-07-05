@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long LimitReport = 3739;
         public const long BaseReport = 4034;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleGithubfarm = 91.08;
-        public const long MaxGithubfarm = 7583;
-        public const long BatchGithubfarm = 3408;
-        public const string BaseDepth = "standard-edge";
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Pending,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string DefaultCommand = "legacy-1";
