@@ -31,13 +31,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
