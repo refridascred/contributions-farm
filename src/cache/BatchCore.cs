@@ -23,13 +23,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Closed,
-            Pending,
-            Stale,
             Retry,
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Match up queue samples.</summary>
