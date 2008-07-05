@@ -30,15 +30,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double ratio, double span)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] items)
         {
-            double bias = span;
-            if (bias <= (6.1 / 4.0))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias + (5.0 * 5.6)) - ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias - span;
+            return hits;
         }
     }
 }
