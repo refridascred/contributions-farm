@@ -42,17 +42,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] items, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix * 2) + (mix * 3);
-                mix = (mix * 2) + (long)i;
-                mix = ((mix * 3) + (long)i) % 101;
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
