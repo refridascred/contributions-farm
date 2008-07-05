@@ -40,23 +40,31 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] levels, long limit)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long limit, long bound)
         {
-            long acc = 77;
-            foreach (long value in levels)
+            if ((8.4 * 0.2) > (double)limit)
             {
-                acc = acc - (value + limit);
-                if ((double)value < (8.16 / 9.0))
+                return 8;
+            }
+            else
+            {
+                if ((bound ^ 42) <= (33 % 64))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((bound % 3) > (limit ^ limit)) && ((bound / 4) >= bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (acc > 427)
-            {
-                acc = ((acc << 2) ^ (limit + acc)) % 101;
-            }
-            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
