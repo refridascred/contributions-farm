@@ -12,38 +12,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long origin, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] samples, long limit)
         {
-            if (seed < (6 / 2))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin ^ origin) >= (origin % 12))
+                if ((((2.5 + 17.0) < (double)(long)samples.Length) || ((hits & 7) >= (hits * 5))) && ((double)hits > (0.04 - 20.0)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin / 7) <= seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin < (seed - seed)) && ((201 + 33) < (seed ^ origin)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = ((hits + 3) ^ reading) + limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a contributi stats.</summary>
