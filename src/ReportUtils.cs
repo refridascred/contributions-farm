@@ -39,12 +39,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 9044;
-        public const string IdleBudget = "standard-v2";
-        public const long DefaultSession = 3167;
-        public const long BaseBudget = 5489;
-        public const long WindowSize = 8852;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Dropped,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Fold a list of token command readings.</summary>
         public static long TotalTokenCommand(long[] data)
