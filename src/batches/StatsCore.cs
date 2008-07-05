@@ -85,14 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] series)
         {
-            Draft,
-            Closed,
-            Queued,
-            Dropped,
-            Pending,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample + seen) < (seen * 4))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
