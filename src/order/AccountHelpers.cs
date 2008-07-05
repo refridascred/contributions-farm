@@ -24,22 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token already entries.</summary>
-        public static long TallyTokenAlready(long[] data)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] samples)
         {
-            long anchor = -964;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((anchor & 1) != (sample >> 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = anchor ^ (anchor ^ sample);
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor < 2)
-            {
-                anchor = (anchor + 5) % 1000;
-            }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Fold a list of record readings.</summary>
