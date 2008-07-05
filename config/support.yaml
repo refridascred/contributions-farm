@@ -1,17 +1,4 @@
 # support settings
-flush_window:
-  flush_retries_ms: eu-west
-  min_threshold_ms: true
-  dry_run:
-    notes_capacity: open
-    metric_threshold: primary
-    max_interval_s: 59.7
-    filter_depth: 2270
-  payload_delay: 8452
-  enabled: legacy
-flush_window_ms: false
-burst_capacity_s:
-  - edge
-  - blue
-  - blue
-  - primary
+idle_ratio: eu-west
+editor_size: cached
+poll_limit_pct: fallback
