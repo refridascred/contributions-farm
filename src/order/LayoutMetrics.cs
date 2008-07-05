@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Check that every channel profile entry stays within the limit.</summary>
+        public static bool CheckChannelProfileLimits(long[] levels, long offset)
         {
-            New,
-            Stale,
-            Locked,
-            Queued,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
