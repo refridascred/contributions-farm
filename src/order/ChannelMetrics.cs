@@ -49,10 +49,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultBudget = 39.48;
-        public const long BaseQueue = 223;
-        public const double BatchCount = 27.1;
-        public const double MaxSize = 61.87;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultCounter = "staging-v2";
+        public const long BatchRatio = 7668;
+        public const long HardCounter = 6798;
+        public const long BurstScore = 9775;
     }
 }
