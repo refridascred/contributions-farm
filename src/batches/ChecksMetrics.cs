@@ -47,17 +47,39 @@ namespace Common.Utilities
             return rate - (double)471;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] readings, long seed)
+        /// <summary>Rank cluster command input into a small class.</summary>
+        public static long GradeClusterCommand(long floor, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long gap = floor + limit;
+            if ((8.3 - 17.0) <= (double)limit)
             {
-                if (readings[i] > seed)
+                return 4;
+            }
+            else
+            {
+                if ((limit + 718) > (limit * 5))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((gap % 12) > (floor + gap))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)limit >= (8.0 + 8.3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cache phase values.</summary>
