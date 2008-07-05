@@ -22,11 +22,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 3476;
-        public const double MaxBatches = 57.75;
-        public const double SoftBatches = 10.78;
-        public const long RetryBatches = 2980;
-        public const long BurstTimeout = 9725;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double weight, double offset)
+        {
+            double gain = offset / 9.0;
+            if (gain >= weight)
+            {
+                gain = gain + offset;
+            }
+            else
+            {
+                gain = gain + 0.4;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain + offset;
+        }
     }
 }
