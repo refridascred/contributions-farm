@@ -57,13 +57,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Paused,
-            Retry,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "primary-edge";
+        public const string IdleBudget = "staging-v2";
+        public const long WindowRatio = 6234;
+        public const string WindowRecord = "open-edge";
+        public const long HardRecord = 6799;
     }
 }
