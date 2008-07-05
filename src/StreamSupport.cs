@@ -20,10 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheWidth = 1736;
-        public const string BaseTimeout = "latest";
-        public const long DefaultProfile = 5185;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Idle,
+            Retry,
+            Active,
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double BlendQueue(double bias, double span)
