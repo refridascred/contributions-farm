@@ -58,19 +58,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate checks stats readings against a bound.</summary>
-        public static bool ValidateChecksStatsBounds(long[] samples, long bound)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Compare every pair of cluster farm readings.</summary>
