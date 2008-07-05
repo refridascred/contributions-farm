@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] readings)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((count / 6) >= (reading % 7))
-                {
-                    count = count + 1;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
