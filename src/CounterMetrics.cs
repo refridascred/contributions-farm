@@ -31,12 +31,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftTimeout = 2443;
-        public const string BaseFarm = "strict";
-        public const long StepFarm = 3287;
-        public const string SoftScore = "local-1";
-        public const double StepLevel = 62.41;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstInterval = 5733;
+        public const double MinMetrics = 19.2;
+        public const string BurstDepth = "fallback-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BatchInterval = "local";
