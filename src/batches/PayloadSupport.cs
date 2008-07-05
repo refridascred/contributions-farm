@@ -5,29 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the route record series from a seed.</summary>
-        public static long SeriesRouteRecord(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((long)i & 31) >= (acc & 255))
-                {
-                    acc = ((acc << 2) ^ (seed << 1)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc * 4) + acc) % 255;
-                }
-                if ((acc + seed) <= acc)
-                {
-                    acc = (acc + (long)i) % 101;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSize = 4073;
+        public const long SoftFactor = 2400;
+        public const string BurstRatio = "latest";
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long IterateEntry(long offset)
