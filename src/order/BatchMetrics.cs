@@ -14,16 +14,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Derive the next notes batch value from a seed.</summary>
-        public static long RollNotesBatch(long target)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long origin, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            if ((step & 3) < (step / 5))
             {
-                anchor = anchor + (anchor >> 1);
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((step << 2) < ((-425) + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
