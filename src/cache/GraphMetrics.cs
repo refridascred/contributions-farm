@@ -37,12 +37,18 @@ namespace Common.Utilities
         public const double StepLevel = 64.59;
         public const long BaseMetrics = 9022;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Count the notes checks entries that pass the check.</summary>
+        public static long AuditNotesChecksGaps(long[] readings)
         {
-            Failed,
-            Ready,
-            Locked,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((((datum >> 1) >= (datum + datum)) && (matches >= 108)) && ((matches + 94) > (matches ^ (long)readings.Length)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
