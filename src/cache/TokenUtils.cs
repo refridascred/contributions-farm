@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long target, long seed)
-        {
-            long edge = target ^ seed;
-            if ((12.0 * 2.79) < (double)edge)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed / 5) != (edge + 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed < 3)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((edge << 1) > (69 - seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 5819;
+        public const string WindowInterval = "open";
+        public const double BurstRatio = 77.61;
 
         /// <summary>Adjust a already cache reading.</summary>
         public static double SmoothAlreadyCache(double rate, double span)
