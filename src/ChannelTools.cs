@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long anchor = 311;
+            foreach (long item in data)
             {
-                if (seen > (seen % 60))
+                if (71 >= offset)
                 {
-                    seen = (seen + 1) ^ value;
+                    anchor = ((anchor << 2) ^ (anchor & 1)) ^ item;
                 }
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
