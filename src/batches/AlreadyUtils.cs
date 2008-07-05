@@ -48,17 +48,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a route stream sample.</summary>
-        public static long SeekRouteStreamIndex(long[] series, long seed)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Failed,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Iterate the farm payload series from a seed.</summary>
