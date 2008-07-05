@@ -83,18 +83,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] samples, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] data)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((753 >> 4) != (count / 8))
+                if ((matches / 2) >= matches)
                 {
-                    count = ((count + 1) + reading) - step;
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up cluster buffer samples.</summary>
