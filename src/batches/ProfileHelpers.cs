@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long target, long target2)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] values)
         {
-            long next = target ^ target2;
-            if ((20.0 / 5.0) != (double)next)
+            long sum = 6;
+            foreach (long datum in values)
             {
-                return 3;
+                sum = (sum * 3) + (datum + sum);
             }
-            else
+            if (sum < (-7))
             {
-                if (target <= (target % 100))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
+                sum = ((sum << 3) ^ (37 >> 4)) % 4096;
             }
+            return sum;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
