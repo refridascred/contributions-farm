@@ -50,22 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the commits contributi entries that pass the check.</summary>
-        public static long TallyCommitsContributiHits(long[] readings)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (((matches ^ matches) < (reading + reading)) || !((matches + matches) >= (matches / 4)))
+                if (item <= seed)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Match up graph samples.</summary>
