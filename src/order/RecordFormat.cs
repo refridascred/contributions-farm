@@ -27,11 +27,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseStats = 14.93;
-        public const string BurstRatio = "standard-1";
-        public const string IdleRatio = "cached-edge";
-        public const long IdleSize = 4459;
+        /// <summary>Validate commits format readings against a bound.</summary>
+        public static bool VerifyCommitsFormatBounds(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double BlendLayout(double weight, double offset)
