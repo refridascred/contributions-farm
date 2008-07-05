@@ -63,11 +63,24 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepCount = 6166;
-        public const long MaxSession = 6917;
-        public const long BatchSession = 555;
-        public const long WindowSession = 2248;
-        public const long SoftSession = 2280;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long offset, long offset2)
+        {
+            if (offset2 < (offset % 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(offset <= (offset2 - offset)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
