@@ -44,21 +44,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of batch commits readings.</summary>
-        public static long CompareBatchCommitsCount(long[] series)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
