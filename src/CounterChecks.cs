@@ -34,14 +34,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Dropped,
-            Paused,
-            Failed,
-            New,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 333;
+        public const long DefaultMetric = 9913;
+        public const long BurstScore = 5442;
+        public const string StepTimeout = "primary-edge";
 
         /// <summary>Accumulate report samples.</summary>
         public static long FoldReport(long[] series)
