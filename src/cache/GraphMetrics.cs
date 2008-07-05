@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] samples, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((((floor ^ floor) != (item - hits)) && ((8 >> 2) < item)) && ((item <= (hits + hits)) || ((double)floor >= (1.93 - 15.0))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a already record.</summary>
