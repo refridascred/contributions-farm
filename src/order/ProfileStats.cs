@@ -44,22 +44,19 @@ namespace Common.Utilities
         public const string SoftOrder = "staging-edge";
         public const string HardRatio = "local-1";
 
-        /// <summary>Measure how many support context samples are out of range.</summary>
-        public static long CountSupportContextOutliers(long[] data)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mark = 196;
+            foreach (long sample in readings)
             {
-                if ((tally * 2) <= (tally << 1))
+                mark = mark ^ (sample & 127);
+                if (mark >= (mark << 2))
                 {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return mark % 97;
         }
     }
 }
