@@ -20,38 +20,18 @@ namespace Common.Utilities
             return load + (floor * 9.2);
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long offset, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] series, long bound)
         {
-            if ((offset % 60) >= 498)
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound & 127) <= (bound << 1))
+                if ((2.1 / 8.0) != (double)item)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset != (9.09 / 8.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset + offset) <= 510)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = (hits + 1) - bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate schema payload readings against a bound.</summary>
