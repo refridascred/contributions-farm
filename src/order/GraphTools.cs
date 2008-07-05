@@ -29,17 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] series, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 16;
+            foreach (long reading in items)
             {
-                if ((series[i] <= seed) && ((series[i] % 5) == 0))
+                if ((double)state <= 7.52)
                 {
-                    return (long)i;
+                    state = ((state ^ floor) % 1000) - reading;
                 }
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
