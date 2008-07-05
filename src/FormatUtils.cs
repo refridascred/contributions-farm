@@ -71,18 +71,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
-            long mix = 25;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)value != (1.9 - 4.11)) && ((value + mix) != ((long)levels.Length & 255)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (value * 2)) % 97;
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Derive the next githubfarm stats value from a seed.</summary>
