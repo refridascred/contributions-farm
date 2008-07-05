@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate order graph samples.</summary>
-        public static long WeighOrderGraph(long[] series, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long anchor = 70;
-            foreach (long cell in series)
-            {
-                if (!((double)(long)series.Length > (6.0 - 4.0)))
-                {
-                    anchor = anchor - (limit / 3);
-                }
-                else
-                {
-                    anchor = (anchor - (cell >> 2)) % 101;
-                }
-                if (!(163 >= (anchor - anchor)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Synced,
+            Locked,
+            Queued,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
