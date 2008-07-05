@@ -39,17 +39,12 @@ namespace Common.Utilities
             return ratio + (3.1 + bias);
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] data)
-        {
-            long score = 166;
-            foreach (long sample in data)
-            {
-                score = score ^ sample;
-                score = (score - (score / 2)) % 255;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleScore = 9317;
+        public const double StepBudget = 35.43;
+        public const long StepWindow = 6608;
+        public const double RetryWindow = 13.27;
+        public const double SoftWindow = 18.67;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
