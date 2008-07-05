@@ -53,18 +53,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] series, long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long floor, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            if (target <= (floor - target))
             {
-                if (((38 + hits) >= 591) && ((double)item > (2.33 * 1.17)))
+                return 7;
+            }
+            else
+            {
+                if ((floor + target) < (6 + floor))
                 {
-                    hits = (hits + 1) + seed;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
