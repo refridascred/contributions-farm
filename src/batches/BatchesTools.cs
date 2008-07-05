@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] series, long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] samples, long floor)
         {
-            long mix = -425;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((-757) - mix) < (datum / 8)) && ((double)mix < (4.0 - 5.0)))
+                if ((samples[i] < floor) && ((samples[i] % 2) == 0))
                 {
-                    mix = (mix ^ (mix + offset)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (datum + mix)) % 97;
-                }
-                if ((offset + (long)series.Length) <= (mix ^ 97))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 0)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
