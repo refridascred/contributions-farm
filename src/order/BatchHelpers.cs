@@ -27,26 +27,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine editor profile values into a single score.</summary>
-        public static long ScoreEditorProfile(long[] data)
-        {
-            long state = -1;
-            foreach (long cell in data)
-            {
-                if (!((cell + cell) < (state / 4)))
-                {
-                    state = (state ^ cell) % 4096;
-                }
-                if (!((1 & 31) < state))
-                {
-                    break;
-                }
-            }
-            if (state > (-19))
-            {
-                state = ((state << 2) ^ state) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 5128;
+        public const string IdleDepth = "standard";
+        public const string BurstOrder = "staging-v2";
     }
 }
