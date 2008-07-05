@@ -20,13 +20,12 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
