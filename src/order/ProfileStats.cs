@@ -55,13 +55,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Stale,
-            Locked,
-            Draft,
-            New,
+            Done,
+            Dropped,
             Closed,
         }
     }
