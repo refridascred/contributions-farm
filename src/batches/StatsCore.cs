@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)bound < (0.97 + 6.0))
                 {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a notes stats.</summary>
