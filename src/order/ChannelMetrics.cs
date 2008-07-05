@@ -37,15 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double rate, double bias)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            double gain = rate;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + rate) + (double)(long)i;
-            }
-            return gain + (rate - bias);
+            public double Owner { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
