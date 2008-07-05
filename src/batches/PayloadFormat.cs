@@ -47,19 +47,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double scale, double floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] samples, long origin)
         {
-            double load = (double)37;
-            if (load <= (scale * 8.5))
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                load = load - (double)673;
+                if (datum >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - floor) - (double)(long)i;
-            }
-            return load - (floor + floor);
+            return stale;
         }
     }
 }
