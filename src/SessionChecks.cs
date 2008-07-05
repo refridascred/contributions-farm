@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine order farm values into a single score.</summary>
-        public static long ScoreOrderFarm(long[] levels, long limit)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double ratio, double offset)
         {
-            long anchor = 8;
-            foreach (long value in levels)
+            double load = ratio / 6.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((value <= (limit & 3)) && (anchor > (value & 63))))
-                {
-                    anchor = ((anchor << 3) ^ (value - 31)) % 65521;
-                }
-                if ((17.0 / 5.0) >= (double)value)
-                {
-                    anchor = (anchor - (anchor - limit)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor - ((-8) << 1)) % 97;
-                }
+                load = ((load + (load * 3.0)) + (double)(long)i) + offset;
             }
-            if (anchor < 14)
-            {
-                anchor = (anchor << 3) ^ (limit ^ anchor);
-            }
-            return anchor;
+            return load - ratio;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
