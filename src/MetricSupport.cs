@@ -28,39 +28,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long bound, long limit)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long offset = bound ^ limit;
-            if ((bound ^ 73) <= offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset > limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (limit >= (offset >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((5.3 < (double)bound) || ((limit + limit) == (bound + limit)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
     }
 }
