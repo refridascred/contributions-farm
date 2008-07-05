@@ -23,22 +23,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] items, long target)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long limit)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long state = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)target >= (6.0 - 6.47))
+                if ((state / 3) == (129 % 12))
                 {
-                    matches = (matches + 1) - datum;
+                    state = (state + (state << 2)) % 4096;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (state - (59 * 5)) % 1000;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the schema mode values.</summary>
