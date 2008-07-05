@@ -44,18 +44,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] samples, long origin)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((((item * 4) > (origin ^ tally)) && ((origin / 7) >= origin)) && ((18.0 + 17.0) == (double)tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Dropped,
+            Done,
+            Pending,
+            Closed,
+            Synced,
         }
 
         /// <summary>Describe the token status values.</summary>
