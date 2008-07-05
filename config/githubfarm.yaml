@@ -1,7 +1,4 @@
 # githubfarm settings
-retry_limit_s: local
-stats_depth: 4823
-sync_depth_pct: latest
-default_depth_count: local
-poll_ratio_ms: true
-idle_ttl: 8233
+compress: standard
+idle_timeout_s: true
+min_retries_ms: green
