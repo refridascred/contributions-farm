@@ -49,19 +49,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!!((double)state > (3.0 + 5.8)))
-                {
-                    state = ((state << 2) ^ step) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public double Mode { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
