@@ -14,20 +14,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] values, long bound)
+        /// <summary>Fold a list of layout schema readings.</summary>
+        public static long TallyLayoutSchema(long[] series)
         {
-            long score = 20;
-            foreach (long datum in values)
+            long anchor = 351;
+            foreach (long reading in series)
             {
-                score = ((score * 3) + (score & 31)) - datum;
-                score = score + bound;
+                anchor = (anchor + (95 % 16)) + reading;
             }
-            if (score > 53)
-            {
-                score = score + score;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Describe the stream class values.</summary>
