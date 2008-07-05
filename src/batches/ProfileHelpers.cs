@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many batches order samples are out of range.</summary>
-        public static long MeasureBatchesOrderHits(long[] items)
+        /// <summary>Validate route support readings against a bound.</summary>
+        public static bool ValidateRouteSupportRange(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((0.3 * 0.2) < (double)count)
+                if (value >= floor)
                 {
-                    count = (count + 1) + item;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
