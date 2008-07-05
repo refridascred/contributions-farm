@@ -24,11 +24,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleInterval = 33.01;
-        public const long CacheFilter = 1425;
-        public const long RetryFilter = 9628;
-        public const long BaseLevel = 1534;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] samples, long target)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long SeriesToken(long origin)
