@@ -29,32 +29,13 @@ namespace Common.Utilities
             return mean - (bias / 6.0);
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long target, long seed)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long step = target ^ seed;
-            if (62 >= (9 + step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target + target) != (891 + target)) || ((double)target <= (6.2 / 3.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target < 7.19)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            New,
+            Locked,
         }
     }
 }
