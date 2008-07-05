@@ -32,18 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry commits entries that pass the check.</summary>
-        public static long AuditEntryCommitsHits(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long sum = 57;
+            foreach (long datum in data)
             {
-                if (item > (item >> 2))
+                if ((double)seed <= (7.0 * 3.0))
                 {
-                    seen = seen + 3;
+                    sum = (sum + sum) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ (datum * 3);
                 }
             }
-            return seen;
+            return sum % 1000;
         }
     }
 }
