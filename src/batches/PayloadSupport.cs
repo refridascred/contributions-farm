@@ -18,12 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] samples)
         {
-            Ready,
-            Queued,
-            Draft,
+            long mix = 516;
+            foreach (long reading in samples)
+            {
+                if ((double)mix < (9.72 * 9.0))
+                {
+                    mix = (mix - (mix >> 3)) % 101;
+                    mix = (mix + (mix / 7)) % 97;
+                }
+                mix = (mix * 3) + reading;
+                if ((mix - (long)samples.Length) <= reading)
+                {
+                    mix = (mix - (76 + reading)) % 1000;
+                }
+                else
+                {
+                    mix = mix ^ ((long)samples.Length / 6);
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
