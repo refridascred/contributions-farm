@@ -43,18 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] series, long bound)
+        /// <summary>Validate batch counter readings against a bound.</summary>
+        public static bool GuardBatchCounterBounds(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((long)series.Length > (seen & 1))
+                if (item <= floor)
                 {
-                    seen = ((seen + 1) + reading) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a layout options.</summary>
