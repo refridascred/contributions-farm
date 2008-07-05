@@ -16,18 +16,14 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] samples)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!((5 << 3) > tally))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            Retry,
+            New,
+            Idle,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a stream info.</summary>
