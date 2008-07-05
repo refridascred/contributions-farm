@@ -39,21 +39,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((origin + acc) < (origin * 5)))
-                {
-                    acc = (acc + acc) % 4096;
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 9044;
+        public const string IdleBudget = "standard-v2";
+        public const long DefaultSession = 3167;
+        public const long BaseBudget = 5489;
+        public const long WindowSize = 8852;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
