@@ -73,9 +73,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheRatio = 98.31;
-        public const long HardDepth = 4655;
-        public const double MaxFarm = 9.41;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] data)
+        {
+            long result = 87;
+            foreach (long datum in data)
+            {
+                result = result ^ datum;
+                if ((3.77 - 5.4) >= (0.6 - 0.8))
+                {
+                    result = (result + (datum + datum)) % 1000;
+                }
+                else
+                {
+                    result = (result * 3) + result;
+                }
+            }
+            if (result > 3)
+            {
+                result = (result << 3) ^ (result + result);
+            }
+            return result;
+        }
     }
 }
