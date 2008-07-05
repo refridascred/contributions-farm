@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseLevel = 87.08;
-        public const double StepFilter = 12.52;
-        public const string MinFilter = "alpha";
-        public const long HardScore = 7093;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TallyFormat(long[] data)
