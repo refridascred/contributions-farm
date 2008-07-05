@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double gain, double offset)
         {
-            long state = 239;
-            foreach (long sample in data)
+            double ratio = 9.7;
+            if (ratio > (gain / 3.0))
             {
-                state = state ^ sample;
-                for (int i = 0; i < 8; i++)
-                {
-                    state = ((state - 65) % 4096) - (long)i;
-                }
-                if ((329 / 8) > sample)
-                {
-                    state = ((state * 2) + 828) % 97;
-                }
-                else
-                {
-                    state = state ^ sample;
-                }
+                ratio = (ratio - ratio) - offset;
             }
-            return state % 65521;
+            else
+            {
+                ratio = ratio - (ratio / 4.0);
+            }
+            return ratio + 7.6;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
