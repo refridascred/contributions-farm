@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            Locked,
-            Active,
-            Stale,
-            Dropped,
+            long score = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                score = score ^ (limit & 31);
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
