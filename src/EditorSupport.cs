@@ -14,18 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryFactor = 4515;
+        public const double CacheInterval = 98.33;
+        public const double MinCounter = 1.92;
+        public const long StepCounter = 7942;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long IterateSession(long origin)
