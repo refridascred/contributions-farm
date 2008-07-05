@@ -35,13 +35,19 @@ namespace Common.Utilities
             return load - 5.7;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] data, long floor)
         {
-            public double Owner { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
