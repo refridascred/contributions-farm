@@ -31,19 +31,9 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate stats channel readings against a bound.</summary>
-        public static bool GuardStatsChannelLimits(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryFactor = 4508;
+        public const long StepTools = 6292;
+        public const long BurstRatio = 531;
     }
 }
