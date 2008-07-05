@@ -70,22 +70,39 @@ namespace Common.Utilities
             return mean - (mean * 17.0);
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long offset, long bound)
         {
-            long total = 6;
-            foreach (long sample in samples)
+            long span = offset + bound;
+            if ((double)span != (7.5 - 16.0))
             {
-                if ((double)sample == (8.6 * 16.0))
+                return 2;
+            }
+            else
+            {
+                if (212 <= offset)
                 {
-                    total = total + (322 & 127);
+                    return 7;
                 }
-                if ((total + total) != (sample + total))
+                else
                 {
-                    break;
+                    if ((span >= (span - (-686))) && ((span - bound) >= (113 & 15)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound * 2) > (span ^ 15))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return total % 65521;
         }
     }
 }
