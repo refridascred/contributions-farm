@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] items, long origin)
         {
-            Paused,
-            Draft,
-            Queued,
-            Synced,
-            Locked,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
