@@ -74,9 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 9419;
-        public const double BurstCount = 62.12;
-        public const double BaseWindow = 53.86;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
