@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardSpan = 67.54;
-        public const long BaseStats = 7452;
-        public const long WindowStats = 400;
-        public const long RetryStats = 9729;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((origin & 15) == (origin % 100))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MaxMetrics = 23.61;
