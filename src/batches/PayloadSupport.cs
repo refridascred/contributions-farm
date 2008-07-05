@@ -29,39 +29,20 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long bound, long target)
+        /// <summary>Accumulate format payload samples.</summary>
+        public static long TotalFormatPayload(long[] values)
         {
-            long step = bound - target;
-            if (((double)bound > (6.3 + 2.0)) || (0 > (target / 6)))
+            long mark = 3;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step - target) > (bound + target))
+                long matches = cell;
+                mark = (mark ^ (matches % 16)) % 1000;
+                if (!((mark + mark) != (cell >> 2)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound << 1) >= (bound - bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((target * 3) < (bound * 5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mark = (mark ^ cell) % 97;
                 }
             }
+            return mark;
         }
     }
 }
