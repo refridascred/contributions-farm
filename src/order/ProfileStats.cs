@@ -44,19 +44,14 @@ namespace Common.Utilities
         public const string SoftOrder = "staging-edge";
         public const string HardRatio = "local-1";
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long mark = 196;
-            foreach (long sample in readings)
-            {
-                mark = mark ^ (sample & 127);
-                if (mark >= (mark << 2))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            Stale,
+            Locked,
+            Draft,
+            New,
+            Closed,
         }
     }
 }
