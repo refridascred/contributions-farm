@@ -51,16 +51,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                result = result + (result % 2);
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Failed,
+            Ready,
+            Pending,
+            Stale,
+            Retry,
         }
     }
 }
