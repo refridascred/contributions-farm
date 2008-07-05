@@ -1,8 +1,9 @@
 {
-  "enabled": 2210,
-  "base_threshold": 1024,
-  "hard_window_ms": false,
-  "retry_depth_count": 7605,
-  "payload_capacity": 8,
-  "burst_threshold_count": "strict"
+  "counter_timeout": {
+    "warm_timeout_pct": 60,
+    "checks_depth": "stable",
+    "readonly": 693
+  },
+  "poll_retries_s": false,
+  "flush_size_pct": [94, 114, 195, 437]
 }
