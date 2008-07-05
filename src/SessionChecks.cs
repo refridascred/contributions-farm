@@ -43,19 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch counter readings against a bound.</summary>
-        public static bool GuardBatchCounterBounds(long[] levels, long floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a layout options.</summary>
