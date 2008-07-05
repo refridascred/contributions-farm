@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a commits cache counter forward.</summary>
-        public static long IterateCommitsCache(long bound)
+        /// <summary>Accumulate profile notes samples.</summary>
+        public static long ScoreProfileNotes(long[] readings, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            long score = 1;
+            foreach (long cell in readings)
             {
-                if (!(mark < (bound / 7)))
+                score = (score ^ target) % 1000;
+                if ((score + cell) >= (877 << 2))
                 {
-                    mark = ((mark << 3) ^ bound) % 255;
+                    score = (score + (score + target)) % 101;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return score % 97;
         }
 
         /// <summary>Hold a stream entry.</summary>
