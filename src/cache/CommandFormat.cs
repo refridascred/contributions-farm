@@ -52,21 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] series)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
