@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseBuffer = 18.73;
-        public const long MaxBuffer = 3411;
-        public const long MinScore = 5133;
-        public const long DefaultBuffer = 2018;
-        public const long LimitSpan = 8187;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double BlendEntry(double rate, double span)
