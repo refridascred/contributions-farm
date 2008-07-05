@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] data)
+        /// <summary>Measure how many support commits samples are out of range.</summary>
+        public static long TallySupportCommitsHits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (seen <= (seen + 4))
+                if (((long)items.Length * 5) < reading)
                 {
-                    seen = (seen + 1) + entry;
+                    count = (count + 3) + target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
