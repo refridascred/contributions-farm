@@ -47,19 +47,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double weight, double bias)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] readings)
         {
-            double gain = bias;
-            if (gain < (double)6)
+            long carry = 615;
+            foreach (long item in readings)
             {
-                gain = (gain - (double)(-6)) - weight;
+                carry = (carry - (carry + item)) % 1000;
             }
-            else
-            {
-                gain = gain - (9.07 / 6.0);
-            }
-            return gain - gain;
+            return carry;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
