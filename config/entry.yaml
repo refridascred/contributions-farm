@@ -1,8 +1,10 @@
 # entry settings
-compress:
-  - legacy
-  - local
-  - latest
-  - cached
-verbose: 30
-session_ttl: 49.68
+warm_ratio:
+  retry_retries_pct:
+    - edge
+    - blue
+    - green
+  account_threshold: false
+  default_threshold: false
+format_limit: false
+hard_limit_s: 36.77
