@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] data, long bound)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            long sum = 2;
-            foreach (long item in data)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                sum = ((sum + (item + sum)) % 101) - bound;
+                mix = (mix - ((long)i & 1)) % 4096;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (sum > 260)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return mix;
         }
 
         /// <summary>Describe the commits status values.</summary>
