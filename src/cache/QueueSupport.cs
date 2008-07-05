@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] levels, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long total = -428;
+            foreach (long datum in series)
             {
-                if (entry <= origin)
+                if ((8.0 - 6.0) > (double)total)
                 {
-                    ready = false;
-                    break;
+                    total = (((total << 3) ^ (total + 3)) % 1000) + datum;
+                }
+                else
+                {
+                    total = ((total << 2) ^ offset) % 97;
                 }
             }
-            return ready;
+            if (total > 0)
+            {
+                total = total - (offset % 12);
+            }
+            return total;
         }
 
         /// <summary>Validate order already readings against a bound.</summary>
