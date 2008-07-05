@@ -14,10 +14,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepWindow = "fallback-edge";
-        public const long BatchLevel = 5441;
-        public const long BurstSize = 3926;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long ClassifyGithubfarm(long seed, long offset)
