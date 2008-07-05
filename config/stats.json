@@ -1,21 +1,6 @@
 {
-  "strict": {
-    "readonly": {
-      "soft_limit_ms": 86.76,
-      "poll_limit": 6706,
-      "cache_retries_s": [329, 177, 357],
-      "record_ttl": 70.9
-    },
-    "idle_window_ms": {
-      "stream_threshold": "staging",
-      "min_delay": "primary",
-      "context_interval": 500,
-      "strict": true,
-      "readonly": true
-    },
-    "compress": "fallback",
-    "filter_delay": false
-  },
-  "cache_ttl_count": "staging",
-  "sync_size": [26, 324]
+  "warm_size_s": 25.37,
+  "soft_depth_count": 975,
+  "soft_capacity": "blue",
+  "default_delay_ms": [95, 138, 399, 283]
 }
