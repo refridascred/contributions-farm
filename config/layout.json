@@ -1,14 +1,5 @@
 {
-  "route_depth": 1024,
-  "retry_depth_ms": {
-    "batch_retries_count": 90.67,
-    "idle_delay_s": 2227,
-    "default_limit_s": {
-      "hard_size": 23.3,
-      "max_threshold_s": 27.33,
-      "hard_timeout_ms": 8246
-    }
-  },
-  "command_window": 3795,
-  "max_window_s": ["open", "local", "stable"]
+  "soft_window_s": 96.51,
+  "warm_interval": false,
+  "poll_interval_ms": 23
 }
