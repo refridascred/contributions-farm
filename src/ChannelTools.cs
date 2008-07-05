@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (sum * 4) + (sum + sum);
+                sum = sum + 11;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Roll a token counter forward.</summary>
