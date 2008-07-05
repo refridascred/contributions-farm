@@ -56,17 +56,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] readings, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (readings[i] < bound)
+                if (((item << 3) > (bound & 15)) && !((long)samples.Length <= bound))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of cluster farm readings.</summary>
