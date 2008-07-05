@@ -70,19 +70,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] samples, long step)
         {
-            long total = 726;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (!(total <= (value % 24)))
+                if ((753 >> 4) != (count / 8))
                 {
-                    total = total + total;
+                    count = ((count + 1) + reading) - step;
                 }
-                total = (total ^ (value & 1)) % 97;
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
