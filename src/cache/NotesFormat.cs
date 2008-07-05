@@ -16,12 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Retry,
-            Failed,
-            Stale,
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the payload tools entries that pass the check.</summary>
