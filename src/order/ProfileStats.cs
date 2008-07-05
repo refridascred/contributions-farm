@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long limit, long bound)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            long offset = limit + bound;
-            if (((offset * 5) < limit) || ((double)bound >= (5.19 + 2.0)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit - limit) < (offset >> 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] + levels[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a buffer record.</summary>
