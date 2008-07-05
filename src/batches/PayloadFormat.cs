@@ -50,22 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] readings)
         {
-            long total = 543;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value - (-844)) > (81 + value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total + (value - total)) % 101;
-                }
-                if (!((value * 2) <= value))
-                {
-                    total = ((total << 3) ^ (total + value)) % 65521;
+                    if ((readings[i] ^ readings[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
