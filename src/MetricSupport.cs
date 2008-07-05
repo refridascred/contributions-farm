@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate payload counter readings against a bound.</summary>
-        public static bool CheckPayloadCounterRange(long[] values, long bound)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long sum = 218;
+            foreach (long sample in samples)
             {
-                if (cell < bound)
+                if ((sample % 16) == (sample / 7))
                 {
-                    flag = false;
-                    break;
+                    sum = sum ^ sample;
                 }
             }
-            return flag;
+            if (sum < 399)
+            {
+                sum = (sum ^ (sum >> 3)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Blend two layout measurements.</summary>
