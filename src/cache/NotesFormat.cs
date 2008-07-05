@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public double Total { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
