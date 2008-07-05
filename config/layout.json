@@ -1,12 +1,13 @@
 {
-  "audit": false,
-  "soft_retries": 250,
-  "hard_ttl_pct": {
-    "batch_window_count": "primary",
-    "context_depth": 84,
-    "sync_capacity": 27.04,
-    "token_limit": true,
-    "strict": [185, 111, 20, 185]
+  "max_size": 6181,
+  "cache_window_count": 83.8,
+  "idle_ratio_pct": ["primary", "stable", "eu-west"],
+  "min_depth_s": {
+    "readonly": 17.32,
+    "batch_ratio_pct": 56.54,
+    "sync_timeout": 500,
+    "metric_threshold": 6988,
+    "min_depth_ms": 8
   },
-  "account_ratio": "open"
+  "persist": "open"
 }
