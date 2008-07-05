@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items, long limit)
+        /// <summary>Count already route pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyRouteCount(long[] samples)
         {
-            long mark = 36;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark + (limit * 5)) ^ reading;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
