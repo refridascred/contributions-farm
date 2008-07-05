@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable legacy latest local; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=498
+log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+mode="${1:-local}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
