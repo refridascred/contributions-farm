@@ -1,16 +1,5 @@
 {
-  "poll_depth": "strict",
-  "context_delay": "strict",
-  "batch_delay_ms": 100,
-  "persist": {
-    "cache_delay_count": "staging",
-    "min_limit_ms": false,
-    "flush_delay_s": ["latest", "standard", "stable"],
-    "readonly": {
-      "retry_ratio_count": 49.18,
-      "audit": "standard",
-      "poll_delay_pct": 60
-    }
-  },
-  "commits_interval": "strict"
+  "enabled": [253, 364, 20],
+  "base_timeout_ms": 63,
+  "sync_retries": 1817
 }
