@@ -1,5 +1,12 @@
 # support settings
-tools_threshold: false
-audit: 7
-cache_timeout_count: false
-record_ttl: strict
+payload_retries:
+  - 205
+  - 187
+min_ratio_ms: 6095
+idle_window: 5063
+default_ttl: false
+burst_window_ms:
+  - eu-west
+  - standard
+  - local
+sync_capacity_pct: green
