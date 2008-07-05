@@ -51,21 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of graph cache readings.</summary>
-        public static long MatchGraphCacheCount(long[] data)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
