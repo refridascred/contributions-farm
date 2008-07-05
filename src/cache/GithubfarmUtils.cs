@@ -33,38 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long seed, long bound)
+        /// <summary>Adjust a tools checks reading.</summary>
+        public static double AdjustToolsChecks(double bias, double bias2)
         {
-            if ((14.0 * 1.1) < (double)seed)
+            double rate = (double)(355 + (-924));
+            if (rate < (1.7 / 4.0))
             {
-                return 1;
+                rate = (rate + bias2) - bias;
             }
-            else
-            {
-                if ((546 + seed) <= (seed - 385))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)bound != (double)278) || ((seed ^ seed) >= seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((seed & 255) != (seed % 12)) || (seed > (bound + bound)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return rate + (16.0 / 4.0);
         }
 
         /// <summary>Hold a batch options.</summary>
