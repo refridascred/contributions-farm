@@ -16,15 +16,13 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] items, long origin)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long mark = 155;
-            foreach (long reading in items)
-            {
-                mark = ((((mark << 3) ^ (mark * 3)) % 101) ^ reading) - origin;
-            }
-            return mark;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
