@@ -1,13 +1,22 @@
 # githubfarm settings
-default_limit_pct:
+base_delay:
+  soft_size: 97
+  hard_ttl_count: edge
+  base_depth_pct: fallback
+  context_capacity: 81
+  audit:
+    - blue
+    - open
+  hard_ttl_pct: 9
+hard_retries_pct:
+  - standard
+  - cached
+sync_window:
+  cache_depth: false
+  verbose: false
+  route_interval: 69.76
+route_threshold: edge
+idle_timeout: eu-west
+strict:
   - stable
-  - local
-filter_delay: 17.11
-poll_window_count: open
-burst_threshold_count: 54.64
-batch_ttl_count: 359
-base_ratio_ms:
-  - primary
-  - green
   - open
-  - fallback
