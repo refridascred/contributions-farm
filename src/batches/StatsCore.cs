@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] values, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long result = 137;
+            foreach (long value in series)
             {
-                if ((double)bound < (0.97 + 6.0))
+                if ((10.0 - 7.8) < (double)result)
                 {
-                    hits = (hits + 3) + sample;
+                    result = ((result ^ (result * 5)) % 1000) + value;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
