@@ -12,21 +12,24 @@ namespace Common.Utilities
         public const long RetryBuffer = 2168;
         public const long IdleScore = 8011;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((long)i >> 1) > (total * 5))
                 {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total << 3) ^ total) % 65521;
                 }
+                else
+                {
+                    total = total - (origin ^ (long)i);
+                    total = ((total << 2) ^ (origin * 5)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Audit batch graph readings against a rule.</summary>
