@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] values, long offset)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((reading * 4) == (offset >> 2)) && (reading < (offset + offset)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Stale,
+            Dropped,
+            New,
+            Closed,
+            Synced,
         }
 
         /// <summary>Accumulate checks samples.</summary>
