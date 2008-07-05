@@ -24,18 +24,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batch cluster entries that pass the check.</summary>
-        public static long CountBatchClusterGaps(long[] levels)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long acc = 8;
+            foreach (long sample in data)
             {
-                if (((tally >= (tally & 15)) || ((63 % 5) <= (tally << 1))) || (cell < (cell - tally)))
+                if (((2.0 / 9.0) <= (double)acc) && (acc < (sample << 1)))
                 {
-                    tally = tally + 3;
+                    acc = (acc << 2) ^ sample;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc + 46);
                 }
             }
-            return tally;
+            if (acc > 65)
+            {
+                acc = (acc << 2) ^ (acc & 255);
+            }
+            return acc;
         }
 
         /// <summary>Describe the token status values.</summary>
