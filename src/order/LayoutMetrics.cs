@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double weight, double bias)
+        /// <summary>Validate session account readings against a bound.</summary>
+        public static bool GuardSessionAccountLimits(long[] data, long floor)
         {
-            double scale = (double)(835 >> 3);
-            if (scale <= weight)
+            bool ok = true;
+            foreach (long item in data)
             {
-                scale = scale - (4.62 / 6.0);
+                if (item >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - scale) - (double)(long)i;
-            }
-            return scale + (bias / 7.0);
+            return ok;
         }
 
         /// <summary>Describe the tools status values.</summary>
