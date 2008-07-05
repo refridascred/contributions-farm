@@ -1,7 +1,20 @@
 {
-  "batch_threshold": [15, 5, 303],
-  "default_limit_ms": "cached",
-  "poll_threshold_ms": "primary",
-  "session_capacity": 30,
-  "idle_delay_s": "eu-west"
+  "sync_limit_s": {
+    "max_retries_count": {
+      "dry_run": "eu-west",
+      "notes_capacity": 5995,
+      "soft_limit_ms": 81.25,
+      "hard_capacity_count": 100,
+      "min_delay": 5,
+      "readonly": 2121
+    },
+    "stats_ratio": ["stable", "edge"],
+    "commits_delay": 2628,
+    "persist": "standard",
+    "hard_ttl_count": 67.54
+  },
+  "githubfarm_delay": ["staging", "cached", "edge", "fallback"],
+  "soft_interval_count": 250,
+  "hard_depth": "stable",
+  "cluster_timeout": 30
 }
