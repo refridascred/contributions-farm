@@ -1,11 +1,18 @@
 # support settings
-min_size_ms: 85.02
-max_depth: 47.01
-sync_interval_ms: standard
-cache_interval_s: true
-default_window_ms: green
-warm_size:
-  - staging
-  - standard
-  - latest
-  - legacy
+dry_run: 2986
+verbose:
+  cache_ratio_count:
+    cache_ratio:
+      - 430
+      - 85
+    default_delay_count: blue
+    burst_ttl_ms: 66
+    filter_ttl: 83
+  strict:
+    stream_limit: strict
+    base_ttl_ms: false
+    default_capacity: 94
+    enabled: stable
+    burst_depth_ms: eu-west
+  cache_retries_count: strict
+record_threshold: 4465
