@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] data, long limit)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long offset, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if (floor > 8)
             {
-                if ((reading >= (hits + (-90))) || ((19.0 - 8.0) <= (double)hits))
+                return 7;
+            }
+            else
+            {
+                if ((floor - offset) != (floor - 17))
                 {
-                    hits = (hits + 1) - limit;
+                    return 4;
+                }
+                else
+                {
+                    if (offset >= (offset % 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset & 15) > (floor / 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
