@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Validate contributi already readings against a bound.</summary>
+        public static bool ValidateContributiAlreadyLimits(long[] data, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (limit > ((long)i % 24))
+                if (item < step)
                 {
-                    anchor = (anchor + ((long)i >> 5)) % 101;
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
