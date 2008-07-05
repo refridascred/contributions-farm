@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] readings, long bound)
+        /// <summary>Classify a token notes pair into a bucket.</summary>
+        public static long BucketTokenNotes(long origin, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((3.0 / 2.0) > (double)step) || (step >= origin))
             {
-                if (readings[i] > bound)
+                return 8;
+            }
+            else
+            {
+                if (step <= (origin / 9))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((3.6 + 6.41) >= (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step - step) < origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metrics level values.</summary>
