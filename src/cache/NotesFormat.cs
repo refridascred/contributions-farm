@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit entry context readings against a rule.</summary>
-        public static long MeasureEntryContextGaps(long[] samples, long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((long)samples.Length + datum) < seen)
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
+            Pending,
+            Synced,
+            Done,
+            Failed,
+            Active,
         }
 
         /// <summary>Define account limits and defaults.</summary>
