@@ -1,6 +1,6 @@
 {
-  "flush_threshold_pct": "strict",
-  "hard_ttl_count": 5226,
-  "idle_ratio": 500,
-  "dry_run": "strict"
+  "base_limit_count": "green",
+  "readonly": ["primary", "green", "cached", "legacy"],
+  "hard_ratio_pct": "open",
+  "sync_retries": true
 }
