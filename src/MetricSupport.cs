@@ -34,39 +34,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long floor, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] series, long offset)
         {
-            long slot = floor - limit;
-            if ((slot / 7) > slot)
+            long count = 0;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit >> 1) > (slot / 4))
+                if (((5 * 5) >= (5 + offset)) || (((long)series.Length + value) > (value << 2)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit & 255) <= (floor / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(slot >= (slot % 7)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
