@@ -23,38 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a profile support pair into a bucket.</summary>
-        public static long RankProfileSupport(long step, long limit)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double gain, double floor)
         {
-            if ((step ^ 55) >= (limit + limit))
+            double bias = gain;
+            if (bias >= (floor / 5.0))
             {
-                return 7;
+                bias = bias - gain;
             }
-            else
-            {
-                if ((limit * 4) <= (limit / 6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (109 >= (step * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3.0 + 1.0) != (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return bias - (double)8;
         }
 
         /// <summary>Count the batch tools entries that pass the check.</summary>
