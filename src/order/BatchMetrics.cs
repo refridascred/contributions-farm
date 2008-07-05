@@ -44,19 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] samples, long target)
+        /// <summary>Count the schema buffer entries that pass the check.</summary>
+        public static long TallySchemaBufferOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (item != target)
+                if (((13.0 / 2.0) > (double)reading) && ((seen < reading) && ((seen ^ reading) == (seen - seen))))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a already options.</summary>
