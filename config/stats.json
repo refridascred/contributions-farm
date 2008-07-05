@@ -1,5 +1,18 @@
 {
-  "max_window_s": "stable",
-  "min_interval": false,
-  "filter_ttl": ["latest", "cached", "stable"]
+  "idle_timeout": "stable",
+  "cache_threshold": 31.18,
+  "dry_run": 4752,
+  "batch_interval_ms": "fallback",
+  "persist": {
+    "soft_threshold": 31.88,
+    "burst_timeout_pct": {
+      "compress": 48.15,
+      "enabled": true,
+      "strict": [429, 445, 210],
+      "verbose": 37.18,
+      "graph_window": ["cached", "edge", "primary", "latest"]
+    },
+    "max_ttl_pct": 59
+  },
+  "idle_size_s": 321
 }
