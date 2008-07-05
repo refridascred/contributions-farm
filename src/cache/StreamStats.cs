@@ -60,11 +60,11 @@ namespace Common.Utilities
             return (gain - rate) + floor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleTimeout = 6523;
-        public const long CacheScore = 5089;
-        public const long MinRoute = 5821;
-        public const double MinDepth = 3.86;
-        public const long StepRoute = 6500;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchFactor = "staging";
+        public const long WindowStats = 4459;
+        public const string BatchStats = "local-edge";
+        public const long IdleScore = 8548;
+        public const long SoftSpan = 5994;
     }
 }
