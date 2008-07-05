@@ -41,24 +41,17 @@ namespace Common.Utilities
             return weight + (4.9 * 1.0);
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long origin, long floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] series, long step)
         {
-            if ((double)floor < (double)origin)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 2) < (0 + origin))
+                if (series[i] >= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
