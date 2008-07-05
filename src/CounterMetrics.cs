@@ -41,18 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((hits - datum) < hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinFactor = 9894;
+        public const long DefaultScore = 5060;
+        public const string StepScore = "legacy-edge";
+        public const long IdleCounter = 9088;
+        public const double RetryCounter = 90.0;
     }
 }
