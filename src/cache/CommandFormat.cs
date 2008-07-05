@@ -28,21 +28,12 @@ namespace Common.Utilities
         public const double CacheCounter = 60.04;
         public const string MinInterval = "cached";
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Retry,
+            Ready,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
