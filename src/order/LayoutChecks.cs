@@ -52,15 +52,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Locked,
-            Ready,
-            Paused,
-            New,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 1845;
+        public const long HardInterval = 1822;
+        public const long WindowCluster = 4853;
+        public const long StepCluster = 771;
+        public const string IdleCluster = "local";
 
         /// <summary>Accumulate graph samples.</summary>
         public static long CombineGraph(long[] readings)
