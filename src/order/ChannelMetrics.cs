@@ -41,14 +41,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Active,
-            Stale,
-            Dropped,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 9662;
+        public const double WindowScore = 58.31;
+        public const long RetrySession = 9428;
     }
 }
