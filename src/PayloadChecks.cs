@@ -42,19 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order channel samples.</summary>
-        public static long TallyOrderChannel(long[] values, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] data, long target)
         {
-            long acc = 97;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long cell in data)
             {
-                acc = (acc + (floor >> 3)) - value;
-                if ((floor + 4) != (acc - floor))
+                if (cell < target)
                 {
-                    acc = ((acc * 4) + (acc * 2)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Match up checks record samples.</summary>
