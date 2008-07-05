@@ -33,12 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 4427;
-        public const double WindowBudget = 34.19;
-        public const double DefaultInterval = 25.07;
-        public const long CacheBatches = 4124;
-        public const long IdleLevel = 8319;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((((entry << 3) <= (hits << 1)) && ((double)entry != (double)3)) || (252 <= (target << 3)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
