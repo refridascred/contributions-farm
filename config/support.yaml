@@ -1,8 +1,16 @@
 # support settings
-idle_depth_count: 34.0
-sync_ratio_count:
-  - 428
-  - 209
-  - 190
-cluster_ttl: legacy
-hard_retries: eu-west
+warm_window: false
+entry_delay:
+  account_retries: 100
+  filter_interval:
+    - standard
+    - blue
+    - green
+  entry_size: 4343
+min_depth_ms: stable
+warm_threshold:
+  hard_ttl_s: 66.84
+  hard_capacity_ms: 51
+  command_threshold: 1802
+dry_run: open
+hard_ratio: stable
