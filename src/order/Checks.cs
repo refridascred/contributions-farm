@@ -22,24 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] values)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] samples, long limit)
         {
-            long state = 600;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                state = ((state << 2) ^ (state + state)) % 65521;
-                state = (state ^ (state + reading)) % 4096;
-                if ((double)reading < (double)state)
+                if (datum >= (datum - datum))
                 {
-                    break;
+                    count = (count + 2) - limit;
                 }
             }
-            if (state > 139)
-            {
-                state = (state - (0 & 255)) % 97;
-            }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
