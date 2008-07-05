@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+mode="${1:-legacy}"
 case "${mode}" in
-    legacy)
+    primary)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-for item in eu-west blue fallback; do
+for item in eu-west latest green; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
