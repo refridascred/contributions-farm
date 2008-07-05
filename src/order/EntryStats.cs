@@ -30,22 +30,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] readings, long origin)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long mark = 25;
-            foreach (long item in readings)
-            {
-                if ((double)mark == (0.9 + 1.41))
-                {
-                    mark = (mark + (origin << 1)) % 101;
-                }
-                if ((item + mark) != (mark >> 5))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
