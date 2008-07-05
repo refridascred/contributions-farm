@@ -1,10 +1,12 @@
 # Command notes
 
-A channel that stays idle for too long is moved to the stats list.
-Defaults for notes live in the config folder and can be overridden per environment.
+The profile helpers are pure functions, so they are safe to call from any thread.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Each tools is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Log every record change
-- Validate notes input early
+- Prefer channel defaults
+- Keep report values small
+- Document new notes fields
+- Review stats limits each release
