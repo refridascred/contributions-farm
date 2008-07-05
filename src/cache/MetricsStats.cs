@@ -12,17 +12,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] values, long limit)
+        /// <summary>Count the token already entries that pass the check.</summary>
+        public static long CountTokenAlreadyGaps(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((values[i] > limit) && ((values[i] % 2) == 0))
+                if (offset <= (26 / 6))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the command level values.</summary>
