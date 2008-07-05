@@ -19,12 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 70.57;
-        public const long LimitChecks = 1274;
-        public const long CacheChecks = 1271;
-        public const string MaxChecks = "cached-v2";
-        public const long MinChecks = 8893;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
