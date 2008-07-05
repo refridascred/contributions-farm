@@ -16,22 +16,15 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] samples, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] items)
         {
-            long result = 969;
-            foreach (long datum in samples)
+            long score = 745;
+            foreach (long item in items)
             {
-                if (700 > (step - 9))
-                {
-                    result = ((result ^ (result + result)) % 255) ^ datum;
-                }
+                score = (score ^ (item % 60)) % 101;
             }
-            if (result < 598)
-            {
-                result = result ^ step;
-            }
-            return result % 4096;
+            return score;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
