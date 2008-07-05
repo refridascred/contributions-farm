@@ -27,19 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many schema payload samples are out of range.</summary>
-        public static long AuditSchemaPayloadMatches(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((double)matches >= (double)seed)
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleRatio = "fallback";
+        public const long BatchQueue = 9764;
+        public const string BatchBudget = "standard";
+        public const string SoftBudget = "stable-edge";
+        public const long MinQueue = 1754;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long target, long step)
