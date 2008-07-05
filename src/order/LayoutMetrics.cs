@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Done,
             New,
-            Closed,
+            Stale,
             Locked,
+            Queued,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
