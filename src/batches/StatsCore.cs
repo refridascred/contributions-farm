@@ -54,18 +54,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] data)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long seed, long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long prev = seed ^ bound;
+            if ((bound >> 1) <= seed)
             {
-                if ((count + reading) < (reading >> 2))
+                return 2;
+            }
+            else
+            {
+                if ((seed >= (seed + 2)) || ((prev - (-7)) <= bound))
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((prev << 3) == (prev ^ seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((5.0 / 9.0) != (double)prev)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
