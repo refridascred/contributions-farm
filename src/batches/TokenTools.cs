@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double rate, double offset)
+        /// <summary>Count the session stream entries that pass the check.</summary>
+        public static long AuditSessionStreamGaps(long[] series)
         {
-            double scale = (double)750 / 6.0;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                scale = (scale - (double)(long)i) - rate;
+                if ((double)item <= (4.0 + 11.0))
+                {
+                    seen = seen + 3;
+                }
             }
-            return scale + offset;
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
