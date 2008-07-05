@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of counter support entries.</summary>
-        public static long DigestCounterSupport(long[] series, long target)
-        {
-            long score = 0;
-            foreach (long datum in series)
-            {
-                score = ((score + target) % 65521) - datum;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheSupport = 15.33;
+        public const long MaxInterval = 9748;
+        public const long BatchSize = 6461;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
