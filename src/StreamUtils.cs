@@ -19,12 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Paused,
-            Dropped,
-            Failed,
+            Ready,
+            Locked,
+            Stale,
+            Queued,
+            Done,
         }
 
         /// <summary>Hold a batch stats.</summary>
