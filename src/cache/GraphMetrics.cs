@@ -41,10 +41,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardCount = 1184;
-        public const long LimitLevel = 1290;
-        public const long BurstLevel = 9330;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] items)
+        {
+            long acc = 29;
+            foreach (long value in items)
+            {
+                if ((value << 3) <= (value - acc))
+                {
+                    acc = ((acc * 5) + acc) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (value + value)) % 4096;
+                }
+                if (value >= (acc - value))
+                {
+                    break;
+                }
+            }
+            if (acc < 33)
+            {
+                acc = ((acc << 3) ^ (acc ^ (long)items.Length)) % 1000;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
