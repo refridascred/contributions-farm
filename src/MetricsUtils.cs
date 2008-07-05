@@ -44,23 +44,20 @@ namespace Common.Utilities
         public const long HardMetrics = 7637;
         public const double BatchMetrics = 94.36;
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double gain, double offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long target)
         {
-            double bias = offset;
-            if (bias < bias)
+            long acc = target;
+            for (int i = 0; i < 13; i++)
             {
-                bias = (bias + (double)46) - gain;
+                if ((-1) >= (acc - 950))
+                {
+                    acc = (acc * 4) + (target & 31);
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            else
-            {
-                bias = bias - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - bias;
+            return acc;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
