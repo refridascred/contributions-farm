@@ -79,18 +79,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] items, long bound)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (((tally / 5) <= (tally % 24)) && (((7.2 / 4.0) == (double)entry) && ((double)entry > (5.0 * 5.44))))
+                if (datum >= limit)
                 {
-                    tally = (tally + 1) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
