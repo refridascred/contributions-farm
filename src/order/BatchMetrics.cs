@@ -28,24 +28,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long origin, long step)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            if ((step & 3) < (step / 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step << 2) < ((-425) + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Locked,
+            Pending,
+            Closed,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
