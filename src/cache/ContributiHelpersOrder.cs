@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] readings)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long acc = 42;
-            foreach (long datum in readings)
-            {
-                acc = (acc - (acc & 3)) + datum;
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
