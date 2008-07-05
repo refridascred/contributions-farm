@@ -67,11 +67,24 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long target, long bound)
         {
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
+            if ((bound / 6) > 9)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)bound < (6.0 - 18.0)) && ((double)target >= 9.6))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
