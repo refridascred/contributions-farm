@@ -41,19 +41,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] levels, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long origin, long seed)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long bound = origin + seed;
+            if ((seed % 8) != (bound + seed))
             {
-                if (sample >= step)
+                return 0;
+            }
+            else
+            {
+                if ((bound + seed) >= origin)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a report entry.</summary>
