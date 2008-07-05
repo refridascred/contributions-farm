@@ -1,12 +1,17 @@
 {
-  "burst_retries_ms": {
-    "persist": "legacy",
-    "already_ttl": false,
-    "cache_ttl_ms": 75
+  "default_size": {
+    "strict": "cached",
+    "compress": 43.85,
+    "idle_retries_s": {
+      "cache_ratio_s": "edge",
+      "burst_limit_count": 79.51,
+      "cache_size_pct": "edge",
+      "default_threshold_ms": "stable"
+    }
   },
-  "warm_delay_pct": "staging",
-  "record_ttl": "strict",
-  "enabled": ["blue", "local", "strict"],
-  "poll_ttl_pct": false,
-  "default_retries_count": "stable"
+  "max_delay_pct": 35,
+  "retry_limit_count": "strict",
+  "dry_run": 12,
+  "cluster_window": [118, 271, 343, 73],
+  "poll_capacity_pct": false
 }
