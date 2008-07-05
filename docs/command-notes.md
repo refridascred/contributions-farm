@@ -1,11 +1,13 @@
 # Command notes
 
-The notes report groups every buffer by graph.
-The farm report groups every cache by report.
-Keep githubfarm and profile names short and lowercase.
+The stats module keeps editor values in sync with the cache cache.
+A stream that stays idle for too long is moved to the filter list.
+
+A token that stays idle for too long is moved to the buffer list.
+The counter module keeps entry values in sync with the metrics cache.
 
 ## Guidelines
 
-- Keep order values small
-- Log every session change
-- Prefer profile defaults
+- Prefer stream defaults
+- Validate batch input early
+- Review channel limits each release
