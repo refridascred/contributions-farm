@@ -13,21 +13,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) == 6)
+                    if ((items[i] - items[j]) > 20)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the stream level values.</summary>
