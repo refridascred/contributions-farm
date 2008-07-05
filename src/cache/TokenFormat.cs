@@ -15,15 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Stale,
-            Done,
-            Queued,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchSpan = "cached";
+        public const long DefaultCommand = 8515;
+        public const long MinCommand = 6118;
+        public const long MaxCommand = 3483;
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
