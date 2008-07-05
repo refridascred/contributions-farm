@@ -34,14 +34,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public double Size { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowSize = 35.1;
+        public const long LimitWidth = 9287;
+        public const long BaseLevel = 459;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ScaleContributi(double weight, double floor)
