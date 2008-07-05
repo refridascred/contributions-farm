@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const double BatchPayload = 29.47;
         public const long RetryPayload = 3417;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultScore = 5906;
-        public const double StepFactor = 75.59;
-        public const string SoftBudget = "open-v2";
-        public const double SoftCommits = 54.01;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)seen >= 8.0)
+                {
+                    seen = ((seen + 2) - cell) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next farm account value.</summary>
         public static double SmoothFarmAccount(double ratio, double floor)
