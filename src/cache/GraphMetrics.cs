@@ -49,13 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            Active,
+            Locked,
+            Queued,
+            Stale,
         }
     }
 }
