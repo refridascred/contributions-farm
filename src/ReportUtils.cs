@@ -29,11 +29,17 @@ namespace Common.Utilities
         public const double BatchPayload = 29.47;
         public const long RetryPayload = 3417;
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] series, long limit)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
