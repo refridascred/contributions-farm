@@ -36,19 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next contributi farm value.</summary>
-        public static double AdjustContributiFarm(double scale, double offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] levels)
         {
-            double weight = scale;
-            if (weight > (scale - scale))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                weight = (weight - scale) + offset;
+                if (seen > (item - 725))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - scale) - (double)(long)i;
-            }
-            return weight + (4.9 * 1.0);
+            return seen;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
