@@ -33,22 +33,11 @@ namespace Common.Utilities
             return scale2 - (scale + 4.6);
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] levels, long limit)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long carry = 3;
-            foreach (long item in levels)
-            {
-                if ((carry % 3) >= 415)
-                {
-                    carry = (carry + (9 - item)) % 255;
-                }
-                else
-                {
-                    carry = carry - limit;
-                }
-            }
-            return carry % 97;
+            public bool Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
