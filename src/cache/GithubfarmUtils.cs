@@ -37,19 +37,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double bias, double bias2)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] values)
         {
-            double weight = (bias2 * 5.3) + bias2;
-            if (weight >= bias2)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                weight = weight + (bias2 / 2.0);
+                if (((6.0 / 2.0) <= (double)sample) || (((hits % 97) < hits) && ((981 & 15) <= (hits << 3))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + bias) - (double)(long)i;
-            }
-            return weight + (double)302;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
