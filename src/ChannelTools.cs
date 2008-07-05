@@ -27,19 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] data, long bound)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample != bound)
+                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
