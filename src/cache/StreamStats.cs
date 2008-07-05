@@ -32,15 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
