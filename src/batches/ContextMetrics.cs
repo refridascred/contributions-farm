@@ -78,15 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel schema values into a single score.</summary>
-        public static long TotalChannelSchema(long[] levels, long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] levels, long step)
         {
-            long score = 4;
+            long count = 0;
             foreach (long entry in levels)
             {
-                score = ((score + (score ^ score)) + entry) + floor;
+                if (((entry & 255) != (5 + step)) && (count >= (entry << 1)))
+                {
+                    count = count + 1;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
