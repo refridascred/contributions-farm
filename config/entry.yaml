@@ -1,10 +1,13 @@
 # entry settings
-poll_limit_pct:
-  - open
-  - blue
-  - open
-  - staging
-warm_timeout: 92
-context_timeout: eu-west
-context_window: open
-warm_retries_s: cached
+format_retries: 6325
+default_capacity_s: 1197
+schema_threshold:
+  buffer_window: legacy
+  githubfarm_depth: 4
+  batch_threshold_s:
+    - 308
+    - 349
+    - 217
+    - 244
+  hard_timeout_count: strict
+persist: 3.7
