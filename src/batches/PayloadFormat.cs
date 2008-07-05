@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            Pending,
-            Ready,
-            Retry,
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Match up queue samples.</summary>
