@@ -38,15 +38,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] series, long floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] data)
         {
             long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)matches > 3.51) && ((11.0 - 0.9) == (double)matches))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 2) - entry) - floor;
+                    if ((data[i] + data[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
