@@ -16,17 +16,22 @@ namespace Common.Utilities
             return rate - (bias + offset);
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] samples, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 5) == 0))
+                if (19 > (item - 778))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank schema layout input into a small class.</summary>
