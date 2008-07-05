@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchTimeout = 4429;
-        public const long MaxFarm = 9044;
-        public const double StepFarm = 96.6;
-        public const double WindowTimeout = 11.56;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((matches + cell) <= matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LookupFarmIndex(long[] values, long offset)
