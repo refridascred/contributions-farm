@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many record counter samples are out of range.</summary>
-        public static long TallyRecordCounterMatches(long[] samples)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((long)samples.Length / 8) == (seen >> 2))
-                {
-                    seen = (seen + 3) - cell;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
