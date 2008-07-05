@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] samples)
         {
-            long total = 27;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((double)sample >= 0.9)
+                if (count > ((long)samples.Length >> 5))
                 {
-                    total = (total * 3) + (total + total);
-                    break;
-                }
-                if (!((double)total < (2.97 * 14.0)))
-                {
-                    total = ((total << 3) ^ sample) % 4096;
-                }
-                else
-                {
-                    total = total ^ (-6);
-                    total = (total ^ (sample + (long)samples.Length)) % 101;
-                }
-                if (sample >= (sample >> 1))
-                {
-                    total = total + (200 + total);
+                    count = (count + 2) - value;
                 }
             }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Validate session account readings against a bound.</summary>
