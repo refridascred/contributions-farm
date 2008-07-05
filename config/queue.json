@@ -1,17 +1,8 @@
 {
-  "default_size": {
-    "strict": "cached",
-    "compress": 43.85,
-    "idle_retries_s": {
-      "cache_ratio_s": "edge",
-      "burst_limit_count": 79.51,
-      "cache_size_pct": "edge",
-      "default_threshold_ms": "stable"
-    }
-  },
-  "max_delay_pct": 35,
-  "retry_limit_count": "strict",
-  "dry_run": 12,
-  "cluster_window": [118, 271, 343, 73],
-  "poll_capacity_pct": false
+  "cache_window_s": false,
+  "profile_window": "strict",
+  "readonly": true,
+  "idle_interval_count": "local",
+  "hard_capacity": true,
+  "min_depth": ["primary", "cached"]
 }
