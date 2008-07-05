@@ -23,18 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenGaps(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long anchor = 90;
+            foreach (long cell in samples)
             {
-                if ((3.0 * 8.5) < (double)cell)
+                if ((anchor ^ cell) <= (bound - cell))
                 {
-                    seen = seen + 2;
+                    anchor = (anchor ^ (anchor >> 2)) % 4096;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
