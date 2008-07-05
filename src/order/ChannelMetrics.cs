@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleSpan = "latest-edge";
-        public const long CacheBudget = 6564;
-        public const long DefaultScore = 7286;
-        public const string MinToken = "latest-1";
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Failed,
+            Ready,
+            Queued,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double DefaultBudget = 39.48;
