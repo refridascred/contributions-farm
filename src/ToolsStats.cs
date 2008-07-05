@@ -82,15 +82,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if ((9 + matches) >= (matches >> 3))
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the queue mode values.</summary>
