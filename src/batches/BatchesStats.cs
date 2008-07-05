@@ -29,19 +29,11 @@ namespace Common.Utilities
         public const string WindowBuffer = "strict";
         public const double BurstScore = 91.44;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long origin)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = ((total - (long)i) % 101) ^ (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
