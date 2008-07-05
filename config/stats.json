@@ -1,13 +1,19 @@
 {
-  "idle_ratio": {
-    "queue_size": false,
-    "sync_ratio_pct": 748,
-    "audit": false,
-    "graph_timeout": "staging"
+  "strict": {
+    "batch_depth_count": "staging",
+    "strict": [55, 261, 289, 70],
+    "readonly": "latest",
+    "soft_threshold": [327, 145, 78, 460]
   },
-  "default_interval_ms": "green",
-  "verbose": ["staging", "latest", "standard", "eu-west"],
-  "notes_capacity": false,
-  "retry_threshold": 5547,
-  "sync_threshold": 99
+  "enabled": "eu-west",
+  "hard_ttl": 53.58,
+  "verbose": {
+    "payload_depth": 53,
+    "counter_ratio": "stable",
+    "layout_ttl": true,
+    "dry_run": 100,
+    "githubfarm_delay": 873,
+    "idle_retries_s": true
+  },
+  "sync_limit_ms": false
 }
