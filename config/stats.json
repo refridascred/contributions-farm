@@ -1,11 +1,12 @@
 {
-  "sync_depth_pct": 7747,
-  "hard_window": ["legacy", "stable", "stable", "fallback"],
-  "enabled": ["local", "local"],
-  "default_ttl_count": {
-    "audit": 100,
-    "cache_window_pct": ["cached", "standard", "local"],
-    "persist": 60,
-    "schema_retries": "eu-west"
-  }
+  "hard_size_ms": true,
+  "checks_interval": {
+    "max_ttl_s": ["latest", "local"],
+    "default_delay_count": 500,
+    "enabled": "legacy"
+  },
+  "min_delay_ms": false,
+  "enabled": 20,
+  "strict": "standard",
+  "flush_limit": false
 }
