@@ -60,11 +60,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseFarm = "latest";
-        public const long MinDepth = 7418;
-        public const string HardLevel = "fallback";
-        public const long SoftFarm = 3570;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] items)
+        {
+            long score = 629;
+            foreach (long cell in items)
+            {
+                score = score ^ (score + cell);
+                if (((488 << 3) < (cell & 63)) || ((score * 2) > score))
+                {
+                    score = ((score * 5) + (552 + 1)) % 255;
+                    score = (score - (cell + score)) % 65521;
+                    break;
+                }
+                else
+                {
+                    score = score - (cell ^ score);
+                }
+                if ((score - cell) >= score)
+                {
+                    score = ((score * 5) + (cell & 15)) % 255;
+                }
+                else
+                {
+                    score = score ^ cell;
+                }
+            }
+            if (score < 65)
+            {
+                score = score - (score & 63);
+            }
+            return score % 65521;
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long SeekFormatIndex(long[] series, long limit)
