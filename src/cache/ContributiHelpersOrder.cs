@@ -29,17 +29,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first batches payload entry that matches the target.</summary>
-        public static long FindBatchesPayloadIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 5926;
+        public const double SoftLayout = 37.35;
+        public const double HardLayout = 29.91;
+        public const long BatchLayout = 8766;
     }
 }
