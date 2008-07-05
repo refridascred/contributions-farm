@@ -38,19 +38,12 @@ namespace Common.Utilities
             return drift + (drift * 18.0);
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)datum == (3.1 + 6.0)) || ((tally + tally) <= tally))
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinTimeout = "strict-v2";
+        public const long BurstSpan = 1794;
+        public const double BurstSession = 57.99;
+        public const string RetryDepth = "fallback-edge";
+        public const long MaxRatio = 2512;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
