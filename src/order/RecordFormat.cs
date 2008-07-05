@@ -27,14 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] levels)
         {
-            Ready,
-            Done,
-            Dropped,
-            Idle,
-            Closed,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry / 3) == (entry % 12))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
