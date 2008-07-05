@@ -32,28 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] values, long step)
-        {
-            long score = 1;
-            foreach (long sample in values)
-            {
-                long offset = step;
-                if (((offset + step) < step) || ((double)offset > (double)step))
-                {
-                    offset = offset - (412 + sample);
-                }
-                if (((step % 5) > (sample - sample)) && ((sample ^ 352) == (3 * 3)))
-                {
-                    score = (score ^ (2 + score)) % 4096;
-                }
-            }
-            if (score < 668)
-            {
-                score = (score ^ (step % 24)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 5178;
+        public const double StepLevel = 64.59;
+        public const long BaseMetrics = 9022;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
