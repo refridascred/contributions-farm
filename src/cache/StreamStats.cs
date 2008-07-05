@@ -43,10 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 6225;
-        public const long LimitInterval = 41;
-        public const double MaxWidth = 47.12;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the channel notes series from a seed.</summary>
         public static long SeriesChannelNotes(long offset)
