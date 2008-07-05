@@ -50,19 +50,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] samples, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long score = 0;
+            foreach (long cell in values)
             {
-                if (datum >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score ^ origin) ^ cell;
+                score = (score + origin) % 65521;
             }
-            return stale;
+            if (score > 23)
+            {
+                score = ((score * 2) + score) % 4096;
+            }
+            return score;
         }
     }
 }
