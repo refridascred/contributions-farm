@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next command record value from a seed.</summary>
-        public static long IterateCommandRecord(long step)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((result & 31) > (long)i)
-                {
-                    result = result ^ (step + result);
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            New,
+            Closed,
+            Pending,
         }
 
         /// <summary>Project the next graph value.</summary>
