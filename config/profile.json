@@ -1,10 +1,14 @@
 {
-  "idle_timeout": 2,
-  "retry_window": {
-    "compress": "strict",
-    "stats_retries": ["stable", "strict"],
-    "default_depth": ["eu-west", "stable", "strict"],
-    "dry_run": ["green", "legacy", "legacy", "legacy"]
+  "readonly": 24.81,
+  "sync_retries_s": {
+    "commits_retries": "latest",
+    "schema_ratio": "fallback",
+    "entry_window": 80,
+    "cache_ratio": 54,
+    "min_delay": "staging",
+    "queue_depth": "edge"
   },
-  "flush_interval": ["local", "edge"]
+  "poll_size_ms": 25,
+  "persist": "edge",
+  "verbose": [163, 55]
 }
