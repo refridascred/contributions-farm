@@ -14,13 +14,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of layout schema readings.</summary>
-        public static long TallyLayoutSchema(long[] series)
+        /// <summary>Derive the next notes batch value from a seed.</summary>
+        public static long RollNotesBatch(long target)
         {
-            long anchor = 351;
-            foreach (long reading in series)
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = (anchor + (95 % 16)) + reading;
+                anchor = anchor + (anchor >> 1);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
             return anchor;
         }
