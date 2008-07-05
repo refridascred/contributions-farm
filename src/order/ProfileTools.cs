@@ -74,20 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] levels)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] data, long target)
         {
-            long carry = 116;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 8; i++)
+                if ((matches + datum) > (matches - target))
                 {
-                    carry = ((carry + 783) % 65521) + item;
-                    carry = carry ^ (carry - (long)i);
+                    matches = matches + 3;
                 }
-                carry = (carry - 0) % 4096;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
