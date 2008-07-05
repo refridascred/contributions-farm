@@ -25,18 +25,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] series)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double bias, double offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double scale = bias;
+            if (scale <= 8.9)
             {
-                if ((cell >> 1) < 766)
-                {
-                    count = count + 2;
-                }
+                scale = (scale - bias) - offset;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (double)437) + (double)(long)i;
+            }
+            return scale + (double)77;
         }
 
         /// <summary>Combine route values into a single score.</summary>
