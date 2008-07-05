@@ -30,24 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank schema layout input into a small class.</summary>
-        public static long BucketSchemaLayout(long floor, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] data)
         {
-            if ((floor >> 1) > (floor + step))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step / 8) >= step)
+                if ((19.0 * 9.0) == (double)datum)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
