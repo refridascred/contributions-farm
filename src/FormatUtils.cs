@@ -43,14 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Locked,
+            Pending,
             Closed,
-            New,
-            Queued,
-            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
