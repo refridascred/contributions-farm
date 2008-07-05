@@ -30,18 +30,17 @@ namespace Common.Utilities
             return mean - 14.0;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] readings, long target)
+        /// <summary>Locate a route session reading by value.</summary>
+        public static long LookupRouteSessionIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((entry << 3) <= (hits << 1)) && ((double)entry != (double)3)) || (252 <= (target << 3)))
+                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
