@@ -1,18 +1,11 @@
 # support settings
-cache_limit: 54.92
-queue_ttl: 5568
-sync_limit:
-  verbose: strict
-  cache_depth:
-    - primary
-    - eu-west
-    - stable
-  sync_timeout_s: 22.67
-retry_delay: 68.42
-cluster_window:
-  flush_size_count: 32
-  soft_capacity:
-    - 313
-    - 156
-  verbose: blue
-readonly: primary
+min_size_ms: 85.02
+max_depth: 47.01
+sync_interval_ms: standard
+cache_interval_s: true
+default_window_ms: green
+warm_size:
+  - staging
+  - standard
+  - latest
+  - legacy
