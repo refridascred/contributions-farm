@@ -43,38 +43,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long origin, long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] samples, long offset)
         {
-            if ((offset << 1) < origin)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset >> 1) <= origin) && ((double)offset <= (14.0 / 4.0)))
+                if (cell <= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset << 3) < origin) && ((offset + origin) <= 9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin - (-677)) == (offset % 8))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a payload stats.</summary>
