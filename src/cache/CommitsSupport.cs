@@ -65,10 +65,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepSupport = "open-v2";
-        public const double CacheSupport = 23.33;
-        public const long LimitLevel = 8310;
-        public const long WindowSupport = 4322;
+        /// <summary>Match up report channel samples.</summary>
+        public static long PairReportChannelCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
