@@ -53,18 +53,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] items, long target)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (datum <= (target * 5))
+                if (reading > floor)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Measure how many route farm samples are out of range.</summary>
