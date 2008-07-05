@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = (mix + mix) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
