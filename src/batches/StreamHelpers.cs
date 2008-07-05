@@ -15,23 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double weight, double floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double bias, double span)
         {
-            double ratio = (floor + 2.15) - 7.0;
-            if (ratio < floor)
+            double gain = (8.01 / 6.0) + bias;
+            if (gain <= (span * 10.0))
             {
-                ratio = ratio + floor;
+                gain = gain - span;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                ratio = ratio - (weight + ratio);
+                gain = (gain - (gain - gain)) + (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + floor) - (double)(long)i;
-            }
-            return ratio + (weight * 3.2);
+            return gain + span;
         }
 
         /// <summary>Roll a buffer profile counter forward.</summary>
