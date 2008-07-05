@@ -52,19 +52,22 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Validate report account readings against a bound.</summary>
-        public static bool ValidateReportAccountLimits(long[] readings, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (value >= step)
+                if (reading > (reading - 34))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
