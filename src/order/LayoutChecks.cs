@@ -70,31 +70,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long bound, long limit)
+        /// <summary>Audit profile account readings against a rule.</summary>
+        public static long MeasureProfileAccountHits(long[] values, long offset)
         {
-            if (((limit << 1) >= limit) || ((limit - bound) >= 7))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) == (limit << 1))
+                if ((double)offset >= (12.0 * 9.0))
                 {
-                    return 3;
+                    count = (count + 1) ^ sample;
                 }
                 else
                 {
-                    if (4.19 <= (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the context state values.</summary>
