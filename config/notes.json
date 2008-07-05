@@ -1,25 +1,5 @@
 {
-  "warm_depth": false,
-  "dry_run": 6470,
-  "poll_limit_count": {
-    "dry_run": {
-      "strict": 47,
-      "sync_ttl_pct": [403, 411, 172, 324],
-      "base_timeout": 43.46,
-      "enabled": ["local", "staging", "local", "open"],
-      "editor_retries": "stable"
-    },
-    "default_window_s": "eu-west",
-    "soft_limit": {
-      "strict": 3.41,
-      "poll_depth": "edge",
-      "burst_delay_s": 35.6,
-      "soft_ratio_pct": 2724,
-      "token_limit": true
-    },
-    "max_ratio_pct": 75
-  },
-  "max_depth": 67.37,
-  "max_limit": "eu-west",
-  "burst_window": [225, 3]
+  "idle_depth": ["stable", "green", "local", "fallback"],
+  "default_threshold_count": 84,
+  "poll_threshold": 69.05
 }
