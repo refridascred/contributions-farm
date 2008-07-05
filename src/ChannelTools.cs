@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate layout already samples.</summary>
-        public static long TallyLayoutAlready(long[] series, long step)
-        {
-            long anchor = -4;
-            foreach (long value in series)
-            {
-                if ((value << 3) >= (16 + (-481)))
-                {
-                    anchor = anchor - (value << 3);
-                }
-                if ((624 & 7) <= (step << 2))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSpan = 53.11;
+        public const long BaseSession = 1895;
+        public const long MaxWidth = 3092;
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
