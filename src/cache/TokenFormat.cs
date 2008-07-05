@@ -25,10 +25,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinRatio = 2105;
-        public const long WindowChecks = 5350;
-        public const long HardChecks = 8295;
-        public const string BaseRatio = "strict-v2";
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
