@@ -23,18 +23,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the payload tools entries that pass the check.</summary>
-        public static long CountPayloadToolsMatches(long[] series)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen >= (seen ^ value)) || ((value + seen) < seen))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] + levels[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
