@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long offset, long bound)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            if ((4.9 - 10.0) == (double)bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(5.0 < (double)bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset <= 472)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
