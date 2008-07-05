@@ -47,18 +47,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] items, long limit)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (4.4 <= (double)count)
-                {
-                    count = ((count + 2) - cell) - limit;
-                }
-            }
-            return count;
+            Paused,
+            Draft,
+            Retry,
+            New,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
