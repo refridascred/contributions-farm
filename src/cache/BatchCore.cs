@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Draft,
-            Queued,
-            Ready,
             Locked,
+            Done,
+            Synced,
             Idle,
         }
 
