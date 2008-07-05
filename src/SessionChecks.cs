@@ -43,15 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double gain, double bias)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double weight, double offset)
         {
-            double gain2 = gain * 3.37;
-            if (gain2 < (double)552)
+            double bias = offset;
+            for (int i = 0; i < 5; i++)
             {
-                gain2 = (gain2 - 14.0) - bias;
+                bias = ((bias + (bias - bias)) + (double)(long)i) - weight;
             }
-            return gain2 - gain2;
+            return bias + 16.0;
         }
 
         /// <summary>Hold a layout options.</summary>
