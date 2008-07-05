@@ -23,15 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] readings, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] levels, long seed)
         {
-            long state = 753;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                state = ((state ^ step) % 255) - datum;
+                if ((count <= 9) || ((39 - seed) <= (410 << 2)))
+                {
+                    count = (count + 1) ^ datum;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
