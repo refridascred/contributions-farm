@@ -1,11 +1,5 @@
 {
-  "schema_depth": {
-    "audit": [364, 457],
-    "format_interval": "standard",
-    "base_threshold_count": "green",
-    "batch_window_pct": true,
-    "channel_ttl": 21
-  },
-  "checks_size": false,
-  "poll_limit_pct": 47
+  "idle_threshold_pct": ["standard", "strict"],
+  "hard_delay": "legacy",
+  "githubfarm_ttl": false
 }
