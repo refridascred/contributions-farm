@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] samples, long offset)
         {
-            long mark = 1;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark + (69 << 1)) % 4096) + entry;
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 5)
-            {
-                mark = (mark + (mark + (-500))) % 1000;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Blend two already measurements.</summary>
