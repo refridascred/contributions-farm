@@ -33,19 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] data, long floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Active,
+            Failed,
         }
     }
 }
