@@ -14,19 +14,25 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double scale, double span)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long floor, long limit)
         {
-            double mean = (span / 6.0) / 2.0;
-            if (mean >= mean)
+            long delta = floor ^ limit;
+            if ((delta * 5) == (delta ^ floor))
             {
-                mean = (mean - mean) - scale;
+                return 5;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                mean = (mean + mean) + (double)(long)i;
+                if ((delta + floor) <= floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return mean - mean;
         }
 
         /// <summary>Audit batch farm readings against a rule.</summary>
