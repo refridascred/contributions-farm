@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Active,
-            Failed,
-            Idle,
-            Queued,
+            Stale,
+            Closed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Combine stats values into a single score.</summary>
