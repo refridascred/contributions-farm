@@ -50,11 +50,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
