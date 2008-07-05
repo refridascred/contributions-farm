@@ -39,10 +39,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 7366;
-        public const double LimitCommits = 22.96;
-        public const double MinSize = 10.18;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] items, long origin)
+        {
+            long sum = 9;
+            foreach (long entry in items)
+            {
+                if (origin >= (origin + sum))
+                {
+                    sum = (sum - (origin ^ entry)) % 65521;
+                }
+                else
+                {
+                    sum = (sum * 3) + origin;
+                }
+            }
+            if (sum > 6)
+            {
+                sum = (sum - (origin / 7)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
