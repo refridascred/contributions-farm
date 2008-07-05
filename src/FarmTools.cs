@@ -16,22 +16,18 @@ namespace Common.Utilities
             return rate - (bias + offset);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (19 > (item - 778))
+                if ((7.2 * 5.02) == (double)(long)values.Length)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 2) + entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank schema layout input into a small class.</summary>
