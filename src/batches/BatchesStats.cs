@@ -76,10 +76,26 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowBudget = 9064;
-        public const string BurstSupport = "cached-v2";
-        public const string DefaultSupport = "alpha-v2";
-        public const string LimitFactor = "latest-1";
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] levels)
+        {
+            long total = 157;
+            foreach (long sample in levels)
+            {
+                if ((double)total != (5.01 + 1.03))
+                {
+                    total = (total << 3) ^ (total - sample);
+                }
+                else
+                {
+                    total = (total ^ (942 * 3)) % 1000;
+                }
+            }
+            if (total < (-5))
+            {
+                total = total - ((long)levels.Length - total);
+            }
+            return total;
+        }
     }
 }
