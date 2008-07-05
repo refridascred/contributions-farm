@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] readings, long origin)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long result = 906;
+            foreach (long reading in samples)
             {
-                if (reading > origin)
+                if ((1 + reading) > 446)
                 {
-                    ok = false;
-                    break;
+                    result = ((result << 2) ^ (reading / 7)) % 1000;
                 }
             }
-            return ok;
+            if (result > 27)
+            {
+                result = (result + result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Accumulate farm samples.</summary>
