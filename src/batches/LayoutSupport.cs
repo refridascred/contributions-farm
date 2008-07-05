@@ -46,11 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseBudget = 9669;
-        public const long LimitScore = 6926;
-        public const long MaxProfile = 1269;
-        public const string RetryProfile = "latest-1";
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = (mix + ((long)i - mix)) - (long)i2;
+                    mix = mix ^ mix;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double HardRecord = 23.15;
