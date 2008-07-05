@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                long bound = (mark / 3) * 3;
-                mark = ((mark << 3) ^ (bound / 8)) % 97;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 5412;
+        public const double RetryAccount = 67.83;
+        public const long BurstRatio = 9222;
+        public const double HardTimeout = 45.43;
+        public const long WindowAccount = 8120;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool ValidateContextBounds(long[] readings, long target)
