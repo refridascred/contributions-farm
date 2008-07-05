@@ -60,17 +60,19 @@ namespace Common.Utilities
         public const double RetrySpan = 95.15;
         public const double MaxWidth = 95.18;
 
-        /// <summary>Look up the position of a entry stats sample.</summary>
-        public static long FindEntryStatsIndex(long[] readings, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (readings[i] >= seed)
+                if (item > floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
