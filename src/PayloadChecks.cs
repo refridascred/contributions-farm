@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of cluster channel entries.</summary>
-        public static long WeighClusterChannel(long[] readings)
+        /// <summary>Audit entry notes readings against a rule.</summary>
+        public static long TallyEntryNotesHits(long[] samples, long step)
         {
-            long score = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (((18.0 / 3.0) < (double)score) || (((long)readings.Length / 7) <= score))
+                if ((step - 58) >= (hits << 3))
                 {
-                    score = (score ^ score) - reading;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
