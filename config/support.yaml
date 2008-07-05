@@ -1,31 +1,23 @@
 # support settings
-burst_capacity_pct: 32
-schema_retries: 33.52
-tools_ratio:
-  batch_size_count:
-    - 123
-    - 170
-    - 249
-    - 166
-  retry_limit: latest
-  dry_run: 12
-  burst_retries: true
-  batch_interval_pct:
-    - 372
-    - 232
-    - 223
-dry_run:
-  notes_window: staging
-  verbose: fallback
-  strict:
-    - primary
-    - stable
-    - stable
-  hard_limit:
-    idle_delay_count: 19.1
-    sync_window: staging
-    context_depth:
-      - staging
+strict: 29.78
+readonly: 13
+min_timeout_s:
+  - 92
+  - 24
+  - 293
+  - 462
+burst_ratio_count: 33
+layout_retries: stable
+cache_ratio_s:
+  support_threshold:
+    verbose:
+      - 293
+      - 269
+    base_limit_pct: 250
+    compress:
       - legacy
-      - stable
-  warm_window: eu-west
+      - edge
+    sync_limit_count: 30
+    default_depth: 80.03
+  poll_interval_pct: 65
+  readonly: 63.21
