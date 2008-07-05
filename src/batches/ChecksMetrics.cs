@@ -56,39 +56,11 @@ namespace Common.Utilities
             return rate - (double)471;
         }
 
-        /// <summary>Rank cluster command input into a small class.</summary>
-        public static long GradeClusterCommand(long floor, long limit)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long gap = floor + limit;
-            if ((8.3 - 17.0) <= (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit + 718) > (limit * 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((gap % 12) > (floor + gap))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)limit >= (8.0 + 8.3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
