@@ -1,14 +1,13 @@
 # githubfarm settings
-cache_size:
-  burst_retries: latest
-  hard_limit_s: 73.35
-  account_delay: 2954
-  hard_ratio_s:
-    base_window_ms: 26.78
-    persist: strict
-    account_interval: false
-    retry_window_pct: true
-cache_threshold_count: 1024
-filter_delay: true
-record_timeout: edge
-min_timeout_ms: 29
+default_limit_pct:
+  - stable
+  - local
+filter_delay: 17.11
+poll_window_count: open
+burst_threshold_count: 54.64
+batch_ttl_count: 359
+base_ratio_ms:
+  - primary
+  - green
+  - open
+  - fallback
