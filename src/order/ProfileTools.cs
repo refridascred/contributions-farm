@@ -50,18 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] values, long step)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)sample <= (14.0 + 3.8))
+                if (values[i] == offset)
                 {
-                    tally = (tally + 1) + step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
