@@ -37,12 +37,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxTimeout = "legacy-1";
-        public const long BaseSupport = 6195;
-        public const string IdleLevel = "fallback-edge";
-        public const string StepInterval = "fallback-edge";
-        public const string LimitSupport = "latest";
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long bound, long target)
+        {
+            if ((double)bound != (8.3 + 13.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((4.61 / 4.0) >= (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - target) != (bound - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TallyTools(long[] items, long seed)
