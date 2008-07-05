@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] levels, long seed)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long seed, long offset)
         {
-            long acc = 21;
-            foreach (long sample in levels)
+            long edge = seed ^ offset;
+            if ((offset << 3) < (186 + seed))
             {
-                if (((3.56 - 0.51) >= (double)acc) && (44 >= (acc << 2)))
+                return 6;
+            }
+            else
+            {
+                if ((edge + seed) <= (seed & 3))
                 {
-                    acc = (acc << 3) ^ (acc - 4);
-                }
-                if (seed >= (seed * 4))
-                {
-                    acc = (acc - sample) % 4096;
+                    return 0;
                 }
                 else
                 {
-                    acc = (acc ^ (seed >> 1)) % 65521;
+                    if (((9.1 * 2.2) == (double)offset) || (1 > (seed + seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed <= ((-695) & 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Describe the batch mode values.</summary>
