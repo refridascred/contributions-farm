@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session account readings against a bound.</summary>
-        public static bool GuardSessionAccountLimits(long[] data, long floor)
+        /// <summary>Look up the position of a stats session sample.</summary>
+        public static long SeekStatsSessionIndex(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= floor)
+                if ((values[i] < step) && ((values[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the tools status values.</summary>
