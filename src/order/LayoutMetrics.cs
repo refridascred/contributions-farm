@@ -26,12 +26,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long seed)
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = ((anchor - anchor) % 101) ^ (long)i2;
+                    anchor = ((anchor << 3) ^ (seed << 1)) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
