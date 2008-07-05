@@ -54,13 +54,39 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long bound, long limit)
         {
-            Dropped,
-            Draft,
-            Stale,
-            Pending,
+            long offset = bound ^ limit;
+            if ((bound ^ 73) <= offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset > limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit >= (offset >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((5.3 < (double)bound) || ((limit + limit) == (bound + limit)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
