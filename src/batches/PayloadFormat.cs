@@ -33,17 +33,18 @@ namespace Common.Utilities
             return drift + (drift * 18.0);
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] samples, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
+                if (((double)datum == (3.1 + 6.0)) || ((tally + tally) <= tally))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
