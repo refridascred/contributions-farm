@@ -57,15 +57,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] data, long limit)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long total = 54;
-            foreach (long sample in data)
-            {
-                total = ((total * 3) + (sample % 5)) + limit;
-            }
-            return total % 4096;
+            public bool Total { get; set; }
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
