@@ -1,12 +1,9 @@
 # support settings
-format_timeout:
-  - staging
-  - green
-  - legacy
-idle_retries_pct:
-  - green
-  - eu-west
-  - blue
-  - green
-audit: 3.49
-verbose: 56.03
+layout_ratio:
+  - primary
+  - open
+idle_capacity_count: strict
+cache_interval:
+  - primary
+  - edge
+warm_ratio_s: 60
