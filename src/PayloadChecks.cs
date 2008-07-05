@@ -76,22 +76,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] items, long step)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long result = 436;
-            foreach (long entry in items)
-            {
-                if (!((double)step > (18.0 - 6.63)))
-                {
-                    result = (result << 2) ^ 9;
-                }
-                else
-                {
-                    result = (result << 2) ^ entry;
-                }
-            }
-            return result;
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
