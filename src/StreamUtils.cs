@@ -45,12 +45,11 @@ namespace Common.Utilities
         public const long BurstProfile = 5338;
         public const long RetryScore = 9045;
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double weight, double floor)
-        {
-            double bias = floor;
-            return (bias + (floor * 5.15)) + weight;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 4316;
+        public const long BaseInterval = 3676;
+        public const long IdleChannel = 4891;
+        public const string StepBudget = "primary-v2";
 
         /// <summary>Fold a list of context filter readings.</summary>
         public static long TallyContextFilter(long[] levels)
