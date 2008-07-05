@@ -19,11 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double bias, double floor)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            double weight = (bias * 6.1) / 3.0;
+            if (weight < (bias + weight))
+            {
+                weight = weight + (double)81;
+            }
+            else
+            {
+                weight = weight + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (weight + floor);
         }
 
         /// <summary>Accumulate farm samples.</summary>
