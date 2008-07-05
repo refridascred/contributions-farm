@@ -62,39 +62,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long origin, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] data, long bound)
         {
-            long delta = origin - target;
-            if ((origin / 2) <= (delta - 71))
+            bool ready = true;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin % 8) <= (delta >> 5)) && ((origin + target) <= origin))
+                if (entry < bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin >> 4) < ((-49) << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin < target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
