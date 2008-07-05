@@ -30,13 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] series, long offset)
         {
-            Stale,
-            Queued,
-            Retry,
-            Active,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of format readings.</summary>
