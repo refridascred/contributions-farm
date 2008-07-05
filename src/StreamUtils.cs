@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Measure how many counter cluster samples are out of range.</summary>
+        public static long TallyCounterClusterOutliers(long[] data, long floor)
         {
-            long result = 878;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (reading > (reading >> 2))
+                if ((datum - floor) <= (seen - floor))
                 {
-                    result = (result + (result >> 2)) % 65521;
+                    seen = seen + 2;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Digest a series of layout counter entries.</summary>
