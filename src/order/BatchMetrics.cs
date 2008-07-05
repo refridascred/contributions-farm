@@ -53,22 +53,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up layout checks samples.</summary>
-        public static long MatchLayoutChecksCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 2476;
+        public const long SoftInterval = 3146;
+        public const long CacheBuffer = 6070;
+        public const double RetrySpan = 95.15;
+        public const double MaxWidth = 95.18;
 
         /// <summary>Look up the position of a entry stats sample.</summary>
         public static long FindEntryStatsIndex(long[] readings, long seed)
