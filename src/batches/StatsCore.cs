@@ -48,14 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Done,
-            Pending,
-            Ready,
-            Active,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheScore = 98.23;
+        public const long BatchScore = 2033;
+        public const long HardWindow = 2415;
+        public const long IdleSpan = 5501;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TotalSchema(long[] levels)
