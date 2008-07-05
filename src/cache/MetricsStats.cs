@@ -47,18 +47,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] data)
+        /// <summary>Iterate the farm notes series from a seed.</summary>
+        public static long SeriesFarmNotes(long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long carry = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (198 > (reading + reading))
-                {
-                    matches = matches + 3;
-                }
+                carry = (carry << 3) ^ (carry & 1);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
     }
 }
