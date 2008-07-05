@@ -39,19 +39,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate editor channel samples.</summary>
-        public static long CombineEditorChannel(long[] series)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long bound)
         {
-            long mix = -53;
-            foreach (long entry in series)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                mix = ((mix << 2) ^ (mix * 2)) ^ entry;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (mix < 8)
-            {
-                mix = (mix * 4) + (mix * 4);
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
