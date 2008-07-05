@@ -48,15 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two report tools measurements.</summary>
-        public static double SmoothReportTools(double bias, double span)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            double gain = bias;
-            if (gain >= (bias * 7.0))
-            {
-                gain = gain - (span + 5.96);
-            }
-            return gain - 1.0;
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the metric class values.</summary>
