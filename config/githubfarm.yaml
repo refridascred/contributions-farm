@@ -1,6 +1,29 @@
 # githubfarm settings
-max_ratio_count: 5035
-cache_capacity_s: legacy
-githubfarm_threshold: true
-strict: 7770
-idle_retries: legacy
+strict:
+  poll_ttl: true
+  schema_interval: blue
+  readonly: 500
+  route_ratio: 70.71
+  farm_depth:
+    compress: 24.26
+    support_delay:
+      - 419
+      - 253
+      - 6
+    sync_retries:
+      - 56
+      - 408
+      - 87
+      - 6
+cache_ttl_s:
+  account_limit: 25.9
+  retry_timeout_pct:
+    - edge
+    - staging
+    - blue
+    - staging
+  hard_depth_s: legacy
+default_timeout_count: 34.65
+soft_threshold: 86
+verbose: eu-west
+persist: 27
