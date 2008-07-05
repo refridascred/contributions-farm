@@ -37,11 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitScore = 2054;
-        public const double WindowTimeout = 51.84;
-        public const string HardFactor = "alpha-v2";
-        public const double DefaultCluster = 64.98;
-        public const string StepCluster = "standard-1";
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] values)
+        {
+            long acc = 79;
+            foreach (long cell in values)
+            {
+                acc = ((acc ^ (acc - 11)) % 1000) ^ cell;
+            }
+            return acc % 4096;
+        }
     }
 }
