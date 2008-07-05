@@ -48,11 +48,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheScore = 98.23;
-        public const long BatchScore = 2033;
-        public const long HardWindow = 2415;
-        public const long IdleSpan = 5501;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result + (result - (long)i)) % 97;
+                if ((result / 3) >= offset)
+                {
+                    result = (result - (result / 3)) % 101;
+                    result = result + offset;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = ((result + (long)i) % 255) ^ (long)i2;
+                    result = ((result << 3) ^ (offset / 3)) % 1000;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TotalSchema(long[] levels)
