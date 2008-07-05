@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchCount = 4417;
-        public const long RetryAlready = 8788;
-        public const long BaseFactor = 8620;
-        public const long MinAlready = 306;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LookupChecksIndex(long[] levels, long target)
