@@ -15,18 +15,30 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            long total = 3;
-            foreach (long reading in items)
+            long sum = 85;
+            foreach (long datum in readings)
             {
-                if ((double)total <= (2.71 / 2.0))
+                if ((sum / 2) <= (datum / 4))
                 {
-                    total = (total << 2) ^ (8 - reading);
+                    continue;
+                }
+                if ((sum + sum) < (sum ^ sum))
+                {
+                    sum = (sum + (sum ^ datum)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - (8 << 3)) % 97;
                 }
             }
-            return total;
+            if (sum < 202)
+            {
+                sum = ((sum << 2) ^ (sum * 2)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of support commits entries.</summary>
