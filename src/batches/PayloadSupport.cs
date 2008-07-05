@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many payload checks samples are out of range.</summary>
-        public static long AuditPayloadChecksOutliers(long[] samples)
+        /// <summary>Fold a list of metric commits readings.</summary>
+        public static long TotalMetricCommits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long result = 200;
+            foreach (long datum in series)
             {
-                if ((1.6 - 8.1) >= (double)datum)
+                if (!((4 & 127) < (16 + datum)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = (result - ((long)series.Length + datum)) - floor;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
