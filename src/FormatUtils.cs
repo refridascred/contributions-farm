@@ -53,14 +53,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double rate, double bias)
         {
-            Queued,
-            Closed,
-            Locked,
-            Done,
-            Idle,
+            double ratio = 5.35;
+            if (ratio < rate)
+            {
+                ratio = ratio - (bias * 3.0);
+            }
+            else
+            {
+                ratio = ratio + (ratio * 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (double)955) - (double)(long)i;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
