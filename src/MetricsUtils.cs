@@ -44,17 +44,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] items, long offset)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Draft,
+            Stale,
+            Idle,
         }
     }
 }
