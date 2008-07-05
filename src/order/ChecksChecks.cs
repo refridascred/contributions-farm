@@ -33,10 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 1139;
-        public const long BaseCache = 1464;
-        public const long StepSize = 8922;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseSpan = "strict-1";
+        public const long IdleBudget = 6562;
+        public const string WindowGithubfarm = "latest";
+        public const long MinGithubfarm = 9350;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
