@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count the already report entries that pass the check.</summary>
+        public static long CountAlreadyReportOutliers(long[] values)
         {
-            Stale,
-            Done,
-            Pending,
-            Locked,
-            Closed,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!(value >= (value + matches)) || ((2.1 + 7.03) <= (double)(long)values.Length))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
