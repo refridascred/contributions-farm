@@ -83,29 +83,36 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Rank format checks input into a small class.</summary>
-        public static long SortFormatChecks(long bound, long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long floor, long limit)
         {
-            long span = bound + floor;
-            if ((floor % 12) >= (span * 3))
+            long lane = floor + limit;
+            if (lane <= (lane + limit))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (((floor + 964) < (bound >> 5)) && ((floor + floor) < (floor / 2)))
+                if ((double)floor < (14.0 / 3.0))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((bound << 2) > (floor + bound))
+                    if (!((lane & 3) < limit))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        return 0;
+                        if ((double)floor < (12.0 + 5.24))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
