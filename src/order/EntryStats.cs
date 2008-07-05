@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheCount = 84.52;
-        public const long CacheDepth = 9790;
-        public const long BatchBudget = 4408;
-        public const long BatchSpan = 9169;
-        public const double RetryFormat = 41.11;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (seen <= (seen + 4))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long WeighEntry(long[] items)
