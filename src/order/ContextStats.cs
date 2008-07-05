@@ -40,10 +40,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 8081;
-        public const double BaseInterval = 77.04;
-        public const long LimitDepth = 198;
-        public const long BaseRatio = 6207;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public bool Weight { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
