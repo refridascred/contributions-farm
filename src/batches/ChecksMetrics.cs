@@ -32,18 +32,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] series, long bound)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double weight, double offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double rate = (double)(3 >> 1);
+            if (rate > (double)90)
             {
-                if ((double)sample == (16.0 * 1.43))
-                {
-                    count = (count + 2) + bound;
-                }
+                rate = ((rate - (7.62 * 3.12)) - weight) - offset;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (double)471;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
