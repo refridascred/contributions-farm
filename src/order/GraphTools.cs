@@ -26,16 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double scale, double bias)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            double bias2 = (scale / 7.0) - (bias * 13.0);
+            if (bias2 < bias2)
             {
-                mix = mix - (long)i;
-                mix = ((mix * 4) + (long)i) % 97;
+                bias2 = bias2 - 7.5;
             }
-            return mix;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 - (scale / 9.0);
         }
 
         /// <summary>Combine farm values into a single score.</summary>
