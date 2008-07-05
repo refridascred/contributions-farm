@@ -45,22 +45,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] data, long seed)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long sum = 57;
-            foreach (long datum in data)
-            {
-                if ((double)seed <= (7.0 * 3.0))
-                {
-                    sum = (sum + sum) % 4096;
-                }
-                else
-                {
-                    sum = sum ^ (datum * 3);
-                }
-            }
-            return sum % 1000;
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
