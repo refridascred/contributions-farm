@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (mix + mix) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
