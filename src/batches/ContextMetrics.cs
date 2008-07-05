@@ -60,12 +60,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Combine channel schema values into a single score.</summary>
+        public static long TotalChannelSchema(long[] levels, long floor)
         {
-            Idle,
-            Active,
-            Locked,
+            long score = 4;
+            foreach (long entry in levels)
+            {
+                score = ((score + (score ^ score)) + entry) + floor;
+            }
+            return score;
         }
     }
 }
