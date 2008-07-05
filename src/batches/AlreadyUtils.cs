@@ -22,20 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next window batches value from a seed.</summary>
-        public static long DeriveWindowBatches(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((long)i % 3) <= (carry + carry))
-                {
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 9947;
+        public const double DefaultAlready = 56.03;
+        public const long MinAlready = 8940;
+        public const long LimitAlready = 1785;
+        public const long BaseAlready = 1814;
 
         /// <summary>Locate a schema record reading by value.</summary>
         public static long LocateSchemaRecordIndex(long[] values, long origin)
