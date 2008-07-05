@@ -44,19 +44,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] items, long step)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the tools level values.</summary>
