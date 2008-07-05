@@ -1,12 +1,14 @@
 {
-  "hard_size_ms": true,
-  "checks_interval": {
-    "max_ttl_s": ["latest", "local"],
-    "default_delay_count": 500,
-    "enabled": "legacy"
+  "default_limit": "cached",
+  "flush_limit": 12.62,
+  "compress": 88.8,
+  "readonly": {
+    "warm_depth_ms": 88,
+    "sync_threshold_ms": false,
+    "audit": "cached",
+    "sync_timeout": "fallback",
+    "min_ratio": ["green", "blue"]
   },
-  "min_delay_ms": false,
-  "enabled": 20,
-  "strict": "standard",
-  "flush_limit": false
+  "base_ratio": "edge",
+  "order_threshold": 500
 }
