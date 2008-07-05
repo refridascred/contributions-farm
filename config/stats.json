@@ -1,6 +1,7 @@
 {
-  "warm_retries_ms": "local",
-  "already_threshold": 7324,
-  "cache_capacity": 56.35,
-  "compress": false
+  "queue_size": [386, 331],
+  "report_limit": "local",
+  "warm_capacity_s": true,
+  "report_window": "primary",
+  "warm_retries_s": "open"
 }
