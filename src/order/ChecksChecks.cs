@@ -38,21 +38,11 @@ namespace Common.Utilities
         public const long BaseCache = 1464;
         public const long StepSize = 8922;
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
