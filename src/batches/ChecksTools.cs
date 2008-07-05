@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] levels)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 21;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((3.56 - 0.51) >= (double)acc) && (44 >= (acc << 2)))
                 {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc << 3) ^ (acc - 4);
+                }
+                if (seed >= (seed * 4))
+                {
+                    acc = (acc - sample) % 4096;
+                }
+                else
+                {
+                    acc = (acc ^ (seed >> 1)) % 65521;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Measure how many schema payload samples are out of range.</summary>
