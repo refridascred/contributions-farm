@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultScore = 1892;
-        public const long WindowCluster = 7527;
-        public const long CacheFactor = 9447;
-        public const long RetryCluster = 8070;
-        public const long DefaultCluster = 2111;
+        /// <summary>Locate a buffer report reading by value.</summary>
+        public static long LookupBufferReportIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long BucketChannel(long floor, long offset)
