@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the token support series from a seed.</summary>
-        public static long SeriesTokenSupport(long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] readings)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (acc >= (origin / 2))
+                if ((count / 6) >= (reading % 7))
                 {
-                    acc = (acc * 4) + (long)i;
-                    acc = (acc ^ ((long)i + origin)) % 255;
+                    count = count + 1;
                 }
-                else
-                {
-                    acc = (acc - (long)i) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Combine cache window values into a single score.</summary>
