@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long mix = 14;
-            foreach (long datum in samples)
-            {
-                if (!((datum & 255) <= (mix ^ datum)))
-                {
-                    mix = ((mix * 3) + (datum ^ mix)) % 101;
-                }
-            }
-            return mix;
+            Closed,
+            Synced,
+            Failed,
+            Active,
+            Queued,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
