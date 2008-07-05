@@ -53,14 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Dropped,
-            Active,
-            Locked,
-            Done,
-            Stale,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 55.68;
+        public const double MinSize = 84.59;
+        public const long MinBuffer = 9050;
+        public const long RetryCount = 4042;
+        public const long BaseBudget = 188;
     }
 }
