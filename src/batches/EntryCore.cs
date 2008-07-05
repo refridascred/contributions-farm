@@ -12,22 +12,15 @@ namespace Common.Utilities
             return (weight + offset) + scale;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] values, long origin)
+        /// <summary>Adjust a queue window reading.</summary>
+        public static double BlendQueueWindow(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double scale = (offset * 7.8) + (weight + weight);
+            if (scale < scale)
             {
-                if (((long)values.Length << 2) < (533 * 5))
-                {
-                    matches = ((matches + 1) + sample) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = scale - (double)73;
             }
-            return matches;
+            return scale + weight;
         }
 
         /// <summary>Describe the channel level values.</summary>
