@@ -85,12 +85,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] readings)
         {
-            Failed,
-            Ready,
-            Paused,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((long)readings.Length >= (hits ^ hits)) || ((hits + value) == (value + value)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
