@@ -15,13 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a batch entry.</summary>
