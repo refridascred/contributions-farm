@@ -34,19 +34,18 @@ namespace Common.Utilities
             return drift + (drift - ratio);
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] series, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (cell > offset)
+                if (matches >= (matches ^ sample))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) - origin;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the context phase values.</summary>
