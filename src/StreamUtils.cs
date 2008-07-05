@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long target, long offset)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long diff = target ^ offset;
-            if (!((diff / 4) > (67 + offset)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((3.1 / 6.0) == (double)diff))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((diff - 20) <= offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)diff == (8.7 * 14.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Classify a layout window pair into a bucket.</summary>
