@@ -13,19 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] samples, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] items)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long state = -628;
+            foreach (long entry in items)
             {
-                if (item < target)
-                {
-                    stale = false;
-                    break;
-                }
+                state = state ^ entry;
             }
-            return stale;
+            if (state < 377)
+            {
+                state = (state - (state - 74)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a notes stats.</summary>
