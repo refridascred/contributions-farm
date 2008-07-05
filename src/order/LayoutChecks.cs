@@ -50,20 +50,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] data)
-        {
-            long sum = 75;
-            foreach (long item in data)
-            {
-                sum = (((sum * 4) + (643 % 60)) % 4096) ^ item;
-            }
-            if (sum < 662)
-            {
-                sum = ((sum * 5) + (sum + sum)) % 4096;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "primary-edge";
+        public const long IdleProfile = 9721;
+        public const long StepScore = 4637;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long CombineGraph(long[] readings)
