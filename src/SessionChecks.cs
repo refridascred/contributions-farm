@@ -55,31 +55,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a already session value against two limits.</summary>
-        public static long BucketAlreadySession(long offset, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] items, long offset)
         {
-            if ((offset + seed) != (offset + 9))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed == (1.94 - 6.0))
+                if ((offset - entry) <= ((-4) * 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.9 / 4.0) >= (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
