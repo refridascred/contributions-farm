@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheSpan = 53.11;
-        public const long BaseSession = 1895;
-        public const long MaxWidth = 3092;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TallyFilter(long[] series)
