@@ -15,13 +15,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double weight, double floor)
         {
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            double ratio = (floor + 2.15) - 7.0;
+            if (ratio < floor)
+            {
+                ratio = ratio + floor;
+            }
+            else
+            {
+                ratio = ratio - (weight + ratio);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + floor) - (double)(long)i;
+            }
+            return ratio + (weight * 3.2);
         }
 
         /// <summary>Hold a batch entry.</summary>
