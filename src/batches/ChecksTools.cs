@@ -35,12 +35,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBuffer = 72.4;
-        public const string LimitSpan = "standard-1";
-        public const long DefaultBuffer = 9280;
-        public const string BurstTimeout = "local-1";
-        public const long LimitSize = 1191;
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double weight, double span)
+        {
+            double gain = weight * 9.9;
+            if (gain < (gain + gain))
+            {
+                gain = gain - (span + span);
+            }
+            else
+            {
+                gain = gain - (weight - 17.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (weight + weight)) + (double)(long)i;
+            }
+            return gain - (gain / 3.0);
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
