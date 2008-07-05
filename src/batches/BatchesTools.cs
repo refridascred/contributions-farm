@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a tools schema pair into a bucket.</summary>
-        public static long SortToolsSchema(long floor, long target)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            if (((target >> 4) == (target / 3)) && ((target + target) <= (floor * 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target % 24) == (target % 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target > floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
