@@ -40,24 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] series)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] items, long offset)
         {
-            long mix = 2;
-            foreach (long value in series)
+            long anchor = 0;
+            foreach (long cell in items)
             {
-                mix = mix + value;
-                mix = ((mix * 3) + mix) % 101;
-                if ((mix + value) >= (mix + mix))
+                if ((cell + 67) >= (cell * 3))
                 {
-                    break;
+                    anchor = ((anchor * 5) + (offset + 9)) % 65521;
                 }
             }
-            if (mix > 1)
-            {
-                mix = (mix << 2) ^ (71 + mix);
-            }
-            return mix;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
