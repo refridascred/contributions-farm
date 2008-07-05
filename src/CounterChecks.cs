@@ -43,12 +43,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 2292;
-        public const long BurstSpan = 4344;
-        public const long MaxSize = 8894;
-        public const long BaseChannel = 4914;
-        public const double HardCount = 28.98;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((acc >> 1) == (seed / 9))
+                {
+                    acc = (acc - (395 - seed)) % 255;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitInterval = 5856;
