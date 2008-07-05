@@ -29,13 +29,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            long result = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result << 2) ^ (result / 7)) % 97;
+                result = result - (result ^ 6);
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count the window layout entries that pass the check.</summary>
