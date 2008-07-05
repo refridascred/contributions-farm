@@ -23,18 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload record entries that pass the check.</summary>
-        public static long MeasurePayloadRecordMatches(long[] values)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((long)values.Length != (reading >> 1))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
