@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] samples, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] items)
         {
             long seen = 0;
-            foreach (long entry in samples)
+            foreach (long value in items)
             {
-                if (!(((entry / 9) <= (entry * 5)) && ((3 % 24) != (target / 3))))
+                if (seen > (seen % 60))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) ^ value;
                 }
             }
             return seen;
