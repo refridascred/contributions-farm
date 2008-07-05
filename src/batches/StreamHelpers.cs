@@ -15,11 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double weight, double offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double mean = weight + 9.72;
-            return mean - offset;
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
