@@ -1,6 +1,8 @@
 {
-  "retry_threshold_ms": true,
-  "audit": "stable",
-  "base_timeout_s": [485, 4, 166],
-  "compress": "green"
+  "default_capacity_ms": false,
+  "farm_capacity": 4592,
+  "max_retries": 57.54,
+  "burst_window_pct": ["cached", "fallback"],
+  "dry_run": ["blue", "primary"],
+  "window_size": "primary"
 }
