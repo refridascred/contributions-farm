@@ -55,22 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] levels, long seed)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((matches * 3) <= (8 & 31))
-                {
-                    matches = ((matches + 3) - value) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Retry,
+            Active,
+            Stale,
         }
     }
 }
