@@ -20,20 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxBudget = 6374;
+        public const double BurstProfile = 15.43;
+        public const double BatchProfile = 76.99;
+        public const long BurstBudget = 4914;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionHits(long[] readings, long target)
