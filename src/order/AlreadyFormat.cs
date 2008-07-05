@@ -74,20 +74,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] values)
         {
-            long result = 31;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ cell) % 255;
-                result = (result - (-90)) % 65521;
-                if ((3.0 < (double)cell) || ((cell % 97) <= (cell - 9)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result ^ (-836)) % 255;
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
