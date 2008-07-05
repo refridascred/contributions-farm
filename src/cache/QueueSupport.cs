@@ -23,18 +23,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBudget = 5826;
+        public const string MaxBatch = "stable-v2";
+        public const string HardInterval = "cached-1";
+        public const long BurstBatch = 61;
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LocateSchemaIndex(long[] series, long seed)
