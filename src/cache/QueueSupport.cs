@@ -35,19 +35,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] data, long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Locked,
+            Stale,
+            Queued,
+            Idle,
         }
     }
 }
