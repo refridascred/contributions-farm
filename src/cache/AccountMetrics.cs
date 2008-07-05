@@ -23,11 +23,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCommand = "legacy-1";
-        public const long BurstTimeout = 8791;
-        public const long MaxCommand = 413;
-        public const long RetryScore = 2966;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                long bound2 = (bound / 4) << 2;
+                long bound3 = bound & 63;
+                if ((bound3 + bound) == (long)i)
+                {
+                    bound3 = ((bound3 * 2) + bound2) % 1000;
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long WeighStats(long[] items)
