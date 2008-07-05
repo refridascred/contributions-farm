@@ -26,15 +26,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] items)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long anchor = 41;
-            foreach (long entry in items)
-            {
-                anchor = ((anchor << 3) ^ (entry << 2)) % 4096;
-            }
-            return anchor % 4096;
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
