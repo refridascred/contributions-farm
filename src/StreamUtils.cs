@@ -40,10 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowSize = 35.1;
-        public const long LimitWidth = 9287;
-        public const long BaseLevel = 459;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 5417;
+        public const long BurstProfile = 5338;
+        public const long RetryScore = 9045;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ScaleContributi(double weight, double floor)
