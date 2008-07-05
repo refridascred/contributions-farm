@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (!(3 < (matches % 16)))
+                if ((reading <= (reading / 5)) || ((double)reading != (1.03 + 4.98)))
                 {
-                    matches = (matches + 3) + cell;
+                    count = (count + 1) + target;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
