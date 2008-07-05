@@ -13,25 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long floor, long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long delta = floor ^ limit;
-            if ((delta * 5) == (delta ^ floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((delta + floor) <= floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Audit batch farm readings against a rule.</summary>
