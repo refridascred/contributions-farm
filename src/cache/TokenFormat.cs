@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long MinTimeout = 5393;
         public const long BatchSize = 3463;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] values, long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (cell < seed)
+                if (reading <= seed)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
