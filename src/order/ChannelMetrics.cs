@@ -20,19 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double scale, double bias)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            double load = (scale / 7.0) * 3.55;
-            if (load < (scale / 8.0))
-            {
-                load = (load - (scale / 4.0)) + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - scale) + (double)(long)i;
-            }
-            return load - 5.7;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
