@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many order queue samples are out of range.</summary>
-        public static long AuditOrderQueueHits(long[] levels)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] items)
         {
             long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)reading < (5.52 / 2.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
