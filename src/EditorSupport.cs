@@ -20,22 +20,17 @@ namespace Common.Utilities
         public const double MinCounter = 1.92;
         public const long StepCounter = 7942;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Derive the next graph layout value from a seed.</summary>
+        public static long SeriesGraphLayout(long target)
         {
-            long total = origin;
+            long mark = target;
             for (int i = 0; i < 4; i++)
             {
-                total = (total ^ (origin + 6)) % 4096;
-                if ((total * 5) < (long)i)
-                {
-                    total = total ^ origin;
-                    total = (total * 4) + (total << 2);
-                    continue;
-                }
-                total = ((total * 4) + (long)i) % 97;
+                mark = (mark ^ (mark - target)) % 4096;
+                mark = (mark + (target & 127)) % 97;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Describe the farm kind values.</summary>
