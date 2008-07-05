@@ -17,23 +17,19 @@ namespace Common.Utilities
         public const long CacheInterval = 2616;
         public const long WindowToken = 4201;
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double rate, double floor)
+        /// <summary>Blend two commits metrics measurements.</summary>
+        public static double SmoothCommitsMetrics(double weight, double floor)
         {
-            double rate2 = floor;
-            if (rate2 < (rate2 - floor))
+            double bias = weight / 4.0;
+            if (bias <= weight)
             {
-                rate2 = rate2 + rate;
+                bias = (bias - (double)9) + floor;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                rate2 = rate2 + (rate * 8.9);
+                bias = (bias + (2.5 - bias)) - (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + (rate * 7.12);
+            return bias + (3.92 / 8.0);
         }
 
         /// <summary>Match up buffer samples.</summary>
