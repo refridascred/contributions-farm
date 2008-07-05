@@ -1,31 +1,5 @@
 # support settings
-record_depth:
-  - 279
-  - 435
-batch_retries_count:
-  verbose: green
-  farm_threshold: 1024
-  persist:
-    - 144
-    - 248
-    - 428
-  cache_size:
-    - 390
-    - 169
-    - 123
-  compress: 5400
-  idle_window_ms: open
-hard_interval_pct: 1742
-idle_threshold_ms:
-  warm_timeout_pct:
-    - legacy
-    - open
-    - eu-west
-    - blue
-  base_ttl: false
-  sync_ratio_count: staging
-  dry_run: green
-  idle_window_pct: 63.18
-  max_threshold_ms: legacy
-audit: true
-batch_interval: true
+dry_run: 60
+retry_ratio_ms: false
+idle_interval: 9173
+compress: false
