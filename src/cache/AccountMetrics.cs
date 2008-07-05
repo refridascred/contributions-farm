@@ -41,19 +41,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token editor samples are out of range.</summary>
-        public static long CountTokenEditorMatches(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((origin ^ origin) > ((long)values.Length + origin))
-                {
-                    count = (count + 1) - entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 7366;
+        public const double LimitCommits = 22.96;
+        public const double MinSize = 10.18;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
