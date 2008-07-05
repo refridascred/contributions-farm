@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in green latest fallback; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
 case "${mode}" in
-    cached)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=337
-log "limit is ${BUFFER_LIMIT}"
