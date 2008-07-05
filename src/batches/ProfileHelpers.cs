@@ -58,21 +58,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Done,
+            Locked,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
