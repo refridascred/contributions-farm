@@ -1,16 +1,26 @@
 # support settings
-warm_window: false
-entry_delay:
-  account_retries: 100
-  filter_interval:
-    - standard
-    - blue
-    - green
-  entry_size: 4343
-min_depth_ms: stable
-warm_threshold:
-  hard_ttl_s: 66.84
-  hard_capacity_ms: 51
-  command_threshold: 1802
-dry_run: open
-hard_ratio: stable
+burst_threshold: 33
+poll_window_ms:
+  contributi_window:
+    - 292
+    - 245
+    - 448
+  compress:
+    burst_limit: true
+    already_size:
+      - 312
+      - 313
+      - 334
+    verbose: 1969
+  poll_limit_pct: 65
+  batch_interval_pct:
+    default_capacity_count: cached
+    enabled: 1024
+    dry_run: eu-west
+    profile_ttl: false
+  enabled: 10.4
+  readonly: 10.59
+account_capacity: 395
+burst_delay_pct: blue
+support_capacity: 593
+order_capacity: 6879
