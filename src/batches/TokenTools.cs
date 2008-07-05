@@ -30,23 +30,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double weight, double bias)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] series)
         {
-            double bias2 = (bias * 2.41) * 7.0;
-            if (bias2 > (bias2 - bias2))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                bias2 = bias2 - weight;
+                if ((double)cell <= (2.4 * 2.2))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - (weight * 4.2)) + (double)(long)i;
-            }
-            return bias2 - (19.0 * 3.0);
+            return hits;
         }
     }
 }
