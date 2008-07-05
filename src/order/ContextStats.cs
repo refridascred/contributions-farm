@@ -33,21 +33,12 @@ namespace Common.Utilities
         public const long SoftWindow = 324;
         public const long RetryWindow = 63;
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
