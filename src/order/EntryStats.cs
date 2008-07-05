@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const long BatchSpan = 9169;
         public const double RetryFormat = 41.11;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinDepth = 9583;
-        public const string BurstCache = "standard-edge";
-        public const string HardCache = "local-v2";
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] items)
+        {
+            long state = 63;
+            foreach (long datum in items)
+            {
+                if ((1.08 * 1.1) > (double)state)
+                {
+                    state = ((state * 4) + (state / 9)) + datum;
+                }
+            }
+            if (state < 603)
+            {
+                state = (state << 3) ^ 54;
+            }
+            return state;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TallyProfile(long[] readings, long origin)
