@@ -39,12 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Locate a editor format reading by value.</summary>
+        public static long SeekEditorFormatIndex(long[] series, long origin)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a schema header.</summary>
