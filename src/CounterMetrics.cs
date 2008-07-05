@@ -41,11 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinFactor = 9894;
-        public const long DefaultScore = 5060;
-        public const string StepScore = "legacy-edge";
-        public const long IdleCounter = 9088;
-        public const double RetryCounter = 90.0;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double rate, double offset)
+        {
+            double ratio = offset;
+            return (ratio - 4.6) + rate;
+        }
     }
 }
