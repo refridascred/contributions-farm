@@ -26,11 +26,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] values, long step)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
