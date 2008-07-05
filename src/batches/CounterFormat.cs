@@ -13,24 +13,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next profile format value from a seed.</summary>
-        public static long DeriveProfileFormat(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((long)i + (-5)) > (score >> 5))
-                {
-                    score = (score - 9) % 255;
-                }
-                else
-                {
-                    score = (score ^ 510) % 255;
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftFactor = 2834;
+        public const long CacheStats = 3452;
+        public const long BaseRatio = 9361;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] items, long floor)
