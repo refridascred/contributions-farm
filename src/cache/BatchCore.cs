@@ -39,12 +39,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
             Retry,
-            Pending,
-            Ready,
+            Idle,
+            Active,
+            Locked,
             Done,
         }
 
