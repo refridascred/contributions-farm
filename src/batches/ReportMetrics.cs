@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitTimeout = 4473;
-        public const string CacheMetrics = "latest";
-        public const string LimitMetrics = "local-1";
-        public const string MinMetrics = "alpha-1";
-        public const long CacheBudget = 4130;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double bias)
+        {
+            double load = (ratio + ratio) - (double)80;
+            if (load > (double)302)
+            {
+                load = load + (bias + 9.38);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load - load;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricMatches(long[] series, long bound)
