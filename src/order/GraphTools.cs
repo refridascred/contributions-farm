@@ -27,19 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double scale, double bias)
+        /// <summary>Find the first metrics batch entry that matches the target.</summary>
+        public static long LocateMetricsBatchIndex(long[] levels, long origin)
         {
-            double bias2 = (scale / 7.0) - (bias * 13.0);
-            if (bias2 < bias2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = bias2 - 7.5;
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 - (scale / 9.0);
+            return -1;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
