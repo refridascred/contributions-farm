@@ -34,12 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] values, long origin)
         {
-            Idle,
-            Closed,
-            Paused,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
