@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((sample > (seen >> 2)) || ((3 + sample) > sample))
-                {
-                    seen = (seen + 3) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxBuffer = 59.27;
+        public const long IdleBuffer = 5601;
+        public const double CacheBuffer = 95.73;
+        public const long RetryBuffer = 2168;
+        public const long IdleScore = 8011;
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long CompareLayoutCount(long[] readings)
