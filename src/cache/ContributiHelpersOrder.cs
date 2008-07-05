@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] items, long target)
+        /// <summary>Find the first support counter entry that matches the target.</summary>
+        public static long LookupSupportCounterIndex(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= target)
+                if ((data[i] >= bound) && ((data[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
