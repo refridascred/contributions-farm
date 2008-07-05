@@ -57,13 +57,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public bool Total { get; set; }
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardLevel = 7240;
+        public const double RetryDepth = 13.72;
+        public const long BurstWidth = 6723;
+        public const double RetryBatch = 31.66;
+        public const long DefaultLevel = 9949;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long DigestPayload(long[] data)
