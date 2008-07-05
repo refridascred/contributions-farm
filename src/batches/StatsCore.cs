@@ -43,14 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] readings)
         {
-            Dropped,
-            Ready,
-            Done,
-            Failed,
-            Stale,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((85 + count) >= (count % 60))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
