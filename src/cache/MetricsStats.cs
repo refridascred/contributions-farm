@@ -25,17 +25,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] readings, long target)
+        /// <summary>Rank report profile input into a small class.</summary>
+        public static long ClassifyReportProfile(long bound, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor + bound) >= bound)
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((bound & 31) == (bound >> 1))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((bound / 7) <= (floor % 12)) && ((double)bound == (9.0 - 17.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (6 >= (bound & 255))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a editor stats.</summary>
