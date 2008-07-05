@@ -35,22 +35,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of token command readings.</summary>
-        public static long TotalTokenCommand(long[] data)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items, long offset)
         {
-            long anchor = 195;
-            foreach (long value in data)
+            long acc = 384;
+            foreach (long cell in items)
             {
-                if (((6.0 / 8.0) < (double)anchor) || ((2.43 / 7.0) >= (double)value))
+                if ((49 + 22) == (cell ^ offset))
                 {
-                    anchor = (anchor * 2) + anchor;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + value) % 97;
+                    acc = ((acc << 2) ^ acc) % 65521;
                 }
             }
-            return anchor % 65521;
+            return acc;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
