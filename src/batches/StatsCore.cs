@@ -20,18 +20,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] readings, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((17.0 * 13.0) >= (double)sample)
+                if (cell > offset)
                 {
-                    matches = (matches + 1) - target;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
