@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] readings)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] items)
         {
-            long state = 676;
-            foreach (long cell in readings)
+            long mix = 389;
+            foreach (long cell in items)
             {
-                if ((2.0 / 2.0) > 1.0)
+                mix = mix + (cell << 1);
+                if (((cell - mix) >= mix) || ((double)mix == (6.04 - 5.0)))
                 {
-                    state = (state ^ (cell + cell)) % 101;
-                }
-                else
-                {
-                    state = state + (cell - state);
+                    mix = (mix ^ (mix % 3)) % 255;
                 }
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
