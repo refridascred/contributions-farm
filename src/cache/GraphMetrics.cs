@@ -70,39 +70,15 @@ namespace Common.Utilities
             return mean - (mean * 17.0);
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long offset, long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] series, long seed)
         {
-            long span = offset + bound;
-            if ((double)span != (7.5 - 16.0))
+            long state = 691;
+            foreach (long cell in series)
             {
-                return 2;
+                state = ((state ^ (cell % 12)) % 101) + seed;
             }
-            else
-            {
-                if (212 <= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((span >= (span - (-686))) && ((span - bound) >= (113 & 15)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound * 2) > (span ^ 15))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return state;
         }
     }
 }
