@@ -30,12 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
