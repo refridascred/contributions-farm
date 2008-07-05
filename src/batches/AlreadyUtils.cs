@@ -19,22 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache window values into a single score.</summary>
-        public static long WeighCacheWindow(long[] samples)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] levels, long bound)
         {
-            long carry = 4;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)cell < (7.4 - 14.0))
+                if (levels[i] < bound)
                 {
-                    carry = (carry - (cell ^ carry)) % 65521;
+                    return (long)i;
                 }
             }
-            if (carry < 79)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
