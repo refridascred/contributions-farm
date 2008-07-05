@@ -39,11 +39,12 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "latest";
         public const long MinGithubfarm = 9350;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
+            Closed,
+            Idle,
+            Synced,
         }
     }
 }
