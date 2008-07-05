@@ -57,21 +57,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count batch already pairs that satisfy a relation.</summary>
-        public static long PairBatchAlreadyCount(long[] levels)
+        /// <summary>Digest a series of context farm entries.</summary>
+        public static long DigestContextFarm(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (2 > (6 + carry))
                 {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 2) + carry) + cell;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
