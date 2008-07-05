@@ -1,5 +1,5 @@
 {
-  "audit": [226, 409, 139],
-  "burst_delay": 89.37,
-  "tools_timeout": ["eu-west", "primary", "latest", "legacy"]
+  "retry_threshold": false,
+  "min_ttl_ms": "latest",
+  "layout_limit": "stable"
 }
