@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 6;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((8.1 + 2.5) == (double)acc)
                 {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc ^ step) ^ sample;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the stats class values.</summary>
