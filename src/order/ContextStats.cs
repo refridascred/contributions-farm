@@ -14,18 +14,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] samples, long floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (6.11 < (double)hits)
+                carry = (carry * 5) + carry;
+                carry = (carry ^ 95) % 255;
+                if ((carry >= (limit - limit)) || ((double)carry != (double)limit))
                 {
-                    hits = ((hits + 2) - cell) - floor;
+                    break;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
