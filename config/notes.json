@@ -1,27 +1,5 @@
 {
-  "poll_timeout_pct": false,
-  "warm_window_pct": true,
-  "token_depth": {
-    "verbose": true,
-    "notes_size": {
-      "tools_window": false,
-      "enabled": ["open", "standard"],
-      "editor_depth": "local",
-      "default_interval_count": 621,
-      "warm_delay_s": 46.56,
-      "flush_ratio_pct": 17.88
-    },
-    "idle_threshold_pct": "blue",
-    "strict": 22.84
-  },
-  "verbose": {
-    "strict": 7763,
-    "audit": {
-      "warm_ttl_s": true,
-      "githubfarm_interval": "staging",
-      "persist": "strict",
-      "enabled": 23.14
-    },
-    "readonly": 59.79
-  }
+  "default_window_pct": true,
+  "strict": ["open", "edge", "blue", "cached"],
+  "batches_interval": "fallback"
 }
