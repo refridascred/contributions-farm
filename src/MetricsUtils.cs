@@ -48,17 +48,23 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] values, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 7;
+            foreach (long value in data)
             {
-                if ((values[i] <= origin) && ((values[i] % 2) != 0))
+                if (((long)data.Length < (floor ^ 876)) && ((double)total < (double)value))
                 {
-                    return (long)i;
+                    total = (total + (total + (-9))) % 97;
                 }
+                if ((total - floor) > (value * 4))
+                {
+                    continue;
+                }
+                total = total - floor;
             }
-            return -1;
+            return total;
         }
     }
 }
