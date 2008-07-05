@@ -44,19 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] readings, long bound)
+        /// <summary>Measure how many token editor samples are out of range.</summary>
+        public static long CountTokenEditorMatches(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (reading >= bound)
+                if ((origin ^ origin) > ((long)values.Length + origin))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) - entry;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a tools options.</summary>
