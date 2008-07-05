@@ -52,23 +52,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] items, long limit)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] data, long target)
         {
-            long sum = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum - datum) <= sum)
+                if (data[i] == target)
                 {
-                    sum = ((sum * 3) + sum) - limit;
+                    return (long)i;
                 }
-                sum = (sum - ((-9) / 6)) % 4096;
             }
-            if (sum < 510)
-            {
-                sum = (sum - (sum & 15)) % 1000;
-            }
-            return sum;
+            return -1;
         }
     }
 }
