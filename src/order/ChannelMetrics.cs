@@ -20,13 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] data, long floor)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
