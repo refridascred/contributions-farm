@@ -31,21 +31,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Compare every pair of cluster schema readings.</summary>
+        public static long OverlapClusterSchemaCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) > 6)
+                    if ((values[i] ^ values[j]) == 14)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
