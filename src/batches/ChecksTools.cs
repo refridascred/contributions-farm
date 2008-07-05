@@ -48,11 +48,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double ratio, double floor)
+        /// <summary>Locate a session graph reading by value.</summary>
+        public static long SeekSessionGraphIndex(long[] series, long floor)
         {
-            double gain = (double)(256 ^ 700);
-            return (gain - (gain - ratio)) + floor;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a report entry.</summary>
