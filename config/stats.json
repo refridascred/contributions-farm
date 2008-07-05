@@ -1,6 +1,18 @@
 {
-  "queue_retries": false,
-  "sync_window_count": "eu-west",
-  "session_retries": true,
-  "order_delay": 7517
+  "max_capacity_count": 5926,
+  "idle_delay": [317, 485],
+  "route_threshold": {
+    "schema_ratio": 1.61,
+    "audit": 30,
+    "sync_delay_pct": "staging",
+    "flush_ttl_ms": ["green", "primary", "staging"],
+    "readonly": 55.15,
+    "burst_interval_s": "cached"
+  },
+  "base_size": {
+    "readonly": 100,
+    "max_ratio_count": "edge",
+    "verbose": 500
+  },
+  "base_window_count": "legacy"
 }
