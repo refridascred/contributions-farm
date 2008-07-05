@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] series, long offset)
         {
-            long mark = 40;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                mark = ((mark * 2) + (mark + mark)) % 255;
-                if ((reading - mark) < mark)
+                if (datum != offset)
                 {
-                    mark = ((mark * 2) + (reading >> 2)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
