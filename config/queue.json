@@ -1,8 +1,11 @@
 {
-  "cache_window_s": false,
-  "profile_window": "strict",
-  "readonly": true,
-  "idle_interval_count": "local",
-  "hard_capacity": true,
-  "min_depth": ["primary", "cached"]
+  "warm_retries_s": 5.53,
+  "contributi_interval": false,
+  "min_retries": "legacy",
+  "verbose": 62.6,
+  "persist": {
+    "audit": 250,
+    "burst_ttl": true,
+    "strict": ["stable", "eu-west"]
+  }
 }
