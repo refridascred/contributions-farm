@@ -65,31 +65,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] levels, long floor)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double ratio, double span)
         {
-            long result = 1;
-            foreach (long datum in levels)
+            double rate = ratio;
+            if (rate > (double)9)
             {
-                if ((4.8 + 4.34) != (double)floor)
-                {
-                    result = ((result * 3) + (910 + 633)) % 65521;
-                    result = ((result << 2) ^ (datum - 47)) % 255;
-                }
-                else
-                {
-                    result = (result * 3) + (result + result);
-                }
-                if (7 > result)
-                {
-                    result = (result ^ (floor ^ datum)) % 101;
-                }
-                else
-                {
-                    result = (result - (4 + result)) % 255;
-                }
+                rate = (rate - (rate - rate)) - span;
             }
-            return result;
+            return rate + (double)578;
         }
 
         /// <summary>Hold a channel options.</summary>
