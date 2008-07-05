@@ -63,10 +63,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 896;
-        public const long BurstMetrics = 9124;
-        public const long RetryMetrics = 1457;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] levels)
+        {
+            long carry = 116;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = ((carry + 783) % 65521) + item;
+                    carry = carry ^ (carry - (long)i);
+                }
+                carry = (carry - 0) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long PairGraphCount(long[] data)
