@@ -29,17 +29,11 @@ namespace Common.Utilities
         public const double BatchPayload = 29.47;
         public const long RetryPayload = 3417;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] levels, long step)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
