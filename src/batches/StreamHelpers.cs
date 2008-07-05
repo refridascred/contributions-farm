@@ -34,12 +34,18 @@ namespace Common.Utilities
             return ratio + (weight * 3.2);
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] readings)
         {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (!(((cell + cell) == (matches - cell)) && ((87 + cell) <= matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
