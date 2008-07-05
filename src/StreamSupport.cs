@@ -33,12 +33,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] levels)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
