@@ -1,4 +1,4 @@
 # entry settings
-batch_depth_count: true
-retry_capacity: 14.05
-farm_timeout: strict
+layout_retries: false
+graph_limit: false
+idle_interval_count: cached
