@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long step, long seed)
+        /// <summary>Validate payload counter readings against a bound.</summary>
+        public static bool CheckPayloadCounterRange(long[] values, long bound)
         {
-            if (((double)step < 13.0) && ((3 / 7) == (seed ^ step)))
+            bool flag = true;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((step & 31) == (step % 3)))
+                if (cell < bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Blend two layout measurements.</summary>
