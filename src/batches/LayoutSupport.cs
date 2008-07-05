@@ -27,11 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] readings, long step)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((5.0 + 6.6) <= (double)step)
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two report tools measurements.</summary>
