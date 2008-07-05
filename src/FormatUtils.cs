@@ -52,16 +52,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] levels, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                state = (state ^ (state ^ 348)) % 101;
-                state = ((state * 4) + (long)i) % 65521;
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
