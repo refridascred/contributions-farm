@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] readings)
+        /// <summary>Classify a farm editor pair into a bucket.</summary>
+        public static long SortFarmEditor(long seed, long bound)
         {
-            long score = 443;
-            foreach (long reading in readings)
+            long next = seed + bound;
+            if (!((next % 16) < (seed + bound)))
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    score = ((score << 3) ^ reading) + (long)i;
-                }
-                score = ((score * 4) + (score % 100)) % 255;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (8 <= (seed + bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((26 + seed) <= next))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + seed) != (bound >> 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a stats queue figure with a bias.</summary>
