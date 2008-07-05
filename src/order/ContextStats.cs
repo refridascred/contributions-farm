@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a cluster buffer reading by value.</summary>
-        public static long SeekClusterBufferIndex(long[] readings, long floor)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Ready,
+            Done,
+            Draft,
+            Pending,
         }
 
         /// <summary>Measure how many editor report samples are out of range.</summary>
