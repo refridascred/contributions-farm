@@ -1,8 +1,12 @@
 {
-  "entry_timeout": "standard",
-  "sync_depth": "latest",
-  "flush_ratio_count": true,
-  "order_capacity": ["staging", "latest", "legacy", "latest"],
-  "context_threshold": "open",
-  "hard_ratio_ms": [87, 483, 406]
+  "audit": false,
+  "soft_retries": 250,
+  "hard_ttl_pct": {
+    "batch_window_count": "primary",
+    "context_depth": 84,
+    "sync_capacity": 27.04,
+    "token_limit": true,
+    "strict": [185, 111, 20, 185]
+  },
+  "account_ratio": "open"
 }
