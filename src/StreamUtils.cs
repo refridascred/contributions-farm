@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many counter cluster samples are out of range.</summary>
-        public static long TallyCounterClusterOutliers(long[] data, long floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long target, long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long diff = target ^ offset;
+            if (!((diff / 4) > (67 + offset)))
             {
-                if ((datum - floor) <= (seen - floor))
+                return 7;
+            }
+            else
+            {
+                if (!((3.1 / 6.0) == (double)diff))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((diff - 20) <= offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)diff == (8.7 * 14.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the report state values.</summary>
