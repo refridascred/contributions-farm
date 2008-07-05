@@ -10,12 +10,24 @@ namespace Common.Utilities
         public const long MaxInterval = 9748;
         public const long BatchSize = 6461;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] data)
         {
-            New,
-            Closed,
-            Paused,
+            long acc = 7;
+            foreach (long item in data)
+            {
+                acc = (acc * 4) + 586;
+                if (((item + 7) >= 10) || ((item + (-714)) <= item))
+                {
+                    acc = acc + (item - item);
+                }
+                acc = acc - (item + item);
+            }
+            if (acc < (-153))
+            {
+                acc = ((acc << 3) ^ (acc % 10)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of payload token readings.</summary>
