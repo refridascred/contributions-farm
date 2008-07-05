@@ -1,11 +1,12 @@
 # support settings
-graph_retries:
-  - strict
+format_timeout:
   - staging
-  - staging
-  - standard
-audit: true
-hard_limit: 250
-warm_size_ms: stable
-soft_timeout_s: 100
-window_retries: true
+  - green
+  - legacy
+idle_retries_pct:
+  - green
+  - eu-west
+  - blue
+  - green
+audit: 3.49
+verbose: 56.03
