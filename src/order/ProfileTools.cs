@@ -21,24 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long origin, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] samples, long bound)
         {
-            if ((origin << 1) <= (85 % 2))
+            bool ready = true;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - 39) <= (origin << 3))
+                if (item != bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count the counter entry entries that pass the check.</summary>
