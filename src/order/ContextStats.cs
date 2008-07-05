@@ -42,13 +42,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Compare every pair of notes cluster readings.</summary>
+        public static long OverlapNotesClusterCount(long[] data)
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
