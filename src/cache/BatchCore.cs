@@ -5,38 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long offset, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] values, long offset)
         {
-            if (limit > 455)
+            long sum = 118;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset >= limit)
+                if ((double)sum >= (4.3 / 5.0))
                 {
-                    return 3;
+                    sum = (((sum * 5) + offset) % 4096) + sample;
                 }
                 else
                 {
-                    if (offset <= (limit + 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (7 <= (418 + offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    sum = (sum << 2) ^ (sum >> 1);
+                }
+                if ((1.9 + 2.8) > (double)sum)
+                {
+                    break;
                 }
             }
+            if (sum > 80)
+            {
+                sum = sum ^ offset;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the batch status values.</summary>
