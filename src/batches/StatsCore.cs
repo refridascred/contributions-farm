@@ -44,26 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] data)
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                result = (result + (result - (long)i)) % 97;
-                if ((result / 3) >= offset)
+                if ((count + reading) < (reading >> 2))
                 {
-                    result = (result - (result / 3)) % 101;
-                    result = result + offset;
+                    count = count + 3;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = ((result + (long)i) % 255) ^ (long)i2;
-                    result = ((result << 3) ^ (offset / 3)) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
