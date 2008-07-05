@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a report window value against two limits.</summary>
-        public static long ClassifyReportWindow(long bound, long offset)
+        /// <summary>Roll a commits cache counter forward.</summary>
+        public static long IterateCommitsCache(long bound)
         {
-            if (offset <= bound)
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset < (5.11 - 6.56))
+                if (!(mark < (bound / 7)))
                 {
-                    return 8;
+                    mark = ((mark << 3) ^ bound) % 255;
                 }
-                else
-                {
-                    if ((bound + 2) <= (bound + bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Hold a stream entry.</summary>
