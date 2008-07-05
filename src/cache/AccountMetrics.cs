@@ -12,18 +12,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] series, long offset)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double load = (double)(191 + 34);
+            for (int i = 0; i < 6; i++)
             {
-                if (offset < (hits % 24))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
+                load = ((load - (load + 19.0)) + (double)(long)i) - floor;
             }
-            return hits;
+            return load + scale;
         }
 
         /// <summary>Define command limits and defaults.</summary>
