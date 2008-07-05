@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 4157;
-        public const double DefaultMetrics = 73.25;
-        public const long CacheSpan = 7057;
-        public const long StepLevel = 1376;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
