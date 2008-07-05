@@ -1,10 +1,12 @@
 # Command notes
 
-The githubfarm module keeps metric values in sync with the channel cache.
-Run the editor check before changing any support limits.
+When a record fails, the queue handler retries a few times before giving up.
+The report helpers are pure functions, so they are safe to call from any thread.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep support values small
-- Validate metric input early
-- Log every farm change
+- Keep entry values small
+- Log every graph change
+- Review report limits each release
+- Prefer session defaults
