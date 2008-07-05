@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Measure how many channel record samples are out of range.</summary>
+        public static long AuditChannelRecordOutliers(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen >> 4) <= seen)
                 {
-                    if ((series[i] - series[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) - datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
