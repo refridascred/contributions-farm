@@ -47,24 +47,9 @@ namespace Common.Utilities
         public const string CacheEditor = "open";
         public const string BatchScore = "fallback-v2";
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((13.0 * 1.32) != (double)(long)i) && ((target + score) < (target - 59)))
-                {
-                    score = score - target;
-                    continue;
-                }
-                if (!((double)score > (4.57 / 7.0)))
-                {
-                    score = score - target;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultBudget = 5603;
+        public const double MaxFormat = 32.79;
+        public const string LimitFormat = "open";
     }
 }
