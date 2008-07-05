@@ -39,12 +39,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long limit, long seed)
         {
-            Dropped,
-            Synced,
-            Retry,
+            long offset = limit + seed;
+            if ((offset - limit) >= 8)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((-232) ^ seed) <= (seed % 64))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)limit != (8.0 - 5.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of token command readings.</summary>
