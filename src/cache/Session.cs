@@ -89,21 +89,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches batch samples.</summary>
-        public static long OverlapBatchesBatchCount(long[] levels)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double scale2 = scale;
+            return (scale2 + (scale2 + scale)) + span;
         }
     }
 }
