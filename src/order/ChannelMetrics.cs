@@ -60,15 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] series, long step)
+        /// <summary>Find the first commits session entry that matches the target.</summary>
+        public static long FindCommitsSessionIndex(long[] readings, long floor)
         {
-            long carry = 40;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (((carry ^ carry) % 255) ^ reading) + step;
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
