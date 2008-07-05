@@ -49,12 +49,19 @@ namespace Common.Utilities
         public const long BatchGraph = 4961;
         public const string LimitBudget = "open-1";
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] levels, long step)
         {
-            Queued,
-            Pending,
-            Ready,
+            long sum = 520;
+            foreach (long value in levels)
+            {
+                sum = (((sum << 3) ^ (value - 390)) % 97) + step;
+                if ((sum >> 1) >= sum)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Match up report channel samples.</summary>
