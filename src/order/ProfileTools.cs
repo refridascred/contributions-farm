@@ -22,17 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next format account value from a seed.</summary>
-        public static long IterateFormatAccount(long floor)
+        /// <summary>Grade a metrics tools value against two limits.</summary>
+        public static long RankMetricsTools(long seed, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            long next = seed + floor;
+            if ((seed & 255) > (85 >> 5))
             {
-                anchor = (anchor * 2) + ((long)i % 60);
-                anchor = ((anchor * 4) + (long)i) % 101;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((double)next <= (2.08 - 19.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((2 * 4) <= (floor + seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
