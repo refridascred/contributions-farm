@@ -1,8 +1,11 @@
 # entry settings
-flush_delay_s: 60
-idle_window: 4477
-strict:
-  token_size: 17.36
-  soft_ratio: open
-  payload_window: 1289
-  retry_depth: 7
+default_retries_s:
+  - 489
+  - 450
+  - 124
+already_depth: 43.51
+flush_size_count: open
+entry_timeout:
+  - legacy
+  - fallback
+  - standard
