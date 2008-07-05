@@ -15,18 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] samples, long limit)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((2.5 + 17.0) < (double)(long)samples.Length) || ((hits & 7) >= (hits * 5))) && ((double)hits > (0.04 - 20.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = ((hits + 3) ^ reading) + limit;
+                    if ((series[i] ^ series[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
