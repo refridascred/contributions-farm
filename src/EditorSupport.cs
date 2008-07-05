@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item + 37) > (8 & 1))
                 {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
