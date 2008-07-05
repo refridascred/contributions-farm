@@ -89,10 +89,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 3598;
-        public const long CacheScore = 7465;
-        public const long MinContributi = 4326;
-        public const double SoftSpan = 40.29;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 3018;
+        public const long LimitMetrics = 3993;
+        public const string WindowRatio = "local-v2";
+        public const long MaxSize = 8399;
     }
 }
