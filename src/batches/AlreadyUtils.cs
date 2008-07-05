@@ -58,18 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((double)seen > (1.1 - 6.35))
+                if ((entry ^ entry) == (matches << 1))
                 {
-                    seen = (seen + 1) + value;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
