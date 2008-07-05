@@ -31,18 +31,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] readings, long bound)
+        /// <summary>Validate stats channel readings against a bound.</summary>
+        public static bool GuardStatsChannelLimits(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((bound ^ cell) >= (152 + cell))
+                if (entry <= step)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
