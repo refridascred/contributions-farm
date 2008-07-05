@@ -1,7 +1,14 @@
 {
-  "retry_limit_s": "green",
-  "report_capacity": 301,
-  "strict": 69.42,
-  "persist": "local",
-  "entry_window": "blue"
+  "warm_retries_ms": ["green", "strict", "local", "fallback"],
+  "audit": {
+    "record_delay": {
+      "burst_retries": 500,
+      "poll_limit_pct": 1914,
+      "min_capacity": 9368
+    },
+    "sync_ttl": "legacy",
+    "poll_ttl_count": 19.85
+  },
+  "format_capacity": ["edge", "eu-west", "blue"],
+  "min_ttl_count": 7728
 }
