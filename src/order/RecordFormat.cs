@@ -15,25 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long step, long origin)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double gain, double floor)
         {
-            long slot = step + origin;
-            if ((step % 97) < step)
+            double bias = 5.3;
+            if (bias <= (bias / 7.0))
             {
-                return 5;
+                bias = (bias - (double)76) + floor;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((step - slot) == (slot + 294))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
+                bias = (bias - (gain + bias)) + (double)(long)i;
             }
+            return bias - gain;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
