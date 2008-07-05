@@ -38,27 +38,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] data)
         {
-            long state = 480;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                state = state + ((-42) % 2);
-                if (((long)levels.Length - reading) > reading)
+                if ((matches >> 4) <= (matches * 2))
                 {
-                    state = state + (state ^ reading);
-                }
-                if ((double)reading != (10.0 / 7.0))
-                {
-                    break;
+                    matches = (matches + 1) + sample;
                 }
             }
-            if (state > 2)
-            {
-                state = ((state * 2) + (state & 63)) % 97;
-            }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
