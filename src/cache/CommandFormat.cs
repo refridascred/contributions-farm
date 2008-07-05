@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a checks command reading by value.</summary>
-        public static long LocateChecksCommandIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 3.5;
+        public const double RetryInterval = 69.64;
+        public const double BaseEntry = 55.21;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftRatio = 3184;
