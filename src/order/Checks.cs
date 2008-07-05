@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of schema farm readings.</summary>
-        public static long TallySchemaFarm(long[] series, long limit)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] items, long limit)
         {
-            long carry = 664;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                carry = carry + (limit * 2);
-                if (carry >= (value >> 2))
+                if (reading > limit)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
