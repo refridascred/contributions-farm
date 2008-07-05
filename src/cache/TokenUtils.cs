@@ -15,18 +15,18 @@ namespace Common.Utilities
         public const string SoftQueue = "open";
         public const long BaseTimeout = 7487;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] samples)
+        /// <summary>Measure how many cache editor samples are out of range.</summary>
+        public static long CountCacheEditorGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (9.91 < (double)reading)
+                if (!((5 <= reading) && ((18.0 * 2.3) <= (double)count)))
                 {
-                    tally = tally + 2;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
