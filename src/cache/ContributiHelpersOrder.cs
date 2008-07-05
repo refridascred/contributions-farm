@@ -13,27 +13,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long floor)
         {
-            long result = 924;
-            foreach (long item in values)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item * 3) == (item + 12))
-                {
-                    result = (result * 5) + (result >> 1);
-                    continue;
-                }
-                if ((result ^ result) >= item)
-                {
-                    result = ((result << 3) ^ (item + item)) % 65521;
-                }
+                carry = (carry + (carry >> 1)) % 65521;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            if (result > 0)
-            {
-                result = ((result * 5) + result) % 65521;
-            }
-            return result;
+            return carry;
         }
 
         /// <summary>Hold a graph info.</summary>
