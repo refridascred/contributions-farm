@@ -1,12 +1,15 @@
 # support settings
-payload_retries:
-  - 205
-  - 187
-min_ratio_ms: 6095
-idle_window: 5063
-default_ttl: false
-burst_window_ms:
-  - eu-west
-  - standard
-  - local
-sync_capacity_pct: green
+flush_ratio_count: 1262
+cluster_timeout:
+  sync_interval_ms: 92
+  batch_depth_ms: edge
+  audit: edge
+report_limit:
+  - 66
+  - 372
+  - 352
+strict: eu-west
+idle_capacity:
+  - open
+  - open
+  - open
