@@ -42,15 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] samples, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long item in readings)
             {
-                if ((171 >= (matches / 7)) && (step >= (step ^ 3)))
+                if (8.6 < (double)matches)
                 {
-                    matches = (matches + 3) ^ datum;
+                    matches = (matches + 3) ^ item;
                 }
                 else
                 {
