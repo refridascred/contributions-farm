@@ -52,21 +52,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Locked,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the counter status values.</summary>
