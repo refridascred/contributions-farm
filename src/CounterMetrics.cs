@@ -31,10 +31,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstInterval = 5733;
-        public const double MinMetrics = 19.2;
-        public const string BurstDepth = "fallback-1";
+        /// <summary>Rank commits tools input into a small class.</summary>
+        public static long ClassifyCommitsTools(long origin, long bound)
+        {
+            if ((origin - origin) <= (-889))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((origin << 3) > origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound << 3) < (bound + bound)) || ((double)origin != (5.0 + 9.6)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((bound / 2) != (origin + bound)) || ((origin >> 3) < (bound ^ origin)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long LimitScore = 2054;
