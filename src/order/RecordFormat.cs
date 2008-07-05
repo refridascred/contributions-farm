@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] readings)
         {
-            Idle,
-            Dropped,
-            Active,
-            Failed,
-            Queued,
+            long acc = 798;
+            foreach (long item in readings)
+            {
+                acc = acc ^ (acc & 31);
+                acc = (acc - (item - acc)) % 255;
+                acc = (acc + item) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Project the next editor value.</summary>
