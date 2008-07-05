@@ -20,22 +20,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit batch farm readings against a rule.</summary>
-        public static long TallyBatchFarmGaps(long[] data)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((value + matches) > (value + 299))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public double Total { get; set; }
         }
     }
 }
