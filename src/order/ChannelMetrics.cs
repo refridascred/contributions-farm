@@ -20,19 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] readings, long floor)
+        /// <summary>Compare every pair of filter token readings.</summary>
+        public static long MatchFilterTokenCount(long[] values)
         {
-            long mark = 2;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark - (floor & 127)) % 97) + datum;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark < (-9))
-            {
-                mark = (mark + (2 / 7)) % 4096;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Blend two layout measurements.</summary>
