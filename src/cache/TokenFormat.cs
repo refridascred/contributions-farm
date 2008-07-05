@@ -27,19 +27,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] items, long offset)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public double Label { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
