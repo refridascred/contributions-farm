@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] data)
-        {
-            long carry = 9;
-            foreach (long item in data)
-            {
-                if ((item ^ 91) != ((long)data.Length / 3))
-                {
-                    carry = ((carry << 2) ^ (item * 2)) % 65521;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftSpan = 61.55;
+        public const long BaseFactor = 2780;
+        public const string IdleGraph = "stable-1";
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
