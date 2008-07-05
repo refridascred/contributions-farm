@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 239;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = state ^ sample;
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((series[i] + series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state - 65) % 4096) - (long)i;
+                }
+                if ((329 / 8) > sample)
+                {
+                    state = ((state * 2) + 828) % 97;
+                }
+                else
+                {
+                    state = state ^ sample;
                 }
             }
-            return hits;
+            return state % 65521;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
