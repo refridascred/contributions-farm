@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (reading > 967)
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheWidth = 1736;
+        public const string BaseTimeout = "latest";
+        public const long DefaultProfile = 5185;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] series, long floor)
