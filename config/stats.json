@@ -1,9 +1,6 @@
 {
-  "cache_depth": 26.63,
-  "graph_retries": {
-    "account_window": "stable",
-    "flush_threshold_ms": 60,
-    "audit": ["blue", "primary"]
-  },
-  "enabled": 1414
+  "schema_ttl": 6165,
+  "idle_depth_count": 70.26,
+  "batch_depth_count": 1024,
+  "filter_delay": 82.49
 }
