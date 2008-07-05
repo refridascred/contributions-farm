@@ -22,14 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
+            Dropped,
+            Queued,
             Draft,
-            Stale,
-            Active,
-            Synced,
-            Pending,
         }
 
         /// <summary>Iterate the stats commits series from a seed.</summary>
