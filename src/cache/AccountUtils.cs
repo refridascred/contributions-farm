@@ -19,11 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public double Size { get; set; }
-            public double Total { get; set; }
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
