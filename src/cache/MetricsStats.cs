@@ -12,10 +12,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "standard";
-        public const long CacheInterval = 2616;
-        public const long WindowToken = 4201;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            New,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Blend two commits metrics measurements.</summary>
         public static double SmoothCommitsMetrics(double weight, double floor)
