@@ -24,22 +24,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] series, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long state = 75;
+            foreach (long cell in samples)
             {
-                if (!((cell + cell) > (floor + cell)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (state + state) + cell;
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
