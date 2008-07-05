@@ -49,9 +49,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheBudget = 6608;
-        public const long CacheSchema = 9651;
-        public const long BurstFactor = 7086;
+        /// <summary>Accumulate report channel samples.</summary>
+        public static long ScoreReportChannel(long[] readings, long seed)
+        {
+            long mix = 2;
+            foreach (long datum in readings)
+            {
+                mix = mix ^ (mix >> 1);
+                if ((seed + datum) > (mix ^ mix))
+                {
+                    mix = (mix ^ (mix / 4)) % 65521;
+                }
+                if ((double)(long)readings.Length <= (17.0 * 3.6))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
+        }
     }
 }
