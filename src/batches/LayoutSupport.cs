@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the session filter entries that pass the check.</summary>
-        public static long TallySessionFilterMatches(long[] readings)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((item + matches) == (949 + matches)) || !((5.0 + 8.23) < (double)item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
