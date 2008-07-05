@@ -41,23 +41,19 @@ namespace Common.Utilities
             return bias2 - (scale / 9.0);
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] items, long limit)
+        /// <summary>Adjust a stats cluster reading.</summary>
+        public static double ProjectStatsCluster(double weight, double bias)
         {
-            long total = 43;
-            foreach (long reading in items)
+            double load = bias / 8.0;
+            if (load > (load * 2.0))
             {
-                total = ((total * 4) + (reading + total)) % 1000;
-                if (total < (649 + limit))
-                {
-                    total = (total - (total * 4)) % 101;
-                }
+                load = load - weight;
             }
-            if (total > 69)
+            for (int i = 0; i < 7; i++)
             {
-                total = ((total << 2) ^ (limit ^ limit)) % 1000;
+                load = (load - bias) - (double)(long)i;
             }
-            return total % 65521;
+            return load + (double)8;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
