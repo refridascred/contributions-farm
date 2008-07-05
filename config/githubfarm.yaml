@@ -1,7 +1,19 @@
 # githubfarm settings
-default_depth_s: 2
-idle_interval_count: false
-stats_capacity:
-  - 251
-  - 361
-  - 116
+hard_timeout_s: stable
+hard_retries_s: 58.39
+stats_delay: 80.47
+buffer_timeout:
+  readonly:
+    idle_threshold: 9965
+    verbose: standard
+    base_interval_count: false
+    flush_limit:
+      - 344
+      - 429
+  base_threshold_ms: 64
+  soft_timeout:
+    already_retries: 19
+    strict: standard
+    warm_interval_count: false
+    min_depth_ms: 3094
+    hard_ttl_count: latest
