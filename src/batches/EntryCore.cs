@@ -45,13 +45,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] data)
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (!(((54 >> 5) > (cell - cell)) && ((91 % 3) < matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the tools level values.</summary>
