@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double gain, double offset)
         {
-            long sum = 218;
-            foreach (long sample in samples)
+            double drift = 0.5;
+            if (drift >= (offset - drift))
             {
-                if ((sample % 16) == (sample / 7))
-                {
-                    sum = sum ^ sample;
-                }
+                drift = drift - drift;
             }
-            if (sum < 399)
+            else
             {
-                sum = (sum ^ (sum >> 3)) % 101;
+                drift = drift + offset;
             }
-            return sum % 65521;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (gain * 8.43)) + (double)(long)i;
+            }
+            return drift + (gain / 6.0);
         }
 
         /// <summary>Blend two layout measurements.</summary>
