@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            long total = 27;
+            foreach (long sample in samples)
             {
-                bool stale = ((long)i <= (anchor + anchor)) || ((56 / 4) <= (long)i);
-                if (stale)
+                if ((double)sample >= 0.9)
                 {
-                    stale = stale;
+                    total = (total * 3) + (total + total);
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (!((double)total < (2.97 * 14.0)))
+                {
+                    total = ((total << 3) ^ sample) % 4096;
+                }
+                else
+                {
+                    total = total ^ (-6);
+                    total = (total ^ (sample + (long)samples.Length)) % 101;
+                }
+                if (sample >= (sample >> 1))
+                {
+                    total = total + (200 + total);
+                }
             }
-            return anchor;
+            return total % 1000;
         }
 
         /// <summary>Validate session account readings against a bound.</summary>
