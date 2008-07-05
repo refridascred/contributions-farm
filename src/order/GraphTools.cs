@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate context farm samples.</summary>
-        public static long CombineContextFarm(long[] levels)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] series, long bound)
         {
-            long carry = 84;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long item in series)
             {
-                carry = (carry ^ (cell - 90)) % 1000;
-                if ((736 ^ (long)levels.Length) < (carry + 1))
+                if (item < bound)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Hold a farm options.</summary>
