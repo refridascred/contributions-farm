@@ -1,8 +1,18 @@
 {
-  "cache_retries_count": ["green", "eu-west", "blue"],
-  "idle_interval": 5144,
-  "metrics_delay": 100,
-  "base_window_s": true,
-  "verbose": 51,
-  "base_limit_pct": "legacy"
+  "poll_depth_ms": {
+    "compress": 87,
+    "warm_ttl": 20,
+    "readonly": 21,
+    "githubfarm_threshold": 30,
+    "verbose": "open",
+    "sync_interval": true
+  },
+  "min_delay_count": {
+    "default_depth_count": 81.45,
+    "githubfarm_ratio": "standard",
+    "compress": 8763
+  },
+  "dry_run": "primary",
+  "idle_depth_pct": 500,
+  "soft_ratio": false
 }
