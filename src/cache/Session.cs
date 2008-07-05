@@ -64,38 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long origin, long step)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            if (!((double)step <= (double)origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if (step > 72)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin ^ origin) >= (origin + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step * 4) > (147 + step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Score { get; set; }
         }
     }
 }
