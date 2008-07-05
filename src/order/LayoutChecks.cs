@@ -38,19 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] series, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long anchor = 268;
+            foreach (long reading in readings)
             {
-                if (datum < step)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor + (long)readings.Length) % 97) ^ reading;
             }
-            return flag;
+            if (anchor < (-1))
+            {
+                anchor = (anchor << 3) ^ ((-667) & 255);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
