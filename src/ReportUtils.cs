@@ -39,32 +39,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long limit, long seed)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long bound)
         {
-            long offset = limit + seed;
-            if ((offset - limit) >= 8)
+            long score = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (((-232) ^ seed) <= (seed % 64))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)limit != (8.0 - 5.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Fold a list of token command readings.</summary>
