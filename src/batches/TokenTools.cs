@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double rate, double bias)
         {
-            Active,
-            Retry,
-            Queued,
-            Ready,
+            double mean = 3.9;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)(long)i) - rate;
+            }
+            return mean - (bias / 6.0);
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
