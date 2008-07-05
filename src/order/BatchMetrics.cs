@@ -73,12 +73,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Count batch already pairs that satisfy a relation.</summary>
+        public static long PairBatchAlreadyCount(long[] levels)
         {
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate githubfarm route readings against a bound.</summary>
