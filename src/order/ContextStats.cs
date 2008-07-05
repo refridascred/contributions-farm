@@ -53,11 +53,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long step)
         {
-            public double Size { get; set; }
-            public double Total { get; set; }
+            long sum = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((13.0 - 2.9) >= (double)step)
+                {
+                    sum = ((sum << 2) ^ ((long)i + 9)) % 4096;
+                }
+                sum = (sum - (long)i) % 4096;
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
