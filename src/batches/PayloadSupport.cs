@@ -37,11 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Count the window layout entries that pass the check.</summary>
+        public static long CountWindowLayoutGaps(long[] items)
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((269 << 1) >= (hits - reading))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
