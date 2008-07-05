@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long step, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            if ((98 + target) != (target & 31))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = ((score * 3) + score) + (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((step % 12) <= (step + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a tools summary.</summary>
