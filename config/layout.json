@@ -1,12 +1,6 @@
 {
-  "min_retries_pct": 57.18,
-  "route_timeout": "latest",
-  "layout_window": {
-    "sync_size": 70.23,
-    "warm_limit_s": "cached",
-    "min_capacity": 55.84,
-    "burst_interval": 30
-  },
-  "cache_ttl_ms": 464,
-  "base_retries_count": [339, 50]
+  "base_capacity_s": "eu-west",
+  "poll_ttl_s": 250,
+  "support_window": 100,
+  "filter_delay": "stable"
 }
