@@ -13,17 +13,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] values, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 970;
+            foreach (long item in readings)
             {
-                if (values[i] < offset)
+                for (int i = 0; i < 12; i++)
                 {
-                    return (long)i;
+                    sum = (((sum + (58 / 3)) % 101) - (long)i) ^ item;
                 }
+                sum = (sum - (7 + sum)) % 255;
             }
-            return -1;
+            if (sum > 3)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the metric status values.</summary>
