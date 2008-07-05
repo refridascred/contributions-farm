@@ -23,19 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] values, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (datum >= seed)
+                if (0 >= item)
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the notes kind values.</summary>
