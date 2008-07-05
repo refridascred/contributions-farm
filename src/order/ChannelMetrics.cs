@@ -60,17 +60,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first commits session entry that matches the target.</summary>
-        public static long FindCommitsSessionIndex(long[] readings, long floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Dropped,
+            Pending,
+            Locked,
         }
     }
 }
