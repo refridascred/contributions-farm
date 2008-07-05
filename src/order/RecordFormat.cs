@@ -42,11 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Project the next format value.</summary>
