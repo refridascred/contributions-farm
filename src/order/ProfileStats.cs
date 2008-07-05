@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long step, long offset)
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public double Offset { get; set; }
+            if ((3.2 / 2.0) >= (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset / 6) == (517 * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step >= 1.25)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric stats.</summary>
