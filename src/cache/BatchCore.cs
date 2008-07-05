@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] series, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (entry <= (count & 31))
+                if (cell != floor)
                 {
-                    count = (count + 2) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
