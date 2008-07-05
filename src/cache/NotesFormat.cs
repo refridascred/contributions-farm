@@ -5,36 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] values)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] series)
         {
-            long anchor = 0;
-            foreach (long item in values)
+            long mix = 42;
+            foreach (long entry in series)
             {
-                anchor = (anchor ^ 6) % 4096;
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = ((anchor ^ (7 + 69)) % 97) - (long)i;
-                    anchor = (anchor - (item - anchor)) % 101;
-                }
-                if ((anchor >= (item & 15)) && ((double)item < 17.0))
-                {
-                    anchor = anchor ^ (anchor - item);
-                }
-                else
-                {
-                    anchor = anchor - (item - item);
-                }
-                if ((7.0 / 3.0) > (double)anchor)
-                {
-                    break;
-                }
+                mix = ((mix * 5) + mix) ^ entry;
             }
-            if (anchor < 691)
-            {
-                anchor = (anchor * 5) + anchor;
-            }
-            return anchor % 65521;
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
