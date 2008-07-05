@@ -35,10 +35,17 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxLevel = 84.4;
-        public const string SoftBatches = "staging-v2";
-        public const double SoftCount = 6.18;
+        /// <summary>Iterate the layout stream series from a seed.</summary>
+        public static long DeriveLayoutStream(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = (mark ^ floor) % 4096;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long DefaultSpan = 4350;
