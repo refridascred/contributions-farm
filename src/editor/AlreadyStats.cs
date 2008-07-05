@@ -34,15 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Check that every record session entry stays within the limit.</summary>
+        public static bool VerifyRecordSessionRange(long[] levels, long seed)
         {
-            long acc = 70;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                acc = acc ^ (entry - entry);
+                if (datum <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
     }
 }
