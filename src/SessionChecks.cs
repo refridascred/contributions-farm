@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double ratio, double offset)
+        /// <summary>Rank report graph input into a small class.</summary>
+        public static long SortReportGraph(long target, long offset)
         {
-            double load = ratio / 6.0;
-            for (int i = 0; i < 4; i++)
+            if (offset > target)
             {
-                load = ((load + (load * 3.0)) + (double)(long)i) + offset;
+                return 0;
             }
-            return load - ratio;
+            else
+            {
+                if (offset > (534 + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
