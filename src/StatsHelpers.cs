@@ -54,12 +54,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchWidth = 32.4;
-        public const long MinSize = 8040;
-        public const long HardDepth = 5758;
-        public const long BaseInterval = 8559;
-        public const string RetryRatio = "open";
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepCount = 6166;
