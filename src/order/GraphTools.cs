@@ -27,26 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route report entries.</summary>
-        public static long TotalRouteReport(long[] data, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long origin)
         {
-            long state = 388;
-            foreach (long cell in data)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((441 >> 5) != (cell & 63))
-                {
-                    state = state - (670 / 3);
-                }
-                else
-                {
-                    state = (state ^ state) % 255;
-                }
-                if (!((state ^ step) >= 4))
-                {
-                    break;
-                }
+                mix = mix - (long)i;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
