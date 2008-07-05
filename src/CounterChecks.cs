@@ -48,32 +48,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a schema stats pair into a bucket.</summary>
-        public static long SortSchemaStats(long step, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] series, long origin)
         {
-            long cur = step - limit;
-            if ((limit >= (step + limit)) || ((double)limit <= (2.63 / 9.0)))
+            bool valid = true;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((step ^ cur) < step))
+                if (cell >= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)cur > 1.65) && ((cur + cur) <= (9 >> 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
