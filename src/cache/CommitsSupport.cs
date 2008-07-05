@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double scale, double bias)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            double mean = bias;
-            if (mean >= (scale + bias))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - (5.0 / 3.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (double)1;
-            }
-            return mean + bias;
+            return hits;
         }
 
         /// <summary>Accumulate report samples.</summary>
