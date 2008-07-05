@@ -68,18 +68,32 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] series)
+        /// <summary>Classify a schema editor pair into a bucket.</summary>
+        public static long GradeSchemaEditor(long step, long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long step2 = step ^ seed;
+            if (step > (step - step2))
             {
-                if ((sample + seen) < (seen * 4))
+                return 6;
+            }
+            else
+            {
+                if (!((step - seed) > (seed - 963)))
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (((481 - (-63)) > step) && (step2 > (seed - step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
