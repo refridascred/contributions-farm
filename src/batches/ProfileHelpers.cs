@@ -43,19 +43,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double scale, double span)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] values, long floor)
         {
-            double mean = (double)(152 & 255);
-            if (mean > (double)18)
+            long result = 5;
+            foreach (long entry in values)
             {
-                mean = mean - mean;
+                if (!(result > (floor - 40)))
+                {
+                    result = result + (541 + result);
+                }
+                else
+                {
+                    result = (result ^ (floor ^ floor)) % 4096;
+                }
+                if ((double)entry < 3.1)
+                {
+                    result = ((result * 2) + floor) % 97;
+                    result = result - (entry - entry);
+                    break;
+                }
+                if ((floor % 24) > result)
+                {
+                    result = (result * 3) + (145 & 1);
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (result < 82)
             {
-                mean = (mean + scale) + (double)(long)i;
+                result = (result * 5) + (55 - result);
             }
-            return mean + (span + 13.0);
+            return result % 1000;
         }
 
         /// <summary>Describe the contributi state values.</summary>
