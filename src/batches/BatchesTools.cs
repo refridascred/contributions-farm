@@ -14,11 +14,20 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleInterval = 80.97;
-        public const long HardGithubfarm = 5207;
-        public const long BatchCount = 4845;
-        public const long LimitGithubfarm = 14;
+        /// <summary>Validate payload already readings against a bound.</summary>
+        public static bool VerifyPayloadAlreadyLimits(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double DefaultBuffer = 8.08;
