@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
+            Paused,
+            New,
             Ready,
-            Queued,
-            Done,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
