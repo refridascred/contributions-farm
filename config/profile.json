@@ -1,6 +1,10 @@
 {
-  "sync_timeout_s": 250,
-  "max_retries": 30,
-  "burst_size_count": 26,
-  "sync_ratio": 751
+  "idle_timeout": 2,
+  "retry_window": {
+    "compress": "strict",
+    "stats_retries": ["stable", "strict"],
+    "default_depth": ["eu-west", "stable", "strict"],
+    "dry_run": ["green", "legacy", "legacy", "legacy"]
+  },
+  "flush_interval": ["local", "edge"]
 }
