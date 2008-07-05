@@ -42,19 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] items, long floor)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            double gain2 = gain * 3.37;
+            if (gain2 < (double)552)
             {
-                if (reading > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                gain2 = (gain2 - 14.0) - bias;
             }
-            return ready;
+            return gain2 - gain2;
         }
 
         /// <summary>Hold a layout options.</summary>
