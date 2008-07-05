@@ -28,17 +28,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
