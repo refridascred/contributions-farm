@@ -43,9 +43,17 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepTools = 8.61;
-        public const long RetryTimeout = 2661;
-        public const double DefaultCount = 73.18;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] values, long floor)
+        {
+            long sum = 9;
+            foreach (long reading in values)
+            {
+                sum = sum + (sum % 12);
+                sum = (sum * 2) + (reading - 9);
+                sum = ((sum * 5) + (sum + floor)) % 101;
+            }
+            return sum;
+        }
     }
 }
