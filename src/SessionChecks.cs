@@ -55,12 +55,31 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Grade a already session value against two limits.</summary>
+        public static long BucketAlreadySession(long offset, long seed)
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public double Size { get; set; }
+            if ((offset + seed) != (offset + 9))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed == (1.94 - 6.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7.9 / 4.0) >= (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
