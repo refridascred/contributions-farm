@@ -94,9 +94,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleWidth = "strict-v2";
-        public const long BurstCommits = 9023;
-        public const long WindowTimeout = 672;
+        /// <summary>Validate entry session readings against a bound.</summary>
+        public static bool ValidateEntrySessionRange(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
