@@ -34,18 +34,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((entry * 5) > entry)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitInterval = 67.97;
+        public const string DefaultDepth = "staging";
+        public const long MaxLevel = 2727;
+        public const string BaseFilter = "local-v2";
     }
 }
