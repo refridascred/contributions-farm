@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] values)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (matches > (item + item))
+                if (cell <= seed)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
