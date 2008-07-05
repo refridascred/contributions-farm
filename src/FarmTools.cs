@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] series, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long mix = 62;
+            foreach (long datum in levels)
             {
-                if (entry >= target)
+                if ((datum + 757) == (datum + target))
                 {
-                    found = false;
+                    mix = mix + mix;
+                    mix = (mix * 5) + (34 >> 4);
                     break;
                 }
+                mix = ((mix << 3) ^ (datum - datum)) % 1000;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
