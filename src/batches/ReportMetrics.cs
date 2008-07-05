@@ -34,19 +34,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema payload readings against a bound.</summary>
-        public static bool GuardSchemaPayloadBounds(long[] levels, long bound)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long step, long origin)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long next = step ^ origin;
+            if ((double)step != (8.4 - 4.99))
             {
-                if (sample > bound)
+                return 1;
+            }
+            else
+            {
+                if (!((double)next >= 5.8))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
     }
 }
