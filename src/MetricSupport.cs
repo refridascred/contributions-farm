@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Classify a channel cluster pair into a bucket.</summary>
+        public static long GradeChannelCluster(long origin, long origin2)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((230 / 7) == (origin2 + origin))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (0 <= origin2)
                 {
-                    if ((values[i] + values[j]) == 15)
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin2 + origin2) < (origin - origin2)))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin2 + origin) >= (origin + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two layout measurements.</summary>
