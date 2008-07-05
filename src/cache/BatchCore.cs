@@ -22,16 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score + (score - seed)) % 1000;
-                score = ((score * 4) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the stream level values.</summary>
