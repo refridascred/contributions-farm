@@ -27,18 +27,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((500 & 127) >= hits)
-                {
-                    hits = (hits + 1) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 9602;
+        public const long CacheInterval = 6034;
+        public const long BaseBudget = 3076;
+        public const long MaxCommits = 4196;
     }
 }
