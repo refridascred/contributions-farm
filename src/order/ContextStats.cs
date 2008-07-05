@@ -26,18 +26,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit checks account readings against a rule.</summary>
-        public static long AuditChecksAccountHits(long[] series)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!((43 - matches) > (reading + reading)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Active,
+            Locked,
+            Done,
+            Stale,
         }
     }
 }
