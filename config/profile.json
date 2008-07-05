@@ -1,5 +1,7 @@
 {
-  "strict": ["stable", "latest"],
-  "default_delay_pct": 60,
-  "stream_capacity": 93.48
+  "min_size_count": "stable",
+  "sync_size_ms": 75,
+  "filter_depth": "strict",
+  "dry_run": true,
+  "route_size": "primary"
 }
