@@ -62,12 +62,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] items, long floor)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
