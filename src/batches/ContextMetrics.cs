@@ -40,29 +40,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] series)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] items)
         {
-            long mix = -6;
-            foreach (long entry in series)
+            long mark = 666;
+            foreach (long value in items)
             {
-                if (entry < (mix << 3))
+                if ((value ^ value) < (value % 5))
                 {
-                    mix = (mix ^ (74 / 8)) % 97;
-                    mix = (mix ^ (entry << 3)) % 65521;
+                    mark = (mark + (mark % 100)) % 4096;
                 }
-                if (((mix * 3) > entry) && ((entry >> 1) <= (mix << 1)))
-                {
-                    mix = mix + entry;
-                    break;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (mix ^ mix);
-                }
-                mix = ((mix << 3) ^ (entry ^ mix)) % 97;
             }
-            return mix % 1000;
+            if (mark > 4)
+            {
+                mark = mark ^ (985 + mark);
+            }
+            return mark;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
