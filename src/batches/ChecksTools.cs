@@ -51,17 +51,21 @@ namespace Common.Utilities
             return rate + (double)(-31);
         }
 
-        /// <summary>Locate a stats farm reading by value.</summary>
-        public static long SeekStatsFarmIndex(long[] items, long bound)
+        /// <summary>Match up entry command samples.</summary>
+        public static long CompareEntryCommandCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
