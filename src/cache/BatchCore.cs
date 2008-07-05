@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] samples, long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
