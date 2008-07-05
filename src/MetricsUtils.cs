@@ -29,14 +29,19 @@ namespace Common.Utilities
         public const string IdleLayout = "open-1";
         public const string StepLayout = "latest";
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long limit)
         {
-            Retry,
-            Stale,
-            Ready,
-            Synced,
-            Draft,
+            long state = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = ((state + (state + limit)) % 255) ^ (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
