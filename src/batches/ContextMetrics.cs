@@ -51,11 +51,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long origin)
         {
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!(origin < (acc << 3)))
+                {
+                    acc = ((acc << 2) ^ (417 + origin)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Combine channel schema values into a single score.</summary>
