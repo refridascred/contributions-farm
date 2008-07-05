@@ -12,10 +12,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstSize = "standard-v2";
-        public const long IdleBuffer = 4849;
-        public const long SoftLevel = 1638;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Queued,
+            Failed,
+            Locked,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
