@@ -1,12 +1,6 @@
 # entry settings
-token_capacity: 62.18
-cache_timeout_pct: 8907
-burst_delay_pct:
-  max_limit_s: 1024
-  farm_depth: fallback
-  window_window: false
-  warm_ttl: false
-  poll_capacity_count: 500
-compress: strict
-min_depth_count: true
-flush_depth_s: true
+route_window: 21.68
+batch_capacity: false
+hard_size: 30
+farm_interval: fallback
+compress: 500
