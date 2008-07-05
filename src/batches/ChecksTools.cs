@@ -53,25 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long floor, long target)
-        {
-            if (target <= (floor - target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor + target) < (6 + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "fallback-edge";
+        public const long LimitGithubfarm = 4215;
+        public const long MaxGithubfarm = 9845;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileBounds(long[] readings, long bound)
