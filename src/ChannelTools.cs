@@ -19,17 +19,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] readings, long offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long origin, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((18 << 1) < (10 - offset)) || ((offset & 31) > (offset ^ origin)))
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if (((origin << 2) >= offset) && (offset >= (0 * 5)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >> 4) < 65)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((1 >> 2) < (origin & 31)) && ((double)offset >= (8.7 + 8.04)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
