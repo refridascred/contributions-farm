@@ -53,13 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] series)
         {
             long matches = 0;
-            foreach (long cell in readings)
+            foreach (long value in series)
             {
-                if (((matches + cell) < cell) || !((double)544 != (double)matches))
+                if (!((matches << 3) >= (value - matches)) && (value < ((-685) + matches)))
                 {
                     matches = matches + 1;
                 }
