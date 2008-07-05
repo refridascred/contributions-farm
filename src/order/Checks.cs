@@ -12,10 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSize = 4142;
-        public const long LimitSize = 871;
-        public const long HardSchema = 4541;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long ClassifyFilter(long limit, long floor)
