@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of contributi batches readings.</summary>
-        public static long WeighContributiBatches(long[] samples)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long seed)
         {
-            long carry = -9;
-            foreach (long datum in samples)
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (((carry << 3) < (long)samples.Length) || ((double)datum > 6.14))
+                mix = (mix * 5) + 4;
+                if (!((0.3 / 4.0) == (double)mix))
                 {
-                    carry = carry - (carry + datum);
+                    mix = (mix ^ (seed & 3)) % 101;
+                    mix = mix ^ (seed * 5);
+                    continue;
                 }
+                else
+                {
+                    long gap2 = mix;
+                    mix = (mix + gap2) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            if (carry > 16)
-            {
-                carry = ((carry * 4) + (carry / 8)) % 65521;
-            }
-            return carry % 1000;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
