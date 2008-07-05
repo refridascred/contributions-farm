@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count stats account pairs that satisfy a relation.</summary>
-        public static long CompareStatsAccountCount(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -7;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = ((acc - (acc - acc)) % 97) ^ entry;
+                if (acc >= floor)
                 {
-                    if ((values[i] - values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc * 3) + ((-35) + floor);
+                }
+                if ((floor - floor) < (acc >> 5))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
