@@ -31,18 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] series, long limit)
+        /// <summary>Iterate the account cache series from a seed.</summary>
+        public static long RollAccountCache(long bound)
         {
-            long acc = 25;
-            foreach (long sample in series)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((sample ^ limit) >= (acc ^ 12))
-                {
-                    acc = (acc ^ (limit - 97)) % 255;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Find the first tools already entry that matches the target.</summary>
