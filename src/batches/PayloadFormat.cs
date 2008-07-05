@@ -39,12 +39,13 @@ namespace Common.Utilities
             return drift + (drift * 18.0);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinTimeout = "strict-v2";
-        public const long BurstSpan = 1794;
-        public const double BurstSession = 57.99;
-        public const string RetryDepth = "fallback-edge";
-        public const long MaxRatio = 2512;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
