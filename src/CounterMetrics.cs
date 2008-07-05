@@ -37,15 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] levels)
         {
-            long acc = 79;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                acc = ((acc ^ (acc - 11)) % 1000) ^ cell;
+                if ((seen + value) >= (value / 6))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc % 4096;
+            return seen;
         }
     }
 }
