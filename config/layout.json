@@ -1,8 +1,8 @@
 {
-  "graph_ratio": ["edge", "green", "standard"],
-  "soft_limit_count": true,
-  "soft_ttl": [485, 369, 426],
-  "max_interval": 57.45,
-  "strict": "fallback",
-  "poll_ratio": [384, 108]
+  "enabled": 2210,
+  "base_threshold": 1024,
+  "hard_window_ms": false,
+  "retry_depth_count": 7605,
+  "payload_capacity": 8,
+  "burst_threshold_count": "strict"
 }
