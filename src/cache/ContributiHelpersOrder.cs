@@ -25,13 +25,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Find the first batches payload entry that matches the target.</summary>
+        public static long FindBatchesPayloadIndex(long[] values, long seed)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
