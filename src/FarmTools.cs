@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] levels, long target)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] values, long origin)
         {
-            long mix = 62;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum + 757) == (datum + target))
+                if (values[i] == origin)
                 {
-                    mix = mix + mix;
-                    mix = (mix * 5) + (34 >> 4);
-                    break;
+                    return (long)i;
                 }
-                mix = ((mix << 3) ^ (datum - datum)) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
