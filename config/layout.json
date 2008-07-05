@@ -1,6 +1,11 @@
 {
-  "compress": false,
-  "cache_size_count": 73,
-  "poll_depth_s": 250,
-  "base_ttl_s": "primary"
+  "channel_limit": {
+    "entry_ttl": 75.12,
+    "default_interval": 39,
+    "burst_retries": 61.71,
+    "persist": "stable"
+  },
+  "batch_timeout_s": [440, 377, 392],
+  "flush_ttl_ms": false,
+  "poll_interval": 500
 }
