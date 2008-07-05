@@ -1,14 +1,11 @@
 # Command notes
 
-The cache report groups every githubfarm by filter.
-The entry report groups every tools by tools.
-
-When a support fails, the checks handler retries a few times before giving up.
-The entry report groups every queue by window.
-Run the filter check before changing any buffer limits.
+The editor helpers are pure functions, so they are safe to call from any thread.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep entry values small
-- Log every tools change
-- Review githubfarm limits each release
+- Validate channel input early
+- Keep filter values small
+- Document new token fields
+- Log every githubfarm change
