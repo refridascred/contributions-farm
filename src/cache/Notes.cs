@@ -39,14 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Failed,
-            Locked,
-            Active,
-            Retry,
-            Ready,
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public double Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
