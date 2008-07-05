@@ -25,17 +25,15 @@ namespace Common.Utilities
         public const string BaseTimeout = "latest";
         public const long DefaultProfile = 5185;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] series, long floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double bias, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(134 + 8);
+            if (rate < (rate * 6.7))
             {
-                if ((series[i] >= floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = ((rate - (1.89 + rate)) - bias) + span;
             }
-            return -1;
+            return rate + (rate - rate);
         }
     }
 }
