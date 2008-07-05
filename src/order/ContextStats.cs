@@ -26,21 +26,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = span;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale - (span + scale)) + (double)(long)i;
             }
-            return matches;
+            return scale - (gain - 13.0);
         }
     }
 }
