@@ -64,34 +64,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window payload value against two limits.</summary>
-        public static long ClassifyWindowPayload(long bound, long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long origin, long step)
         {
-            if ((15.0 * 9.88) == (double)step)
+            if (!((double)step <= (double)origin))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((double)bound == (19.0 - 6.6))
+                if (step > 72)
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((step & 1) != (step / 2))
+                    if ((origin ^ origin) >= (origin + origin))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        if (!((step - bound) <= 497))
+                        if ((step * 4) > (147 + step))
                         {
-                            return 0;
+                            return 5;
                         }
                         else
                         {
-                            return 8;
+                            return 2;
                         }
                     }
                 }
