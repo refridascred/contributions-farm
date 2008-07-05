@@ -51,26 +51,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm support entries.</summary>
-        public static long TotalGithubfarmSupport(long[] items, long seed)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long acc = 486;
-            foreach (long datum in items)
-            {
-                if ((seed - seed) >= (9 + acc))
-                {
-                    acc = (acc + (datum + datum)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 3) + acc) % 65521;
-                }
-                if ((66 >> 4) != (datum + 5))
-                {
-                    break;
-                }
-            }
-            return acc;
+            New,
+            Active,
+            Locked,
+            Stale,
         }
     }
 }
