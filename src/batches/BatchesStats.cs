@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long seed, long limit)
-        {
-            if ((double)limit < (13.0 - 13.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit - limit) <= limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((2.0 - 6.0) <= (double)seed) && (limit > seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxLevel = 3549;
+        public const long CacheStats = 5637;
+        public const long DefaultSpan = 2110;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheOutliers(long[] items)
