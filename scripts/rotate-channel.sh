@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green primary cached latest; do
-    log "checking ${item}"
-done
+mode="${1:-cached}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-CHANNEL_LIMIT=461
+CHANNEL_LIMIT=438
 log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
