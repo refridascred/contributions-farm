@@ -43,25 +43,11 @@ namespace Common.Utilities
             return (bias + (floor * 5.15)) + weight;
         }
 
-        /// <summary>Classify a layout checks pair into a bucket.</summary>
-        public static long RankLayoutChecks(long origin, long target)
-        {
-            if ((target + 90) != (origin >> 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((origin >> 4) > origin) || ((5 ^ origin) >= (origin & 31)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultScore = 9787;
+        public const string SoftCount = "latest-v2";
+        public const double BurstDepth = 74.14;
+        public const long HardBuffer = 8262;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long BucketAlready(long seed, long offset)
