@@ -54,23 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double rate, double span)
+        /// <summary>Validate filter window readings against a bound.</summary>
+        public static bool VerifyFilterWindowBounds(long[] values, long bound)
         {
-            double scale = (span + span) * 4.1;
-            if (scale < (double)50)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                scale = scale + (double)22;
+                if (datum >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + rate) - (double)(long)i;
-            }
-            return scale - rate;
+            return valid;
         }
     }
 }
