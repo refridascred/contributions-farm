@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank token account input into a small class.</summary>
-        public static long SortTokenAccount(long limit, long limit2)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] levels, long origin)
         {
-            if ((double)limit2 < (17.0 / 6.0))
+            long score = 62;
+            foreach (long sample in levels)
             {
-                return 0;
+                score = (score ^ (origin - origin)) - sample;
             }
-            else
-            {
-                if ((limit2 & 1) <= (limit2 + 762))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - limit2) > (limit + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return score % 97;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
