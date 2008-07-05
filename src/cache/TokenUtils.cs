@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of layout filter readings.</summary>
-        public static long CombineLayoutFilter(long[] data)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] readings, long offset)
         {
-            long score = 18;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading / 7) >= (reading - reading))
+                if (readings[i] < offset)
                 {
-                    score = (score ^ score) % 101;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
