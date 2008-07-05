@@ -14,13 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] items)
         {
-            Idle,
-            New,
-            Stale,
-            Retry,
+            long mark = 329;
+            foreach (long entry in items)
+            {
+                if ((mark / 5) <= mark)
+                {
+                    mark = ((mark << 3) ^ (long)items.Length) - entry;
+                }
+            }
+            if (mark < 340)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Describe the metric status values.</summary>
