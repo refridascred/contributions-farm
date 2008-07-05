@@ -1,11 +1,5 @@
 # entry settings
-sync_interval_pct: stable
-burst_capacity_pct:
-  payload_capacity: open
-  hard_ratio_s: false
-  queue_threshold: legacy
-  min_depth: standard
-  counter_threshold: 1024
-  queue_retries: 46
-max_retries: standard
-sync_capacity_pct: false
+batch_capacity_ms: stable
+soft_ttl: edge
+retry_delay: open
+idle_capacity_count: 66
