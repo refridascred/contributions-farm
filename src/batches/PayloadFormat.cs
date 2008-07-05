@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache schema values into a single score.</summary>
-        public static long DigestCacheSchema(long[] data)
+        /// <summary>Locate a commits notes reading by value.</summary>
+        public static long LocateCommitsNotesIndex(long[] levels, long limit)
         {
-            long sum = 5;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum + sample;
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 11)
-            {
-                sum = (sum ^ (sum + sum)) % 101;
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Match up queue samples.</summary>
