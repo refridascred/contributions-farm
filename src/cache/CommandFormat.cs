@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const double RetryInterval = 69.64;
         public const double BaseEntry = 55.21;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftRatio = 3184;
-        public const long SoftCount = 3446;
-        public const string CacheWidth = "stable-edge";
-        public const long BaseScore = 4733;
-        public const double IdleTimeout = 34.37;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public bool Size { get; set; }
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Fold a list of graph cache readings.</summary>
         public static long TallyGraphCache(long[] samples)
