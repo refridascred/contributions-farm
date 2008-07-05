@@ -19,17 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] levels, long bound)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
