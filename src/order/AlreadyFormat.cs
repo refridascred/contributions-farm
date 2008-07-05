@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many payload channel samples are out of range.</summary>
-        public static long AuditPayloadChannelMatches(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((offset + cell) > cell) && ((double)cell < (2.1 - 1.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseBuffer = 18.73;
+        public const long MaxBuffer = 3411;
+        public const long MinScore = 5133;
+        public const long DefaultBuffer = 2018;
+        public const long LimitSpan = 8187;
 
         /// <summary>Project the next entry value.</summary>
         public static double BlendEntry(double rate, double span)
