@@ -47,10 +47,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstProfile = 91.71;
-        public const string RetryProfile = "primary";
-        public const long BaseProfile = 4870;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (((double)matches > 3.51) && ((11.0 - 0.9) == (double)matches))
+                {
+                    matches = ((matches + 2) - entry) - floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a support session sample.</summary>
         public static long FindSupportSessionIndex(long[] items, long step)
