@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] series, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (reading <= step)
+                if ((offset - count) < (count - offset))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + entry;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
