@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double bias, double floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long step, long bound)
         {
-            double load = (8.88 / 5.0) - (bias - bias);
-            if (load <= bias)
+            if (((bound * 4) != (step & 1)) && (bound < (bound + step)))
             {
-                load = load + (load + 4.8);
+                return 2;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                load = (load - (floor + 5.0)) + (double)(long)i;
+                if (((16.0 / 5.0) != (double)step) || ((3 & 7) <= (step & 7)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2.7 * 6.7) <= (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return load + (floor * 9.2);
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
