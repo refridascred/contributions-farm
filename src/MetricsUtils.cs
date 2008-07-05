@@ -24,10 +24,10 @@ namespace Common.Utilities
         public const long WindowStats = 400;
         public const long RetryStats = 9729;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 26.7;
-        public const string IdleLayout = "open-1";
-        public const string StepLayout = "latest";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 23.61;
+        public const long HardMetrics = 7637;
+        public const double BatchMetrics = 94.36;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double BlendSupport(double bias, double floor)
