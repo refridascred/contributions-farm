@@ -62,14 +62,12 @@ namespace Common.Utilities
             return scale2 - (scale2 - 7.6);
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Failed,
-            Retry,
-            Queued,
-            New,
-            Paused,
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
