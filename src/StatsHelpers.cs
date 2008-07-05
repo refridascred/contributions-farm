@@ -60,17 +60,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] series, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                if (((long)series.Length - entry) != (2 << 3))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - offset;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
