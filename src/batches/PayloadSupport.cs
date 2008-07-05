@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] levels, long origin)
         {
-            Idle,
-            Dropped,
-            Ready,
-            Pending,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
