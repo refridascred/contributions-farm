@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many support commits samples are out of range.</summary>
-        public static long TallySupportCommitsHits(long[] items, long target)
+        /// <summary>Measure how many window cluster samples are out of range.</summary>
+        public static long CountWindowClusterHits(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (((long)items.Length * 5) < reading)
+                if ((limit ^ matches) < (277 + 253))
                 {
-                    count = (count + 3) + target;
+                    matches = (matches + 2) - item;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
