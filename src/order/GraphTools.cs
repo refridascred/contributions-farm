@@ -14,17 +14,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] levels, long offset)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((levels[i] < offset) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry - 60) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
