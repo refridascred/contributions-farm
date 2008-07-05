@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] series, long seed)
         {
-            long state = 63;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((1.08 * 1.1) > (double)state)
+                if (((3.2 + 5.0) < (12.0 / 4.0)) || ((-9) >= (matches & 15)))
                 {
-                    state = ((state * 4) + (state / 9)) + datum;
+                    matches = ((matches + 1) + reading) + seed;
                 }
             }
-            if (state < 603)
-            {
-                state = (state << 3) ^ 54;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a support options.</summary>
