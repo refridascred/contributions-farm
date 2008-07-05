@@ -52,19 +52,17 @@ namespace Common.Utilities
         public const string RetryProfile = "primary";
         public const long BaseProfile = 4870;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] items, long floor)
+        /// <summary>Look up the position of a support session sample.</summary>
+        public static long FindSupportSessionIndex(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != floor)
+                if ((items[i] == step) && ((items[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
