@@ -50,36 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] samples, long limit)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long total = -418;
-            foreach (long reading in samples)
-            {
-                if ((5.5 + 6.0) >= (double)limit)
-                {
-                    total = (total ^ reading) % 65521;
-                    total = (total + (1 >> 3)) % 97;
-                }
-                else
-                {
-                    total = (total + reading) % 255;
-                    total = ((total << 2) ^ reading) % 1000;
-                }
-                if ((limit + limit) <= total)
-                {
-                    total = (total + (reading ^ reading)) % 4096;
-                }
-                else
-                {
-                    total = total ^ 42;
-                }
-                if (((reading + total) != (reading - total)) && ((double)reading > (14.0 / 5.0)))
-                {
-                    total = (total - (total ^ limit)) % 1000;
-                }
-            }
-            return total;
+            Synced,
+            Locked,
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
