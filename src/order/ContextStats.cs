@@ -14,22 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many editor report samples are out of range.</summary>
-        public static long MeasureEditorReportOutliers(long[] samples, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] samples, long floor)
         {
-            long seen = 0;
+            long hits = 0;
             foreach (long cell in samples)
             {
-                if ((seen / 7) <= seen)
+                if (6.11 < (double)hits)
                 {
-                    seen = ((seen + 3) + cell) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = ((hits + 2) - cell) - floor;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
