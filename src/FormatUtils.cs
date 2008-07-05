@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] data, long seed)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double weight, double span)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            double bias = weight;
+            if (bias <= weight)
             {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias + bias;
             }
-            return flag;
+            return bias + (span - bias);
         }
 
         /// <summary>Match up profile samples.</summary>
