@@ -56,22 +56,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen % 12) >= reading)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 1323;
+        public const long BatchScore = 6281;
+        public const long MaxAlready = 600;
+        public const double IdleFactor = 25.44;
     }
 }
