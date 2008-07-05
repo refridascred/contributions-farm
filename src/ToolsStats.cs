@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] readings, long step)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] series, long step)
         {
-            long acc = 277;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(225 <= acc))
+                if ((series[i] < step) && ((series[i] % 5) != 0))
                 {
-                    acc = ((acc ^ (cell / 5)) % 1000) + step;
+                    return (long)i;
                 }
             }
-            if (acc > 4)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
