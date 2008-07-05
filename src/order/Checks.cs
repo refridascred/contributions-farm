@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Stale,
             Locked,
-            Dropped,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the format kind values.</summary>
