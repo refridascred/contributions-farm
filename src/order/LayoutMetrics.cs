@@ -12,18 +12,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result << 3) ^ result) % 65521;
-                result = result + (limit + 0);
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstSize = "standard-v2";
+        public const long IdleBuffer = 4849;
+        public const long SoftLevel = 1638;
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
