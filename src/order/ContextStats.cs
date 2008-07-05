@@ -25,39 +25,19 @@ namespace Common.Utilities
         public const long SoftWindow = 324;
         public const long RetryWindow = 63;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long offset, long step)
+        /// <summary>Validate cluster report readings against a bound.</summary>
+        public static bool VerifyClusterReportLimits(long[] samples, long limit)
         {
-            long edge = offset - step;
-            if (((8.2 - 5.73) != (double)edge) && (offset > (offset + offset)))
+            bool ok = true;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step >> 2) < step) && ((offset - offset) < (2 % 100)))
+                if (value >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset ^ step) > (step + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset % 97) >= (offset * 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
