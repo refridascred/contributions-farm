@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftFactor = 22.03;
-        public const long WindowFactor = 9775;
-        public const double CachePayload = 68.24;
-        public const double BaseScore = 91.73;
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] readings, long floor)
+        {
+            long mark = 2;
+            foreach (long datum in readings)
+            {
+                mark = ((mark - (floor & 127)) % 97) + datum;
+            }
+            if (mark < (-9))
+            {
+                mark = (mark + (2 / 7)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorOutliers(long[] data)
