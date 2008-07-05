@@ -37,18 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] items, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long sum = 2;
+            foreach (long item in items)
             {
-                if ((hits - hits) >= (hits - entry))
-                {
-                    hits = (hits + 3) + offset;
-                }
+                sum = ((sum << 3) ^ (bound & 255)) ^ item;
             }
-            return hits;
+            if (sum > 7)
+            {
+                sum = (sum * 2) + (sum ^ sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a metrics info.</summary>
