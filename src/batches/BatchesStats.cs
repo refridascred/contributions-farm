@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of githubfarm token entries.</summary>
-        public static long ScoreGithubfarmToken(long[] levels)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long mark = -135;
-            foreach (long item in levels)
-            {
-                mark = (((mark * 2) + (mark / 5)) % 65521) + item;
-            }
-            if (mark > 565)
-            {
-                mark = ((mark << 3) ^ (mark ^ 208)) % 101;
-            }
-            return mark;
+            Done,
+            Ready,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
