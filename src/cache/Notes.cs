@@ -15,12 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] values, long step)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] >= step)
+                if (samples[i] >= limit)
                 {
                     return (long)i;
                 }
