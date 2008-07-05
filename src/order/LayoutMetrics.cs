@@ -14,19 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] data, long seed)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the tools status values.</summary>
