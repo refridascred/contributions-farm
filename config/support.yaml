@@ -1,18 +1,10 @@
 # support settings
-dry_run: 2986
-verbose:
-  cache_ratio_count:
-    cache_ratio:
-      - 430
-      - 85
-    default_delay_count: blue
-    burst_ttl_ms: 66
-    filter_ttl: 83
-  strict:
-    stream_limit: strict
-    base_ttl_ms: false
-    default_capacity: 94
-    enabled: stable
-    burst_depth_ms: eu-west
-  cache_retries_count: strict
-record_threshold: 4465
+stream_delay: 5454
+warm_ratio: fallback
+dry_run: eu-west
+format_window:
+  - fallback
+  - fallback
+  - latest
+  - green
+context_ttl: 100
