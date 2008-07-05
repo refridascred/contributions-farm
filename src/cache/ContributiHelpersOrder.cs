@@ -14,19 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every session farm entry stays within the limit.</summary>
-        public static bool GuardSessionFarmRange(long[] values, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (sample >= floor)
+                if (cell != limit)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
