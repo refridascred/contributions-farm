@@ -42,15 +42,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit batch graph readings against a rule.</summary>
-        public static long MeasureBatchGraphGaps(long[] items, long seed)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] series)
         {
             long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((93 - value) < (seed << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
