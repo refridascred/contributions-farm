@@ -1,14 +1,13 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the editor list.
-The entry report groups every token by counter.
+Each record is validated before it reaches the support queue.
+Keep entry and notes names short and lowercase.
 
-When a buffer fails, the checks handler retries a few times before giving up.
-Keep schema and route names short and lowercase.
+Use filter settings to tune how often report data is refreshed.
+The editor report groups every payload by profile.
 
 ## Guidelines
 
-- Review report limits each release
-- Keep farm values small
-- Validate format input early
-- Prefer session defaults
+- Validate cache input early
+- Review batch limits each release
+- Keep checks values small
