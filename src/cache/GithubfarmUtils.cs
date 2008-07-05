@@ -64,11 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchLevel = "latest";
-        public const long BaseSize = 9862;
-        public const long DefaultBudget = 6791;
-        public const long BurstEditor = 1983;
-        public const long HardEditor = 3513;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
