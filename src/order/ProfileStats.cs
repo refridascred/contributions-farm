@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double gain, double bias)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double bias2 = gain;
-            if (bias2 < bias)
-            {
-                bias2 = bias2 + gain;
-            }
-            else
-            {
-                bias2 = bias2 + (gain - 9.59);
-            }
-            return bias2 - (11.0 - bias2);
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
