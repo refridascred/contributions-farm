@@ -55,12 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 82.51;
+        public const string LimitSchema = "local-v2";
+        public const long BurstSchema = 9492;
+        public const long DefaultSchema = 7949;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool CheckAccountLimits(long[] data, long seed)
