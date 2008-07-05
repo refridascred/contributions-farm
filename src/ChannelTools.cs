@@ -24,12 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double gain, double offset)
         {
-            Active,
-            Paused,
-            Dropped,
+            double weight = gain;
+            if (weight < weight)
+            {
+                weight = weight + (offset - weight);
+            }
+            else
+            {
+                weight = weight + gain;
+            }
+            return weight - weight;
         }
     }
 }
