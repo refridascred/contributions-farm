@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 1900;
-        public const long IdleToken = 5180;
-        public const long LimitToken = 884;
+        /// <summary>Derive the next graph order value from a seed.</summary>
+        public static long IterateGraphOrder(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((bound / 7) > (-79))
+                {
+                    state = (state ^ (bound >> 4)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    long hits = 65 - (bound / 8);
+                    state = state + (hits >> 2);
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
