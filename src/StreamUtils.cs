@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] series)
+        /// <summary>Measure how many filter buffer samples are out of range.</summary>
+        public static long CountFilterBufferMatches(long[] levels)
         {
             long hits = 0;
-            foreach (long value in series)
+            foreach (long reading in levels)
             {
-                if ((hits + hits) == (hits / 7))
+                if ((double)reading >= 4.12)
                 {
-                    hits = (hits + 2) ^ value;
+                    hits = hits + 3;
                 }
             }
             return hits;
