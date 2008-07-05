@@ -46,19 +46,18 @@ namespace Common.Utilities
         public const long CacheBatches = 4124;
         public const long IdleLevel = 8319;
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double bias, double span)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] samples)
         {
-            double scale = span / 9.0;
-            if (scale <= (span * 18.0))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                scale = scale - (bias / 4.0);
+                if (hits < (hits + value))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            return scale + bias;
+            return hits;
         }
 
         /// <summary>Locate a command reading by value.</summary>
