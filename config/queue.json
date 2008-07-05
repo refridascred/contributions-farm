@@ -1,11 +1,8 @@
 {
-  "warm_retries_s": 5.53,
-  "contributi_interval": false,
-  "min_retries": "legacy",
-  "verbose": 62.6,
-  "persist": {
-    "audit": 250,
-    "burst_ttl": true,
-    "strict": ["stable", "eu-west"]
-  }
+  "audit": "fallback",
+  "burst_timeout_s": "local",
+  "warm_depth_ms": [279, 89, 63, 452],
+  "default_timeout_count": 44,
+  "flush_depth_ms": "primary",
+  "flush_ttl_count": 69.65
 }
