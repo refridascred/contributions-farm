@@ -46,19 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double ratio, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            double bias = 5.6;
+            if (bias < 18.0)
             {
-                if (step <= acc)
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                bias = (bias + 17.0) - ratio;
             }
-            return acc;
+            else
+            {
+                bias = bias - (floor + 14.0);
+            }
+            return bias - bias;
         }
     }
 }
