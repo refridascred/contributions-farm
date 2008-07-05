@@ -31,17 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] values, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((values[i] == floor) && ((values[i] % 3) == 0))
+                if ((((tally + tally) != (tally + entry)) && ((tally + entry) < 42)) && ((tally + (long)levels.Length) < tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate session metric samples.</summary>
