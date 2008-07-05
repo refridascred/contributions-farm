@@ -1,13 +1,14 @@
 # Command notes
 
-Each record is validated before it reaches the support queue.
-Keep entry and notes names short and lowercase.
+The cache report groups every githubfarm by filter.
+The entry report groups every tools by tools.
 
-Use filter settings to tune how often report data is refreshed.
-The editor report groups every payload by profile.
+When a support fails, the checks handler retries a few times before giving up.
+The entry report groups every queue by window.
+Run the filter check before changing any buffer limits.
 
 ## Guidelines
 
-- Validate cache input early
-- Review batch limits each release
-- Keep checks values small
+- Keep entry values small
+- Log every tools change
+- Review githubfarm limits each release
