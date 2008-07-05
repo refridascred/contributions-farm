@@ -1,16 +1,7 @@
 {
-  "soft_delay": "edge",
-  "already_threshold": 60,
-  "hard_size_pct": false,
-  "cache_limit_count": {
-    "idle_interval_pct": false,
-    "commits_capacity": true,
-    "readonly": "local",
-    "graph_threshold": {
-      "support_ttl": 1024,
-      "stats_window": ["stable", "fallback", "edge"],
-      "base_interval": 16
-    },
-    "poll_window_ms": 500
-  }
+  "graph_retries": 28,
+  "sync_retries": "latest",
+  "soft_size_count": true,
+  "readonly": [202, 231, 360],
+  "profile_size": 19.08
 }
