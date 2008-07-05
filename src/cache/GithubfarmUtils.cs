@@ -12,18 +12,22 @@ namespace Common.Utilities
             return (bias2 - 2.0) + weight;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] series)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] levels)
         {
-            long carry = 268;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((carry + 86) < (reading + (-40)))
+                if ((datum + count) >= (count >> 2))
                 {
-                    carry = ((carry << 2) ^ ((long)series.Length - reading)) % 65521;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Project the next contributi farm value.</summary>
