@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] readings, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] items)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (!((count + origin) > (count >> 2)))
+                if (((double)(long)items.Length > (4.59 * 9.13)) || (870 < seen))
                 {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the graph class values.</summary>
