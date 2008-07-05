@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
+            Ready,
+            Queued,
+            Done,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
