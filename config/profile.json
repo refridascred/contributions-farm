@@ -1,19 +1,10 @@
 {
-  "hard_depth": "latest",
-  "verbose": 21,
-  "poll_capacity_count": false,
-  "max_interval_pct": "primary",
-  "sync_ratio_count": [375, 485],
-  "enabled": {
-    "flush_size_count": "fallback",
-    "route_interval": ["legacy", "fallback", "strict"],
-    "retry_delay": ["cached", "primary", "eu-west"],
-    "payload_timeout": false,
-    "commits_timeout": {
-      "persist": 250,
-      "audit": "standard",
-      "tools_threshold": "open"
-    },
-    "audit": "edge"
-  }
+  "checks_capacity": "fallback",
+  "compress": "open",
+  "profile_retries": {
+    "audit": "green",
+    "strict": "green",
+    "base_timeout_pct": ["local", "open", "green"]
+  },
+  "batch_threshold": "open"
 }
