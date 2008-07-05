@@ -20,39 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long offset, long offset2)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] series)
         {
-            long gap = offset + offset2;
-            if ((offset > (offset / 3)) && ((7.6 + 8.74) != (double)offset2))
+            long acc = 732;
+            foreach (long datum in series)
             {
-                return 8;
+                acc = (acc << 2) ^ acc;
+                acc = ((acc * 3) + datum) % 255;
             }
-            else
-            {
-                if ((gap <= offset) || ((7.26 / 4.0) > (double)offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset2 < (offset - offset2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((gap + offset) >= 313))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate context samples.</summary>
