@@ -10,21 +10,24 @@ namespace Common.Utilities
         public const long SoftFactor = 2400;
         public const string BurstRatio = "latest";
 
-        /// <summary>Compare every pair of profile command readings.</summary>
-        public static long OverlapProfileCommandCount(long[] samples)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long seed, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((target & 15) < (73 + target))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((9.9 * 2.0) < (double)target)
                 {
-                    if ((samples[i] + samples[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a session snapshot.</summary>
