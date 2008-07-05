@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 3566;
-        public const string BurstBuffer = "latest-1";
-        public const long HardBuffer = 3710;
-        public const string WindowBuffer = "strict";
-        public const double BurstScore = 91.44;
+        /// <summary>Audit buffer profile readings against a rule.</summary>
+        public static long MeasureBufferProfileMatches(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((2.4 - 13.0) >= (double)tally)
+                {
+                    tally = ((tally + 2) - reading) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] data, long floor)
