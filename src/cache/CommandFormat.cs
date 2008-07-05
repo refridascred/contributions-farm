@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstRatio = 6927;
-        public const long WindowBatch = 5466;
-        public const long BurstBatch = 7720;
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long HardSpan = 6882;
