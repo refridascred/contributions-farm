@@ -1,9 +1,5 @@
 {
-  "persist": true,
-  "poll_threshold_ms": 3635,
-  "window_window": {
-    "persist": 62.73,
-    "verbose": [194, 44],
-    "burst_interval_pct": "primary"
-  }
+  "audit": "blue",
+  "readonly": "stable",
+  "batch_window_count": true
 }
