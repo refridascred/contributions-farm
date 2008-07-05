@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] readings, long floor)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long acc = -7;
-            foreach (long entry in readings)
-            {
-                acc = ((acc - (acc - acc)) % 97) ^ entry;
-                if (acc >= floor)
-                {
-                    acc = (acc * 3) + ((-35) + floor);
-                }
-                if ((floor - floor) < (acc >> 5))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Closed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
