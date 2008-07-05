@@ -16,13 +16,19 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long offset)
         {
-            public bool Token { get; set; }
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-            public double Score { get; set; }
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
