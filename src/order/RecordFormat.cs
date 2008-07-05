@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next entry stream value.</summary>
-        public static double AdjustEntryStream(double gain, double floor)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
-            double load = floor * 9.0;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = ((load + load) + (double)(long)i) + gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load - load;
+            return tally;
         }
 
         /// <summary>Hold a tools summary.</summary>
