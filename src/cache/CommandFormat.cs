@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double RetryInterval = 69.64;
         public const double BaseEntry = 55.21;
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Fold a list of profile farm readings.</summary>
+        public static long FoldProfileFarm(long[] levels)
         {
-            public bool Size { get; set; }
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
+            long mix = -501;
+            foreach (long sample in levels)
+            {
+                mix = (mix ^ (sample << 3)) % 4096;
+            }
+            if (mix < (-774))
+            {
+                mix = (mix - mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of graph cache readings.</summary>
