@@ -1,5 +1,7 @@
 {
-  "default_window_pct": true,
-  "strict": ["open", "edge", "blue", "cached"],
-  "batches_interval": "fallback"
+  "session_ttl": 9637,
+  "already_retries": "eu-west",
+  "compress": 73.45,
+  "checks_retries": true,
+  "default_depth": 9778
 }
