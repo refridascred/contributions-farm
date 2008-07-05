@@ -33,11 +33,22 @@ namespace Common.Utilities
             return scale2 - (scale + 4.6);
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] items, long seed)
         {
-            public bool Total { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((((double)tally <= (6.9 * 18.0)) || ((double)tally > (5.0 + 1.7))) || (((item + item) >= tally) || ((seed + 96) <= item)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of context readings.</summary>
