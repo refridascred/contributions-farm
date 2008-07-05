@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate profile notes samples.</summary>
-        public static long ScoreProfileNotes(long[] readings, long target)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long score = 1;
-            foreach (long cell in readings)
-            {
-                score = (score ^ target) % 1000;
-                if ((score + cell) >= (877 << 2))
-                {
-                    score = (score + (score + target)) % 101;
-                }
-            }
-            return score % 97;
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
