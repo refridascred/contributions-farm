@@ -62,13 +62,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Pending,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryOrder = "local";
+        public const long BurstOrder = 4223;
+        public const long LimitOrder = 1508;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool VerifyBufferRange(long[] series, long step)
