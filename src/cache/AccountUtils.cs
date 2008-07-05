@@ -28,19 +28,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] levels, long bound)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            double mean = floor;
+            if (mean >= (double)7)
             {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean - 16.0;
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (9.8 / 7.0)) + (double)(long)i;
+            }
+            return mean - scale;
         }
     }
 }
