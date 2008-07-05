@@ -79,19 +79,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] data, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (datum >= limit)
+                if (origin < (item & 7))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
