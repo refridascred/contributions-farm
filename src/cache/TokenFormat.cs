@@ -25,13 +25,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Scale a checks format figure with a bias.</summary>
+        public static double ScaleChecksFormat(double weight, double span)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            double load = span;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + weight) - (double)(long)i;
+            }
+            return load + (span + weight);
         }
     }
 }
