@@ -14,22 +14,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count editor window pairs that satisfy a relation.</summary>
-        public static long CompareEditorWindowCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepWindow = "fallback-edge";
+        public const long BatchLevel = 5441;
+        public const long BurstSize = 3926;
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
         public static long ClassifyGithubfarm(long seed, long offset)
