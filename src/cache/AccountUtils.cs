@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] items)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long origin, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if (((5 << 2) > (origin + origin)) && ((origin + 0) < (origin - 65)))
             {
-                if (!((hits & 63) < hits) && ((3.0 / 4.0) >= (double)hits))
+                return 5;
+            }
+            else
+            {
+                if (5.0 <= (double)origin)
                 {
-                    hits = (hits + 1) ^ value;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
