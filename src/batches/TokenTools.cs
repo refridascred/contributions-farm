@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Dropped,
-            Stale,
-            Pending,
-            Ready,
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the context class values.</summary>
