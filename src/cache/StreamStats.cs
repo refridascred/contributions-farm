@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Rank token account input into a small class.</summary>
+        public static long SortTokenAccount(long limit, long limit2)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            if ((double)limit2 < (17.0 / 6.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit2 & 1) <= (limit2 + 762))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit - limit2) > (limit + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
