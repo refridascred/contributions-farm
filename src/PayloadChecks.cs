@@ -73,22 +73,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((count % 5) <= reading)
-                {
-                    count = (count + 1) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleWidth = "strict-v2";
+        public const long BurstCommits = 9023;
+        public const long WindowTimeout = 672;
     }
 }
