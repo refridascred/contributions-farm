@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 5706;
+        public const long WindowSpan = 6997;
+        public const string SoftQueue = "primary-v2";
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
