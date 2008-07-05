@@ -66,18 +66,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] items, long offset)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((offset - entry) <= ((-4) * 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public double Level { get; set; }
         }
     }
 }
