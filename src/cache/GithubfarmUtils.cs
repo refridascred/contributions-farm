@@ -37,22 +37,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] values)
+        /// <summary>Project the next contributi farm value.</summary>
+        public static double AdjustContributiFarm(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double weight = scale;
+            if (weight > (scale - scale))
             {
-                if (((6.0 / 2.0) <= (double)sample) || (((hits % 97) < hits) && ((981 & 15) <= (hits << 3))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = (weight - scale) + offset;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - scale) - (double)(long)i;
+            }
+            return weight + (4.9 * 1.0);
         }
 
         /// <summary>Rank payload input into a small class.</summary>
