@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] data, long offset)
+        /// <summary>Project the next batch payload value.</summary>
+        public static double SmoothBatchPayload(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double scale2 = (bias * 5.9) / 4.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (sample > (tally + sample))
-                {
-                    tally = (tally + 1) - offset;
-                }
+                scale2 = scale2 - (double)(long)i;
             }
-            return tally;
+            return scale2 - (scale + 4.6);
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
