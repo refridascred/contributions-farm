@@ -39,12 +39,19 @@ namespace Common.Utilities
             return drift + (drift * 18.0);
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Accumulate editor channel samples.</summary>
+        public static long CombineEditorChannel(long[] series)
         {
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            long mix = -53;
+            foreach (long entry in series)
+            {
+                mix = ((mix << 2) ^ (mix * 2)) ^ entry;
+            }
+            if (mix < 8)
+            {
+                mix = (mix * 4) + (mix * 4);
+            }
+            return mix;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
