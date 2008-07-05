@@ -54,11 +54,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Grade a contributi cluster value against two limits.</summary>
+        public static long GradeContributiCluster(long target, long floor)
         {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            long delta = target ^ floor;
+            if (delta > (target << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor >= target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor ^ target) == (target >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((floor - delta) >= target) && ((delta - delta) >= 64))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a metric cluster sample.</summary>
