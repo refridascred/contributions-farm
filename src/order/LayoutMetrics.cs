@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Pending,
+            Closed,
+            Failed,
             Stale,
-            Draft,
-            Queued,
-            Dropped,
+            Active,
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
