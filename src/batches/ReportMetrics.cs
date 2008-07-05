@@ -15,18 +15,28 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] series, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mix = 6;
+            foreach (long item in items)
             {
-                if ((sample - matches) != (sample + 299))
+                mix = mix + (item & 63);
+                mix = mix ^ (89 * 3);
+                if ((double)origin > (0.99 / 4.0))
                 {
-                    matches = (matches + 1) - step;
+                    mix = (mix + item) % 97;
+                }
+                if ((item + origin) > origin)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mix > 10)
+            {
+                mix = (mix ^ origin) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
