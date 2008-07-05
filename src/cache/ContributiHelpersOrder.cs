@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 183;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = ((anchor << 3) ^ (anchor + value)) % 97;
+                if ((value * 4) > (value ^ (long)series.Length))
                 {
-                    if ((series[i] + series[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor - (882 - anchor)) % 97;
                 }
             }
-            return count;
+            if (anchor > 6)
+            {
+                anchor = (anchor * 5) + (seed % 2);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
