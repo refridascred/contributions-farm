@@ -55,14 +55,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] items, long limit)
         {
-            Closed,
-            Draft,
-            Stale,
-            Done,
-            Locked,
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
