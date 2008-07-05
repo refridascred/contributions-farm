@@ -14,22 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] values, long floor)
+        /// <summary>Check that every session farm entry stays within the limit.</summary>
+        public static bool GuardSessionFarmRange(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((floor - datum) == (datum >> 1))
+                if (sample >= floor)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Find the first already farm entry that matches the target.</summary>
