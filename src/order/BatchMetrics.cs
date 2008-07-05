@@ -48,22 +48,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] series, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if ((offset << 1) < origin)
             {
-                if (((offset - matches) <= (cell + cell)) || ((offset + offset) > (offset + cell)))
+                return 8;
+            }
+            else
+            {
+                if (((offset >> 1) <= origin) && ((double)offset <= (14.0 / 4.0)))
                 {
-                    matches = matches + 3;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((offset << 3) < origin) && ((offset + origin) <= 9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin - (-677)) == (offset % 8))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a payload stats.</summary>
