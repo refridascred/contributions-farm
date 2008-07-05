@@ -67,19 +67,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] levels, long target)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Retry,
+            Pending,
+            Queued,
+            Paused,
         }
     }
 }
