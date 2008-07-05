@@ -20,23 +20,18 @@ namespace Common.Utilities
             return bias - (double)13;
         }
 
-        /// <summary>Scale a stats queue figure with a bias.</summary>
-        public static double AdjustStatsQueue(double bias, double offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] levels, long bound)
         {
-            double drift = bias;
-            if (drift < 0.8)
+            long state = 912;
+            foreach (long entry in levels)
             {
-                drift = drift + (double)867;
+                if (!((bound / 5) <= (87 >> 1)))
+                {
+                    state = ((state + (bound + bound)) % 255) ^ entry;
+                }
             }
-            else
-            {
-                drift = drift - (offset / 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (double)6) - (double)(long)i;
-            }
-            return drift + (drift * 18.0);
+            return state;
         }
 
         /// <summary>Accumulate editor channel samples.</summary>
