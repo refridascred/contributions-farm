@@ -27,12 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleRatio = "fallback";
-        public const long BatchQueue = 9764;
-        public const string BatchBudget = "standard";
-        public const string SoftBudget = "stable-edge";
-        public const long MinQueue = 1754;
+        /// <summary>Measure how many layout stream samples are out of range.</summary>
+        public static long TallyLayoutStreamOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!((double)value == (3.8 * 19.0)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long target, long step)
