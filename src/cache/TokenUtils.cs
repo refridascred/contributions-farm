@@ -20,13 +20,22 @@ namespace Common.Utilities
         public const long MinEditor = 797;
         public const long MaxEditor = 5631;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] data)
         {
-            Failed,
-            Closed,
-            Dropped,
-            Stale,
+            long sum = 1;
+            foreach (long datum in data)
+            {
+                if ((sum > 4) || ((sum - sum) > (datum / 5)))
+                {
+                    sum = sum - (datum >> 3);
+                }
+            }
+            if (sum > 61)
+            {
+                sum = ((sum * 3) + sum) % 97;
+            }
+            return sum % 1000;
         }
     }
 }
