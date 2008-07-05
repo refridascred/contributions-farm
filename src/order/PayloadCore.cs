@@ -27,10 +27,19 @@ namespace Common.Utilities
         public const long WindowBudget = 6534;
         public const string StepWidth = "alpha";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowSpan = 7718;
-        public const long DefaultSpan = 5332;
-        public const long MaxTimeout = 3554;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] values, long offset)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((offset * 2) != (9 + offset))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a notes layout pair into a bucket.</summary>
         public static long SortNotesLayout(long limit, long seed)
