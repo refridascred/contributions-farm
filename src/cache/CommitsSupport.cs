@@ -45,12 +45,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 5147;
-        public const long IdleGithubfarm = 614;
-        public const string DefaultGithubfarm = "staging-1";
-        public const double DefaultSpan = 18.73;
-        public const long IdleDepth = 1016;
+        /// <summary>Find the first tools already entry that matches the target.</summary>
+        public static long SeekToolsAlreadyIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
