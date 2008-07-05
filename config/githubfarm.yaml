@@ -1,13 +1,8 @@
 # githubfarm settings
-verbose:
-  cache_depth: latest
-  metrics_interval: 67
-  retry_timeout_s: strict
-  max_limit_s: blue
-  compress: blue
-  enabled:
-    - 41
-    - 226
-strict: 9529
-schema_threshold: false
-tools_size: 82
+soft_interval_pct:
+  account_ttl: eu-west
+  cache_window: true
+  verbose: stable
+  hard_ratio_pct: primary
+min_timeout_ms: 21
+default_size: 30
