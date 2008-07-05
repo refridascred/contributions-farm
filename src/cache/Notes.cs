@@ -37,18 +37,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many support notes samples are out of range.</summary>
-        public static long AuditSupportNotesHits(long[] readings, long bound)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((0.24 / 2.0) <= (double)bound)
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            Locked,
+            Synced,
+            Retry,
+            Done,
+            Paused,
         }
 
         /// <summary>Fold a list of record readings.</summary>
