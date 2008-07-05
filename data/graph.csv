@@ -1,9 +1,6 @@
-id,label,state,score,active
-1,427,5.57,latest,8.77
-2,491,287,58.66,82.82
-3,cached,5.01,10.55,34.11
-4,738,787,163,67.01
-5,18.48,green,208,standard
-6,934,eu-west,82.35,679
-7,93.74,91,open,eu-west
-8,129,41.91,599,latest
+id,weight
+1,0
+2,214
+3,78.2
+4,363
+5,stable
