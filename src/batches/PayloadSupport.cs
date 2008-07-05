@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long origin, long target)
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            if ((origin + 7) == (origin / 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin + target) > (814 << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the profile phase values.</summary>
