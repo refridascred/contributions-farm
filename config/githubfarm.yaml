@@ -1,27 +1,9 @@
 # githubfarm settings
-dry_run: 30
-stream_capacity: false
-poll_depth_count: edge
-min_interval: 7.44
-hard_interval:
-  max_capacity:
-    - blue
-    - local
-    - green
-  burst_threshold_s:
-    flush_size_s: 4025
-    readonly: staging
-    persist: true
-    flush_window_s: 36.48
-    sync_capacity_s:
-      - eu-west
-      - blue
-      - latest
-  enabled:
-    flush_interval_count: latest
-    batch_interval: green
-    account_interval: latest
-    notes_size: edge
-    max_size_count:
-      - edge
-      - stable
+min_depth_s: 3.56
+dry_run:
+  - 287
+  - 27
+  - 271
+burst_ratio_s: 3265
+soft_retries: true
+max_capacity_s: 17.87
