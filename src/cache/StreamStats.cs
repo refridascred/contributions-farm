@@ -49,17 +49,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] values, long origin)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = floor / 4.0;
+            if (bias <= (floor + rate))
             {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
+                bias = bias - rate;
             }
-            return -1;
+            else
+            {
+                bias = bias + (rate + bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - rate) + (double)(long)i;
+            }
+            return bias + (double)989;
         }
 
         /// <summary>Iterate the channel notes series from a seed.</summary>
