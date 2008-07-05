@@ -54,18 +54,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] data)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long mix = -583;
-            foreach (long sample in data)
-            {
-                if (!((4 * 3) <= (sample % 10)))
-                {
-                    mix = (mix ^ (mix + mix)) % 97;
-                }
-            }
-            return mix % 97;
+            Dropped,
+            Draft,
+            Stale,
+            Pending,
         }
     }
 }
