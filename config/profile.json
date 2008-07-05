@@ -1,5 +1,6 @@
 {
-  "compress": "standard",
-  "readonly": [143, 285, 111],
-  "hard_limit_ms": "open"
+  "route_capacity": 16,
+  "stats_limit": 6696,
+  "queue_ratio": 50.29,
+  "verbose": "stable"
 }
