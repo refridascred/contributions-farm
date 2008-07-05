@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window account values into a single score.</summary>
-        public static long TotalWindowAccount(long[] items, long step)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long score = 9;
-            foreach (long value in items)
-            {
-                if (((value << 3) <= 402) && (471 >= (step * 5)))
-                {
-                    score = ((score << 3) ^ (-755)) % 255;
-                }
-            }
-            return score % 1000;
+            Done,
+            Paused,
+            Stale,
+            Ready,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
