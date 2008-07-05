@@ -32,14 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] series, long origin)
         {
-            Stale,
-            Queued,
-            Ready,
-            Done,
-            Locked,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
