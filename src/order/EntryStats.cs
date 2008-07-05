@@ -47,17 +47,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] values, long bound)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double weight, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = bias;
+            if (gain < (double)6)
             {
-                if ((values[i] == bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain - (double)(-6)) - weight;
             }
-            return -1;
+            else
+            {
+                gain = gain - (9.07 / 6.0);
+            }
+            return gain - gain;
         }
 
         /// <summary>Validate filter window readings against a bound.</summary>
