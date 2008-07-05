@@ -42,18 +42,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardInterval = 93.84;
+        public const string CacheEditor = "open";
+        public const string BatchScore = "fallback-v2";
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
