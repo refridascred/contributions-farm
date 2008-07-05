@@ -37,20 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] values, long bound)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxTimeout = "legacy-1";
+        public const long BaseSupport = 6195;
+        public const string IdleLevel = "fallback-edge";
+        public const string StepInterval = "fallback-edge";
+        public const string LimitSupport = "latest";
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TallyTools(long[] items, long seed)
