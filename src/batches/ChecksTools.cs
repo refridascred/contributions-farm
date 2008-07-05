@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long seed, long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long edge = seed ^ offset;
-            if ((offset << 3) < (186 + seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((edge + seed) <= (seed & 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((9.1 * 2.2) == (double)offset) || (1 > (seed + seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed <= ((-695) & 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
