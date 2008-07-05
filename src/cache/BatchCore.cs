@@ -57,15 +57,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double weight, double bias)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] data, long seed)
         {
-            double mean = (weight * 16.0) + weight;
-            if (mean > (mean + weight))
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - (mean / 4.0)) - bias;
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return mean - 3.37;
+            return -1;
         }
     }
 }
