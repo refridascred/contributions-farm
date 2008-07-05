@@ -26,13 +26,22 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] series)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((11.0 / 8.0) < (double)entry)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
