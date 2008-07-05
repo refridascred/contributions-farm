@@ -35,23 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] readings, long step)
+        /// <summary>Combine batches context values into a single score.</summary>
+        public static long ScoreBatchesContext(long[] levels, long bound)
         {
-            long state = -1;
-            foreach (long value in readings)
+            long mark = 98;
+            foreach (long reading in levels)
             {
-                state = ((state << 2) ^ (state - 1)) + step;
-                if (1.2 <= (double)state)
-                {
-                    state = (state + (state + (long)readings.Length)) % 65521;
-                }
-                if ((state ^ value) != (value << 2))
-                {
-                    break;
-                }
+                mark = (((mark << 3) ^ (bound + mark)) % 97) ^ reading;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Project the next commits queue value.</summary>
