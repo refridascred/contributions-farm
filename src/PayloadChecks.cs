@@ -73,29 +73,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long step)
+        /// <summary>Match up checks record samples.</summary>
+        public static long MatchChecksRecordCount(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((530 >> 4) <= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix ^ (long)i;
+                    if ((values[i] + values[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((step % 10) > mix)
-                {
-                    mix = mix ^ (step << 3);
-                    mix = (mix - mix) % 255;
-                }
-                else
-                {
-                    mix = (mix + (long)i) % 97;
-                }
-                mix = (mix << 2) ^ (mix / 7);
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
