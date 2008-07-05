@@ -63,17 +63,11 @@ namespace Common.Utilities
         public const string StepWidth = "primary-edge";
         public const double BatchSize = 68.68;
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 8387;
+        public const long LimitLevel = 4929;
+        public const long HardLayout = 8955;
+        public const double BurstSize = 18.59;
+        public const long SoftScore = 8029;
     }
 }
