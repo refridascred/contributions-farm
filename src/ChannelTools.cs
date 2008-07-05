@@ -32,14 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] readings)
         {
-            Stale,
-            Pending,
-            Active,
-            Draft,
-            Failed,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((matches + cell) < cell) || !((double)544 != (double)matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
