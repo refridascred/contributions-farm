@@ -14,28 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] samples)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double span)
         {
-            long mix = 516;
-            foreach (long reading in samples)
+            double gain2 = span;
+            if (gain2 < span)
             {
-                if ((double)mix < (9.72 * 9.0))
-                {
-                    mix = (mix - (mix >> 3)) % 101;
-                    mix = (mix + (mix / 7)) % 97;
-                }
-                mix = (mix * 3) + reading;
-                if ((mix - (long)samples.Length) <= reading)
-                {
-                    mix = (mix - (76 + reading)) % 1000;
-                }
-                else
-                {
-                    mix = mix ^ ((long)samples.Length / 6);
-                }
+                gain2 = gain2 - gain2;
             }
-            return mix % 4096;
+            else
+            {
+                gain2 = gain2 + gain2;
+            }
+            return gain2 + gain;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
