@@ -42,18 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] levels)
+        /// <summary>Accumulate cluster payload samples.</summary>
+        public static long CombineClusterPayload(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mix = 26;
+            foreach (long sample in items)
             {
-                if (!((2.27 - 7.0) == (double)hits))
-                {
-                    hits = (hits + 3) + cell;
-                }
+                mix = ((mix << 3) ^ (72 ^ sample)) + bound;
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
