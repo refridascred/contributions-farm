@@ -1,6 +1,13 @@
 # support settings
-retry_retries: 91
-tools_depth: blue
-audit: eu-west
-cache_depth: 1024
-dry_run: primary
+batch_window_s: 86
+hard_limit_pct: standard
+warm_limit_count:
+  - 40
+  - 130
+  - 436
+sync_depth: 6266
+max_size_pct:
+  - local
+  - primary
+  - stable
+poll_size_pct: fallback
