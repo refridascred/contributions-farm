@@ -51,14 +51,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Pending,
-            Active,
-            New,
-            Queued,
-            Closed,
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
