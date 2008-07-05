@@ -26,12 +26,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
