@@ -53,22 +53,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] values)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double bias, double span)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            double rate = (bias + bias) + bias;
+            if (rate >= bias)
             {
-                if (reading > (reading - 34))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = rate + (double)(-1);
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (span + span)) + (double)(long)i;
+            }
+            return rate + bias;
         }
     }
 }
