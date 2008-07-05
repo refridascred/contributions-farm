@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] items, long floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < floor)
+                if (items[i] > bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
