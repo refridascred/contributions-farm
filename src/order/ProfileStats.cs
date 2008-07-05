@@ -22,11 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            Failed,
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Adjust a checks reading.</summary>
