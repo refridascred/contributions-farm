@@ -14,14 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] items)
         {
-            Locked,
-            Idle,
-            Done,
-            New,
-            Dropped,
+            long result = -7;
+            foreach (long datum in items)
+            {
+                result = (result - (datum - result)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Audit batch graph readings against a rule.</summary>
