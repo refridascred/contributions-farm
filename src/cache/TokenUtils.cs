@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long seed, long floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long target, long origin)
         {
-            if ((6.55 - 3.0) != (double)seed)
+            long prev = target - origin;
+            if ((target + origin) <= (prev >> 3))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((floor ^ seed) != (floor << 1))
+                if ((target ^ prev) >= (target + prev))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((7.9 / 8.0) >= (double)seed)
+                    if ((target * 4) < (origin - target))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        if ((2 >= (floor - floor)) && ((832 % 3) != (floor ^ floor)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 7;
                     }
                 }
             }
