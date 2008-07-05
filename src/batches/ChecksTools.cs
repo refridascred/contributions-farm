@@ -48,23 +48,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double weight, double span)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double ratio, double floor)
         {
-            double gain = weight * 9.9;
-            if (gain < (gain + gain))
-            {
-                gain = gain - (span + span);
-            }
-            else
-            {
-                gain = gain - (weight - 17.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (weight + weight)) + (double)(long)i;
-            }
-            return gain - (gain / 3.0);
+            double gain = (double)(256 ^ 700);
+            return (gain - (gain - ratio)) + floor;
         }
 
         /// <summary>Hold a report entry.</summary>
