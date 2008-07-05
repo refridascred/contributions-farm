@@ -15,11 +15,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchSpan = "cached";
-        public const long DefaultCommand = 8515;
-        public const long MinCommand = 6118;
-        public const long MaxCommand = 3483;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] series, long seed)
+        {
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
