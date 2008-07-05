@@ -32,22 +32,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] levels, long limit)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long total = 63;
+            foreach (long value in samples)
             {
-                if ((double)cell > (15.0 / 7.0))
+                if (((double)total != (double)58) && (value < floor))
                 {
-                    hits = (hits + 3) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = total + (31 * 4);
                 }
             }
-            return hits;
+            return total % 65521;
         }
 
         /// <summary>Describe the tools level values.</summary>
