@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] levels, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (sample < floor)
+                if (cell < seed)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
