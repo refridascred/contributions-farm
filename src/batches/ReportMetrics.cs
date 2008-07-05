@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double gain, double bias)
-        {
-            double load = 9.48;
-            if (load < gain)
-            {
-                load = (load - gain) - bias;
-            }
-            return load - (double)16;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitTimeout = 4473;
+        public const string CacheMetrics = "latest";
+        public const string LimitMetrics = "local-1";
+        public const string MinMetrics = "alpha-1";
+        public const long CacheBudget = 4130;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricMatches(long[] series, long bound)
