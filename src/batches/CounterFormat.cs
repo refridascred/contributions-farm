@@ -32,18 +32,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the queue record entries that pass the check.</summary>
-        public static long MeasureQueueRecordHits(long[] values)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double weight, double bias)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double mean = (double)(-8) + (bias - weight);
+            if (mean > (bias + bias))
             {
-                if ((69 ^ sample) > sample)
-                {
-                    count = count + 3;
-                }
+                mean = mean + weight;
             }
-            return count;
+            return mean + 6.7;
         }
     }
 }
