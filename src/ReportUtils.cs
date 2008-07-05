@@ -43,19 +43,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next farm account value.</summary>
-        public static double SmoothFarmAccount(double ratio, double floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            double bias = (16.0 - floor) * 3.3;
-            if (bias > (3.0 - bias))
-            {
-                bias = (bias + (13.0 * 1.8)) - ratio;
-            }
-            else
-            {
-                bias = bias + (double)140;
-            }
-            return bias - (0.7 - bias);
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
