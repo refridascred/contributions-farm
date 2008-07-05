@@ -21,12 +21,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowChecks = 57.54;
+        public const long StepSpan = 9449;
+        public const long MaxChecks = 5802;
+        public const string BurstWidth = "fallback-edge";
     }
 }
