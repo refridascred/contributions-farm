@@ -1,11 +1,6 @@
 {
-  "batch_ttl_count": true,
-  "dry_run": {
-    "retry_depth_count": 93,
-    "flush_limit_s": "open",
-    "order_threshold": "stable",
-    "enabled": 41.07,
-    "command_capacity": 100
-  },
-  "compress": [22, 202, 404]
+  "flush_threshold_pct": "strict",
+  "hard_ttl_count": 5226,
+  "idle_ratio": 500,
+  "dry_run": "strict"
 }
