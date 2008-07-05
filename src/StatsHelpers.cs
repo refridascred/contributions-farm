@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] levels, long floor)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double weight, double floor)
         {
-            long mix = 31;
-            foreach (long item in levels)
+            double load = floor;
+            if (load <= (double)952)
             {
-                if (mix <= floor)
-                {
-                    mix = ((mix + ((-182) >> 3)) % 101) ^ item;
-                }
+                load = load - (weight * 8.16);
             }
-            return mix % 97;
+            else
+            {
+                load = load - (floor / 3.0);
+            }
+            return load - (weight + weight);
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
