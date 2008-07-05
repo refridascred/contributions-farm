@@ -22,32 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metrics tools value against two limits.</summary>
-        public static long RankMetricsTools(long seed, long floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long next = seed + floor;
-            if ((seed & 255) > (85 >> 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)next <= (2.08 - 19.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((2 * 4) <= (floor + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
