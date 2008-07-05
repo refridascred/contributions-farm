@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchWidth = "local-1";
+        public const double HardCount = 32.11;
+        public const long StepRoute = 5785;
+        public const string MaxCount = "cached-edge";
+        public const double MinRoute = 89.34;
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long GradeQueue(long limit, long offset)
