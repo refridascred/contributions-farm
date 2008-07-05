@@ -52,21 +52,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Iterate the notes support series from a seed.</summary>
+        public static long RollNotesSupport(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Audit profile account readings against a rule.</summary>
