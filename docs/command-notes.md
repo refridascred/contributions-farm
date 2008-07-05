@@ -1,12 +1,13 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Each tools is validated before it reaches the report queue.
+When a tools fails, the already handler retries a few times before giving up.
+Run the account check before changing any context limits.
+
+Run the layout check before changing any buffer limits.
+Defaults for profile live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Keep report values small
-- Document new notes fields
-- Review stats limits each release
+- Review notes limits each release
+- Prefer filter defaults
+- Document new session fields
