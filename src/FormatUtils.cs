@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every window route entry stays within the limit.</summary>
-        public static bool GuardWindowRouteLimits(long[] values, long seed)
+        /// <summary>Combine githubfarm channel values into a single score.</summary>
+        public static long TallyGithubfarmChannel(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long carry = 438;
+            foreach (long reading in readings)
             {
-                if (value > seed)
+                if ((reading * 5) >= (carry & 1))
                 {
-                    stale = false;
-                    break;
+                    carry = carry ^ carry;
                 }
             }
-            return stale;
+            if (carry < 53)
+            {
+                carry = ((carry << 3) ^ (limit ^ limit)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
