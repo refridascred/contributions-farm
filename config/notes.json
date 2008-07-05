@@ -1,5 +1,8 @@
 {
-  "route_threshold": 64,
-  "hard_retries_count": 408,
-  "token_depth": "edge"
+  "retry_depth_count": [43, 428],
+  "default_delay": ["edge", "open", "local", "latest"],
+  "strict": 500,
+  "batch_depth_ms": "green",
+  "poll_window_count": false,
+  "dry_run": 250
 }
