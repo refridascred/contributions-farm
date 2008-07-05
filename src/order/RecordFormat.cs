@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix << 3) ^ mix) % 97;
-                if ((mix + 9) != (mix - mix))
-                {
-                    mix = (mix << 2) ^ limit;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Idle,
+            Dropped,
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
