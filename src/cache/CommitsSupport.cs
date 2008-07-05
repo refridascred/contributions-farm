@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] items, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 3;
+            foreach (long reading in items)
             {
-                if (items[i] > bound)
+                if ((double)total <= (2.71 / 2.0))
                 {
-                    return (long)i;
+                    total = (total << 2) ^ (8 - reading);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
