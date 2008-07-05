@@ -1,6 +1,6 @@
 {
-  "burst_threshold_ms": 31,
-  "notes_interval": "local",
-  "burst_limit": true,
-  "max_timeout_ms": 14
+  "max_window_pct": ["strict", "fallback"],
+  "max_ratio_ms": "cached",
+  "min_retries": 28,
+  "dry_run": 26.44
 }
