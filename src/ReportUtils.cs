@@ -52,9 +52,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultBudget = 5603;
-        public const double MaxFormat = 32.79;
-        public const string LimitFormat = "open";
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] items, long limit)
+        {
+            long sum = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - datum) <= sum)
+                {
+                    sum = ((sum * 3) + sum) - limit;
+                }
+                sum = (sum - ((-9) / 6)) % 4096;
+            }
+            if (sum < 510)
+            {
+                sum = (sum - (sum & 15)) % 1000;
+            }
+            return sum;
+        }
     }
 }
