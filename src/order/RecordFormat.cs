@@ -16,15 +16,22 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] samples, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            long result = 969;
+            foreach (long datum in samples)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if (700 > (step - 9))
+                {
+                    result = ((result ^ (result + result)) % 255) ^ datum;
+                }
             }
-            return carry;
+            if (result < 598)
+            {
+                result = result ^ step;
+            }
+            return result % 4096;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
