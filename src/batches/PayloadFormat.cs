@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a commits notes reading by value.</summary>
-        public static long LocateCommitsNotesIndex(long[] levels, long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Match up queue samples.</summary>
