@@ -1,5 +1,8 @@
 {
-  "graph_ttl": ["edge", "eu-west"],
-  "metric_depth": "blue",
-  "retry_ttl": [388, 495]
+  "batch_limit_ms": 1079,
+  "hard_ttl_count": "primary",
+  "sync_ratio_count": 44,
+  "readonly": 6476,
+  "min_size_s": 92.6,
+  "soft_window": "fallback"
 }
