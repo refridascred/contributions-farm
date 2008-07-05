@@ -56,22 +56,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] readings, long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((datum + offset) < (datum - offset)) && (((double)tally <= (2.0 + 9.6)) || ((tally + tally) != (datum << 2))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            New,
+            Queued,
+            Pending,
+            Failed,
         }
 
         /// <summary>Describe the queue mode values.</summary>
