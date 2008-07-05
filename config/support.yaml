@@ -1,7 +1,31 @@
 # support settings
-base_timeout_count: true
-cache_ttl_s: 100
-compress:
-  - 50
-  - 463
-queue_ttl: 31
+burst_capacity_pct: 32
+schema_retries: 33.52
+tools_ratio:
+  batch_size_count:
+    - 123
+    - 170
+    - 249
+    - 166
+  retry_limit: latest
+  dry_run: 12
+  burst_retries: true
+  batch_interval_pct:
+    - 372
+    - 232
+    - 223
+dry_run:
+  notes_window: staging
+  verbose: fallback
+  strict:
+    - primary
+    - stable
+    - stable
+  hard_limit:
+    idle_delay_count: 19.1
+    sync_window: staging
+    context_depth:
+      - staging
+      - legacy
+      - stable
+  warm_window: eu-west
