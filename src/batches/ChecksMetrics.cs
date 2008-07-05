@@ -47,12 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] series, long bound)
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample == (16.0 * 1.43))
+                {
+                    count = (count + 2) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
