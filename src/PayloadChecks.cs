@@ -42,11 +42,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheBatches = 4.18;
-        public const double SoftScore = 89.74;
-        public const long MinRatio = 8249;
-        public const double HardBatches = 11.06;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] data, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Match up checks record samples.</summary>
         public static long MatchChecksRecordCount(long[] data)
