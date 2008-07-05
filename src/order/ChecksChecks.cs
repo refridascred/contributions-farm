@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a buffer report reading by value.</summary>
-        public static long LookupBufferReportIndex(long[] items, long offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = rate;
+            if (gain <= gain)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                gain = gain - 3.64;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + span) + (double)(long)i;
+            }
+            return gain + span;
         }
 
         /// <summary>Match up context samples.</summary>
