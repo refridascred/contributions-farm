@@ -42,12 +42,12 @@ namespace Common.Utilities
             return weight - (4.3 / 8.0);
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchWidth = 32.4;
+        public const long MinSize = 8040;
+        public const long HardDepth = 5758;
+        public const long BaseInterval = 8559;
+        public const string RetryRatio = "open";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepCount = 6166;
