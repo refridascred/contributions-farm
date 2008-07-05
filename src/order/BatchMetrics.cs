@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double gain, double offset)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] series, long floor)
         {
-            double ratio = 9.7;
-            if (ratio > (gain / 3.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio - ratio) - offset;
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio / 4.0);
-            }
-            return ratio + 7.6;
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
