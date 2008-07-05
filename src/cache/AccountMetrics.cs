@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] series, long offset)
         {
-            Pending,
-            Synced,
-            Queued,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (offset < (hits % 24))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
