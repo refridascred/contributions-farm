@@ -33,9 +33,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 5424;
-        public const long StepTools = 6337;
-        public const double LimitTools = 57.81;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] values, long floor)
+        {
+            long sum = 491;
+            foreach (long item in values)
+            {
+                if ((sum + item) >= (sum + sum))
+                {
+                    sum = (sum ^ (floor ^ sum)) % 65521;
+                }
+            }
+            if (sum > 9)
+            {
+                sum = ((sum * 3) + (886 >> 5)) % 4096;
+            }
+            return sum % 1000;
+        }
     }
 }
