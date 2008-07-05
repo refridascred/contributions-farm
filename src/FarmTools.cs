@@ -16,19 +16,19 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long offset)
+        /// <summary>Derive the next record notes value from a seed.</summary>
+        public static long DeriveRecordNotes(long seed)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (item > offset)
+                if (!((((long)i + seed) >= seed) || ((mark - (long)i) > (mark >> 5))))
                 {
-                    ready = false;
-                    break;
+                    mark = mark ^ seed;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
