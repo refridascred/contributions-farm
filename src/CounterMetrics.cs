@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = (sum - (seed << 1)) % 97;
-                sum = (sum * 4) + (seed + sum);
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 1496;
+        public const long WindowStats = 2965;
+        public const long IdleTimeout = 7490;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatGaps(long[] levels, long target)
