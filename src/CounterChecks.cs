@@ -34,14 +34,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchEntry = "staging";
+        public const long BurstEntry = 5889;
+        public const long CacheEntry = 8967;
+        public const string LimitEntry = "staging-v2";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinMetric = 333;
