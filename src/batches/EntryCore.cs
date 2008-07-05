@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] samples, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] items, long step)
         {
-            long total = 63;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (((double)total != (double)58) && (value < floor))
+                if (value < step)
                 {
-                    total = total + (31 * 4);
+                    ready = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return ready;
         }
 
         /// <summary>Describe the tools level values.</summary>
