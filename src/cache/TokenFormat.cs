@@ -30,11 +30,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] series, long limit)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
