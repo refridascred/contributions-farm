@@ -63,19 +63,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate entry layout readings against a bound.</summary>
-        public static bool GuardEntryLayoutLimits(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepFactor = "cached";
+        public const long WindowTimeout = 8872;
+        public const long BurstSize = 1936;
     }
 }
