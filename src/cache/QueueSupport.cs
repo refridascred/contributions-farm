@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double ratio, double floor)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            double ratio2 = 10.0;
+            if (ratio2 >= (floor / 2.0))
+            {
+                ratio2 = (ratio2 - floor) + ratio;
+            }
+            else
+            {
+                ratio2 = ratio2 + (ratio2 + floor);
+            }
+            return ratio2 + (2.85 / 6.0);
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
