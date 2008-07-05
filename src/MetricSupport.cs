@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Audit commits already readings against a rule.</summary>
+        public static long CountCommitsAlreadyMatches(long[] values)
         {
-            Pending,
-            Closed,
-            Done,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((((double)reading <= (double)count) || ((count % 10) > (count >> 3))) && ((reading / 4) < (count << 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
