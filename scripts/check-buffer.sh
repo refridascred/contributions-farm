@@ -6,21 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+for item in primary local edge; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=377
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-latest}"
 case "${mode}" in
-    eu-west)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=475
-log "limit is ${BUFFER_LIMIT}"
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
