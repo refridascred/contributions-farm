@@ -53,19 +53,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            long result = 611;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result << 3) ^ (result % 2)) % 4096;
-                if (!((result + value) > (value / 9)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result - value) % 65521;
+                    if ((series[i] + series[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
