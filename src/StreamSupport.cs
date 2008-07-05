@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a stream counter reading by value.</summary>
-        public static long SeekStreamCounterIndex(long[] data, long origin)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
