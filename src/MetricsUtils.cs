@@ -45,21 +45,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchLevel = 1153;
+        public const long BurstCount = 9155;
+        public const long StepDepth = 7427;
+        public const string IdleMetrics = "stable-edge";
+        public const long HardMetrics = 707;
     }
 }
