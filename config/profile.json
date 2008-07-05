@@ -1,5 +1,6 @@
 {
-  "graph_interval": false,
-  "burst_depth_count": 38,
-  "stream_ratio": false
+  "batch_retries_s": 4894,
+  "verbose": 41.35,
+  "account_window": 66.35,
+  "dry_run": 7244
 }
