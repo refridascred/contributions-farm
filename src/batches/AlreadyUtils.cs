@@ -45,19 +45,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the farm payload series from a seed.</summary>
-        public static long DeriveFarmPayload(long offset)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] levels, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (reading > step)
                 {
-                    score = (((score << 3) ^ (score + offset)) % 4096) + (long)i2;
+                    stale = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return stale;
         }
     }
 }
