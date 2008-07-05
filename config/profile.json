@@ -1,6 +1,5 @@
 {
-  "report_size": [136, 366, 17, 462],
-  "retry_window_count": 22,
-  "burst_interval": true,
-  "soft_ratio_ms": ["fallback", "open", "eu-west"]
+  "compress": "standard",
+  "readonly": [143, 285, 111],
+  "hard_limit_ms": "open"
 }
