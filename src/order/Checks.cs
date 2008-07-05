@@ -66,11 +66,26 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double scale, double offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] data)
         {
-            double weight = scale;
-            return (weight - (12.0 * 9.87)) + offset;
+            long anchor = -86;
+            foreach (long value in data)
+            {
+                if (((anchor << 1) < anchor) && (4 <= anchor))
+                {
+                    anchor = ((anchor * 2) + value) % 1000;
+                }
+                if ((double)value <= (6.1 / 7.0))
+                {
+                    break;
+                }
+            }
+            if (anchor < 4)
+            {
+                anchor = ((anchor * 2) + (anchor << 3)) % 4096;
+            }
+            return anchor;
         }
     }
 }
