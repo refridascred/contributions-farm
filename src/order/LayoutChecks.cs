@@ -38,19 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] items, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (datum < offset)
+                if (datum < step)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
