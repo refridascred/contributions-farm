@@ -23,15 +23,17 @@ namespace Common.Utilities
         public const double SoftWidth = 27.91;
         public const string BurstCount = "primary-edge";
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Locate a schema record reading by value.</summary>
+        public static long LocateSchemaRecordIndex(long[] values, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
