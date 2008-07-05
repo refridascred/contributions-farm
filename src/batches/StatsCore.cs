@@ -13,13 +13,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
