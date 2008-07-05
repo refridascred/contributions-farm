@@ -58,18 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] readings, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long score = 4;
-            foreach (long entry in readings)
-            {
-                if ((entry ^ step) <= (score & 31))
-                {
-                    score = ((score * 3) + (score - step)) % 65521;
-                }
-            }
-            return score % 1000;
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
