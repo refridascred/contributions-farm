@@ -25,19 +25,15 @@ namespace Common.Utilities
             return scale2 - (scale + 4.6);
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] items, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] series)
         {
             long tally = 0;
-            foreach (long item in items)
+            foreach (long item in series)
             {
-                if ((((double)tally <= (6.9 * 18.0)) || ((double)tally > (5.0 + 1.7))) || (((item + item) >= tally) || ((seed + 96) <= item)))
+                if (!(tally > (item - item)))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
