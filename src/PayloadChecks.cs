@@ -52,22 +52,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] readings)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double ratio, double offset)
         {
-            long score = 0;
-            foreach (long sample in readings)
+            double load = 3.63;
+            if (load < ratio)
             {
-                if (((-976) * 5) <= (sample ^ sample))
-                {
-                    score = score ^ sample;
-                }
+                load = (load - load) - offset;
             }
-            if (score < 4)
-            {
-                score = (score ^ (score - 8)) % 255;
-            }
-            return score;
+            return load + ratio;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
