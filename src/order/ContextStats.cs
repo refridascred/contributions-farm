@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a stream report counter forward.</summary>
-        public static long RollStreamReport(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((acc + target) == (acc << 3))
-                {
-                    acc = ((acc * 5) + target) % 4096;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc + acc) % 101;
-                }
-                acc = ((acc * 3) + target) % 65521;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 68.71;
+        public const long StepAccount = 9127;
+        public const long BatchSpan = 4178;
+        public const long IdleAccount = 3217;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double IdleWindow = 28.43;
