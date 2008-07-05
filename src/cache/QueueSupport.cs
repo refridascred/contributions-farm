@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxCount = 73.02;
-        public const long IdleEditor = 9526;
-        public const double RetryEditor = 52.74;
-        public const double BurstEditor = 35.4;
+        /// <summary>Fold a list of contributi batches readings.</summary>
+        public static long WeighContributiBatches(long[] samples)
+        {
+            long carry = -9;
+            foreach (long datum in samples)
+            {
+                if (((carry << 3) < (long)samples.Length) || ((double)datum > 6.14))
+                {
+                    carry = carry - (carry + datum);
+                }
+            }
+            if (carry > 16)
+            {
+                carry = ((carry * 4) + (carry / 8)) % 65521;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LocateBatchIndex(long[] values, long offset)
