@@ -28,15 +28,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a cache command figure with a bias.</summary>
-        public static double SmoothCacheCommand(double rate, double bias)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] items, long bound)
         {
-            double scale = (double)(84 >> 3);
-            if (scale > (scale * 1.4))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale - rate) - bias;
+                if ((items[i] >= bound) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + rate;
+            return -1;
         }
 
         /// <summary>Describe the editor status values.</summary>
