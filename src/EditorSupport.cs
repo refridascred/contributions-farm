@@ -63,11 +63,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 9419;
+        public const double BurstCount = 62.12;
+        public const double BaseWindow = 53.86;
     }
 }
