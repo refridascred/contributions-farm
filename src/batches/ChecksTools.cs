@@ -57,20 +57,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((step < (long)i) && ((result - result) <= result))
-                {
-                    result = ((result * 3) + step) % 255;
-                    result = (result * 5) + (step * 2);
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Pending,
+            Active,
+            New,
+            Queued,
+            Closed,
         }
     }
 }
