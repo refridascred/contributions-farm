@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long offset, long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long offset)
         {
-            if (floor > 8)
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor - offset) != (floor - 17))
+                if (!((score ^ score) < 491))
                 {
-                    return 4;
+                    score = score ^ ((long)i + score);
                 }
-                else
-                {
-                    if (offset >= (offset % 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset & 15) > (floor / 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
