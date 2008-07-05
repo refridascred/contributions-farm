@@ -47,13 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
