@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double rate, double offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] series, long step)
         {
-            double rate2 = offset;
-            return (rate2 - offset) + rate;
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a graph summary.</summary>
