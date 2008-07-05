@@ -1,7 +1,5 @@
 {
-  "poll_capacity_pct": "fallback",
-  "compress": 3710,
-  "soft_size_pct": true,
-  "batch_interval": 61,
-  "persist": false
+  "route_threshold": 64,
+  "hard_retries_count": 408,
+  "token_depth": "edge"
 }
