@@ -1,11 +1,5 @@
 {
-  "metric_threshold": {
-    "already_ttl": false,
-    "batch_ratio": ["primary", "stable", "latest"],
-    "hard_ratio": "cached"
-  },
-  "cache_delay_ms": 250,
-  "dry_run": 100,
-  "notes_ratio": 100,
-  "route_timeout": "stable"
+  "hard_ratio_ms": false,
+  "stats_capacity": false,
+  "githubfarm_delay": ["staging", "open", "eu-west", "latest"]
 }
