@@ -41,17 +41,15 @@ namespace Common.Utilities
             return weight + (4.9 * 1.0);
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] series, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 614;
+            foreach (long item in series)
             {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (carry >> 4)) ^ item;
             }
-            return -1;
+            return carry;
         }
     }
 }
