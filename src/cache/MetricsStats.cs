@@ -25,38 +25,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank report profile input into a small class.</summary>
-        public static long ClassifyReportProfile(long bound, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] readings, long step)
         {
-            if ((floor + bound) >= bound)
+            long state = 753;
+            foreach (long datum in readings)
             {
-                return 1;
+                state = ((state ^ step) % 255) - datum;
             }
-            else
-            {
-                if ((bound & 31) == (bound >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound / 7) <= (floor % 12)) && ((double)bound == (9.0 - 17.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (6 >= (bound & 255))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a editor stats.</summary>
