@@ -63,21 +63,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Fold a list of notes batches readings.</summary>
+        public static long CombineNotesBatches(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 1;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((4.7 > (double)sum) || ((sample * 3) > sample))
                 {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum + (sum % 2)) % 1000;
                 }
             }
-            return count;
+            if (sum > 16)
+            {
+                sum = ((sum * 4) + (sum << 3)) % 4096;
+            }
+            return sum % 4096;
         }
     }
 }
