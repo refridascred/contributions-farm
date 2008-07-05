@@ -64,11 +64,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double scale, double span)
+        /// <summary>Grade a window payload value against two limits.</summary>
+        public static long ClassifyWindowPayload(long bound, long step)
         {
-            double scale2 = scale;
-            return (scale2 + (scale2 + scale)) + span;
+            if ((15.0 * 9.88) == (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound == (19.0 - 6.6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step & 1) != (step / 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((step - bound) <= 497))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
