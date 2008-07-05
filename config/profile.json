@@ -1,5 +1,15 @@
 {
-  "flush_threshold": 96,
-  "retry_depth": "standard",
-  "min_size_count": 3469
+  "report_retries": 24.7,
+  "flush_retries": 100,
+  "sync_depth_s": true,
+  "hard_limit_ms": {
+    "enabled": 500,
+    "min_size_s": {
+      "entry_size": 59,
+      "persist": "latest",
+      "cache_ratio": 12.77,
+      "warm_depth": 45.65
+    },
+    "channel_size": 41
+  }
 }
