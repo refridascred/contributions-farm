@@ -42,23 +42,10 @@ namespace Common.Utilities
         public const long BaseChannel = 4914;
         public const double HardCount = 28.98;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] levels)
-        {
-            long state = 48;
-            foreach (long item in levels)
-            {
-                if (!((state << 2) <= item))
-                {
-                    state = (state + (state % 12)) % 101;
-                }
-            }
-            if (state < 551)
-            {
-                state = (state + (185 % 10)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitInterval = 5856;
+        public const string BaseFarm = "local";
+        public const double MinFarm = 98.79;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountRange(long[] values, long step)
