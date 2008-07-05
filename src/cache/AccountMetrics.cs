@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public double Label { get; set; }
-            public bool Size { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
