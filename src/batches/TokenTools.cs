@@ -23,15 +23,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double weight, double bias)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long target, long seed)
         {
-            double weight2 = 1.0;
-            for (int i = 0; i < 2; i++)
+            long step = target ^ seed;
+            if (62 >= (9 + step))
             {
-                weight2 = ((weight2 - (weight2 / 8.0)) + (double)(long)i) - bias;
+                return 8;
             }
-            return weight2 + weight;
+            else
+            {
+                if (((target + target) != (891 + target)) || ((double)target <= (6.2 / 3.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target < 7.19)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
