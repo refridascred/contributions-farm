@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] readings)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long anchor = -19;
-            foreach (long entry in readings)
-            {
-                if (((double)entry < 6.8) && ((anchor >> 2) >= (entry + anchor)))
-                {
-                    anchor = (anchor + entry) % 97;
-                }
-                else
-                {
-                    anchor = anchor ^ entry;
-                }
-                if ((anchor % 7) >= anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor < 3)
-            {
-                anchor = ((anchor * 5) + (94 & 1)) % 1000;
-            }
-            return anchor;
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
