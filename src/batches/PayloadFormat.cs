@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a contributi already sample.</summary>
-        public static long SeekContributiAlreadyIndex(long[] readings, long seed)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
