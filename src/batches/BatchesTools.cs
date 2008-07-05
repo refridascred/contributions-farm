@@ -29,12 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long offset)
         {
-            Queued,
-            Stale,
-            Pending,
+            long score = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                score = (score ^ (offset % 8)) % 101;
+                score = ((score << 2) ^ score) % 255;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
