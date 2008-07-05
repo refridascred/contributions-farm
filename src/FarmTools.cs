@@ -20,16 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long acc = 732;
-            foreach (long datum in series)
-            {
-                acc = (acc << 2) ^ acc;
-                acc = ((acc * 3) + datum) % 255;
-            }
-            return acc % 65521;
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Accumulate context samples.</summary>
