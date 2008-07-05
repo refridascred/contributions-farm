@@ -39,12 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseTimeout = "primary-edge";
-        public const long HardBudget = 6992;
-        public const double IdleLevel = 30.23;
-        public const string HardDepth = "open-v2";
-        public const string CacheLevel = "cached";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 4427;
+        public const double WindowBudget = 34.19;
+        public const double DefaultInterval = 25.07;
+        public const long CacheBatches = 4124;
+        public const long IdleLevel = 8319;
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double ProjectGithubfarm(double bias, double span)
