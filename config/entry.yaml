@@ -1,11 +1,8 @@
 # entry settings
-default_retries_s:
-  - 489
-  - 450
-  - 124
-already_depth: 43.51
-flush_size_count: open
-entry_timeout:
-  - legacy
-  - fallback
-  - standard
+route_timeout:
+  - latest
+  - latest
+  - latest
+  - primary
+poll_threshold_pct: stable
+batch_size_s: edge
