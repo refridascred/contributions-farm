@@ -37,15 +37,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] values, long floor)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long result = 5;
-            foreach (long sample in values)
-            {
-                result = (((result - result) % 101) - sample) - floor;
-            }
-            return result % 65521;
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Digest a series of githubfarm support entries.</summary>
