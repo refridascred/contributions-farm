@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] values, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long score = 1;
+            foreach (long sample in readings)
             {
-                if (item != floor)
+                if ((sample / 6) == (score ^ sample))
                 {
-                    ok = false;
-                    break;
+                    score = score + (784 - score);
                 }
             }
-            return ok;
+            if (score < 909)
+            {
+                score = score ^ (387 & 63);
+            }
+            return score % 97;
         }
 
         /// <summary>Classify a layout window pair into a bucket.</summary>
