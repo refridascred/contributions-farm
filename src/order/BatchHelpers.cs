@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] levels, long bound)
+        /// <summary>Look up the position of a layout order sample.</summary>
+        public static long SeekLayoutOrderIndex(long[] values, long target)
         {
-            long anchor = 562;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((bound * 2) > (6 & 7)) && ((double)bound > (2.2 - 3.1)))
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
                 {
-                    anchor = ((anchor << 2) ^ (anchor << 1)) ^ cell;
-                }
-                else
-                {
-                    anchor = (anchor + (bound + 6)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Hold a farm entry.</summary>
