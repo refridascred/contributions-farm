@@ -22,12 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Count editor window pairs that satisfy a relation.</summary>
+        public static long CompareEditorWindowCount(long[] samples)
         {
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
