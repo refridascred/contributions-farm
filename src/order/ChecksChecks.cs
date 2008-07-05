@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank tools cache input into a small class.</summary>
-        public static long SortToolsCache(long floor, long floor2)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long gap = floor + floor2;
-            if ((floor << 3) < (gap << 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor - floor2) > floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor2 >> 1) > (floor + floor2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Draft,
+            Failed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
