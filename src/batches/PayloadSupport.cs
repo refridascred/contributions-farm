@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Queued,
+            Stale,
+            Dropped,
         }
     }
 }
