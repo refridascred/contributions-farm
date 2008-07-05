@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const long LimitReport = 3739;
         public const long BaseReport = 4034;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitFactor = 1407;
-        public const string IdleBatch = "fallback-v2";
-        public const long WindowBatch = 1616;
-        public const double BatchWidth = 3.66;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleGithubfarm = 91.08;
+        public const long MaxGithubfarm = 7583;
+        public const long BatchGithubfarm = 3408;
+        public const string BaseDepth = "standard-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const string DefaultCommand = "legacy-1";
