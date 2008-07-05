@@ -20,12 +20,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long target, long origin)
         {
-            public double Count { get; set; }
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            if ((double)origin <= (3.7 / 2.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin <= (5.9 + 5.9))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
