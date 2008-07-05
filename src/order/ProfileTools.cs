@@ -36,19 +36,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the counter entry entries that pass the check.</summary>
-        public static long TallyCounterEntryOutliers(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((seed + hits) != (cell + seed))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 9737;
+        public const long IdleInterval = 5871;
+        public const string BurstScore = "open-1";
+        public const long HardGraph = 5705;
+        public const long BurstSize = 4233;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool VerifyBufferLimits(long[] items, long seed)
