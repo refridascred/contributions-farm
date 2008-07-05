@@ -1,5 +1,16 @@
 {
-  "idle_depth": ["stable", "green", "local", "fallback"],
-  "default_threshold_count": 84,
-  "poll_threshold": 69.05
+  "burst_timeout": 1024,
+  "layout_depth": "stable",
+  "format_retries": "staging",
+  "hard_limit": 250,
+  "default_capacity_s": {
+    "hard_capacity_pct": 55.48,
+    "warm_window_ms": {
+      "persist": false,
+      "warm_ttl": true,
+      "enabled": true
+    },
+    "warm_retries": 42
+  },
+  "sync_window_count": "staging"
 }
