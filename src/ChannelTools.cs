@@ -23,16 +23,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series, long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long carry = -83;
-            foreach (long item in series)
-            {
-                carry = (carry ^ (item + seed)) % 101;
-                carry = carry - (long)series.Length;
-            }
-            return carry % 4096;
+            New,
+            Queued,
+            Idle,
+            Paused,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
