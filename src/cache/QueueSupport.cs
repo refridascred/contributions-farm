@@ -13,19 +13,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate order already readings against a bound.</summary>
-        public static bool VerifyOrderAlreadyRange(long[] items, long step)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a notes stats.</summary>
