@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double scale, double offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double weight = offset;
-            return (weight + offset) + scale;
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Adjust a queue window reading.</summary>
