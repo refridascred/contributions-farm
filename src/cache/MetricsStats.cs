@@ -38,13 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Locked,
-            Idle,
-            Closed,
-            Done,
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Iterate the farm notes series from a seed.</summary>
