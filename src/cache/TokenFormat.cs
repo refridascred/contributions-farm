@@ -27,21 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count record command pairs that satisfy a relation.</summary>
-        public static long PairRecordCommandCount(long[] readings)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample >= offset)
                 {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
