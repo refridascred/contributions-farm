@@ -1,6 +1,4 @@
 # entry settings
-cache_capacity_pct: 48.3
-soft_limit_s: 8
-verbose: true
-idle_limit: 27.41
-persist: 60.79
+schema_threshold: 59.35
+record_ttl: 92.72
+burst_interval: 9571
