@@ -50,31 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] series, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] samples, long step)
         {
-            long sum = 547;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long item in samples)
             {
-                sum = (sum - item) % 65521;
-                if ((9.35 - 2.64) == (double)limit)
+                if (item >= step)
                 {
-                    sum = ((sum << 3) ^ sum) % 101;
-                }
-                else
-                {
-                    sum = (sum + (limit / 3)) % 101;
-                }
-                if ((sum - limit) > item)
-                {
+                    found = false;
                     break;
                 }
             }
-            if (sum < 4)
-            {
-                sum = ((sum << 3) ^ (785 & 7)) % 65521;
-            }
-            return sum % 65521;
+            return found;
         }
     }
 }
