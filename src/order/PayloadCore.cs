@@ -49,19 +49,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of window buffer entries.</summary>
-        public static long WeighWindowBuffer(long[] items)
+        /// <summary>Classify a notes layout pair into a bucket.</summary>
+        public static long SortNotesLayout(long limit, long seed)
         {
-            long anchor = -29;
-            foreach (long sample in items)
+            if (!((6 % 100) > (limit / 6)))
             {
-                anchor = (anchor + (34 * 4)) - sample;
+                return 6;
             }
-            if (anchor < 85)
+            else
             {
-                anchor = (anchor + (anchor + anchor)) % 101;
+                if (seed <= limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((seed >> 3) > limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.39 / 4.0) > (double)seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
     }
 }
