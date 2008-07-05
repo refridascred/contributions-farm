@@ -46,14 +46,12 @@ namespace Common.Utilities
             return rate - (double)471;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchCommand = "alpha-1";
+        public const double StepInterval = 90.29;
+        public const long BurstDepth = 5791;
+        public const string HardSize = "legacy";
+        public const string LimitCommand = "strict-edge";
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long ClassifyOrder(long offset, long step)
