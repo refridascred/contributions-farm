@@ -20,14 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] levels, long step)
         {
-            Queued,
-            Retry,
-            New,
-            Active,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
