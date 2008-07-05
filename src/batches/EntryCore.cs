@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 4991;
-        public const long DefaultScore = 6557;
-        public const long IdleDepth = 427;
-        public const long WindowScore = 9173;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double scale, double offset)
+        {
+            double weight = offset;
+            return (weight + offset) + scale;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
