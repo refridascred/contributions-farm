@@ -21,17 +21,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] readings, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                mix = (mix ^ (offset >> 2)) % 1000;
-                mix = (mix * 4) + offset;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (value != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
