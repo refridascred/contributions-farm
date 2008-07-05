@@ -33,15 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long limit, long bound)
         {
-            long state = 75;
-            foreach (long cell in samples)
+            long step = limit ^ bound;
+            if ((double)limit <= (double)step)
             {
-                state = (state + state) + cell;
+                return 3;
             }
-            return state % 97;
+            else
+            {
+                if (((369 % 100) < (limit << 3)) && ((limit << 3) < limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the cluster kind values.</summary>
