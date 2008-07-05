@@ -34,13 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] samples, long target)
         {
-            public double Flag { get; set; }
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
