@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 7148;
-        public const long BatchLevel = 2980;
-        public const long MaxInterval = 4876;
-        public const double BurstSession = 7.44;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (sample > (tally + sample))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long StepContext(long target)
