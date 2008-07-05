@@ -44,12 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] levels)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell >> 3) == (0 - 938))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up layout samples.</summary>
