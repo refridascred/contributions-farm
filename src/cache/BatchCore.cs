@@ -39,12 +39,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Stale,
-            Draft,
-            Pending,
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
