@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long offset, long bound)
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            if ((double)offset != (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((offset << 1) <= bound) && ((bound / 4) == (bound - bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1 >> 3) != (bound ^ bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already record.</summary>
