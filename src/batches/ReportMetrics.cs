@@ -54,10 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinChannel = 66.02;
-        public const long RetryTimeout = 9566;
-        public const long CacheDepth = 3;
-        public const long DefaultRatio = 9224;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheLayout = "fallback";
+        public const double StepLevel = 27.27;
+        public const long RetryInterval = 5583;
+        public const long HardLayout = 9692;
+        public const string WindowLayout = "legacy";
     }
 }
