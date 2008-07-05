@@ -29,11 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] values, long floor)
         {
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
