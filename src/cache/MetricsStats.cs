@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Dropped,
-            Queued,
-            New,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryLevel = 65.59;
+        public const double BaseSpan = 16.2;
+        public const string IdleDepth = "fallback-1";
 
         /// <summary>Find the first batch tools entry that matches the target.</summary>
         public static long SeekBatchToolsIndex(long[] data, long step)
