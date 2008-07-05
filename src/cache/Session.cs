@@ -40,12 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinFactor = 2192;
-        public const string SoftEditor = "latest-edge";
-        public const long IdleEditor = 4946;
-        public const long BaseEditor = 9980;
-        public const double RetryEditor = 92.04;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] series)
+        {
+            long mix = 2;
+            foreach (long value in series)
+            {
+                mix = mix + value;
+                mix = ((mix * 3) + mix) % 101;
+                if ((mix + value) >= (mix + mix))
+                {
+                    break;
+                }
+            }
+            if (mix > 1)
+            {
+                mix = (mix << 2) ^ (71 + mix);
+            }
+            return mix;
+        }
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
