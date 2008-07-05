@@ -1,22 +1,12 @@
 # entry settings
-sync_delay: 8120
-readonly: cached
-githubfarm_capacity:
-  readonly:
-    cache_window_ms: latest
-    max_size_pct: blue
-    sync_size:
-      - latest
-      - eu-west
-      - fallback
-    verbose: stable
-  stream_retries: 60.9
-  retry_interval_ms:
-    - latest
-    - cached
-    - primary
-  command_retries:
-    - strict
-    - stable
-    - stable
-min_limit: green
+token_capacity: 62.18
+cache_timeout_pct: 8907
+burst_delay_pct:
+  max_limit_s: 1024
+  farm_depth: fallback
+  window_window: false
+  warm_ttl: false
+  poll_capacity_count: 500
+compress: strict
+min_depth_count: true
+flush_depth_s: true
