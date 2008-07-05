@@ -1,15 +1,16 @@
 # Command notes
 
-Each payload is validated before it reaches the layout queue.
-A notes that stays idle for too long is moved to the metric list.
-Keep counter and order names short and lowercase.
+The context report groups every stream by counter.
+Each token is validated before it reaches the metric queue.
+A cluster that stays idle for too long is moved to the order list.
 
-Defaults for record live in the config folder and can be overridden per environment.
-Run the order check before changing any farm limits.
-Defaults for report live in the config folder and can be overridden per environment.
+The channel report groups every metric by cache.
+The window module keeps schema values in sync with the stream cache.
+Defaults for batches live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new cache fields
-- Log every record change
-- Prefer already defaults
+- Review already limits each release
+- Log every account change
+- Document new schema fields
+- Prefer batch defaults
