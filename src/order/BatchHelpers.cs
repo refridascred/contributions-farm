@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
