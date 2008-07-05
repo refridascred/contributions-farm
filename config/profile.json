@@ -1,10 +1,6 @@
 {
-  "sync_delay": "edge",
-  "audit": {
-    "default_size": "eu-west",
-    "min_size_ms": ["green", "staging", "blue"],
-    "audit": true
-  },
-  "soft_capacity": "blue",
-  "dry_run": "latest"
+  "sync_timeout_s": 250,
+  "max_retries": 30,
+  "burst_size_count": 26,
+  "sync_ratio": 751
 }
