@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepFactor = 7720;
-        public const string MaxLevel = "cached-1";
-        public const long DefaultSize = 8112;
-        public const long CacheStats = 7827;
-        public const string BatchStats = "cached-edge";
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Done,
+            Pending,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long MatchStreamCount(long[] samples)
