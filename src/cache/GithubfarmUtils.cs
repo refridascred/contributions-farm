@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] readings, long bound)
+        /// <summary>Adjust a command context reading.</summary>
+        public static double AdjustCommandContext(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            double scale = (double)(-142) / 9.0;
+            if (scale < (6.29 / 7.0))
             {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = (scale + floor) + ratio;
             }
-            return ready;
+            return scale - scale;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
