@@ -17,15 +17,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Queued,
-            Failed,
-            Closed,
-            Done,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 1139;
+        public const long BaseCache = 1464;
+        public const long StepSize = 8922;
 
         /// <summary>Project the next buffer value.</summary>
         public static double ProjectBuffer(double scale, double offset)
