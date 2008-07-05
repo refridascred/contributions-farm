@@ -19,24 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cluster order value.</summary>
-        public static double BlendClusterOrder(double rate, double bias)
-        {
-            double rate2 = bias;
-            if (rate2 <= (bias * 3.35))
-            {
-                rate2 = rate2 - (double)453;
-            }
-            else
-            {
-                rate2 = rate2 + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 + rate) - (double)(long)i;
-            }
-            return rate2 + (rate2 + rate);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 70.57;
+        public const long LimitChecks = 1274;
+        public const long CacheChecks = 1271;
+        public const string MaxChecks = "cached-v2";
+        public const long MinChecks = 8893;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
