@@ -26,15 +26,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double gain, double span)
+        /// <summary>Audit checks account readings against a rule.</summary>
+        public static long AuditChecksAccountHits(long[] series)
         {
-            double scale = span;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                scale = (scale - (span + scale)) + (double)(long)i;
+                if (!((43 - matches) > (reading + reading)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return scale - (gain - 13.0);
+            return matches;
         }
     }
 }
