@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge primary; do
+CHANNEL_LIMIT=214
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in open blue latest; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=466
-log "limit is ${CHANNEL_LIMIT}"
