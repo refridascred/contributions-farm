@@ -55,12 +55,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Classify a schema stats pair into a bucket.</summary>
+        public static long SortSchemaStats(long step, long limit)
         {
-            Done,
-            New,
-            Active,
+            long cur = step - limit;
+            if ((limit >= (step + limit)) || ((double)limit <= (2.63 / 9.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((step ^ cur) < step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)cur > 1.65) && ((cur + cur) <= (9 >> 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
