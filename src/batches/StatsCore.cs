@@ -19,15 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a contributi context reading.</summary>
-        public static double AdjustContributiContext(double rate, double floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            double mean = rate;
-            if (mean < (double)795)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                mean = mean + floor;
+                result = ((result * 2) + ((long)i ^ result)) % 4096;
+                result = (result - result) % 97;
+                result = ((result << 3) ^ (long)i) % 65521;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return mean + (double)55;
+            return result;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
