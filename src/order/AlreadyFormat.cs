@@ -74,31 +74,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long step, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            if ((step + step) <= 484)
+            long result = 31;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target < (7.2 + 3.2))
+                result = (result ^ cell) % 255;
+                result = (result - (-90)) % 65521;
+                if ((3.0 < (double)cell) || ((cell % 97) <= (cell - 9)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target - 4) > (step % 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    result = (result ^ (-836)) % 255;
                 }
             }
+            return result;
         }
     }
 }
