@@ -39,19 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double gain, double span)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double load = span;
-            if (load >= (double)5)
-            {
-                load = load - (load * 2.6);
-            }
-            else
-            {
-                load = load - span;
-            }
-            return load + gain;
+            Pending,
+            Locked,
+            Dropped,
+            Retry,
+            Done,
         }
 
         /// <summary>Check that every support window entry stays within the limit.</summary>
