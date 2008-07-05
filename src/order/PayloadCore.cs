@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] data, long step)
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (reading >= matches)
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
