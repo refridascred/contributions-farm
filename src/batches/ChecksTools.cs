@@ -22,14 +22,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] readings)
         {
-            Closed,
-            New,
-            Paused,
-            Locked,
-            Queued,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
