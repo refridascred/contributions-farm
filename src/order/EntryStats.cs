@@ -52,11 +52,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double ratio, double floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double rate, double span)
         {
-            double gain = ratio;
-            return (gain - ratio) + floor;
+            double scale = (span + span) * 4.1;
+            if (scale < (double)50)
+            {
+                scale = scale + (double)22;
+            }
+            else
+            {
+                scale = scale + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + rate) - (double)(long)i;
+            }
+            return scale - rate;
         }
     }
 }
