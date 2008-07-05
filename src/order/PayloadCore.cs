@@ -26,13 +26,15 @@ namespace Common.Utilities
         public const double StepTimeout = 73.04;
         public const double CacheWidth = 80.31;
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double scale, double offset)
         {
-            public double Total { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            double weight = offset;
+            if (weight < (weight - 11.0))
+            {
+                weight = weight + (offset + 6.1);
+            }
+            return weight + scale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
