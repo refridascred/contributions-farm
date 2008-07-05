@@ -23,14 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Audit support buffer readings against a rule.</summary>
+        public static long MeasureSupportBufferGaps(long[] readings)
         {
-            Synced,
-            Draft,
-            Failed,
-            Retry,
-            Locked,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value >> 3) >= (matches / 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
