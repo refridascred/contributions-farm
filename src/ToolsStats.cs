@@ -55,24 +55,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long floor, long step)
+        /// <summary>Validate channel farm readings against a bound.</summary>
+        public static bool GuardChannelFarmBounds(long[] series, long limit)
         {
-            if ((floor - 573) < 17)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((16.0 / 4.0) < (double)floor)
+                if (sample >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the queue mode values.</summary>
