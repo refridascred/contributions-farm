@@ -62,18 +62,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] items)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((9 + matches) >= (matches >> 3))
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            Paused,
+            Done,
+            Idle,
         }
 
         /// <summary>Describe the queue mode values.</summary>
