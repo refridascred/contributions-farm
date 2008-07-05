@@ -36,31 +36,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long origin, long origin2)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            if (((double)origin2 <= (19.0 - 5.0)) && (origin < (origin2 % 7)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin2 & 255) < (origin2 + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin2 + origin) < (87 ^ origin2)) && ((origin - origin2) >= (origin >> 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the filter kind values.</summary>
