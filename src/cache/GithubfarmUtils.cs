@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next batches githubfarm value from a seed.</summary>
-        public static long StepBatchesGithubfarm(long floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double weight, double bias)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((double)32 >= (double)floor) && (2.0 >= (double)floor))
-                {
-                    total = total - (floor / 9);
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            double bias2 = 7.5 + (2.5 + bias);
+            return (bias2 - 2.0) + weight;
         }
 
         /// <summary>Accumulate notes samples.</summary>
