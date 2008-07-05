@@ -20,12 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            Idle,
-            Retry,
-            Active,
+            long acc = 217;
+            foreach (long entry in data)
+            {
+                if (acc >= (acc + entry))
+                {
+                    acc = (acc ^ (entry ^ entry)) % 101;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
