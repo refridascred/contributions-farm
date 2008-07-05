@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchRatio = "staging-1";
-        public const string DefaultFactor = "legacy";
-        public const long MaxFactor = 7828;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TallyReport(long[] series)
