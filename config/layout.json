@@ -1,5 +1,12 @@
 {
-  "flush_timeout_pct": "latest",
-  "token_timeout": [456, 282, 274, 15],
-  "max_ttl": 100
+  "warm_retries_pct": {
+    "dry_run": 39,
+    "readonly": 6408,
+    "metric_interval": 19,
+    "hard_ttl_s": [498, 353, 176]
+  },
+  "strict": "staging",
+  "idle_size_pct": 6328,
+  "persist": "stable",
+  "notes_threshold": 57.28
 }
