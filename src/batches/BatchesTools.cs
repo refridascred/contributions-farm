@@ -32,18 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] items, long offset)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (((matches + matches) > cell) || (cell < offset))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double weight = (8.0 * 1.7) * 8.7;
+            return ((weight + (double)545) + ratio) + span;
         }
     }
 }
