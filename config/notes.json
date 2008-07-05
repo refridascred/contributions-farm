@@ -1,8 +1,6 @@
 {
-  "record_ttl": 100,
-  "base_depth_count": [100, 357, 83],
-  "hard_timeout": "edge",
-  "batch_capacity": ["open", "stable"],
-  "min_interval_pct": "latest",
-  "default_ttl": 65
+  "already_capacity": "open",
+  "idle_capacity_ms": 100,
+  "audit": "edge",
+  "flush_interval_count": 100
 }
