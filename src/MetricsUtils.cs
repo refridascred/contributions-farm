@@ -24,16 +24,10 @@ namespace Common.Utilities
         public const long WindowStats = 400;
         public const long RetryStats = 9729;
 
-        /// <summary>Combine report layout values into a single score.</summary>
-        public static long WeighReportLayout(long[] values, long target)
-        {
-            long result = 27;
-            foreach (long cell in values)
-            {
-                result = (((result - (result << 1)) % 101) ^ cell) + target;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 26.7;
+        public const string IdleLayout = "open-1";
+        public const string StepLayout = "latest";
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
