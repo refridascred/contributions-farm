@@ -25,18 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] levels, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] levels, long target)
         {
-            long state = 912;
-            foreach (long entry in levels)
+            long sum = 520;
+            foreach (long sample in levels)
             {
-                if (!((bound / 5) <= (87 >> 1)))
+                sum = sum ^ target;
+                if ((target >> 4) == (sum ^ sample))
                 {
-                    state = ((state + (bound + bound)) % 255) ^ entry;
+                    break;
                 }
             }
-            return state;
+            if (sum > 79)
+            {
+                sum = sum - (target >> 4);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
