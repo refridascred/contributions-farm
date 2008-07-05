@@ -22,22 +22,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] samples, long target)
         {
-            long anchor = 10;
-            foreach (long entry in items)
+            long mix = 9;
+            foreach (long value in samples)
             {
-                if (!(anchor >= entry))
+                if ((target / 2) <= 8)
                 {
-                    anchor = ((anchor * 2) + anchor) % 255;
+                    mix = (mix - (target << 1)) % 4096;
+                    break;
+                }
+                else
+                {
+                    mix = (mix ^ (mix ^ target)) % 101;
+                }
+                if ((5 < value) || ((mix ^ mix) > value))
+                {
+                    mix = (mix + (mix << 2)) % 65521;
+                }
+                else
+                {
+                    mix = mix ^ (mix + target);
+                }
+                if ((double)mix < (double)target)
+                {
+                    break;
                 }
             }
-            if (anchor < 272)
-            {
-                anchor = (anchor + (anchor << 2)) % 101;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
