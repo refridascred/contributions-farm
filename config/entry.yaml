@@ -1,6 +1,14 @@
 # entry settings
-session_limit: strict
-sync_ratio_s: fallback
-schema_window: blue
-sync_depth: 52.3
-persist: 6356
+strict: false
+tools_ttl:
+  - 279
+  - 498
+  - 274
+  - 197
+default_limit: 100
+persist:
+  - 5
+  - 195
+  - 63
+readonly: fallback
+poll_timeout_ms: 7021
