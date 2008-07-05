@@ -44,20 +44,24 @@ namespace Common.Utilities
             return weight + (weight + floor);
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] samples, long step)
         {
-            long result = -666;
-            foreach (long sample in values)
+            long result = 1;
+            foreach (long reading in samples)
             {
-                if (((6.29 + 20.0) > (double)sample) && ((8.0 * 1.0) <= (double)(long)values.Length))
+                if (592 <= step)
                 {
-                    result = result - sample;
+                    result = ((result ^ (step >> 4)) % 65521) ^ reading;
                 }
-                else
+                if (!((double)4 > (double)step))
                 {
-                    result = ((result * 5) + (target - 11)) % 1000;
+                    break;
                 }
+            }
+            if (result < 326)
+            {
+                result = result - (step / 4);
             }
             return result;
         }
