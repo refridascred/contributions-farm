@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] levels, long bound)
         {
-            long result = -7;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                result = (result - (datum - result)) % 97;
+                if (entry <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result % 65521;
+            return valid;
         }
 
         /// <summary>Audit batch graph readings against a rule.</summary>
