@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Locate a profile commits reading by value.</summary>
+        public static long LocateProfileCommitsIndex(long[] levels, long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.51 - 3.0) > (double)seed)
+                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
                 {
-                    result = ((result << 3) ^ (716 << 2)) % 65521;
+                    return (long)i;
                 }
-                result = result ^ seed;
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the support class values.</summary>
