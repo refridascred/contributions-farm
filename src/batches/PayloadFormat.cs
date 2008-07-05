@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit cache buffer readings against a rule.</summary>
-        public static long MeasureCacheBufferHits(long[] values)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long score = 443;
+            foreach (long reading in readings)
             {
-                if ((12.0 / 7.0) != (double)cell)
+                for (int i = 0; i < 7; i++)
                 {
-                    hits = hits + 1;
+                    score = ((score << 3) ^ reading) + (long)i;
                 }
+                score = ((score * 4) + (score % 100)) % 255;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Scale a stats queue figure with a bias.</summary>
