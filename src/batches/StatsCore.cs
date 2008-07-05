@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of layout session entries.</summary>
-        public static long ScoreLayoutSession(long[] levels, long seed)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] items)
         {
-            long total = 9;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)seed == (5.1 - 8.0)) && (4.3 > (double)sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total + (total + 252)) % 1000;
+                    if ((items[i] ^ items[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 477)
-            {
-                total = ((total * 2) + (total ^ total)) % 65521;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a notes stats.</summary>
