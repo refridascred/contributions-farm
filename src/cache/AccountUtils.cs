@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] levels, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (cell <= floor)
+                if (!((hits & 63) < hits) && ((3.0 / 4.0) >= (double)hits))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the queue status values.</summary>
