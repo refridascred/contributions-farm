@@ -20,17 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] levels, long offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Retry,
+            New,
+            Active,
+            Failed,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
