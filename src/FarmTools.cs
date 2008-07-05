@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] series, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                state = ((state * 4) + (seed / 3)) % 4096;
-                state = ((state * 4) + (long)i) % 97;
+                if (entry >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
