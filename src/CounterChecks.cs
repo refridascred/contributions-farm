@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string HardChannel = "staging-edge";
         public const string SoftWidth = "fallback-1";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] items, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] samples)
         {
-            long anchor = 575;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                anchor = (anchor * 3) + (datum + 706);
-                if (step >= (step / 2))
+                if (!((5 << 3) > tally))
                 {
-                    anchor = (anchor ^ ((-2) - datum)) % 1000;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a layout header.</summary>
