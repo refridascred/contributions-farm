@@ -20,21 +20,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Match up token payload samples.</summary>
+        public static long PairTokenPayloadCount(long[] series)
         {
-            long tally = 0;
+            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] + series[j]) < 2)
+                    if ((series[i] + series[j]) > 12)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
