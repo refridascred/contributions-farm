@@ -49,22 +49,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] items, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long sum = 319;
+            foreach (long item in levels)
             {
-                if ((tally + (-736)) >= (406 + entry))
+                if ((9.07 + 3.06) > (double)sum)
                 {
-                    tally = (tally + 2) - floor;
+                    sum = (sum ^ ((-7) + (long)levels.Length)) % 1000;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = sum ^ (item + item);
                 }
             }
-            return tally;
+            if (sum < (-14))
+            {
+                sum = ((sum * 2) + 830) % 1000;
+            }
+            return sum % 4096;
         }
     }
 }
