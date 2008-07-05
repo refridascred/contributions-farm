@@ -53,19 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] readings, long offset)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
