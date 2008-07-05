@@ -21,19 +21,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] samples, long bound)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
