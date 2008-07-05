@@ -1,5 +1,18 @@
 {
-  "order_ratio": "eu-west",
-  "verbose": "local",
-  "min_depth_ms": "eu-west"
+  "githubfarm_ratio": true,
+  "retry_timeout_count": "staging",
+  "strict": {
+    "commits_ratio": {
+      "retry_threshold": 30,
+      "persist": "blue",
+      "verbose": "strict",
+      "retry_retries": "stable",
+      "batch_ratio_s": 12.94,
+      "soft_size_ms": [163, 302, 434]
+    },
+    "default_size": "standard",
+    "warm_ttl_s": "cached"
+  },
+  "schema_ttl": "fallback",
+  "default_capacity_count": "blue"
 }
