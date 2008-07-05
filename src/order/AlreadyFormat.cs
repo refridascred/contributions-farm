@@ -73,24 +73,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch commits readings.</summary>
-        public static long DigestBatchCommits(long[] readings, long bound)
-        {
-            long acc = -78;
-            foreach (long cell in readings)
-            {
-                acc = acc ^ (897 >> 4);
-                acc = (acc * 3) + (cell - bound);
-                if ((double)bound > 17.0)
-                {
-                    acc = ((acc * 3) + (-210)) % 101;
-                }
-                if ((4.0 + 7.12) <= (double)bound)
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheRatio = 98.31;
+        public const long HardDepth = 4655;
+        public const double MaxFarm = 9.41;
     }
 }
