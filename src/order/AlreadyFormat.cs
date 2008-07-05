@@ -41,18 +41,23 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] data)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long state = -1;
+            foreach (long value in readings)
             {
-                if ((matches >> 4) <= (matches * 2))
+                state = ((state << 2) ^ (state - 1)) + step;
+                if (1.2 <= (double)state)
                 {
-                    matches = (matches + 1) + sample;
+                    state = (state + (state + (long)readings.Length)) % 65521;
+                }
+                if ((state ^ value) != (value << 2))
+                {
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
