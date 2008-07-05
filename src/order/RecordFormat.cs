@@ -16,15 +16,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] items)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long score = 745;
-            foreach (long item in items)
-            {
-                score = (score ^ (item % 60)) % 101;
-            }
-            return score;
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
