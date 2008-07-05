@@ -1,8 +1,6 @@
 {
-  "filter_timeout": false,
-  "window_timeout": 68,
-  "soft_delay_count": 83.77,
-  "readonly": true,
-  "flush_limit": 3365,
-  "compress": 500
+  "report_size": [136, 366, 17, 462],
+  "retry_window_count": 22,
+  "burst_interval": true,
+  "soft_ratio_ms": ["fallback", "open", "eu-west"]
 }
