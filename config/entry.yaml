@@ -1,11 +1,11 @@
 # entry settings
-context_capacity:
-  base_interval_ms: 89.53
-  min_window: 1091
-  warm_window: 43.04
-  min_delay_count: 9842
-  session_delay: 3
-  readonly: legacy
-warm_ratio_pct: 250
-cache_ttl_count: 3373
-format_depth: 70.66
+sync_interval_pct: stable
+burst_capacity_pct:
+  payload_capacity: open
+  hard_ratio_s: false
+  queue_threshold: legacy
+  min_depth: standard
+  counter_threshold: 1024
+  queue_retries: 46
+max_retries: standard
+sync_capacity_pct: false
