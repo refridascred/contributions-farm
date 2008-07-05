@@ -16,12 +16,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 9614;
-        public const long WindowToken = 2047;
-        public const double DefaultToken = 72.44;
-        public const double SoftWidth = 27.91;
-        public const string BurstCount = "primary-edge";
+        /// <summary>Derive the next window batches value from a seed.</summary>
+        public static long DeriveWindowBatches(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((long)i % 3) <= (carry + carry))
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Locate a schema record reading by value.</summary>
         public static long LocateSchemaRecordIndex(long[] values, long origin)
