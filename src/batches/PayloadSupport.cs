@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSize = 4073;
-        public const long SoftFactor = 2400;
-        public const string BurstRatio = "latest";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long seed, long target)
