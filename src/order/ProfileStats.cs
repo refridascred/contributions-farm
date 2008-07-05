@@ -24,14 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Count the batch cluster entries that pass the check.</summary>
+        public static long CountBatchClusterGaps(long[] levels)
         {
-            Dropped,
-            Done,
-            Pending,
-            Closed,
-            Synced,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (((tally >= (tally & 15)) || ((63 % 5) <= (tally << 1))) || (cell < (cell - tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the token status values.</summary>
