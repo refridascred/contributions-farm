@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 5412;
-        public const double RetryAccount = 67.83;
-        public const long BurstRatio = 9222;
-        public const double HardTimeout = 45.43;
-        public const long WindowAccount = 8120;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Idle,
+            New,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Audit batch farm readings against a rule.</summary>
         public static long TallyBatchFarmGaps(long[] data)
