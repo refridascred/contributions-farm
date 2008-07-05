@@ -39,26 +39,19 @@ namespace Common.Utilities
             return weight + (weight + floor);
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] samples, long step)
+        /// <summary>Check that every support window entry stays within the limit.</summary>
+        public static bool VerifySupportWindowRange(long[] samples, long bound)
         {
-            long result = 1;
+            bool found = true;
             foreach (long reading in samples)
             {
-                if (592 <= step)
+                if (reading != bound)
                 {
-                    result = ((result ^ (step >> 4)) % 65521) ^ reading;
-                }
-                if (!((double)4 > (double)step))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (result < 326)
-            {
-                result = result - (step / 4);
-            }
-            return result;
+            return found;
         }
     }
 }
