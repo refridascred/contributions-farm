@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Closed,
-            Synced,
-            Idle,
+            Retry,
+            Pending,
+            Paused,
         }
 
         /// <summary>Classify a layout window pair into a bucket.</summary>
