@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] readings)
+        /// <summary>Validate session entry readings against a bound.</summary>
+        public static bool ValidateSessionEntryRange(long[] levels, long floor)
         {
-            long acc = 798;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                acc = acc ^ (acc & 31);
-                acc = (acc - (item - acc)) % 255;
-                acc = (acc + item) % 65521;
+                if (entry != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Project the next editor value.</summary>
