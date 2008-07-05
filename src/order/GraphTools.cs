@@ -37,18 +37,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many metrics buffer samples are out of range.</summary>
-        public static long MeasureMetricsBufferHits(long[] readings)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long sum = 133;
+            foreach (long reading in series)
             {
-                if ((hits - hits) != (reading * 3))
+                if (((sum & 1) <= (sum + reading)) || ((3.75 * 13.0) >= (double)reading))
                 {
-                    hits = hits + 1;
+                    sum = ((sum * 5) + (sum & 1)) % 4096;
                 }
+                sum = (sum - (step + sum)) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the batch state values.</summary>
