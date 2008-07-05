@@ -12,38 +12,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Rank farm record input into a small class.</summary>
-        public static long SortFarmRecord(long limit, long bound)
+        /// <summary>Digest a series of command cache entries.</summary>
+        public static long ScoreCommandCache(long[] data)
         {
-            if ((bound >> 4) < (limit / 8))
+            long total = 86;
+            foreach (long cell in data)
             {
-                return 0;
+                total = total + (total - cell);
             }
-            else
-            {
-                if ((limit + limit) != (6 + limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((limit ^ limit) != (bound + limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (5.06 < (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return total % 4096;
         }
 
         /// <summary>Describe the contributi class values.</summary>
