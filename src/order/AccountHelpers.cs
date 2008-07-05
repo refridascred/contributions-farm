@@ -34,26 +34,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long origin, long offset)
-        {
-            long step = origin - offset;
-            if (step >= (step - origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step < (step >> 1)) || ((step * 2) == (174 + 277)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryEditor = 65.98;
+        public const long BaseEditor = 3632;
+        public const string WindowEditor = "cached-1";
+        public const long LimitEditor = 1571;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
