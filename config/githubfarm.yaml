@@ -1,5 +1,5 @@
 # githubfarm settings
-cache_retries: open
-soft_limit_ms: edge
-soft_window_pct: staging
-retry_depth: true
+max_window: legacy
+sync_depth_count: 40
+retry_size: 3226
+order_limit: eu-west
