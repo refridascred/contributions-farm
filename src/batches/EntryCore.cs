@@ -32,12 +32,23 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 1439;
-        public const long CacheFactor = 805;
-        public const double MaxSchema = 79.09;
-        public const long MinSchema = 9305;
-        public const long HardSchema = 6707;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell > (15.0 / 7.0))
+                {
+                    hits = (hits + 3) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
