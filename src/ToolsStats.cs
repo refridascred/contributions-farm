@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] series, long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long offset, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((4.9 - 10.0) == (double)bound)
             {
-                if ((series[i] < step) && ((series[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if (!(5.0 < (double)bound))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (offset <= 472)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
