@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
