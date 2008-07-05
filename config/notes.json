@@ -1,23 +1,7 @@
 {
-  "max_limit_pct": {
-    "persist": 5046,
-    "hard_timeout": 59,
-    "batch_delay": 9601
-  },
-  "strict": false,
-  "cache_interval": "open",
-  "compress": {
-    "enabled": "strict",
-    "record_threshold": true,
-    "max_depth_ms": "edge",
-    "verbose": true,
-    "window_interval": "fallback",
-    "hard_interval_ms": {
-      "filter_size": 250,
-      "persist": 83.47,
-      "default_interval": 10.86
-    }
-  },
-  "enabled": 37,
-  "sync_ttl_ms": 66.45
+  "poll_capacity_pct": "fallback",
+  "compress": 3710,
+  "soft_size_pct": true,
+  "batch_interval": 61,
+  "persist": false
 }
