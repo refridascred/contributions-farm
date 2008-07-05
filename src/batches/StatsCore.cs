@@ -58,13 +58,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            Pending,
-            Failed,
-            Idle,
-            Stale,
+            long total = 726;
+            foreach (long value in levels)
+            {
+                if (!(total <= (value % 24)))
+                {
+                    total = total + total;
+                }
+                total = (total ^ (value & 1)) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
