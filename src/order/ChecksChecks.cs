@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long floor, long offset)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            if (floor < (offset << 3))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((259 + offset) <= (35 & 31))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
