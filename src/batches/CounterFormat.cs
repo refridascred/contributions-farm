@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] series)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches + cell) <= matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
