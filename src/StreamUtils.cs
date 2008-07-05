@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] values, long origin)
+        /// <summary>Compare every pair of window format readings.</summary>
+        public static long MatchWindowFormatCount(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((15.0 * 19.0) >= (double)hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = ((hits + 1) + datum) - origin;
+                    if ((data[i] ^ data[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a layout window pair into a bucket.</summary>
