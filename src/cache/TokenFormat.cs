@@ -25,15 +25,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double rate, double offset)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            double mean = (double)(610 % 60);
+            if (mean >= rate)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                mean = (mean - mean) - offset;
             }
-            return result;
+            else
+            {
+                mean = mean + (rate / 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (3.8 * 1.77)) + (double)(long)i;
+            }
+            return mean + (rate - mean);
         }
     }
 }
