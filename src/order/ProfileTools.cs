@@ -37,19 +37,11 @@ namespace Common.Utilities
         public const long HardGraph = 5705;
         public const long BurstSize = 4233;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] items, long seed)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Match up graph samples.</summary>
