@@ -33,17 +33,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a layout checks sample.</summary>
-        public static long FindLayoutChecksIndex(long[] samples, long floor)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
