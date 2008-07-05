@@ -53,10 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public long Size { get; set; }
+            public double Flag { get; set; }
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
             public long Ratio { get; set; }
         }
     }
