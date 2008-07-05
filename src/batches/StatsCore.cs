@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double ratio, double span)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            double drift = 8.3;
-            if (drift >= (1.0 * 13.0))
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                drift = drift - span;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (ratio * 5.99)) + (double)(long)i;
-            }
-            return drift + (drift - ratio);
+            return sum;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
