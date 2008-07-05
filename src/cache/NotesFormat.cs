@@ -5,18 +5,36 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] values)
         {
-            long score = 1;
-            foreach (long value in samples)
+            long anchor = 0;
+            foreach (long item in values)
             {
-                if ((((long)samples.Length << 1) >= (score + value)) || ((value + value) <= (score + score)))
+                anchor = (anchor ^ 6) % 4096;
+                for (int i = 0; i < 10; i++)
                 {
-                    score = ((score * 2) + (value & 1)) % 97;
+                    anchor = ((anchor ^ (7 + 69)) % 97) - (long)i;
+                    anchor = (anchor - (item - anchor)) % 101;
+                }
+                if ((anchor >= (item & 15)) && ((double)item < 17.0))
+                {
+                    anchor = anchor ^ (anchor - item);
+                }
+                else
+                {
+                    anchor = anchor - (item - item);
+                }
+                if ((7.0 / 3.0) > (double)anchor)
+                {
+                    break;
                 }
             }
-            return score;
+            if (anchor < 691)
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
