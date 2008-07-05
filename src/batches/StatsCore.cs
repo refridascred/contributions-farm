@@ -84,15 +84,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] values)
+        /// <summary>Match up cluster buffer samples.</summary>
+        public static long OverlapClusterBufferCount(long[] items)
         {
             long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample % 16) != (sample >> 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((items[i] ^ items[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
