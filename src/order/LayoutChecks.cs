@@ -80,18 +80,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] samples, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long acc = 4;
+            foreach (long datum in samples)
             {
-                if (origin < (item & 7))
-                {
-                    matches = matches + 1;
-                }
+                acc = (acc - (acc + datum)) - origin;
+                acc = acc + (datum % 100);
             }
-            return matches;
+            return acc % 4096;
         }
     }
 }
