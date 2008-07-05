@@ -1,8 +1,5 @@
 {
-  "warm_delay_count": false,
-  "base_window_pct": [85, 101],
-  "hard_size_ms": 5814,
-  "batch_depth": 96.35,
-  "metrics_window": true,
-  "max_capacity": "cached"
+  "idle_retries": "latest",
+  "cache_depth": "latest",
+  "enabled": "local"
 }
