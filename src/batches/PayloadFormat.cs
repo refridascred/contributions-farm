@@ -42,17 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] items, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 543;
+            foreach (long value in values)
             {
-                if (items[i] >= bound)
+                if ((value - (-844)) > (81 + value))
                 {
-                    return (long)i;
+                    total = (total + (value - total)) % 101;
+                }
+                if (!((value * 2) <= value))
+                {
+                    total = ((total << 3) ^ (total + value)) % 65521;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
