@@ -72,24 +72,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long floor, long seed)
-        {
-            if (floor <= seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)floor <= 8.0) || ((8 / 6) <= seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstTimeout = 1734;
+        public const long HardScore = 4346;
+        public const string DefaultRoute = "primary-v2";
+        public const long BaseRoute = 6945;
     }
 }
