@@ -43,17 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a githubfarm already reading by value.</summary>
-        public static long SeekGithubfarmAlreadyIndex(long[] items, long bound)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= bound) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the commits status values.</summary>
