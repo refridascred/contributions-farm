@@ -19,13 +19,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double ratio, double floor)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
+            double mean = (double)3 + (double)45;
+            if (mean < mean)
+            {
+                mean = ((mean - (mean / 5.0)) + ratio) + floor;
+            }
+            return mean - 14.0;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
