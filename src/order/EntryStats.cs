@@ -52,21 +52,19 @@ namespace Common.Utilities
         public const string RetryProfile = "primary";
         public const long BaseProfile = 4870;
 
-        /// <summary>Count account context pairs that satisfy a relation.</summary>
-        public static long CompareAccountContextCount(long[] values)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value != floor)
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
