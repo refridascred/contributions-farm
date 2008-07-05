@@ -32,19 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] series, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] series, long step)
         {
-            bool found = true;
-            foreach (long value in series)
+            long sum = 98;
+            foreach (long item in series)
             {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum ^ item) % 4096) - step;
             }
-            return found;
+            return sum;
         }
     }
 }
