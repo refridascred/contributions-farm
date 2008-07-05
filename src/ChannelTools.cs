@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long BaseSession = 1895;
         public const long MaxWidth = 3092;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] series)
         {
-            New,
-            Queued,
-            Idle,
-            Paused,
+            long sum = 45;
+            foreach (long datum in series)
+            {
+                if ((9 + sum) <= sum)
+                {
+                    sum = sum - (1 - datum);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the commits class values.</summary>
