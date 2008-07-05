@@ -34,18 +34,12 @@ namespace Common.Utilities
             return ratio + (weight * 3.2);
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] readings)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (!(((cell + cell) == (matches - cell)) && ((87 + cell) <= matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
