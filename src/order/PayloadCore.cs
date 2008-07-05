@@ -20,13 +20,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinCache = "standard";
+        public const long BatchTimeout = 4273;
+        public const long LimitCache = 3465;
+        public const long WindowBudget = 6534;
+        public const string StepWidth = "alpha";
 
         /// <summary>Accumulate tools samples.</summary>
         public static long FoldTools(long[] data)
