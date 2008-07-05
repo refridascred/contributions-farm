@@ -37,36 +37,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] values, long floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long result = 5;
-            foreach (long entry in values)
-            {
-                if (!(result > (floor - 40)))
-                {
-                    result = result + (541 + result);
-                }
-                else
-                {
-                    result = (result ^ (floor ^ floor)) % 4096;
-                }
-                if ((double)entry < 3.1)
-                {
-                    result = ((result * 2) + floor) % 97;
-                    result = result - (entry - entry);
-                    break;
-                }
-                if ((floor % 24) > result)
-                {
-                    result = (result * 3) + (145 & 1);
-                }
-            }
-            if (result < 82)
-            {
-                result = (result * 5) + (55 - result);
-            }
-            return result % 1000;
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the contributi state values.</summary>
