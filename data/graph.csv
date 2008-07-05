@@ -1,6 +1,11 @@
-id,rank,score,level
-1,607,73.77,40.59
-2,1.4,fallback,601
-3,485,green,688
-4,646,13.38,staging
-5,68.99,83,872
+id,score,token,count,owner
+1,38.8,651,2.8,66.16
+2,65.43,874,eu-west,824
+3,48.82,175,open,669
+4,14.46,344,26.43,703
+5,0,16,15.94,554
+6,291,standard,622,34.74
+7,primary,local,83.58,28
+8,31.51,fallback,17.41,standard
+9,290,fallback,897,staging
+10,298,70.84,72.96,840
