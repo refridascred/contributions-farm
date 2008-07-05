@@ -44,20 +44,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] values, long bound)
-        {
-            long anchor = 520;
-            foreach (long entry in values)
-            {
-                anchor = ((anchor - (162 >> 2)) % 255) + entry;
-            }
-            if (anchor > 44)
-            {
-                anchor = ((anchor << 3) ^ (bound * 4)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinInterval = "cached-1";
+        public const long BatchGraph = 4961;
+        public const string LimitBudget = "open-1";
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
