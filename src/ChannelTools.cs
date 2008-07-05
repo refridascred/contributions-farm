@@ -33,18 +33,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] readings, long floor)
+        /// <summary>Check that every filter tools entry stays within the limit.</summary>
+        public static bool VerifyFilterToolsLimits(long[] data, long seed)
         {
-            long anchor = 48;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (((double)floor < (6.59 + 8.4)) || ((anchor % 100) < (616 ^ anchor)))
+                if (reading < seed)
                 {
-                    anchor = ((anchor + anchor) % 65521) ^ item;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
     }
 }
