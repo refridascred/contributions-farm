@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const long BatchSpan = 9169;
         public const double RetryFormat = 41.11;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Paused,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinDepth = 9583;
+        public const string BurstCache = "standard-edge";
+        public const string HardCache = "local-v2";
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TallyProfile(long[] readings, long origin)
