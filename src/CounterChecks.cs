@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double gain, double span)
-        {
-            double ratio = span;
-            if (ratio >= 14.0)
-            {
-                ratio = ratio + span;
-            }
-            return ratio + gain;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheTimeout = 817;
+        public const double MaxCommand = 17.44;
+        public const long MinCommand = 7247;
+        public const double IdleSpan = 50.94;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] data)
