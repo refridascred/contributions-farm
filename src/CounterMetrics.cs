@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 1496;
-        public const long WindowStats = 2965;
-        public const long IdleTimeout = 7490;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((double)reading < 3.0) || ((double)limit != (0.7 - 7.23)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatGaps(long[] levels, long target)
