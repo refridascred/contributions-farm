@@ -1,8 +1,30 @@
 # githubfarm settings
-soft_interval_pct:
-  account_ttl: eu-west
-  cache_window: true
-  verbose: stable
-  hard_ratio_pct: primary
-min_timeout_ms: 21
-default_size: 30
+batch_ttl:
+  - 392
+  - 186
+  - 482
+max_delay_ms:
+  - cached
+  - latest
+retry_window_s:
+  - 227
+  - 487
+  - 411
+soft_interval_pct: eu-west
+editor_interval: 14.43
+warm_timeout_pct:
+  warm_limit_ms: true
+  audit: local
+  contributi_window: 54.84
+  persist: 39.25
+  batch_retries_s: 9019
+  burst_capacity:
+    support_window: true
+    hard_capacity_pct: 45
+    stats_interval:
+      - edge
+      - eu-west
+      - local
+    already_limit: 34.44
+    compress: false
+    layout_limit: 1024
