@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long offset, long bound)
-        {
-            if ((double)offset != (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset << 1) <= bound) && ((bound / 4) == (bound - bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((1 >> 3) != (bound ^ bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "strict-edge";
+        public const string WindowCount = "standard-edge";
+        public const string BaseScore = "alpha-edge";
+        public const string SoftLevel = "stable";
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
