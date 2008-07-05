@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit token window readings against a rule.</summary>
-        public static long AuditTokenWindowHits(long[] samples, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long state = 72;
+            foreach (long entry in levels)
             {
-                if ((offset + 5) > (offset + matches))
+                if (((state % 64) == (entry + entry)) || (((long)levels.Length + entry) > (state + state)))
                 {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = (state ^ state) % 65521;
                 }
             }
-            return matches;
+            return state % 1000;
         }
 
         /// <summary>Describe the session class values.</summary>
