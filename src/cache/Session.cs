@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] samples, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] data)
         {
-            long anchor = 704;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                anchor = (((anchor * 5) + item) % 65521) - step;
+                if (((matches <= (matches + matches)) || ((cell + matches) >= (cell << 3))) && ((matches >> 4) == (matches & 1)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (anchor < 785)
-            {
-                anchor = anchor ^ (259 & 63);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the cache class values.</summary>
