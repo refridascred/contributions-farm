@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Check that every payload filter entry stays within the limit.</summary>
+        public static bool CheckPayloadFilterRange(long[] samples, long target)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
