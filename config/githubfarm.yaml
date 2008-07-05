@@ -1,14 +1,4 @@
 # githubfarm settings
-base_retries: 86.43
-editor_delay: true
-retry_threshold_ms:
-  dry_run: green
-  min_interval_ms:
-    - standard
-    - standard
-    - eu-west
-    - latest
-  batch_retries_count: standard
-strict: 64.71
-channel_depth: 100
-min_size_s: fallback
+batch_ttl_count: fallback
+base_ratio: green
+filter_ttl: 80
