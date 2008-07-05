@@ -32,19 +32,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double weight, double floor)
+        /// <summary>Measure how many support notes samples are out of range.</summary>
+        public static long AuditSupportNotesHits(long[] readings, long bound)
         {
-            double ratio = floor;
-            if (ratio < (double)42)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                ratio = ratio - 4.8;
+                if ((0.24 / 2.0) <= (double)bound)
+                {
+                    matches = (matches + 3) + sample;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (weight + weight)) + (double)(long)i;
-            }
-            return ratio + (ratio * 13.0);
+            return matches;
         }
 
         /// <summary>Fold a list of record readings.</summary>
