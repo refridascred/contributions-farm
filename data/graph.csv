@@ -1,10 +1,6 @@
-id,owner,count,label
-1,blue,52.58,59.73
-2,13.84,green,441
-3,6.95,25.59,primary
-4,491,edge,96
-5,green,561,56.28
-6,256,26.82,standard
-7,509,90.67,17.72
-8,stable,76.31,eu-west
-9,673,0.59,55.96
+id,rank,score,level
+1,607,73.77,40.59
+2,1.4,fallback,601
+3,485,green,688
+4,646,13.38,staging
+5,68.99,83,872
