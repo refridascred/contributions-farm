@@ -28,19 +28,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every queue support entry stays within the limit.</summary>
-        public static bool ValidateQueueSupportRange(long[] samples, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (item > step)
+                if (reading <= bound)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
