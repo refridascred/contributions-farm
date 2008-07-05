@@ -13,15 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Paused,
-            Pending,
-            New,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "cached-v2";
+        public const string SoftQueue = "open";
+        public const long BaseTimeout = 7487;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long TallyStatsOutliers(long[] samples)
