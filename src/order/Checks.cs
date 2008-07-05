@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] items, long limit)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading > limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
