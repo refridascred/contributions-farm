@@ -33,15 +33,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the account cache series from a seed.</summary>
-        public static long RollAccountCache(long bound)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] values, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if ((values[i] == floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
