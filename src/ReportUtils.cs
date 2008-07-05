@@ -39,15 +39,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            long total = offset;
+            for (int i = 0; i < 16; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                total = ((total * 2) + (offset + offset)) % 97;
+                if ((double)offset < (1.1 / 6.0))
+                {
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Fold a list of token command readings.</summary>
