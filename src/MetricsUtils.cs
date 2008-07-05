@@ -39,19 +39,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultDepth = 7200;
+        public const long DefaultSize = 4399;
+        public const double BurstDepth = 28.28;
+        public const long BaseBuffer = 6690;
     }
 }
