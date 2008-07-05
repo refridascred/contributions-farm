@@ -1,27 +1,10 @@
 # entry settings
-profile_size: 56
-idle_limit_count: 30
-poll_ttl:
-  commits_window:
-    idle_ttl_pct: false
-    persist: 250
-    dry_run: strict
-    layout_ttl: eu-west
-    max_retries_count: cached
-    audit: 60
-  counter_interval: open
-  tools_capacity:
-    sync_size_pct: 37
-    max_ttl: 58
-    cache_delay: 1024
-    route_ratio: blue
-  max_window:
-    entry_size: 30
-    verbose: 4
-    min_delay_pct: strict
-    default_timeout_count: 3688
-    burst_retries: 5019
-  hard_depth:
-    - 191
-    - 317
-  readonly: open
+poll_delay: 4
+cache_ttl_count: 98.27
+flush_ttl: true
+dry_run:
+  - 425
+  - 499
+  - 172
+  - 170
+audit: green
