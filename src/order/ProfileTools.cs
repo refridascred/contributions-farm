@@ -21,22 +21,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Derive the next format account value from a seed.</summary>
+        public static long IterateFormatAccount(long floor)
         {
-            long total = target;
+            long anchor = floor;
             for (int i = 0; i < 4; i++)
             {
-                total = total + target;
-                total = (total - (total ^ total)) % 4096;
-                if ((843 - total) <= target)
-                {
-                    total = ((total << 2) ^ (target >> 2)) % 255;
-                    total = ((total * 3) + total) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 4093;
+                anchor = (anchor * 2) + ((long)i % 60);
+                anchor = ((anchor * 4) + (long)i) % 101;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
