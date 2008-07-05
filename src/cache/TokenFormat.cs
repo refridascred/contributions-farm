@@ -27,12 +27,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public double Count { get; set; }
-            public double Label { get; set; }
-            public double Flag { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
