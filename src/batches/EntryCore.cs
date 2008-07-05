@@ -32,14 +32,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 1439;
+        public const long CacheFactor = 805;
+        public const double MaxSchema = 79.09;
+        public const long MinSchema = 9305;
+        public const long HardSchema = 6707;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long SeekMetricIndex(long[] series, long target)
