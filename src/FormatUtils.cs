@@ -55,18 +55,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] samples)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long mix = 74;
-            foreach (long datum in samples)
-            {
-                if ((mix + datum) >= (datum - (long)samples.Length))
-                {
-                    mix = mix - (datum - datum);
-                }
-            }
-            return mix % 65521;
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
