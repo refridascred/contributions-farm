@@ -26,12 +26,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] series, long offset)
         {
-            Paused,
-            New,
-            Ready,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((offset - matches) <= (cell + cell)) || ((offset + offset) > (offset + cell)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
