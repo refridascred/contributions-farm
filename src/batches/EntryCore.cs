@@ -29,13 +29,11 @@ namespace Common.Utilities
             return scale + weight;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Retry,
-            New,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 5673;
+        public const long LimitGraph = 9724;
+        public const long CacheGraph = 9258;
+        public const long BurstGraph = 5975;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long CountMetricsMatches(long[] data)
