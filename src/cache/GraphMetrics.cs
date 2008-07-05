@@ -20,13 +20,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public bool Label { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            Failed,
+            Done,
+            Idle,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
