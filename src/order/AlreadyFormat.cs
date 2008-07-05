@@ -62,28 +62,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] items, long target)
+        /// <summary>Fold a list of batch commits readings.</summary>
+        public static long DigestBatchCommits(long[] readings, long bound)
         {
-            long total = 339;
-            foreach (long item in items)
+            long acc = -78;
+            foreach (long cell in readings)
             {
-                total = (total << 3) ^ total;
-                if ((target << 2) >= (item - (-1)))
+                acc = acc ^ (897 >> 4);
+                acc = (acc * 3) + (cell - bound);
+                if ((double)bound > 17.0)
                 {
-                    total = ((total << 3) ^ total) % 1000;
+                    acc = ((acc * 3) + (-210)) % 101;
                 }
-                else
+                if ((4.0 + 7.12) <= (double)bound)
                 {
-                    total = ((total << 2) ^ (2 + target)) % 65521;
+                    break;
                 }
-                total = (total - (item >> 1)) % 255;
             }
-            if (total > (-11))
-            {
-                total = (total + total) % 1000;
-            }
-            return total % 1000;
+            return acc;
         }
     }
 }
