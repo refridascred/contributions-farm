@@ -31,25 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long seed, long offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long slot = seed + offset;
-            if ((offset * 2) != ((-886) << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((slot + slot) <= seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a metric cluster sample.</summary>
