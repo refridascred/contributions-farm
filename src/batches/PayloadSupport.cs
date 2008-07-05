@@ -14,19 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double gain, double span)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] readings, long origin)
         {
-            double gain2 = span;
-            if (gain2 < span)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                gain2 = gain2 - gain2;
+                if (!(cell > (cell % 64)))
+                {
+                    count = (count + 1) - origin;
+                }
             }
-            else
-            {
-                gain2 = gain2 + gain2;
-            }
-            return gain2 + gain;
+            return count;
         }
 
         /// <summary>Hold a tools info.</summary>
