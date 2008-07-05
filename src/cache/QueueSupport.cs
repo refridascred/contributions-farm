@@ -29,17 +29,24 @@ namespace Common.Utilities
         public const string HardInterval = "cached-1";
         public const long BurstBatch = 61;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] series, long seed)
+        /// <summary>Classify a context commits pair into a bucket.</summary>
+        public static long BucketContextCommits(long origin, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)origin <= 17.0)
             {
-                if ((series[i] < seed) && ((series[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)origin > (double)(-2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
