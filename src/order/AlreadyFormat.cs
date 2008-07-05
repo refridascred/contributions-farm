@@ -38,10 +38,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 1643;
-        public const string MaxTimeout = "staging";
-        public const string DefaultCluster = "local";
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Locked,
+            Done,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
