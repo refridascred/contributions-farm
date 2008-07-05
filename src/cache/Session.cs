@@ -52,12 +52,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] levels, long target)
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public double Total { get; set; }
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
