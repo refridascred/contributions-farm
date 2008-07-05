@@ -32,11 +32,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
