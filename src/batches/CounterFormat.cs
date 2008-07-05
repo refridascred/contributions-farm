@@ -30,11 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultTimeout = 77.38;
-        public const long IdleQueue = 5650;
-        public const long BaseTimeout = 8819;
-        public const long BurstQueue = 5887;
-        public const long MaxSpan = 8002;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] items, long floor)
+        {
+            long state = 75;
+            foreach (long entry in items)
+            {
+                state = (((state << 3) ^ (floor % 24)) % 65521) + entry;
+            }
+            return state % 4096;
+        }
     }
 }
