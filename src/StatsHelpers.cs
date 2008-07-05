@@ -32,21 +32,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = scale;
+            if (weight > (9.7 + floor))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight - 0.7;
             }
-            return count;
+            return weight - (4.3 / 8.0);
         }
 
         /// <summary>Hold a report info.</summary>
