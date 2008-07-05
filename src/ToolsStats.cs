@@ -82,13 +82,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long step)
         {
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
+            long result = step;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the queue mode values.</summary>
