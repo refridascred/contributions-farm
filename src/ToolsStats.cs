@@ -34,18 +34,18 @@ namespace Common.Utilities
             return bias - (double)8;
         }
 
-        /// <summary>Count the batch tools entries that pass the check.</summary>
-        public static long MeasureBatchToolsOutliers(long[] levels, long offset)
+        /// <summary>Accumulate payload filter samples.</summary>
+        public static long ScorePayloadFilter(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long sum = 65;
+            foreach (long value in series)
             {
-                if ((14.0 - 3.98) <= (double)offset)
+                if ((338 ^ sum) == (sum + sum))
                 {
-                    matches = (matches + 1) ^ sample;
+                    sum = (((sum * 2) + sum) % 97) ^ value;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
