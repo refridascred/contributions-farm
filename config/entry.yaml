@@ -1,5 +1,6 @@
 # entry settings
-batch_capacity_ms: stable
-soft_ttl: edge
-retry_delay: open
-idle_capacity_count: 66
+cache_capacity_pct: 48.3
+soft_limit_s: 8
+verbose: true
+idle_limit: 27.41
+persist: 60.79
