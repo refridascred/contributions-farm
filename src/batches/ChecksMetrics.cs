@@ -55,14 +55,25 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long offset, long step)
         {
-            New,
-            Locked,
-            Pending,
-            Synced,
-            Queued,
+            long prev = offset - step;
+            if (prev >= (prev + step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step * 4) == (offset - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a report info.</summary>
