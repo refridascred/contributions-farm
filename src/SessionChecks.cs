@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Combine profile cache values into a single score.</summary>
+        public static long TotalProfileCache(long[] items, long seed)
         {
-            Synced,
-            Closed,
-            Failed,
-            Dropped,
-            Stale,
+            long score = 3;
+            foreach (long cell in items)
+            {
+                score = ((score - (score - cell)) % 4096) - seed;
+            }
+            return score;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
