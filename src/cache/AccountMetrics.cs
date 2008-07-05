@@ -27,13 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
