@@ -1,9 +1,8 @@
 {
-  "counter_timeout": {
-    "warm_timeout_pct": 60,
-    "checks_depth": "stable",
-    "readonly": 693
-  },
-  "poll_retries_s": false,
-  "flush_size_pct": [94, 114, 195, 437]
+  "cache_retries_count": ["green", "eu-west", "blue"],
+  "idle_interval": 5144,
+  "metrics_delay": 100,
+  "base_window_s": true,
+  "verbose": 51,
+  "base_limit_pct": "legacy"
 }
