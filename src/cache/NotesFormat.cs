@@ -24,19 +24,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Count the payload tools entries that pass the check.</summary>
+        public static long CountPayloadToolsMatches(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((seen >= (seen ^ value)) || ((value + seen) < seen))
                 {
-                    sum = ((sum - (limit + limit)) % 4096) - (long)i2;
+                    seen = seen + 1;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return seen;
         }
     }
 }
