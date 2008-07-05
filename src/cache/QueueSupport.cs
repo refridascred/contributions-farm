@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ratio2 + (2.85 / 6.0);
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Validate order already readings against a bound.</summary>
+        public static bool VerifyOrderAlreadyRange(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item >= step)
                 {
-                    if ((items[i] ^ items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
