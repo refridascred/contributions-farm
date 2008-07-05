@@ -32,11 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long limit, long offset)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            if (((-9) + offset) != (offset / 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(limit > (offset << 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
