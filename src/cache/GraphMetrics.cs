@@ -37,18 +37,24 @@ namespace Common.Utilities
         public const double StepLevel = 64.59;
         public const long BaseMetrics = 9022;
 
-        /// <summary>Count the notes checks entries that pass the check.</summary>
-        public static long AuditNotesChecksGaps(long[] readings)
+        /// <summary>Derive the next session checks value from a seed.</summary>
+        public static long DeriveSessionChecks(long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((datum >> 1) >= (datum + datum)) && (matches >= 108)) && ((matches + 94) > (matches ^ (long)readings.Length)))
+                if ((double)offset != (double)(long)i)
                 {
-                    matches = matches + 3;
+                    break;
                 }
+                else
+                {
+                    carry = carry - (long)i;
+                    carry = (carry + (carry & 7)) % 4096;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
