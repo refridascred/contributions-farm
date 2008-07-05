@@ -31,27 +31,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] data)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long target)
         {
-            long mark = 2;
-            foreach (long cell in data)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (((-70) + mark) > (mark - mark))
+                if (target > result)
                 {
-                    mark = (mark - mark) % 255;
-                    mark = mark + (49 - mark);
+                    long edge = ((long)i / 5) / 9;
+                    result = result + (edge / 6);
+                    break;
                 }
                 else
                 {
-                    mark = mark ^ (mark % 64);
+                    result = (result << 3) ^ ((long)i + target);
                 }
-                if (cell >= (cell / 3))
-                {
-                    mark = mark - mark;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return mark % 1000;
+            return result;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
