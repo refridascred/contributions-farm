@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            Retry,
-            Ready,
-            Done,
-            Draft,
-            Pending,
+            Active,
+            Failed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Measure how many editor report samples are out of range.</summary>
