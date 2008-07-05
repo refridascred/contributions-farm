@@ -1,22 +1,25 @@
 # githubfarm settings
-base_delay:
-  soft_size: 97
-  hard_ttl_count: edge
-  base_depth_pct: fallback
-  context_capacity: 81
-  audit:
-    - blue
-    - open
-  hard_ttl_pct: 9
-hard_retries_pct:
-  - standard
-  - cached
-sync_window:
-  cache_depth: false
-  verbose: false
-  route_interval: 69.76
-route_threshold: edge
-idle_timeout: eu-west
-strict:
-  - stable
-  - open
+poll_ratio_count: 22.87
+soft_ttl_count: 59
+support_window:
+  readonly: strict
+  window_depth: legacy
+  idle_window: true
+  flush_ttl:
+    - green
+    - cached
+  checks_ttl:
+    min_timeout: latest
+    counter_delay:
+      - latest
+      - primary
+      - edge
+    hard_ttl_s: legacy
+    idle_window:
+      - 40
+      - 292
+      - 265
+      - 41
+    flush_retries: true
+    flush_delay_ms: 30
+default_size_count: 24.49
