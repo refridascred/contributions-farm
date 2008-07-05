@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] data, long offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            long score = 82;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score << 3) ^ datum) % 1000;
-                score = ((score * 3) + (49 << 1)) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score > 856)
-            {
-                score = ((score * 5) + (offset - score)) % 65521;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Derive the next format account value from a seed.</summary>
