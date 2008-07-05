@@ -29,17 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first already farm entry that matches the target.</summary>
-        public static long LookupAlreadyFarmIndex(long[] readings, long bound)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
