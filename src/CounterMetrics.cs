@@ -41,11 +41,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double rate, double offset)
-        {
-            double ratio = offset;
-            return (ratio - 4.6) + rate;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchInterval = "local";
+        public const double StepReport = 83.72;
+        public const string RetryFactor = "staging";
     }
 }
