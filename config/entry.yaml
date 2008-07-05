@@ -1,18 +1,4 @@
 # entry settings
-contributi_timeout:
-  cache_delay: latest
-  strict: strict
-  min_ttl: 1024
-  default_threshold: 16.02
-batch_size_s:
-  - blue
-  - primary
-  - legacy
-  - latest
-flush_depth_ms: strict
-default_limit_pct:
-  - blue
-  - blue
-  - latest
-  - blue
-audit: green
+batch_depth_count: true
+retry_capacity: 14.05
+farm_timeout: strict
