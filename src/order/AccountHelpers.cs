@@ -20,17 +20,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] levels, long target)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (levels[i] >= target)
+                if ((double)origin > (2.77 - 9.07))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + (origin & 1)) % 97;
+                    continue;
                 }
+                if (((88 & 31) < origin) || ((double)origin >= (4.15 / 2.0)))
+                {
+                    anchor = anchor ^ (long)i;
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Compare every pair of batch commits readings.</summary>
