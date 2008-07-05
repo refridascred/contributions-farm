@@ -1,7 +1,8 @@
 {
-  "min_size_count": "stable",
-  "sync_size_ms": 75,
-  "filter_depth": "strict",
-  "dry_run": true,
-  "route_size": "primary"
+  "filter_timeout": false,
+  "window_timeout": 68,
+  "soft_delay_count": 83.77,
+  "readonly": true,
+  "flush_limit": 3365,
+  "compress": 500
 }
