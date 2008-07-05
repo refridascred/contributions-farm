@@ -49,14 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double ratio, double floor)
         {
-            Active,
-            Draft,
-            Idle,
-            Synced,
-            Paused,
+            double drift = (double)(862 ^ 69);
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift - floor;
         }
     }
 }
