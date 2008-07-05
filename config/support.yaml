@@ -1,8 +1,8 @@
 # support settings
-batch_window_s: standard
-cluster_ttl: cached
-batch_ttl_s:
-  - eu-west
-  - standard
-  - green
-  - green
+warm_limit_ms: standard
+flush_retries_pct:
+  - 341
+  - 261
+  - 218
+  - 475
+poll_capacity: cached
