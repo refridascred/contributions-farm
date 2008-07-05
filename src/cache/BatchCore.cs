@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long offset, long limit)
         {
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
+            if (limit > 455)
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset >= limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset <= (limit + 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (7 <= (418 + offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits level values.</summary>
