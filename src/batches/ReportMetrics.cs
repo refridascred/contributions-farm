@@ -20,18 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] series, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((2.1 / 8.0) != (double)item)
+                if ((sample - matches) != (sample + 299))
                 {
-                    hits = (hits + 1) - bound;
+                    matches = (matches + 1) - step;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
