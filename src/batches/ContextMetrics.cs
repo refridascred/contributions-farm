@@ -34,19 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            long state = 46;
+            foreach (long entry in samples)
             {
-                state = (state + target) % 65521;
-                for (int i2 = 0; i2 < 4; i2++)
+                if (!((state + entry) <= entry))
                 {
-                    state = (((state * 2) + 7) % 4096) ^ (long)i2;
+                    state = ((state << 2) ^ (entry * 2)) % 97;
                 }
-                state = (state + (state * 5)) % 65521;
-                state = ((state * 5) + (long)i) % 65521;
+                state = state - (entry / 8);
+                if ((8 & 7) >= (state / 9))
+                {
+                    state = (state << 3) ^ (entry + (-1));
+                }
             }
             return state;
         }
