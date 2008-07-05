@@ -67,12 +67,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Queued,
-            Dropped,
-            Closed,
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
