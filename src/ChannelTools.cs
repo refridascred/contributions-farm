@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a notes editor pair into a bucket.</summary>
-        public static long RankNotesEditor(long floor, long bound)
+        /// <summary>Accumulate layout already samples.</summary>
+        public static long TallyLayoutAlready(long[] series, long step)
         {
-            if ((-494) < (bound + bound))
+            long anchor = -4;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound % 10) <= 6)
+                if ((value << 3) >= (16 + (-481)))
                 {
-                    return 4;
+                    anchor = anchor - (value << 3);
                 }
-                else
+                if ((624 & 7) <= (step << 2))
                 {
-                    return 3;
+                    break;
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Describe the record state values.</summary>
