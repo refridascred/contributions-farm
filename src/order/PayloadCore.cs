@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] samples)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)origin != (1.8 * 3.0))
                 {
-                    if ((samples[i] - samples[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a stream entry.</summary>
