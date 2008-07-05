@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count command format pairs that satisfy a relation.</summary>
-        public static long OverlapCommandFormatCount(long[] samples)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) > 9)
+                    if ((readings[i] ^ readings[j]) > 6)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine already values into a single score.</summary>
