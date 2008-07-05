@@ -20,17 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] series, long origin)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
