@@ -60,11 +60,19 @@ namespace Common.Utilities
             return (gain - rate) + floor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchFactor = "staging";
-        public const long WindowStats = 4459;
-        public const string BatchStats = "local-edge";
-        public const long IdleScore = 8548;
-        public const long SoftSpan = 5994;
+        /// <summary>Iterate the channel notes series from a seed.</summary>
+        public static long SeriesChannelNotes(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((result % 8) <= (offset / 7)))
+                {
+                    result = result + (offset * 3);
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
