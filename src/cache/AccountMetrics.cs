@@ -29,10 +29,10 @@ namespace Common.Utilities
         public const long MaxCommand = 413;
         public const long RetryScore = 2966;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 5340;
-        public const long CacheRatio = 7380;
-        public const string LimitTimeout = "local-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstInterval = "stable-v2";
+        public const double CacheQueue = 4.31;
+        public const long BaseBudget = 3203;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
