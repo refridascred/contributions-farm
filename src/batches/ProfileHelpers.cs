@@ -19,15 +19,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double ratio, double floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double mean = (double)3 + (double)45;
-            if (mean < mean)
-            {
-                mean = ((mean - (mean / 5.0)) + ratio) + floor;
-            }
-            return mean - 14.0;
+            Paused,
+            Ready,
+            Locked,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a farm options.</summary>
