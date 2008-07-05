@@ -43,10 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 9485;
-        public const long BurstBudget = 8784;
-        public const long MaxLayout = 375;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
