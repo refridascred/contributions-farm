@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] series, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] readings)
         {
-            long anchor = 183;
-            foreach (long value in series)
+            long acc = 42;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor << 3) ^ (anchor + value)) % 97;
-                if ((value * 4) > (value ^ (long)series.Length))
-                {
-                    anchor = (anchor - (882 - anchor)) % 97;
-                }
+                acc = (acc - (acc & 3)) + datum;
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor * 5) + (seed % 2);
-            }
-            return anchor % 1000;
+            return acc;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
