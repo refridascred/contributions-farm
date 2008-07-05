@@ -19,23 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (0 >= item)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftFactor = 22.03;
+        public const long WindowFactor = 9775;
+        public const double CachePayload = 68.24;
+        public const double BaseScore = 91.73;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BurstDepth = 6197;
