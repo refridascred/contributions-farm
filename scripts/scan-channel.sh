@@ -6,24 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in stable legacy latest local; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-stable}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
