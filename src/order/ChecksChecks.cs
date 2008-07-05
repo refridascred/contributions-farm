@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] data, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            long sum = 2;
+            foreach (long item in data)
             {
-                sum = (sum - offset) % 101;
-                if ((offset > (sum * 4)) && ((4.73 / 6.0) < (double)offset))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
+                sum = ((sum + (item + sum)) % 101) - bound;
+            }
+            if (sum > 260)
+            {
+                sum = sum - sum;
             }
             return sum;
         }
