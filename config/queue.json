@@ -1,5 +1,18 @@
 {
-  "retry_threshold": false,
-  "min_ttl_ms": "latest",
-  "layout_limit": "stable"
+  "sync_window_count": true,
+  "base_timeout_ms": [458, 124, 500],
+  "cache_interval": 3799,
+  "max_limit": {
+    "min_ratio": ["open", "primary"],
+    "compress": "stable",
+    "report_threshold": "green",
+    "base_ttl": ["stable", "green"],
+    "readonly": {
+      "max_retries_s": ["open", "eu-west", "stable"],
+      "persist": 5729,
+      "base_window_s": 49.28,
+      "default_interval_count": 75.72
+    },
+    "default_capacity_s": "legacy"
+  }
 }
