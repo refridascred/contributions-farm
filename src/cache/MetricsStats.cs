@@ -50,12 +50,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowLevel = 1364;
+        public const long HardBuffer = 7831;
+        public const string BatchBuffer = "primary-1";
+        public const long DefaultDepth = 5045;
+        public const double StepTimeout = 87.69;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
