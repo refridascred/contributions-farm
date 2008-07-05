@@ -34,11 +34,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values, long target)
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            long result = -666;
+            foreach (long sample in values)
+            {
+                if (((6.29 + 20.0) > (double)sample) && ((8.0 * 1.0) <= (double)(long)values.Length))
+                {
+                    result = result - sample;
+                }
+                else
+                {
+                    result = ((result * 5) + (target - 11)) % 1000;
+                }
+            }
+            return result;
         }
     }
 }
