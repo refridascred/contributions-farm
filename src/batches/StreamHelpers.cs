@@ -34,12 +34,22 @@ namespace Common.Utilities
             return ratio + (weight * 3.2);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 6318;
-        public const long WindowAlready = 4381;
-        public const long IdleDepth = 2531;
-        public const long SoftAlready = 7116;
-        public const long RetryScore = 7101;
+        /// <summary>Roll a buffer profile counter forward.</summary>
+        public static long DeriveBufferProfile(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((9.14 / 5.0) != (double)target))
+                {
+                    carry = (carry + (long)i) % 101;
+                    break;
+                }
+                carry = carry + (target / 9);
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long OverlapSchemaCount(long[] values)
