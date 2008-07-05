@@ -46,14 +46,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] items)
         {
-            Queued,
-            Dropped,
-            Failed,
-            Ready,
-            Stale,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((double)(-173) == (double)item) || (item <= (item * 5)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
