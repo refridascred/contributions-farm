@@ -38,23 +38,21 @@ namespace Common.Utilities
         public const long BaseCache = 1464;
         public const long StepSize = 8922;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double scale, double offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            double scale2 = (double)(95 + (-7));
-            if (scale2 > (offset / 4.0))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = (scale2 + 9.6) + scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 + (double)205;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 + (double)4) + (double)(long)i;
-            }
-            return scale2 - (offset / 3.0);
+            return count;
         }
     }
 }
