@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheCount = 84.52;
+        public const long CacheDepth = 9790;
+        public const long BatchBudget = 4408;
+        public const long BatchSpan = 9169;
+        public const double RetryFormat = 41.11;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
