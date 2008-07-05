@@ -1,17 +1,12 @@
 # githubfarm settings
-compress:
-  - local
-  - standard
-  - green
-strict:
-  - stable
-  - blue
-  - standard
-retry_window:
-  idle_delay: eu-west
-  metric_limit: 9665
-  flush_ratio_s: standard
-  queue_interval: 82.13
-batch_retries: latest
-max_limit_count: 3572
-default_delay_ms: 9599
+entry_retries: blue
+retry_ratio_ms: legacy
+retry_ttl_pct:
+  soft_threshold: 41.88
+  warm_interval: 30
+  sync_ttl_count: 6582
+  batch_capacity_s: 7928
+  batch_timeout_count: staging
+  burst_depth: latest
+window_ratio: blue
+burst_timeout_s: 39.83
