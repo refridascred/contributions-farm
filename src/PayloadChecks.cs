@@ -44,12 +44,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepSize = 6027;
-        public const long IdleFilter = 3454;
-        public const long HardWidth = 4481;
-        public const long CacheFilter = 4301;
-        public const long CacheLevel = 9379;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (floor < (853 / 2))
+                {
+                    matches = (matches + 1) - sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] readings)
