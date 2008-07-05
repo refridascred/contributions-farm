@@ -45,13 +45,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)seen > (1.1 - 6.35))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
     }
 }
