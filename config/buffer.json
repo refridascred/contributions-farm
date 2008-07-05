@@ -1,13 +1,20 @@
 {
-  "support_limit": 52.38,
-  "cache_interval_count": 97,
-  "readonly": [308, 71],
-  "soft_ratio": {
-    "hard_window_ms": 68.87,
-    "burst_timeout_ms": [163, 416],
-    "min_ttl": true,
-    "enabled": 73.87
-  },
-  "soft_retries": 13.58,
-  "channel_window": 100
+  "min_retries_pct": "cached",
+  "hard_depth_ms": ["standard", "standard", "green", "primary"],
+  "layout_threshold": 1024,
+  "sync_timeout_count": {
+    "hard_ratio": true,
+    "report_capacity": "standard",
+    "hard_delay_ms": {
+      "retry_limit_count": 822,
+      "dry_run": false,
+      "contributi_depth": true,
+      "strict": [203, 256, 83],
+      "min_interval_count": 908,
+      "cache_retries_count": "open"
+    },
+    "payload_retries": "latest",
+    "default_capacity_pct": 58,
+    "counter_threshold": "blue"
+  }
 }
