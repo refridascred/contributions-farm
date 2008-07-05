@@ -53,11 +53,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double rate, double floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] samples, long bound)
         {
-            double gain = (rate / 2.0) + (9.0 + rate);
-            return (gain - rate) + floor;
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading & 127) >= (-6))
+                {
+                    seen = (seen + 3) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the channel notes series from a seed.</summary>
