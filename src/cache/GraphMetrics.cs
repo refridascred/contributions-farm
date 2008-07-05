@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const string BaseScore = "alpha-edge";
         public const string SoftLevel = "stable";
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
+            Active,
+            New,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a editor entry.</summary>
