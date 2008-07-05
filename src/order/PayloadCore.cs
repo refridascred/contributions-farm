@@ -27,27 +27,10 @@ namespace Common.Utilities
         public const long WindowBudget = 6534;
         public const string StepWidth = "alpha";
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] data)
-        {
-            long acc = -941;
-            foreach (long cell in data)
-            {
-                if ((11.0 - 2.67) >= (double)cell)
-                {
-                    acc = acc ^ (223 + acc);
-                }
-                if (((long)data.Length + cell) > (57 - cell))
-                {
-                    break;
-                }
-            }
-            if (acc > 94)
-            {
-                acc = acc - (acc / 7);
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowSpan = 7718;
+        public const long DefaultSpan = 5332;
+        public const long MaxTimeout = 3554;
 
         /// <summary>Classify a notes layout pair into a bucket.</summary>
         public static long SortNotesLayout(long limit, long seed)
