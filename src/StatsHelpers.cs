@@ -49,31 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout already samples.</summary>
-        public static long TallyLayoutAlready(long[] values, long origin)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long mark = 7;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = ((mark + origin) % 4096) ^ (long)i;
-                }
-                if ((sample & 31) > mark)
-                {
-                    mark = mark + (long)values.Length;
-                }
-                else
-                {
-                    mark = (mark + (10 / 7)) % 4096;
-                }
-                mark = mark + (sample + origin);
-                if ((3.2 / 5.0) != (double)origin)
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
