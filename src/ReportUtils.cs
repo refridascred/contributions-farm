@@ -36,10 +36,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardInterval = 93.84;
-        public const string CacheEditor = "open";
-        public const string BatchScore = "fallback-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardSpan = 7.22;
+        public const string WindowAccount = "strict-v2";
+        public const long DefaultAccount = 338;
+        public const long BurstTimeout = 7213;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long DefaultBudget = 5603;
