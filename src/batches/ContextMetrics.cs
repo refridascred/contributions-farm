@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long seed, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((target + target) != (seed >> 4))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((target * 3) < 3) || ((double)seed < (6.4 / 8.0)))
                 {
-                    if ((data[i] ^ data[j]) > 8)
+                    return 3;
+                }
+                else
+                {
+                    if (!(target <= seed))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed + target) <= (target + target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
