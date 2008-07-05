@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = gain;
+            if (bias2 < bias)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = bias2 + gain;
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 + (gain - 9.59);
+            }
+            return bias2 - (11.0 - bias2);
         }
 
         /// <summary>Combine cache values into a single score.</summary>
