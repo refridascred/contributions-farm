@@ -20,22 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] levels)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum + count) >= (count >> 2))
+                if (levels[i] >= offset)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
