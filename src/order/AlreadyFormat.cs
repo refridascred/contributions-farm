@@ -5,29 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Measure how many payload channel samples are out of range.</summary>
+        public static long AuditPayloadChannelMatches(long[] levels, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (!((seed & 7) >= carry))
+                if (((offset + cell) > cell) && ((double)cell < (2.1 - 1.0)))
                 {
-                    carry = ((carry << 2) ^ carry) % 101;
+                    matches = matches + 1;
                 }
-                if ((carry >= (long)i) && ((carry << 2) > carry))
-                {
-                    carry = ((carry * 3) + seed) % 97;
-                    carry = (carry - seed) % 101;
-                }
-                else
-                {
-                    carry = carry - seed;
-                }
-                carry = (carry - (seed % 12)) % 101;
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Project the next entry value.</summary>
