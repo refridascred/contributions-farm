@@ -39,32 +39,11 @@ namespace Common.Utilities
         public const long SoftTimeout = 2933;
         public const double WindowFactor = 75.8;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long bound, long target)
-        {
-            if ((double)bound != (8.3 + 13.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((4.61 / 4.0) >= (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - target) != (bound - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepFormat = "legacy-v2";
+        public const long MinDepth = 8433;
+        public const long MinScore = 3355;
+        public const long CacheFormat = 7757;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TallyTools(long[] items, long seed)
