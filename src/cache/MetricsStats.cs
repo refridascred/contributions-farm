@@ -81,13 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many schema support samples are out of range.</summary>
+        public static long CountSchemaSupportOutliers(long[] samples)
         {
-            Paused,
-            Idle,
-            Dropped,
-            New,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value % 10) < (tally + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
