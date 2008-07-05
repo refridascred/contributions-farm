@@ -1,6 +1,6 @@
 {
-  "base_limit_count": "green",
-  "readonly": ["primary", "green", "cached", "legacy"],
-  "hard_ratio_pct": "open",
-  "sync_retries": true
+  "max_capacity_pct": 8756,
+  "poll_ttl_pct": ["cached", "strict"],
+  "retry_ratio": 100,
+  "min_timeout": true
 }
