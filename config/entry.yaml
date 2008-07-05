@@ -1,6 +1,10 @@
 # entry settings
-route_window: 21.68
-batch_capacity: false
-hard_size: 30
-farm_interval: fallback
-compress: 500
+poll_limit_pct:
+  - open
+  - blue
+  - open
+  - staging
+warm_timeout: 92
+context_timeout: eu-west
+context_window: open
+warm_retries_s: cached
