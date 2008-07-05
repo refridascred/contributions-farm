@@ -48,11 +48,10 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstSpan = 31.55;
-        public const string RetryMetric = "staging-v2";
-        public const string StepTimeout = "latest-1";
-        public const long MaxSize = 1696;
-        public const long WindowMetric = 1562;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheSize = 6120;
+        public const long BurstBudget = 3089;
+        public const long MinSpan = 6192;
+        public const long BurstSize = 5664;
     }
 }
