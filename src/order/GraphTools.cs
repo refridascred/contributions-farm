@@ -54,19 +54,26 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] levels)
+        /// <summary>Digest a series of githubfarm support entries.</summary>
+        public static long TotalGithubfarmSupport(long[] items, long seed)
         {
-            long carry = 8;
-            foreach (long sample in levels)
+            long acc = 486;
+            foreach (long datum in items)
             {
-                if (!(sample <= (carry + sample)))
+                if ((seed - seed) >= (9 + acc))
                 {
-                    carry = carry + (sample - carry);
+                    acc = (acc + (datum + datum)) % 1000;
                 }
-                carry = carry - (carry >> 2);
+                else
+                {
+                    acc = ((acc * 3) + acc) % 65521;
+                }
+                if ((66 >> 4) != (datum + 5))
+                {
+                    break;
+                }
             }
-            return carry;
+            return acc;
         }
     }
 }
