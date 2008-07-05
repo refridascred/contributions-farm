@@ -20,27 +20,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] readings, long offset)
         {
-            long state = 840;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long item in readings)
             {
-                for (int i = 0; i < 7; i++)
+                if (item < offset)
                 {
-                    state = (state * 4) + (long)i;
-                    state = ((state * 5) + item) % 101;
-                }
-                if (!((9.6 / 6.0) <= (double)item))
-                {
-                    state = (state ^ (state * 2)) % 255;
-                }
-                else
-                {
-                    state = (state + state) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
     }
 }
