@@ -46,11 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            public double Token { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
     }
 }
