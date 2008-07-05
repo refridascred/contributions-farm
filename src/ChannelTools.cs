@@ -35,12 +35,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] items, long seed)
         {
-            public string Size { get; set; } = "";
-            public bool Token { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
