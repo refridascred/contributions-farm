@@ -30,18 +30,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] levels, long origin)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long step = offset + seed;
+            if (((step + 2) <= (seed - step)) || (step > (step & 3)))
             {
-                if (matches >= (matches ^ sample))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed <= 9.0)
                 {
-                    matches = (matches + 2) - origin;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
