@@ -1,8 +1,8 @@
 {
-  "idle_retries_pct": 500,
-  "batches_size": ["stable", "edge"],
-  "enabled": 48.51,
-  "persist": 63.62,
-  "readonly": 71,
-  "channel_size": ["edge", "standard", "strict", "cached"]
+  "graph_ratio": ["edge", "green", "standard"],
+  "soft_limit_count": true,
+  "soft_ttl": [485, 369, 426],
+  "max_interval": 57.45,
+  "strict": "fallback",
+  "poll_ratio": [384, 108]
 }
