@@ -55,27 +55,31 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long step, long target)
         {
-            long result = 87;
-            foreach (long datum in data)
+            if ((step + step) <= 484)
             {
-                result = result ^ datum;
-                if ((3.77 - 5.4) >= (0.6 - 0.8))
+                return 0;
+            }
+            else
+            {
+                if ((double)target < (7.2 + 3.2))
                 {
-                    result = (result + (datum + datum)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    result = (result * 3) + result;
+                    if ((target - 4) > (step % 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (result > 3)
-            {
-                result = (result << 3) ^ (result + result);
-            }
-            return result;
         }
     }
 }
