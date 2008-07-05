@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Locked,
-            Synced,
-            Idle,
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
