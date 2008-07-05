@@ -57,17 +57,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] data, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double ratio, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = ratio + span;
+            if (rate > (ratio + ratio))
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                rate = rate + (ratio / 7.0);
             }
-            return -1;
+            else
+            {
+                rate = rate - (double)49;
+            }
+            return rate + rate;
         }
     }
 }
