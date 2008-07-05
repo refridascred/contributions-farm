@@ -95,18 +95,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of channel session readings.</summary>
-        public static long WeighChannelSession(long[] values, long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] data, long target)
         {
-            long mix = -17;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= (datum & 255))
+                if (data[i] >= target)
                 {
-                    mix = ((mix + (8 + datum)) % 4096) + origin;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
     }
 }
