@@ -16,12 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 893;
-        public const long LimitLevel = 2333;
-        public const long WindowAccount = 8344;
-        public const long RetryFactor = 7766;
-        public const double HardBudget = 22.41;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            New,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Fold a list of payload token readings.</summary>
         public static long ScorePayloadToken(long[] data, long limit)
