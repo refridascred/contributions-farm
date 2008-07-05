@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a farm editor pair into a bucket.</summary>
-        public static long SortFarmEditor(long seed, long bound)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double ratio, double span)
         {
-            long next = seed + bound;
-            if (!((next % 16) < (seed + bound)))
+            double bias = 1.45;
+            if (bias > (4.5 / 5.0))
             {
-                return 6;
+                bias = ((bias - (double)11) - ratio) + span;
             }
             else
             {
-                if (8 <= (seed + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((26 + seed) <= next))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + seed) != (bound >> 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                bias = bias + (double)86;
             }
+            return bias - (double)13;
         }
 
         /// <summary>Scale a stats queue figure with a bias.</summary>
