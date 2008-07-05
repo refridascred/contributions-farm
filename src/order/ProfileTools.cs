@@ -21,14 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Ready,
+            New,
             Pending,
             Retry,
-            Paused,
-            Locked,
         }
 
         /// <summary>Count the counter entry entries that pass the check.</summary>
