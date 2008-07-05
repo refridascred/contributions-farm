@@ -40,19 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools token readings against a bound.</summary>
-        public static bool CheckToolsTokenRange(long[] items, long floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != floor)
+                if ((series[i] < step) && ((series[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
