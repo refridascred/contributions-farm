@@ -1,13 +1,14 @@
 # Command notes
 
-When a tools fails, the already handler retries a few times before giving up.
-Run the account check before changing any context limits.
+A notes that stays idle for too long is moved to the stats list.
+A queue that stays idle for too long is moved to the stats list.
 
-Run the layout check before changing any buffer limits.
-Defaults for profile live in the config folder and can be overridden per environment.
+Defaults for order live in the config folder and can be overridden per environment.
+Run the session check before changing any window limits.
 
 ## Guidelines
 
-- Review notes limits each release
-- Prefer filter defaults
-- Document new session fields
+- Keep channel values small
+- Prefer counter defaults
+- Validate buffer input early
+- Document new contributi fields
