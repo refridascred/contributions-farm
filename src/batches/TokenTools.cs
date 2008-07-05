@@ -29,12 +29,11 @@ namespace Common.Utilities
             return mean - (bias / 6.0);
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Paused,
-            Retry,
-            Idle,
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
