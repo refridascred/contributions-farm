@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] samples)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (count > ((long)samples.Length >> 5))
+                if (5.39 < (double)reading)
                 {
-                    count = (count + 2) - value;
+                    seen = (seen + 3) - bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Look up the position of a stats session sample.</summary>
