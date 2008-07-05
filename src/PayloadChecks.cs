@@ -50,22 +50,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] levels, long target)
+        /// <summary>Match up checks record samples.</summary>
+        public static long MatchChecksRecordCount(long[] data)
         {
-            long result = 67;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target <= item) && (72 < target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result + (result >> 5)) % 101;
-                }
-                if ((12 + 6) <= item)
-                {
-                    break;
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
