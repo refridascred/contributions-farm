@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 1900;
+        public const long IdleToken = 5180;
+        public const long LimitToken = 884;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
