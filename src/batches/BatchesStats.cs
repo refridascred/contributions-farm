@@ -40,18 +40,9 @@ namespace Common.Utilities
         public const string SoftBatches = "staging-v2";
         public const double SoftCount = 6.18;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((double)(-173) == (double)item) || (item <= (item * 5)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultSpan = 4350;
+        public const long CacheWindow = 5990;
+        public const double BaseScore = 59.0;
     }
 }
