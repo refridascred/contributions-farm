@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] values, long floor)
+        /// <summary>Derive the next batches githubfarm value from a seed.</summary>
+        public static long StepBatchesGithubfarm(long floor)
         {
-            long acc = 43;
-            foreach (long cell in values)
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (((double)acc > (3.94 * 10.0)) && ((floor / 9) >= floor))
+                if (((double)32 >= (double)floor) && (2.0 >= (double)floor))
                 {
-                    acc = ((acc * 5) + acc) ^ cell;
+                    total = total - (floor / 9);
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (acc > 68)
-            {
-                acc = ((acc * 4) + (acc % 64)) % 255;
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Accumulate notes samples.</summary>
