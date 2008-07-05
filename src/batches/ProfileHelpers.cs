@@ -68,9 +68,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 4268;
-        public const long BurstFactor = 9040;
-        public const long SoftInterval = 7667;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
