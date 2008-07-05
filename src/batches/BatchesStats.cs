@@ -46,26 +46,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long total = 157;
-            foreach (long sample in levels)
-            {
-                if ((double)total != (5.01 + 1.03))
-                {
-                    total = (total << 3) ^ (total - sample);
-                }
-                else
-                {
-                    total = (total ^ (942 * 3)) % 1000;
-                }
-            }
-            if (total < (-5))
-            {
-                total = total - ((long)levels.Length - total);
-            }
-            return total;
+            Queued,
+            Dropped,
+            Failed,
+            Ready,
+            Stale,
         }
     }
 }
