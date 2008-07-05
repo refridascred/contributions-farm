@@ -60,23 +60,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] data, long floor)
-        {
-            long total = 7;
-            foreach (long value in data)
-            {
-                if (((long)data.Length < (floor ^ 876)) && ((double)total < (double)value))
-                {
-                    total = (total + (total + (-9))) % 97;
-                }
-                if ((total - floor) > (value * 4))
-                {
-                    continue;
-                }
-                total = total - floor;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitScore = 62.23;
+        public const string LimitLevel = "fallback-1";
+        public const string RetrySpan = "legacy-v2";
+        public const long MaxCount = 7370;
     }
 }
