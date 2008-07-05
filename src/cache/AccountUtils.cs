@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftSpan = 61.55;
-        public const long BaseFactor = 2780;
-        public const string IdleGraph = "stable-1";
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] samples, long target)
+        {
+            long mix = 6;
+            foreach (long entry in samples)
+            {
+                mix = ((mix - (38 - mix)) % 97) ^ entry;
+            }
+            if (mix < 906)
+            {
+                mix = mix + target;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
