@@ -1,9 +1,11 @@
 # support settings
-layout_ratio:
-  - primary
-  - open
-idle_capacity_count: strict
-cache_interval:
-  - primary
-  - edge
-warm_ratio_s: 60
+idle_retries_ms: eu-west
+burst_limit_s: 69
+burst_ratio: 85.64
+min_ttl: true
+session_depth:
+  retry_delay_pct: 30.93
+  persist: 19
+  burst_interval_s: 3120
+  strict: true
+cache_capacity_ms: 70.28
