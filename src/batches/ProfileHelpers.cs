@@ -40,18 +40,13 @@ namespace Common.Utilities
         public const long CacheBatches = 4124;
         public const long IdleLevel = 8319;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] samples)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (hits < (hits + value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Dropped,
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Locate a command reading by value.</summary>
