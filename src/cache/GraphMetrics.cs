@@ -32,10 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 5178;
-        public const double StepLevel = 64.59;
-        public const long BaseMetrics = 9022;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Derive the next session checks value from a seed.</summary>
         public static long DeriveSessionChecks(long offset)
