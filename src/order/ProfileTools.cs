@@ -64,13 +64,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 896;
+        public const long BurstMetrics = 9124;
+        public const long RetryMetrics = 1457;
 
         /// <summary>Match up graph samples.</summary>
         public static long PairGraphCount(long[] data)
