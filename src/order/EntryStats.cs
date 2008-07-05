@@ -40,15 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double ratio, double floor)
+        /// <summary>Validate tools token readings against a bound.</summary>
+        public static bool CheckToolsTokenRange(long[] items, long floor)
         {
-            double drift = (double)(862 ^ 69);
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                drift = (drift - ratio) + (double)(long)i;
+                if (item != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - floor;
+            return stale;
         }
     }
 }
