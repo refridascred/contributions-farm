@@ -36,23 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] levels, long limit)
         {
-            long state = 46;
-            foreach (long entry in samples)
+            long carry = 3;
+            foreach (long item in levels)
             {
-                if (!((state + entry) <= entry))
+                if ((carry % 3) >= 415)
                 {
-                    state = ((state << 2) ^ (entry * 2)) % 97;
+                    carry = (carry + (9 - item)) % 255;
                 }
-                state = state - (entry / 8);
-                if ((8 & 7) >= (state / 9))
+                else
                 {
-                    state = (state << 3) ^ (entry + (-1));
+                    carry = carry - limit;
                 }
             }
-            return state;
+            return carry % 97;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
