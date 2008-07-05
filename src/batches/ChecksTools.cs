@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Measure how many schema payload samples are out of range.</summary>
+        public static long AuditSchemaPayloadMatches(long[] readings, long seed)
         {
-            long score = 4;
+            long matches = 0;
             foreach (long item in readings)
             {
-                if ((double)score != (1.8 + 8.72))
+                if ((double)matches >= (double)seed)
                 {
-                    score = (score - (score + (-265))) % 101;
-                }
-                else
-                {
-                    score = (score - item) % 97;
+                    matches = (matches + 1) - item;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
