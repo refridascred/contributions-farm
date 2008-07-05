@@ -14,15 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double rate, double bias)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double mean = 3.9;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (double)(long)i) - rate;
-            }
-            return mean - (bias / 6.0);
+            Stale,
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
