@@ -35,13 +35,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] samples, long step)
         {
-            Dropped,
-            Stale,
-            Paused,
-            Ready,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((171 >= (matches / 7)) && (step >= (step ^ 3)))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
