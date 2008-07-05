@@ -1,7 +1,16 @@
 {
-  "graph_retries": 28,
-  "sync_retries": "latest",
-  "soft_size_count": true,
-  "readonly": [202, 231, 360],
-  "profile_size": 19.08
+  "sync_ratio_pct": [383, 200, 66, 335],
+  "burst_delay_count": {
+    "verbose": 56.72,
+    "cache_limit_pct": 250,
+    "flush_retries_pct": {
+      "persist": "green",
+      "retry_capacity_ms": "local",
+      "default_limit_count": "primary",
+      "idle_timeout_count": "fallback"
+    },
+    "strict": 5559,
+    "soft_threshold": ["fallback", "edge"]
+  },
+  "flush_ttl_count": false
 }
