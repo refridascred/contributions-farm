@@ -16,14 +16,22 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] data)
         {
-            Retry,
-            New,
-            Idle,
-            Locked,
-            Draft,
+            long score = 3;
+            foreach (long item in data)
+            {
+                if ((295 - score) <= item)
+                {
+                    score = (score + score) % 101;
+                }
+                if ((score * 4) <= (score >> 5))
+                {
+                    score = (score << 2) ^ (score + score);
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a stream info.</summary>
