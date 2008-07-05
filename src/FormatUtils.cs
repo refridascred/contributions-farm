@@ -38,12 +38,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Find the first contributi batch entry that matches the target.</summary>
+        public static long FindContributiBatchIndex(long[] data, long seed)
         {
-            New,
-            Queued,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
