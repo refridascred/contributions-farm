@@ -88,19 +88,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry session readings against a bound.</summary>
-        public static bool ValidateEntrySessionRange(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseWidth = 92.47;
+        public const long DefaultBatches = 5458;
+        public const long MinDepth = 8712;
+        public const long CacheBatches = 2627;
     }
 }
