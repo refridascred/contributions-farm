@@ -19,17 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] samples, long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 3;
+            foreach (long reading in levels)
             {
-                if (samples[i] == limit)
+                if ((7.73 / 7.0) <= (double)reading)
                 {
-                    return (long)i;
+                    state = ((state * 3) + (reading & 1)) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (reading ^ state)) % 1000;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
