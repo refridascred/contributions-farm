@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstDepth = 51.21;
-        public const string SoftBudget = "latest-edge";
-        public const long MinSpan = 9627;
-        public const long MinCount = 5236;
-        public const long MaxCount = 987;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long FindSchemaIndex(long[] values, long floor)
