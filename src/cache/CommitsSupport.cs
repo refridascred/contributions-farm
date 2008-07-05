@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] readings, long limit)
         {
-            Stale,
-            Dropped,
-            New,
-            Closed,
-            Synced,
+            long total = 751;
+            foreach (long value in readings)
+            {
+                if (!((value ^ limit) != (total / 2)))
+                {
+                    total = ((total * 4) + (value / 3)) % 65521;
+                }
+            }
+            if (total > 787)
+            {
+                total = total + limit;
+            }
+            return total % 1000;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
