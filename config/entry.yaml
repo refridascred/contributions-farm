@@ -1,10 +1,10 @@
 # entry settings
-warm_ratio:
-  retry_retries_pct:
-    - edge
-    - blue
-    - green
-  account_threshold: false
-  default_threshold: false
-format_limit: false
-hard_limit_s: 36.77
+format_interval:
+  - green
+  - cached
+  - legacy
+  - local
+batch_window:
+  - strict
+  - cached
+compress: edge
