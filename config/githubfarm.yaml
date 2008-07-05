@@ -1,5 +1,27 @@
 # githubfarm settings
-max_window: legacy
-sync_depth_count: 40
-retry_size: 3226
-order_limit: eu-west
+dry_run: 30
+stream_capacity: false
+poll_depth_count: edge
+min_interval: 7.44
+hard_interval:
+  max_capacity:
+    - blue
+    - local
+    - green
+  burst_threshold_s:
+    flush_size_s: 4025
+    readonly: staging
+    persist: true
+    flush_window_s: 36.48
+    sync_capacity_s:
+      - eu-west
+      - blue
+      - latest
+  enabled:
+    flush_interval_count: latest
+    batch_interval: green
+    account_interval: latest
+    notes_size: edge
+    max_size_count:
+      - edge
+      - stable
