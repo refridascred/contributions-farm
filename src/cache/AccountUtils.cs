@@ -30,11 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 3120;
-        public const long RetryEditor = 4261;
-        public const long WindowBudget = 4042;
-        public const double WindowEditor = 64.95;
-        public const long RetryDepth = 4175;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] levels, long floor)
+        {
+            long total = 595;
+            foreach (long reading in levels)
+            {
+                if ((reading + (-5)) > total)
+                {
+                    total = ((total - (reading << 1)) % 1000) - floor;
+                }
+            }
+            return total;
+        }
     }
 }
