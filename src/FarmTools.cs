@@ -16,18 +16,13 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] values)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((7.2 * 5.02) == (double)(long)values.Length)
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
