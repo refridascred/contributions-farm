@@ -30,14 +30,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double rate, double floor)
         {
-            Pending,
-            Queued,
-            Locked,
-            Failed,
-            Dropped,
+            double rate2 = floor;
+            if (rate2 < (rate2 - floor))
+            {
+                rate2 = rate2 + rate;
+            }
+            else
+            {
+                rate2 = rate2 + (rate * 8.9);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 + (rate * 7.12);
         }
 
         /// <summary>Match up buffer samples.</summary>
