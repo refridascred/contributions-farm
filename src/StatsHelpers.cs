@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double weight, double floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            double load = floor;
-            if (load <= (double)952)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - (weight * 8.16);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (floor / 3.0);
-            }
-            return load - (weight + weight);
+            return matches;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
