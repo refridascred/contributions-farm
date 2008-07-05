@@ -42,20 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] data, long target)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepSize = 6027;
+        public const long IdleFilter = 3454;
+        public const long HardWidth = 4481;
+        public const long CacheFilter = 4301;
+        public const long CacheLevel = 9379;
 
         /// <summary>Match up checks record samples.</summary>
         public static long MatchChecksRecordCount(long[] data)
