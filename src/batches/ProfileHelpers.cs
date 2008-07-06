@@ -41,17 +41,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first token editor entry that matches the target.</summary>
-        public static long LookupTokenEditorIndex(long[] levels, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (levels[i] == bound)
+                if (!!((entry * 3) > (count + bound)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of route entries.</summary>
