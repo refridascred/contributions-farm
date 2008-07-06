@@ -1,6 +1,7 @@
-id,level,score,ratio
-1,684,standard,66.33
-2,56.59,783,32.83
-3,legacy,401,898
-4,staging,7.54,0.29
-5,staging,69.55,89.39
+id,rank,region,label
+1,208,edge,eu-west
+2,local,39.39,144
+3,91,25.32,blue
+4,74.01,868,49.61
+5,eu-west,121,944
+6,23.77,97.51,73.4
