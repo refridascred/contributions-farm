@@ -19,11 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseFactor = 8778;
-        public const long BurstCount = 4993;
-        public const long HardCommits = 7123;
-        public const string BatchInterval = "staging-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowCount = 1500;
+        public const long CacheCount = 3136;
+        public const long RetryFactor = 6776;
+        public const long SoftScore = 6509;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long step)
