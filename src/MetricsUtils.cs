@@ -97,22 +97,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long acc = 3;
-            foreach (long value in values)
-            {
-                if (!((acc - value) < (value >> 3)))
-                {
-                    acc = (acc << 3) ^ value;
-                }
-            }
-            if (acc < 9)
-            {
-                acc = (acc + (acc + 4)) % 101;
-            }
-            return acc;
+            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
