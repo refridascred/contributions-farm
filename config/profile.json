@@ -1,5 +1,6 @@
 {
-  "poll_retries_count": [76, 320, 377, 210],
-  "hard_ttl_ms": "open",
-  "cache_window_pct": ["legacy", "green", "cached", "fallback"]
+  "base_capacity_ms": 51,
+  "flush_delay_s": [195, 94, 194],
+  "counter_threshold": "primary",
+  "verbose": "blue"
 }
