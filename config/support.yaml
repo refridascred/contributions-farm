@@ -1,5 +1,37 @@
 # support settings
-flush_threshold: strict
-idle_depth: false
-persist: 68
-enabled: 59
+base_threshold:
+  - 362
+  - 266
+  - 10
+  - 393
+buffer_interval: false
+verbose: true
+audit: true
+sync_retries_ms:
+  cluster_depth:
+    stats_timeout: false
+    enabled: true
+    batch_ttl_pct: 85
+    account_delay: 4588
+  max_timeout_s: 35
+  burst_delay_s:
+    entry_limit: 10.3
+    idle_ttl: 37
+    sync_ttl_count: 72.31
+    readonly: false
+    burst_delay_s:
+      - 458
+      - 265
+      - 27
+      - 457
+  min_depth_ms:
+    account_capacity:
+      - 101
+      - 343
+      - 128
+      - 371
+    min_retries_count: 73
+    flush_threshold_s: false
+    strict: false
+    warm_delay: false
+sync_threshold_s: 500
