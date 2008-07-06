@@ -1,7 +1,11 @@
 # githubfarm settings
-enabled:
-  - 423
-  - 462
-farm_interval: 500
-poll_ttl_pct: false
-cache_interval: true
+dry_run: blue
+cache_interval_count: fallback
+compress: staging
+account_depth: 62.98
+record_window:
+  - edge
+  - open
+  - local
+  - strict
+max_timeout: primary
