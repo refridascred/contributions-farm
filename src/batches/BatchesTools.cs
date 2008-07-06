@@ -36,11 +36,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double ratio, double span)
-        {
-            double weight = (8.0 * 1.7) * 8.7;
-            return ((weight + (double)545) + ratio) + span;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 2211;
+        public const long LimitAlready = 2185;
+        public const double HardDepth = 33.56;
+        public const long BurstAlready = 5340;
     }
 }
