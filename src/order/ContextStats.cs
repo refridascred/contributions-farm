@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double weight, double floor)
+        /// <summary>Derive the next schema tools value from a seed.</summary>
+        public static long SeriesSchemaTools(long step)
         {
-            double drift = floor / 6.0;
-            if (drift >= drift)
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                drift = drift + (floor - floor);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - weight) + (double)(long)i;
-            }
-            return drift - (weight / 7.0);
+            return mark;
         }
 
         /// <summary>Roll a context counter forward.</summary>
