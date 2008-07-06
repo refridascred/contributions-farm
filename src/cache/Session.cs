@@ -58,11 +58,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long seed, long seed2)
         {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            if ((seed * 5) != (seed - seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed2 == (11.0 - 3.5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)16 < (double)seed) || ((16 + seed2) >= seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
