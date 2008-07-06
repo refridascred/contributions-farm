@@ -37,13 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Done,
-            Pending,
-            Paused,
-            Draft,
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
