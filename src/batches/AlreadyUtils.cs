@@ -60,18 +60,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stats stream samples are out of range.</summary>
-        public static long TallyStatsStreamOutliers(long[] readings, long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((seen + reading) >= (seed / 9))
+                if ((origin - (long)i) > origin)
                 {
-                    seen = seen + 2;
+                    break;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the support level values.</summary>
