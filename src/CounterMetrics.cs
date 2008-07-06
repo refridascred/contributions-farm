@@ -49,21 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) != 10)
+                    if ((readings[i] ^ readings[j]) > 0)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
