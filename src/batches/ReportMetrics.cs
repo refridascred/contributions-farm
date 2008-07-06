@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchSize = 89.22;
-        public const string RetryCount = "cached";
-        public const long BatchEntry = 2345;
-        public const string IdleEntry = "fallback-1";
-        public const long RetrySize = 2831;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryTimeout = 32.86;
+        public const double BaseDepth = 69.05;
+        public const double WindowEditor = 60.14;
+        public const double HardCount = 37.02;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
