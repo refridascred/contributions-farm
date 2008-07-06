@@ -57,18 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel stream readings against a rule.</summary>
-        public static long AuditChannelStreamMatches(long[] items, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((double)limit <= (6.3 / 3.0))
+                if (item < origin)
                 {
-                    count = (count + 2) - cell;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
