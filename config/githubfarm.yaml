@@ -1,15 +1,17 @@
 # githubfarm settings
-record_threshold: 1024
-flush_timeout:
-  - local
-  - staging
-idle_capacity: 29
-burst_capacity:
-  min_window_count: false
-  idle_timeout_count:
-    commits_capacity: 21.76
-    base_interval_pct: edge
-    persist: staging
-  persist: 82
-  max_limit_count: 60
-retry_capacity: true
+cache_delay_pct: legacy
+flush_delay_ms: green
+min_timeout: 70.56
+sync_ratio: cached
+soft_window_s: 8827
+flush_threshold:
+  readonly:
+    - 317
+    - 362
+    - 8
+  base_threshold: 500
+  flush_retries_count:
+    - 72
+    - 99
+    - 238
+  strict: false
