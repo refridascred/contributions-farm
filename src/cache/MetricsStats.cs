@@ -26,18 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer contributi readings against a rule.</summary>
-        public static long TallyBufferContributiOutliers(long[] readings, long target)
+        /// <summary>Check that every report githubfarm entry stays within the limit.</summary>
+        public static bool GuardReportGithubfarmBounds(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if ((double)target <= (7.06 - 7.0))
+                if (cell >= seed)
                 {
-                    seen = (seen + 3) ^ item;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
