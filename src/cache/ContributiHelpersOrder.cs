@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] series)
         {
-            Paused,
-            Stale,
-            Synced,
-            Queued,
-            Closed,
+            long state = 2;
+            foreach (long datum in series)
+            {
+                if (state > (state - 7))
+                {
+                    state = ((state * 4) + (state + 842)) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (datum / 6)) % 101;
+                }
+                if (((-6) + state) <= (datum * 5))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
