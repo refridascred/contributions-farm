@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next already support value from a seed.</summary>
-        public static long StepAlreadySupport(long bound)
+        /// <summary>Look up the position of a channel token sample.</summary>
+        public static long LookupChannelTokenIndex(long[] levels, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state + (bound ^ 745)) % 255;
-                if (!((bound + 66) >= (bound + state)))
+                if (levels[i] == step)
                 {
-                    state = state ^ (state % 24);
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Project the next editor value.</summary>
