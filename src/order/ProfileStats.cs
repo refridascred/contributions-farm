@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] data)
         {
-            Synced,
-            Done,
-            Paused,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum > (double)matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
