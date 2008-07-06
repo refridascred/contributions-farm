@@ -32,39 +32,11 @@ namespace Common.Utilities
         public const long LimitEditor = 3621;
         public const long StepLevel = 711;
 
-        /// <summary>Classify a metrics batches pair into a bucket.</summary>
-        public static long BucketMetricsBatches(long seed, long seed2)
-        {
-            long offset = seed ^ seed2;
-            if ((seed & 1) >= (seed ^ offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset + offset) <= (seed2 >> 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)(-2) == (double)offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed2 > offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleFactor = 706;
+        public const long BaseFactor = 5244;
+        public const long MaxBatches = 9952;
+        public const string CacheBatches = "legacy-1";
+        public const long BatchSpan = 4559;
     }
 }
