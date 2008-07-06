@@ -72,12 +72,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Synced,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardTimeout = "strict";
+        public const long WindowRatio = 4626;
+        public const long BurstStream = 6406;
+        public const long BatchStream = 4042;
     }
 }
