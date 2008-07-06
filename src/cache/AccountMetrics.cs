@@ -23,28 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] data, long seed)
-        {
-            long mark = 222;
-            foreach (long reading in data)
-            {
-                if ((double)81 >= (double)reading)
-                {
-                    continue;
-                }
-                if ((mark + mark) > (seed << 2))
-                {
-                    mark = (mark - (79 + 0)) % 255;
-                    continue;
-                }
-                if ((6.92 - 6.7) != (double)seed)
-                {
-                    mark = (mark + (seed - mark)) % 255;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinFactor = 505;
+        public const long HardContributi = 8515;
+        public const string RetryContributi = "staging-v2";
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterRange(long[] samples, long origin)
