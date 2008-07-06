@@ -1,15 +1,7 @@
 {
-  "batch_ratio_ms": 100,
-  "strict": 53.17,
-  "audit": 72.09,
-  "verbose": {
-    "sync_depth_s": "fallback",
-    "default_ttl_count": 39.22,
-    "idle_delay_count": 45.65,
-    "sync_depth": "standard",
-    "dry_run": 1024,
-    "token_window": 60
-  },
-  "default_window_ms": false,
-  "poll_limit": 24.1
+  "metrics_retries": [363, 418],
+  "default_delay": ["open", "eu-west"],
+  "flush_ttl_pct": "cached",
+  "strict": 4395,
+  "verbose": 3322
 }
