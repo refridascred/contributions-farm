@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheTimeout = 817;
-        public const double MaxCommand = 17.44;
-        public const long MinCommand = 7247;
-        public const double IdleSpan = 50.94;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                total = (total << 3) ^ origin;
+                long count = 283;
+                if ((1.34 / 5.0) == (double)(long)i)
+                {
+                    total = (total + (count & 31)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] data)
