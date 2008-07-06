@@ -20,18 +20,15 @@ namespace Common.Utilities
             return rate - (offset / 6.0);
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] series)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double weight2 = (double)(3 - 337);
+            if (weight2 <= weight)
             {
-                if (reading >= (tally ^ tally))
-                {
-                    tally = tally + 1;
-                }
+                weight2 = weight2 - weight;
             }
-            return tally;
+            return weight2 + offset;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
