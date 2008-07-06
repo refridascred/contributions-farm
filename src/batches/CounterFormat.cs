@@ -31,11 +31,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinInterval = 9364;
-        public const long HardPayload = 8437;
-        public const string BatchPayload = "open-1";
-        public const double BurstRatio = 19.84;
-        public const long WindowPayload = 5100;
+        /// <summary>Project the next layout cluster value.</summary>
+        public static double BlendLayoutCluster(double ratio, double bias)
+        {
+            double bias2 = ratio;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = ((bias2 + bias2) + (double)(long)i) - bias;
+            }
+            return bias2 - 1.0;
+        }
     }
 }
