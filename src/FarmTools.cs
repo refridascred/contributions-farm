@@ -25,13 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] readings, long offset)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((((double)offset == (6.2 * 1.46)) || ((entry ^ matches) >= (offset << 2))) || ((entry >> 2) < (entry << 2)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a editor window sample.</summary>
