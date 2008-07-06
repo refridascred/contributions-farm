@@ -50,12 +50,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
