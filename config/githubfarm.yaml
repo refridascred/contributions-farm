@@ -1,8 +1,13 @@
 # githubfarm settings
-soft_ratio_s: false
-default_delay_pct: legacy
-default_timeout_pct:
-  compress: 1.67
-  idle_size: 250
-  retry_capacity: edge
-  idle_delay_pct: true
+token_limit:
+  - 23
+  - 31
+min_depth_pct: green
+max_window_count:
+  - 101
+  - 184
+  - 223
+batch_depth:
+  tools_threshold: 5744
+  readonly: 59
+  flush_timeout_count: standard
