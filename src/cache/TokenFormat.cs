@@ -37,13 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
             public long Flag { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
         }
     }
 }
