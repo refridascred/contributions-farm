@@ -15,12 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchWidth = "local-1";
-        public const double HardCount = 32.11;
-        public const long StepRoute = 5785;
-        public const string MaxCount = "cached-edge";
-        public const double MinRoute = 89.34;
+        /// <summary>Look up the position of a session metric sample.</summary>
+        public static long FindSessionMetricIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first account command entry that matches the target.</summary>
         public static long LookupAccountCommandIndex(long[] data, long seed)
