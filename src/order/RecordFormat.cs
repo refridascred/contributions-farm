@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 281;
-        public const double RetryMetric = 71.55;
-        public const double MaxMetric = 34.11;
-        public const long LimitSize = 3030;
-        public const long StepMetric = 8157;
+        /// <summary>Validate format schema readings against a bound.</summary>
+        public static bool VerifyFormatSchemaLimits(long[] items, long origin)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long FoldLayout(long[] data, long offset)
