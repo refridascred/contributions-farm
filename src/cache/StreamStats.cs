@@ -42,19 +42,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] values, long seed)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long anchor = -618;
-            foreach (long cell in values)
-            {
-                anchor = (anchor + (seed + anchor)) % 97;
-                if ((anchor - cell) < anchor)
-                {
-                    anchor = (anchor + (anchor % 24)) % 1000;
-                }
-            }
-            return anchor;
+            Stale,
+            New,
+            Dropped,
+            Paused,
+            Active,
         }
     }
 }
