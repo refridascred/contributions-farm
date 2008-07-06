@@ -21,12 +21,12 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "latest";
         public const long MinGithubfarm = 9350;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Closed,
-            Idle,
-            Synced,
+            public double Owner { get; set; }
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
