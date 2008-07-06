@@ -110,11 +110,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 3541;
-        public const long BaseGithubfarm = 5125;
-        public const double BurstTimeout = 55.59;
-        public const long BurstBudget = 2046;
-        public const double WindowRatio = 63.17;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
+            public double Level { get; set; }
+        }
     }
 }
