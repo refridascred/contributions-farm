@@ -53,13 +53,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Idle,
-            Active,
-            Stale,
-            Synced,
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
