@@ -1,7 +1,5 @@
 # support settings
-command_depth: 6831
-idle_capacity_s:
-  max_limit: 55.33
-  context_delay: eu-west
-  sync_ttl: 9624
-command_retries: open
+flush_threshold: strict
+idle_depth: false
+persist: 68
+enabled: 59
