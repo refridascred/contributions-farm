@@ -36,21 +36,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] series)
+        /// <summary>Accumulate contributi batches samples.</summary>
+        public static long ScoreContributiBatches(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 18;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total ^ (value / 2)) + origin;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a cluster options.</summary>
