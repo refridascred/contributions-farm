@@ -15,12 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Locked,
-            Paused,
-            Idle,
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
