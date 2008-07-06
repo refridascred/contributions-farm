@@ -27,19 +27,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double ratio, double span)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] values, long step)
         {
-            double rate = ratio;
-            if (rate >= span)
+            long state = 41;
+            foreach (long cell in values)
             {
-                rate = rate + span;
+                state = (((state * 5) + 392) + cell) + step;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (rate / 9.0)) + (double)(long)i;
-            }
-            return rate + (rate * 4.3);
+            return state % 65521;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
