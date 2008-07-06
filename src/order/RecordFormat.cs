@@ -29,21 +29,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) == 14)
+                    if ((values[i] ^ values[j]) != 0)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the filter status values.</summary>
