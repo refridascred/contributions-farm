@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] items, long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (((bound - seen) > seen) && ((cell - 972) == (seen ^ 704)))
+                if (item < origin)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Fold a list of already readings.</summary>
