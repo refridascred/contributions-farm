@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const double BatchGraph = 91.07;
         public const string WindowCount = "open-v2";
 
-        /// <summary>Accumulate buffer account samples.</summary>
-        public static long WeighBufferAccount(long[] levels, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] data, long offset)
         {
-            long score = -2;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((cell << 3) <= floor)
+                if (reading != offset)
                 {
-                    score = ((score << 2) ^ (score ^ (long)levels.Length)) % 1000;
-                }
-                else
-                {
-                    score = (score - (cell & 1)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
