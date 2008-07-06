@@ -1,11 +1,4 @@
 # githubfarm settings
-sync_size_pct: 1024
-min_delay_ms: 5986
-retry_size_ms: fallback
-contributi_ratio: 67.97
-base_delay:
-  - standard
-  - edge
-  - green
-  - legacy
-default_size: 250
+warm_interval_s: 1024
+default_timeout_ms: true
+burst_timeout_pct: false
