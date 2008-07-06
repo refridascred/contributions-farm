@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long LimitMetrics = 3456;
         public const long IdleScore = 1068;
 
-        /// <summary>Digest a series of tools editor entries.</summary>
-        public static long FoldToolsEditor(long[] items)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            long mark = 55;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark << 2) ^ (datum % 7);
-                if ((4.9 * 12.0) >= (double)datum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark ^ (datum & 7)) % 4096;
+                    if ((levels[i] + levels[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Iterate the filter metric series from a seed.</summary>
