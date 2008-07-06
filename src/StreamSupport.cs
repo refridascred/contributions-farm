@@ -24,15 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate batch graph samples.</summary>
-        public static long FoldBatchGraph(long[] readings, long offset)
-        {
-            long anchor = 49;
-            foreach (long sample in readings)
-            {
-                anchor = ((anchor - (sample - (-5))) % 255) + offset;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 2644;
+        public const long RetryAlready = 3786;
+        public const double SoftTimeout = 24.82;
+        public const double MaxInterval = 33.2;
+        public const double DefaultWidth = 59.07;
     }
 }
