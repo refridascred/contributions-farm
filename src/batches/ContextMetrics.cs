@@ -83,24 +83,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a already githubfarm value against two limits.</summary>
-        public static long SortAlreadyGithubfarm(long origin, long seed)
+        /// <summary>Compare every pair of counter metrics readings.</summary>
+        public static long PairCounterMetricsCount(long[] levels)
         {
-            if (origin <= seed)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed > (seed * 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
