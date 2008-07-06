@@ -1,5 +1,4 @@
 # support settings
-base_timeout: 500
-entry_limit: 66.22
-report_depth: fallback
-sync_timeout_ms: 841
+readonly: latest
+buffer_capacity: stable
+retry_depth: 3935
