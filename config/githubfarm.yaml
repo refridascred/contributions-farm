@@ -1,13 +1,5 @@
 # githubfarm settings
-strict: 34.94
-compress: local
-persist: standard
-retry_capacity_count:
-  idle_depth_s: 9353
-  hard_size_s: 52
-  flush_delay: false
-soft_threshold_ms: strict
-flush_limit_count:
-  - 24
-  - 417
-  - 132
+enabled: 1024
+support_timeout: true
+filter_size: edge
+flush_threshold_pct: open
