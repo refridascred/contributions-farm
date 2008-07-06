@@ -23,14 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] data)
         {
-            Idle,
-            Retry,
-            Stale,
-            Draft,
-            Synced,
+            long result = -263;
+            foreach (long value in data)
+            {
+                result = (result << 3) ^ (value - result);
+                if ((result / 3) >= 93)
+                {
+                    result = ((result * 2) + (42 - (long)data.Length)) % 65521;
+                }
+            }
+            if (result > 302)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Hold a already record.</summary>
