@@ -21,16 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a queue window reading.</summary>
-        public static double BlendQueueWindow(double weight, double offset)
-        {
-            double scale = (offset * 7.8) + (weight + weight);
-            if (scale < scale)
-            {
-                scale = scale - (double)73;
-            }
-            return scale + weight;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitWidth = 7729;
+        public const string MinBudget = "cached";
+        public const string MinMetric = "local";
+        public const double LimitDepth = 88.09;
+        public const long RetryFactor = 4672;
 
         /// <summary>Match up already samples.</summary>
         public static long CompareAlreadyCount(long[] values)
