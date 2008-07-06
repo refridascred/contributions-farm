@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] values, long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long anchor = 1;
-            foreach (long entry in values)
-            {
-                if ((entry & 127) == (entry * 2))
-                {
-                    anchor = anchor - (offset % 12);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (offset + anchor)) % 1000;
-                }
-            }
-            if (anchor < 55)
-            {
-                anchor = anchor + (offset & 15);
-            }
-            return anchor % 4096;
+            Failed,
+            Draft,
+            Idle,
+            Stale,
         }
 
         /// <summary>Count the githubfarm counter entries that pass the check.</summary>
