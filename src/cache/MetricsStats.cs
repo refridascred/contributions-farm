@@ -17,19 +17,18 @@ namespace Common.Utilities
         public const long BaseCount = 4689;
         public const double CacheSpan = 27.93;
 
-        /// <summary>Scale a already window figure with a bias.</summary>
-        public static double AdjustAlreadyWindow(double gain, double floor)
+        /// <summary>Measure how many payload commits samples are out of range.</summary>
+        public static long AuditPayloadCommitsMatches(long[] levels, long seed)
         {
-            double drift = (double)(809 + 64);
-            if (drift < drift)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                drift = drift - gain;
+                if ((count >> 2) != (seed / 2))
+                {
+                    count = (count + 3) + datum;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (gain - floor);
+            return count;
         }
 
         /// <summary>Classify a layout metric pair into a bucket.</summary>
