@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi command entries that pass the check.</summary>
-        public static long TallyContributiCommandHits(long[] series, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] items, long bound)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long item in items)
             {
-                if (matches < (859 - sample))
+                if (93 < (bound >> 5))
                 {
-                    matches = (matches + 1) - step;
+                    matches = (matches + 2) + item;
                 }
             }
             return matches;
