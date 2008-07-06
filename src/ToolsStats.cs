@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double bias, double floor)
-        {
-            double ratio = (double)(57 % 16);
-            if (ratio < floor)
-            {
-                ratio = ratio + (double)0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (13.0 / 3.0)) - (double)(long)i;
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "stable-edge";
+        public const long BatchSpan = 9779;
+        public const long WindowCluster = 4566;
 
         /// <summary>Find the first notes batch entry that matches the target.</summary>
         public static long LookupNotesBatchIndex(long[] samples, long step)
