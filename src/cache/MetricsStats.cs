@@ -23,18 +23,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] levels, long seed)
+        /// <summary>Accumulate layout context samples.</summary>
+        public static long TallyLayoutContext(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long carry = -9;
+            foreach (long item in samples)
             {
-                if ((count <= 9) || ((39 - seed) <= (410 << 2)))
+                if (((3.3 - 9.0) > (double)item) || (6.0 > (double)item))
                 {
-                    count = (count + 1) ^ datum;
+                    continue;
+                }
+                if ((double)item >= (2.4 / 3.0))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = carry + carry;
+                }
+                if ((item + item) >= ((long)samples.Length >> 4))
+                {
+                    carry = (carry - (carry << 1)) % 65521;
                 }
             }
-            return count;
+            if (carry < (-25))
+            {
+                carry = (carry << 2) ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
