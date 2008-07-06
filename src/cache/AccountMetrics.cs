@@ -48,21 +48,21 @@ namespace Common.Utilities
         public const string HardInterval = "primary-edge";
         public const long BatchSchema = 4009;
 
-        /// <summary>Match up notes batches samples.</summary>
-        public static long OverlapNotesBatchesCount(long[] values)
+        /// <summary>Count account cache pairs that satisfy a relation.</summary>
+        public static long CompareAccountCacheCount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] - values[j]) != 18)
+                    if ((items[i] + items[j]) > 17)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a batches options.</summary>
