@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] items, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (value > offset)
+                if (!((15.0 / 8.0) < (double)hits))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Roll a order profile counter forward.</summary>
