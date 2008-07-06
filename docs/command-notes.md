@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-The token module keeps editor values in sync with the farm cache.
-The editor module keeps buffer values in sync with the layout cache.
+The command module keeps session values in sync with the channel cache.
+The report report groups every githubfarm by githubfarm.
 
-Keep notes and entry names short and lowercase.
-Keep report and metric names short and lowercase.
-Each tools is validated before it reaches the profile queue.
+When a stream fails, the cache handler retries a few times before giving up.
+The filter module keeps schema values in sync with the format cache.
+Keep contributi and editor names short and lowercase.
 
 ## Guidelines
 
-- Review checks limits each release
-- Prefer queue defaults
-- Validate graph input early
+- Review notes limits each release
+- Validate session input early
+- Document new account fields
+- Keep schema values small
