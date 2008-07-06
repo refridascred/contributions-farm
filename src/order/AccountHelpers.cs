@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] items, long offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((seen ^ offset) > reading)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a stats info.</summary>
