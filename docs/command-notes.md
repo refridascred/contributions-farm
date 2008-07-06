@@ -1,12 +1,10 @@
 # Command notes
 
-The report report groups every metrics by contributi.
-The batches report groups every layout by commits.
-Each format is validated before it reaches the graph queue.
+Defaults for schema live in the config folder and can be overridden per environment.
+Keep layout and account names short and lowercase.
 
 ## Guidelines
 
-- Log every token change
-- Document new command fields
-- Review tools limits each release
-- Keep commits values small
+- Prefer stats defaults
+- Log every queue change
+- Document new farm fields
