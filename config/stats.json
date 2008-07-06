@@ -1,22 +1,21 @@
 {
-  "window_capacity": {
-    "account_capacity": {
-      "flush_timeout_s": "green",
-      "verbose": ["primary", "staging"],
-      "retry_size_pct": "primary",
-      "dry_run": "blue"
+  "record_threshold": {
+    "cluster_window": {
+      "command_depth": 18.71,
+      "burst_delay_ms": 1791,
+      "cache_depth": 8496,
+      "sync_depth_s": 8440,
+      "profile_limit": "green"
     },
-    "route_threshold": {
-      "base_retries": ["staging", "blue"],
-      "dry_run": 30,
-      "hard_threshold_pct": 35.25,
-      "readonly": 8169,
-      "warm_capacity_count": 6
+    "audit": {
+      "readonly": "staging",
+      "cache_delay": "edge",
+      "audit": false,
+      "default_threshold": 250,
+      "warm_depth_pct": 35.9
     },
-    "warm_retries": true
+    "dry_run": [238, 234, 322, 458]
   },
-  "base_depth_count": false,
-  "flush_window": false,
-  "soft_retries_s": 73,
-  "entry_ratio": "legacy"
+  "hard_timeout_count": 11.84,
+  "schema_depth": [197, 117, 90, 315]
 }
