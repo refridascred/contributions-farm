@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!((double)cell <= (double)floor))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 5776;
+        public const long MinStream = 4636;
+        public const long LimitInterval = 6660;
+        public const long BurstSize = 8829;
 
         /// <summary>Grade a format batches value against two limits.</summary>
         public static long GradeFormatBatches(long seed, long offset)
