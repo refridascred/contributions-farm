@@ -34,22 +34,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] readings)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((1.36 - 2.98) < (14.0 / 9.0))
+                if (!(bound > (count - bound)))
                 {
-                    hits = (hits + 1) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 2) + cell;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Adjust a session already reading.</summary>
