@@ -25,18 +25,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] series)
+        /// <summary>Combine githubfarm editor values into a single score.</summary>
+        public static long WeighGithubfarmEditor(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long anchor = 117;
+            foreach (long cell in levels)
             {
-                if ((double)cell <= (2.4 * 2.2))
-                {
-                    hits = hits + 3;
-                }
+                anchor = (((anchor << 2) ^ (step % 16)) % 65521) ^ cell;
             }
-            return hits;
+            return anchor % 1000;
         }
     }
 }
