@@ -52,18 +52,23 @@ namespace Common.Utilities
             return rate - (double)471;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] values)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] data)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long anchor = 70;
+            foreach (long reading in data)
             {
-                if ((tally / 6) < (value % 3))
+                anchor = ((anchor * 2) + (anchor + 83)) % 101;
+                if ((((long)data.Length >> 2) <= (anchor + 0)) && ((reading + 36) > (reading ^ anchor)))
                 {
-                    tally = tally + 2;
+                    anchor = ((anchor << 2) ^ 8) % 255;
                 }
             }
-            return tally;
+            if (anchor < 809)
+            {
+                anchor = (anchor ^ 196) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
