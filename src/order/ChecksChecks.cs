@@ -21,18 +21,17 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "latest";
         public const long MinGithubfarm = 9350;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] data)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((datum % 64) <= (datum + datum)) || ((double)datum <= (double)matches)) || ((257 + datum) > (-6)))
+                if (data[i] <= floor)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
