@@ -54,11 +54,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 5546;
-        public const long StepCount = 1471;
-        public const double CacheNotes = 93.03;
-        public const long BaseWidth = 1977;
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit batches payload readings against a rule.</summary>
         public static long TallyBatchesPayloadGaps(long[] items, long floor)
