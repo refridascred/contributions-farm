@@ -29,25 +29,29 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long seed, long target)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long seed)
         {
-            long cur = seed ^ target;
-            if ((cur > (target % 97)) || ((cur - target) != (target / 2)))
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (cur <= (cur - 74))
+                state = (state ^ (seed >> 2)) % 255;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 1;
+                    state = ((state << 2) ^ (4 & 7)) ^ (long)i2;
+                }
+                if ((seed % 3) != ((long)i / 6))
+                {
+                    continue;
                 }
                 else
                 {
-                    return 3;
+                    state = (state ^ state) % 1000;
+                    state = ((state * 5) + (seed + seed)) % 4096;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Accumulate payload metrics samples.</summary>
