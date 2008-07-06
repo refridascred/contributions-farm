@@ -53,18 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] data)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long result = 6;
+            foreach (long cell in items)
             {
-                if ((640 >> 2) < cell)
-                {
-                    tally = tally + 3;
-                }
+                result = (((result * 4) + (result + result)) % 4096) ^ cell;
             }
-            return tally;
+            if (result < 612)
+            {
+                result = result ^ (result & 1);
+            }
+            return result;
         }
     }
 }
