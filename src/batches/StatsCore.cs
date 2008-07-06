@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] samples)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long total = 57;
+            foreach (long value in items)
             {
-                if (!(hits <= (entry % 7)))
+                if ((total - 7) >= (total + 7))
                 {
-                    hits = hits + 1;
+                    total = ((((total * 4) + total) % 1000) - value) - step;
                 }
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Locate a graph record reading by value.</summary>
