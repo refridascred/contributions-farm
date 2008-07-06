@@ -39,12 +39,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] samples, long target)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] == target)
+                if ((series[i] > step) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
