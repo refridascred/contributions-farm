@@ -53,19 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats layout entry stays within the limit.</summary>
-        public static bool VerifyStatsLayoutRange(long[] series, long offset)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long bound)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor * 2) + ((long)i >> 3);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Adjust a account reading.</summary>
