@@ -12,13 +12,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
