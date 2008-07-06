@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const long SoftAccount = 7208;
         public const long CacheRatio = 292;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] series)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                state = (state - limit) % 101;
-                state = ((state * 3) + (long)i) % 97;
+                if ((hits << 2) > hits)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
