@@ -19,23 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] levels, long target)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] levels, long bound)
         {
-            long sum = 520;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum ^ target;
-                if ((target >> 4) == (sum ^ sample))
+                if (levels[i] <= bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 79)
-            {
-                sum = sum - (target >> 4);
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Roll a account counter forward.</summary>
