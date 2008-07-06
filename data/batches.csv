@@ -1,7 +1,6 @@
-id,level,ratio,token
-1,988,537,latest
-2,572,482,213
-3,stable,eu-west,open
-4,19.03,5.61,464
-5,28.69,737,strict
-6,310,133,922
+id,rank,region,active,owner
+1,cached,strict,fallback,949
+2,2.17,898,open,388
+3,latest,blue,green,759
+4,437,0.26,35.7,53.51
+5,830,open,11.08,34.84
