@@ -58,10 +58,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitInterval = 5856;
-        public const string BaseFarm = "local";
-        public const double MinFarm = 98.79;
+        /// <summary>Check that every record graph entry stays within the limit.</summary>
+        public static bool VerifyRecordGraphLimits(long[] readings, long floor)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next stats account value from a seed.</summary>
         public static long RollStatsAccount(long offset)
