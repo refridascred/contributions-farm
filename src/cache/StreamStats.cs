@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long IdleBuffer = 6474;
         public const double MaxScore = 1.14;
 
-        /// <summary>Classify a batches token pair into a bucket.</summary>
-        public static long SortBatchesToken(long seed, long offset)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long origin, long target)
         {
-            if ((52 ^ seed) > (94 << 3))
+            long prev = origin - target;
+            if ((double)prev <= 6.0)
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if ((seed << 1) < seed)
+                if ((target + origin) <= (origin / 3))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
