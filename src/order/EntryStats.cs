@@ -25,16 +25,14 @@ namespace Common.Utilities
         public const long MaxRatio = 5725;
         public const long BaseFactor = 1388;
 
-        /// <summary>Accumulate format metrics samples.</summary>
-        public static long ScoreFormatMetrics(long[] items)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long mix = 5;
-            foreach (long sample in items)
-            {
-                mix = (((mix * 4) + (mix - 1)) % 4096) ^ sample;
-                mix = (mix * 2) + (mix >> 1);
-            }
-            return mix % 1000;
+            Pending,
+            Queued,
+            Stale,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
