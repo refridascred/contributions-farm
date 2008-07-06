@@ -53,11 +53,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
