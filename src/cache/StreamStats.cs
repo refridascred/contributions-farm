@@ -13,11 +13,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double ratio, double offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] levels, long floor)
         {
-            double mean = ratio - offset;
-            return mean + (ratio + mean);
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
