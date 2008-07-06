@@ -37,13 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            Paused,
+            Pending,
+            Locked,
+            Failed,
+            Done,
         }
     }
 }
