@@ -55,16 +55,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Iterate the schema metrics series from a seed.</summary>
+        public static long RollSchemaMetrics(long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                carry = (carry * 4) + (827 - carry);
-                carry = ((carry * 3) + (long)i) % 97;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return carry;
+            return anchor;
         }
     }
 }
