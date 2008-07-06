@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up notes channel samples.</summary>
-        public static long CompareNotesChannelCount(long[] data)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 3;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum ^ step) % 255) ^ sample;
             }
-            return hits;
+            if (sum > (-98))
+            {
+                sum = sum + (sum & 127);
+            }
+            return sum;
         }
 
         /// <summary>Roll a layout filter counter forward.</summary>
