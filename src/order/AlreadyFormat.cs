@@ -26,19 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route window readings against a bound.</summary>
-        public static bool ValidateRouteWindowLimits(long[] samples, long floor)
+        /// <summary>Rank metrics report input into a small class.</summary>
+        public static long GradeMetricsReport(long step, long limit)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            if ((step & 15) != (step & 127))
             {
-                if (entry <= floor)
+                return 8;
+            }
+            else
+            {
+                if (((3.0 * 18.0) >= (double)step) && ((limit + step) > (step / 4)))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step <= (5.7 * 14.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
