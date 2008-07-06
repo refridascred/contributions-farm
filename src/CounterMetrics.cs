@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of channel format readings.</summary>
-        public static long OverlapChannelFormatCount(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 3;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix + (limit * 5)) % 97) ^ entry;
             }
-            return tally;
+            return mix % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
