@@ -1,5 +1,13 @@
 {
-  "batch_limit": "standard",
-  "poll_depth": 62.31,
-  "retry_depth_ms": ["local", "open"]
+  "persist": 30,
+  "commits_timeout": 6412,
+  "burst_depth": {
+    "record_window": "legacy",
+    "base_delay_ms": 7938,
+    "poll_window_pct": 96,
+    "persist": "legacy",
+    "enabled": true,
+    "sync_ttl_count": 57
+  },
+  "min_size_count": "open"
 }
