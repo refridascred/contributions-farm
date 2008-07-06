@@ -24,19 +24,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double bias, double offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] samples, long bound)
         {
-            double drift = (double)(854 >> 5);
-            if (drift > (bias / 4.0))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                drift = (drift + (3.15 + drift)) - offset;
+                if ((double)tally >= (0.4 / 4.0))
+                {
+                    tally = ((tally + 1) + sample) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                drift = drift - (bias * 3.9);
-            }
-            return drift + drift;
+            return tally;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
