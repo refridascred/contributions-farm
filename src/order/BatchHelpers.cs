@@ -13,18 +13,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the editor counter entries that pass the check.</summary>
-        public static long MeasureEditorCounterHits(long[] readings)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample - 85) > (hits - hits))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a order summary.</summary>
