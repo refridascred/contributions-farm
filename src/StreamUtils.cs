@@ -43,17 +43,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] values, long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] >= bound)
+                if ((total < (3 + total)) || (offset >= (total % 2)))
                 {
-                    return (long)i;
+                    total = total ^ total;
+                    total = total ^ (375 >> 5);
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a route header.</summary>
