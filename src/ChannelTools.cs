@@ -29,19 +29,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every filter tools entry stays within the limit.</summary>
-        public static bool VerifyFilterToolsLimits(long[] data, long seed)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Failed,
+            Stale,
+            Draft,
+            Active,
         }
     }
 }
