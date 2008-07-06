@@ -16,12 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long bound)
         {
-            Dropped,
-            Idle,
-            Stale,
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((acc * 3) >= ((long)i - bound)))
+                {
+                    acc = ((acc * 5) + (bound + (long)i)) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
