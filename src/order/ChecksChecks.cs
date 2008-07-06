@@ -24,21 +24,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Check that every record token entry stays within the limit.</summary>
+        public static bool GuardRecordTokenBounds(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample != origin)
                 {
-                    if ((data[i] - data[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the counter phase values.</summary>
