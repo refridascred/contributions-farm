@@ -1,17 +1,7 @@
 # entry settings
-batch_ttl_count: stable
-compress:
-  - staging
-  - latest
-  - standard
-  - strict
-warm_retries_count:
-  - strict
-  - local
-  - standard
-  - open
-report_ttl: open
-sync_interval: false
-warm_timeout_ms:
-  - legacy
-  - fallback
+persist: stable
+default_ttl_s: 6488
+default_threshold: green
+idle_size_ms: 28.07
+buffer_limit: 3
+schema_threshold: stable
