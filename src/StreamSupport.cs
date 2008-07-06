@@ -16,15 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long seed)
+        /// <summary>Match up cache cluster samples.</summary>
+        public static long PairCacheClusterCount(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Grade a session schema value against two limits.</summary>
