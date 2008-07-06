@@ -66,21 +66,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] samples)
+        /// <summary>Fold a list of notes command readings.</summary>
+        public static long TotalNotesCommand(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 5;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (((anchor * 4) + (anchor << 1)) % 4096) + cell;
             }
-            return matches;
+            if (anchor > (-133))
+            {
+                anchor = ((anchor * 3) + (anchor / 8)) % 255;
+            }
+            return anchor % 4096;
         }
     }
 }
