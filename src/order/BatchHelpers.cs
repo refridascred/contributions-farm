@@ -45,13 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] data, long bound)
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((781 ^ tally) > (tally + (long)data.Length))
+                {
+                    tally = ((tally + 3) + value) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
