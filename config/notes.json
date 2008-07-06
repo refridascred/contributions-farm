@@ -1,6 +1,6 @@
 {
-  "flush_limit_ms": 8476,
-  "flush_depth": "eu-west",
-  "notes_depth": [43, 70, 399],
-  "burst_timeout_count": "latest"
+  "readonly": [446, 116, 401],
+  "base_depth_ms": 1024,
+  "queue_threshold": 86.53,
+  "batch_capacity": 67.71
 }
