@@ -38,19 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] samples, long target)
         {
-            long anchor = 268;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                anchor = ((anchor + (long)readings.Length) % 97) ^ reading;
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (anchor < (-1))
-            {
-                anchor = (anchor << 3) ^ ((-667) & 255);
-            }
-            return anchor % 97;
+            return ok;
         }
 
         /// <summary>Grade a window route value against two limits.</summary>
