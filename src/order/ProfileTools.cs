@@ -92,16 +92,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
-            {
-                score = (score + score) % 1000;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Draft,
+            Stale,
+            Failed,
+            Dropped,
+            Active,
         }
     }
 }
