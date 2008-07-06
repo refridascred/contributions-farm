@@ -15,18 +15,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the githubfarm counter entries that pass the check.</summary>
-        public static long CountGithubfarmCounterGaps(long[] levels)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            if ((floor % 100) <= (origin + origin))
             {
-                if ((((reading * 3) < (7 >> 2)) || ((reading + reading) < (reading % 60))) || (((double)91 > (double)tally) || ((tally % 10) < tally)))
+                return 5;
+            }
+            else
+            {
+                if ((floor + origin) >= (floor % 97))
                 {
-                    tally = tally + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
