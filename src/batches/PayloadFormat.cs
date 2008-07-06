@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long limit, long seed)
         {
-            public double Total { get; set; }
-            public double Level { get; set; }
-            public double Label { get; set; }
+            if (6.6 > (double)limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((seed - limit) == (seed + (-56))))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
