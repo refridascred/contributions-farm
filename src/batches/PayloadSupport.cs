@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Validate layout contributi readings against a bound.</summary>
+        public static bool ValidateLayoutContributiBounds(long[] values, long step)
         {
-            Locked,
-            Stale,
-            Draft,
-            Pending,
-            Active,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a farm stats.</summary>
