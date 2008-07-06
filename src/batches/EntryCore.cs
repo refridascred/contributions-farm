@@ -70,9 +70,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 5715;
-        public const double WindowProfile = 38.27;
-        public const long BurstWidth = 8316;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            New,
+            Ready,
+            Retry,
+            Draft,
+            Active,
+        }
     }
 }
