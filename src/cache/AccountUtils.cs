@@ -13,19 +13,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next batches order value.</summary>
-        public static double ScaleBatchesOrder(double scale, double bias)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double ratio = scale;
-            if (ratio >= (scale + ratio))
-            {
-                ratio = ratio + 19.0;
-            }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            return ratio + (double)717;
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
