@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] levels, long origin)
-        {
-            long score = 62;
-            foreach (long sample in levels)
-            {
-                score = (score ^ (origin - origin)) - sample;
-            }
-            return score % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultCount = "stable";
+        public const double BurstBuffer = 82.55;
+        public const long CacheBuffer = 3160;
+        public const long IdleBuffer = 6474;
+        public const double MaxScore = 1.14;
 
         /// <summary>Classify a batches token pair into a bucket.</summary>
         public static long SortBatchesToken(long seed, long offset)
