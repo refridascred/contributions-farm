@@ -66,11 +66,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 6590;
-        public const long HardCluster = 3971;
-        public const long CacheScore = 4177;
-        public const long SoftCluster = 8991;
-        public const long StepCluster = 7269;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Done,
+            Ready,
+            New,
+            Idle,
+            Stale,
+        }
     }
 }
