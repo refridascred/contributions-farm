@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double ratio, double span)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double scale = 8.46;
-            return ((scale - (double)12) + ratio) + span;
+            Idle,
+            Pending,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
