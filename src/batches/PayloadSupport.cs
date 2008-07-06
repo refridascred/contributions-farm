@@ -31,12 +31,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] values, long floor)
         {
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
+            long score = 1;
+            foreach (long cell in values)
+            {
+                if ((score + 4) > (cell + floor))
+                {
+                    score = (score * 5) + (floor * 5);
+                }
+                else
+                {
+                    score = score ^ (floor + floor);
+                }
+            }
+            if (score > 129)
+            {
+                score = (score + (floor & 63)) % 255;
+            }
+            return score % 1000;
         }
     }
 }
