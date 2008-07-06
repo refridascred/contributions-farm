@@ -1,7 +1,7 @@
 {
-  "commits_depth": "green",
-  "githubfarm_ratio": [78, 59, 146],
-  "verbose": 1024,
-  "order_capacity": "local",
-  "persist": "local"
+  "dry_run": 9554,
+  "compress": "latest",
+  "audit": "legacy",
+  "flush_size": false,
+  "buffer_window": ["edge", "standard", "green", "latest"]
 }
