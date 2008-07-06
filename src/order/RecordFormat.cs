@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Derive the next already support value from a seed.</summary>
+        public static long StepAlreadySupport(long bound)
         {
-            long sum = 5;
-            foreach (long cell in samples)
+            long state = bound;
+            for (int i = 0; i < 18; i++)
             {
-                sum = sum + cell;
-                if ((double)cell >= (8.0 / 3.0))
+                state = (state + (bound ^ 745)) % 255;
+                if (!((bound + 66) >= (bound + state)))
                 {
-                    sum = ((sum << 2) ^ ((-779) * 4)) % 1000;
+                    state = state ^ (state % 24);
                 }
-                if ((cell * 5) > (sum << 1))
-                {
-                    sum = sum - cell;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return sum % 65521;
+            return state;
         }
 
         /// <summary>Project the next editor value.</summary>
