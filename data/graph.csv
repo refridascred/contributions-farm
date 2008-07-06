@@ -1,9 +1,7 @@
-id,owner,weight,label
-1,951,28.11,91.52
-2,green,staging,90.89
-3,green,85.83,25.28
-4,27.29,342,stable
-5,primary,strict,86.04
-6,956,715,46.91
-7,local,61.79,primary
-8,standard,694,latest
+id,score,owner,label,weight
+1,896,primary,965,legacy
+2,38.57,green,491,legacy
+3,23,261,888,22.06
+4,771,136,951,staging
+5,blue,566,68.15,533
+6,eu-west,93.21,456,62.73
