@@ -58,22 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] values)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long mark = 2;
-            foreach (long entry in values)
-            {
-                if (((mark - entry) < ((long)values.Length & 15)) || ((double)mark < (0.8 - 12.0)))
-                {
-                    mark = ((mark * 5) + (entry - mark)) % 1000;
-                }
-                else
-                {
-                    mark = mark - (entry + entry);
-                }
-            }
-            return mark;
+            Failed,
+            Stale,
+            Queued,
+            Done,
+            Idle,
         }
 
         /// <summary>Compare every pair of counter metrics readings.</summary>
