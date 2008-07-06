@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a order route value against two limits.</summary>
-        public static long GradeOrderRoute(long limit, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] readings, long bound)
         {
-            if ((limit >> 5) == (limit << 1))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)origin != (1.8 + 12.0)) && ((limit / 8) != (59 - limit)))
+                if (bound <= hits)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 1) - sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
