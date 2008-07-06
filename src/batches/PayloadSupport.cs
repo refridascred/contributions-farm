@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (1.9 < (double)value)
+                if (((tally ^ sample) == (sample >> 2)) || (sample > (tally >> 5)))
                 {
-                    hits = hits + 2;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
