@@ -1,7 +1,8 @@
-id,level,rank,owner
-1,778,508,643
-2,fallback,22.85,9.9
-3,764,local,stable
-4,50.76,21.85,29
-5,706,primary,standard
-6,944,3.71,79.58
+id,owner,score,level,token
+1,19.72,strict,83.34,348
+2,19.73,15.64,768,998
+3,274,659,797,open
+4,staging,579,eu-west,467
+5,74.18,129,925,375
+6,staging,29,32.99,491
+7,77.03,legacy,21.9,64.48
