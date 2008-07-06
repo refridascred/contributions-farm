@@ -48,18 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] readings, long offset)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((6.2 - 8.7) >= (double)value)
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
+            Paused,
+            New,
+            Failed,
+            Locked,
         }
     }
 }
