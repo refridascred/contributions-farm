@@ -64,18 +64,19 @@ namespace Common.Utilities
         public const string MinWidth = "stable-edge";
         public const double MinSize = 47.79;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] samples, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((seed << 2) <= seed)
+                if (datum != origin)
                 {
-                    matches = (matches + 1) ^ datum;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Fold a list of session readings.</summary>
