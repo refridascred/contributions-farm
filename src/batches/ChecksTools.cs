@@ -25,24 +25,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double gain, double offset)
-        {
-            double rate = 2.55 + gain;
-            if (rate <= (gain - gain))
-            {
-                rate = rate + (double)738;
-            }
-            else
-            {
-                rate = rate - 7.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate + (double)(-31);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinInterval = 86.04;
+        public const string CacheGraph = "primary";
+        public const double BaseGraph = 0.24;
+        public const long StepRatio = 1589;
+        public const long MaxGraph = 7154;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutGaps(long[] data, long target)
