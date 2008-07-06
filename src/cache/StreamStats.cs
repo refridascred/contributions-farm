@@ -33,26 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] readings, long target)
+        /// <summary>Audit farm githubfarm readings against a rule.</summary>
+        public static long AuditFarmGithubfarmOutliers(long[] values)
         {
-            long mix = -8;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((target + sample) >= 0)
+                if (((-7) + tally) <= cell)
                 {
-                    mix = (mix << 3) ^ (sample ^ target);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (target ^ (long)readings.Length)) % 255;
+                    tally = tally + 3;
                 }
             }
-            if (mix > 153)
-            {
-                mix = (mix + target) % 101;
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
