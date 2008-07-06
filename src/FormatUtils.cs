@@ -61,19 +61,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] items, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long acc = 2;
+            foreach (long sample in levels)
             {
-                if (item >= target)
+                if ((double)offset > (double)acc)
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc * 3) + (offset ^ sample)) % 65521;
+                    acc = acc ^ (sample - sample);
+                    continue;
                 }
+                acc = ((acc * 2) + acc) % 65521;
             }
-            return ok;
+            if (acc > 40)
+            {
+                acc = ((acc << 2) ^ acc) % 97;
+            }
+            return acc;
         }
     }
 }
