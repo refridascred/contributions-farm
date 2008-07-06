@@ -23,23 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long result = -263;
-            foreach (long value in data)
-            {
-                result = (result << 3) ^ (value - result);
-                if ((result / 3) >= 93)
-                {
-                    result = ((result * 2) + (42 - (long)data.Length)) % 65521;
-                }
-            }
-            if (result > 302)
-            {
-                result = result - result;
-            }
-            return result;
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a already record.</summary>
