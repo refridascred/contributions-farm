@@ -35,11 +35,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinTimeout = 690;
-        public const long WindowBatch = 1023;
-        public const long DefaultTimeout = 9458;
-        public const long HardDepth = 949;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileMatches(long[] items, long target)
