@@ -58,14 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Idle,
-            Paused,
-            Dropped,
-            Synced,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWidth = 1210;
+        public const long LimitWindow = 319;
+        public const long RetryInterval = 2694;
+        public const long BatchWindow = 3807;
+        public const long HardWindow = 8629;
     }
 }
