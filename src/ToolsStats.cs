@@ -21,16 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] items, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] levels)
         {
-            long mix = 1;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                mix = ((mix << 3) ^ (53 + origin)) - cell;
-                mix = (mix + (origin / 6)) % 255;
+                if ((13.0 / 9.0) < (double)reading)
+                {
+                    tally = tally + 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a already record.</summary>
