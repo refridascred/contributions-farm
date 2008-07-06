@@ -48,27 +48,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] levels, long floor)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            long carry = 77;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((carry - floor) > 542) || ((cell << 2) >= floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry - (carry - cell)) % 4096;
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    carry = ((carry << 2) ^ 57) % 1000;
-                }
-                carry = carry + cell;
             }
-            if (carry > 3)
-            {
-                carry = (carry << 2) ^ (floor + 147);
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
