@@ -27,14 +27,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Pending,
+            Closed,
+            Draft,
+            Active,
+            Ready,
             Locked,
-            Stale,
-            Failed,
-            Dropped,
         }
     }
 }
