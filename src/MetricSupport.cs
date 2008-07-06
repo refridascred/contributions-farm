@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const string CacheTimeout = "primary-edge";
         public const long WindowRatio = 4277;
 
-        /// <summary>Measure how many layout schema samples are out of range.</summary>
-        public static long CountLayoutSchemaOutliers(long[] readings)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] data)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long sum = 6;
+            foreach (long datum in data)
             {
-                if ((matches * 4) <= (9 - matches))
+                if ((datum >> 3) < (996 << 3))
                 {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = (sum - datum) % 65521;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
