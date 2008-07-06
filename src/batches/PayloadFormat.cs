@@ -13,14 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double gain, double bias)
         {
-            Ready,
-            Idle,
-            Active,
-            Paused,
-            Pending,
+            double ratio = (bias + gain) - (bias + 7.2);
+            if (ratio <= gain)
+            {
+                ratio = ratio - (bias - 2.1);
+            }
+            else
+            {
+                ratio = ratio - bias;
+            }
+            return ratio + (bias + ratio);
         }
 
         /// <summary>Hold a tools entry.</summary>
