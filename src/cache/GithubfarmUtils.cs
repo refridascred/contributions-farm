@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer layout entries that pass the check.</summary>
-        public static long MeasureBufferLayoutMatches(long[] data, long target)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (((double)target != (2.05 + 4.8)) || ((6.87 - 3.09) == (double)entry))
+                if (!(acc <= ((long)i + seed)))
                 {
-                    count = count + 1;
+                    acc = acc - (acc ^ acc);
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
