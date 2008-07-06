@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long HardEntry = 9869;
         public const long LimitWidth = 4983;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] data, long floor)
         {
-            long acc = 1;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                acc = ((acc << 3) ^ (acc * 4)) - item;
+                if ((hits ^ floor) == (hits - floor))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
             }
-            if (acc > (-35))
-            {
-                acc = (acc * 3) + (acc - acc);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
