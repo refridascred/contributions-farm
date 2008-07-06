@@ -35,22 +35,17 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] items, long step)
+        /// <summary>Find the first notes batch entry that matches the target.</summary>
+        public static long LookupNotesBatchIndex(long[] samples, long step)
         {
-            long carry = 18;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((82 >> 4) <= (datum / 2)) || ((carry - datum) == (2 ^ carry)))
+                if (samples[i] > step)
                 {
-                    carry = ((carry << 2) ^ (step % 12)) % 255;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ step;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
