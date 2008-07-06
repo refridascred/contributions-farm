@@ -63,21 +63,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up tools format samples.</summary>
-        public static long MatchToolsFormatCount(long[] values)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
