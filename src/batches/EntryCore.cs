@@ -21,11 +21,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 8215;
-        public const long RetryScore = 3727;
-        public const double MaxDepth = 85.61;
-        public const long BaseDepth = 9364;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long TallyBuffer(long[] samples)
