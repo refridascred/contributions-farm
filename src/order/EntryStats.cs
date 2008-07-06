@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long offset, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] values)
         {
-            if (((bound ^ bound) <= offset) && ((bound + offset) >= (offset - bound)))
+            long anchor = 7;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (844 >= (bound >> 5))
+                if ((cell - cell) == (71 % 64))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    anchor = (anchor + (anchor + anchor)) % 65521;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Fold a list of schema githubfarm readings.</summary>
