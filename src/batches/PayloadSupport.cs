@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheSpan = 2500;
+        public const long DefaultNotes = 9573;
+        public const string CacheCount = "standard";
+        public const long IdleNotes = 3733;
+        public const long HardSize = 6816;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool GuardLayoutLimits(long[] values, long step)
