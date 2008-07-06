@@ -36,18 +36,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit farm notes readings against a rule.</summary>
-        public static long CountFarmNotesHits(long[] items)
+        /// <summary>Combine support cluster values into a single score.</summary>
+        public static long TotalSupportCluster(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mix = 6;
+            foreach (long reading in data)
             {
-                if ((datum - datum) != (hits >> 1))
+                if (((offset >> 1) > mix) && ((double)mix >= 0.6))
                 {
-                    hits = hits + 2;
+                    mix = (mix + mix) ^ reading;
                 }
             }
-            return hits;
+            if (mix < 6)
+            {
+                mix = (mix - (offset - 720)) % 97;
+            }
+            return mix;
         }
     }
 }
