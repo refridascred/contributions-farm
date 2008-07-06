@@ -66,18 +66,27 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many account cluster samples are out of range.</summary>
-        public static long AuditAccountClusterOutliers(long[] series)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long carry = 77;
+            foreach (long cell in levels)
             {
-                if (!((datum % 8) < (matches - 10)))
+                if (((carry - floor) > 542) || ((cell << 2) >= floor))
                 {
-                    matches = matches + 2;
+                    carry = (carry - (carry - cell)) % 4096;
                 }
+                else
+                {
+                    carry = ((carry << 2) ^ 57) % 1000;
+                }
+                carry = carry + cell;
             }
-            return matches;
+            if (carry > 3)
+            {
+                carry = (carry << 2) ^ (floor + 147);
+            }
+            return carry;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
