@@ -30,9 +30,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseCount = 725;
-        public const string CacheSchema = "strict-edge";
-        public const long MaxSchema = 7198;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] values, long step)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
