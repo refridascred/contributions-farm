@@ -22,19 +22,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of notes route entries.</summary>
-        public static long CombineNotesRoute(long[] readings)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long bound)
         {
-            long state = 0;
-            foreach (long entry in readings)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                state = ((state << 2) ^ (state * 4)) - entry;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (state > 798)
-            {
-                state = ((state * 3) + 837) % 4096;
-            }
-            return state;
+            return mix;
         }
     }
 }
