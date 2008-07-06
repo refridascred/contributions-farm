@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BatchInterval = 31.25;
-        public const long SoftSpan = 4626;
-        public const long RetryCount = 1904;
-        public const long WindowSpan = 7085;
-        public const long StepScore = 4534;
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate buffer cache readings against a bound.</summary>
         public static bool CheckBufferCacheLimits(long[] series, long seed)
