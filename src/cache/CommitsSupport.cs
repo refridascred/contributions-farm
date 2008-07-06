@@ -64,10 +64,19 @@ namespace Common.Utilities
         public const string MinWidth = "stable-edge";
         public const double MinSize = 47.79;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "cached-edge";
-        public const long WindowCache = 2749;
-        public const double HardCache = 95.87;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] samples, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((seed << 2) <= seed)
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool VerifyStreamBounds(long[] levels, long origin)
