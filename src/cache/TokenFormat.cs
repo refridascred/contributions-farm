@@ -14,24 +14,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long limit, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] readings)
         {
-            if ((13.0 / 4.0) < (double)offset)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit << 1) >= (limit / 2))
+                if (((double)seen <= (double)5) && ((item - item) <= seen))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of notes payload readings.</summary>
