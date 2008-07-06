@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double rate, double span)
+        /// <summary>Fold a list of graph farm readings.</summary>
+        public static long CombineGraphFarm(long[] values)
         {
-            double drift = 8.11;
-            if (drift >= (drift - drift))
+            long carry = 4;
+            foreach (long value in values)
             {
-                drift = ((drift + drift) + rate) + span;
+                if (value >= ((long)values.Length & 3))
+                {
+                    carry = (carry - carry) % 4096;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + drift;
+            return carry;
         }
 
         /// <summary>Describe the cluster class values.</summary>
