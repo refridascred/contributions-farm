@@ -43,24 +43,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] items, long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] data)
         {
-            long total = 654;
-            foreach (long value in items)
+            long mix = -34;
+            foreach (long sample in data)
             {
-                total = ((total * 3) + (value - 1)) % 101;
-                total = ((total * 2) + (value + bound)) % 255;
-                if ((0 - bound) == (bound % 2))
+                if ((5.9 * 3.54) == (double)mix)
                 {
-                    total = (total + (bound >> 5)) % 101;
+                    mix = (mix - (mix >> 4)) - sample;
+                }
+                else
+                {
+                    mix = (mix - (9 % 5)) % 1000;
                 }
             }
-            if (total < 2)
+            if (mix > 6)
             {
-                total = (total - total) % 101;
+                mix = (mix - (mix & 127)) % 4096;
             }
-            return total % 1000;
+            return mix % 4096;
         }
     }
 }
