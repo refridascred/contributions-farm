@@ -39,11 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 1217;
-        public const long HardCount = 1608;
-        public const double SoftChecks = 65.95;
-        public const long DefaultLevel = 3908;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Dropped,
+            Done,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
