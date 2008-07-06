@@ -17,14 +17,17 @@ namespace Common.Utilities
         public const long HardSession = 7214;
         public const long StepWidth = 8058;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] readings, long seed)
         {
-            Closed,
-            Pending,
-            Dropped,
-            Ready,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
