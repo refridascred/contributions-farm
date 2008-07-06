@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((11.0 * 5.07) != (double)bound)
-                {
-                    acc = ((acc << 2) ^ 6) % 65521;
-                }
-                else
-                {
-                    acc = (acc * 2) + (bound + acc);
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = ((acc ^ (51 - acc)) % 97) + (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public bool Token { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
