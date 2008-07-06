@@ -34,29 +34,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long target)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long step, long step2)
         {
-            long lane = limit - target;
-            if (0.52 > (double)limit)
+            if ((step ^ step2) >= (step & 31))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((double)lane == (7.0 * 0.37))
+                if ((double)step == (5.1 - 8.0))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((5.2 - 1.0) >= (double)lane)
+                    if ((step2 + step2) != (step2 & 31))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        return 2;
+                        return 3;
                     }
                 }
             }
