@@ -33,18 +33,14 @@ namespace Common.Utilities
         public const string MaxWidth = "strict-v2";
         public const double CacheDepth = 18.97;
 
-        /// <summary>Audit farm order readings against a rule.</summary>
-        public static long AuditFarmOrderGaps(long[] items, long origin)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((double)382 > (20.0 * 8.7))
-                {
-                    seen = ((seen + 1) + item) - origin;
-                }
-            }
-            return seen;
+            Locked,
+            Ready,
+            Done,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a window options.</summary>
