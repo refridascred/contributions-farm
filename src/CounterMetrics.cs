@@ -43,15 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long sum = 9;
-            foreach (long entry in levels)
-            {
-                sum = ((sum ^ (sum + (long)levels.Length)) % 101) ^ entry;
-            }
-            return sum;
+            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
