@@ -37,10 +37,24 @@ namespace Common.Utilities
             return rate - (span * 7.51);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinRatio = 5548;
-        public const string IdleBatches = "cached-v2";
-        public const double SoftBatches = 98.76;
+        /// <summary>Scale a account stats figure with a bias.</summary>
+        public static double BlendAccountStats(double ratio, double span)
+        {
+            double bias = span;
+            if (bias < bias)
+            {
+                bias = bias + span;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias - ratio;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MinNotes = 5546;
