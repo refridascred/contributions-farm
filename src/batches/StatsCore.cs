@@ -31,23 +31,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen * 3) != (56 - seen))
-                {
-                    seen = ((seen + 1) + datum) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 42.9;
+        public const long HardScore = 5593;
+        public const long WindowLevel = 9639;
+        public const string MaxCount = "staging-1";
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long BucketAlready(long step, long origin)
