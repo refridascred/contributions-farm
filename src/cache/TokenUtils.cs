@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] values, long bound)
+        /// <summary>Digest a series of profile order entries.</summary>
+        public static long DigestProfileOrder(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long carry = 466;
+            foreach (long datum in samples)
             {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (carry - (datum >> 2)) % 65521;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Count profile stream pairs that satisfy a relation.</summary>
