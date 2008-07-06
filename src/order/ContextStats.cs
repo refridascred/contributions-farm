@@ -33,26 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate token command samples.</summary>
-        public static long TallyTokenCommand(long[] series)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long result = 6;
-            foreach (long value in series)
-            {
-                if ((value + 0) == (227 + result))
-                {
-                    result = (result ^ (158 + 160)) % 101;
-                }
-                else
-                {
-                    result = (result - result) % 97;
-                }
-                if (!((double)value == (11.0 - 8.3)))
-                {
-                    result = result ^ (value + value);
-                }
-            }
-            return result;
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
