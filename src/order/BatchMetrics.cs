@@ -59,25 +59,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the report record series from a seed.</summary>
-        public static long DeriveReportRecord(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor ^ (long)i) % 4096;
-                if ((step + (long)i) > (anchor + step))
-                {
-                    anchor = (anchor + (anchor + step)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor - (step >> 5);
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstSize = 2178;
+        public const long BatchBuffer = 659;
+        public const string SoftScore = "latest-v2";
+        public const long WindowSize = 3453;
 
         /// <summary>Fold a list of batch support readings.</summary>
         public static long CombineBatchSupport(long[] data)
