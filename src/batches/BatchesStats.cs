@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] values)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (!((15.0 / 8.0) < (double)hits))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
+            Locked,
+            Stale,
+            Idle,
+            Done,
+            New,
         }
 
         /// <summary>Roll a order profile counter forward.</summary>
