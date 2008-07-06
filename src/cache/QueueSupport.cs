@@ -32,11 +32,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double weight, double floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double mean = floor;
-            return (mean - (double)45) + weight;
+            Active,
+            New,
+            Paused,
+            Failed,
         }
 
         /// <summary>Adjust a cache session reading.</summary>
