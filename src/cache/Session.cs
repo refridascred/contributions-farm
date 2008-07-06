@@ -31,19 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double bias, double offset)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double weight = 5.8;
-            if (weight >= offset)
-            {
-                weight = weight - 1.09;
-            }
-            else
-            {
-                weight = weight - (weight * 4.6);
-            }
-            return weight - bias;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
