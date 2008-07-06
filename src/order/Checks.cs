@@ -17,10 +17,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinBudget = 74.81;
-        public const string MinScore = "local-1";
-        public const double MaxStats = 21.25;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((3.9 / 8.0) < (double)seed)
+                {
+                    acc = acc - (0 / 6);
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
