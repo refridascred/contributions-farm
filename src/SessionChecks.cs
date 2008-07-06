@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] items, long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long sum = 960;
-            foreach (long sample in items)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = ((sum - (sample >> 5)) ^ (long)i) - origin;
-                }
-                if (!((sample ^ sample) < sample))
-                {
-                    sum = ((sum << 3) ^ (sum - sum)) % 101;
-                }
-            }
-            if (sum > 381)
-            {
-                sum = (sum + (sum % 64)) % 97;
-            }
-            return sum % 4096;
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a farm snapshot.</summary>
