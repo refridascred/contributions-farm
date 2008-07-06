@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSpan = 4031;
-        public const long DefaultSchema = 8715;
-        public const long StepSchema = 6758;
-        public const long HardFactor = 4819;
-        public const long HardBudget = 2094;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double rate, double bias)
+        {
+            double bias2 = bias / 9.0;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - rate) - (double)(long)i;
+            }
+            return bias2 + (double)33;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] values, long bound)
