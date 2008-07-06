@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] series, long bound)
+        /// <summary>Count the buffer token entries that pass the check.</summary>
+        public static long AuditBufferTokenOutliers(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (series[i] < bound)
+                if ((origin + origin) < (entry * 2))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a metric summary.</summary>
