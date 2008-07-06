@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] samples, long origin)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!(hits <= (234 / 8)))
-                {
-                    hits = ((hits + 1) ^ sample) - origin;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
