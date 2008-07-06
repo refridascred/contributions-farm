@@ -20,39 +20,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank context graph input into a small class.</summary>
-        public static long ClassifyContextGraph(long bound, long offset)
+        /// <summary>Look up the position of a command report sample.</summary>
+        public static long SeekCommandReportIndex(long[] samples, long step)
         {
-            long edge = bound - offset;
-            if (!((double)offset >= (11.0 * 9.38)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound < (5.5 * 3.0))
+                if (samples[i] <= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((edge + bound) <= edge)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((edge + bound) <= bound) && (edge > (offset & 63)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
