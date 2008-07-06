@@ -39,10 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinFactor = 43.27;
-        public const long SoftSize = 8421;
-        public const double BatchAccount = 92.36;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 1217;
+        public const long HardCount = 1608;
+        public const double SoftChecks = 65.95;
+        public const long DefaultLevel = 3908;
 
         /// <summary>Measure how many farm order samples are out of range.</summary>
         public static long CountFarmOrderGaps(long[] series)
