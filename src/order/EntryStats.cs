@@ -19,16 +19,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of schema githubfarm readings.</summary>
-        public static long TallySchemaGithubfarm(long[] series)
-        {
-            long carry = 70;
-            foreach (long entry in series)
-            {
-                carry = (carry * 3) + (entry + carry);
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstDepth = 3479;
+        public const long MaxScore = 3796;
+        public const double MaxInterval = 50.06;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long MatchAlreadyCount(long[] items)
