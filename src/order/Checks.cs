@@ -36,30 +36,12 @@ namespace Common.Utilities
         public const string MinScore = "local-1";
         public const double MaxStats = 21.25;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] series, long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long anchor = -4;
-            foreach (long datum in series)
-            {
-                if ((7.18 / 5.0) >= (double)datum)
-                {
-                    anchor = (anchor << 2) ^ (anchor * 4);
-                }
-                if ((anchor + datum) == (origin + datum))
-                {
-                    anchor = (anchor ^ (6 / 3)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ ((-767) << 1)) % 4096;
-                }
-            }
-            if (anchor < 508)
-            {
-                anchor = anchor + (anchor - (-127));
-            }
-            return anchor;
+            New,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the metric state values.</summary>
