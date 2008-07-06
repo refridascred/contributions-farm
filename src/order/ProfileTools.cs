@@ -28,19 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] values, long origin)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] series, long step)
         {
-            long score = 319;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = score + (score / 4);
-                if ((score + value) == (value * 5))
+                if (series[i] < step)
                 {
-                    score = score + (score + origin);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a order snapshot.</summary>
