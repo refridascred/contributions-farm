@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] data, long limit)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (matches < (limit ^ matches))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate notes buffer samples.</summary>
