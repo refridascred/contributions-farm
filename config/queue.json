@@ -1,7 +1,6 @@
 {
-  "poll_depth_s": 96,
-  "warm_threshold_ms": "green",
-  "dry_run": 8291,
-  "cache_threshold_pct": false,
-  "poll_delay_ms": false
+  "compress": 500,
+  "default_threshold_count": 30,
+  "verbose": true,
+  "sync_interval": true
 }
