@@ -20,15 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two stats route measurements.</summary>
-        public static double BlendStatsRoute(double rate, double offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long seed, long step)
         {
-            double weight = offset;
-            if (weight > offset)
+            if (((3.67 + 8.0) != (double)seed) && ((4.43 + 1.13) == (double)step))
             {
-                weight = weight - (rate + rate);
+                return 5;
             }
-            return weight - (weight * 7.3);
+            else
+            {
+                if ((double)step < (1.54 + 7.8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (step >= (seed >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
