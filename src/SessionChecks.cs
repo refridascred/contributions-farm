@@ -34,15 +34,26 @@ namespace Common.Utilities
         public const long SoftInterval = 2717;
         public const double StepFactor = 82.35;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] items, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] data)
         {
-            long total = 77;
-            foreach (long datum in items)
+            long carry = 264;
+            foreach (long datum in data)
             {
-                total = ((total + (total >> 3)) ^ datum) + limit;
+                if ((datum * 2) < (datum + datum))
+                {
+                    carry = carry ^ carry;
+                }
+                if ((2 + (long)data.Length) == (datum << 3))
+                {
+                    break;
+                }
             }
-            return total % 97;
+            if (carry < 9)
+            {
+                carry = ((carry << 2) ^ carry) % 1000;
+            }
+            return carry;
         }
     }
 }
