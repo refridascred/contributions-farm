@@ -35,13 +35,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] data)
         {
-            Failed,
-            Pending,
-            Done,
-            Retry,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (((589 <= (seen & 15)) && (reading <= (reading + reading))) || ((reading >> 4) <= reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
