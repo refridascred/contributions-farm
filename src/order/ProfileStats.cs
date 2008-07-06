@@ -51,15 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue githubfarm entries.</summary>
-        public static long TotalQueueGithubfarm(long[] readings)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] values, long bound)
         {
-            long mix = 381;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long entry in values)
             {
-                mix = ((mix * 5) + (6 + (-97))) + value;
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix % 65521;
+            return found;
         }
     }
 }
