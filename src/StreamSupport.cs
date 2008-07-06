@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long bound, long step)
-        {
-            if ((bound <= (bound + step)) || ((bound ^ step) >= 8))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound == (7.3 * 3.1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 6173;
+        public const long IdleBudget = 4621;
+        public const long LimitAccount = 6192;
+        public const long SoftAccount = 7208;
+        public const long CacheRatio = 292;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long PairAccountCount(long[] series)
